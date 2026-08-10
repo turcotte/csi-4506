@@ -4,3 +4,5 @@
 !.gitignore
 !README.md
 !_publish.yml
+/.quarto/
+**/*.quarto_ipynb
