@@ -1,0 +1,2795 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Marcel Turcotte">
+  <title>CSI 4506 - Automne 2026 – Introduction à l’apprentissage automatique</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<meta property="og:title" content="Introduction à l’apprentissage automatique – CSI 4506 - Automne 2026">
+<meta property="og:description" content="CSI 4506 - Automne 2026">
+<meta property="og:site_name" content="CSI 4506 - Automne 2026">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Introduction à l’apprentissage automatique</h1>
+  <p class="subtitle">CSI 4506 - Automne 2026</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Marcel Turcotte
+</div>
+</div>
+</div>
+
+  <p class="date">Version: août 9, 2026 11h41</p>
+</section>
+<section>
+<section id="préambule" class="title-slide slide level1 center">
+<h1>Préambule</h1>
+
+</section>
+<section id="citation-du-jour" class="slide level2">
+<h2>Citation du jour</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://time.com/redesign/_next/image/?url=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2025%2F08%2FTIM250908_Cover-AI_FINAL.jpg&amp;w=3840&amp;q=75" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://time.com/redesign/_next/image/?url=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2025%2F08%2FTIM250908_Cover-AI_FINAL.jpg&amp;w=3840&amp;q=75" class="quarto-figure quarto-figure-center" height="500"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>Pour la troisième année consécutive, le magazine TIME a publié sa liste des 100 personnalités les plus influentes dans le domaine de l’intelligence artificielle.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><a href="https://time.com/collections/time100-ai-2025/">TIME100 AI 2025 - The 100 Most Influential People in AI 2025</a>, TIME, 28 août, 2025</p>
+</div></aside></section>
+<section id="citation-du-jour-suite" class="slide level2 smaller">
+<h2>Citation du jour (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://time.com/redesign/_next/image/?url=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2025%2F08%2FYoshua-Bengio.jpg%3Fquality%3D85%26w%3D1200&amp;w=3840&amp;q=75" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://time.com/redesign/_next/image/?url=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2025%2F08%2FYoshua-Bengio.jpg%3Fquality%3D85%26w%3D1200&amp;w=3840&amp;q=75" class="quarto-figure quarto-figure-center" height="500"></a></p>
+</figure>
+</div>
+<div class="{aside}">
+<p><a href="https://time.com/collections/time100-ai-2025/7305845/yoshua-bengio-ai/?filters=thinkers">Yoshua <strong>Bengio</strong></a>, Université de Montréal, a été à nouveau reconnu par TIME comme l’une des personnes les plus influentes dans le domaine de l’intelligence artificielle.</p>
+</div>
+<aside class="notes">
+<p>Encore cette année, Yoshua Bengio de l’Université de Montréal figure parmi les personnes les plus influentes en intelligence artificielle. Bengio, avec Geoffrey Hinton et Yann LeCun, a reçu le prix Turing de l’ACM en 2018 pour leurs contributions pionnières dans le domaine. Le trio est souvent désigné comme les “Pères de l’apprentissage profond”.</p>
+<ul>
+<li><p><a href="https://awards.acm.org/about/2018-turing">Les pères de la révolution de l’apprentissage profond reçoivent le prix A.M. Turing de l’ACM</a></p></li>
+<li><p><a href="https://time.com/7290554/yoshua-bengio-launches-lawzero-for-safer-ai/?utm_source=chatgpt.com">Le scientifique en informatique le plus cité a un plan pour rendre l’IA plus digne de confiance</a>, par Harry Booth, TIME, 2025-06-03.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Remarque</strong></p>
+</div>
+<div class="callout-content">
+<p>Dans l’évolution de l’intelligence, l’apprentissage a été l’un des <strong>premiers jalons à émerger</strong>. C’est aussi l’un des mécanismes les plus <strong>compris</strong> dans l’intelligence naturelle.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="démystifier-les-mythes" class="slide level2">
+<h2>Démystifier les mythes</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Burkov:2019aa">(<a href="#/références" role="doc-biblioref" onclick="">Burkov 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Let’s start by telling the truth: <strong>machines don’t learn</strong>. (…) just like <strong>artificial intelligence is not intelligence</strong>, <strong>machine learning is not learning</strong>.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Andriy Burkov, un expert en apprentissage automatique basé à Québec, Canada, est l’auteur de <a href="https://themlbook.com"><strong>The Hundred-Page Machine Learning Book</strong></a>, qui est référencé à la fin de cette présentation. Il est actif sur <a href="https://www.linkedin.com/in/andriyburkov">LinkedIn</a> et publie une newsletter, <a href="https://aiweekly.substack.com">True Positive Weekly</a>, où il partage chaque semaine des développements significatifs et des perspectives du domaine qui ont attiré son attention.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fondamentaux-de-lapprentissage-automatique" class="slide level2">
+<h2>Fondamentaux de l’apprentissage automatique</h2>
+<p>Dans ce cours, nous introduirons des concepts essentiels pour comprendre l’apprentissage automatique, y compris les types de problèmes (tâches).</p>
+<h3 id="objectif-général">Objectif général :</h3>
+<ul>
+<li><strong>Décrire</strong> les concepts fondamentaux de l’apprentissage automatique</li>
+</ul>
+</section>
+<section id="objectifs-dapprentissage" class="slide level2">
+<h2>Objectifs d’apprentissage</h2>
+<ul>
+<li><strong>Résumer</strong> les différents types et tâches en apprentissage automatique</li>
+<li><strong>Discuter</strong> la nécessité des jeux de données d’entraînement et de test</li>
+</ul>
+<h3 id="lectures">Lectures</h3>
+<ul>
+<li><span class="citation" data-cites="Russell:2020aa">Russell et Norvig (<a href="#/références" role="doc-biblioref" onclick="">2020</a>)</span>, Chapitre 19 : Apprentissage à partir d’exemples.</li>
+</ul>
+</section></section>
+<section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+
+</section>
+<section id="justification" class="slide level2">
+<h2>Justification</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Pourquoi</strong> un programme informatique devrait-il <em>apprendre</em>&nbsp;?</p>
+</div><div class="column" style="width:45%;">
+<p><a href="../../assets/images/gemini_robot_and_flower-01.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/gemini_robot_and_flower-01.jpg"></a></p>
+</div></div>
+
+<aside class="notes">
+<ol type="1">
+<li><strong>Adaptabilité et amélioration continue :</strong></li>
+</ol>
+<ul>
+<li><p><strong>Adaptabilité aux environnements dynamiques :</strong> Les programmes qui apprennent peuvent s’adapter aux conditions changeantes, assurant ainsi un fonctionnement efficace dans des environnements dynamiques.</p>
+<ul>
+<li><em>Exemple :</em> Les voitures autonomes s’ajustant aux changements de trafic et de météo.</li>
+</ul></li>
+<li><p><strong>Amélioration continue :</strong> L’apprentissage permet aux systèmes de rester à jour avec les dernières données et tendances sans intervention humaine.</p>
+<ul>
+<li><em>Exemple :</em> Les filtres anti-spam évoluant pour contrer les nouvelles techniques de spam.</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Performance et efficacité améliorées :</strong></li>
+</ol>
+<ul>
+<li><p><strong>Performance améliorée :</strong> L’apprentissage permet aux programmes d’améliorer leurs performances en se basant sur des expériences passées ou des données.</p>
+<ul>
+<li><em>Exemple :</em> Les systèmes de recommandation affinant leurs suggestions avec plus de données utilisateurs.</li>
+</ul></li>
+<li><p><strong>Rentabilité :</strong> L’automatisation du processus d’apprentissage réduit le besoin de mises à jour manuelles, entraînant des économies.</p>
+<ul>
+<li><em>Exemple :</em> Les systèmes de maintenance prédictive minimisant les inspections manuelles.</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Résolution de problèmes complexes et découverte de motifs cachés :</strong></li>
+</ol>
+<ul>
+<li><p><strong>Gestion des problèmes complexes :</strong> Les algorithmes d’apprentissage abordent des problèmes trop complexes pour les systèmes statiques basés sur des règles.</p>
+<ul>
+<li><em>Exemple :</em> La reconnaissance d’images distinguant différents objets.</li>
+</ul></li>
+<li><p><strong>Découverte de motifs cachés :</strong> Les modèles d’apprentissage peuvent découvrir des relations cachées dans les données qui ne sont pas évidentes pour les analystes humains.</p>
+<ul>
+<li><em>Exemple :</em> L’identification de relations génomiques complexes en bioinformatique.</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Personnalisation et évolutivité :</strong></li>
+</ol>
+<ul>
+<li><p><strong>Personnalisation :</strong> L’apprentissage permet aux programmes de fournir des résultats adaptés aux utilisateurs individuels, améliorant ainsi l’expérience utilisateur.</p>
+<ul>
+<li><em>Exemple :</em> Les assistants virtuels apprenant les préférences des utilisateurs.</li>
+</ul></li>
+<li><p><strong>Évolutivité :</strong> Les algorithmes d’apprentissage gèrent et analysent efficacement de grands ensembles de données, améliorant leur utilité.</p>
+<ul>
+<li><em>Exemple :</em> Les moteurs de recherche optimisant la pertinence des résultats grâce au machine learning.</li>
+</ul></li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Innovation et recherche :</strong></li>
+</ol>
+<ul>
+<li><p><strong>Favoriser l’innovation :</strong> Les algorithmes d’apprentissage peuvent simuler de nouvelles idées, conduisant à des avancées et découvertes.</p>
+<ul>
+<li><em>Exemple :</em> Les modèles d’apprentissage profond prédisant l’efficacité des médicaments en recherche pharmaceutique.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><strong>Attribution</strong>: Gemini 1.5 Flash, 14 août, 2024, avec l’invite: “In the style of a children’s book, create the image of a cute robot holding a red flower.”</p>
+</div></aside></section>
+<section id="définition" class="slide level2">
+<h2>Définition</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Mitchell:1997aa">Mitchell (<a href="#/références" role="doc-biblioref" onclick="">1997</a>)</span>, page 2</strong></p>
+</div>
+<div class="callout-content">
+<p>Un programme informatique <strong>apprend</strong> à partir de <strong>l’expérience <span class="math inline">\(E\)</span></strong> par rapport à une certaine classe de <strong>tâches <span class="math inline">\(T\)</span></strong> et une <strong>mesure de performance <span class="math inline">\(P\)</span></strong>, si sa performance pour les tâches dans <span class="math inline">\(T\)</span>, mesurée par <span class="math inline">\(P\)</span>, s’améliore avec l’expérience <span class="math inline">\(E\)</span>.</p>
+</div>
+</div>
+</div>
+
+<aside class="notes">
+<p>Bien que ce livre ait été publié en 1997, il a exercé une influence considérable et reste pertinent. Contrairement à de nombreux autres livres sur l’apprentissage automatique, il est particulièrement captivant.</p>
+<p>Cette définition particulière de l’apprentissage est souvent réutilisée.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Tom M Mitchell. <a href="https://www.cs.cmu.edu/~tom/mlbook.html">Machine Learning</a>. McGraw-Hill, New York, 1997. (<a href="http://www.cs.cmu.edu/~tom/files/MachineLearningTomMitchell.pdf">PDF</a>)</p>
+</div></aside></section>
+<section id="concepts" class="slide level2">
+<h2>Concepts</h2>
+<p><a href="images/svg/ml_concepts-01.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/svg/ml_concepts-01.svg"></a></p>
+<p>Voir: <a href="images/svg/ml_concepts-00.svg">images/svg/ml_concepts-00.svg</a></p>
+</section>
+<section id="types-de-problèmes" class="slide level2 scrollable">
+<h2>Types de problèmes</h2>
+<p>Il existe <strong>trois (3)</strong> types distincts de <strong>rétroaction</strong> :</p>
+<ol type="1">
+<li class="fragment"><strong>Apprentissage non supervisé&nbsp;:</strong> Aucune rétroaction n’est fournie à l’algorithme.</li>
+<li class="fragment"><strong>Apprentissage supervisé&nbsp;:</strong> Chaque exemple est accompagné d’une étiquette.</li>
+<li class="fragment"><strong>Apprentissage par renforcement&nbsp;:</strong> L’algorithme reçoit une récompense ou une punition après chaque action.</li>
+</ol>
+<div class="fragment">
+<p><strong>L’apprentissage supervisé</strong> est le type d’apprentissage le plus étudié et sans doute le plus intuitif. C’est généralement le premier type d’apprentissage introduit dans les contextes éducatifs.</p>
+</div>
+</section>
+<section id="deux-phases" class="slide level2">
+<h2>Deux phases</h2>
+<ol type="1">
+<li><strong>Apprentissage</strong> (construction d’un modèle)</li>
+<li><strong>Inférence</strong> (utilisation du modèle)</li>
+</ol>
+</section>
+<section id="apprentissage-construction" class="slide level2">
+<h2>Apprentissage (construction)</h2>
+<p><a href="../../assets/images/traing_a_model-fr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../assets/images/traing_a_model-fr.png"></a></p>
+<aside class="notes">
+<p>En apprentissage automatique, la phase d’apprentissage est souvent le composant le plus difficile et le plus gourmand en ressources. Cette étape nécessite une attention méticuleuse à la curation des données, ainsi que la sélection et l’entraînement d’un algorithme approprié.</p>
+<p>On estime que l’entraînement des modèles de langage de grande envergure contemporains, tels que le GPT d’OpenAI ou le Gemini Ultra de Google, engendre des coûts dépassant 100 millions de dollars américains.</p>
+<p><a href="https://hai.stanford.edu/assets/images/inline-images/AIIndex_2024_StateofAI_BLOG_04.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://hai.stanford.edu/assets/images/inline-images/AIIndex_2024_StateofAI_BLOG_04.jpg"></a></p>
+<p><strong>Source:</strong> <a href="https://hai.stanford.edu/news/ai-index-state-ai-13-charts">Stanford University Human-Centered Artificial Intelligence 2025 AI Index Report</a></p>
+<p>Le développement de tels modèles nécessite des investissements en infrastructure pouvant atteindre des milliers de milliards de dollars.</p>
+<ul>
+<li>“By the end of 2024, we’re aiming to continue to grow our infrastructure build-out that will include <strong>350,000 NVIDIA H100 GPUs</strong> as part of <strong>a portfolio that will feature compute power equivalent to nearly 600,000 H100s</strong>.”
+<ul>
+<li><a href="https://engineering.fb.com/2024/03/12/data-center-engineering/building-metas-genai-infrastructure/">Building Meta’s GenAI Infrastructure</a>, 2024-03-12.</li>
+</ul></li>
+<li><a href="https://www.bloomberg.com/news/articles/2025-08-15/openai-s-altman-expects-to-spend-trillions-on-infrastructure">OpenAI’s Sam Altman Expects to Spend ‘Trillions’ on Infrastructure</a>, Bloomber, 2025-08-15.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="inférence-utilisation-du-modèle" class="slide level2">
+<h2>Inférence (utilisation du modèle)</h2>
+<p><a href="../../assets/images/using_a_model-fr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../assets/images/using_a_model-fr.png"></a></p>
+<aside class="notes">
+<p>L’inférence nécessite généralement moins de ressources informatiques car elle implique l’utilisation d’un modèle pré-entraîné pour prédire le résultat d’un cas individuel. Néanmoins, l’émergence des modèles de raisonnement en chaîne, souvent appelés modèles de raisonnement, a considérablement augmenté le coût informatique associé à l’inférence.</p>
+<ul>
+<li><a href="https://observer.com/2025/04/openai-o3-model-cost/">OpenAI’s o3 Reasoning Models Are Extremely Expensive to Run</a>, by Alexandra Tremayne-Pengelly, Observer, 2025-04-04.
+<ul>
+<li>“In December, OpenAI’s o3 reasoning model became the first A.I. system to pass the test with an 87.5 percent score.”</li>
+<li>“Testing OpenAI’s o3 model may cost as much as $30,000 per task.”</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="carp-e-diem-exemple" class="title-slide slide level1 center">
+<h1><em>Carp-e Diem!</em> (exemple)</h1>
+
+</section>
+<section id="problème-vont-ils-mordre-aujourdhui" class="slide level2">
+<h2>1. Problème&nbsp;: Vont-ils mordre aujourd’hui ?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>Objectif :</strong> Développer un modèle prédictif pour évaluer la probabilité de succès d’une journée de pêche, classée en trois catégories : <strong>‘Médiocre’</strong>, <strong>‘Moyenne’</strong> ou <strong>‘Excellente’</strong>.</p>
+</div><div class="column" style="width:40%;">
+<p><a href="../../assets/images/gemini_fish_with_hat-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/images/gemini_fish_with_hat-02.png"></a></p>
+</div></div>
+
+<aside class="notes">
+<p>L’apprentissage supervisé consiste à entraîner un modèle sur des données étiquetées afin qu’il puisse <strong>faire des prédictions sur de nouvelles données non vues</strong>.</p>
+<p>La tâche spécifique est la <strong>classification</strong>.</p>
+<p>“Médiocre”, “Moyenne” et “Excellente” sont des <strong>classes</strong> (pour la variable cible).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><strong>Attribution</strong>: Gemini 1.5 Flash, 10 septembre, 2024, avec l’invite: “In the style of a children’s book, generate the image of a fish with a farmer’s hat.”</p>
+</div></aside></section>
+<section id="attributs-caractéristiques" class="slide level2">
+<h2>2. Attributs (caractéristiques)</h2>
+<p>Différentes sources, y compris <a href="https://www.almanac.com/best-fishing-days"><strong>The Old Farmer’s Almanac</strong></a>, suggèrent que la <strong>phase de la lune</strong> est un prédicteur fiable du succès de la pêche.</p>
+<ul>
+<li class="fragment"><strong>Phase de la lune (catégorielle)</strong> : ‘Nouvelle lune’, ‘Premier quartier’, ‘Pleine lune’ et ‘Dernier quartier’.</li>
+<li class="fragment"><strong>Prévisions météorologiques (catégorielles)</strong> : ‘Pluvieux’, ‘Nuageux’ et ‘Ensoleillé’.</li>
+<li class="fragment"><strong>Température extérieure (numérique)</strong> : La température en Celsius.</li>
+<li class="fragment"><strong>Température de l’eau (numérique)</strong> : La température de l’eau du lac ou de la rivière.</li>
+</ul>
+<aside class="notes">
+<p>Évidemment, les applications réelles auront beaucoup plus d’attributs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="données-dentraînement" class="slide level2 smaller">
+<h2>3. Données d’entraînement</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Exemple</th>
+<th>Phase de la lune</th>
+<th>Prévisions météorologiques</th>
+<th>Température extérieure (°C)</th>
+<th>Température de l’eau (°C)</th>
+<th>Probabilité d’une journée de pêche</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Pleine lune</td>
+<td>Ensoleillé</td>
+<td>25</td>
+<td>22</td>
+<td>Excellente</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Nouvelle lune</td>
+<td>Nuageux</td>
+<td>18</td>
+<td>19</td>
+<td>Moyenne</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Premier quartier</td>
+<td>Pluvieux</td>
+<td>15</td>
+<td>17</td>
+<td>Médiocre</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Dernier quartier</td>
+<td>Ensoleillé</td>
+<td>30</td>
+<td>24</td>
+<td>Excellente</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Pleine lune</td>
+<td>Nuageux</td>
+<td>20</td>
+<td>20</td>
+<td>Moyenne</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Nouvelle lune</td>
+<td>Pluvieux</td>
+<td>22</td>
+<td>21</td>
+<td>Médiocre</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Ceci est identifié comme un problème d’<strong>apprentissage supervisé</strong> car la valeur de la variable cible est connue pour chaque instance d’entraînement. De plus, comme les valeurs de la variable cible sont catégorielles, ce problème est classé comme une <strong>tâche de classification</strong>.</p>
+<p>Dans ce contexte, l’ensemble d’entraînement se compose de 6 exemples. Il est important de noter que les ensembles de données réels contiennent généralement un nombre beaucoup plus grand d’exemples pour garantir un entraînement et une validation robustes du modèle.</p>
+<p>Le choix des attributs et la qualité des données sont essentiels pour la performance du modèle. Un attribut tel que la couleur de vos chaussettes n’a probablement pas un grand impact sur les prédictions.</p>
+<p>Par conséquent, un projet d’apprentissage automatique commence généralement par une phase exploratoire, qui consiste à analyser les données, examiner les distributions et identifier les corrélations.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="données" class="slide level2 smaller">
+<h2>3. Données</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 27%">
+<col style="width: 28%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase de la lune</th>
+<th>Prévisions météorologiques</th>
+<th>Température extérieure (°C)</th>
+<th>Température de l’eau (°C)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pleine lune</td>
+<td>Ensoleillé</td>
+<td>25</td>
+<td>22</td>
+</tr>
+<tr class="even">
+<td>Nouvelle lune</td>
+<td>Nuageux</td>
+<td>18</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td>Premier quartier</td>
+<td>Pluvieux</td>
+<td>15</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>Dernier quartier</td>
+<td>Ensoleillé</td>
+<td>30</td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td>Pleine lune</td>
+<td>Nuageux</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Nouvelle lune</td>
+<td>Pluvieux</td>
+<td>22</td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+<div class="{aside}">
+<p>Les données sont souvent présentées sous forme tabulaire (matrice), où chaque ligne représente un <strong>vecteur d’attributs</strong> (<em>feature vector</em>), généralement noté <span class="math inline">\(x_i\)</span>, correspondant au <span class="math inline">\(i\)</span>-ème exemple dans l’ensemble d’entraînement.</p>
+</div>
+</section>
+<section id="étiquettes" class="slide level2 smaller">
+<h2>3. Étiquettes</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Probabilité d’une journée de pêche</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Excellente</td>
+</tr>
+<tr class="even">
+<td>Moyenne</td>
+</tr>
+<tr class="odd">
+<td>Médiocre</td>
+</tr>
+<tr class="even">
+<td>Excellente</td>
+</tr>
+<tr class="odd">
+<td>Moyenne</td>
+</tr>
+<tr class="even">
+<td>Médiocre</td>
+</tr>
+</tbody>
+</table>
+<div class="{aside}">
+<p>Les <strong>étiquettes</strong> sont généralement représentées comme un vecteur colonne, avec <span class="math inline">\(y_i\)</span> désignant l’étiquette pour le <span class="math inline">\(i\)</span>-ème exemple.</p>
+</div>
+</section>
+<section id="entraînement-du-modèle" class="slide level2">
+<h2>4. Entraînement du modèle</h2>
+<p>L’<strong>entraînement du modèle</strong> consiste à utiliser des données étiquetées pour enseigner à un algorithme d’apprentissage automatique comment faire des prédictions. Ce processus <strong>ajuste les paramètres du modèle</strong> pour <strong>minimiser l’erreur entre les résultats prévus et les résultats réels</strong>.</p>
+</section>
+<section id="entraînement-du-modèle-suite" class="slide level2 smaller">
+<h2>4. Entraînement du modèle (suite)</h2>
+<ul>
+<li><strong>Journée de pêche excellente :</strong>
+<ul>
+<li>Phase de la lune : <strong>Pleine lune</strong> ou <strong>Nouvelle lune</strong></li>
+<li>Prévisions météorologiques : <strong>Ensoleillé</strong></li>
+<li>Température extérieure : 20°C à 30°C</li>
+<li>Température de l’eau : 20°C à 25°C</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\ldots\)</span></p>
+<ul>
+<li><strong>Journée de pêche médiocre :</strong>
+<ul>
+<li>Phase de la lune : <strong>Premier quartier</strong> ou <strong>Dernier quartier</strong></li>
+<li>Prévisions météorologiques : <strong>Pluvieux</strong></li>
+<li>Température extérieure : &lt; 20°C ou &gt; 30°C</li>
+<li>Température de l’eau : &lt; 20°C ou &gt; 25°C</li>
+</ul></li>
+</ul>
+</section>
+<section id="prédiction" class="slide level2">
+<h2>5. Prédiction</h2>
+<p>Étant donné de nouvelles données <strong>non vues</strong>, prédisez si la journée sera réussie.</p>
+<div class="fragment">
+<ul>
+<li>Phase de la lune : <strong>Nouvelle lune</strong></li>
+<li>Prévisions météorologiques : <strong>Ensoleillé</strong></li>
+<li>Température extérieure : <strong>24°C</strong></li>
+<li>Température de l’eau : <strong>21°C</strong></li>
+</ul>
+</div>
+</section>
+<section id="cycle-de-vie" class="slide level2">
+<h2>Cycle de vie</h2>
+<ol type="1">
+<li class="fragment">Collecte et préparation des données</li>
+<li class="fragment">Ingénierie des attributs</li>
+<li class="fragment">Entraînement</li>
+<li class="fragment">Évaluation du modèle</li>
+<li class="fragment">Déploiement du modèle</li>
+<li class="fragment">Surveillance et maintenance</li>
+</ol>
+<aside class="notes">
+<ul>
+<li>La <strong>collecte des données</strong> et leur <strong>préparation</strong> sont des processus critiques et laborieux.</li>
+<li>Il doit y avoir une quantité <strong>suffisante</strong> de données.</li>
+<li>Les données doivent être de haute <strong>qualité</strong> ; par exemple, elles ne doivent pas être excessivement bruyantes.</li>
+<li>Il doit y avoir peu de <strong>valeurs manquantes</strong>.</li>
+<li>Plus important encore, les données doivent être <strong>représentatives</strong>. Nous nous attendons à ce que les nouvelles données soient générées par le même processus et aient la même distribution.</li>
+<li>L’importance de cela ne peut être surestimée.</li>
+<li>Pensez à un logiciel de classification d’images qui n’a pas été entraîné sur un échantillon diversifié en termes d’ethnicité, de genre, de taille corporelle ou de statut social.</li>
+<li>Pensez aux applications médicales et aux conséquences de jeux de données qui ne sont pas suffisamment diversifiés.</li>
+<li>L’<strong>ingénierie des attributs</strong> est le processus de sélection, de transformation et de création de variables d’entrée (attributs) pour améliorer la performance d’un modèle d’apprentissage automatique. Cela implique des techniques telles que la mise à l’échelle, le codage des variables catégorielles et la génération de nouvelles attributs à partir de celles existantes pour améliorer la capacité du modèle à apprendre des schémas et à faire des prédictions précises.</li>
+<li>L’ingénierie des attributs était autrefois une étape laborieuse. L’un des principaux avantages de l’apprentissage profond est qu’il peut apprendre automatiquement des attributs.</li>
+<li>L’<strong>évaluation du modèle</strong> est le processus d’évaluation des performances d’un modèle d’apprentissage automatique en utilisant des métriques spécifiques, telles que l’exactitude, la précision, le rappel, le F1-score ou l’AUC-ROC. Cela implique généralement de tester le modèle sur un ensemble de validation ou de test séparé pour s’assurer qu’il se généralise bien aux données non vues et qu’il répond aux critères souhaités d’exactitude et de fiabilité.</li>
+<li>Le <strong>déploiement du modèle</strong> : Une application est construite en utilisant le modèle. Il est important de noter que la plupart du temps, les paramètres du système sont figés lors du déploiement. Premièrement, l’entraînement est coûteux et un nouvel entraînement est souvent inabordable. De plus, un nouvel entraînement peut entraîner une perte d’informations précédemment apprises, ce qui dégrade les performances sur les exemples déjà vus.</li>
+<li>La <strong>surveillance et la maintenance</strong> : Les performances du modèle doivent être continuellement surveillées. On observe souvent une <strong>dérive conceptuelle</strong>, nécessitant la réentraînement du système. La détection de spam est un bon exemple. Une fois le système déployé, les spammeurs s’adaptent et trouvent des moyens de contourner les mécanismes de détection de spam mis en place.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="définitions-formelles" class="title-slide slide level1 center">
+<h1>Définitions formelles</h1>
+
+</section>
+<section id="apprentissage-supervisé-notation" class="slide level2 smaller">
+<h2>Apprentissage supervisé (notation)</h2>
+<p>L’<strong>ensemble de données</strong> (“expérience”) est une collection d’exemples étiquetés.</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\{(x_i, y_i)\}_{i=1}^N\)</span></li>
+<li class="fragment">Chaque <span class="math inline">\(x_i\)</span> est un vecteur d’<strong>attributs</strong> (<em>feature</em>) avec <span class="math inline">\(D\)</span> dimensions.</li>
+<li class="fragment"><span class="math inline">\(x^{(j)}_i\)</span> est la valeur de l’attribut <span class="math inline">\(j\)</span> de l’exemple <span class="math inline">\(i\)</span>, pour <span class="math inline">\(j \in 1 \ldots D\)</span> et <span class="math inline">\(i \in 1 \ldots N\)</span>.</li>
+<li class="fragment">L’<strong>étiquette</strong> <span class="math inline">\(y_i\)</span> est soit une <strong>classe</strong>, prise d’une liste finie de classes, <span class="math inline">\(\{1, 2, \ldots, C\}\)</span>, soit un <strong>nombre réel</strong>, soit un <strong>objet complexe</strong> (arbre, graphe, etc.).</li>
+</ul>
+<div class="fragment">
+<p><strong>Problème</strong> : Étant donné l’ensemble de données en entrée, créer un <strong>modèle</strong> qui peut être utilisé pour prédire la valeur de <span class="math inline">\(y\)</span> pour un <span class="math inline">\(x\)</span> non vu.</p>
+<aside class="notes">
+<p>Cette notation suit celle du <a href="https://themlbook.com"><strong>The Hundred-Page Machine Learning Book</strong></a> par Andriy Burkov.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="apprentissage-supervisé-suite" class="slide level2">
+<h2>Apprentissage supervisé (suite)</h2>
+<ul>
+<li class="fragment"><p>Lorsque l’<strong>étiquette</strong> <span class="math inline">\(y_i\)</span> est une <strong>classe</strong>, prise d’une liste finie de classes, <span class="math inline">\(\{1, 2, \ldots, C\}\)</span>, nous appelons la tâche une tâche de <strong>classification</strong>.</p></li>
+<li class="fragment"><p>Lorsque l’<strong>étiquette</strong> <span class="math inline">\(y_i\)</span> est un <strong>nombre réel</strong>, nous appelons la tâche une tâche de <strong>régression</strong>.</p></li>
+</ul>
+<aside class="notes">
+<p>Anil Ananthaswamy dans son livre <a href="https://www.penguinrandomhouse.com/books/677608/why-machines-learn-by-anil-ananthaswamy/">Why Machines Learn: The Elegant Math Behind Modern AI</a> propose un example inspiré de la pandémie de COVID-19.</p>
+<p>Dans ce scénario avancé, les hôpitaux du monde entier compilent systématiquement les données des patients depuis les premiers stades de la pandémie de COVID-19. Chaque patient est caractérisé par six variables clés : <span class="math inline">\(x_1\)</span> représentant l’âge, <span class="math inline">\(x_2\)</span> indiquant l’indice de masse corporelle, <span class="math inline">\(x_3\)</span> dénotant la difficulté à respirer (encodée comme 1 pour oui et 0 pour non), <span class="math inline">\(x_4\)</span> signifiant la présence de fièvre (oui/non), <span class="math inline">\(x_5\)</span> pour le statut diabétique (oui/non), et <span class="math inline">\(x_6\)</span> décrivant les résultats du scanner thoracique (0 pour clair, 1 pour infection légère, 2 pour infection sévère). Ces variables forment collectivement un vecteur à six dimensions pour chaque patient.</p>
+<p>Les cliniciens ont observé que les patients suivent généralement l’une des deux trajectoires suivantes : soit ils se stabilisent et sont libérés environ trois jours après leur admission, soit leur état se détériore, nécessitant un soutien ventilatoire. Par conséquent, chaque patient se voit attribuer une variable de résultat, <span class="math inline">\(y\)</span>, où <span class="math inline">\(y = -1\)</span> indique qu’il n’y a pas besoin de soutien ventilatoire après trois jours, et <span class="math inline">\(y = 1\)</span> indique la nécessité de soutien ventilatoire après trois jours.</p>
+<p>Pouvez-vous penser à des exemples de tâches de régression ?</p>
+<p>Voici plusieurs tâches de régression avec leurs applications dans le monde réel :</p>
+<ol type="1">
+<li><strong>Prévision du prix des maisons</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer la valeur marchande des propriétés résidentielles en fonction d’attributs telles que la localisation, la taille, le nombre de chambres, l’âge et les commodités.</li>
+</ul></li>
+<li><strong>Prévision du marché boursier</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire les prix futurs des actions ou des indices en fonction des données historiques, des indicateurs financiers et des variables économiques.</li>
+</ul></li>
+<li><strong>Prévision météorologique</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer les températures futures, les précipitations et d’autres conditions météorologiques à l’aide de données météorologiques historiques et de variables atmosphériques.</li>
+</ul></li>
+<li><strong>Prévision des ventes</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire les volumes de ventes futurs de produits ou de services en analysant les données de ventes passées, les tendances du marché et les modèles saisonniers.</li>
+</ul></li>
+<li><strong>Prévision de la consommation d’énergie</strong> :
+<ul>
+<li><strong>Application</strong> : Prévoir la consommation d’énergie future des ménages, des industries ou des villes en fonction des données historiques de consommation, des conditions météorologiques et des facteurs économiques.</li>
+</ul></li>
+<li><strong>Estimation des coûts médicaux</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire les coûts des soins de santé pour les patients en fonction de leur historique médical, de leurs informations démographiques et de leurs plans de traitement.</li>
+</ul></li>
+<li><strong>Prévision du trafic routier</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer les volumes de trafic futurs et les niveaux de congestion sur les routes et les autoroutes en utilisant des données historiques de trafic et des entrées de capteurs en temps réel.</li>
+</ul></li>
+<li><strong>Estimation de la valeur à vie du client (CLV)</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire le revenu total qu’une entreprise peut attendre d’un client sur la durée de leur relation, en fonction des comportements d’achat et des données démographiques.</li>
+</ul></li>
+<li><strong>Prévision des indicateurs économiques</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire les principaux indicateurs économiques tels que la croissance du PIB, les taux de chômage et l’inflation en utilisant des données économiques historiques et des tendances du marché.</li>
+</ul></li>
+<li><strong>Prévision de la demande</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer la demande future de produits ou de services dans diverses industries comme le commerce de détail, la fabrication et la logistique pour optimiser la gestion des stocks et de la chaîne d’approvisionnement.</li>
+</ul></li>
+<li><strong>Évaluation immobilière</strong> :
+<ul>
+<li><strong>Application</strong> : Évaluer la valeur de marché des propriétés commerciales telles que les immeubles de bureaux, les centres commerciaux et les espaces industriels en fonction de la localisation, de la taille et des conditions du marché.</li>
+</ul></li>
+<li><strong>Évaluation des risques d’assurance</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire le risque associé à l’assurance des individus ou des propriétés, ce qui aide à déterminer les taux de prime, en se basant sur les données historiques des réclamations et les facteurs démographiques.</li>
+</ul></li>
+<li><strong>Prédiction du taux de clics (CTR) des annonces</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer la probabilité qu’un utilisateur clique sur une annonce en ligne en fonction du comportement de l’utilisateur, des caractéristiques de l’annonce et des facteurs contextuels.</li>
+</ul></li>
+<li><strong>Prédiction du défaut de paiement de prêt</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire la probabilité qu’un emprunteur fasse défaut sur un prêt en fonction de son historique de crédit, de ses revenus, du montant du prêt et d’autres indicateurs financiers.</li>
+</ul></li>
+</ol>
+<p>Voici quelques applications de tâches de régression que l’on trouve généralement dans les applications mobiles :</p>
+<ol type="1">
+<li><strong>Prédiction de l’autonomie de la batterie</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer l’autonomie restante de la batterie en fonction des habitudes d’utilisation, des applications en cours d’exécution et des paramètres de l’appareil.</li>
+</ul></li>
+<li><strong>Suivi de la santé et de la forme physique</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire la consommation de calories, la fréquence cardiaque ou la qualité du sommeil en fonction de l’activité de l’utilisateur, des biométries et des données de santé historiques.</li>
+</ul></li>
+<li><strong>Gestion des finances personnelles</strong> :
+<ul>
+<li><strong>Application</strong> : Prévoir les dépenses ou les économies futures en fonction des habitudes de dépenses, des modèles de revenus et des objectifs budgétaires.</li>
+</ul></li>
+<li><strong>Prévision météorologique</strong> :
+<ul>
+<li><strong>Application</strong> : Fournir des prévisions météorologiques personnalisées en fonction de la localisation actuelle et des données météorologiques historiques.</li>
+</ul></li>
+<li><strong>Estimation du temps de trajet et de la circulation</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire les temps de trajet et suggérer des itinéraires optimaux en fonction des données historiques de trafic, des conditions en temps réel et du comportement de l’utilisateur.</li>
+</ul></li>
+<li><strong>Amélioration de la qualité des images et des vidéos</strong> :
+<ul>
+<li><strong>Application</strong> : Ajuster les paramètres de qualité des images ou des vidéos (par exemple, la luminosité, le contraste) en fonction des conditions d’éclairage et des préférences de l’utilisateur.</li>
+</ul></li>
+<li><strong>Atteinte des objectifs de remise en forme</strong> :
+<ul>
+<li><strong>Application</strong> : Estimer le temps nécessaire pour atteindre des objectifs de remise en forme tels que la perte de poids ou le gain musculaire en fonction de l’activité de l’utilisateur et des apports alimentaires.</li>
+</ul></li>
+<li><strong>Optimisation des performances de l’appareil mobile</strong> :
+<ul>
+<li><strong>Application</strong> : Prédire les paramètres optimaux pour les performances de l’appareil et l’autonomie de la batterie en fonction des habitudes d’utilisation et de l’activité des applications.</li>
+</ul></li>
+</ol>
+<p>Ces applications exploitent les tâches de régression pour fournir des services personnalisés, efficaces et contextuels qui améliorent l’expérience utilisateur sur les appareils mobiles.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="exemple-avec-du-code" class="title-slide slide level1 center">
+<h1>Exemple avec du code</h1>
+
+</section>
+<section id="scikit-learn" class="slide level2">
+<h2><code>Scikit-learn</code></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <a href="https://scikit-learn.org">scikit-learn.org</a></strong></p>
+</div>
+<div class="callout-content">
+<p><code>Scikit-learn</code> est une bibliothèque open source (ou à code source ouvert) d’apprentissage automatique qui prend en charge l’apprentissage <strong>supervisé</strong> et <strong>non supervisé</strong>. Elle offre également divers outils pour <strong>l’entraînement des modèles</strong>, <strong>le prétraitement des données</strong>, <strong>la sélection de modèle</strong>, <strong>l’évaluation de modèle</strong>, et de nombreuses autres utilités.</p>
+<p><code>Scikit-learn</code> fournit <strong>des dizaines d’algorithmes et de modèles d’apprentissage automatique intégrés</strong>, appelés estimateurs.</p>
+<p>Construite sur <a href="https://numpy.org">NumPy</a>, <a href="https://scipy.org">SciPy</a> et <a href="https://matplotlib.org">matplotlib</a>.</p>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Nous utiliserons <code>Scikit-learn</code> pour notre prochain exemple, mais également au cours des semaines à venir.</p>
+</div></aside></section>
+<section id="scikit-learn-1" class="slide level2">
+<h2><code>Scikit-learn</code></h2>
+<p><a href="https://scikit-learn.org/stable/_downloads/b82bf6cd7438a351f19fac60fbc0d927/ml_map.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="https://scikit-learn.org/stable/_downloads/b82bf6cd7438a351f19fac60fbc0d927/ml_map.svg"></a></p>
+
+<aside><div>
+<p><strong>Attribution:</strong> <a href="https://scikit-learn.org/stable/machine_learning_map.html">Choosing the right estimator</a></p>
+</div></aside></section>
+<section id="exemple-manchots-de-palmer" class="slide level2">
+<h2>Exemple : Manchots de Palmer</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" title="Artwork by @allison_horst" class="quarto-figure quarto-figure-center" height="500"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<blockquote>
+<p>Le <a href="https://allisonhorst.github.io/palmerpenguins/">jeu de données des manchots de Palmer</a> par Allison Horst, Alison Hill, et Kristen Gorman a été rendu public pour la première fois sous forme de <a href="https://cran.r-project.org/web/packages/palmerpenguins/index.html">package R</a>. L’objectif du jeu de données des manchots de Palmer est de remplacer le jeu de données Iris, qui est très surutilisé pour l’exploration et la visualisation des données.</p>
+</blockquote>
+<blockquote>
+<p>En utilisant ce package python, vous pouvez facilement charger les manchots de Palmer dans votre environnement python.</p>
+</blockquote>
+<p>Initialement, nous examinerons l’ensemble de l’exemple d’un point de vue général pour fournir une vue d’ensemble claire des étapes impliquées. Par la suite, nous reviendrons sur cet exemple plus en détail.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Le <a href="https://allisonhorst.github.io/palmerpenguins/">jeu de données des manchots de Palmer</a> par Allison Horst, Alison Hill, et Kristen Gorman. <strong>Illustration</strong> par @allison_horst</p>
+</div></aside></section>
+<section id="en-cas-de-bibliothèque-manquante" class="slide level2">
+<h2>En cas de bibliothèque manquante</h2>
+<div id="aebf166e" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="cf">try</span>:</span>
+<span id="cb1-2"><a aria-label="2"></a>  <span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="cf">except</span>:</span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="op">!</span> pip install palmerpenguins</span>
+<span id="cb1-5"><a aria-label="5"></a>  <span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside><div>
+<p>Si vous exécutez ce Jupyter Notebook dans Google Colab ou tout autre environnement où la bibliothèque n’est pas préinstallée, procédez à l’installation.</p>
+</div></aside></section>
+<section id="exemple-chargement-des-données" class="slide level2">
+<h2>Exemple : Chargement des données</h2>
+<div id="6175d89e" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Il est d'usage d'utiliser X et y pour les données et les étiquettes</span></span>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a>X, y <span class="op">=</span> load_penguins(return_X_y <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-decisiontree" class="slide level2">
+<h2>Exemple : DecisionTree</h2>
+<div id="383ae033" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside><div>
+<p>Il existe des dizaines de classificateurs, y compris ceux-ci : <strong>arbres de décision</strong>, <strong>machines à vecteurs de support</strong>, <strong>k-plus proches voisins</strong>, <strong>régression logistique</strong>, et <strong>réseaux de neurones</strong>.</p>
+</div></aside></section>
+<section id="exemple-entraînement" class="slide level2">
+<h2>Exemple : Entraînement</h2>
+<div id="ca280989" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="co"># Entraînement</span></span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>clf <span class="op">=</span> clf.fit(X, y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Tous les classificateurs héritent de <code>sklearn.base.BaseEstimator</code> et <code>sklearn.base.ClassifierMixin</code>. En conséquence, tous les classificateurs implémentent <code>fit</code>, <code>predict</code>, et <code>score</code>.</p>
+<p>Le <code>DecisionTreeClassifier</code> dans scikit-learn construit un arbre de décision en scindant récursivement le jeu de données en sous-ensembles basés sur l’attribut qui entraîne le gain d’information le plus élevé (par exemple, impureté de Gini, entropie). Voici une description concise du processus :</p>
+<ol type="1">
+<li><p><strong>Initialisation</strong> : L’algorithme commence avec l’ensemble du jeu de données comme nœud racine.</p></li>
+<li><p><strong>Critères de Division</strong> : Pour chaque nœud, il évalue toutes les divisions possibles sur tous les attributs pour trouver celle qui sépare le mieux les classes. Cela se fait généralement en minimisant un critère tel que l’impureté de Gini ou l’entropie.</p></li>
+<li><p><strong>Division Récursive</strong> : Le jeu de données est divisé en sous-ensembles basés sur l’attribut et le seuil sélectionnés, créant des nœuds enfants. Ce processus est répété de manière récursive pour chaque nœud enfant.</p></li>
+<li><p><strong>Conditions d’Arrêt</strong> : La division s’arrête lorsqu’un critère prédéfini est atteint, tel qu’une profondeur maximale de l’arbre, un nombre minimal d’échantillons par feuille, ou si une division supplémentaire n’améliore pas significativement le gain d’information.</p></li>
+<li><p><strong>Nœuds Terminaux</strong> : Une fois la division terminée, chaque nœud terminal se voit attribuer une étiquette de classe basée sur la classe majoritaire des échantillons dans ce nœud.</p></li>
+</ol>
+<p>L’arbre résultant peut ensuite être utilisé pour classifier de nouveaux échantillons en parcourant de la racine à un nœud terminal, en suivant les règles de décision définies à chaque nœud.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-visualisation-12" class="slide level2">
+<h2>Exemple : Visualisation (1/2)</h2>
+<div id="d9196599" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>tree.plot_tree(clf)</span>
+<span id="cb5-4"><a aria-label="4"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="slides_files/figure-revealjs/cell-6-output-1.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-visualisation-22" class="slide level2">
+<h2>Exemple : Visualisation (2/2)</h2>
+<div id="584329d6" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>target_names <span class="op">=</span> [<span class="st">'Adelie'</span>,<span class="st">'Chinstrap'</span>,<span class="st">'Gentoo'</span>]</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a>tree.plot_tree(clf, </span>
+<span id="cb6-4"><a aria-label="4"></a>               feature_names <span class="op">=</span> X.columns,</span>
+<span id="cb6-5"><a aria-label="5"></a>               class_names <span class="op">=</span> target_names,</span>
+<span id="cb6-6"><a aria-label="6"></a>               label <span class="op">=</span> <span class="st">'none'</span>,</span>
+<span id="cb6-7"><a aria-label="7"></a>               filled <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb6-8"><a aria-label="8"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/cell-7-output-1.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-prédiction" class="slide level2">
+<h2>Exemple : Prédiction</h2>
+<div id="6b41c05e" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="co"># Création de 2 exemples de test</span></span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a>columns_names <span class="op">=</span> [<span class="st">'bill_length_mm'</span>, <span class="st">'bill_depth_mm'</span>, <span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
+<span id="cb7-6"><a aria-label="6"></a>X_test <span class="op">=</span> pd.DataFrame([[<span class="fl">34.2</span>, <span class="fl">17.9</span>, <span class="fl">186.8</span>, <span class="fl">2945.0</span>], [<span class="fl">51.0</span>, <span class="fl">15.2</span>, <span class="fl">223.7</span>, <span class="fl">5560.0</span>]], columns<span class="op">=</span>columns_names)</span>
+<span id="cb7-7"><a aria-label="7"></a></span>
+<span id="cb7-8"><a aria-label="8"></a><span class="co"># Prédiction</span></span>
+<span id="cb7-9"><a aria-label="9"></a></span>
+<span id="cb7-10"><a aria-label="10"></a>y_test <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb7-11"><a aria-label="11"></a></span>
+<span id="cb7-12"><a aria-label="12"></a><span class="co"># Affichage des étiquettes prédites pour nos deux exemples</span></span>
+<span id="cb7-13"><a aria-label="13"></a></span>
+<span id="cb7-14"><a aria-label="14"></a><span class="bu">print</span>(y_test)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Adelie' 'Gentoo']</code></pre>
+</div>
+</div>
+</section>
+<section id="exemple-complet" class="slide level2">
+<h2>Exemple : Complet</h2>
+<div id="82f8f55e" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>X, y <span class="op">=</span> load_penguins(return_X_y <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb9-2"><a aria-label="2"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">123</span>)</span>
+<span id="cb9-3"><a aria-label="3"></a>clf <span class="op">=</span> clf.fit(X, y)</span>
+<span id="cb9-4"><a aria-label="4"></a>tree.plot_tree(clf)</span>
+<span id="cb9-5"><a aria-label="5"></a>X_test <span class="op">=</span> pd.DataFrame([[<span class="fl">34.2</span>, <span class="fl">17.9</span>, <span class="fl">186.8</span>, <span class="fl">2945.0</span>], [<span class="fl">51.0</span>, <span class="fl">15.2</span>, <span class="fl">223.7</span>, <span class="fl">5560.0</span>]], columns<span class="op">=</span>columns_names)</span>
+<span id="cb9-6"><a aria-label="6"></a><span class="bu">print</span>(clf.predict(X_test))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Adelie' 'Gentoo']</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-9-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/cell-9-output-2.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-performance" class="slide level2">
+<h2>Exemple : Performance</h2>
+<div id="02bae9f3" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb11-2"><a aria-label="2"></a></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="co"># Faire des prédictions</span></span>
+<span id="cb11-4"><a aria-label="4"></a></span>
+<span id="cb11-5"><a aria-label="5"></a>y_pred <span class="op">=</span> clf.predict(X)</span>
+<span id="cb11-6"><a aria-label="6"></a></span>
+<span id="cb11-7"><a aria-label="7"></a><span class="co"># Évaluer le modèle</span></span>
+<span id="cb11-8"><a aria-label="8"></a></span>
+<span id="cb11-9"><a aria-label="9"></a>accuracy <span class="op">=</span> accuracy_score(y, y_pred)</span>
+<span id="cb11-10"><a aria-label="10"></a>report <span class="op">=</span> classification_report(y, y_pred, target_names<span class="op">=</span>target_names)</span>
+<span id="cb11-11"><a aria-label="11"></a></span>
+<span id="cb11-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f'Exactitude : </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb11-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="st">'Rapport de classification :'</span>)</span>
+<span id="cb11-14"><a aria-label="14"></a><span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+</section>
+<section id="exemple-performance-output" class="slide level2 output-location-slide"><h2>Exemple : Performance</h2><div class="cell output-location-slide" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>Exactitude : 1.00
+Rapport de classification :
+              precision    recall  f1-score   support
+
+      Adelie       0.99      1.00      1.00       152
+   Chinstrap       1.00      1.00      1.00        68
+      Gentoo       1.00      0.99      1.00       124
+
+    accuracy                           1.00       344
+   macro avg       1.00      1.00      1.00       344
+weighted avg       1.00      1.00      1.00       344
+</code></pre>
+</div>
+</div></section><section id="exemple-discussion" class="slide level2">
+<h2>Exemple : Discussion</h2>
+<p>Nous avons démontré un exemple complet :</p>
+<ul>
+<li>Chargement des données</li>
+<li>Sélection d’un classificateur</li>
+<li>Entraînement du modèle</li>
+<li>Visualisation du modèle</li>
+<li>Faire une prédiction</li>
+</ul>
+
+<aside><div>
+<p>Cependant, plusieurs simplifications ont été faites tout au long de ce processus.</p>
+</div></aside></section>
+<section id="exemple-attendez-une-minute" class="slide level2">
+<h2>Exemple : Attendez une minute !</h2>
+<div id="7471941d" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb13-2"><a aria-label="2"></a></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="co"># Faire des prédictions</span></span>
+<span id="cb13-4"><a aria-label="4"></a></span>
+<span id="cb13-5"><a aria-label="5"></a>y_pred <span class="op">=</span> clf.predict(X)</span>
+<span id="cb13-6"><a aria-label="6"></a></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="co"># Évaluer le modèle</span></span>
+<span id="cb13-8"><a aria-label="8"></a></span>
+<span id="cb13-9"><a aria-label="9"></a>accuracy <span class="op">=</span> accuracy_score(y, y_pred)</span>
+<span id="cb13-10"><a aria-label="10"></a>report <span class="op">=</span> classification_report(y, y_pred, target_names<span class="op">=</span>target_names)</span>
+<span id="cb13-11"><a aria-label="11"></a></span>
+<span id="cb13-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f'Précision : </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb13-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="st">'Rapport de classification :'</span>)</span>
+<span id="cb13-14"><a aria-label="14"></a><span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Cet exemple est trompeur, voire erroné !</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>La performance de ce classificateur semble parfaite à première vue. Cependant, l’est-elle vraiment ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-exploration" class="slide level2">
+<h2>Exemple : Exploration</h2>
+<div id="f476acb9" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>penguins <span class="op">=</span> load_penguins()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div id="8f379c35" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="bu">type</span>(penguins)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>pandas.DataFrame</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div id="6e99d14e" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>penguins.head()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+</div>
+</section>
+<section id="exemple-exploration-output" class="slide level2 output-location-slide"><h2>Exemple : Exploration</h2><div class="cell output-location-slide" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">island</th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.1</td>
+<td>18.7</td>
+<td>181.0</td>
+<td>3750.0</td>
+<td>male</td>
+<td>2007</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>39.5</td>
+<td>17.4</td>
+<td>186.0</td>
+<td>3800.0</td>
+<td>female</td>
+<td>2007</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>40.3</td>
+<td>18.0</td>
+<td>195.0</td>
+<td>3250.0</td>
+<td>female</td>
+<td>2007</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2007</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adelie</td>
+<td>Torgersen</td>
+<td>36.7</td>
+<td>19.3</td>
+<td>193.0</td>
+<td>3450.0</td>
+<td>female</td>
+<td>2007</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section id="exemple-exploration-1" class="slide level2">
+<h2>Exemple : Exploration</h2>
+<div id="0958671e" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>penguins.describe()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+</section>
+<section id="exemple-exploration-1-output" class="slide level2 output-location-slide"><h2>Exemple : Exploration</h2><div class="cell output-location-slide" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">bill_length_mm</th>
+<th data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">body_mass_g</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>342.000000</td>
+<td>342.000000</td>
+<td>342.000000</td>
+<td>342.000000</td>
+<td>344.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>43.921930</td>
+<td>17.151170</td>
+<td>200.915205</td>
+<td>4201.754386</td>
+<td>2008.029070</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">std</th>
+<td>5.459584</td>
+<td>1.974793</td>
+<td>14.061714</td>
+<td>801.954536</td>
+<td>0.818356</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">min</th>
+<td>32.100000</td>
+<td>13.100000</td>
+<td>172.000000</td>
+<td>2700.000000</td>
+<td>2007.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>39.225000</td>
+<td>15.600000</td>
+<td>190.000000</td>
+<td>3550.000000</td>
+<td>2007.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>44.450000</td>
+<td>17.300000</td>
+<td>197.000000</td>
+<td>4050.000000</td>
+<td>2008.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>48.500000</td>
+<td>18.700000</td>
+<td>213.000000</td>
+<td>4750.000000</td>
+<td>2009.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">max</th>
+<td>59.600000</td>
+<td>21.500000</td>
+<td>231.000000</td>
+<td>6300.000000</td>
+<td>2009.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div></section><section id="exemple-utilisation-de-seaborn" class="slide level2 scrollable">
+<h2>Exemple : Utilisation de <code>Seaborn</code></h2>
+<div id="1d350023" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb19-2"><a aria-label="2"></a></span>
+<span id="cb19-3"><a aria-label="3"></a><span class="co"># Pairplot utilisant seaborn</span></span>
+<span id="cb19-4"><a aria-label="4"></a></span>
+<span id="cb19-5"><a aria-label="5"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">'species'</span>, markers<span class="op">=</span>[<span class="st">"o"</span>, <span class="st">"s"</span>, <span class="st">"D"</span>])</span>
+<span id="cb19-6"><a aria-label="6"></a>plt.suptitle(<span class="st">"Graphiques de dispersion par paires des attributs des manchots"</span>)</span>
+<span id="cb19-7"><a aria-label="7"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>Quelles informations peuvent être tirées de l’examen des graphiques ?</p>
+<p>L’image présente tous les graphiques de dispersion par paires pour les attributs du jeu de données iris, avec les diagonales affichant des histogrammes pour chaque attribut individuel. Chaque point représente un exemple (<span class="math inline">\(x\)</span>), et les couleurs indiquent les étiquettes correspondantes (<span class="math inline">\(y\)</span>).</p>
+<p>Considérons d’abord les éléments diagonaux :</p>
+<ul>
+<li>Est-il possible de classer les exemples en utilisant un seul attribut ?</li>
+<li>Nous observons que chaque attribut seul ne peut pas distinguer entre les classes.</li>
+<li>Cependant, dans <strong>bill_depth</strong> vs <strong>body_mass</strong> ou <strong>flipper_length</strong>, nous pouvons différencier <strong>Gentoo</strong> des deux autres espèces, bien qu’elles ne séparent pas efficacement <strong>Adélie</strong> et <strong>Chinstrap</strong>.</li>
+</ul>
+<p>La classe <strong>Gentoo</strong> forme fréquemment un groupe distinct.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-utilisation-de-seaborn-output" class="slide level2 scrollable output-location-slide"><h2>Exemple : Utilisation de <code>Seaborn</code></h2><div class="cell output-location-slide" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/cell-16-output-1.png" width="1306" height="1181"></a></p>
+</figure>
+</div>
+</div>
+</div></section><section id="exemple-ensemble-dentraînement-et-de-test" class="slide level2">
+<h2>Exemple : Ensemble d’entraînement et de test</h2>
+<div id="5ae12fb9" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb20-2"><a aria-label="2"></a></span>
+<span id="cb20-3"><a aria-label="3"></a><span class="co"># Diviser le jeu de données en ensembles d'entraînement et de test</span></span>
+<span id="cb20-4"><a aria-label="4"></a></span>
+<span id="cb20-5"><a aria-label="5"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">7</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>Nous aurons beaucoup plus à dire sur les tests dans les semaines à venir.</p>
+<p><strong>Pratique :</strong> Expérimentez avec différentes valeurs pour <code>random_state</code>. Que constatez-vous ? Pourquoi pensez-vous que cela se produit ? Par exemple, réglez <code>random_state</code> à <code>42</code>. Pourquoi est-il important de définir la valeur de <code>random_state</code> ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Notre classificateur initial, un arbre de décision, a été construit en utilisant l’ensemble du jeu de données. Bien qu’il fournisse le meilleur ajustement pour les données, nous ne pouvons pas déterminer sa performance sans évaluation supplémentaire.</p>
+</div></aside></section>
+<section id="exemple-création-dun-nouveau-classificateur" class="slide level2">
+<h2>Exemple : Création d’un nouveau classificateur</h2>
+<div id="0407f07a" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-entraînement-du-nouveau-classificateur" class="slide level2">
+<h2>Exemple : Entraînement du nouveau classificateur</h2>
+<div id="1090ac54" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>clf.fit(X_train, y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-visualisation-de-larbre" class="slide level2">
+<h2>Exemple : Visualisation de l’arbre</h2>
+<div id="af43c18f" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a>tree.plot_tree(clf, </span>
+<span id="cb23-2"><a aria-label="2"></a>               feature_names <span class="op">=</span> X.columns,</span>
+<span id="cb23-3"><a aria-label="3"></a>               class_names <span class="op">=</span> target_names,</span>
+<span id="cb23-4"><a aria-label="4"></a>               label <span class="op">=</span> <span class="st">'none'</span>,</span>
+<span id="cb23-5"><a aria-label="5"></a>               filled <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb23-6"><a aria-label="6"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-20-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/cell-20-output-1.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-faire-des-prédictions" class="slide level2">
+<h2>Exemple : Faire des prédictions</h2>
+<div id="4d9644e9" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="co"># Faire des prédictions</span></span>
+<span id="cb24-2"><a aria-label="2"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-mesurer-la-performance" class="slide level2">
+<h2>Exemple : Mesurer la performance</h2>
+<div id="bb191659" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="co"># Évaluer le modèle</span></span>
+<span id="cb25-2"><a aria-label="2"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb25-3"><a aria-label="3"></a>report <span class="op">=</span> classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names)</span>
+<span id="cb25-4"><a aria-label="4"></a></span>
+<span id="cb25-5"><a aria-label="5"></a><span class="bu">print</span>(<span class="ss">f'Exactitude : </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb25-6"><a aria-label="6"></a><span class="bu">print</span>(<span class="st">'Rapport de classification :'</span>)</span>
+<span id="cb25-7"><a aria-label="7"></a><span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+<aside><div>
+<p>Voici une discussion sur la <a href="https://scikit-learn.org/stable/model_persistence.html">persistance des modèles</a> pour les modèles scikit-learn.</p>
+</div></aside></section>
+<section id="exemple-mesurer-la-performance-output" class="slide level2 output-location-slide"><h2>Exemple : Mesurer la performance</h2><div class="cell output-location-slide" data-execution_count="22">
+<div class="cell-output cell-output-stdout">
+<pre><code>Exactitude : 0.94
+Rapport de classification :
+              precision    recall  f1-score   support
+
+      Adelie       0.96      0.90      0.93        30
+   Chinstrap       0.88      1.00      0.94        15
+      Gentoo       0.96      0.96      0.96        24
+
+    accuracy                           0.94        69
+   macro avg       0.93      0.95      0.94        69
+weighted avg       0.94      0.94      0.94        69
+</code></pre>
+</div>
+</div></section><section id="résumé" class="slide level2">
+<h2>Résumé</h2>
+<ul>
+<li class="fragment">Nous avons introduit la terminologie pertinente.</li>
+<li class="fragment">Nous avons examiné un exemple hypothétique.</li>
+<li class="fragment">Ensuite, nous explorerons un exemple complet en utilisant scikit-learn.</li>
+<li class="fragment">Nous avons effectué une exploration détaillée de nos données.</li>
+<li class="fragment">Enfin, nous avons reconnu la nécessité d’un ensemble de test indépendant pour mesurer précisément la performance.</li>
+</ul>
+</section></section>
+<section>
+<section id="prologue" class="title-slide slide level1 center">
+<h1>Prologue</h1>
+
+</section>
+<section id="lectures-supplémentaires-13" class="slide level2">
+<h2>Lectures supplémentaires (1/3)</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://themlbook.com/img/book_3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="https://themlbook.com/img/book_3d.png"></a></p>
+</div><div class="column" style="width:80%;">
+<ul>
+<li><a href="https://themlbook.com"><strong>The Hundred-Page Machine Learning Book</strong></a> <span class="citation" data-cites="Burkov:2019aa">(<a href="#/références" role="doc-biblioref" onclick="">Burkov 2019</a>)</span> est un manuel succinct et ciblé qui peut être lu en une semaine, ce qui en fait une excellente ressource d’introduction.</li>
+<li>Disponible sous un modèle « lire d’abord, acheter ensuite », permettant aux lecteurs d’évaluer son contenu avant de l’acheter. <!-- - Recommandé par [Peter Norvig](https://www.norvig.com) (Directeur de la recherche, Google) et [Aurélien Géron] (https://www.linkedin.com/in/aurelien-geron).--></li>
+<li>Son auteur, <a href="https://www.linkedin.com/in/andriyburkov">Andriy Burkov</a>, a obtenu son doctorat en IA à l’Université Laval.</li>
+</ul>
+</div></div>
+</section>
+<section id="lectures-supplémentaires-23" class="slide level2 scrollable">
+<h2>Lectures supplémentaires (2/3)</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://m.media-amazon.com/images/I/81qHV3ACapL._AC_UF1000,1000_QL80_.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="https://m.media-amazon.com/images/I/81qHV3ACapL._AC_UF1000,1000_QL80_.jpg"></a></p>
+</div><div class="column" style="width:80%;">
+<ul>
+<li><strong><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/">Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow</a></strong> <span class="citation" data-cites="Geron:2022aa">(<a href="#/références" role="doc-biblioref" onclick="">Géron 2022</a>)</span> fournit des exemples pratiques et exploite des frameworks Python prêts pour la production.
+<ul>
+<li>La couverture complète inclut non seulement les modèles, mais aussi des bibliothèques pour le réglage des hyperparamètres, le prétraitement des données et la visualisation.</li>
+<li><a href="https://github.com/ageron/handson-ml3">Exemples de code et solutions aux exercices</a> disponibles sous forme de Jupyter Notebooks sur GitHub.</li>
+<li><a href="https://www.linkedin.com/in/aurelien-geron">Aurélien Géron</a> est un ancien chef de produit YouTube, qui a dirigé la classification vidéo pour la recherche et la découverte.</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="lectures-supplémentaires-33" class="slide level2 scrollable">
+<h2>Lectures supplémentaires (3/3)</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://mml-book.github.io/static/images/mml-book-cover.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="https://mml-book.github.io/static/images/mml-book-cover.jpg"></a></p>
+</div><div class="column" style="width:80%;">
+<ul>
+<li><strong><a href="https://mml-book.com/">Mathematics for Machine Learning</a></strong> <span class="citation" data-cites="Deisenroth:2020aa">(<a href="#/références" role="doc-biblioref" onclick="">Deisenroth et al. 2020</a>)</span> vise à fournir les compétences mathématiques nécessaires pour lire des livres sur l’apprentissage automatique.</li>
+<li><a href="https://mml-book.github.io/book/mml-book.pdf">PDF du livre</a></li>
+<li>“Ce livre offre une excellente couverture de tous les concepts mathématiques de base pour l’apprentissage automatique. J’ai hâte de le partager avec les étudiants, les collègues et toute personne intéressée à acquérir une compréhension solide des fondamentaux.” Joelle Pineau, Université McGill et Facebook</li>
+</ul>
+</div></div>
+</section>
+<section id="références" class="slide level2 smaller scrollable">
+<h2>Références</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Burkov:2019aa" class="csl-entry" role="listitem">
+Burkov, Andriy. 2019. <em>The Hundred-Page Machine Learning Book</em>. Andriy Burkov.
+</div>
+<div id="ref-Deisenroth:2020aa" class="csl-entry" role="listitem">
+Deisenroth, Marc Peter, A. Aldo Faisal, et Cheng Soon Ong. 2020. <em>Mathematics for Machine Learning</em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108679930">https://doi.org/10.1017/9781108679930</a>.
+</div>
+<div id="ref-Geron:2022aa" class="csl-entry" role="listitem">
+Géron, Aurélien. 2022. <em>Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow</em>. 3ᵉ éd. O’Reilly Media, Inc.
+</div>
+<div id="ref-Kingsford:2008aa" class="csl-entry" role="listitem">
+Kingsford, C, et Steven L Salzberg. 2008. <span>«&nbsp;What are decision trees?&nbsp;»</span> <em>Nature biotechnology</em> 26 (9): 1011‑13. <a href="https://doi.org/10.1038/nbt0908-1011">https://doi.org/10.1038/nbt0908-1011</a>.
+</div>
+<div id="ref-Mitchell:1997aa" class="csl-entry" role="listitem">
+Mitchell, Tom M. 1997. <em>Machine Learning</em>. McGraw-Hill.
+</div>
+<div id="ref-Russell:2020aa" class="csl-entry" role="listitem">
+Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</span> Modern Approach</em>. 4ᵉ éd. Pearson. <a href="http://aima.cs.berkeley.edu/">http://aima.cs.berkeley.edu/</a>.
+</div>
+</div>
+</section>
+<section id="prochain-cours" class="slide level2">
+<h2>Prochain cours</h2>
+<ul>
+<li>Régression linéaire</li>
+<li>Descente de gradient</li>
+<li>Régression logistique</li>
+</ul>
+</section></section>
+<section>
+<section id="sec-iris" class="title-slide slide level1 appendix center">
+<h1>Annexe: Iris Data Set</h1>
+
+</section>
+<section id="exemple-iris-data-set" class="slide level2">
+<h2>Exemple: iris data set</h2>
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flores_de_Íris.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flores_de_Íris.png"></a></p>
+
+<aside><div>
+<p><strong>Attribution:</strong> Diego Mariano, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons. Voir <a href="https://fr.wikipedia.org/wiki/Iris_de_Fisher">ici</a> pour des informations sur cet ensemble de données.</p>
+</div></aside></section>
+<section id="exemple-charger-les-données" class="slide level2">
+<h2>Exemple: charger les données</h2>
+<div id="9a0443cb" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb27-2"><a aria-label="2"></a></span>
+<span id="cb27-3"><a aria-label="3"></a><span class="co"># Load the Iris dataset</span></span>
+<span id="cb27-4"><a aria-label="4"></a></span>
+<span id="cb27-5"><a aria-label="5"></a>iris <span class="op">=</span> load_iris()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>Lorsque vous utilisez votre propre ensemble de données, vous devrez télécharger les fichiers comme nous l’avons fait dans le <a href="../../_site/lectures/02/01_ottawa_river_temperature.html">cahier Jupyter sur la température de la rivière des Outaouais</a>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>De manière pratique, scikit-learn est fourni avec des ensembles de données <a href="https://scikit-learn.org/stable/datasets/toy_dataset.html#toy-datasets">jouets</a> et <a href="https://scikit-learn.org/stable/datasets/real_world.html">réels</a> pour faciliter l’expérimentation. Voir <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris">ici</a> pour une description de <strong>load_iris</strong>.</p>
+</div></aside></section>
+<section id="exemple-utilisant-un-arbre-de-décision" class="slide level2">
+<h2>Exemple: Utilisant un arbre de décision</h2>
+<div id="ae5ceb3a" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb28-2"><a aria-label="2"></a></span>
+<span id="cb28-3"><a aria-label="3"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>Dans un <code>DecisionTreeClassifier</code>, chaque nœud interne de l’arbre représente une décision basée sur un attribut, chaque branche représente le résultat de cette décision, et chaque nœud terminal représente une étiquette de classe. L’arbre de décision fait des prédictions en parcourant de la racine à un nœud terminal, en suivant les règles de décision définies à chaque nœud. Les arbres de décision sont intuitifs et faciles à interpréter mais peuvent être sujets au surapprentissage s’ils ne sont pas correctement régulés.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Il existe des dizaines de classificateurs, y compris ceux-ci : <strong>arbres de décision</strong>, <strong>machines à vecteurs de support</strong>, <strong>k-plus proches voisins</strong>, <strong>régression logistique</strong>, et <strong>réseaux de neurones</strong>.</p>
+</div></aside></section>
+<section id="exemple-entraînement-1" class="slide level2">
+<h2>Exemple: Entraînement</h2>
+<div id="5d76da0b" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="co"># It is customary to use X and y for the data and labels</span></span>
+<span id="cb29-2"><a aria-label="2"></a></span>
+<span id="cb29-3"><a aria-label="3"></a>X, y <span class="op">=</span> iris.data, iris.target</span>
+<span id="cb29-4"><a aria-label="4"></a></span>
+<span id="cb29-5"><a aria-label="5"></a><span class="co"># Training</span></span>
+<span id="cb29-6"><a aria-label="6"></a></span>
+<span id="cb29-7"><a aria-label="7"></a>clf <span class="op">=</span> clf.fit(X, y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Tous les classificateurs héritent de <code>sklearn.base.BaseEstimator</code> et <code>sklearn.base.ClassifierMixin</code>. Par conséquent, tous les classificateurs implémentent <code>fit</code>, <code>predict</code>, et <code>score</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-visualiser-larbre-12" class="slide level2">
+<h2>Exemple: Visualiser l’arbre (1/2)</h2>
+<div id="9298e989" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb30-2"><a aria-label="2"></a></span>
+<span id="cb30-3"><a aria-label="3"></a>tree.plot_tree(clf)</span>
+<span id="cb30-4"><a aria-label="4"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-26-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="slides_files/figure-revealjs/cell-26-output-1.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-visualiser-larbre-22" class="slide level2">
+<h2>Exemple: Visualiser l’arbre (2/2)</h2>
+<div id="ae28e986" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a>tree.plot_tree(clf, </span>
+<span id="cb31-2"><a aria-label="2"></a>               feature_names<span class="op">=</span>iris.feature_names, </span>
+<span id="cb31-3"><a aria-label="3"></a>               class_names<span class="op">=</span>iris.target_names,</span>
+<span id="cb31-4"><a aria-label="4"></a>               label<span class="op">=</span><span class="st">'none'</span>,</span>
+<span id="cb31-5"><a aria-label="5"></a>               filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-6"><a aria-label="6"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-27-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="slides_files/figure-revealjs/cell-27-output-1.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Dans un <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html"><code>DecisionTreeClassifier</code></a>, chaque nœud interne de l’arbre représente une décision basée sur un attribut, chaque branche représente le résultat de cette décision, et chaque nœud feuille représente une étiquette de classe. L’arbre de décision fait des prédictions en parcourant de la racine à un nœud feuille, suivant les règles de décision définies à chaque nœud. Les arbres de décision sont intuitifs et faciles à interpréter, mais peuvent être sujets au surapprentissage s’ils ne sont pas correctement régulés.</p>
+<p>Pour construire un arbre de décision, la méthode <code>fit</code> suit les étapes suivantes :</p>
+<ol type="1">
+<li><p><strong>Sélectionner le Meilleur Attribut</strong> : Choisir l’attribut qui divise le mieux les données en fonction d’un critère comme l’<a href="https://turcotte.xyz/teaching/csi-4506/glossary/entropy.html">entropie</a>, l’Indice de Gini (par défaut), ou la Log Loss.</p></li>
+<li><p><strong>Créer un Nœud</strong> : Faire de cet attribut le nœud racine de l’arbre, et créer des branches pour chaque valeur possible de l’attribut.</p></li>
+<li><p><strong>Diviser le Jeu de Données</strong> : Diviser le jeu de données en sous-ensembles, un pour chaque branche, en fonction des valeurs de l’attribut.</p></li>
+<li><p><strong>Répéter Récursivement</strong> : Pour chaque sous-ensemble, répéter les étapes 1 à 3 en utilisant uniquement les données de ce sous-ensemble et en excluant l’attribut utilisé au nœud parent.</p></li>
+<li><p><strong>Conditions d’Arrêt</strong> : Arrêter la récursion lorsque l’une des conditions suivantes est remplie :</p></li>
+</ol>
+<ul>
+<li>Toutes les instances dans un sous-ensemble appartiennent à la même classe.</li>
+<li>Il n’y a plus d’attributs disponibles pour diviser.</li>
+<li>Une limite de profondeur prédéfinie ou un nombre minimum d’instances par nœud est atteint.</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Attribuer des Étiquettes</strong> : Pour chaque nœud feuille, attribuer une étiquette de classe basée sur la classe majoritaire des instances dans ce sous-ensemble.</li>
+</ol>
+<p>Ce processus aboutit à un arbre où chaque chemin de la racine à une feuille représente une règle de classification.</p>
+<p>Dans la figure ci-dessus, les nœuds de décision contiennent les informations suivantes :</p>
+<ul>
+<li>La règle de décision, par exemple <code>largeur des pétales (cm) &lt;= 0.8</code></li>
+<li>Le score Gini.</li>
+<li>Le nombre d’exemples dans le sous-ensemble correspondant à ce nœud de l’arbre.</li>
+<li>Le nombre d’exemples pour chacune des classes, dans le sous-ensemble correspondant à ce nœud de l’arbre.</li>
+<li>Une prédiction.</li>
+</ul>
+<p>Les arbres de décision sont construits en ajoutant progressivement des nœuds de décision, guidés par des exemples d’entraînement étiquetés pour déterminer les divisions optimales. Une règle de décision efficace segmente idéalement les exemples d’entraînement parfaitement dans leurs classes respectives. Par exemple, la règle <code>largeur des pétales (cm) &lt;= 0.8</code> illustre ce principe : lorsque la règle est vraie (enfant gauche), toutes les instances sont classées comme Setosa. Inversement, lorsque la règle n’est pas vraie (enfant droit), le sous-ensemble contient uniquement Versicolor et Virginica, sans aucune instance de Setosa. En essence, une bonne règle de décision est celle qui réduit significativement l’<a href="https://turcotte.xyz/teaching/csi-4506/glossary/entropy.html">entropie</a>.</p>
+<p><strong>Voir</strong> :</p>
+<ul>
+<li><span class="citation" data-cites="Kingsford:2008aa">Kingsford et Salzberg (<a href="#/références" role="doc-biblioref" onclick="">2008</a>)</span>, <a href="https://doi.org/10.1038/nbt0908-1011">vous pouvez accéder à l’article ici, en HTML ou PDF, à partir d’un ordinateur avec une adresse IP de l’uOttawa</a>.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-prédiction-1" class="slide level2">
+<h2>Exemple: Prédiction</h2>
+<div id="33c45654" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a><span class="co"># Creatingg 2 test examples</span></span>
+<span id="cb32-2"><a aria-label="2"></a><span class="co"># 'sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)'</span></span>
+<span id="cb32-3"><a aria-label="3"></a></span>
+<span id="cb32-4"><a aria-label="4"></a>X_test <span class="op">=</span> [[<span class="fl">5.1</span>, <span class="fl">3.5</span>, <span class="fl">1.4</span>, <span class="fl">0.2</span>],[<span class="fl">6.7</span>, <span class="fl">3.0</span>, <span class="fl">5.2</span>, <span class="fl">2.3</span>]]</span>
+<span id="cb32-5"><a aria-label="5"></a></span>
+<span id="cb32-6"><a aria-label="6"></a><span class="co"># Prediction</span></span>
+<span id="cb32-7"><a aria-label="7"></a></span>
+<span id="cb32-8"><a aria-label="8"></a>y_test <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb32-9"><a aria-label="9"></a></span>
+<span id="cb32-10"><a aria-label="10"></a><span class="co"># Printing the predicted labels for our two examples</span></span>
+<span id="cb32-11"><a aria-label="11"></a></span>
+<span id="cb32-12"><a aria-label="12"></a><span class="bu">print</span>(iris.target_names[y_test])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['setosa' 'virginica']</code></pre>
+</div>
+</div>
+</section>
+<section id="exemple-complet-1" class="slide level2">
+<h2>Exemple: Complet</h2>
+<div id="ab049617" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a>iris <span class="op">=</span> load_iris()</span>
+<span id="cb34-2"><a aria-label="2"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier()</span>
+<span id="cb34-3"><a aria-label="3"></a>X, y <span class="op">=</span> iris.data, iris.target</span>
+<span id="cb34-4"><a aria-label="4"></a>clf <span class="op">=</span> clf.fit(X, y)</span>
+<span id="cb34-5"><a aria-label="5"></a>tree.plot_tree(clf)</span>
+<span id="cb34-6"><a aria-label="6"></a>X_test <span class="op">=</span> [[<span class="fl">5.1</span>, <span class="fl">3.5</span>, <span class="fl">1.4</span>, <span class="fl">0.2</span>],[<span class="fl">6.7</span>, <span class="fl">3.0</span>, <span class="fl">5.2</span>, <span class="fl">2.3</span>]]</span>
+<span id="cb34-7"><a aria-label="7"></a>y_test <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb34-8"><a aria-label="8"></a><span class="bu">print</span>(iris.target_names[y_test])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['setosa' 'virginica']</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-29-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="slides_files/figure-revealjs/cell-29-output-2.png" width="763" height="389"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-performance-1" class="slide level2">
+<h2>Exemple: Performance</h2>
+<div id="5289fd18" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb36-2"><a aria-label="2"></a></span>
+<span id="cb36-3"><a aria-label="3"></a><span class="co"># Make predictions</span></span>
+<span id="cb36-4"><a aria-label="4"></a></span>
+<span id="cb36-5"><a aria-label="5"></a>y_pred <span class="op">=</span> clf.predict(X)</span>
+<span id="cb36-6"><a aria-label="6"></a></span>
+<span id="cb36-7"><a aria-label="7"></a><span class="co"># Evaluate the model</span></span>
+<span id="cb36-8"><a aria-label="8"></a></span>
+<span id="cb36-9"><a aria-label="9"></a>accuracy <span class="op">=</span> accuracy_score(y, y_pred)</span>
+<span id="cb36-10"><a aria-label="10"></a>report <span class="op">=</span> classification_report(y, y_pred, target_names<span class="op">=</span>iris.target_names)</span>
+<span id="cb36-11"><a aria-label="11"></a></span>
+<span id="cb36-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb36-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="st">'Classification Report:'</span>)</span>
+<span id="cb36-14"><a aria-label="14"></a><span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>The performance of this classifier appears to be perfect at first glance. However, is it really?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-performance-1-output" class="slide level2 output-location-slide"><h2>Exemple: Performance</h2><div class="cell output-location-slide" data-execution_count="30">
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 1.00
+Classification Report:
+              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        50
+  versicolor       1.00      1.00      1.00        50
+   virginica       1.00      1.00      1.00        50
+
+    accuracy                           1.00       150
+   macro avg       1.00      1.00      1.00       150
+weighted avg       1.00      1.00      1.00       150
+</code></pre>
+</div>
+</div></section><section id="exemple-discussion-1" class="slide level2">
+<h2>Exemple: Discussion</h2>
+<p>Nous avons vu un exemple complet :</p>
+<ul>
+<li>Chargement des données</li>
+<li>Sélection d’un classificateur</li>
+<li>Entraînement du modèle</li>
+<li>Visualisation du modèle</li>
+<li>Réalisation d’une prédiction</li>
+</ul>
+
+<aside><div>
+<p>Cependant, plusieurs simplifications ont été faites au cours de ce processus.</p>
+</div></aside></section>
+<section id="exemple-prise-2" class="slide level2">
+<h2>Exemple: Prise 2</h2>
+<div id="6cca3ad8" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb38-2"><a aria-label="2"></a></span>
+<span id="cb38-3"><a aria-label="3"></a><span class="co"># Make predictions</span></span>
+<span id="cb38-4"><a aria-label="4"></a></span>
+<span id="cb38-5"><a aria-label="5"></a>y_pred <span class="op">=</span> clf.predict(X)</span>
+<span id="cb38-6"><a aria-label="6"></a></span>
+<span id="cb38-7"><a aria-label="7"></a><span class="co"># Evaluate the model</span></span>
+<span id="cb38-8"><a aria-label="8"></a></span>
+<span id="cb38-9"><a aria-label="9"></a>accuracy <span class="op">=</span> accuracy_score(y, y_pred)</span>
+<span id="cb38-10"><a aria-label="10"></a>report <span class="op">=</span> classification_report(y, y_pred, target_names<span class="op">=</span>iris.target_names)</span>
+<span id="cb38-11"><a aria-label="11"></a></span>
+<span id="cb38-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb38-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="st">'Classification Report:'</span>)</span>
+<span id="cb38-14"><a aria-label="14"></a><span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Cet exemple est trompeur, voire même fautif!</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The performance of this classifier appears to be perfect at first glance. However, is it really?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-exploration-2" class="slide level2 scrollable">
+<h2>Exemple: Exploration</h2>
+<div id="1d21fcb4" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f'Dataset Description:</span><span class="ch">\n</span><span class="sc">{</span>iris[<span class="st">"DESCR"</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset Description:
+.. _iris_dataset:
+
+Iris plants dataset
+--------------------
+
+**Data Set Characteristics:**
+
+:Number of Instances: 150 (50 in each of three classes)
+:Number of Attributes: 4 numeric, predictive attributes and the class
+:Attribute Information:
+    - sepal length in cm
+    - sepal width in cm
+    - petal length in cm
+    - petal width in cm
+    - class:
+            - Iris-Setosa
+            - Iris-Versicolour
+            - Iris-Virginica
+
+:Summary Statistics:
+
+============== ==== ==== ======= ===== ====================
+                Min  Max   Mean    SD   Class Correlation
+============== ==== ==== ======= ===== ====================
+sepal length:   4.3  7.9   5.84   0.83    0.7826
+sepal width:    2.0  4.4   3.05   0.43   -0.4194
+petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
+============== ==== ==== ======= ===== ====================
+
+:Missing Attribute Values: None
+:Class Distribution: 33.3% for each of 3 classes.
+:Creator: R.A. Fisher
+:Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+:Date: July, 1988
+
+The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
+from Fisher's paper. Note that it's the same as in R, but not as in the UCI
+Machine Learning Repository, which has two wrong data points.
+
+This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher's paper is a classic in the field and
+is referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.
+
+.. dropdown:: References
+
+  - Fisher, R.A. "The use of multiple measurements in taxonomic problems"
+    Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to
+    Mathematical Statistics" (John Wiley, NY, 1950).
+  - Duda, R.O., &amp; Hart, P.E. (1973) Pattern Classification and Scene Analysis.
+    (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.
+  - Dasarathy, B.V. (1980) "Nosing Around the Neighborhood: A New System
+    Structure and Classification Rule for Recognition in Partially Exposed
+    Environments".  IEEE Transactions on Pattern Analysis and Machine
+    Intelligence, Vol. PAMI-2, No. 1, 67-71.
+  - Gates, G.W. (1972) "The Reduced Nearest Neighbor Rule".  IEEE Transactions
+    on Information Theory, May 1972, 431-433.
+  - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al"s AUTOCLASS II
+    conceptual clustering system finds 3 classes in the data.
+  - Many, many more ...
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="exemple-exploration-3" class="slide level2 scrollable">
+<h2>Exemple: Exploration</h2>
+<div id="efd2efc2" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f'Feature Names: </span><span class="sc">{</span>iris<span class="sc">.</span>feature_names<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Feature Names: ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']</code></pre>
+</div>
+</div>
+<div id="e8c63da7" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f'Target Names: </span><span class="sc">{</span>iris<span class="sc">.</span>target_names<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Target Names: ['setosa' 'versicolor' 'virginica']</code></pre>
+</div>
+</div>
+<div id="5fb1cda9" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f'Data Shape: </span><span class="sc">{</span>iris<span class="sc">.</span>data<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data Shape: (150, 4)</code></pre>
+</div>
+</div>
+<div id="a0f8ebb4" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f'Target Shape: </span><span class="sc">{</span>iris<span class="sc">.</span>target<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Target Shape: (150,)</code></pre>
+</div>
+</div>
+</section>
+<section id="exemple-utilisant-pandas" class="slide level2">
+<h2>Exemple: Utilisant <code>Pandas</code></h2>
+<div id="5b714cf7" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb49-2"><a aria-label="2"></a></span>
+<span id="cb49-3"><a aria-label="3"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb49-4"><a aria-label="4"></a></span>
+<span id="cb49-5"><a aria-label="5"></a>df <span class="op">=</span> pd.DataFrame(iris.data, columns<span class="op">=</span>iris.feature_names)</span>
+<span id="cb49-6"><a aria-label="6"></a>df[<span class="st">'species'</span>] <span class="op">=</span> iris.target</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-utilisant-pandas-suite" class="slide level2">
+<h2>Exemple: Utilisant <code>Pandas</code> (suite)</h2>
+<div id="71fe9882" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a aria-label="1"></a><span class="co"># Display the first few rows of the DataFrame</span></span>
+<span id="cb50-2"><a aria-label="2"></a></span>
+<span id="cb50-3"><a aria-label="3"></a><span class="bu">print</span>(df.head())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)  \
+0                5.1               3.5                1.4               0.2   
+1                4.9               3.0                1.4               0.2   
+2                4.7               3.2                1.3               0.2   
+3                4.6               3.1                1.5               0.2   
+4                5.0               3.6                1.4               0.2   
+
+   species  
+0        0  
+1        0  
+2        0  
+3        0  
+4        0  </code></pre>
+</div>
+</div>
+</section>
+<section id="exemple-utilisant-pandas-suite-1" class="slide level2">
+<h2>Exemple: Utilisant <code>Pandas</code> (suite)</h2>
+<div id="a7745c51" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a aria-label="1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb52-2"><a aria-label="2"></a></span>
+<span id="cb52-3"><a aria-label="3"></a><span class="bu">print</span>(df.describe())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       sepal length (cm)  sepal width (cm)  petal length (cm)  \
+count         150.000000        150.000000         150.000000   
+mean            5.843333          3.057333           3.758000   
+std             0.828066          0.435866           1.765298   
+min             4.300000          2.000000           1.000000   
+25%             5.100000          2.800000           1.600000   
+50%             5.800000          3.000000           4.350000   
+75%             6.400000          3.300000           5.100000   
+max             7.900000          4.400000           6.900000   
+
+       petal width (cm)     species  
+count        150.000000  150.000000  
+mean           1.199333    1.000000  
+std            0.762238    0.819232  
+min            0.100000    0.000000  
+25%            0.300000    0.000000  
+50%            1.300000    1.000000  
+75%            1.800000    2.000000  
+max            2.500000    2.000000  </code></pre>
+</div>
+</div>
+</section>
+<section id="exemple-utilisant-seaborn" class="slide level2 scrollable">
+<h2>Exemple: Utilisant <code>Seaborn</code></h2>
+<div id="0b6ce6ce" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a aria-label="1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb54-2"><a aria-label="2"></a></span>
+<span id="cb54-3"><a aria-label="3"></a><span class="co"># Map target values to species names</span></span>
+<span id="cb54-4"><a aria-label="4"></a></span>
+<span id="cb54-5"><a aria-label="5"></a>df[<span class="st">'species'</span>] <span class="op">=</span> df[<span class="st">'species'</span>].<span class="bu">map</span>({<span class="dv">0</span>: <span class="st">'setosa'</span>, <span class="dv">1</span>: <span class="st">'versicolor'</span>, <span class="dv">2</span>: <span class="st">'virginica'</span>})</span>
+<span id="cb54-6"><a aria-label="6"></a></span>
+<span id="cb54-7"><a aria-label="7"></a><span class="co"># Pairplot using seaborn</span></span>
+<span id="cb54-8"><a aria-label="8"></a></span>
+<span id="cb54-9"><a aria-label="9"></a>sns.pairplot(df, hue<span class="op">=</span><span class="st">'species'</span>, markers<span class="op">=</span>[<span class="st">"o"</span>, <span class="st">"s"</span>, <span class="st">"D"</span>])</span>
+<span id="cb54-10"><a aria-label="10"></a>plt.suptitle(<span class="st">"Pairwise Scatter Plots of Iris Features"</span>, y<span class="op">=</span><span class="fl">1.02</span>)</span>
+<span id="cb54-11"><a aria-label="11"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>Quelles perspectives peut-on tirer de l’examen des graphiques?</p>
+<p>L’image présente tous les diagrammes de dispersion par paire pour les attributs de l’ensemble de données iris, avec les histogrammes pour chaque attribut individuel sur la diagonale. Chaque point représente un exemple (<span class="math inline">\(x\)</span>), et les couleurs indiquent les étiquettes correspondantes (<span class="math inline">\(y\)</span>).</p>
+<p>Considérons d’abord les éléments diagonaux :</p>
+<ul>
+<li>Est-il possible de classer les exemples en utilisant un seul attribut ?</li>
+<li>Nous observons que la <strong>longueur</strong> ou la <strong>largeur</strong> du <strong>sépale</strong> seule ne peut pas distinguer les classes.</li>
+<li>Cependant, la <strong>longueur</strong> et la <strong>largeur</strong> du <strong>pétale</strong> nous permettent de différencier <strong>setosa</strong> des deux autres variétés, bien qu’elles ne séparent pas efficacement <strong>versicolor</strong> et <strong>virginica</strong>.</li>
+</ul>
+<p>La classe <strong>setosa</strong> forme fréquemment un groupe distinct.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-utilisant-seaborn-output" class="slide level2 scrollable output-location-slide"><h2>Exemple: Utilisant <code>Seaborn</code></h2><div class="cell output-location-slide" data-execution_count="40">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-40-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="slides_files/figure-revealjs/cell-40-output-1.png" width="1068" height="982"></a></p>
+</figure>
+</div>
+</div>
+</div></section><section id="exemple-ensemble-dentraînement-et-ensemble-de-test" class="slide level2">
+<h2>Exemple: Ensemble d’entraînement et ensemble de test</h2>
+<div id="9f77980c" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb55-2"><a aria-label="2"></a></span>
+<span id="cb55-3"><a aria-label="3"></a><span class="co"># Split the dataset into training and testing sets</span></span>
+<span id="cb55-4"><a aria-label="4"></a></span>
+<span id="cb55-5"><a aria-label="5"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">7</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>Nous aurons beaucoup plus à dire sur les tests dans les semaines à venir.</p>
+<p><strong>Pratique :</strong> Expérimentez avec différentes valeurs pour <code>random_state</code>. Qu’observez-vous ? Pourquoi pensez-vous que cela se produit ? Pourquoi est-il important de définir la valeur de <code>random_state</code> ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Notre classificateur initial, un arbre de décision, a été construit en utilisant l’ensemble des données complet. Bien qu’il fournisse le <strong>“meilleur”</strong> “ajustement” pour les données, nous ne pouvons pas déterminer sa <strong>performance</strong> sans une évaluation supplémentaire.</p>
+</div></aside></section>
+<section id="exemple-créer-un-nouvel-arbre" class="slide level2">
+<h2>Exemple: Créer un nouvel arbre</h2>
+<div id="ef23801f" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a aria-label="1"></a><span class="co"># Train the model</span></span>
+<span id="cb56-2"><a aria-label="2"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-entraîner-le-modèle" class="slide level2">
+<h2>Exemple: Entraîner le modèle</h2>
+<div id="4b3807dd" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a aria-label="1"></a><span class="co"># Train the model</span></span>
+<span id="cb57-2"><a aria-label="2"></a>clf.fit(X_train, y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-prédictions" class="slide level2">
+<h2>Exemple: Prédictions</h2>
+<div id="e5b1b886" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a aria-label="1"></a><span class="co"># Make predictions</span></span>
+<span id="cb58-2"><a aria-label="2"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exemple-mesurer-la-performance-1" class="slide level2">
+<h2>Exemple: mesurer la performance</h2>
+<div id="375a17fb" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb59-2"><a aria-label="2"></a><span class="co"># Make predictions</span></span>
+<span id="cb59-3"><a aria-label="3"></a></span>
+<span id="cb59-4"><a aria-label="4"></a><span class="co"># Evaluate the model</span></span>
+<span id="cb59-5"><a aria-label="5"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb59-6"><a aria-label="6"></a>report <span class="op">=</span> classification_report(y_test, y_pred, target_names<span class="op">=</span>iris.target_names)</span>
+<span id="cb59-7"><a aria-label="7"></a></span>
+<span id="cb59-8"><a aria-label="8"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb59-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">'Classification Report:'</span>)</span>
+<span id="cb59-10"><a aria-label="10"></a><span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+<aside><div>
+<p>Voici une discussion sur la <a href="https://scikit-learn.org/stable/model_persistence.html">persistance des modèles</a> pour les modèles scikit-learn.</p>
+</div></aside></section>
+<section id="exemple-mesurer-la-performance-1-output" class="slide level2 output-location-slide"><h2>Exemple: mesurer la performance</h2><div class="cell output-location-slide" data-execution_count="45">
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.87
+Classification Report:
+              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00         7
+  versicolor       0.83      0.83      0.83        12
+   virginica       0.82      0.82      0.82        11
+
+    accuracy                           0.87        30
+   macro avg       0.88      0.88      0.88        30
+weighted avg       0.87      0.87      0.87        30
+</code></pre>
+</div>
+</div></section><section class="slide level2">
+
+<p>Marcel <strong>Turcotte</strong></p>
+<p><a href="mailto:Marcel.Turcotte@uOttawa.ca">Marcel.Turcotte@uOttawa.ca</a></p>
+<p>École de <strong>science informatique</strong> et de génie électrique (<strong>SI</strong>GE)</p>
+<p>Université d’Ottawa</p>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../assets/images/uottawa_hor_black.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://turcotte.xyz/teaching/csi-4506">turcotte.xyz/teaching/csi-4506</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copié");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copié");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/turcotte\.xyz\/teaching\/csi-4506");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>

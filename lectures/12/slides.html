@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Marcel Turcotte">
+  <title>CSI 4506 - Automne 2026 – Entraîner un réseau de neurones artificiels (partie 1)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Entraîner un réseau de neurones artificiels (partie 1) – CSI 4506 - Automne 2026">
+<meta property="og:description" content="CSI 4106 - automne 2026">
+<meta property="og:site_name" content="CSI 4506 - Automne 2026">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Entraîner un réseau de neurones artificiels (partie 1)</h1>
+  <p class="subtitle">CSI 4106 - automne 2026</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Marcel Turcotte
+</div>
+</div>
+</div>
+
+  <p class="date">Version: août 9, 2026 12h46</p>
+</section>
+<section>
+<section id="préambule" class="title-slide slide level1 center">
+<h1>Préambule</h1>
+
+</section>
+<section id="message-du-jour" class="slide level2 scrollable">
+<h2>Message du Jour</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://opendatascience.com/wp-content/uploads/2020/06/go-game_AB-scaled-2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://opendatascience.com/wp-content/uploads/2020/06/go-game_AB-scaled-2.jpg" class="quarto-figure quarto-figure-center" height="425"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>Le texte décrit un podcast mettant en vedette Julian Togelius, Professeur Associé à l’Université de New York et co-directeur du Game Innovation Lab. Togelius est l’auteur de “Artificial Intelligence and Games”, dont la deuxième édition est sortie en 2025. Pour ceux qui ont accès à un appareil sur le réseau de l’Université d’Ottawa, une copie de ce livre est disponible en téléchargement.</p>
+<ul>
+<li><a href="https://link.springer.com/book/10.1007/978-3-031-83347-2">Artificial Intelligence and Games</a>
+<ul>
+<li><a href="https://link.springer.com/content/pdf/10.1007/978-3-031-83347-2.pdf">PDF</a>, <a href="https://link.springer.com/download/epub/10.1007/978-3-031-83347-2.epub">EPUB</a></li>
+</ul></li>
+</ul>
+<p>Je suis Julian Togelius sur les réseaux sociaux depuis un certain temps, bien que je n’aie pas encore eu l’occasion de lire son livre.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><a href="https://opendatascience.com/from-turings-chess-to-neural-game-engines-ai-in-video-games-today/">From Turing’s Chess to Neural Game Engines: AI in Video Games Today</a> par Alex Landa, ODSC, 2025-09-02, un <a href="https://soundcloud.com/aixpodcast/from-turings-chess-to-neural-game-engines-ai-in-video-games-today-with-julian-togelius">Podcast</a> (1h 8m) avec Julian Togelius, Professeur Associé à l’Université de New York.</p>
+</div></aside></section>
+<section id="résultats-dapprentissage" class="slide level2">
+<h2>Résultats d’apprentissage</h2>
+<ul>
+<li><strong>Expliquer</strong> l’architecture et le fonctionnement des réseaux de neurones à propagation avant (FNN).</li>
+<li><strong>Identifier</strong> les fonctions d’activation courantes et comprendre leur impact sur la performance du réseau.</li>
+<li><strong>Introduire</strong> une implémentation simple mais fonctionnelle d’un réseau de neurones à propagation avant.</li>
+</ul>
+</section></section>
+<section>
+<section id="résumé" class="title-slide slide level1 center">
+<h1>Résumé</h1>
+
+</section>
+<section id="blue1brown-12" class="slide level2">
+<h2>3Blue1Brown (1/2)</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/aircAruvnKk" width="889" height="500" title="Mais qu'est-ce qu'un réseau de neurones ? | Chapitre 1, Apprentissage profond" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<aside class="notes">
+<p>Il est fortement recommandé de regarder cette vidéo. Bien qu’elle couvre des concepts que nous avons déjà explorés, elle présente le matériel d’une manière difficile à reproduire en classe.</p>
+<ul>
+<li>Fournit une explication claire de l’<strong>intuition</strong> derrière l’efficacité des réseaux de neurones, détaillant la <strong>hiérarchie des concepts</strong> brièvement mentionnée lors de la dernière conférence. (5m 31s à 8m 38s)</li>
+<li>Offre une justification convaincante de la nécessité d’un <strong>terme de biais</strong>.</li>
+<li>De même, élucide le concept des <strong>fonctions d’activation</strong> et l’importance d’une fonction d’écrasement.</li>
+<li>Le segment débutant à 13m 26s offre une explication visuelle de l’<strong>algèbre linéaire</strong> impliquée : <span class="math inline">\(\sigma(W X^T + b)\)</span>.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>À mon avis, c’est une vidéo <strong>excellente</strong> et <strong>informative</strong>. (18m 40s)</p>
+</div></aside></section>
+<section id="blue1brown-22" class="slide level2">
+<h2>3Blue1Brown (2/2)</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/IHZwWFHWa-w" width="889" height="500" title="Mais qu'est-ce qu'un réseau de neurones ? | Chapitre 1, Apprentissage profond" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<aside class="notes">
+<p>Nous reviendrons sur le concept de descente de gradient dans notre discussion sur l’algorithme de rétropropagation. Pour réviser ce sujet, vous pouvez regarder cette vidéo : <a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">Descente de gradient, comment les réseaux de neurones apprennent | Chapitre 2 de l’apprentissage profond</a> (durée : 20 minutes et 33 secondes).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Notre discussion portera sur la rétropropagation. Regarder <a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">Descente de gradient, comment les réseaux de neurones apprennent</a> pourrait être utile.</p>
+</div></aside></section>
+<section id="résumé---dl" class="slide level2">
+<h2>Résumé - DL</h2>
+<ul>
+<li class="fragment"><p><strong>Apprentissage profond (DL)</strong> est une technique d’<strong>apprentissage automatique</strong> qui peut être appliquée à l’<strong>apprentissage supervisé</strong> (y compris la <strong>régression</strong> et la <strong>classification</strong>), l’<strong>apprentissage non supervisé</strong>, et l’<strong>apprentissage par renforcement</strong>.</p></li>
+<li class="fragment"><p>Inspiré par la structure et la fonction des <strong>réseaux neuronaux biologiques</strong> trouvés chez les animaux.</p></li>
+<li class="fragment"><p>Composé de <strong>neurones interconnectés</strong> (ou unités) organisés en <strong>couches</strong>.</p></li>
+</ul>
+</section>
+<section id="résumé---fnn" class="slide level2">
+<h2>Résumé - FNN</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp-07-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../assets/images/ann_mlp-07-01.png" class="quarto-figure quarto-figure-center" height="425"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>Les réseaux de neurones ont des <strong>entrées</strong> et des <strong>sorties</strong>.</p>
+<p>Le réseau se compose de <strong>trois couches</strong> : entrée, cachée et sortie. La <strong>couche d’entrée</strong> contient deux nœuds, la <strong>couche cachée</strong> comprend trois nœuds, et la <strong>couche de sortie</strong> a deux nœuds. Des couches cachées supplémentaires et des nœuds par couche peuvent être ajoutés, ce qui sera discuté plus tard.</p>
+<p>Il est souvent utile d’inclure des nœuds d’entrée explicites qui ne réalisent pas de calculs, appelés <strong>unités d’entrée</strong> ou <strong>neurones d’entrée</strong>. Ces nœuds agissent comme des espaces réservés pour introduire des caractéristiques d’entrée dans le réseau, passant les données directement à la couche suivante sans transformation. Dans le diagramme du réseau, ce sont les nœuds bleu clair à gauche. Typiquement, <strong>le nombre d’unités d’entrée correspond au nombre de caractéristiques</strong>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>L’information dans cette architecture circule de manière unidirectionnelle—de gauche à droite, allant de l’entrée à la sortie. Par conséquent, on l’appelle un <strong>réseau de neurones à propagation avant (FNN)</strong>.</p>
+</div></aside></section>
+<section id="résumé---fnn-1" class="slide level2">
+<h2>Résumé - FNN</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp-14-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/ann_mlp-14-00.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>Les réseaux de neurones peuvent avoir un nombre de nœuds d’entrée très important, souvent de l’ordre de plusieurs centaines ou milliers, selon la complexité des données. De plus, ils peuvent contenir de nombreuses couches cachées. Par exemple, ResNet, qui a remporté la tâche de classification d’images ILSVRC 2015, comporte 152 couches. Les auteurs de ResNet ont démontré des résultats pour des réseaux de 100 et même 1000 couches&nbsp;<span class="citation" data-cites="He:2016aa">(<a href="#/références" role="doc-biblioref" onclick="">He et al. 2016</a>)</span>. Cependant, le nombre de nœuds de sortie tend à être relativement petit. Dans les problèmes de régression, il y a généralement un seul nœud de sortie, tandis que dans les tâches de classification (qu’elles soient multiclasses ou multilabel), le nombre de nœuds de sortie correspond au nombre de classes.</p>
+<p>Considérons un scénario dans lequel on peut déterminer le nombre optimal de couches et de nœuds pour un réseau de neurones. Les preuves empiriques suggèrent que ces réseaux excellent dans l’exécution des tâches de classification et de régression. Malgré la complexité résultant d’un grand nombre de paramètres, qui complique l’interprétation des motifs appris, comprendre le passage avant, c’est-à-dire comment le réseau génère des prédictions à partir de nouvelles données d’entrée, est relativement simple.</p>
+<p>L’objectif d’aujourd’hui est de comprendre le processus d’ajustement des poids du réseau en fonction de sa sortie actuelle. Plus précisément, nous visons à comprendre comment utiliser le signal de sortie pour propager l’information en retour à travers le réseau.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Le nombre de <strong>couches</strong> et de <strong>nœuds</strong> peut varier en fonction des exigences spécifiques.</p>
+</div></aside></section>
+<section id="résumé---unités" class="slide level2">
+<h2>Résumé - unités</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_threhold_unit-03-en.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../assets/images/ann_threhold_unit-03-en.png" class="quarto-figure quarto-figure-center" height="450"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>Dans le schéma ci-dessus, il est important de préciser que les entrées et la sortie concernent spécifiquement cette unité individuelle, et non les entrées et la sortie globales de tout le réseau.</p>
+<p>Le nom <strong>activation</strong> provient du rôle de la fonction qui détermine si un neurone doit être “activé” ou “déclenché” en fonction de son entrée.</p>
+<p>Historiquement, le concept s’inspire des neurones biologiques, où un neurone s’active et transmet un signal à d’autres neurones si son entrée dépasse un certain seuil. Dans les réseaux de neurones artificiels, la fonction d’activation remplit un rôle similaire en introduisant de la non-linéarité dans le modèle. Cette non-linéarité est cruciale car elle permet au réseau d’apprendre des schémas et des représentations complexes dans les données.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Introduire un input fictif <span class="math inline">\(x^{(0)} = 1\)</span> est une <em>astuce</em> qui simplifie l’expression <span class="math inline">\(x^T\theta + b\)</span>.</p>
+</div></aside></section>
+<section id="fonctions-dactivation-courantes" class="slide level2">
+<h2>Fonctions d’activation courantes</h2>
+<div id="08689942" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Afficher le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Attribution: https://github.com/ageron/handson-ml3/blob/main/10_neural_nets_with_keras.ipynb</span></span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a aria-label="5"></a></span>
+<span id="cb1-6"><a aria-label="6"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit <span class="im">as</span> sigmoid</span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="kw">def</span> relu(z):</span>
+<span id="cb1-9"><a aria-label="9"></a>    <span class="cf">return</span> np.maximum(<span class="dv">0</span>, z)</span>
+<span id="cb1-10"><a aria-label="10"></a></span>
+<span id="cb1-11"><a aria-label="11"></a><span class="kw">def</span> derivative(f, z, eps<span class="op">=</span><span class="fl">0.000001</span>):</span>
+<span id="cb1-12"><a aria-label="12"></a>    <span class="cf">return</span> (f(z <span class="op">+</span> eps) <span class="op">-</span> f(z <span class="op">-</span> eps))<span class="op">/</span>(<span class="dv">2</span> <span class="op">*</span> eps)</span>
+<span id="cb1-13"><a aria-label="13"></a></span>
+<span id="cb1-14"><a aria-label="14"></a>max_z <span class="op">=</span> <span class="fl">4.5</span></span>
+<span id="cb1-15"><a aria-label="15"></a>z <span class="op">=</span> np.linspace(<span class="op">-</span>max_z, max_z, <span class="dv">200</span>)</span>
+<span id="cb1-16"><a aria-label="16"></a></span>
+<span id="cb1-17"><a aria-label="17"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">3.1</span>))</span>
+<span id="cb1-18"><a aria-label="18"></a></span>
+<span id="cb1-19"><a aria-label="19"></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb1-20"><a aria-label="20"></a>plt.plot(z, relu(z), <span class="st">"m-."</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"ReLU"</span>)</span>
+<span id="cb1-21"><a aria-label="21"></a>plt.plot(z, sigmoid(z), <span class="st">"g--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Sigmoïde"</span>)</span>
+<span id="cb1-22"><a aria-label="22"></a>plt.plot(z, np.tanh(z), <span class="st">"b-"</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">"Tanh"</span>)</span>
+<span id="cb1-23"><a aria-label="23"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-24"><a aria-label="24"></a>plt.title(<span class="st">"Fonctions d'activation"</span>)</span>
+<span id="cb1-25"><a aria-label="25"></a>plt.axis([<span class="op">-</span>max_z, max_z, <span class="op">-</span><span class="fl">1.65</span>, <span class="fl">2.4</span>])</span>
+<span id="cb1-26"><a aria-label="26"></a>plt.gca().set_yticks([<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb1-27"><a aria-label="27"></a>plt.legend(loc<span class="op">=</span><span class="st">"lower right"</span>, fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb1-28"><a aria-label="28"></a></span>
+<span id="cb1-29"><a aria-label="29"></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb1-30"><a aria-label="30"></a>plt.plot(z, derivative(sigmoid, z), <span class="st">"g--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Sigmoïde"</span>)</span>
+<span id="cb1-31"><a aria-label="31"></a>plt.plot(z, derivative(np.tanh, z), <span class="st">"b-"</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">"Tanh"</span>)</span>
+<span id="cb1-32"><a aria-label="32"></a>plt.plot([<span class="op">-</span>max_z, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>], <span class="st">"m-."</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-33"><a aria-label="33"></a>plt.plot([<span class="dv">0</span>, max_z], [<span class="dv">1</span>, <span class="dv">1</span>], <span class="st">"m-."</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-34"><a aria-label="34"></a>plt.plot([<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">"m-."</span>, linewidth<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb1-35"><a aria-label="35"></a>plt.plot(<span class="dv">0</span>, <span class="dv">1</span>, <span class="st">"mo"</span>, markersize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb1-36"><a aria-label="36"></a>plt.plot(<span class="dv">0</span>, <span class="dv">1</span>, <span class="st">"mx"</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-37"><a aria-label="37"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-38"><a aria-label="38"></a>plt.title(<span class="st">"Dérivées"</span>)</span>
+<span id="cb1-39"><a aria-label="39"></a>plt.axis([<span class="op">-</span>max_z, max_z, <span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>])</span>
+<span id="cb1-40"><a aria-label="40"></a></span>
+<span id="cb1-41"><a aria-label="41"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="867" height="292"></a></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside class="notes">
+<p>Considérez les observations suivantes :</p>
+<ul>
+<li>La fonction sigmoïde produit des sorties dans l’intervalle ouvert <span class="math inline">\((0, 1)\)</span>.</li>
+<li>La fonction tangente hyperbolique (<span class="math inline">\(\tanh\)</span>) a une image couvrant l’intervalle ouvert <span class="math inline">\((-1, 1)\)</span>.</li>
+<li>La fonction unitaire linéaire rectifiée (ReLU) produit des valeurs dans l’intervalle <span class="math inline">\([0, \infty)\)</span>.</li>
+</ul>
+<p>De plus, notez :</p>
+<ul>
+<li>La valeur maximale de la dérivée de la fonction sigmoïde est 0.25.</li>
+<li>La valeur maximale de la dérivée de la fonction <span class="math inline">\(\tanh\)</span> est 1.</li>
+<li>La dérivée de la fonction ReLU est 0 pour les entrées négatives et 1 pour les entrées positives.</li>
+</ul>
+<p>En outre :</p>
+<ul>
+<li>Un nœud utilisant ReLU comme fonction d’activation génère des sorties dans la plage <span class="math inline">\([0, \infty)\)</span>. Cependant, sa dérivée, utilisée dans la descente de gradient lors de la rétropropagation, est constante, prenant les valeurs de 0 ou 1.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><span class="citation" data-cites="Geron:2022aa">Géron (<a href="#/références" role="doc-biblioref" onclick="">2022</a>)</span> – <a href="https://github.com/ageron/handson-ml3/blob/main/10_neural_nets_with_keras.ipynb">10_neural_nets_with_keras.ipynb</a></p>
+</div></aside></section>
+<section id="approximation-universelle" class="slide level2">
+<h2>Approximation Universelle</h2>
+<p>Le <strong>théorème d’approximation universelle</strong> affirme qu’un réseau de neurones feed-forward avec une seule couche cachée contenant un nombre fini de neurones peut <strong>approximer n’importe quelle fonction continue</strong> sur un sous-ensemble compact de <span class="math inline">\(\mathbb{R}^n\)</span>, moyennant des poids et des fonctions d’activation appropriés.</p>
+
+<aside class="notes">
+<p>Le Théorème d’Approximation Universelle (UAT) est une garantie théorique puissante : en principe, un réseau à une seule couche cachée suffisamment large peut approximer n’importe quelle fonction continue. Mais ce n’est pas une prescription pratique. Dans les problèmes réels, une architecture profonde atteint souvent la même précision d’approximation avec beaucoup moins de paramètres et de manière plus formable et généralisable.</p>
+<ul>
+<li>Sous des hypothèses relativement légères (par exemple, activation non polynomiale, continuité, domaine d’entrée compact), un réseau de neurones feed-forward avec une couche cachée et un nombre suffisamment grand de neurones (c’est-à-dire “assez large”) peut approximer n’importe quelle fonction continue aussi précisément que souhaité (avec une erreur arbitrairement petite) sur un domaine compact.</li>
+<li>Le théorème est typiquement un résultat d’<em>existence</em>. Il garantit qu’un tel réseau existe, mais ne montre pas comment trouver les bons poids (c’est-à-dire la procédure d’entraînement) ni combien de neurones sont précisément nécessaires.</li>
+<li>Le théorème ne garantit pas non plus quoi que ce soit concernant la généralisation aux données non vues (c’est-à-dire le surapprentissage) ou l’efficacité computationnelle de l’entraînement.</li>
+<li>L’UAT dit “il existe un réseau assez large”, mais cela peut nécessiter un nombre extrêmement grand de neurones. Dans de nombreux contextes pratiques, cela devient infaisable (trop de paramètres, trop lent, risque de surapprentissage, etc.).</li>
+<li>Certaines fonctions sont “difficiles” à approximer par des réseaux peu profonds (c’est-à-dire à une seule couche cachée) à moins d’utiliser un nombre exponentiellement élevé de neurones. En revanche, les réseaux plus profonds peuvent approximativement la même fonction avec beaucoup moins de paramètres.</li>
+<li>L’UAT suppose que vous pouvez choisir les “bons” poids. Mais dans l’entraînement réel, l’optimisation (par exemple via la descente de gradient) peut être bloquée dans de mauvais minima locaux, plateaux, points de selle, ou échouer à converger vers la solution d’approximation.</li>
+<li>Il ne donne aucune garantie sur le nombre d’échantillons d’entraînement nécessaires pour réaliser une bonne approximation, ni sur la généralisation à de nouvelles données.</li>
+<li>Même si un réseau peut approximer exactement une fonction cible (sur les données d’entraînement), il peut mal généraliser si le modèle est sur-paramétré ou si la régularisation est insuffisante.</li>
+<li>L’UAT est silencieux sur la robustesse au bruit, la stabilité, ou l’extrapolation en dehors du domaine d’entraînement.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><span class="citation" data-cites="Cybenko:1989aa">Cybenko (<a href="#/références" role="doc-biblioref" onclick="">1989</a>)</span>; <span class="citation" data-cites="Hornik:1989aa">Hornik et al. (<a href="#/références" role="doc-biblioref" onclick="">1989</a>)</span></p>
+</div></aside></section></section>
+<section>
+<section id="mlp-naïf" class="title-slide slide level1 center">
+<h1>MLP Naïf</h1>
+
+</section>
+<section id="données" class="slide level2">
+<h2>Données</h2>
+<div id="969af982" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Afficher le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Générer et tracer le jeu de données "cercles"</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a aria-label="3"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_circles</span>
+<span id="cb2-4"><a aria-label="4"></a></span>
+<span id="cb2-5"><a aria-label="5"></a><span class="co"># Générer des données synthétiques</span></span>
+<span id="cb2-6"><a aria-label="6"></a>X, y <span class="op">=</span> make_circles(n_samples<span class="op">=</span><span class="dv">1200</span>, factor<span class="op">=</span><span class="fl">0.35</span>, noise<span class="op">=</span><span class="fl">0.06</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb2-7"><a aria-label="7"></a></span>
+<span id="cb2-8"><a aria-label="8"></a><span class="co"># Séparer les coordonnées pour le tracé</span></span>
+<span id="cb2-9"><a aria-label="9"></a>x1, x2 <span class="op">=</span> X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>]</span>
+<span id="cb2-10"><a aria-label="10"></a></span>
+<span id="cb2-11"><a aria-label="11"></a><span class="co"># Tracer les deux classes</span></span>
+<span id="cb2-12"><a aria-label="12"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb2-13"><a aria-label="13"></a>plt.scatter(x1[y<span class="op">==</span><span class="dv">0</span>], x2[y<span class="op">==</span><span class="dv">0</span>], color<span class="op">=</span><span class="st">"C0"</span>, label<span class="op">=</span><span class="st">"classe 0 (anneau extérieur)"</span>)</span>
+<span id="cb2-14"><a aria-label="14"></a>plt.scatter(x1[y<span class="op">==</span><span class="dv">1</span>], x2[y<span class="op">==</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">"C1"</span>, label<span class="op">=</span><span class="st">"classe 1 (cercle intérieur)"</span>)</span>
+<span id="cb2-15"><a aria-label="15"></a>plt.xlabel(<span class="st">"x₁"</span>)</span>
+<span id="cb2-16"><a aria-label="16"></a>plt.ylabel(<span class="st">"x₂"</span>)</span>
+<span id="cb2-17"><a aria-label="17"></a>plt.title(<span class="st">"Jeu de données généré avec make_circles"</span>)</span>
+<span id="cb2-18"><a aria-label="18"></a>plt.axis(<span class="st">"equal"</span>) <span class="co"># assure que les cercles ont l'air ronds</span></span>
+<span id="cb2-19"><a aria-label="19"></a>plt.legend()</span>
+<span id="cb2-20"><a aria-label="20"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="452" height="451"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Des concepts tels que les dérivées partielles, la descente de gradient et la rétropropagation peuvent sembler intimidants au départ. Pour atténuer cette complexité, nous proposons une approche intermédiaire en construisant un réseau de neurones simple mais pleinement opérationnel.</p>
+<p>Il est important de noter que l’algorithme d’apprentissage proposé n’est pas destiné à remplacer la méthode standard de rétropropagation utilisée en pratique.</p>
+<p>Nous construisons un jeu de données qui comprend deux classes distinctes : un anneau extérieur (classe 1) et un cercle intérieur (classe 0). Ces classes sont délibérément conçues pour être non linéairement séparables dans l’espace des caractéristiques <span class="math inline">\((x_1, x_2)\)</span>, présentant un scénario simple mais difficile pour les tâches de classification.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="architecture" class="slide level2">
+<h2>Architecture</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Notre réseau de neurones, un perceptron multicouche, est conçu avec deux nœuds d’entrée correspondant aux deux caractéristiques présentes dans notre ensemble de données. À travers nos expérimentations utilisant TensorFlow Playground et Keras, comme détaillé dans <a href="../11/CircularSeparability">CircularSeparability</a>, nous avons déterminé qu’une configuration de deux couches cachées contenant chacune quatre neurones est efficace pour la classification des échantillons.</p>
+<p>Le réseau produit une seule sortie via la fonction d’activation sigmoïde.</p>
+<p>Dans la visualisation, les arêtes noires entre les unités représentent les poids du modèle. De plus, nous avons inclus trois nœuds qui produisent une valeur constante de 1 uniquement à des fins de visualisation ; ces nœuds n’ont pas d’équivalent dans le modèle réel. Les arêtes grises connectant ces nœuds à d’autres unités représentent les termes de biais.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="utilitaires" class="slide level2">
+<h2>Utilitaires</h2>
+<div id="8666f072" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="kw">def</span> sigmoid(z):</span>
+<span id="cb3-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span>
+<span id="cb3-3"><a aria-label="3"></a></span>
+<span id="cb3-4"><a aria-label="4"></a><span class="kw">def</span> bce_loss(y_true, y_prob, eps<span class="op">=</span><span class="fl">1e-9</span>):</span>
+<span id="cb3-5"><a aria-label="5"></a></span>
+<span id="cb3-6"><a aria-label="6"></a>    <span class="co">"""Perte d'entropie croisée binaire (moyenne sur les données)."""</span></span>
+<span id="cb3-7"><a aria-label="7"></a></span>
+<span id="cb3-8"><a aria-label="8"></a>    y_prob <span class="op">=</span> np.clip(y_prob, eps, <span class="dv">1</span> <span class="op">-</span> eps)</span>
+<span id="cb3-9"><a aria-label="9"></a></span>
+<span id="cb3-10"><a aria-label="10"></a>    <span class="cf">return</span> <span class="op">-</span>np.mean(y_true <span class="op">*</span> np.log(y_prob) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> y_true) <span class="op">*</span> np.log(<span class="dv">1</span> <span class="op">-</span> y_prob))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Nous définissons deux fonctions utilitaires, <code>sigmoid</code> et <code>bce_loss</code>. La perte d’entropie croisée binaire a la même définition que celle de notre <a href="../06/slides">modèle de régression logistique</a>. Vous souvenez-vous d’un autre nom pour la perte d’entropie croisée binaire ?</p>
+<p>Dans <code>bce_loss</code>, les probabilités sont contraintes dans l’intervalle <span class="math inline">\([\epsilon, 1-\epsilon]\)</span>. Ce clipping permet d’éviter les expressions logarithmiques <span class="math inline">\(\log(0)\)</span> et <span class="math inline">\(\log(1-1) = \log(0)\)</span>, empêchant ainsi des valeurs indéfinies ou infinies lors du calcul.</p>
+<p>Les deux fonctions sont conçues pour prendre en entrée des tableaux NumPy (<code>ndarray</code>). Notamment, la fonction <code>bce_loss</code> calcule la perte pour l’ensemble du jeu de données sans nécessiter une itération explicite sur les points de données individuels.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="naïvemlp" class="slide level2">
+<h2>NaïveMLP</h2>
+<p>L’implémentation complète est présentée ci-dessous et sera examinée dans les écrans suivants.</p>
+<div id="135e0777" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Afficher le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="kw">class</span> NaiveMLP:</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a>    <span class="co">"""</span></span>
+<span id="cb4-4"><a aria-label="4"></a><span class="co">    Un perceptron multicouche minimal (MLP) utilisant un algorithme d'entraînement</span></span>
+<span id="cb4-5"><a aria-label="5"></a><span class="co">    par force brute qui ne nécessite pas de calculs de dérivées.</span></span>
+<span id="cb4-6"><a aria-label="6"></a></span>
+<span id="cb4-7"><a aria-label="7"></a><span class="co">    Veuillez noter que l'algorithme d'entraînement suggéré est destiné uniquement</span></span>
+<span id="cb4-8"><a aria-label="8"></a><span class="co">    à des fins didactiques et ne doit pas être confondu avec un véritable algorithme d'entraînement.</span></span>
+<span id="cb4-9"><a aria-label="9"></a><span class="co">    """</span></span>
+<span id="cb4-10"><a aria-label="10"></a></span>
+<span id="cb4-11"><a aria-label="11"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, layer_sizes, step<span class="op">=</span><span class="fl">0.1</span>, seed<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb4-12"><a aria-label="12"></a>        </span>
+<span id="cb4-13"><a aria-label="13"></a>        <span class="va">self</span>.sizes <span class="op">=</span> <span class="bu">list</span>(layer_sizes)</span>
+<span id="cb4-14"><a aria-label="14"></a>        <span class="va">self</span>.step <span class="op">=</span> <span class="bu">float</span>(step)</span>
+<span id="cb4-15"><a aria-label="15"></a>        rng <span class="op">=</span> np.random.default_rng(seed)</span>
+<span id="cb4-16"><a aria-label="16"></a></span>
+<span id="cb4-17"><a aria-label="17"></a>        <span class="co"># Initialiser les poids et les biais</span></span>
+<span id="cb4-18"><a aria-label="18"></a></span>
+<span id="cb4-19"><a aria-label="19"></a>        <span class="va">self</span>.W <span class="op">=</span> [rng.standard_normal(size<span class="op">=</span>(in_d, out_d)) <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb4-20"><a aria-label="20"></a>                  <span class="cf">for</span> in_d, out_d <span class="kw">in</span> <span class="bu">zip</span>(layer_sizes[:<span class="op">-</span><span class="dv">1</span>], layer_sizes[<span class="dv">1</span>:])]</span>
+<span id="cb4-21"><a aria-label="21"></a></span>
+<span id="cb4-22"><a aria-label="22"></a>        <span class="va">self</span>.b <span class="op">=</span> [np.zeros(out_d) <span class="cf">for</span> out_d <span class="kw">in</span> layer_sizes[<span class="dv">1</span>:]]</span>
+<span id="cb4-23"><a aria-label="23"></a></span>
+<span id="cb4-24"><a aria-label="24"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X):</span>
+<span id="cb4-25"><a aria-label="25"></a></span>
+<span id="cb4-26"><a aria-label="26"></a>        <span class="co">"""</span></span>
+<span id="cb4-27"><a aria-label="27"></a><span class="co">        Passage avant simple : ne calcule que les activations de sortie.</span></span>
+<span id="cb4-28"><a aria-label="28"></a></span>
+<span id="cb4-29"><a aria-label="29"></a><span class="co">        X: forme (N, input_dim)</span></span>
+<span id="cb4-30"><a aria-label="30"></a></span>
+<span id="cb4-31"><a aria-label="31"></a><span class="co">        Retourne : probabilités de sortie, forme (N,)</span></span>
+<span id="cb4-32"><a aria-label="32"></a><span class="co">        """</span></span>
+<span id="cb4-33"><a aria-label="33"></a></span>
+<span id="cb4-34"><a aria-label="34"></a>        a <span class="op">=</span> X</span>
+<span id="cb4-35"><a aria-label="35"></a>        <span class="cf">for</span> W, b <span class="kw">in</span> <span class="bu">zip</span>(<span class="va">self</span>.W, <span class="va">self</span>.b):</span>
+<span id="cb4-36"><a aria-label="36"></a>            a <span class="op">=</span> sigmoid(a <span class="op">@</span> W <span class="op">+</span> b)</span>
+<span id="cb4-37"><a aria-label="37"></a></span>
+<span id="cb4-38"><a aria-label="38"></a>        <span class="cf">return</span> a.ravel()</span>
+<span id="cb4-39"><a aria-label="39"></a></span>
+<span id="cb4-40"><a aria-label="40"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X, threshold<span class="op">=</span><span class="fl">0.5</span>):</span>
+<span id="cb4-41"><a aria-label="41"></a></span>
+<span id="cb4-42"><a aria-label="42"></a>        <span class="cf">return</span> (<span class="va">self</span>.forward(X) <span class="op">&gt;=</span> threshold).astype(<span class="bu">int</span>)</span>
+<span id="cb4-43"><a aria-label="43"></a></span>
+<span id="cb4-44"><a aria-label="44"></a>    <span class="kw">def</span> loss(<span class="va">self</span>, X, y):</span>
+<span id="cb4-45"><a aria-label="45"></a></span>
+<span id="cb4-46"><a aria-label="46"></a>        <span class="cf">return</span> bce_loss(y, <span class="va">self</span>.forward(X))</span>
+<span id="cb4-47"><a aria-label="47"></a></span>
+<span id="cb4-48"><a aria-label="48"></a>    <span class="kw">def</span> _all_param_tags(<span class="va">self</span>):</span>
+<span id="cb4-49"><a aria-label="49"></a></span>
+<span id="cb4-50"><a aria-label="50"></a>        <span class="co">"""</span></span>
+<span id="cb4-51"><a aria-label="51"></a><span class="co">        Génère des étiquettes référant à chaque paramètre scalaire :</span></span>
+<span id="cb4-52"><a aria-label="52"></a><span class="co">        ('W', layer_idx, i, j) ou ('b', layer_idx, j)</span></span>
+<span id="cb4-53"><a aria-label="53"></a><span class="co">        """</span></span>
+<span id="cb4-54"><a aria-label="54"></a></span>
+<span id="cb4-55"><a aria-label="55"></a>        <span class="cf">for</span> l, W <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.W):</span>
+<span id="cb4-56"><a aria-label="56"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(W.shape[<span class="dv">0</span>]):</span>
+<span id="cb4-57"><a aria-label="57"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(W.shape[<span class="dv">1</span>]):</span>
+<span id="cb4-58"><a aria-label="58"></a>                    <span class="cf">yield</span> (<span class="st">'W'</span>, l, i, j)</span>
+<span id="cb4-59"><a aria-label="59"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.b[l].shape[<span class="dv">0</span>]):</span>
+<span id="cb4-60"><a aria-label="60"></a>                <span class="cf">yield</span> (<span class="st">'b'</span>, l, j)</span>
+<span id="cb4-61"><a aria-label="61"></a></span>
+<span id="cb4-62"><a aria-label="62"></a>    <span class="kw">def</span> _get_param(<span class="va">self</span>, tag):</span>
+<span id="cb4-63"><a aria-label="63"></a>        kind <span class="op">=</span> tag[<span class="dv">0</span>]</span>
+<span id="cb4-64"><a aria-label="64"></a>        <span class="cf">if</span> kind <span class="op">==</span> <span class="st">'W'</span>:</span>
+<span id="cb4-65"><a aria-label="65"></a>            _, l, i, j <span class="op">=</span> tag</span>
+<span id="cb4-66"><a aria-label="66"></a>            <span class="cf">return</span> <span class="va">self</span>.W[l][i, j]</span>
+<span id="cb4-67"><a aria-label="67"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-68"><a aria-label="68"></a>            _, l, j <span class="op">=</span> tag</span>
+<span id="cb4-69"><a aria-label="69"></a>            <span class="cf">return</span> <span class="va">self</span>.b[l][j]</span>
+<span id="cb4-70"><a aria-label="70"></a></span>
+<span id="cb4-71"><a aria-label="71"></a>    <span class="kw">def</span> _set_param(<span class="va">self</span>, tag, val):</span>
+<span id="cb4-72"><a aria-label="72"></a>        kind <span class="op">=</span> tag[<span class="dv">0</span>]</span>
+<span id="cb4-73"><a aria-label="73"></a>        <span class="cf">if</span> kind <span class="op">==</span> <span class="st">'W'</span>:</span>
+<span id="cb4-74"><a aria-label="74"></a>            _, l, i, j <span class="op">=</span> tag</span>
+<span id="cb4-75"><a aria-label="75"></a>            <span class="va">self</span>.W[l][i, j] <span class="op">=</span> val</span>
+<span id="cb4-76"><a aria-label="76"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-77"><a aria-label="77"></a>            _, l, j <span class="op">=</span> tag</span>
+<span id="cb4-78"><a aria-label="78"></a>            <span class="va">self</span>.b[l][j] <span class="op">=</span> val</span>
+<span id="cb4-79"><a aria-label="79"></a></span>
+<span id="cb4-80"><a aria-label="80"></a>    <span class="kw">def</span> train(<span class="va">self</span>, X, y, epochs<span class="op">=</span><span class="dv">10</span>, verbose<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb4-81"><a aria-label="81"></a></span>
+<span id="cb4-82"><a aria-label="82"></a>        <span class="co">"""</span></span>
+<span id="cb4-83"><a aria-label="83"></a><span class="co">        Mise à jour simultanée :</span></span>
+<span id="cb4-84"><a aria-label="84"></a><span class="co">        - Pour chaque paramètre scalaire θ, essayez θ + δ pour δ dans {−step, 0, +step},</span></span>
+<span id="cb4-85"><a aria-label="85"></a><span class="co">          choisissez le δ qui donne la perte minimale.</span></span>
+<span id="cb4-86"><a aria-label="86"></a><span class="co">        - Collecter tous les δ choisis, puis appliquer toutes les mises à jour ensemble.</span></span>
+<span id="cb4-87"><a aria-label="87"></a><span class="co">        """</span></span>
+<span id="cb4-88"><a aria-label="88"></a></span>
+<span id="cb4-89"><a aria-label="89"></a>        <span class="cf">for</span> ep <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, epochs <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb4-90"><a aria-label="90"></a></span>
+<span id="cb4-91"><a aria-label="91"></a>            base_loss <span class="op">=</span> <span class="va">self</span>.loss(X, y)</span>
+<span id="cb4-92"><a aria-label="92"></a>            updates <span class="op">=</span> {}</span>
+<span id="cb4-93"><a aria-label="93"></a></span>
+<span id="cb4-94"><a aria-label="94"></a>            <span class="co"># Tester tous les paramètres</span></span>
+<span id="cb4-95"><a aria-label="95"></a>            <span class="cf">for</span> tag <span class="kw">in</span> <span class="va">self</span>._all_param_tags():</span>
+<span id="cb4-96"><a aria-label="96"></a></span>
+<span id="cb4-97"><a aria-label="97"></a>                theta <span class="op">=</span> <span class="va">self</span>._get_param(tag)</span>
+<span id="cb4-98"><a aria-label="98"></a>                best_delta <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb4-99"><a aria-label="99"></a>                best_loss <span class="op">=</span> base_loss</span>
+<span id="cb4-100"><a aria-label="100"></a></span>
+<span id="cb4-101"><a aria-label="101"></a>                <span class="cf">for</span> delta <span class="kw">in</span> (<span class="op">-</span><span class="va">self</span>.step, <span class="fl">0.0</span>, <span class="op">+</span><span class="va">self</span>.step):</span>
+<span id="cb4-102"><a aria-label="102"></a>                    <span class="va">self</span>._set_param(tag, theta <span class="op">+</span> delta)</span>
+<span id="cb4-103"><a aria-label="103"></a>                    trial_loss <span class="op">=</span> <span class="va">self</span>.loss(X, y)</span>
+<span id="cb4-104"><a aria-label="104"></a>                    <span class="cf">if</span> trial_loss <span class="op">&lt;</span> best_loss:</span>
+<span id="cb4-105"><a aria-label="105"></a>                        best_loss <span class="op">=</span> trial_loss</span>
+<span id="cb4-106"><a aria-label="106"></a>                        best_delta <span class="op">=</span> delta</span>
+<span id="cb4-107"><a aria-label="107"></a></span>
+<span id="cb4-108"><a aria-label="108"></a>                <span class="co"># restaurer l'original</span></span>
+<span id="cb4-109"><a aria-label="109"></a>                <span class="va">self</span>._set_param(tag, theta)</span>
+<span id="cb4-110"><a aria-label="110"></a>                updates[tag] <span class="op">=</span> best_delta</span>
+<span id="cb4-111"><a aria-label="111"></a></span>
+<span id="cb4-112"><a aria-label="112"></a>            <span class="co"># Appliquer tous les deltas ensemble</span></span>
+<span id="cb4-113"><a aria-label="113"></a>            <span class="cf">for</span> tag, d <span class="kw">in</span> updates.items():</span>
+<span id="cb4-114"><a aria-label="114"></a>                <span class="cf">if</span> d <span class="op">!=</span> <span class="fl">0.0</span>:</span>
+<span id="cb4-115"><a aria-label="115"></a>                    <span class="va">self</span>._set_param(tag, <span class="va">self</span>._get_param(tag) <span class="op">+</span> d)</span>
+<span id="cb4-116"><a aria-label="116"></a></span>
+<span id="cb4-117"><a aria-label="117"></a>            new_loss <span class="op">=</span> <span class="va">self</span>.loss(X, y)</span>
+<span id="cb4-118"><a aria-label="118"></a></span>
+<span id="cb4-119"><a aria-label="119"></a>            <span class="cf">if</span> verbose:</span>
+<span id="cb4-120"><a aria-label="120"></a>                <span class="bu">print</span>(<span class="ss">f"Époque </span><span class="sc">{</span>ep<span class="sc">:3d}</span><span class="ss"> : perte </span><span class="sc">{</span>base_loss<span class="sc">:.5f}</span><span class="ss"> → </span><span class="sc">{</span>new_loss<span class="sc">:.5f}</span><span class="ss">"</span>)</span>
+<span id="cb4-121"><a aria-label="121"></a></span>
+<span id="cb4-122"><a aria-label="122"></a>            <span class="co"># arrêt précoce optionnel</span></span>
+<span id="cb4-123"><a aria-label="123"></a>            <span class="cf">if</span> <span class="bu">abs</span>(new_loss <span class="op">-</span> base_loss) <span class="op">&lt;</span> <span class="fl">1e-12</span>:</span>
+<span id="cb4-124"><a aria-label="124"></a>                <span class="cf">break</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+
+<aside><div>
+<p>Pour assurer la fonctionnalité du Jupyter Notebook résultant, toute la classe a été incluse ici.</p>
+</div></aside></section>
+<section id="définition-de-la-classe" class="slide level2">
+<h2>Définition de la Classe</h2>
+<div id="53ba6e15" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">class</span> NaiveMLP:</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>    <span class="co">"""</span></span>
+<span id="cb5-4"><a aria-label="4"></a><span class="co">    Un perceptron multicouche (MLP) minimal utilisant un algorithme </span></span>
+<span id="cb5-5"><a aria-label="5"></a><span class="co">    d'entraînement par force brute qui ne nécessite pas de calcul </span></span>
+<span id="cb5-6"><a aria-label="6"></a><span class="co">    des dérivées.</span></span>
+<span id="cb5-7"><a aria-label="7"></a></span>
+<span id="cb5-8"><a aria-label="8"></a><span class="co">    Veuillez noter que l'algorithme d'entraînement proposé est destiné </span></span>
+<span id="cb5-9"><a aria-label="9"></a><span class="co">    uniquement à des fins didactiques et ne doit pas être confondu avec </span></span>
+<span id="cb5-10"><a aria-label="10"></a><span class="co">    un véritable algorithme d'entraînement.</span></span>
+<span id="cb5-11"><a aria-label="11"></a><span class="co">    """</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="constructeur" class="slide level2">
+<h2>Constructeur</h2>
+<div id="17bb6cf3" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, layer_sizes, step<span class="op">=</span><span class="fl">0.1</span>, seed<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb6-2"><a aria-label="2"></a>        </span>
+<span id="cb6-3"><a aria-label="3"></a>        <span class="va">self</span>.sizes <span class="op">=</span> <span class="bu">list</span>(layer_sizes)</span>
+<span id="cb6-4"><a aria-label="4"></a>        <span class="va">self</span>.step <span class="op">=</span> <span class="bu">float</span>(step)</span>
+<span id="cb6-5"><a aria-label="5"></a>        rng <span class="op">=</span> np.random.default_rng(seed)</span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a>        <span class="co"># Initialiser les poids et les biais</span></span>
+<span id="cb6-8"><a aria-label="8"></a></span>
+<span id="cb6-9"><a aria-label="9"></a>        <span class="va">self</span>.W <span class="op">=</span> [rng.standard_normal(size<span class="op">=</span>(in_d, out_d)) <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb6-10"><a aria-label="10"></a>                  <span class="cf">for</span> in_d, out_d <span class="kw">in</span> <span class="bu">zip</span>(layer_sizes[:<span class="op">-</span><span class="dv">1</span>], layer_sizes[<span class="dv">1</span>:])]</span>
+<span id="cb6-11"><a aria-label="11"></a></span>
+<span id="cb6-12"><a aria-label="12"></a>        <span class="va">self</span>.b <span class="op">=</span> [np.zeros(out_d) <span class="cf">for</span> out_d <span class="kw">in</span> layer_sizes[<span class="dv">1</span>:]]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside><div>
+<p>Mémoriser le nombre de couches, le nombre d’unités par couche et la taille du pas de l’algorithme d’apprentissage. Initialiser les poids (<span class="math inline">\(W\)</span>) et les biais (<span class="math inline">\(b\)</span>).</p>
+</div></aside></section>
+<section id="python" class="slide level2">
+<h2>Python</h2>
+<div id="2b39e367" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>seed <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a>rng <span class="op">=</span> np.random.default_rng(seed)</span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a>layer_sizes <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>]</span>
+<span id="cb7-6"><a aria-label="6"></a></span>
+<span id="cb7-7"><a aria-label="7"></a>[(in_d, out_d) <span class="cf">for</span> in_d, out_d <span class="kw">in</span> <span class="bu">zip</span>(layer_sizes[:<span class="op">-</span><span class="dv">1</span>], layer_sizes[<span class="dv">1</span>:])]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>[(2, 4), (4, 4), (4, 1)]</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="817a018b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>[rng.standard_normal(size<span class="op">=</span>(in_d, out_d)) <span class="op">*</span> <span class="fl">0.5</span> <span class="cf">for</span> in_d, out_d <span class="kw">in</span> <span class="bu">zip</span>(layer_sizes[:<span class="op">-</span><span class="dv">1</span>], layer_sizes[<span class="dv">1</span>:])]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>[array([[ 0.06286511, -0.06605243,  0.32021133,  0.05245006],
+        [-0.26783469,  0.18079753,  0.65200002,  0.47354048]]),
+ array([[-0.35186762, -0.63271074, -0.31163723,  0.02066299],
+        [-1.16251539, -0.10939583, -0.62295547, -0.36613368],
+        [-0.27212949, -0.15815008,  0.20581527,  0.52125668],
+        [-0.06426733,  0.68323174, -0.33259734,  0.17575504]]),
+ array([[ 0.45173509],
+        [ 0.04700615],
+        [-0.37174962],
+        [-0.46086269]])]</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Combien de poids a ce réseau?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="python-1" class="slide level2">
+<h2>Python</h2>
+<div id="685c11ee" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>[out_d <span class="cf">for</span> out_d <span class="kw">in</span> layer_sizes[<span class="dv">1</span>:]]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>[4, 4, 1]</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="da2fb5c9" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>[np.zeros(out_d) <span class="cf">for</span> out_d <span class="kw">in</span> layer_sizes[<span class="dv">1</span>:]]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>[array([0., 0., 0., 0.]), array([0., 0., 0., 0.]), array([0.])]</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Quel est le nombre de termes de biais dans ce réseau ?</p>
+<p>Le réseau se compose d’un total de 37 paramètres, qui incluent 28 poids et 9 termes de biais.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="passage-avant" class="slide level2">
+<h2>Passage Avant</h2>
+<div id="d7245939" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X):</span>
+<span id="cb15-2"><a aria-label="2"></a></span>
+<span id="cb15-3"><a aria-label="3"></a>        <span class="co">"""</span></span>
+<span id="cb15-4"><a aria-label="4"></a><span class="co">        Passage avant simple : calculer les activations de sortie.</span></span>
+<span id="cb15-5"><a aria-label="5"></a><span class="co">        X : forme (N, input_dim)</span></span>
+<span id="cb15-6"><a aria-label="6"></a><span class="co">        Retourne : probabilités de sortie, forme (N,)</span></span>
+<span id="cb15-7"><a aria-label="7"></a><span class="co">        """</span></span>
+<span id="cb15-8"><a aria-label="8"></a></span>
+<span id="cb15-9"><a aria-label="9"></a>        a <span class="op">=</span> X</span>
+<span id="cb15-10"><a aria-label="10"></a>        <span class="cf">for</span> W, b <span class="kw">in</span> <span class="bu">zip</span>(<span class="va">self</span>.W, <span class="va">self</span>.b):</span>
+<span id="cb15-11"><a aria-label="11"></a>            a <span class="op">=</span> sigmoid(a <span class="op">@</span> W <span class="op">+</span> b)</span>
+<span id="cb15-12"><a aria-label="12"></a></span>
+<span id="cb15-13"><a aria-label="13"></a>        <span class="cf">return</span> a.ravel()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>La méthode procède couche par couche, de manière séquentielle. Dans notre exemple en cours, cela implique trois couches de traitement distinctes.</p>
+<p><strong>Que sont <code>W</code> et <code>b</code> ?</strong></p>
+<p><code>W</code> et <code>b</code> sont des listes, chacune contenant trois éléments. La liste <code>W</code> comprend des matrices de poids de dimensions <span class="math inline">\(2 \times 4\)</span>, <span class="math inline">\(4 \times 4\)</span>, et <span class="math inline">\(4 \times 1\)</span>, tandis que <code>b</code> se compose de tableaux de biais de tailles 4, 4, et 1, respectivement.</p>
+<p><strong>Quel est le but de <code>zip(self.W, self.b)</code> ?</strong></p>
+<p>Cette fonction associe chaque matrice de poids à son tableau de biais correspondant, ce qui donne trois tuples, un pour chacune des deuxième, troisième et quatrième couches.</p>
+<p><strong>Que représente <code>X</code> ?</strong></p>
+<p>L’utilisation de <code>NumPy</code> rend le code compact, mais il est important de reconnaître les détails sous-jacents. Le paramètre <code>X</code> encapsule l’ensemble du jeu de données, comprenant 200 échantillons avec 2 caractéristiques chacun. À chaque itération de la boucle, les activations pour toutes les unités de la couche actuelle sont calculées pour tous les exemples.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Calcul des activations de sortie. Déterminer la probabilité de chaque instance dans le jeu de données <span class="math inline">\(X\)</span> d’appartenir à la classe 1.</p>
+</div></aside></section>
+<section id="faire-des-prédictions" class="slide level2">
+<h2>Faire des prédictions</h2>
+<div id="2d3e7c12" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X, threshold<span class="op">=</span><span class="fl">0.5</span>):</span>
+<span id="cb16-2"><a aria-label="2"></a></span>
+<span id="cb16-3"><a aria-label="3"></a>        <span class="cf">return</span> (<span class="va">self</span>.forward(X) <span class="op">&gt;=</span> threshold).astype(<span class="bu">int</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside class="notes">
+<p>La méthode <code>forward</code> produit un tableau de probabilités, chacune variant de 0 à 1, indiquant la probabilité qu’un exemple particulier, <span class="math inline">\(x_i\)</span>, appartienne à la classe 1. En évaluant l’expression <code>self.forward(X) &gt;= threshold</code>, nous obtenons un tableau de valeurs booléennes : <code>True</code> si la probabilité dépasse le <code>seuil</code> spécifié, et <code>False</code> sinon. Ces valeurs booléennes sont ensuite converties en valeurs binaires de zéros et de uns.</p>
+<p>Il est important de noter que le fait d’ajuster la limite de décision, <code>threshold</code>, permet de manipuler le compromis précision-rappel, offrant ainsi de la flexibilité dans les performances du modèle.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>En effet, prédictions, au pluriel.</p>
+</div></aside></section>
+<section id="calcul-du-coût" class="slide level2">
+<h2>Calcul du coût</h2>
+<div id="a8b34c3e" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>    <span class="kw">def</span> loss(<span class="va">self</span>, X, y):</span>
+<span id="cb17-2"><a aria-label="2"></a></span>
+<span id="cb17-3"><a aria-label="3"></a>        <span class="cf">return</span> bce_loss(y, <span class="va">self</span>.forward(X))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>La méthode en question calcule la perte pour l’ensemble du jeu de données.</p>
+<p>Que se passerait-il si nous retournions <code>bce_loss(y, self.predict(X))</code> au lieu de <code>bce_loss(y, self.forward(X))</code>?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="discussion" class="slide level2">
+<h2>Discussion</h2>
+<p>À l’exception de l’algorithme d’entraînement, notre implémentation de réseau de neurones est maintenant complète.</p>
+<p>Pour ceux qui ne sont pas familiers avec l’algorithme de rétropropagation, comment proposez-vous d’apprendre les paramètres du modèle ?</p>
+<div class="fragment">
+<p>Changer les poids → calculer la perte → conserver si meilleur → répéter.</p>
+</div>
+</section>
+<section id="pseudocode" class="slide level2">
+<h2>Pseudocode</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource pseudocode number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a aria-label="1"></a>for each epoch:</span>
+<span id="cb18-2"><a aria-label="2"></a>    deltas = {}  # enregistrer le meilleur delta pour chaque paramètre</span>
+<span id="cb18-3"><a aria-label="3"></a>    for each parameter w in network:</span>
+<span id="cb18-4"><a aria-label="4"></a>        best_delta = 0</span>
+<span id="cb18-5"><a aria-label="5"></a>        best_loss = current_loss  # perte calculée avec les poids actuels</span>
+<span id="cb18-6"><a aria-label="6"></a>        for delta in [-0.01, 0, +0.01]:</span>
+<span id="cb18-7"><a aria-label="7"></a>            w_temp = w + delta</span>
+<span id="cb18-8"><a aria-label="8"></a>            loss_temp = compute_loss_with_replacement(w_temp, w, data)</span>
+<span id="cb18-9"><a aria-label="9"></a>            if loss_temp &lt; best_loss:</span>
+<span id="cb18-10"><a aria-label="10"></a>                best_loss = loss_temp</span>
+<span id="cb18-11"><a aria-label="11"></a>                best_delta = delta</span>
+<span id="cb18-12"><a aria-label="12"></a>        deltas[w] = best_delta</span>
+<span id="cb18-13"><a aria-label="13"></a></span>
+<span id="cb18-14"><a aria-label="14"></a>    # Appliquer toutes les mises à jour simultanément</span>
+<span id="cb18-15"><a aria-label="15"></a>    for each parameter w in network:</span>
+<span id="cb18-16"><a aria-label="16"></a>        w += deltas[w]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+
+<aside class="notes">
+<p>L’algorithme fonctionne sur plusieurs époques, au cours desquelles la précision prédictive pour l’ensemble d’entraînement est progressivement améliorée à chaque itération.</p>
+<p>Lors de chaque itération, l’algorithme évalue s’il faut diminuer, augmenter ou maintenir la valeur actuelle de chaque paramètre.</p>
+<p>Une fois l’ajustement optimal pour chaque paramètre déterminé, tous les changements sont mis en œuvre simultanément. Cette approche ressemble à la technique de descente de gradient discutée plus tôt dans le semestre et offre l’avantage d’une parallélisation simple.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Il est important de noter que cet algorithme est <strong>fondamentalement distinct de la rétropropagation</strong>, qui est largement utilisée en pratique. La raison principale de son introduction est sa simplicité, notamment l’<strong>absence de dérivées partielles</strong>.</p>
+</div></aside></section>
+<section id="python-2" class="slide level2">
+<h2>Python</h2>
+<div id="42ea83d5" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>    <span class="kw">def</span> _all_param_tags(<span class="va">self</span>):</span>
+<span id="cb19-2"><a aria-label="2"></a></span>
+<span id="cb19-3"><a aria-label="3"></a>        <span class="co">"""</span></span>
+<span id="cb19-4"><a aria-label="4"></a><span class="co">        Génère des tags référenciant chaque paramètre scalaire :</span></span>
+<span id="cb19-5"><a aria-label="5"></a><span class="co">        ('W', layer_idx, i, j) ou ('b', layer_idx, j)</span></span>
+<span id="cb19-6"><a aria-label="6"></a><span class="co">        """</span></span>
+<span id="cb19-7"><a aria-label="7"></a></span>
+<span id="cb19-8"><a aria-label="8"></a>        <span class="cf">for</span> l, W <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.W):</span>
+<span id="cb19-9"><a aria-label="9"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(W.shape[<span class="dv">0</span>]):</span>
+<span id="cb19-10"><a aria-label="10"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(W.shape[<span class="dv">1</span>]):</span>
+<span id="cb19-11"><a aria-label="11"></a>                    <span class="cf">yield</span> (<span class="st">'W'</span>, l, i, j)</span>
+<span id="cb19-12"><a aria-label="12"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.b[l].shape[<span class="dv">0</span>]):</span>
+<span id="cb19-13"><a aria-label="13"></a>                <span class="cf">yield</span> (<span class="st">'b'</span>, l, j)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Le code ci-dessus implémente un générateur, qui est un concept Python qui semble simple, mais qui est très puissant.</p>
+<p>Un <strong>générateur</strong> est un type de fonction qui peut <em>mettre en pause</em> son exécution et <em>reprendre plus tard</em>. Il produit une séquence de valeurs, une à la fois, sans les stocker toutes en mémoire. Vous en créez un en utilisant le mot-clé <code>yield</code>.</p>
+<p>Voici un exemple.</p>
+<div id="e2f20299" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="kw">def</span> countdown(n):</span>
+<span id="cb20-2"><a aria-label="2"></a>    <span class="cf">while</span> n <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb20-3"><a aria-label="3"></a>        <span class="cf">yield</span> n      <span class="co"># "yield" une valeur et met en pause</span></span>
+<span id="cb20-4"><a aria-label="4"></a>        n <span class="op">-=</span> <span class="dv">1</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Vous pouvez l’appeler trois fois, puis il lèvera <code>StopIteration</code>.</p>
+<div id="df7fe85d" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>c <span class="op">=</span> countdown(<span class="dv">3</span>)</span>
+<span id="cb21-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="bu">next</span>(c))  <span class="co"># 3</span></span>
+<span id="cb21-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="bu">next</span>(c))  <span class="co"># 2</span></span>
+<span id="cb21-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="bu">next</span>(c))  <span class="co"># 1</span></span>
+<span id="cb21-5"><a aria-label="5"></a><span class="cf">try</span>:</span>
+<span id="cb21-6"><a aria-label="6"></a>  <span class="bu">print</span>(<span class="bu">next</span>(c))</span>
+<span id="cb21-7"><a aria-label="7"></a><span class="cf">except</span> <span class="pp">StopIteration</span>:</span>
+<span id="cb21-8"><a aria-label="8"></a>    <span class="bu">print</span>(<span class="st">"Caught StopIteration."</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3
+2
+1
+Caught StopIteration.</code></pre>
+</div>
+</div>
+<p>Les générateurs sont souvent utilisés dans des boucles <code>for</code>.</p>
+<div id="296862f1" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="cf">for</span> value <span class="kw">in</span> countdown(<span class="dv">3</span>):</span>
+<span id="cb23-2"><a aria-label="2"></a>    <span class="bu">print</span>(value)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3
+2
+1</code></pre>
+</div>
+</div>
+<p>Les fonctions <code>enumerate</code> et <code>zip</code> renvoient toutes deux des itérateurs, qui fonctionnent de manière similaire aux générateurs en facilitant l’évaluation paresseuse. Cette approche génère des éléments dynamiquement pendant l’itération, évitant ainsi le besoin de stocker tous les éléments en mémoire simultanément.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="python-3" class="slide level2 scrollable">
+<h2>Python</h2>
+<div id="58bdab2a" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>Afficher le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="kw">class</span> Demo:</span>
+<span id="cb25-2"><a aria-label="2"></a></span>
+<span id="cb25-3"><a aria-label="3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, layer_sizes):</span>
+<span id="cb25-4"><a aria-label="4"></a>        <span class="va">self</span>.sizes <span class="op">=</span> <span class="bu">list</span>(layer_sizes)</span>
+<span id="cb25-5"><a aria-label="5"></a>        rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb25-6"><a aria-label="6"></a>        <span class="va">self</span>.W <span class="op">=</span> [rng.standard_normal(size<span class="op">=</span>(in_d, out_d)) <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb25-7"><a aria-label="7"></a>                  <span class="cf">for</span> in_d, out_d <span class="kw">in</span> <span class="bu">zip</span>(layer_sizes[:<span class="op">-</span><span class="dv">1</span>], layer_sizes[<span class="dv">1</span>:])]</span>
+<span id="cb25-8"><a aria-label="8"></a>        <span class="va">self</span>.b <span class="op">=</span> [np.zeros(out_d) <span class="cf">for</span> out_d <span class="kw">in</span> layer_sizes[<span class="dv">1</span>:]]</span>
+<span id="cb25-9"><a aria-label="9"></a></span>
+<span id="cb25-10"><a aria-label="10"></a>    <span class="kw">def</span> _all_param_tags(<span class="va">self</span>):</span>
+<span id="cb25-11"><a aria-label="11"></a></span>
+<span id="cb25-12"><a aria-label="12"></a>        <span class="co">"""</span></span>
+<span id="cb25-13"><a aria-label="13"></a><span class="co">        Génère des étiquettes référenciant chaque paramètre scalaire :</span></span>
+<span id="cb25-14"><a aria-label="14"></a><span class="co">        ('W', layer_idx, i, j) ou ('b', layer_idx, j)</span></span>
+<span id="cb25-15"><a aria-label="15"></a><span class="co">        """</span></span>
+<span id="cb25-16"><a aria-label="16"></a></span>
+<span id="cb25-17"><a aria-label="17"></a>        <span class="cf">for</span> l, W <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.W):</span>
+<span id="cb25-18"><a aria-label="18"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(W.shape[<span class="dv">0</span>]):</span>
+<span id="cb25-19"><a aria-label="19"></a>                <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(W.shape[<span class="dv">1</span>]):</span>
+<span id="cb25-20"><a aria-label="20"></a>                    <span class="cf">yield</span> (<span class="st">'W'</span>, l, i, j)</span>
+<span id="cb25-21"><a aria-label="21"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.b[l].shape[<span class="dv">0</span>]):</span>
+<span id="cb25-22"><a aria-label="22"></a>                <span class="cf">yield</span> (<span class="st">'b'</span>, l, j)</span>
+<span id="cb25-23"><a aria-label="23"></a></span>
+<span id="cb25-24"><a aria-label="24"></a>    <span class="kw">def</span> show(<span class="va">self</span>):</span>
+<span id="cb25-25"><a aria-label="25"></a></span>
+<span id="cb25-26"><a aria-label="26"></a>      <span class="cf">for</span> tag <span class="kw">in</span> <span class="va">self</span>._all_param_tags():</span>
+<span id="cb25-27"><a aria-label="27"></a>        <span class="bu">print</span>(tag)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="b7c65af8" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a>d <span class="op">=</span> Demo([<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>])</span>
+<span id="cb26-2"><a aria-label="2"></a>d.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+</section>
+<section id="python-3-output" class="slide level2 scrollable output-location-slide"><h2>Python</h2><div class="cell output-location-slide" data-execution_count="20">
+<div class="cell-output cell-output-stdout">
+<pre><code>('W', 0, 0, 0)
+('W', 0, 0, 1)
+('W', 0, 0, 2)
+('W', 0, 0, 3)
+('W', 0, 1, 0)
+('W', 0, 1, 1)
+('W', 0, 1, 2)
+('W', 0, 1, 3)
+('b', 0, 0)
+('b', 0, 1)
+('b', 0, 2)
+('b', 0, 3)
+('W', 1, 0, 0)
+('W', 1, 0, 1)
+('W', 1, 0, 2)
+('W', 1, 0, 3)
+('W', 1, 1, 0)
+('W', 1, 1, 1)
+('W', 1, 1, 2)
+('W', 1, 1, 3)
+('W', 1, 2, 0)
+('W', 1, 2, 1)
+('W', 1, 2, 2)
+('W', 1, 2, 3)
+('W', 1, 3, 0)
+('W', 1, 3, 1)
+('W', 1, 3, 2)
+('W', 1, 3, 3)
+('b', 1, 0)
+('b', 1, 1)
+('b', 1, 2)
+('b', 1, 3)
+('W', 2, 0, 0)
+('W', 2, 1, 0)
+('W', 2, 2, 0)
+('W', 2, 3, 0)
+('b', 2, 0)</code></pre>
+</div>
+</div></section><section id="python-4" class="slide level2">
+<h2>Python</h2>
+<div id="5482846a" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>    <span class="kw">def</span> _get_param(<span class="va">self</span>, tag):</span>
+<span id="cb28-2"><a aria-label="2"></a>        kind <span class="op">=</span> tag[<span class="dv">0</span>]</span>
+<span id="cb28-3"><a aria-label="3"></a>        <span class="cf">if</span> kind <span class="op">==</span> <span class="st">'W'</span>:</span>
+<span id="cb28-4"><a aria-label="4"></a>            _, l, i, j <span class="op">=</span> tag</span>
+<span id="cb28-5"><a aria-label="5"></a>            <span class="cf">return</span> <span class="va">self</span>.W[l][i, j]</span>
+<span id="cb28-6"><a aria-label="6"></a>        <span class="cf">else</span>:</span>
+<span id="cb28-7"><a aria-label="7"></a>            _, l, j <span class="op">=</span> tag</span>
+<span id="cb28-8"><a aria-label="8"></a>            <span class="cf">return</span> <span class="va">self</span>.b[l][j]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside><div>
+<p>Étant donné un <code>tag</code>, soit <code>('W', l, i, j)</code> ou <code>('b', l, j)</code>, la méthode récupère le poids ou le biais correspondant aux indices fournis. <code>l</code> désigne la <strong>couche</strong>; <code>i</code> et <code>j</code> sont les indices de ligne et de colonne de <code>W[l]</code>, ou <code>j</code> est un indice dans <code>b[l]</code>.</p>
+</div></aside></section>
+<section id="python-5" class="slide level2">
+<h2>Python</h2>
+<div id="750f568b" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>    <span class="kw">def</span> _set_param(<span class="va">self</span>, tag, val):</span>
+<span id="cb29-2"><a aria-label="2"></a>        kind <span class="op">=</span> tag[<span class="dv">0</span>]</span>
+<span id="cb29-3"><a aria-label="3"></a>        <span class="cf">if</span> kind <span class="op">==</span> <span class="st">'W'</span>:</span>
+<span id="cb29-4"><a aria-label="4"></a>            _, l, i, j <span class="op">=</span> tag</span>
+<span id="cb29-5"><a aria-label="5"></a>            <span class="va">self</span>.W[l][i, j] <span class="op">=</span> val</span>
+<span id="cb29-6"><a aria-label="6"></a>        <span class="cf">else</span>:</span>
+<span id="cb29-7"><a aria-label="7"></a>            _, l, j <span class="op">=</span> tag</span>
+<span id="cb29-8"><a aria-label="8"></a>            <span class="va">self</span>.b[l][j] <span class="op">=</span> val</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+<aside><div>
+<p>Logique similaire, mais la méthode met à jour <code>self.W[l][i, j]</code> ou <code>self.b[l][j] = val</code>, selon le type de tag.</p>
+</div></aside></section>
+<section id="entraînement-apprentissage" class="slide level2 scrollable">
+<h2>Entraînement (apprentissage)</h2>
+<div id="6524c2fc" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>    <span class="kw">def</span> train(<span class="va">self</span>, X, y, epochs<span class="op">=</span><span class="dv">10</span>, verbose<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb30-2"><a aria-label="2"></a></span>
+<span id="cb30-3"><a aria-label="3"></a>        <span class="cf">for</span> ep <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, epochs <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb30-4"><a aria-label="4"></a></span>
+<span id="cb30-5"><a aria-label="5"></a>            base_loss <span class="op">=</span> <span class="va">self</span>.loss(X, y)</span>
+<span id="cb30-6"><a aria-label="6"></a>            updates <span class="op">=</span> {}</span>
+<span id="cb30-7"><a aria-label="7"></a></span>
+<span id="cb30-8"><a aria-label="8"></a>            <span class="co"># Examiner tous les paramètres</span></span>
+<span id="cb30-9"><a aria-label="9"></a>            <span class="cf">for</span> tag <span class="kw">in</span> <span class="va">self</span>._all_param_tags():</span>
+<span id="cb30-10"><a aria-label="10"></a></span>
+<span id="cb30-11"><a aria-label="11"></a>                theta <span class="op">=</span> <span class="va">self</span>._get_param(tag)</span>
+<span id="cb30-12"><a aria-label="12"></a>                best_delta <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb30-13"><a aria-label="13"></a>                best_loss <span class="op">=</span> base_loss</span>
+<span id="cb30-14"><a aria-label="14"></a></span>
+<span id="cb30-15"><a aria-label="15"></a>                <span class="cf">for</span> delta <span class="kw">in</span> (<span class="op">-</span><span class="va">self</span>.step, <span class="fl">0.0</span>, <span class="op">+</span><span class="va">self</span>.step):</span>
+<span id="cb30-16"><a aria-label="16"></a>                    <span class="va">self</span>._set_param(tag, theta <span class="op">+</span> delta)</span>
+<span id="cb30-17"><a aria-label="17"></a>                    trial_loss <span class="op">=</span> <span class="va">self</span>.loss(X, y)</span>
+<span id="cb30-18"><a aria-label="18"></a>                    <span class="cf">if</span> trial_loss <span class="op">&lt;</span> best_loss:</span>
+<span id="cb30-19"><a aria-label="19"></a>                        best_loss <span class="op">=</span> trial_loss</span>
+<span id="cb30-20"><a aria-label="20"></a>                        best_delta <span class="op">=</span> delta</span>
+<span id="cb30-21"><a aria-label="21"></a></span>
+<span id="cb30-22"><a aria-label="22"></a>                <span class="co"># restaurer l'original</span></span>
+<span id="cb30-23"><a aria-label="23"></a>                <span class="va">self</span>._set_param(tag, theta)</span>
+<span id="cb30-24"><a aria-label="24"></a>                updates[tag] <span class="op">=</span> best_delta</span>
+<span id="cb30-25"><a aria-label="25"></a></span>
+<span id="cb30-26"><a aria-label="26"></a>            <span class="co"># Appliquer tous les deltas ensemble</span></span>
+<span id="cb30-27"><a aria-label="27"></a>            <span class="cf">for</span> tag, d <span class="kw">in</span> updates.items():</span>
+<span id="cb30-28"><a aria-label="28"></a>                <span class="cf">if</span> d <span class="op">!=</span> <span class="fl">0.0</span>:</span>
+<span id="cb30-29"><a aria-label="29"></a>                    <span class="va">self</span>._set_param(tag, <span class="va">self</span>._get_param(tag) <span class="op">+</span> d)</span>
+<span id="cb30-30"><a aria-label="30"></a></span>
+<span id="cb30-31"><a aria-label="31"></a>            new_loss <span class="op">=</span> <span class="va">self</span>.loss(X, y)</span>
+<span id="cb30-32"><a aria-label="32"></a></span>
+<span id="cb30-33"><a aria-label="33"></a>            <span class="cf">if</span> verbose:</span>
+<span id="cb30-34"><a aria-label="34"></a>                <span class="bu">print</span>(<span class="ss">f"Époque </span><span class="sc">{</span>ep<span class="sc">:3d}</span><span class="ss">: perte </span><span class="sc">{</span>base_loss<span class="sc">:.5f}</span><span class="ss"> → </span><span class="sc">{</span>new_loss<span class="sc">:.5f}</span><span class="ss">"</span>)</span>
+<span id="cb30-35"><a aria-label="35"></a></span>
+<span id="cb30-36"><a aria-label="36"></a>            <span class="co"># arrêt anticipé optionnel</span></span>
+<span id="cb30-37"><a aria-label="37"></a>            <span class="cf">if</span> <span class="bu">abs</span>(new_loss <span class="op">-</span> base_loss) <span class="op">&lt;</span> <span class="fl">1e-12</span>:</span>
+<span id="cb30-38"><a aria-label="38"></a>                <span class="cf">break</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>“Simultané” ≈ une étape de style Jacobi : vous choisissez des deltas par paramètre par rapport à la même ligne de base, puis vous les appliquez tous en même temps. Les interactions entre les paramètres sont ignorées pendant que vous les choisissez.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ouf" class="slide level2 scrollable">
+<h2>Ouf!</h2>
+<p>Est-ce que ça fonctionne ?</p>
+<div id="0e5a1f7d" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb31-2"><a aria-label="2"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb31-3"><a aria-label="3"></a></span>
+<span id="cb31-4"><a aria-label="4"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb31-5"><a aria-label="5"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
+<span id="cb31-6"><a aria-label="6"></a>)</span>
+<span id="cb31-7"><a aria-label="7"></a></span>
+<span id="cb31-8"><a aria-label="8"></a>model <span class="op">=</span> NaiveMLP([<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>], step<span class="op">=</span><span class="fl">0.06</span>, seed<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb31-9"><a aria-label="9"></a></span>
+<span id="cb31-10"><a aria-label="10"></a><span class="bu">print</span>(<span class="st">"Loss initiale :"</span>, model.loss(X_train, y_train))</span>
+<span id="cb31-11"><a aria-label="11"></a></span>
+<span id="cb31-12"><a aria-label="12"></a>model.train(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb31-13"><a aria-label="13"></a></span>
+<span id="cb31-14"><a aria-label="14"></a><span class="bu">print</span>(<span class="st">"Exactitude sur l'entraînement :"</span>, accuracy_score(y_train, model.predict(X_train)))</span>
+<span id="cb31-15"><a aria-label="15"></a><span class="bu">print</span>(<span class="st">"Exactitude sur le test :"</span>, accuracy_score(y_test, model.predict(X_test)))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loss initiale : 0.7001969055705487
+Époque   1 : perte 0.70020 → 0.69315
+Époque   2 : perte 0.69315 → 0.69547
+Époque   3 : perte 0.69547 → 0.69387
+Époque   4 : perte 0.69387 → 0.69542
+Époque   5 : perte 0.69542 → 0.69384
+Époque   6 : perte 0.69384 → 0.69537
+Époque   7 : perte 0.69537 → 0.69382
+Époque   8 : perte 0.69382 → 0.69531
+Époque   9 : perte 0.69531 → 0.69379
+Époque  10 : perte 0.69379 → 0.69525
+Époque  11 : perte 0.69525 → 0.69361
+Époque  12 : perte 0.69361 → 0.69517
+Époque  13 : perte 0.69517 → 0.69331
+Époque  14 : perte 0.69331 → 0.69503
+Époque  15 : perte 0.69503 → 0.69298
+Époque  16 : perte 0.69298 → 0.69468
+Époque  17 : perte 0.69468 → 0.69257
+Époque  18 : perte 0.69257 → 0.69364
+Époque  19 : perte 0.69364 → 0.69200
+Époque  20 : perte 0.69200 → 0.69173
+Époque  21 : perte 0.69173 → 0.69118
+Époque  22 : perte 0.69118 → 0.68965
+Époque  23 : perte 0.68965 → 0.68970
+Époque  24 : perte 0.68970 → 0.68716
+Époque  25 : perte 0.68716 → 0.68672
+Époque  26 : perte 0.68672 → 0.68417
+Époque  27 : perte 0.68417 → 0.68170
+Époque  28 : perte 0.68170 → 0.67855
+Époque  29 : perte 0.67855 → 0.67406
+Époque  30 : perte 0.67406 → 0.66867
+Époque  31 : perte 0.66867 → 0.66203
+Époque  32 : perte 0.66203 → 0.65492
+Époque  33 : perte 0.65492 → 0.64672
+Époque  34 : perte 0.64672 → 0.63852
+Époque  35 : perte 0.63852 → 0.62948
+Époque  36 : perte 0.62948 → 0.61977
+Époque  37 : perte 0.61977 → 0.60918
+Époque  38 : perte 0.60918 → 0.59844
+Époque  39 : perte 0.59844 → 0.58893
+Époque  40 : perte 0.58893 → 0.57598
+Époque  41 : perte 0.57598 → 0.56310
+Époque  42 : perte 0.56310 → 0.55035
+Époque  43 : perte 0.55035 → 0.53809
+Époque  44 : perte 0.53809 → 0.52214
+Époque  45 : perte 0.52214 → 0.50660
+Époque  46 : perte 0.50660 → 0.49073
+Époque  47 : perte 0.49073 → 0.47591
+Époque  48 : perte 0.47591 → 0.45758
+Époque  49 : perte 0.45758 → 0.44074
+Époque  50 : perte 0.44074 → 0.42251
+Époque  51 : perte 0.42251 → 0.41069
+Époque  52 : perte 0.41069 → 0.38858
+Époque  53 : perte 0.38858 → 0.36998
+Époque  54 : perte 0.36998 → 0.35227
+Époque  55 : perte 0.35227 → 0.34356
+Époque  56 : perte 0.34356 → 0.32577
+Époque  57 : perte 0.32577 → 0.31462
+Époque  58 : perte 0.31462 → 0.29240
+Époque  59 : perte 0.29240 → 0.27704
+Époque  60 : perte 0.27704 → 0.25851
+Époque  61 : perte 0.25851 → 0.25409
+Époque  62 : perte 0.25409 → 0.23884
+Époque  63 : perte 0.23884 → 0.23260
+Époque  64 : perte 0.23260 → 0.21815
+Époque  65 : perte 0.21815 → 0.21238
+Époque  66 : perte 0.21238 → 0.19964
+Époque  67 : perte 0.19964 → 0.19350
+Époque  68 : perte 0.19350 → 0.17787
+Époque  69 : perte 0.17787 → 0.16963
+Époque  70 : perte 0.16963 → 0.15270
+Époque  71 : perte 0.15270 → 0.14804
+Époque  72 : perte 0.14804 → 0.13478
+Époque  73 : perte 0.13478 → 0.13357
+Époque  74 : perte 0.13357 → 0.12381
+Époque  75 : perte 0.12381 → 0.12041
+Époque  76 : perte 0.12041 → 0.10789
+Époque  77 : perte 0.10789 → 0.10512
+Époque  78 : perte 0.10512 → 0.09204
+Époque  79 : perte 0.09204 → 0.08493
+Époque  80 : perte 0.08493 → 0.07447
+Époque  81 : perte 0.07447 → 0.07243
+Époque  82 : perte 0.07243 → 0.06423
+Époque  83 : perte 0.06423 → 0.06479
+Époque  84 : perte 0.06479 → 0.06053
+Époque  85 : perte 0.06053 → 0.05940
+Époque  86 : perte 0.05940 → 0.05501
+Époque  87 : perte 0.05501 → 0.05465
+Époque  88 : perte 0.05465 → 0.05370
+Époque  89 : perte 0.05370 → 0.05036
+Époque  90 : perte 0.05036 → 0.04376
+Époque  91 : perte 0.04376 → 0.04596
+Époque  92 : perte 0.04596 → 0.04283
+Époque  93 : perte 0.04283 → 0.04213
+Époque  94 : perte 0.04213 → 0.04031
+Époque  95 : perte 0.04031 → 0.03879
+Époque  96 : perte 0.03879 → 0.03629
+Époque  97 : perte 0.03629 → 0.03574
+Époque  98 : perte 0.03574 → 0.03499
+Époque  99 : perte 0.03499 → 0.03293
+Époque 100 : perte 0.03293 → 0.03075
+Exactitude sur l'entraînement : 1.0
+Exactitude sur le test : 1.0</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Notre algorithme d’entraînement est fragile. Obtenir ces résultats a nécessité d’expérimenter avec <code>step</code> et <code>seed</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="visualisation" class="slide level2">
+<h2>Visualisation</h2>
+<div id="b8fc05f7" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a aria-label="1"></a><span class="co"># Plot helper: decision boundary in the original (x1, x2) plane</span></span>
+<span id="cb33-2"><a aria-label="2"></a></span>
+<span id="cb33-3"><a aria-label="3"></a><span class="kw">def</span> plot_decision_boundary(model, X, y, title<span class="op">=</span><span class="st">"Frontière de décision du MLP naïf"</span>):</span>
+<span id="cb33-4"><a aria-label="4"></a></span>
+<span id="cb33-5"><a aria-label="5"></a>    <span class="co"># grille sur le plan d'entrée</span></span>
+<span id="cb33-6"><a aria-label="6"></a>    pad <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb33-7"><a aria-label="7"></a>    x1_min, x1_max <span class="op">=</span> X[:,<span class="dv">0</span>].<span class="bu">min</span>()<span class="op">-</span>pad, X[:,<span class="dv">0</span>].<span class="bu">max</span>()<span class="op">+</span>pad</span>
+<span id="cb33-8"><a aria-label="8"></a>    x2_min, x2_max <span class="op">=</span> X[:,<span class="dv">1</span>].<span class="bu">min</span>()<span class="op">-</span>pad, X[:,<span class="dv">1</span>].<span class="bu">max</span>()<span class="op">+</span>pad</span>
+<span id="cb33-9"><a aria-label="9"></a></span>
+<span id="cb33-10"><a aria-label="10"></a>    xx, yy <span class="op">=</span> np.meshgrid(</span>
+<span id="cb33-11"><a aria-label="11"></a>        np.linspace(x1_min, x1_max, <span class="dv">400</span>),</span>
+<span id="cb33-12"><a aria-label="12"></a>        np.linspace(x2_min, x2_max, <span class="dv">400</span>)</span>
+<span id="cb33-13"><a aria-label="13"></a>    )</span>
+<span id="cb33-14"><a aria-label="14"></a>    grid <span class="op">=</span> np.c_[xx.ravel(), yy.ravel()]</span>
+<span id="cb33-15"><a aria-label="15"></a></span>
+<span id="cb33-16"><a aria-label="16"></a>    <span class="co"># prédire les probabilités sur la grille</span></span>
+<span id="cb33-17"><a aria-label="17"></a>    p <span class="op">=</span> model.forward(grid).reshape(xx.shape)</span>
+<span id="cb33-18"><a aria-label="18"></a></span>
+<span id="cb33-19"><a aria-label="19"></a>    <span class="co"># probabilités remplies + contour p=0.5 + points de données</span></span>
+<span id="cb33-20"><a aria-label="20"></a>    plt.figure(figsize<span class="op">=</span>(<span class="fl">3.75</span>, <span class="fl">3.75</span>), dpi<span class="op">=</span><span class="dv">140</span>)</span>
+<span id="cb33-21"><a aria-label="21"></a>    plt.contourf(xx, yy, p, levels<span class="op">=</span><span class="dv">50</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb33-22"><a aria-label="22"></a>    cs <span class="op">=</span> plt.contour(xx, yy, p, levels<span class="op">=</span>[<span class="fl">0.5</span>], linewidths<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb33-23"><a aria-label="23"></a>    plt.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">18</span>, edgecolor<span class="op">=</span><span class="st">"k"</span>, linewidth<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb33-24"><a aria-label="24"></a>    plt.clabel(cs, fmt<span class="op">=</span>{<span class="fl">0.5</span>: <span class="st">"p=0.5"</span>})</span>
+<span id="cb33-25"><a aria-label="25"></a>    plt.title(title)</span>
+<span id="cb33-26"><a aria-label="26"></a>    plt.xlabel(<span class="st">"x₁"</span>)</span>
+<span id="cb33-27"><a aria-label="27"></a>    plt.ylabel(<span class="st">"x₂"</span>)</span>
+<span id="cb33-28"><a aria-label="28"></a>    plt.tight_layout()</span>
+<span id="cb33-29"><a aria-label="29"></a>    plt.show()</span>
+<span id="cb33-30"><a aria-label="30"></a></span>
+<span id="cb33-31"><a aria-label="31"></a>plot_decision_boundary(model, X, y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-25-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/cell-25-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="données-de-type-xor" class="slide level2">
+<h2>Données de type XOR</h2>
+<div id="adc88cce" class="cell" data-execution_count="26">
+<details class="code-fold">
+<summary>Afficher le code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a>n_samples <span class="op">=</span> <span class="dv">800</span></span>
+<span id="cb34-2"><a aria-label="2"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
+<span id="cb34-3"><a aria-label="3"></a></span>
+<span id="cb34-4"><a aria-label="4"></a>X <span class="op">=</span> rng.uniform(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>, size<span class="op">=</span>(n_samples, <span class="dv">2</span>))</span>
+<span id="cb34-5"><a aria-label="5"></a>x1, x2 <span class="op">=</span> X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>]</span>
+<span id="cb34-6"><a aria-label="6"></a></span>
+<span id="cb34-7"><a aria-label="7"></a>y <span class="op">=</span> ((x1 <span class="op">*</span> x2) <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb34-8"><a aria-label="8"></a></span>
+<span id="cb34-9"><a aria-label="9"></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">4.5</span>, <span class="fl">4.5</span>))</span>
+<span id="cb34-10"><a aria-label="10"></a>plt.scatter(X[y <span class="op">==</span> <span class="dv">0</span>, <span class="dv">0</span>], X[y <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb34-11"><a aria-label="11"></a>            color<span class="op">=</span><span class="st">"C0"</span>, label<span class="op">=</span><span class="st">"classe 0"</span>, edgecolor<span class="op">=</span><span class="st">"k"</span>, linewidth<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb34-12"><a aria-label="12"></a>plt.scatter(X[y <span class="op">==</span> <span class="dv">1</span>, <span class="dv">0</span>], X[y <span class="op">==</span> <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb34-13"><a aria-label="13"></a>            color<span class="op">=</span><span class="st">"C1"</span>, label<span class="op">=</span><span class="st">"classe 1"</span>, edgecolor<span class="op">=</span><span class="st">"k"</span>, linewidth<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb34-14"><a aria-label="14"></a></span>
+<span id="cb34-15"><a aria-label="15"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"gray"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb34-16"><a aria-label="16"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"gray"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb34-17"><a aria-label="17"></a></span>
+<span id="cb34-18"><a aria-label="18"></a>plt.xlabel(<span class="st">"x₁"</span>)</span>
+<span id="cb34-19"><a aria-label="19"></a>plt.ylabel(<span class="st">"x₂"</span>)</span>
+<span id="cb34-20"><a aria-label="20"></a>plt.title(<span class="st">"Données de type XOR"</span>)</span>
+<span id="cb34-21"><a aria-label="21"></a>plt.xlim(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb34-22"><a aria-label="22"></a>plt.ylim(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb34-23"><a aria-label="23"></a>plt.axis(<span class="st">"equal"</span>)</span>
+<span id="cb34-24"><a aria-label="24"></a>plt.legend()</span>
+<span id="cb34-25"><a aria-label="25"></a>plt.tight_layout()</span>
+<span id="cb34-26"><a aria-label="26"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-26-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/cell-26-output-1.png" class="quarto-figure quarto-figure-center" width="423" height="422"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>La même architecture, 2, 4, 4, 1, fonctionnerait-elle pour le jeu de données de type XOR ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="données-de-type-xor-suite" class="slide level2 scrollable">
+<h2>Données de type XOR (suite)</h2>
+<div id="ffe20100" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb35-2"><a aria-label="2"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
+<span id="cb35-3"><a aria-label="3"></a>)</span>
+<span id="cb35-4"><a aria-label="4"></a></span>
+<span id="cb35-5"><a aria-label="5"></a>model <span class="op">=</span> NaiveMLP([<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>], step<span class="op">=</span><span class="fl">0.06</span>, seed<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-6"><a aria-label="6"></a></span>
+<span id="cb35-7"><a aria-label="7"></a><span class="bu">print</span>(<span class="st">"Perte initiale :"</span>, model.loss(X_train, y_train))</span>
+<span id="cb35-8"><a aria-label="8"></a></span>
+<span id="cb35-9"><a aria-label="9"></a>model.train(X_train, y_train, epochs<span class="op">=</span><span class="dv">1000</span>, verbose<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb35-10"><a aria-label="10"></a></span>
+<span id="cb35-11"><a aria-label="11"></a><span class="bu">print</span>(<span class="st">"Perte finale :"</span>, model.loss(X_train, y_train))</span>
+<span id="cb35-12"><a aria-label="12"></a></span>
+<span id="cb35-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="st">"Exactitude sur l'ensemble d'entraînement :"</span>, accuracy_score(y_train, model.predict(X_train)))</span>
+<span id="cb35-14"><a aria-label="14"></a><span class="bu">print</span>(<span class="st">"Exactitude sur l'ensemble de test :"</span>, accuracy_score(y_test, model.predict(X_test)))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Perte initiale : 0.7029764953722529
+Perte finale : 3.4494531195516116e-07
+Exactitude sur l'ensemble d'entraînement : 1.0
+Exactitude sur l'ensemble de test : 0.99</code></pre>
+</div>
+</div>
+</section>
+<section id="données-de-type-xor-suite-1" class="slide level2">
+<h2>Données de type XOR (suite)</h2>
+<div id="ad6437cb" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a>plot_decision_boundary(model, X, y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="slides_files/figure-revealjs/cell-28-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="slides_files/figure-revealjs/cell-28-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Notre réseau neuronal simple, ainsi que son algorithme d’entraînement naïf, a été évalué sur deux tests distincts. Malgré la simplicité du modèle, il a réussi à apprendre des frontières de décision significativement différentes sans nécessiter l’ingénierie de fonctionnalités supplémentaires.</p>
+<p>Pour la simplicité et la clarté dans cet exemple, nous avons utilisé les données brutes sans appliquer de mise à l’échelle. Cependant, dans des scénarios pratiques, il est courant de mettre à l’échelle ou de normaliser les caractéristiques avant d’entraîner des réseaux neuronaux ou tout modèle reposant sur l’optimisation par gradient. La mise à l’échelle facilite une convergence plus rapide et plus stable des algorithmes d’entraînement, bien qu’elle introduise des étapes de prétraitement et de post-traitement supplémentaires. Puisque l’objectif principal ici est de comprendre le mécanisme d’entraînement plutôt que d’optimiser pour l’efficacité, nous avons délibérément choisi de ne pas inclure la mise à l’échelle dans ce cas.</p>
+<p>Avant l’entraînement,</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb38-2"><a aria-label="2"></a></span>
+<span id="cb38-3"><a aria-label="3"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb38-4"><a aria-label="4"></a></span>
+<span id="cb38-5"><a aria-label="5"></a>X_train <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb38-6"><a aria-label="6"></a></span>
+<span id="cb38-7"><a aria-label="7"></a>X_test <span class="op">=</span> scaler.transform(X_test)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Après l’entraînement, lorsque vous souhaitez visualiser la frontière de décision dans l’espace des caractéristiques d’origine, vous devez redimensionner les coordonnées à l’aide de <code>scaler.inverse_transform</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="inconvénients" class="slide level2">
+<h2>Inconvénients</h2>
+<ul>
+<li class="fragment">Inefficacité computationnelle.</li>
+<li class="fragment">Limitations de scalabilité.</li>
+<li class="fragment">Taille de pas fixe (±η) manque d’adaptabilité.</li>
+<li class="fragment">Mauvaise coordination des paramètres.</li>
+<li class="fragment">Absence d’informations sur la direction ou la magnitude.</li>
+<li class="fragment">Absence de fonctionnalités sophistiquées de l’optimiseur.</li>
+<li class="fragment">Risque de sur-apprentissage ou de mauvaise généralisation.</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Inefficacité computationnelle : essayer chaque paramètre avec trois deltas à chaque époque s’adapte mal à mesure que la taille du modèle augmente.</li>
+<li>Taille de pas fixe (±η) manque d’adaptabilité : trop petit → très lent ; trop grand → dépassement/oscillation.</li>
+<li>Mauvaise coordination des paramètres : chaque paramètre est mis à jour sans tenir compte des interactions → convergence plus lente dans les réseaux couplés.</li>
+<li>Recherche locale discrète (plutôt que basée sur les dérivées) : absence d’informations sur la direction ou la magnitude → de nombreuses époques nécessaires, risque de zigzag ou de blocage.</li>
+<li>Limitations de scalabilité : évaluation complète de la perte par changement de paramètre → infaisable pour de grands ensembles de données ou de nombreux paramètres.</li>
+<li>Absence de fonctionnalités sophistiquées de l’optimiseur : pas de momentum, de taux adaptatifs, de régularisation intégrée → performance et fiabilité réduites.</li>
+<li>Risque de sur-apprentissage ou de mauvaise généralisation : entraînement agressif sur la perte complète du lot sans régularisation intégrée peut trop s’adapter aux données d’entraînement.</li>
+<li>Aperçu limité de l’ampleur des mises à jour : seules les options ±η ou 0 signifient pas de réglage fin de la taille de pas par paramètre ou époque.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="notation" class="title-slide slide level1 center">
+<h1>Notation</h1>
+
+</section>
+<section id="notation-1" class="slide level2">
+<h2>Notation</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Un <strong>perceptron à deux couches</strong> calcule :</p>
+<p><span class="math display">\[
+  \hat{y} = \phi_2(\phi_1(X))
+\]</span></p>
+<p>où</p>
+<p><span class="math display">\[
+  \phi_l(Z) = \phi(W_lZ_l + b_l)
+\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp-07-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="../../assets/images/ann_mlp-07-01.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div></div>
+
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Où <span class="math inline">\(\phi\)</span> est une fonction d’activation, <span class="math inline">\(W\)</span> une matrice de poids, <span class="math inline">\(X\)</span> une matrice d’entrée, et <span class="math inline">\(b\)</span> un vecteur de biais.</p>
+</div></aside></section>
+<section id="notation-2" class="slide level2">
+<h2>Notation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Un perceptron à <strong>3 couches</strong> calcule :</p>
+<p><span class="math display">\[
+  \hat{y} = \phi_3(\phi_2(\phi_1(X)))
+\]</span></p>
+<p>où</p>
+<p><span class="math display">\[
+  \phi_l(Z) = \phi(W_lZ_l + b_l)
+\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp-14-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="../../assets/images/ann_mlp-14-01.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="notation-3" class="slide level2">
+<h2>Notation</h2>
+<p>Un <strong>perceptron à <span class="math inline">\(k\)</span> couches</strong> calcule :</p>
+<p><span class="math display">\[
+  \hat{y} = \phi_k( \ldots \phi_2(\phi_1(X)) \ldots )
+\]</span></p>
+<p>où</p>
+<p><span class="math display">\[
+  \phi_l(Z) = \phi(W_lZ_l + b_l)
+\]</span></p>
+
+<aside class="notes">
+<p>Dans cette notation, il est souligné que seule la première couche reçoit directement les attributs d’entrée. Chaque couche suivante traite ensuite les activations de la couche précédente, facilitant l’apprentissage de nouvelles représentations. Cela met en évidence l’architecture cohérente des réseaux de neurones à propagation avant. Comme nous l’explorerons dans le prochain cours, augmenter le nombre de couches n’augmente pas intrinsèquement la complexité de l’algorithme.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Un réseau feed-forward présente une structure cohérente, où chaque couche exécute le même type de calcul sur des entrées variées. Plus précisément, l’entrée de la couche <span class="math inline">\(l\)</span> est la sortie de la couche <span class="math inline">\(l-1\)</span>.</p>
+</div></aside></section></section>
+<section>
+<section id="prologue" class="title-slide slide level1 center">
+<h1>Prologue</h1>
+
+</section>
+<section id="résumé-1" class="slide level2 scrollable">
+<h2>Résumé</h2>
+<ul>
+<li>Présentation de l’apprentissage profond comme une approximation de fonction en couches à travers différentes tâches.<br>
+</li>
+<li>Description des réseaux de neurones feedforward (FNNs) : entrées → couches cachées → sorties ; l’information ne circule que vers l’avant.<br>
+</li>
+<li>Mention des unités utilisant le biais et les activations ; explication de l’importance de la non-linéarité.<br>
+</li>
+<li>Revue des plages et du comportement dérivé des fonctions sigmoid/tanh/ReLU.<br>
+</li>
+<li>Énoncé du Théorème d’Approximation Universelle et de ses limites pratiques.<br>
+</li>
+<li>Construction d’un petit MLP et calcul des prédictions et de la perte BCE sur des données jouets.<br>
+</li>
+<li>Démonstration d’un algorithme d’entraînement naïf, non basé sur le gradient ; il fonctionnait mais était peu évolutif et fragile.<br>
+</li>
+<li>Établissement d’une notation compacte pour les couches, <span class="math inline">\(\hat{y} = \phi_k( \ldots \phi_2(\phi_1(X)) \ldots )\)</span> où <span class="math inline">\(\phi_l(Z) = \phi(W_lZ_l + b_l)\)</span>, en vue de préparer le backpropagation.</li>
+</ul>
+</section>
+<section id="prochain-cours" class="slide level2">
+<h2>Prochain cours</h2>
+<ul>
+<li>Nous introduirons le backpropagation, et discuterons du gradient évanescent, du softmax et de la régularisation.</li>
+</ul>
+</section>
+<section id="références" class="slide level2 smaller scrollable">
+<h2>Références</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Cybenko:1989aa" class="csl-entry" role="listitem">
+Cybenko, George V. 1989. <span>«&nbsp;Approximation by superpositions of a sigmoidal function&nbsp;»</span>. <em>Mathematics of Control, Signals and Systems</em> 2: 303‑14. <a href="https://api.semanticscholar.org/CorpusID:3958369">https://api.semanticscholar.org/CorpusID:3958369</a>.
+</div>
+<div id="ref-Geron:2022aa" class="csl-entry" role="listitem">
+Géron, Aurélien. 2022. <em>Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow</em>. 3ᵉ éd. O’Reilly Media, Inc.
+</div>
+<div id="ref-He:2016aa" class="csl-entry" role="listitem">
+He, Kaiming, Xiangyu Zhang, Shaoqing Ren, et Jian Sun. 2016. <span>«&nbsp;Deep Residual Learning for Image Recognition&nbsp;»</span>. <em>2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 770‑78. <a href="https://doi.org/10.1109/CVPR.2016.90">https://doi.org/10.1109/CVPR.2016.90</a>.
+</div>
+<div id="ref-Hornik:1989aa" class="csl-entry" role="listitem">
+Hornik, Kurt, Maxwell Stinchcombe, et Halbert White. 1989. <span>«&nbsp;Multilayer feedforward networks are universal approximators&nbsp;»</span>. <em>Neural Networks</em> 2 (5): 359‑66. https://doi.org/<a href="https://doi.org/10.1016/0893-6080(89)90020-8">https://doi.org/10.1016/0893-6080(89)90020-8</a>.
+</div>
+<div id="ref-Russell:2020aa" class="csl-entry" role="listitem">
+Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</span> Modern Approach</em>. 4ᵉ éd. Pearson. <a href="http://aima.cs.berkeley.edu/">http://aima.cs.berkeley.edu/</a>.
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Marcel <strong>Turcotte</strong></p>
+<p><a href="mailto:Marcel.Turcotte@uOttawa.ca">Marcel.Turcotte@uOttawa.ca</a></p>
+<p>École de <strong>science informatique</strong> et de génie électrique (<strong>SI</strong>GE)</p>
+<p>Université d’Ottawa</p>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../assets/images/uottawa_hor_black.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://turcotte.xyz/teaching/csi-4506">turcotte.xyz/teaching/csi-4506</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copié");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copié");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/turcotte\.xyz\/teaching\/csi-4506");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>

@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marcel Turcotte">
+
+<title>CSI 4506: Introduction à l’intelligence artificielle – CSI 4506 - Automne 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./course-team.html" rel="next">
+<link href="./course-schedule.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-71e4f959349a254e23ff882d08828541.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3fc74389d9023285691f4fd21360e1a6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-71e4f959349a254e23ff882d08828541.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-98c7db931a85d9ab1fb3feaac0faa502.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-0455937d2cbe398515a871030189d4b5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-98c7db931a85d9ab1fb3feaac0faa502.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="CSI 4506: Introduction à l’intelligence artificielle – CSI 4506 - Automne 2026">
+<meta property="og:description" content="Page d’acceuil de CSI 4506 - Introduction à l’intelligence artificiell –uOttawa– Automne 2026.">
+<meta property="og:site_name" content="CSI 4506 - Automne 2026">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Information du cours</strong></a></li><li class="breadcrumb-item"><a href="./course-syllabus.html">Plan de cours</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">CSI 4506 - Automne 2026</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="uOttawa" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="uOttawa"><i class="bi bi-person-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://uottawa.brightspace.com">
+            Brightspace
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://uozone2.uottawa.ca/">
+            uoZone
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Information du cours</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aperçu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calendrier</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Plan de cours</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-team.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Équipe pédagogique</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Liens utiles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Glossaire</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary/entropy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Entropie</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary/cross-entropy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Entropie croisée</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./glossary/softmax.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Softmax</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Informatique</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./computing/01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutoriel 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#informations-sur-le-cours" id="toc-informations-sur-le-cours" class="nav-link active" data-scroll-target="#informations-sur-le-cours">Informations sur le cours</a></li>
+  <li><a href="#description-officielle" id="toc-description-officielle" class="nav-link" data-scroll-target="#description-officielle">Description (officielle)</a></li>
+  <li><a href="#approche" id="toc-approche" class="nav-link" data-scroll-target="#approche">Approche</a></li>
+  <li><a href="#objectifs-dapprentissage" id="toc-objectifs-dapprentissage" class="nav-link" data-scroll-target="#objectifs-dapprentissage">Objectifs d’apprentissage</a></li>
+  <li><a href="#contenu" id="toc-contenu" class="nav-link" data-scroll-target="#contenu">Contenu</a></li>
+  <li><a href="#évaluation" id="toc-évaluation" class="nav-link" data-scroll-target="#évaluation">Évaluation</a></li>
+  <li><a href="#matériel-et-ressources" id="toc-matériel-et-ressources" class="nav-link" data-scroll-target="#matériel-et-ressources">Matériel et ressources</a>
+  <ul class="collapse">
+  <li><a href="#monographies" id="toc-monographies" class="nav-link" data-scroll-target="#monographies">Monographies</a></li>
+  </ul></li>
+  <li><a href="#intégrité-académique" id="toc-intégrité-académique" class="nav-link" data-scroll-target="#intégrité-académique">Intégrité académique</a></li>
+  <li><a href="#services-aux-étudiants" id="toc-services-aux-étudiants" class="nav-link" data-scroll-target="#services-aux-étudiants">Services aux étudiants</a>
+  <ul class="collapse">
+  <li><a href="#aide-à-la-rédaction-académique" id="toc-aide-à-la-rédaction-académique" class="nav-link" data-scroll-target="#aide-à-la-rédaction-académique">Aide à la rédaction académique</a></li>
+  <li><a href="#services-de-carrière" id="toc-services-de-carrière" class="nav-link" data-scroll-target="#services-de-carrière">Services de carrière</a></li>
+  <li><a href="#service-de-counselling" id="toc-service-de-counselling" class="nav-link" data-scroll-target="#service-de-counselling">Service de counselling</a></li>
+  <li><a href="#service-daccès" id="toc-service-daccès" class="nav-link" data-scroll-target="#service-daccès">Service d’accès</a></li>
+  </ul></li>
+  <li><a href="#soutien-et-prévention-de-la-violence-sexuelle" id="toc-soutien-et-prévention-de-la-violence-sexuelle" class="nav-link" data-scroll-target="#soutien-et-prévention-de-la-violence-sexuelle">Soutien et prévention de la violence sexuelle</a></li>
+  <li><a href="#partage-dinformations-et-droit-dauteur" id="toc-partage-dinformations-et-droit-dauteur" class="nav-link" data-scroll-target="#partage-dinformations-et-droit-dauteur">Partage d’informations et droit d’auteur</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Autres formats</h2><ul><li><a href="course-syllabus.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Information du cours</strong></a></li><li class="breadcrumb-item"><a href="./course-syllabus.html">Plan de cours</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">CSI 4506: Introduction à l’intelligence artificielle</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Auteur·rice</div>
+    <div class="quarto-title-meta-contents">
+             <p>Marcel Turcotte </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Date de publication</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">9 août 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="informations-sur-le-cours" class="level1">
+<h1>Informations sur le cours</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 25%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Jour</th>
+<th>Heure</th>
+<th>Lieu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cours 1</td>
+<td>Lundi</td>
+<td>10:00-11:30</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>Cours 2</td>
+<td>Mercredi</td>
+<td>08:30-09:50</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Heures de bureau</td>
+<td>Lundi</td>
+<td>15:00-16:20</td>
+<td>STE 5106</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="description-officielle" class="level1">
+<h1>Description (officielle)</h1>
+<p>Concepts et méthodes de base de l’intelligence artificielle. Connaissances et représentation des connaissances. Recherche, recherche stratégique, jeux de stratégie. Raisonnement et déduction. Incertitude en intelligence artificielle. Introduction au traitement du langage naturel. Éléments de base de la planification. Éléments de base de l’apprentissage automatique.</p>
+</section>
+<section id="approche" class="level1">
+<h1>Approche</h1>
+<p>L’apprentissage automatique d’abord. Contrairement à d’autres cours d’intelligence artificielle, celui-ci est structuré de manière à ce que l’apprentissage profond soit présenté le plus tôt possible. Cela sert deux objectifs. Premièrement, l’apprentissage profond est une technologie tellement dominante aujourd’hui qu’il serait difficile de capter l’attention des étudiants sans étudier ce sujet. Deuxièmement, l’apprentissage profond sert de cadre à travers lequel nous pouvons introduire et définir des sujets clés en intelligence artificielle. Dans certains cas, nous verrons comment l’apprentissage profond a supplanté d’autres technologies ou en a remplacé des parties. Dans d’autres cas, ce sera l’occasion de discuter des limitations de l’apprentissage profond et de voir comment les technologies précédentes avaient été développées pour résoudre des problèmes spécifiques. Enfin, il est important de noter que l’apprentissage lui-même représente l’un des premiers jalons et le mieux compris dans l’évolution de l’intelligence.</p>
+</section>
+<section id="objectifs-dapprentissage" class="level1">
+<h1>Objectifs d’apprentissage</h1>
+<p>À la fin du cours, vous serez capable de :</p>
+<ul>
+<li><strong>Expliquer</strong> les concepts fondamentaux et le développement historique de l’Intelligence Artificielle (IA)</li>
+<li><strong>Appliquer</strong> des stratégies de résolution de problèmes en utilisant des techniques d’IA</li>
+<li><strong>Analyser</strong> et <strong>comparer</strong> de manière critique différentes approches de l’IA</li>
+<li><strong>Démontrer</strong> un apprentissage et une exploration indépendants</li>
+</ul>
+</section>
+<section id="contenu" class="level1">
+<h1>Contenu</h1>
+<p>Étant donné l’influence considérable de l’apprentissage profond dans les avancées actuelles de l’Intelligence Artificielle, mon objectif est de l’intégrer dès le début dans le programme du cours. Établir cette base facilitera notre compréhension de son importance, en particulier lorsque nous aborderons des sujets tels que la Recherche Monte-Carlo sur Arbre (MCTS). Voici un programme préliminaire et ambitieux.</p>
+<ul>
+<li>Définition de l’IA</li>
+<li>Introduction à l’apprentissage automatique</li>
+<li>Régression linéaire</li>
+<li>Entraînement</li>
+<li>Régression logistique</li>
+<li>Évaluation</li>
+<li>Ajustement des hyperparamètres</li>
+<li>Ingénierie de l’apprentissage automatique</li>
+<li>Introduction aux réseaux de neurones artificiels</li>
+<li>Rétropropagation</li>
+<li>Softmax, entropie croisée, régularisation</li>
+<li>Réseaux de neurones convolutifs</li>
+<li>Introduction aux méthodes de recherche</li>
+<li>Recherche informée</li>
+<li>Recherche locale</li>
+<li>Métaheuristiques basées sur la population</li>
+<li>Recherche adversariale</li>
+<li>Recherche d’arbre de Monte Carlo</li>
+</ul>
+</section>
+<section id="évaluation" class="level1">
+<h1>Évaluation</h1>
+<p>La note finale du cours sera calculée comme suit :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Catégorie</th>
+<th>Pourcentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Devoirs</td>
+<td>40% (4 x 10%)</td>
+</tr>
+<tr class="even">
+<td>Quiz</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td>Examen final</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table>
+<p>Consultez le <a href="course-schedule.html">calendrier</a> pour les dates.</p>
+<p>Pour réussir le cours, les étudiantes et étudiants doivent obtenir une moyenne combinée d’au moins 50 % aux tests et à l’examen final. Plus précisément, <span class="math inline">\((Q1 + Q2 + F)/60 \geq 0{,}50,\)</span> où <span class="math inline">\(Q1\)</span>, <span class="math inline">\(Q2\)</span> et <span class="math inline">\(F\)</span> désignent respectivement les notes du premier test, du deuxième test et de l’examen final.</p>
+<p>Les travaux, les tests et l’examen final constituent des éléments d’évaluation obligatoires. Pour être admissibles à l’examen final, les étudiantes et étudiants doivent avoir complété au moins un des deux tests et au moins deux des quatre travaux. Le non-respect de ces exigences d’évaluation obligatoires entraînera automatiquement la note finale <code>EIN</code>.</p>
+<p>Si vous êtes dans l’impossibilité de compléter un test pour des raisons valables et documentées, par exemple une maladie appuyée par un billet du médecin, la pondération de ce test sera transférée à l’autre test. Les demandes doivent être soumises dans les trois (3) jours ouvrables suivant l’examen, conformément au <a href="https://www.uottawa.ca/about-us/leadership-governance/policies-regulations/a-8-evaluation-student-learning">règlement scolaire</a>.</p>
+<p>Afin de tenir compte de circonstances indépendantes de la volonté de l’étudiante ou de l’étudiant, telles qu’une maladie ou des erreurs de soumission, la composante « travaux » de la note finale est calculée à partir des trois meilleures notes obtenues parmi les quatre travaux.</p>
+<p>Les points bonis accordés aux travaux visent exclusivement à compenser des résultats plus faibles à d’autres travaux, ce qui reflète le fait que les travaux et les examens évaluent des compétences différentes. De plus, dans le contexte actuel marqué par l’essor de l’IA, l’importance des évaluations en présence est plus marquée que jamais.</p>
+<p>Pour de plus amples renseignements, notamment en ce qui concerne les questions relatives aux révisions de notes, veuillez consulter la section <a href="course-faq">FAQ</a>.</p>
+</section>
+<section id="matériel-et-ressources" class="level1">
+<h1>Matériel et ressources</h1>
+<ul>
+<li>Les notes de cours (présentations) et les ressources complémentaires seront publiées sur le site Web du cours : <a href="https://turcotte.xyz/teaching/csi-4506">turcotte.xyz/teaching/csi-4506/</a></li>
+</ul>
+<section id="monographies" class="level2">
+<h2 class="anchored" data-anchor-id="monographies">Monographies</h2>
+<p>Ce cours ne nécessite aucun manuel obligatoire. Toutefois, les personnes qui souhaitent consulter un ouvrage de référence général peuvent se reporter à l’ouvrage suivant :</p>
+<ul>
+<li>Russell, S., &amp; Norvig, P. (2020). <a href="https://aima.cs.berkeley.edu"><em>Artificial Intelligence: A Modern Approach</em> (4e éd.)</a>. Pearson.</li>
+</ul>
+<p>Dans la plupart des cas, les notes de cours fournies suffiront pour suivre le cours.</p>
+</section>
+</section>
+<section id="intégrité-académique" class="level1">
+<h1>Intégrité académique</h1>
+<p>La fraude académique est un acte commis par un étudiant pouvant entraîner une évaluation erronée (y compris les travaux, les tests, les examens, etc.). Elle n’est pas tolérée par l’Université. Toute personne reconnue coupable de fraude académique sera soumise à des sanctions.</p>
+<p>Voici quelques exemples de fraude académique :</p>
+<ul>
+<li>Le plagiat ou la tricherie de toute nature ;</li>
+<li>Présenter des données de recherche falsifiées ;</li>
+<li>Soumettre un travail dont vous n’êtes pas l’auteur, en tout ou en partie ;</li>
+<li>Soumettre le même travail pour plus d’un cours sans le consentement écrit des professeurs concernés.</li>
+<li>Veuillez consulter <a href="https://www.uottawa.ca/about-us/provost/academic-integrity">cette page Web</a> : elle contient des règlements et des outils pour vous aider à éviter le plagiat.</li>
+</ul>
+<p>Une personne qui commet ou tente de commettre une fraude académique, ou qui est complice, sera sanctionnée. Voici quelques exemples de sanctions possibles :</p>
+<ul>
+<li>Recevoir un “F” pour le travail ou dans le cours en question ;</li>
+<li>Imposition d’exigences supplémentaires (de 3 à 30 crédits) au programme d’études ;</li>
+<li>Suspension ou expulsion de la faculté.</li>
+<li>Vous pouvez consulter les règlements sur <a href="https://www.uottawa.ca/about-us/policies-regulations/academic-regulations/a-4-academic-integrity-academic-misconduct">cette page Web</a></li>
+</ul>
+</section>
+<section id="services-aux-étudiants" class="level1">
+<h1>Services aux étudiants</h1>
+<section id="aide-à-la-rédaction-académique" class="level2">
+<h2 class="anchored" data-anchor-id="aide-à-la-rédaction-académique">Aide à la rédaction académique</h2>
+<p>Au Centre d’aide à la rédaction académique, vous apprendrez à identifier, corriger et éviter les erreurs dans vos écrits et à devenir un rédacteur autonome. En travaillant avec nos conseillers en écriture, vous pourrez acquérir les compétences, les stratégies et les outils d’écriture qui vous permettront de :</p>
+<ul>
+<li><strong>Maîtriser</strong> la langue écrite de votre choix</li>
+<li><strong>Élargir</strong> vos capacités de pensée critique</li>
+<li><strong>Développer</strong> vos compétences en argumentation</li>
+<li><strong>Apprendre</strong> quelles sont les attentes en matière de rédaction académique</li>
+</ul>
+<p>Des informations supplémentaires sont disponibles ici :</p>
+<ul>
+<li><a href="https://www.uottawa.ca/study/academic-support/academic-writing-help">www.uottawa.ca/study/academic-support/academic-writing-help</a></li>
+</ul>
+</section>
+<section id="services-de-carrière" class="level2">
+<h2 class="anchored" data-anchor-id="services-de-carrière">Services de carrière</h2>
+<p>Les services de carrière offrent divers services et un programme de développement professionnel pour vous permettre de reconnaître et d’améliorer les compétences en employabilité dont vous avez besoin dans le monde du travail d’aujourd’hui.</p>
+<ul>
+<li><a href="https://www.uottawa.ca/current-students/career-experiential-learning/career-development">www.uottawa.ca/current-students/career-experiential-learning/career-development</a></li>
+</ul>
+</section>
+<section id="service-de-counselling" class="level2">
+<h2 class="anchored" data-anchor-id="service-de-counselling">Service de counselling</h2>
+<p>Le service de counseling et de thérapie est un service confidentiel pour les étudiants qui sont confrontés à des défis de vie. C’est un espace sûr pour explorer de nouvelles perspectives et renforcer la résilience.</p>
+<ul>
+<li><a href="https://www.uottawa.ca/campus-life/health-wellness/counselling-therapy">www.uottawa.ca/campus-life/health-wellness/counselling-therapy</a></li>
+</ul>
+</section>
+<section id="service-daccès" class="level2">
+<h2 class="anchored" data-anchor-id="service-daccès">Service d’accès</h2>
+<p>Le Service d’accès agit en tant qu’intermédiaire entre les étudiants, leur faculté et d’autres services de l’université afin de veiller à ce que les besoins spéciaux de ces étudiants soient pris en compte et que les meilleures conditions d’apprentissage possibles leur soient offertes.</p>
+<p>Notez que l’Université d’Ottawa est affiliée aux services <a href="https://alternativeresources.ca/Aero/Public/WelcomePage.aspx">AERO</a> et <a href="https://www.ocul.on.ca/node/2192">ACE</a> pour l’adaptation de matériel académique accessible aux étudiants ayant des handicaps perceptuels. Si vous avez des questions, veuillez contacter le <script type="text/javascript">
+<!--
+h='&#x75;&#x6f;&#116;&#116;&#x61;&#x77;&#x61;&#46;&#x63;&#x61;';a='&#64;';n='&#108;&#x69;&#98;&#x61;&#100;&#x61;&#112;&#116;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#98;&#x69;&#98;&#108;&#x69;&#x6f;&#116;&#104;&#xe9;&#x63;&#x61;&#x69;&#114;&#x65;&#32;&#100;&#x65;&#32;&#108;&#x2019;&#x61;&#x63;&#x63;&#x65;&#x73;&#x73;&#x69;&#98;&#x69;&#108;&#x69;&#116;&#xe9;'+'<\/'+'a'+'>');
+// -->
+</script><noscript>bibliothécaire de l’accessibilité (libadapt at uottawa dot ca)</noscript> ou les <a href="https://www.uottawa.ca/study/academic-support/accommodation-services-available">services d’accès</a> pour les manuels scolaires.</p>
+<ul>
+<li><a href="https://www.uottawa.ca/study/academic-support/accommodation-services-available">www.uottawa.ca/study/academic-support/accommodation-services-available</a></li>
+</ul>
+</section>
+</section>
+<section id="soutien-et-prévention-de-la-violence-sexuelle" class="level1">
+<h1>Soutien et prévention de la violence sexuelle</h1>
+<p>L’Université d’Ottawa ne tolérera aucun acte de violence sexuelle. Cela comprend des actes tels que le viol et le harcèlement sexuel, ainsi que des comportements répréhensibles qui se produisent sans consentement, ce qui inclut le cyberharcèlement. L’université, ainsi que divers employés et groupes d’étudiants, proposent une variété de services et de ressources pour garantir que tous les membres de la communauté de l’Université d’Ottawa aient accès à un soutien et à des informations confidentiels, ainsi qu’à des procédures pour signaler un incident ou déposer une plainte. Pour plus d’informations, veuillez visiter <a href="https://www.uottawa.ca/about-us/respect/sexual-violence-support-and-prevention">www.uOttawa.ca/sexual-violence-support-and-prevention</a>.</p>
+</section>
+<section id="partage-dinformations-et-droit-dauteur" class="level1">
+<h1>Partage d’informations et droit d’auteur</h1>
+<p>Tous les documents préparés par l’instructeur du cours, y compris les devoirs, les notes de cours et les examens, sont protégés par le droit d’auteur. Copier, numériser ou publier sur un site Web constitue donc une violation du droit d’auteur et est illégal.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/turcotte\.xyz\/teaching\/csi-4506");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./course-schedule.html" class="pagination-link" aria-label="Calendrier">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Calendrier</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./course-team.html" class="pagination-link" aria-label="Équipe pédagogique">
+        <span class="nav-page-text">Équipe pédagogique</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Droit d’auteur 2024-26, Marcel Turcotte</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Réalisé avec <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

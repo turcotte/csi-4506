@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Marcel Turcotte">
+  <title>CSI 4506 - Automne 2026 – Bienvenue à CSI 4506!</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <script async="" src="https://hypothes.is/embed.js"></script>
+  <script>
+    window.document.addEventListener("DOMContentLoaded", function (_event) {
+      document.body.classList.add('hypothesis-enabled');
+    });
+  </script>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Bienvenue à CSI 4506! – CSI 4506 - Automne 2026">
+<meta property="og:description" content="CSI 4506 - automne 2026">
+<meta property="og:site_name" content="CSI 4506 - Automne 2026">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Bienvenue à CSI 4506!</h1>
+  <p class="subtitle">CSI 4506 - automne 2026</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Marcel Turcotte
+</div>
+</div>
+</div>
+
+  <p class="date">Version: août 9, 2026 11h48</p>
+</section>
+<section>
+<section id="préambule" class="title-slide slide level1 center">
+<h1>Préambule</h1>
+
+</section>
+<section id="message-du-jour-motd" class="slide level2">
+<h2>Message du jour (MOTD)</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><a href="https://mila.quebec/sites/default/files/styles/member_full/public/member/5215/portrait-of-joelle-pineau.jpeg.webp?itok=aEJ2SrnP" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://mila.quebec/sites/default/files/styles/member_full/public/member/5215/portrait-of-joelle-pineau.jpeg.webp?itok=aEJ2SrnP"></a></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li><p>2025-08 – Directrice de l’IA, <a href="https://cohere.com">Cohere</a></p></li>
+<li><p>2023-03 – 2025-05 VP Recherche IA, Meta</p></li>
+<li><p>2017-05 – 2023-02 Directrice, Facebook Artificial Intelligence Research (FAIR), Montréal</p></li>
+<li><p>2004-08 – Professeure, Université McGill</p></li>
+</ul>
+</div></div>
+<div class="{aside}">
+<p><a href="https://www.theglobeandmail.com/business/article-cohere-fundraising-former-meta-executive-joelle-pineau-ai/">Cohere raises US$500-million, hires former Meta AI expert Joelle Pineau</a>, Joe Castaldo, The Globe and Mail, 2025-08-14.</p>
+</div>
+<aside class="notes">
+<p><a href="https://fr.wikipedia.org/wiki/Joëlle_Pineau">Joëlle Pineau</a>, une éminente scientifique canadienne en informatique, est née à Ottawa et a eu une carrière exemplaire dans le domaine de la recherche en intelligence artificielle. Elle a auparavant occupé le poste de vice-présidente de la recherche en IA chez Meta et a été directrice de Facebook Artificial Intelligence Research (FAIR) à Montréal. Actuellement, elle est la directrice de l’IA chez Cohere.</p>
+<p>Cohere, une entreprise canadienne d’IA, se consacre au développement de technologies avancées de traitement du langage naturel (NLP) visant à doter les entreprises de modèles de langage de pointe. Deux de ses cofondateurs, Aidan Gomez et Nick Frosst, ont précédemment mené des recherches chez Google Brain. Ils sont également co-auteurs de l’article phare “<a href="https://arxiv.org/abs/1706.03762">Attention is All You Need</a>,” qui a introduit l’architecture transformer, une avancée clé en apprentissage automatique. L’article a 192 363 citations selon Google Scholar.</p>
+<ul>
+<li><a href="https://www.lapresse.ca/affaires/2025-08-19/ia-au-sein-de-la-fonction-publique/le-gouvernement-carney-misera-sur-une-entreprise-canadienne.php">Le gouvernement Carney misera sur une entreprise canadienne</a>, Joël-Denis Bellavance, La Presse Plus, 2025-08-19.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+<iframe data-external="1" src="https://www.youtube.com/embed/Sq1QZB5baNw" width="100%" height="100%" title="Figure Status Update - OpenAI Speech-to-Speech Reasoning" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<aside class="notes">
+<p>La présentation comprend quatre vidéos, mais nous n’en visionnerons qu’une seule. Ces vidéos ont été choisies pour leur aspect science-fiction et leur utilisation de l’IA générative.</p>
+<p>L’approche de Figure se distingue nettement des méthodes antérieures. Ces dernières reposaient souvent sur des modules séparés pour résoudre différents problèmes. Par exemple, un robot utilisait un algorithme de planification pour trouver un chemin optimal, et le raisonnement était fortement scripté («on rails»), limitant ainsi les tâches et les capacités d’apprentissage.</p>
+<p>Nous voyons ici une approche de bout en bout basée sur des réseaux de neurones. L’apprentissage profond vise à produire des systèmes flexibles, généraux et capables d’apprendre. Inspiré par les grands modèles de langage (LLMs), nous observons maintenant le développement de grands modèles d’actions (LAMs).</p>
+<p>Les vidéos sur les nouveaux modèles de Google DeepMind sont tout aussi impressionnantes.</p>
+<p>Comment vous sentez-vous face à ces développements?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+<iframe data-external="1" src="https://www.youtube.com/embed/Z3yQHYNXPws" width="100%" height="100%" title="Introducing Helix | Figure" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section class="slide level2">
+
+<iframe data-external="1" src="https://www.youtube.com/embed/UIZAiXYceBI" width="100%" height="100%" title="The capabilities of multimodal AI | Gemini Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section class="slide level2">
+
+<iframe data-external="1" src="https://www.youtube.com/embed/nXVvvRhiGjI" width="100%" height="100%" title="Project Astra: Our vision for the future of AI assistants" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="objectifs-dapprentissage" class="slide level2">
+<h2>Objectifs d’apprentissage</h2>
+<ul>
+<li><strong>Clarifier</strong> la proposition</li>
+<li><strong>Discuter</strong> le plan de cours</li>
+<li><strong>Articuler</strong> les attentes</li>
+<li><strong>Explorer</strong> les différentes définitions de “l’intelligence artificielle”</li>
+</ul>
+<aside class="notes">
+<p>Il est probable que notre premier cours se termine assez tôt, ce qui nous laissera du temps pour discuter après la présentation, si vous le souhaitez.</p>
+<p>Je souhaite clarifier ma proposition. J’ai opté pour une approche spécifique pour introduire les concepts et je souhaite expliquer les raisons de ce choix.</p>
+<p>Après vous avoir présenté le plan de cours et les attentes, nous discuterons des différentes définitions de l’intelligence articificielle.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="proposition" class="title-slide slide level1 center">
+<h1>Proposition</h1>
+
+</section>
+<section id="aperçu-du-cours" class="slide level2" data-background-video="01_tts_course_description-fr-nova.mp3">
+<h2>Aperçu du cours</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Description officielle</strong></p>
+</div>
+<div class="callout-content">
+<p>Concepts et méthodes de base de l’intelligence artificielle. Connaissances et représentation des connaissances. Recherche, recherche stratégique, jeux de stratégie. Raisonnement et déduction. Incertitude en intelligence artificielle. Introduction au traitement du langage naturel. Éléments de base de la planification. Éléments de base de l’apprentissage automatique.</p>
+</div>
+</div>
+</div>
+<!--
+[](01_tts_course_description-fr-nova.mp3)
+-->
+<aside class="notes">
+<p>Voici la description officielle du cours. À la fin de cette présentation, vous trouverez le code Python que j’ai utilisé afin de produire cet extrait sonore.</p>
+<p>Cette description de cours date de plusieurs années, plaçant l’apprentissage automatique à la fin de l’énumération.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="buts-apprentissage-profond-tôt" class="slide level2">
+<h2>Buts: Apprentissage profond tôt</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Legg:2007aa">(<a href="#/références" role="doc-biblioref" onclick="">Legg et Hutter 2007</a>, traduction GPT-4o)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Pour la communauté plus large de l’informatique et des technologies de l’information, <strong>l’IA</strong> est généralement <strong>identifiée par les techniques qui en ont émergé</strong>, lesquelles, à <strong>différentes époques</strong>, peuvent inclure la <strong>démonstration de théorèmes</strong>, la <strong>recherche heuristique</strong>, les <strong>jeux</strong>, les <strong>systèmes experts</strong>, les <strong>réseaux neuronaux</strong>, les <strong>réseaux bayésiens</strong>, le <strong>fouille de données</strong>, les <strong>agents</strong>, et récemment, <strong>l’apprentissage profond</strong>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>L’apprentissage profond</strong> est tellement dominant que j’ai choisi de structurer tout autour de celui-ci.</li>
+</ul>
+</section>
+<section id="quest-ce-que-cela-signifie" class="slide level2">
+<h2>Qu’est-ce que cela signifie?</h2>
+<p><strong>La bonne vieille IA de style classique</strong> (<strong>GOFAI</strong>) reposait sur <strong>l’ingénierie des connaissances faite à la main</strong>, mais elle a été largement remplacée par <strong>l’apprentissage automatique</strong> en raison de la disponibilité accrue des données, des ressources informatiques et des nouveaux algorithmes.</p>
+<div class="fragment">
+<p><strong>L’apprentissage profond</strong> a eu un impact significatif sur divers domaines, notamment le traitement du langage naturel, la robotique et la vision par ordinateur.</p>
+</div>
+<div class="fragment">
+<p>Cependant, l’apprentissage profond présente actuellement des <strong>limites</strong>, notamment en matière de <strong>raisonnement</strong>, où l’IA symbolique excelle et pourrait potentiellement offrir des perspectives précieuses.</p>
+<!--
+. . .
+
+This entails employing a **bottom-up** methodology to some degree.
+
+-->
+</div>
+</section>
+<section id="mais-aussi" class="slide level2 scrollable">
+<h2>Mais aussi</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://m.media-amazon.com/images/I/81xA5147ATL._AC_UF1000,1000_QL80_.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://m.media-amazon.com/images/I/81xA5147ATL._AC_UF1000,1000_QL80_.jpg"></a></p>
+</div><div class="column" style="width:80%;">
+<ul>
+<li>Dans <strong><a href="https://www.abriefhistoryofintelligence.com/book">A Brief History of Intelligence</a></strong> <span class="citation" data-cites="Bennett:2023aa">(<a href="#/références" role="doc-biblioref" onclick="">Bennett 2023</a>)</span>, Max Bennett discute des <strong>étapes importantes de l’évolution de l’intelligence humaine</strong> et établit des parallèles avec les progrès de l’intelligence artificielle (IA).</li>
+<li>L’apprentissage lui-même représente l’une des premières étapes et la plus largement comprise dans l’évolution de l’intelligence.</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Curieusement, le développement de l’IA a été largement influencé par des approches logiques (IA symbolique). Le développement de l’IA a été fortement marqué par des courants intellectuels ancrés dans la philosophie et les mathématiques, plutôt que dans la biologie et son évolution. Les raisonnements en philosophie et en mathématiques reposent sur des fonctions cognitives complexes, peut-être moins bien comprises et ayant évolué plus tardivement.</p>
+<p>L’apprentissage lui-même représente l’une des premières étapes et la plus largement comprise dans l’évolution de l’intelligence.</p>
+<p>Il aurait été logique d’aborder l’étude de l’intelligence en progressant des formes les plus simples aux formes les plus complexes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="buts-appliqué" class="slide level2">
+<h2>Buts: Appliqué</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> Andrew Ng, <a href="https://info.deeplearning.ai/autonomous-coding-agents-instability-at-stability-ai-mamba-mania-what-users-do-with-genai-2">The Batch, April 10, 2024</a></strong></p>
+</div>
+<div class="callout-content">
+<p>De nombreux développeurs de logiciels craignent que les <strong>grands modèles de langage</strong> ne rendent <strong>les programmeurs humains obsolètes.</strong> Nous doutons que l’IA remplace les programmeurs, mais nous croyons que <strong>les programmeurs qui utilisent l’IA remplaceront ceux qui ne le font pas</strong>.</p>
+<p>(traduction GPT-4o)</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Chaque fois que possible, les concepts seront introduits avec du code.</li>
+</ul>
+</section>
+<section id="buts-appliqué-1" class="slide level2">
+<h2>Buts: Appliqué</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> Richard Feynman</strong></p>
+</div>
+<div class="callout-content">
+<p>Ce que je ne peux pas construire. Je ne comprends pas.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="buts-rigueur-académique" class="slide level2">
+<h2>Buts: Rigueur académique</h2>
+<p>En recherchant la clarté et l’accessibilité, ce cours vise à trouver un équilibre entre le <strong>discours informel</strong> et la <strong>précision</strong> nécessaire à la rigueur académique. L’objectif est que les apprenants non seulement saisissent, mais aussi <strong>appliquent</strong>, <strong>évaluent</strong> et <strong>analysent de manière critique</strong> les concepts discutés tout au long du cours.</p>
+</section></section>
+<section>
+<section id="plan-de-cours" class="title-slide slide level1 center">
+<h1>Plan de cours</h1>
+
+</section>
+<section id="informations-sur-le-cours" class="slide level2 scrollable">
+<h2>Informations sur le cours</h2>
+<h3 id="sites-web">Sites web</h3>
+<ul>
+<li><a href="https://turcotte.xyz/teaching/csi-4506">turcotte.xyz/teaching/csi-4506</a></li>
+<li><a href="https://uottawa.brightspace.ca">uottawa.brightspace.ca</a></li>
+</ul>
+<h3 id="horaire">Horaire</h3>
+<ul>
+<li><strong>Cours magistraux:</strong> Lundi 10h à 11h20 et mercredi 8h30 à 9h50 DMS 1120</li>
+<li><strong>Heures de bureau:</strong> Lundi 15h à 16h20 STE 5106</li>
+<li><strong>Horaire officiel:</strong> <a href="https://www.uottawa.ca/etudiants-actuels/horaire-cours">www.uottawa.ca/etudiants-actuels/horaire-cours</a></li>
+</ul>
+<h3 id="évaluation">Évaluation</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Catégorie</th>
+<th>Pourcentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Travaux</td>
+<td>40% (4 x 10%)</td>
+</tr>
+<tr class="even">
+<td>Quiz</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td>Examen final</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="matériel-de-lecture">Matériel de lecture</h3>
+<p>Je m’appuierai sur les deux manuels listés ci-dessous, ainsi que sur des publications scientifiques pertinentes. Toutes les sources d’information seront citées. Pour la plupart des gens, je m’attends à ce que mes notes de cours soient suffisantes.</p>
+<ul>
+<li>Russell, S., &amp; Norvig, P. (2020). <a href="https://aima.cs.berkeley.edu/"><em>Artificial Intelligence: A Modern Approach</em></a> (4ème éd.). Pearson.</li>
+<li>Poole, D.L., &amp; Mackworth, A.K. (2023) <a href="https://artint.info"><em>Artificial Intelligence: Foundations of Computational Agents</em></a> (3ème éd.). Cambridge University Press. (Disponible gratuitement en ligne en <a href="https://artint.info/3e/html/ArtInt3e.html">format HTML</a>)</li>
+</ul>
+<p>La <a href="https://www.bkstr.com/ottawastore/home">librairie du campus</a> a commandé un petit nombre d’exemplaires de ces livres, pour ceux qui sont intéressés.</p>
+<p>Nous ne suivons pas strictement le cadre proposé par <span class="citation" data-cites="Russell:2020aa">(<a href="#/références" role="doc-biblioref" onclick="">Russell et Norvig 2020</a>)</span> et <span class="citation" data-cites="Poole:2023aa">(<a href="#/références" role="doc-biblioref" onclick="">Poole et Mackworth 2023</a>)</span>. En particulier, bien que ces manuels utilisent le concept d’agent intelligent comme thème central, des domaines tels que l’apprentissage automatique (ML), le traitement automatique du langage naturel (NLP) et la vision fonctionnent comme des communautés distinctes. Dans ces communautés, les problèmes ne sont généralement pas formulés en termes d’agents.</p>
+<aside class="notes">
+<p>Il y a deux sites web à utiliser. Sur mon site personnel, vous trouverez les présentations et des exemples de code. Sur Brightspace, vous soumettrez vos travaux et participerez aux groupes de discussion.</p>
+<p>Pendant le cours, visitez mon site personnel. Vous y trouverez le programme complet, le calendrier du cours, des informations sur l’équipe, ainsi qu’une brève biographie de l’instructeur.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="testeurs-bêta" class="slide level2">
+<h2>Testeurs bêta</h2>
+<p>Ce sera ma deuxième itération de ce contenu. Votre aide pour identifier ce qui fonctionne et ce qui ne fonctionne pas sera très appréciée.</p>
+</section>
+<section id="avertissements" class="slide level2">
+<h2>Avertissements</h2>
+<p>CSI 4506 est un cours d’introduction à l’intelligence artificielle, offrant un aperçu bref de divers sujets dans ce domaine vaste. <strong>Chaque sujet couvert pourrait être exploré beaucoup plus en profondeur à travers un ou plusieurs cours de niveau supérieur.</strong> L’objectif principal de CSI 4506 est de fournir aux étudiants une compréhension de base des principaux domaines qui constituent l’intelligence artificielle.</p>
+<div class="fragment">
+<p>Les chevauchements avec d’autres cours sont inévitables, mais je ferai de mon mieux pour les minimiser.</p>
+</div>
+<div class="fragment">
+<p>Ce cours n’est pas un cours sur l’impact de l’IA sur la société, y compris les questions d’éthique, d’équité, de confiance et de sécurité.</p>
+<aside class="notes">
+<p>Cet avertissement est en réalité pour moi. Ce sont des sujets qui me passionnent, et j’aimerais vous transmettre tout ce que je sais. Cependant, cela n’est évidemment pas possible. De manière générale, je vais essayer de me concentrer sur un petit nombre d’approches pour bien comprendre les sujets, plutôt que d’adopter une approche exhaustive.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section></section>
+<section>
+<section id="préparer-le-terrain-ia-apprentissage-profond-et-vues-divergentes-sur-lintelligence." class="title-slide slide level1 smaller center">
+<h1>Préparer le terrain : IA, apprentissage profond et vues divergentes sur l’intelligence.</h1>
+
+</section>
+<section id="ai-ml-dl" class="slide level2">
+<h2>AI, ML, DL</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/b/bb/AI-ML-DL.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://upload.wikimedia.org/wikipedia/commons/b/bb/AI-ML-DL.svg" class="quarto-figure quarto-figure-center" width="450"></a></p>
+</figure>
+</div>
+
+<aside class="notes">
+<p>L’apprentissage profond est tellement répandu aujourd’hui que certaines personnes pourraient le confondre avec l’intelligence artificielle. Comme le montre la figure, l’apprentissage profond (deep learning) est l’une des nombreuses techniques utilisées dans l’apprentissage automatique (machine learning). L’apprentissage automatique, à son tour, est l’une des plusieurs disciplines au sein de l’intelligence artificielle. D’autres disciplines de l’IA incluent la représentation des connaissances, le raisonnement et la planification, le traitement du langage naturel, la vision par ordinateur et la robotique.</p>
+<p>D’ici la fin de la session, cette distinction devrait être bien évidente.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><strong>Attribution:</strong> Avimanyu786SVG version: Tukijaaliwa, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, visité le 18 juin 2024.</p>
+</div></aside></section>
+<section id="écoles-de-pensée" class="slide level2">
+<h2>Écoles de pensée</h2>
+<ul>
+<li><strong>IA symbolique</strong> (essentiellement basée sur la logique)</li>
+<li><strong>Connexionnisme</strong> (principalement des réseaux de neurones)</li>
+</ul>
+
+<aside class="notes">
+<p>Au début de ce cours, il est important de reconnaître qu’il existe deux grandes écoles de pensée en IA : <strong>l’IA symbolique</strong> et <strong>le connexionnisme</strong>. Initialement, l’approche symbolique était dominante dans le domaine de l’IA, mais aujourd’hui, l’approche connexionniste prévaut.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Longtemps considérées comme mutuellement exclusives</p>
+</div></aside></section>
+<section id="tours-de-hanoï" class="slide level2 nostretch">
+<h2>Tours de Hanoï</h2>
+<p>(pour information uniquement)</p>
+<iframe data-external="1" src="https://www.youtube.com/embed/PGuRmqpr6Oo" width="60%" height="60%" title="Key to the Tower of Hanoi - Numberphile" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<aside><div>
+<p><strong>Voir aussi:</strong> Binary, Hanoi and Sierpinski, <a href="https://www.youtube.com/watch?v=2SUvWfNJSsM">Partie 1</a> et <a href="https://www.youtube.com/watch?v=bdMfjfT0lKk">Partie 2</a>, de <a href="https://www.youtube.com/@3blue1brown">3Blue1Brown</a>.</p>
+</div></aside></section>
+<section id="ia-symbolique-planification" class="slide level2">
+<h2>IA symbolique (Planification)</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Problème</a></li><li><a href="#tabset-1-2">Codage</a></li><li><a href="#tabset-1-3">Départ</a></li><li><a href="#tabset-1-4">Objectif</a></li><li><a href="#tabset-1-5">Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>Les <strong>Tours de Hanoï</strong> est un jeu avec <strong>trois piquets</strong> et <strong>plusieurs disques de tailles différentes</strong>. Il <strong>commence</strong> avec tous les <strong>disques empilés par ordre décroissant sur un piquet</strong>, et l’<strong>objectif est de déplacer la pile entière sur un autre piquet</strong>, en respectant ces règles.</p>
+<ol type="1">
+<li><strong>Un seul disque</strong> peut être déplacé à la fois.</li>
+<li>Un disque ne peut être placé <strong>que sur un disque plus grand</strong> ou <strong>sur un piquet vide</strong>.</li>
+</ol>
+</div>
+<div id="tabset-1-2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb1-1"><a aria-label="1"></a><span class="dt">Action</span> <span class="dt">Move</span>(<span class="dt">X</span><span class="kw">,</span><span class="dt">Y</span><span class="kw">,</span><span class="dt">Z</span>)<span class="fu">:</span></span>
+<span id="cb1-2"><a aria-label="2"></a>    <span class="dt">Preconditions</span> <span class="kw">=</span> <span class="kw">{</span><span class="dt">Clear</span>(<span class="dt">X</span>)<span class="kw">,</span> <span class="dt">On</span>(<span class="dt">X</span><span class="kw">,</span><span class="dt">Y</span>)<span class="kw">,</span> <span class="dt">Clear</span>(<span class="dt">Z</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">X</span><span class="kw">,</span><span class="dt">Z</span>)<span class="kw">};</span></span>
+<span id="cb1-3"><a aria-label="3"></a>    <span class="dt">Effects</span> <span class="kw">=</span> <span class="kw">{</span><span class="fu">-</span><span class="dt">On</span>(<span class="dt">X</span><span class="kw">,</span><span class="dt">Y</span>)<span class="kw">,</span> <span class="dt">Clear</span>(<span class="dt">Y</span>)<span class="kw">,</span> <span class="dt">On</span>(<span class="dt">X</span><span class="kw">,</span><span class="dt">Z</span>)<span class="kw">,</span> <span class="fu">-</span><span class="dt">Clear</span>(<span class="dt">Z</span>)<span class="kw">};</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-3">
+<p><code>D1, D2, D3, P1, P2, P3</code> sont des symboles, où <code>D1</code>, <code>D2</code>, et <code>D3</code> sont des disques, et <code>P1</code>, <code>P2</code>, et <code>P3</code> sont des piquets.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb2-1"><a aria-label="1"></a><span class="dt">On</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">D2</span>)<span class="kw">,</span> <span class="dt">On</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">D3</span>)<span class="kw">,</span> <span class="dt">On</span>(<span class="dt">D3</span><span class="kw">,</span> <span class="dt">P1</span>)<span class="kw">,</span></span>
+<span id="cb2-2"><a aria-label="2"></a>clear(<span class="dt">D1</span>)<span class="kw">,</span> clear(<span class="dt">P2</span>)<span class="kw">,</span> clear(<span class="dt">P3</span>)<span class="kw">,</span></span>
+<span id="cb2-3"><a aria-label="3"></a><span class="dt">Smaller</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">D2</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">D3</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">D3</span>)<span class="kw">,</span></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="dt">Smaller</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P1</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P2</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P3</span>)<span class="kw">,</span></span>
+<span id="cb2-5"><a aria-label="5"></a><span class="dt">Smaller</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">P1</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">P2</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">P3</span>)<span class="kw">,</span></span>
+<span id="cb2-6"><a aria-label="6"></a><span class="dt">Smaller</span>(<span class="dt">D3</span><span class="kw">,</span> <span class="dt">P1</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D3</span><span class="kw">,</span> <span class="dt">P2</span>)<span class="kw">,</span> <span class="dt">Smaller</span>(<span class="dt">D3</span><span class="kw">,</span> <span class="dt">P3</span>)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb3-1"><a aria-label="1"></a><span class="dt">On</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">D2</span>)<span class="kw">,</span> <span class="dt">On</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">D3</span>)<span class="kw">,</span> <span class="dt">On</span>(<span class="dt">D3</span><span class="kw">,</span> <span class="dt">P3</span>)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb4-1"><a aria-label="1"></a><span class="dt">Move</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P1</span><span class="kw">,</span> <span class="dt">P3</span>)</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="dt">Move</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">P1</span><span class="kw">,</span> <span class="dt">P2</span>)</span>
+<span id="cb4-3"><a aria-label="3"></a><span class="dt">Move</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P3</span><span class="kw">,</span> <span class="dt">P2</span>)</span>
+<span id="cb4-4"><a aria-label="4"></a><span class="dt">Move</span>(<span class="dt">D3</span><span class="kw">,</span> <span class="dt">P1</span><span class="kw">,</span> <span class="dt">P3</span>)</span>
+<span id="cb4-5"><a aria-label="5"></a><span class="dt">Move</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P2</span><span class="kw">,</span> <span class="dt">P1</span>)</span>
+<span id="cb4-6"><a aria-label="6"></a><span class="dt">Move</span>(<span class="dt">D2</span><span class="kw">,</span> <span class="dt">P2</span><span class="kw">,</span> <span class="dt">P3</span>)</span>
+<span id="cb4-7"><a aria-label="7"></a><span class="dt">Move</span>(<span class="dt">D1</span><span class="kw">,</span> <span class="dt">P1</span><span class="kw">,</span> <span class="dt">P3</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p><strong>STRIPS (Stanford Research Institute Problem Solver, 1971)</strong> est un <strong>système de planification en IA classique</strong> qui représente les problèmes en termes de :</p>
+<ul>
+<li><strong>États</strong> : ensembles de prédicats logiques décrivant le monde.</li>
+<li><strong>Opérateurs (Actions)</strong> : définis par
+<ul>
+<li><em>Préconditions</em> : prédicats qui doivent être vérifiés pour appliquer l’action,</li>
+<li><em>Liste d’ajout</em> : prédicats rendus vrais après exécution,</li>
+<li><em>Liste de suppression</em> : prédicats rendus faux après exécution.</li>
+</ul></li>
+<li><strong>But</strong> : un ensemble de prédicats à atteindre.</li>
+</ul>
+<p>Un plan est trouvé en appliquant des actions pour transformer l’état initial en un état but, en mettant à jour le monde via les listes d’ajout/suppression.</p>
+<p>Ces méthodes seront examinées de manière approfondie à partir du cours 16, consacré aux méthodes de recherche, et du cours 22, qui portera sur les raisonnements formels.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ia-symbolique-parenté" class="slide level2">
+<h2>IA Symbolique (Parenté)</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Problème</a></li><li><a href="#tabset-2-2">Règles</a></li><li><a href="#tabset-2-3">Faits</a></li><li><a href="#tabset-2-4">Requête</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>Étant donné quelques <strong>faits</strong> concernant qui est parent de qui (<strong>symboles</strong>) et une poignée de <strong>règles en forme de Horn</strong>, déduisez de nouvelles relations (par exemple, <strong>ancêtre</strong>, <strong>frères et sœurs</strong>, <strong>grand-parent</strong>) par <em>déduction logique</em>.</p>
+</div>
+<div id="tabset-2-2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb5-1"><a aria-label="1"></a>father(<span class="dt">F</span><span class="kw">,</span><span class="dt">C</span>) <span class="kw">:-</span> male(<span class="dt">F</span>)<span class="kw">,</span> parent(<span class="dt">F</span><span class="kw">,</span><span class="dt">C</span>)<span class="kw">.</span></span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a>mother(<span class="dt">M</span><span class="kw">,</span><span class="dt">C</span>) <span class="kw">:-</span> female(<span class="dt">M</span>)<span class="kw">,</span> parent(<span class="dt">M</span><span class="kw">,</span><span class="dt">C</span>)<span class="kw">.</span></span>
+<span id="cb5-4"><a aria-label="4"></a></span>
+<span id="cb5-5"><a aria-label="5"></a>sibling(<span class="dt">X</span><span class="kw">,</span><span class="dt">Y</span>) <span class="kw">:-</span> parent(<span class="dt">P</span><span class="kw">,</span><span class="dt">X</span>)<span class="kw">,</span> parent(<span class="dt">P</span><span class="kw">,</span><span class="dt">Y</span>)<span class="kw">,</span> <span class="dt">X</span> <span class="kw">\=</span> <span class="dt">Y</span><span class="kw">.</span></span>
+<span id="cb5-6"><a aria-label="6"></a></span>
+<span id="cb5-7"><a aria-label="7"></a>grandparent(<span class="dt">G</span><span class="kw">,</span><span class="dt">C</span>) <span class="kw">:-</span> parent(<span class="dt">G</span><span class="kw">,</span><span class="dt">P</span>)<span class="kw">,</span> parent(<span class="dt">P</span><span class="kw">,</span><span class="dt">C</span>)<span class="kw">.</span></span>
+<span id="cb5-8"><a aria-label="8"></a></span>
+<span id="cb5-9"><a aria-label="9"></a>ancestor(<span class="dt">A</span><span class="kw">,</span><span class="dt">D</span>) <span class="kw">:-</span> parent(<span class="dt">A</span><span class="kw">,</span><span class="dt">D</span>)<span class="kw">.</span></span>
+<span id="cb5-10"><a aria-label="10"></a>ancestor(<span class="dt">A</span><span class="kw">,</span><span class="dt">D</span>) <span class="kw">:-</span> parent(<span class="dt">A</span><span class="kw">,</span><span class="dt">X</span>)<span class="kw">,</span> ancestor(<span class="dt">X</span><span class="kw">,</span><span class="dt">D</span>)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-2-3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb6-1"><a aria-label="1"></a><span class="co">% faits/symboles</span></span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a>male(alan)<span class="kw">.</span> female(brenda)<span class="kw">.</span></span>
+<span id="cb6-4"><a aria-label="4"></a>male(chris)<span class="kw">.</span> female(dina)<span class="kw">.</span></span>
+<span id="cb6-5"><a aria-label="5"></a>male(eli)<span class="kw">.</span> female(fiona)<span class="kw">.</span></span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a>parent(alan<span class="kw">,</span> chris)<span class="kw">.</span></span>
+<span id="cb6-8"><a aria-label="8"></a>parent(brenda<span class="kw">,</span> chris)<span class="kw">.</span></span>
+<span id="cb6-9"><a aria-label="9"></a>parent(chris<span class="kw">,</span> dina)<span class="kw">.</span></span>
+<span id="cb6-10"><a aria-label="10"></a>parent(dina<span class="kw">,</span> eli)<span class="kw">.</span></span>
+<span id="cb6-11"><a aria-label="11"></a>parent(dina<span class="kw">,</span> fiona)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-2-4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb7-1"><a aria-label="1"></a><span class="fu">?-</span> grandparent(<span class="dt">G</span><span class="kw">,</span> dina)<span class="kw">.</span></span>
+<span id="cb7-2"><a aria-label="2"></a><span class="co">% Attendu : G = alan ; G = brenda.</span></span>
+<span id="cb7-3"><a aria-label="3"></a></span>
+<span id="cb7-4"><a aria-label="4"></a><span class="fu">?-</span> ancestor(<span class="dt">A</span><span class="kw">,</span> fiona)<span class="kw">.</span></span>
+<span id="cb7-5"><a aria-label="5"></a><span class="co">% Attendu : A = dina ; A = alan ; A = brenda ; A = chris ;</span></span>
+<span id="cb7-6"><a aria-label="6"></a></span>
+<span id="cb7-7"><a aria-label="7"></a><span class="fu">?-</span> sibling(eli<span class="kw">,</span> fiona)<span class="kw">.</span></span>
+<span id="cb7-8"><a aria-label="8"></a><span class="co">% Attendu : vrai.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>L’exemple précédent démontre l’application de la programmation logique, spécifiquement Prolog, pour articuler les relations entre les entités.</p>
+<ul>
+<li><strong>Séparation claire</strong> des connaissances (faits) et du raisonnement (règles).</li>
+<li><strong>Explications</strong> : les arbres de preuve de Prolog rendent les déductions inspectables.</li>
+<li><strong>Récursion</strong> illustre la puissance expressive (par exemple, ancestor/2).</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ia-symbolique-prérequis" class="slide level2">
+<h2>IA Symbolique (Prérequis)</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Problème</a></li><li><a href="#tabset-3-2">Règles</a></li><li><a href="#tabset-3-3">Cours</a></li><li><a href="#tabset-3-4">Étudiants</a></li><li><a href="#tabset-3-5">Requête</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Étant donné les <strong>prérequis des cours</strong> et l’ensemble <strong>complété</strong> d’un étudiant, déduire quels cours ils <strong>peuvent suivre ensuite</strong>. Cela montre le <em>raisonnement par contraintes symboliques</em>.</p>
+</div>
+<div id="tabset-3-2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb8-1"><a aria-label="1"></a>all_prereqs_met(<span class="dt">Etudiant</span><span class="kw">,</span> <span class="dt">Cours</span>) <span class="kw">:-</span></span>
+<span id="cb8-2"><a aria-label="2"></a>    <span class="kw">\+</span> (prereq(<span class="dt">Cours</span><span class="kw">,</span> <span class="dt">P</span>)<span class="kw">,</span> <span class="kw">\+</span> completed(<span class="dt">Etudiant</span><span class="kw">,</span> <span class="dt">P</span>))<span class="kw">.</span></span>
+<span id="cb8-3"><a aria-label="3"></a>    </span>
+<span id="cb8-4"><a aria-label="4"></a>can_take(<span class="er">É</span>tudiant<span class="kw">,</span> <span class="dt">Cours</span>) <span class="kw">:-</span></span>
+<span id="cb8-5"><a aria-label="5"></a>    all_prereqs_met(<span class="dt">Etudiant</span><span class="kw">,</span> <span class="dt">Cours</span>)<span class="kw">,</span></span>
+<span id="cb8-6"><a aria-label="6"></a>    <span class="kw">\+</span> completed(<span class="dt">Etudiant</span><span class="kw">,</span> <span class="dt">Cours</span>)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-3-3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb9-1"><a aria-label="1"></a><span class="co">% --- Graphe des cours (faits, symboles) ---</span></span>
+<span id="cb9-2"><a aria-label="2"></a></span>
+<span id="cb9-3"><a aria-label="3"></a>prereq(csi2120<span class="kw">,</span> csi2110)<span class="kw">.</span></span>
+<span id="cb9-4"><a aria-label="4"></a>prereq(csi2110<span class="kw">,</span> iti1121)<span class="kw">.</span></span>
+<span id="cb9-5"><a aria-label="5"></a>prereq(csi2110<span class="kw">,</span> mat1338)<span class="kw">.</span></span>
+<span id="cb9-6"><a aria-label="6"></a>prereq(iti1121<span class="kw">,</span> iti1120)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-3-4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb10-1"><a aria-label="1"></a><span class="co">% --- Dossier étudiant (faits, symboles) ---</span></span>
+<span id="cb10-2"><a aria-label="2"></a></span>
+<span id="cb10-3"><a aria-label="3"></a>completed(alex<span class="kw">,</span> iti1121)<span class="kw">.</span></span>
+<span id="cb10-4"><a aria-label="4"></a>completed(alex<span class="kw">,</span> iti1120)<span class="kw">.</span></span>
+<span id="cb10-5"><a aria-label="5"></a>completed(alex<span class="kw">,</span> mat1338)<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-3-5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb11-1"><a aria-label="1"></a><span class="fu">?-</span> can_take(alex<span class="kw">,</span> csi2110)<span class="kw">.</span></span>
+<span id="cb11-2"><a aria-label="2"></a><span class="co">% true</span></span>
+<span id="cb11-3"><a aria-label="3"></a></span>
+<span id="cb11-4"><a aria-label="4"></a><span class="fu">?-</span> can_take(alex<span class="kw">,</span> csi2120)<span class="kw">.</span></span>
+<span id="cb11-5"><a aria-label="5"></a><span class="co">% false</span></span>
+<span id="cb11-6"><a aria-label="6"></a></span>
+<span id="cb11-7"><a aria-label="7"></a><span class="fu">?-</span> can_take(alex<span class="kw">,</span> iti1121)<span class="kw">.</span></span>
+<span id="cb11-8"><a aria-label="8"></a><span class="co">% false</span></span>
+<span id="cb11-9"><a aria-label="9"></a></span>
+<span id="cb11-10"><a aria-label="10"></a><span class="fu">?-</span> all_prereqs_met(alex<span class="kw">,</span> csi2110)<span class="kw">.</span></span>
+<span id="cb11-11"><a aria-label="11"></a><span class="co">% true</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Un autre exemple utilisant la programmation logique (Prolog).</p>
+<ul>
+<li>Montre <strong>la satisfaction des contraintes</strong> et <strong>la négation dans le monde clos</strong>.</li>
+<li>Facile à étendre avec des cours optionnels, co-requis ou anti-requis.</li>
+<li>Produit des <strong>recommandations auditables</strong> (pourquoi/pourquoi pas).</li>
+</ul>
+<p>La négation par échec, qui est représentée par <code>\+</code> (antislash-plus), en Prolog.</p>
+<ul>
+<li><code>\+ Goal</code> réussit si <code>Goal</code> ne peut pas être prouvé.</li>
+<li>Sémantique : <strong>hypothèse du monde clos</strong> — si ce n’est pas dans la base de connaissances, nous supposons que c’est faux.</li>
+</ul>
+<p>La règle</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource prolog number-lines code-with-copy"><code class="sourceCode prolog"><span id="cb12-1"><a aria-label="1"></a>all_prereqs_met(<span class="er">É</span>tudiant<span class="kw">,</span> <span class="dt">Cours</span>) <span class="kw">:-</span></span>
+<span id="cb12-2"><a aria-label="2"></a>    <span class="kw">\+</span> (prereq(<span class="dt">Cours</span><span class="kw">,</span> <span class="dt">P</span>)<span class="kw">,</span> <span class="kw">\+</span> completed(<span class="er">É</span>tudiant<span class="kw">,</span> <span class="dt">P</span>))<span class="kw">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>se lit comme suit :</p>
+<blockquote>
+<p>“<code>all_prereqs_met(Etudiant, Cours)</code> est vrai <strong>s’il n’existe pas</strong> un prérequis <code>P</code> pour <code>Cours</code> tel que <code>Etudiant</code> n’a pas complété <code>P</code>.”</p>
+</blockquote>
+<p>Ou, plus naturellement :</p>
+<blockquote>
+<p>“Un étudiant a satisfait tous les prérequis pour un cours lorsque chaque cours qui est listé comme prérequis a déjà été complété par cet étudiant.”</p>
+</blockquote>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ia-symbolique" class="slide level2">
+<h2>IA symbolique</h2>
+<ul>
+<li class="fragment">“Leur principe fondateur était que <strong>la connaissance</strong> peut être représentée par un <strong>ensemble de règles</strong>, et les programmes informatiques peuvent utiliser <strong>la logique</strong> pour manipuler cette connaissance.” <span class="citation" data-cites="Strickland:2021aa">(<a href="#/références" role="doc-biblioref" onclick="">Strickland 2021</a>)</span></li>
+<li class="fragment">“Les chercheurs développant l’IA symbolique ont entrepris d’<strong>enseigner explicitement aux ordinateurs</strong> le monde.” <span class="citation" data-cites="Strickland:2021aa">(<a href="#/références" role="doc-biblioref" onclick="">Strickland 2021</a>)</span></li>
+<li class="fragment">“(<span class="math inline">\(\ldots\)</span>) un <strong>système de symboles</strong> a les <strong>moyens nécessaires</strong> et <strong>suffisants</strong> pour <strong>une action intelligente générale</strong>.”<br> <span class="citation" data-cites="Newell:1976aa">(<a href="#/références" role="doc-biblioref" onclick="">Newell et Simon 1976</a>)</span> Quels étaient les principaux défis associés à l’IA symbolique ?</li>
+</ul>
+<aside class="notes">
+<p>Notez l’importance du mot « explicitement » dans cet énoncé. Il ne s’agit pas de fournir des exemples à l’ordinateur, mais bien de décrire les connaissances humaines à l’aide de la logique.</p>
+<p>Les chercheurs de l’époque étaient convaincus que l’approche symbolique est la clé du succès.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ia-symbolique-1" class="slide level2">
+<h2>IA symbolique</h2>
+<ul>
+<li>Quels étaient les <strong>principaux défis</strong> associés à l’<strong>IA symbolique</strong> ?</li>
+</ul>
+</section>
+<section id="connexionniste" class="slide level2">
+<h2>Connexionniste</h2>
+<p>Inspirés par la biologie, les <strong>réseaux de neurones artificiels</strong> (ANNs) sont des modèles computationnels conçus pour <strong>imiter le réseau de neurones du cerveau humain</strong>. Ils sont constitués de couches de <strong>nœuds interconnectés (neurones)</strong>, chaque <strong>connexion</strong> ayant un <strong>poids</strong> associé.</p>
+<div class="fragment">
+<p>Les ANNs traitent les données d’entrée à travers ces connexions pondérées, et l’<strong>apprentissage</strong> se produit en <strong>ajustant les poids</strong> en fonction des <strong>erreurs</strong> dans les <strong>données d’entraînement</strong>.</p>
+
+<aside class="notes">
+<p>Le terme “connexionnistes” vient de l’idée que les nœuds dans ces modèles sont interconnectés. Au lieu d’être explicitement programmés, ces modèles apprennent leur comportement par l’entraînement.</p>
+<p>L’apprentissage profond est une approche connexioniste.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<aside><div>
+<p><strong>Voir:</strong> <a href="https://playground.tensorflow.org">playground.tensorflow.org</a></p>
+</div></aside></section>
+<section id="connexionniste-1" class="slide level2 nostretch">
+<h2>Connexionniste</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/alexlenail/NN-SVG/master/example.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://raw.githubusercontent.com/alexlenail/NN-SVG/master/example.svg" class="quarto-figure quarto-figure-center" style="width:70.0%"></a></p>
+</figure>
+</div>
+
+<aside><div>
+<p><strong>Attribution</strong>: LeNail, (2019). NN-SVG: Publication-Ready Neural Network Architecture Schematics. Journal of Open Source Software, 4(33), 747, https://doi.org/10.21105/joss.00747 (<a href="https://github.com/alexlenail/NN-SVG">GitHub</a>)</p>
+</div></aside></section></section>
+<section>
+<section id="définir-lia" class="title-slide slide level1 center">
+<h1>Définir l’IA</h1>
+
+</section>
+<section id="sondage" class="slide level2">
+<h2>Sondage</h2>
+<p>Perceptions et attitudes face à l’intelligence artificielle</p>
+<aside class="notes">
+<ul>
+<li>La majorité des étudiants manifestent une disposition généralement positive envers l’IA. Si votre perspective diffère, veuillez élaborer.</li>
+<li>Il existe une large gamme d’opinions concernant la probabilité d’issues catastrophiques dues à l’IA (P(doom)).</li>
+<li>Un nombre relativement restreint d’étudiants exprime des inquiétudes quant au remplacement de leurs emplois par l’IA.</li>
+<li>Peu d’étudiants perçoivent les systèmes d’IA actuels comme véritablement intelligents.</li>
+<li>Les opinions sur l’Intelligence Artificielle Générale (AGI) et la Super-intelligence varient considérablement.</li>
+<li>Les préoccupations principales entourant l’IA incluent le déplacement potentiel des emplois et l’utilisation abusive, avec des problèmes de confidentialité également notés.</li>
+<li>De nombreux étudiants considèrent que les secteurs médical et de la santé sont des domaines où l’IA pourrait exercer une influence significative.</li>
+<li>Une portion substantielle d’étudiants croit que l’IA est excessivement médiatisée.</li>
+<li>Moins de 20 % des étudiants possèdent une expérience substantielle en intelligence artificielle.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pourquoi-définir-lia" class="slide level2">
+<h2>Pourquoi définir l’IA ?</h2>
+<ul>
+<li class="fragment"><p><strong>Améliorer la clarté et la communication</strong> : Établir une compréhension mutuelle des critères d’évaluation, des tests de référence et des jalons.</p></li>
+<li class="fragment"><p><strong>Aborder les implications éthiques, sociales et juridiques</strong> : Permettre aux décideurs de développer des réglementations minimisant les risques liés à l’IA.</p></li>
+</ul>
+</section>
+<section id="une-définition-opérationnelle" class="slide level2">
+<h2>Une définition opérationnelle</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span> (traduction GPT-4o)</strong></p>
+</div>
+<div class="callout-content">
+<p>Pour la grande communauté de l’informatique et de la technologie de l’information, l’IA est généralement identifiée par les techniques issues de celle-ci, qui à différentes périodes peuvent inclure la <strong>démonstration de théorèmes</strong>, la <strong>recherche heuristique</strong>, les <strong>jeux</strong>, les <strong>systèmes experts</strong>, les <strong>réseaux de neurones</strong>, les <strong>réseaux bayésiens</strong>, l’<strong>exploration de données</strong>, les <strong>agents</strong>, et récemment, l’<strong>apprentissage profond</strong>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="contexte" class="slide level2">
+<h2>Contexte</h2>
+<ul>
+<li class="fragment"><p><strong>Engouement</strong> (<em>«hype»</em>) significatif.</p></li>
+<li class="fragment"><p>Plusieurs entreprises de premier plan, dont <a href="https://deepmind.google">DeepMind</a> et <a href="https://openai.com">OpenAI</a>, se concentrent principalement sur le développement de l’<strong>intelligence artificielle générale</strong> (IAG).</p></li>
+<li class="fragment"><p>Si l’IAG devenait une réalité, <strong>ses implications pourraient profondément impacter divers aspects de nos vies</strong>, y compris l’éducation, l’emploi, les structures économiques et les avancées scientifiques.</p></li>
+</ul>
+<aside class="notes">
+<p>L’IA a donc un grand potentiel pour influencer le cours de vos vies. Il est donc pertinent de prendre le temps de définir ce qu’est l’IA et d’explorer ses différentes approches.</p>
+<p>Je vous préviens tout de suite, il n’existe pas de consensus sur la définition de l’IA, pas plus que sur celle de l’intelligence.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fa37e16-8495-4038-85ca-73d988ad592b_1404x966.png?utm_source=substack&amp;utm_medium=email" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4fa37e16-8495-4038-85ca-73d988ad592b_1404x966.png?utm_source=substack&amp;utm_medium=email" class="quarto-figure quarto-figure-center" height="550"></a></p>
+</figure>
+</div>
+
+<aside><div>
+<p><strong>Attribution:</strong> Melanie Mitchell, Substack, <a href="https://aiguide.substack.com/p/the-turing-test-and-our-shifting">The Turing Test and Our Shifting Conceptions of Intelligence</a>, 15 août 2024.</p>
+</div></aside></section>
+<section id="question" class="slide level2 scrollable">
+<h2>Question</h2>
+<p><strong>User:</strong> The man and the goat want to enjoy a picnic near a river, but there’s a wolf. What to do with the zucchini?</p>
+<div class="fragment">
+<blockquote>
+<p><strong>ChatGPT 5:</strong> You’ve got the classic river‐crossing (wolf–goat–cabbage ⇒ here, zucchini).</p>
+<p>Boat carries you + one item. Unsafe pairings: wolf with goat; goat with zucchini.</p>
+<p>Minimal plan:</p>
+<ol type="1">
+<li>Take goat over.</li>
+<li>Return alone.</li>
+<li>Take wolf over.</li>
+<li>Bring goat back.</li>
+<li>Take zucchini over.</li>
+<li>Return alone.</li>
+<li>Take goat over.</li>
+</ol>
+<p>Conclusion: keep the zucchini never alone with the goat; ferry it on step 5.</p>
+</blockquote>
+</div>
+<div class="fragment">
+<div class="{aside}">
+<p><strong>Source:</strong> Andriy Burkov, publié sur <a href="https://www.linkedin.com/posts/andriyburkov_when-its-a-word-pattern-matcher-its-a-activity-7360444799662923776-BKUt?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAFnW4wBVjZqAGXTDClUO4u_oEKrFR3kMUI">LinkedIn</a> il y a 3 semaines.</p>
+</div>
+</div>
+</section>
+<section id="question-1" class="slide level2 scrollable">
+<h2>Question</h2>
+<p><strong>User:</strong> Surgeon but child, hopsital, it have a no, why it so?</p>
+<div class="fragment">
+<blockquote>
+<p><strong>ChatGPT 5:</strong> You’re pointing to the classic riddle:</p>
+<p>Car crash → injured child → surgeon says “I can’t operate—this is my child.”</p>
+<p>Resolution: the surgeon is the child’s mother (or another parent in a non-heteronormative family).</p>
+<p>The “paradox” arises from implicit gender assumptions about surgeons.</p>
+</blockquote>
+</div>
+<div class="fragment">
+<div class="{aside}">
+<p><strong>Source:</strong> Andriy Burkov, publié sur <a href="https://www.linkedin.com/posts/andriyburkov_when-its-a-word-pattern-matcher-its-a-activity-7360444799662923776-BKUt?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAFnW4wBVjZqAGXTDClUO4u_oEKrFR3kMUI">LinkedIn</a> il y a 3 semaines.</p>
+</div>
+</div>
+</section>
+<section id="la-nature-complexe-de-lintelligence" class="slide level2">
+<h2>La nature complexe de l’intelligence</h2>
+<div class="fragment">
+<ul>
+<li class="fragment"><p><strong>Artificielle</strong> concerne la création d’entités ou de phénomènes qui imitent les processus naturels en utilisant la technologie ou des matériaux synthétiques, une définition largement reconnue et acceptée.</p></li>
+<li class="fragment"><p>Par conséquent, définir <strong>l’intelligence artificielle</strong> nécessite fondamentalement de clarifier d’abord ce que nous entendons par <strong>intelligence.</strong> Étonnamment, “malgré une longue histoire de recherche et de débat, il n’y a toujours pas de définition standard de l’intelligence.” <span class="citation" data-cites="Legg:2007aa">(<a href="#/références" role="doc-biblioref" onclick="">Legg et Hutter 2007</a>, traduction GPT4o)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="comment-définissez-vous-lintelligence" class="slide level2">
+<h2>Comment définissez-vous l’intelligence?</h2>
+<ul>
+<li class="fragment"><p>Quelles sont les <strong>caractéristiques</strong> que vous associez avec l’<strong>intelligence</strong>?</p></li>
+<li class="fragment"><p>“<strong>Intelligence</strong> is a very general mental capability that, among other things, involves the ability to <strong>reason</strong>, <strong>plan</strong>, <strong>solve problems</strong>, <strong>think abstractly</strong>, <strong>comprehend complex ideas</strong>, <strong>learn quickly and learn from experience</strong>.”</p>
+<ul>
+<li class="fragment">Publié à l’origine dans le Wall Street Journal en 1994, le contenu a été réimprimé en 1997: <span class="citation" data-cites="Gottfredson:1997aa">(<a href="#/références" role="doc-biblioref" onclick="">Gottfredson 1997</a>)</span></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Une IA peut-elle faire des erreurs?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="capacités-essentielles" class="slide level2 scrollable">
+<h2>Capacités essentielles</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <a href="https://cogs.indiana.edu/directory/faculty/profile.php?faculty=dughof">Douglas Hofstadter</a></strong></p>
+</div>
+<div class="callout-content">
+<p>Personne ne sait où se situe la frontière entre un comportement non intelligent et un comportement intelligent, en fait, suggérer qu’il existe une frontière nette est probablement absurde. Mais les capacités essentielles pour l’intelligence sont certainement :</p>
+<ol type="1">
+<li>répondre aux situations de manière très <strong>flexible</strong>;</li>
+<li>tirer parti des circonstances <strong>fortuites</strong>;</li>
+<li>donner un sens à des messages <strong>ambigus</strong> ou <strong>contradictoires</strong>;</li>
+<li>reconnaître l’<strong>importance relative des différents éléments</strong> d’une situation;</li>
+<li>trouver des <strong>similarités</strong> entre des situations malgré les différences qui peuvent les séparer;</li>
+<li>établir des <strong>distinctions</strong> entre les situations malgré les similarités qui peuvent les lier;</li>
+<li><strong>synthétiser</strong> de nouveaux concepts en prenant des anciens concepts et en les assemblant de nouvelles façons;</li>
+<li>proposer des <strong>idées qui sont nouvelles</strong>.”</li>
+</ol>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Pour certains concepts complexes, tracer une frontière claire peut s’avérer difficile. Prenons l’exemple du concept de vie. Les humains, les plantes et les insectes sont considérés comme vivants, tout comme les microorganismes tels que les bactéries. En revanche, les virus et les viroïdes ne le sont pas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="françois-chollet-créateur-de-keras" class="slide level2 scrollable">
+<h2><a href="https://fchollet.com">François Chollet</a>, Créateur de <a href="https://keras.io">Keras</a></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> François Chollet</strong></p>
+</div>
+<div class="callout-content">
+<p>L’intelligence réelle ne consiste pas à maîtriser une compétence individuelle, a-t-il soutenu, mais à <strong>appliquer ce qui a été appris à une nouvelle situation différente</strong>.</p>
+<p>Selon lui, l’intelligence est la capacité à <strong>acquérir efficacement de nouvelles compétences</strong> que la formation n’a pas préparées, dans le but d’accomplir des tâches suffisamment différentes de celles qu’un système a vues auparavant.</p>
+<p><strong>Plus l’étendue des nouvelles compétences est large, plus l’ordinateur se rapproche de l’intelligence générale artificielle.</strong></p>
+<p>“Si vous pouvez rendre le processus d’apprentissage aussi efficace en termes d’information qu’un esprit humain, alors vous avez une IGA,” a déclaré Chollet.</p>
+<p>Jusqu’à présent, les machines sont très en retard, environ 10 000 fois moins efficaces que les cerveaux humains. Par exemple, <strong>il a fallu des millions d’images pour apprendre aux ordinateurs à reconnaître des images de chats, alors que les humains apprennent à les identifier avec seulement une ou deux exemples</strong>.</p>
+<p><span class="citation" data-cites="Savage:2024aa">Savage (<a href="#/références" role="doc-biblioref" onclick="">2024</a>)</span> (traduction GPT-4o)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="penser-agir-humainement-rationnellement" class="slide level2">
+<h2>Penser, agir, humainement, rationnellement</h2>
+<p>Russell &amp; Norvig considèrent deux axes.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 41%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Penser</th>
+<th>Agir</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Humain</strong></td>
+<td>penser humainement (simulation)</td>
+<td>agir humainement (test de Turing)</td>
+</tr>
+<tr class="even">
+<td><strong>Rationalité</strong></td>
+<td>penser rationnellement (logique)</td>
+<td>agir rationnellement (agent)</td>
+</tr>
+</tbody>
+</table>
+
+<aside class="notes">
+<p>La question de l’intelligence a fait l’objet de nombreux débats dans la littérature et les médias, en particulier lorsqu’il s’agit d’animaux ou d’ordinateurs. Cette abondance d’informations peut biaiser notre réflexion.</p>
+<p>Un simple exercice de pensée pourrait offrir une nouvelle perspective : seriez-vous capable de reconnaître l’intelligence chez une entité extraterrestre ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p><strong>Voir aussi</strong> l’annexe – <a href="#/sec-on-intelligence" class="quarto-xref">Section&nbsp;9</a> Sur la définition de l’intelligence artificielle</p>
+</div></aside></section>
+<section id="rationalité" class="slide level2">
+<h2>Rationalité</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/e/e2/Spock_and_T%27Pring.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Spock_and_T%27Pring.jpg"></a></p>
+</div><div class="column" style="width:60%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Mohammed:2019aa">(<a href="#/références" role="doc-biblioref" onclick="">Mohammed et al. 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>La rationalité implique l’<strong>évaluation des choix pour atteindre un objectif ou trouver la solution optimale à un problème</strong>. Simon (1972, p.&nbsp;161) définit la rationalité comme “un style de comportement approprié à la <strong>réalisation des objectifs fixés</strong>, dans les <strong>limites imposées par les conditions et contraintes données</strong>.”</p>
+<p>(traduction GPT-4o)</p>
+</div>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p><strong>Attribution:</strong> <a href="https://commons.wikimedia.org/wiki/File:Spock_and_T%27Pring.jpg">NBC Television, domaine public, via Wikimedia Commons</a></p>
+</div></aside></section></section>
+<section>
+<section id="étroite-vs-générale" class="title-slide slide level1 center">
+<h1>Étroite vs générale</h1>
+
+</section>
+<section id="intelligence-artificielle-générale-agi" class="slide level2">
+<h2>Intelligence Artificielle Générale (AGI)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p></p><div id="tweet-33801"></div><script>tweet={"url":"https:\/\/x.com\/tdietterich\/status\/1760901693305479405","author_name":"Thomas G. Dietterich","author_url":"https:\/\/x.com\/tdietterich","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003ENobody even can define AGI in a non-anthropomorphic way, let alone achieve it. The whole concept is unscientific, and people should be embarrassed to even use the term.\u003C\/p\u003E&mdash; Thomas G. Dietterich (@tdietterich) \u003Ca href=\"https:\/\/x.com\/tdietterich\/status\/1760901693305479405?ref_src=twsrc%5Etfw\"\u003EFebruary 23, 2024\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-33801").innerHTML = tweet["html"];</script><p></p>
+</div><div class="column" style="width:50%;">
+<p>L’intelligence artificielle générale (AGI) se réfère à une forme d’intelligence artificielle (IA) qui <strong>égale</strong> ou <strong>dépasse</strong> la compétence humaine dans une <strong>large gamme de fonctions cognitives</strong>.</p>
+</div></div>
+
+<aside><div>
+<p>Alias <strong>intelligence de niveau humain</strong>. Par opposition à l’<strong>intelligence étroite</strong> (<em>«narrow»</em>), le statut actuel de l’IA, qui effectue une tâche spécifique ou une gamme limitée de tâches.</p>
+</div></aside></section>
+<section id="alphafold-1-2-et-3" class="slide level2">
+<h2>AlphaFold (1, 2, et 3)</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p></p><div id="tweet-28813"></div><script>tweet={"url":"https:\/\/x.com\/Nature\/status\/1430934970789400587","author_name":"nature","author_url":"https:\/\/x.com\/Nature","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EProtein Power: AI network predicts highly accurate 3D structures for the human proteome. Browse this week’s issue of Nature: \u003Ca href=\"https:\/\/t.co\/ihA52BlziB\"\u003Ehttps:\/\/t.co\/ihA52BlziB\u003C\/a\u003E \u003Ca href=\"https:\/\/t.co\/XUTcbbKL3q\"\u003Epic.twitter.com\/XUTcbbKL3q\u003C\/a\u003E\u003C\/p\u003E&mdash; nature (@Nature) \u003Ca href=\"https:\/\/x.com\/Nature\/status\/1430934970789400587?ref_src=twsrc%5Etfw\"\u003EAugust 26, 2021\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-28813").innerHTML = tweet["html"];</script><p></p>
+<!--#![](https://media.springernature.com/w440/springer-static/cover-hires/journal/41586/596/7873)-->
+</div><div class="column" style="width:65%;">
+<ul>
+<li><p>Je le répète, <strong>il n’y a rien de mal à l’IA étroite</strong>.</p></li>
+<li><p>«Two papers in this week’s issue dramatically expand our structural understanding of proteins. Researchers at <strong>DeepMind</strong>, Google’s London-based sister company, present the latest version of their <strong>AlphaFold</strong> neural network.»</p>
+<ul>
+<li><span class="citation" data-cites="Jumper:2021aa">Jumper et al. (<a href="#/références" role="doc-biblioref" onclick="">2021</a>)</span></li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="effetparadoxe-de-lia" class="slide level2">
+<h2>Effet/paradoxe de l’IA</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>(<span class="math inline">\(\ldots\)</span>) dès qu’un système informatique est construit pour résoudre un problème avec succès, le problème n’est plus “seulement solvable par l’esprit humain,” donc n’a plus besoin d’intelligence. Par conséquent, <strong>“l’IA est ce qui n’a pas encore été fait”</strong> (Hofstadter, 1979 ; Schank, 1991), ce qui est connu sous le nom de “<strong>l’effet IA</strong>” <span class="citation" data-cites="McCorduck:2004aa">(<a href="#/références" role="doc-biblioref" onclick="">McCorduck 2004</a>, traduction GPT-4o)</span>.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Le paradoxe de l’IA est tout à fait fascinant. Aux débuts de l’IA, les chercheurs se concentraient sur des problèmes comme les équations différentielles ou les échecs.</p>
+<p>Chaque fois qu’un ordinateur résout l’un de ces grands problèmes, nous en venons à penser que ce problème ne nécessitait finalement pas vraiment d’intelligence pour être résolu.</p>
+<p>La défaite de Garry Kasparov aux mains d’IBM Watson en est un parfait exemple.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!--#
+
+## Note définition
+
+::: {.callout-note icon=false}
+## Définition
+
+Pour ce cours, **l'intelligence artificielle (IA)** se réfère à la branche de l'informatique qui se concentre sur la création de systèmes capables de réaliser des tâches nécessitant typiquement l'intelligence humaine. Ces tâches incluent la prise de décision, la reconnaissance d'objets et la compréhension du langage naturel, réalisées grâce à des algorithmes et des modèles basés sur les données.
+
+:::
+
+-->
+</section></section>
+<section>
+<section id="impact" class="title-slide slide level1 center">
+<h1>Impact</h1>
+
+</section>
+<section id="économique" class="slide level2">
+<h2>Économique</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/beyond-the-hype-capturing-the-potential-of-ai-and-gen-ai-in-tmt#/">Beyond the hype: Capturing the potential of AI and gen AI in tech, media, and telecom</a> 2024-02-22</strong></p>
+</div>
+<div class="callout-content">
+<p>Les recherches de McKinsey estiment que <strong>l’IA générative</strong> pourrait ajouter à l’économie entre <strong>2,6 billions et 4,4 billions de dollars par an</strong> tout en augmentant l’impact de toute l’intelligence artificielle de 15 à 40 pour cent.</p>
+<p>En fait, il semble possible que <strong>dans les trois prochaines années</strong>, <strong>tout ce qui n’est pas connecté à l’IA sera considéré comme obsolète ou inefficace</strong>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sous-domaines-de-lia" class="slide level2 scrollable">
+<h2>Sous-domaines de l’IA</h2>
+<ol type="1">
+<li><p><strong>Apprentissage Automatique (Machine Learning):</strong> Détection de fraude par carte de crédit</p></li>
+<li><p><strong>Apprentissage Profond (Deep Learning):</strong> Reconnaissance d’images et de visages</p></li>
+<li><p><strong>Traitement Automatique du Langage Naturel (Natural Language Processing):</strong> Assistants virtuels comme Siri ou Alexa</p></li>
+<li><p><strong>Vision par Ordinateur (Computer Vision):</strong> Véhicules autonomes</p></li>
+<li><p><strong>Robotique (Robotics):</strong> Automatisation industrielle dans la fabrication</p></li>
+<li><p><strong>Systèmes Experts (Expert Systems):</strong> Support au diagnostic médical</p></li>
+<li><p><strong>Reconnaissance Vocale (Speech Recognition):</strong> Services de transcription vocale</p></li>
+<li><p><strong>Planification et Prise de Décision (Planning and Decision Making):</strong> Optimisation de la chaîne d’approvisionnement</p></li>
+<li><p><strong>Apprentissage par Renforcement (Reinforcement Learning):</strong> IA de jeu dans les jeux de stratégie complexes</p></li>
+<li><p><strong>Représentation des Connaissances (Knowledge Representation):</strong> Technologies du web sémantique pour la recherche d’information</p></li>
+</ol>
+</section>
+<section id="notre-dernière-invention" class="slide level2">
+<h2>Notre dernière invention</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Russell:2020aa">(<a href="#/références" role="doc-biblioref" onclick="">Russell et Norvig 2020</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>L’expert en <strong>IA</strong> Kai-Fu Lee prédit que son <strong>impact</strong> sera <strong>“plus important que tout ce qui s’est passé dans l’histoire de l’humanité.”</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<iframe data-external="1" src="https://www.youtube.com/embed/ixgunKpy61s" width="100%" height="100%" title="What Does the AI Boom Really Mean for Humanity? | The Future With Hannah Fry" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<aside class="notes">
+<p><a href="https://youtu.be/ixgunKpy61s">What Does the AI Boom Really Mean for Humanity? | The Future With Hannah Fry</a>. Bloomberg Originals, publié sur YouTube le 2024-09-12.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+<iframe data-external="1" src="https://www.youtube.com/embed/sK5_pQV_QEA" width="100%" height="100%" title="What Happens When Robots Don’t Need Us Anymore? | Posthuman With Emily Chang" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="questions" class="slide level2 smaller">
+<h2>Questions</h2>
+<ul>
+<li class="fragment"><p>Le concept d’intelligence peut-il être considéré <strong>indépendamment</strong> des entités qui l’expriment ? C’est le problème de l’<strong>incarnation</strong> (<em>embodiment</em>).</p></li>
+<li class="fragment"><p>Une <strong>machine</strong> peut-elle manifester une intelligence de niveau humain ?</p></li>
+<li class="fragment"><p>Est-il possible de <strong>dissocier</strong> les concepts suivants de celui de l’intelligence?</p>
+<ul>
+<li class="fragment"><strong>Agentivité</strong> (<em>agency</em>).</li>
+<li class="fragment"><strong>Sentience</strong> (<em>sentience</em>).</li>
+<li class="fragment"><strong>Conscience</strong> (<em>consciousness</em>).</li>
+<li class="fragment"><strong>Émotions</strong>.</li>
+<li class="fragment"><strong>Language</strong>.</li>
+<li class="fragment"><strong>Esprit</strong> (<em>mind</em>).</li>
+</ul></li>
+<li class="fragment"><p>Est-ce qu’une IA peut <strong>souffrir</strong> ?</p></li>
+</ul>
+<aside class="notes">
+<p>Pour moi, une définition intéressante de l’intelligence serait de nature similaire à celle du calcul.</p>
+<p>Utiliser le <strong>calcul</strong> comme concept analogue peut aider à clarifier cette question. Théoriquement, le calcul est souvent considérée de manière abstraite, indépendamment de toute implémentation physique. Le <strong>théorème de Church-Turing</strong>, un principe fondamental en informatique, affirme que tout calcul réalisable par une machine (plus précisément, une machine de Turing) est universellement applicable. Cela implique que le concept de calcul peut exister indépendamment de son matériel ou de sa forme physique spécifique.</p>
+<p>Je dois vous faire une confidence : jusqu’en 2022, j’étais plutôt sceptique. Je faisais souvent un parallèle entre l’intelligence artificielle et l’alchimie. Les alchimistes n’ont jamais réussi à transmuter le plomb en or, car c’est un processus physique, mais leur démarche a conduit au développement de la chimie. De la même manière, nous ne serons peut-être jamais capables de reproduire l’intelligence humaine, mais les retombées de l’IA sont immenses et souvent insoupçonnées, comme le ramasse-miettes introduit par Lisp.</p>
+<p>Puis, cela m’a frappé : je suis un scientifique, et je me suis demandé ce que cela signifierait si nous n’étions pas capables de produire une intelligence comparable à celle de l’humain.</p>
+<p>Richard Feynman, qui a reçu le prix Nobel de physique en 1965, a dit célèbrement : « Ce que je ne peux pas construire. Je ne comprends pas. »</p>
+<p>Pourquoi chercher à dissocier l’intelligence d’autres concepts tels que l’agentivité, la conscience et les émotions ? Un système informatique dénué de ces attributs semble, en effet, nettement moins inquiétant.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="approfondir-la-réflexion" class="slide level2 smaller">
+<h2>Approfondir la réflexion</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42256-024-00955-y/MediaObjects/42256_2024_955_Fig1_HTML.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42256-024-00955-y/MediaObjects/42256_2024_955_Fig1_HTML.png" class="quarto-figure quarto-figure-center" height="450"></a></p>
+</figure>
+</div>
+<div class="{aside}">
+<p>Rouleau, N. &amp; Levin, M. (2024). <a href="https://doi.org/10.1038/s42256-024-00955-y">Discussions of machine versus living intelligence need more clarity.</a> <em>Nature Machine Intelligence</em>, 6(12), 1424–1426.</p>
+</div>
+</section></section>
+<section>
+<section id="prologue" class="title-slide slide level1 center">
+<h1>Prologue</h1>
+
+</section>
+<section id="résumé" class="slide level2">
+<h2>Résumé</h2>
+<ul>
+<li><strong>Discuté</strong> le syllabus</li>
+<li><strong>Distinguer</strong> le concept d’intelligence artificielle du concept d’apprentissage automatique</li>
+<li><strong>Distinguer</strong> l’IA symbolique de l’IA connectionniste</li>
+<li><strong>Exploré</strong> les différentes définitions de “l’intelligence artificielle”</li>
+</ul>
+</section>
+<section id="prochain-cours" class="slide level2">
+<h2>Prochain cours</h2>
+<ul>
+<li>Introduction à l’apprentissage automatique</li>
+</ul>
+</section>
+<section id="références" class="slide level2 smaller scrollable">
+<h2>Références</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Bennett:2023aa" class="csl-entry" role="listitem">
+Bennett, Max S. 2023. <em>A brief history of intelligence: evolution, AI, and the five breakthroughs that made our brains</em>. First edition. Mariner Books.
+</div>
+<div id="ref-Gottfredson:1997aa" class="csl-entry" role="listitem">
+Gottfredson, Linda S. 1997. <span>«&nbsp;Mainstream science on intelligence: An editorial with 52 signatories, history, and bibliography&nbsp;»</span>. <em>Intelligence</em> 24 (1): 13‑23. <a href="https://doi.org/10.1016/s0160-2896(97)90011-8">https://doi.org/10.1016/s0160-2896(97)90011-8</a>.
+</div>
+<div id="ref-Jumper:2021aa" class="csl-entry" role="listitem">
+Jumper, John, Richard Evans, Alexander Pritzel, et al. 2021. <span>«&nbsp;<span>Highly accurate protein structure prediction with AlphaFold</span>&nbsp;»</span>. <em>Nature</em>, 1‑11. <a href="https://doi.org/10.1038/s41586-021-03819-2">https://doi.org/10.1038/s41586-021-03819-2</a>.
+</div>
+<div id="ref-Legg:2007aa" class="csl-entry" role="listitem">
+Legg, Shane, et Marcus Hutter. 2007. <span>«&nbsp;<span>A Collection of Definitions of Intelligence</span>&nbsp;»</span>. <em>Advances in Artificial General Intelligence: Concepts, Architectures and Algorithms:</em> (NLD), 17‑24. <a href="https://doi.org/10.5555/1565455.1565458">https://doi.org/10.5555/1565455.1565458</a>.
+</div>
+<div id="ref-McCorduck:2004aa" class="csl-entry" role="listitem">
+McCorduck, Pamela. 2004. <em><span>Machines Who Think, A Personal Inquiry into the History and Prospects of Artificial Intelligence</span></em>. Taylor &amp; Francis Group, LLC. <a href="https://doi.org/10.1201/9780429258985">https://doi.org/10.1201/9780429258985</a>.
+</div>
+<div id="ref-Mohammed:2019aa" class="csl-entry" role="listitem">
+Mohammed, Anne-Marie, Sandra Sookram, et George Saridakis. 2019. <span>«&nbsp;Rationality&nbsp;»</span>. In <em>Encyclopedia of Law and Economics</em>, édité par Alain Marciano et Giovanni Battista Ramello. Springer New York. <a href="https://doi.org/10.1007/978-1-4614-7753-2_404">https://doi.org/10.1007/978-1-4614-7753-2_404</a>.
+</div>
+<div id="ref-Newell:1976aa" class="csl-entry" role="listitem">
+Newell, Allen, et Herbert A. Simon. 1976. <span>«&nbsp;Computer science as empirical inquiry: symbols and search&nbsp;»</span>. <em>Commun. ACM</em> (New York, NY, USA) 19 (3): 113‑26. <a href="https://doi.org/10.1145/360018.360022">https://doi.org/10.1145/360018.360022</a>.
+</div>
+<div id="ref-Nilsson:2005aa" class="csl-entry" role="listitem">
+Nilsson, Nils J. 2005. <span>«&nbsp;Human-Level Artificial Intelligence? Be Serious!&nbsp;»</span> <em><span>AI</span> Mag.</em> 26 (4): 68‑75. <a href="https://doi.org/10.1609/AIMAG.V26I4.1850">https://doi.org/10.1609/AIMAG.V26I4.1850</a>.
+</div>
+<div id="ref-Poole:2023aa" class="csl-entry" role="listitem">
+Poole, David L., et Alan K. Mackworth. 2023. <em>Artificial Intelligence: Foundations of Computational Agents</em>. 3ᵉ éd. Cambridge University Press.
+</div>
+<div id="ref-Russell:2020aa" class="csl-entry" role="listitem">
+Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</span> Modern Approach</em>. 4ᵉ éd. Pearson. <a href="http://aima.cs.berkeley.edu/">http://aima.cs.berkeley.edu/</a>.
+</div>
+<div id="ref-Savage:2024aa" class="csl-entry" role="listitem">
+Savage, Neil. 2024. <span>«&nbsp;Beyond Turing: Testing LLMs for Intelligence&nbsp;»</span>. <em>Commun. ACM</em> (New York, NY, USA), publication en ligne anticipée, juin. <a href="https://doi.org/10.1145/3673427">https://doi.org/10.1145/3673427</a>.
+</div>
+<div id="ref-Strickland:2021aa" class="csl-entry" role="listitem">
+Strickland, Eliza. 2021. <span>«&nbsp;The Turbulent Past and Uncertain Future of AI: Is there a way out of AI’s boom-and-bust cycle?&nbsp;»</span> <em>IEEE Spectrum</em> 58 (10): 26‑31. <a href="https://doi.org/10.1109/MSPEC.2021.9563956">https://doi.org/10.1109/MSPEC.2021.9563956</a>.
+</div>
+<div id="ref-Wang:2019ao" class="csl-entry" role="listitem">
+Wang, Pei. 2019. <span>«&nbsp;<span>On Defining Artificial Intelligence</span>&nbsp;»</span>. <em>Journal of Artificial General Intelligence</em> 10 (2): 1‑37. <a href="https://doi.org/10.2478/jagi-2019-0002">https://doi.org/10.2478/jagi-2019-0002</a>.
+</div>
+</div>
+</section></section>
+<section>
+<section id="sec-on-intelligence" class="title-slide slide level1 appendix center">
+<h1>Annexe : Sur la définition de l’intelligence artificielle</h1>
+
+</section>
+<section id="wang2019ao" class="slide level2">
+<h2><span class="citation" data-cites="Wang:2019ao">Wang (<a href="#/références" role="doc-biblioref" onclick="">2019</a>)</span></h2>
+<p>Un <strong>agent</strong> et son <strong>interaction avec l’environnement</strong> sont spécifiés comme un tuple : <span class="math display">\[
+\langle P,S,A \rangle
+\]</span> où</p>
+<ul>
+<li><span class="math inline">\(P\)</span> une séquence de <strong>signaux d’entrée</strong>, <span class="math inline">\(P = \langle p_0,\ldots,p_t \rangle\)</span></li>
+<li><span class="math inline">\(S\)</span> une séquence d’<strong>états internes</strong>, <span class="math inline">\(S = \langle s_0,\ldots,s_t \rangle\)</span></li>
+<li><span class="math inline">\(A\)</span> une séquence d’<strong>actions</strong>, <span class="math inline">\(A = \langle a_0,\ldots,a_t \rangle\)</span></li>
+</ul>
+<p>Pour une séquence de moments, <span class="math inline">\(0,\ldots,t\)</span>.</p>
+</section>
+<section id="humain-h-vs-ordinateur-c" class="slide level2">
+<h2>Humain (H) vs Ordinateur (C)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>L’IA est conçue comme des systèmes informatiques similaires à l’esprit humain dans un certain sens, bien qu’un ordinateur et un esprit humain ne puissent pas être identiques en tous aspects.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\langle P^H,S^H,A^H \rangle \approx \langle P^C,S^C,A^C \rangle
+\]</span></p>
+<div class="fragment">
+<p><span class="citation" data-cites="Wang:2019ao">Wang (<a href="#/références" role="doc-biblioref" onclick="">2019</a>)</span> propose 5 perspectives: <strong>Structure-IA</strong>, <strong>Comportement-IA</strong>, <strong>Capacité-IA</strong>, <strong>Fonction-IA</strong>, et <strong>Principe-IA</strong>.</p>
+</div>
+</section>
+<section id="structure-ia" class="slide level2">
+<h2>1. Structure-IA</h2>
+<p>(modélisation du cerveau, sciences cognitives)</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>J’appelle ce type de définition <strong>“Structure-IA,”</strong> car il nécessite qu’un système IA traverse des <strong>états isomorphes</strong> ou des changements de structure comme le fait le cerveau lorsqu’il reçoit des <strong>entrées similaires</strong>, ce qui produira des <strong>sorties similaires</strong>, donc les trois composants des deux sont par paires similaires les uns aux autres :</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+P^H \approx P^C, S^H \approx S^C, A^H \approx A^C
+\]</span></p>
+</section>
+<section id="comportement-ia" class="slide level2">
+<h2>2. Comportement-IA</h2>
+<p>(Test de Turing)</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Une façon de reconnaître un esprit semblable à celui de l’homme sans exiger un cerveau semblable à celui de l’homme est d’associer l’intelligence aux comportements externes de l’agent. Après tout, <strong>si un agent se comporte comme un humain, il doit être considéré comme intelligent</strong>, peu importe s’il ressemble à un humain, à l’intérieur ou à l’extérieur.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+P^H \approx P^C, A^H \approx A^C
+\]</span></p>
+</section>
+<section id="capacité-ia-test-demploi" class="slide level2">
+<h2>3. Capacité-IA (Test d’emploi)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Dans le cadre de l’agent, cela signifie que <span class="math inline">\(C\)</span> est similaire à <span class="math inline">\(H\)</span> dans le sens où il y a des moments <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> que :</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+p_i^C \approx p_j^H, a_i^C \approx a_j^H
+\]</span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>l’action (solution) que l’ordinateur produit pour une perception (problème) est similaire à l’action produite par un humain pour une perception similaire (<span class="math inline">\(\ldots\)</span>) De cette manière, <strong>l’intelligence d’un système est identifiée par un ensemble de problèmes qu’il peut résoudre</strong>, <u>peu importe si ces problèmes sont résolus de la “manière humaine”</u>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="capacité-ia-suite" class="slide level2">
+<h2>Capacité-IA (suite)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Nilsson:2005aa">(<a href="#/références" role="doc-biblioref" onclick="">Nilsson 2005</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>“Je suggère que nous remplacions le test de Turing par ce que j’appellerai le ‘test d’emploi.’ Pour passer le test d’emploi, <strong>les programmes d’IA doivent être capables de réaliser les tâches normalement effectuées par les humains</strong>. Les progrès vers une IA au niveau humain pourraient alors être mesurés par la fraction de ces tâches qui peuvent être acceptablement réalisées par des machines”</p>
+</div>
+</div>
+</div>
+</section>
+<section id="fonction-ia" class="slide level2">
+<h2>4. Fonction-IA</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Dans le cadre de l’agent, cette perspective de <strong>“Fonction-IA”</strong> considère que <span class="math inline">\(C\)</span> est similaire à <span class="math inline">\(H\)</span> dans le sens où il y a des moments <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> que :</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+a_i^C \approx f^C(p_i^C), a_j^H \approx f^H(p_j^H), f^C \approx f^H
+\]</span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Ici, la fonction peut correspondre à la recherche, au <strong>raisonnement</strong>, à l’<strong>apprentissage</strong>, etc., et puisque <strong>l’accent est mis sur les fonctions</strong> (c’est-à-dire les correspondances entrée-sortie), les valeurs concrètes d’entrée et de sortie des deux agents n’ont pas besoin d’être similaires les unes aux autres.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="principe-ia-rationalité-logiciste" class="slide level2">
+<h2>5. Principe-IA (rationalité, logiciste)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Comme dans tout domaine, il y a des chercheurs en IA qui essaient de trouver des <strong>principes fondamentaux</strong> qui peuvent uniformément expliquer les phénomènes pertinents. Ici, l’idée vient de l’utilisation de l’intelligence comme une forme de <em>rationalité</em> (<span class="math inline">\(\ldots\)</span>) qui peut prendre la <strong>meilleure décision possible</strong> dans diverses situations, en fonction de l’expérience ou de l’histoire du système.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+A^C = F^C(P^C), A^H = F^H(P^H), F^C \approx F^H
+\]</span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="fa-solid fa-quote-right" aria-label="quote-right"></i> <span class="citation" data-cites="Wang:2019ao">(<a href="#/références" role="doc-biblioref" onclick="">Wang 2019</a>)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>Le <span class="math inline">\(F\)</span> ci-dessus n’est souvent pas spécifié formellement, mais décrit de manière informelle comme un certain <strong>“principe,”</strong> qui ne concerne pas seulement un type de problème et sa solution, mais <strong>l’histoire de vie de l’agent dans diverses situations</strong>, lorsqu’il traite divers types de problèmes.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="code-source-du-jour" class="slide level2">
+<h2>Code source du jour</h2>
+<div id="0688f998" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb13-2"><a aria-label="2"></a><span class="co"># -*- Mode: Python -*-</span></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="co"># ai_lecture-01.py</span></span>
+<span id="cb13-4"><a aria-label="4"></a><span class="co"># Author          : Marcel Turcotte &amp; ChatGPT 5</span></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="co"># Created On      : Tue Feb 13 16:29:41 2024</span></span>
+<span id="cb13-6"><a aria-label="6"></a><span class="co"># Last Modified By: Marcel Turcotte</span></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="co"># Last Modified On: Thu Aug 28 15:03:14 EDT 2025</span></span>
+<span id="cb13-8"><a aria-label="8"></a></span>
+<span id="cb13-9"><a aria-label="9"></a><span class="co"># In 2024, I developed the initial version of this script. </span></span>
+<span id="cb13-10"><a aria-label="10"></a><span class="co"># This year, I used ChatGPT to revise the code to align with the most recent API version, </span></span>
+<span id="cb13-11"><a aria-label="11"></a><span class="co"># enhance its educational value by incorporating detailed comments, </span></span>
+<span id="cb13-12"><a aria-label="12"></a><span class="co"># and improve its suitability as an instructive example.</span></span>
+<span id="cb13-13"><a aria-label="13"></a></span>
+<span id="cb13-14"><a aria-label="14"></a><span class="co">"""</span></span>
+<span id="cb13-15"><a aria-label="15"></a><span class="co">Didactic example: translate EN-&gt;Canadian French, then synthesize audio in EN &amp; FR.</span></span>
+<span id="cb13-16"><a aria-label="16"></a></span>
+<span id="cb13-17"><a aria-label="17"></a><span class="co">CLI options:</span></span>
+<span id="cb13-18"><a aria-label="18"></a><span class="co">    --format : audio output format (mp3, wav, etc.)</span></span>
+<span id="cb13-19"><a aria-label="19"></a><span class="co">    --voice  : TTS voice (e.g., nova, alloy, verse, etc.)</span></span>
+<span id="cb13-20"><a aria-label="20"></a><span class="co">    --model  : TTS model (tts-1-hd for high quality, gpt-4o-mini-tts for low latency)</span></span>
+<span id="cb13-21"><a aria-label="21"></a></span>
+<span id="cb13-22"><a aria-label="22"></a><span class="co">Examples:</span></span>
+<span id="cb13-23"><a aria-label="23"></a><span class="co">    python ai_lecture-01.py --format mp3 --voice nova --model tts-1-hd</span></span>
+<span id="cb13-24"><a aria-label="24"></a><span class="co">    python ai_lecture-01.py --format wav --voice alloy --model gpt-4o-mini-tts</span></span>
+<span id="cb13-25"><a aria-label="25"></a><span class="co">"""</span></span>
+<span id="cb13-26"><a aria-label="26"></a></span>
+<span id="cb13-27"><a aria-label="27"></a><span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb13-28"><a aria-label="28"></a></span>
+<span id="cb13-29"><a aria-label="29"></a><span class="im">import</span> os</span>
+<span id="cb13-30"><a aria-label="30"></a><span class="im">import</span> argparse</span>
+<span id="cb13-31"><a aria-label="31"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb13-32"><a aria-label="32"></a></span>
+<span id="cb13-33"><a aria-label="33"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI, APIError, APIConnectionError, APITimeoutError</span>
+<span id="cb13-34"><a aria-label="34"></a></span>
+<span id="cb13-35"><a aria-label="35"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-36"><a aria-label="36"></a><span class="co"># Configuration</span></span>
+<span id="cb13-37"><a aria-label="37"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-38"><a aria-label="38"></a></span>
+<span id="cb13-39"><a aria-label="39"></a>client <span class="op">=</span> OpenAI()  <span class="co"># Reads OPENAI_API_KEY from environment</span></span>
+<span id="cb13-40"><a aria-label="40"></a></span>
+<span id="cb13-41"><a aria-label="41"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-42"><a aria-label="42"></a><span class="co"># Text Utilities</span></span>
+<span id="cb13-43"><a aria-label="43"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-44"><a aria-label="44"></a></span>
+<span id="cb13-45"><a aria-label="45"></a><span class="kw">def</span> translate_to_canadian_french(input_text: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb13-46"><a aria-label="46"></a>    <span class="co">"""Translate English text to Canadian French (CSI4106→CSI4506)."""</span></span>
+<span id="cb13-47"><a aria-label="47"></a>    instructions <span class="op">=</span> (</span>
+<span id="cb13-48"><a aria-label="48"></a>        <span class="st">"You are a careful translator. Translate the user's English text into Canadian French. "</span></span>
+<span id="cb13-49"><a aria-label="49"></a>        <span class="st">"Preserve technical terms and course names. "</span></span>
+<span id="cb13-50"><a aria-label="50"></a>        <span class="st">'If the course code "CSI4106" appears, translate it as "CSI4506".'</span></span>
+<span id="cb13-51"><a aria-label="51"></a>    )</span>
+<span id="cb13-52"><a aria-label="52"></a></span>
+<span id="cb13-53"><a aria-label="53"></a>    <span class="cf">try</span>:</span>
+<span id="cb13-54"><a aria-label="54"></a>        resp <span class="op">=</span> client.responses.create(</span>
+<span id="cb13-55"><a aria-label="55"></a>            model<span class="op">=</span><span class="st">"gpt-4o"</span>,</span>
+<span id="cb13-56"><a aria-label="56"></a>            instructions<span class="op">=</span>instructions,</span>
+<span id="cb13-57"><a aria-label="57"></a>            <span class="bu">input</span><span class="op">=</span>input_text,</span>
+<span id="cb13-58"><a aria-label="58"></a>            temperature<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb13-59"><a aria-label="59"></a>            max_output_tokens<span class="op">=</span><span class="dv">1200</span>,</span>
+<span id="cb13-60"><a aria-label="60"></a>        )</span>
+<span id="cb13-61"><a aria-label="61"></a>        <span class="cf">return</span> resp.output_text <span class="kw">or</span> <span class="st">""</span></span>
+<span id="cb13-62"><a aria-label="62"></a>    <span class="cf">except</span> (APIConnectionError, APITimeoutError) <span class="im">as</span> net_err:</span>
+<span id="cb13-63"><a aria-label="63"></a>        <span class="bu">print</span>(<span class="ss">f"[Network issue] </span><span class="sc">{</span>net_err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-64"><a aria-label="64"></a>    <span class="cf">except</span> APIError <span class="im">as</span> api_err:</span>
+<span id="cb13-65"><a aria-label="65"></a>        <span class="bu">print</span>(<span class="ss">f"[OpenAI API error] </span><span class="sc">{</span>api_err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-66"><a aria-label="66"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb13-67"><a aria-label="67"></a>        <span class="bu">print</span>(<span class="ss">f"[Unexpected error] </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-68"><a aria-label="68"></a>    <span class="cf">return</span> <span class="st">""</span></span>
+<span id="cb13-69"><a aria-label="69"></a></span>
+<span id="cb13-70"><a aria-label="70"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-71"><a aria-label="71"></a><span class="co"># Audio Utilities</span></span>
+<span id="cb13-72"><a aria-label="72"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-73"><a aria-label="73"></a></span>
+<span id="cb13-74"><a aria-label="74"></a><span class="kw">def</span> synthesize_speech(</span>
+<span id="cb13-75"><a aria-label="75"></a>    text: <span class="bu">str</span>,</span>
+<span id="cb13-76"><a aria-label="76"></a>    output_path: Path,</span>
+<span id="cb13-77"><a aria-label="77"></a>    <span class="op">*</span>,</span>
+<span id="cb13-78"><a aria-label="78"></a>    model: <span class="bu">str</span> <span class="op">=</span> <span class="st">"tts-1-hd"</span>,</span>
+<span id="cb13-79"><a aria-label="79"></a>    voice: <span class="bu">str</span> <span class="op">=</span> <span class="st">"nova"</span>,</span>
+<span id="cb13-80"><a aria-label="80"></a>    response_format: <span class="bu">str</span> <span class="op">=</span> <span class="st">"mp3"</span>,</span>
+<span id="cb13-81"><a aria-label="81"></a>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb13-82"><a aria-label="82"></a>    <span class="co">"""</span></span>
+<span id="cb13-83"><a aria-label="83"></a><span class="co">    Stream synthesized speech to a file on disk.</span></span>
+<span id="cb13-84"><a aria-label="84"></a><span class="co">    Returns True on success, False otherwise.</span></span>
+<span id="cb13-85"><a aria-label="85"></a><span class="co">    """</span></span>
+<span id="cb13-86"><a aria-label="86"></a>    output_path.parent.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-87"><a aria-label="87"></a></span>
+<span id="cb13-88"><a aria-label="88"></a>    <span class="cf">try</span>:</span>
+<span id="cb13-89"><a aria-label="89"></a>        <span class="cf">with</span> client.audio.speech.with_streaming_response.create(</span>
+<span id="cb13-90"><a aria-label="90"></a>            model<span class="op">=</span>model,</span>
+<span id="cb13-91"><a aria-label="91"></a>            voice<span class="op">=</span>voice,</span>
+<span id="cb13-92"><a aria-label="92"></a>            <span class="bu">input</span><span class="op">=</span>text,</span>
+<span id="cb13-93"><a aria-label="93"></a>            response_format<span class="op">=</span>response_format,</span>
+<span id="cb13-94"><a aria-label="94"></a>        ) <span class="im">as</span> response:</span>
+<span id="cb13-95"><a aria-label="95"></a>            response.stream_to_file(<span class="bu">str</span>(output_path))</span>
+<span id="cb13-96"><a aria-label="96"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb13-97"><a aria-label="97"></a>    <span class="cf">except</span> (APIConnectionError, APITimeoutError) <span class="im">as</span> net_err:</span>
+<span id="cb13-98"><a aria-label="98"></a>        <span class="bu">print</span>(<span class="ss">f"[Network issue] </span><span class="sc">{</span>net_err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-99"><a aria-label="99"></a>    <span class="cf">except</span> APIError <span class="im">as</span> api_err:</span>
+<span id="cb13-100"><a aria-label="100"></a>        <span class="bu">print</span>(<span class="ss">f"[OpenAI API error] </span><span class="sc">{</span>api_err<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-101"><a aria-label="101"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb13-102"><a aria-label="102"></a>        <span class="bu">print</span>(<span class="ss">f"[Unexpected error] </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-103"><a aria-label="103"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb13-104"><a aria-label="104"></a></span>
+<span id="cb13-105"><a aria-label="105"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-106"><a aria-label="106"></a><span class="co"># Example script logic</span></span>
+<span id="cb13-107"><a aria-label="107"></a><span class="co"># -------------------------------------------------------</span></span>
+<span id="cb13-108"><a aria-label="108"></a></span>
+<span id="cb13-109"><a aria-label="109"></a><span class="kw">def</span> main(audio_format: <span class="bu">str</span>, voice: <span class="bu">str</span>, model: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb13-110"><a aria-label="110"></a>    <span class="co">"""Translate the course intro and synthesize EN &amp; FR audio files."""</span></span>
+<span id="cb13-111"><a aria-label="111"></a></span>
+<span id="cb13-112"><a aria-label="112"></a>    input_text_en <span class="op">=</span> (</span>
+<span id="cb13-113"><a aria-label="113"></a>        <span class="st">'Welcome to CSI4106, "introduction to artificial intelligence"! '</span></span>
+<span id="cb13-114"><a aria-label="114"></a>        <span class="st">"In this course, you will learn about the roots and scope of Artificial Intelligence. "</span></span>
+<span id="cb13-115"><a aria-label="115"></a>        <span class="st">"Knowledge and knowledge representation. Search, informed search, adversarial search. "</span></span>
+<span id="cb13-116"><a aria-label="116"></a>        <span class="st">"Deduction and reasoning. Uncertainty in Artificial Intelligence. "</span></span>
+<span id="cb13-117"><a aria-label="117"></a>        <span class="st">"Introduction to Natural Language Processing. Elements of planning. Basics of Machine Learning."</span></span>
+<span id="cb13-118"><a aria-label="118"></a>    )</span>
+<span id="cb13-119"><a aria-label="119"></a></span>
+<span id="cb13-120"><a aria-label="120"></a>    input_text_fr <span class="op">=</span> translate_to_canadian_french(input_text_en)</span>
+<span id="cb13-121"><a aria-label="121"></a>    <span class="cf">if</span> <span class="kw">not</span> input_text_fr:</span>
+<span id="cb13-122"><a aria-label="122"></a>        <span class="bu">print</span>(<span class="st">"[Warning] Translation failed; defaulting to English text only."</span>)</span>
+<span id="cb13-123"><a aria-label="123"></a></span>
+<span id="cb13-124"><a aria-label="124"></a>    speech_file_path_fr <span class="op">=</span> Path(<span class="ss">f"01_tts_course_description-fr-</span><span class="sc">{</span>voice<span class="sc">}</span><span class="ss">.</span><span class="sc">{</span>audio_format<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-125"><a aria-label="125"></a>    speech_file_path_en <span class="op">=</span> Path(<span class="ss">f"01_tts_course_description-en-</span><span class="sc">{</span>voice<span class="sc">}</span><span class="ss">.</span><span class="sc">{</span>audio_format<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-126"><a aria-label="126"></a></span>
+<span id="cb13-127"><a aria-label="127"></a>    <span class="cf">if</span> input_text_fr:</span>
+<span id="cb13-128"><a aria-label="128"></a>        ok_fr <span class="op">=</span> synthesize_speech(</span>
+<span id="cb13-129"><a aria-label="129"></a>            input_text_fr, speech_file_path_fr, model<span class="op">=</span>model, voice<span class="op">=</span>voice, response_format<span class="op">=</span>audio_format</span>
+<span id="cb13-130"><a aria-label="130"></a>        )</span>
+<span id="cb13-131"><a aria-label="131"></a>        <span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span><span class="st">'OK'</span> <span class="cf">if</span> ok_fr <span class="cf">else</span> <span class="st">'Error'</span><span class="sc">}</span><span class="ss">] FR audio → </span><span class="sc">{</span>speech_file_path_fr<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-132"><a aria-label="132"></a></span>
+<span id="cb13-133"><a aria-label="133"></a>    ok_en <span class="op">=</span> synthesize_speech(</span>
+<span id="cb13-134"><a aria-label="134"></a>        input_text_en, speech_file_path_en, model<span class="op">=</span>model, voice<span class="op">=</span>voice, response_format<span class="op">=</span>audio_format</span>
+<span id="cb13-135"><a aria-label="135"></a>    )</span>
+<span id="cb13-136"><a aria-label="136"></a>    <span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span><span class="st">'OK'</span> <span class="cf">if</span> ok_en <span class="cf">else</span> <span class="st">'Error'</span><span class="sc">}</span><span class="ss">] EN audio → </span><span class="sc">{</span>speech_file_path_en<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-137"><a aria-label="137"></a></span>
+<span id="cb13-138"><a aria-label="138"></a></span>
+<span id="cb13-139"><a aria-label="139"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb13-140"><a aria-label="140"></a>    <span class="cf">if</span> <span class="kw">not</span> os.getenv(<span class="st">"OPENAI_API_KEY"</span>):</span>
+<span id="cb13-141"><a aria-label="141"></a>        <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"OPENAI_API_KEY is not set in environment or .env file."</span>)</span>
+<span id="cb13-142"><a aria-label="142"></a></span>
+<span id="cb13-143"><a aria-label="143"></a>    parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">"Translate course intro and synthesize TTS audio."</span>)</span>
+<span id="cb13-144"><a aria-label="144"></a>    parser.add_argument(</span>
+<span id="cb13-145"><a aria-label="145"></a>        <span class="st">"--format"</span>,</span>
+<span id="cb13-146"><a aria-label="146"></a>        default<span class="op">=</span><span class="st">"mp3"</span>,</span>
+<span id="cb13-147"><a aria-label="147"></a>        choices<span class="op">=</span>[<span class="st">"mp3"</span>, <span class="st">"wav"</span>, <span class="st">"aac"</span>, <span class="st">"flac"</span>, <span class="st">"opus"</span>, <span class="st">"pcm"</span>],</span>
+<span id="cb13-148"><a aria-label="148"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"Audio output format (default: mp3)."</span>,</span>
+<span id="cb13-149"><a aria-label="149"></a>    )</span>
+<span id="cb13-150"><a aria-label="150"></a>    parser.add_argument(</span>
+<span id="cb13-151"><a aria-label="151"></a>        <span class="st">"--voice"</span>,</span>
+<span id="cb13-152"><a aria-label="152"></a>        default<span class="op">=</span><span class="st">"nova"</span>,</span>
+<span id="cb13-153"><a aria-label="153"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"TTS voice (default: nova). Try 'alloy', 'verse', etc."</span>,</span>
+<span id="cb13-154"><a aria-label="154"></a>    )</span>
+<span id="cb13-155"><a aria-label="155"></a>    parser.add_argument(</span>
+<span id="cb13-156"><a aria-label="156"></a>        <span class="st">"--model"</span>,</span>
+<span id="cb13-157"><a aria-label="157"></a>        default<span class="op">=</span><span class="st">"tts-1-hd"</span>,</span>
+<span id="cb13-158"><a aria-label="158"></a>        choices<span class="op">=</span>[<span class="st">"tts-1-hd"</span>, <span class="st">"gpt-4o-mini-tts"</span>],</span>
+<span id="cb13-159"><a aria-label="159"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">"TTS model: 'tts-1-hd' for high quality, 'gpt-4o-mini-tts' for low latency."</span>,</span>
+<span id="cb13-160"><a aria-label="160"></a>    )</span>
+<span id="cb13-161"><a aria-label="161"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb13-162"><a aria-label="162"></a></span>
+<span id="cb13-163"><a aria-label="163"></a>    main(args.<span class="bu">format</span>, args.voice, args.model)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Marcel <strong>Turcotte</strong></p>
+<p><a href="mailto:Marcel.Turcotte@uOttawa.ca">Marcel.Turcotte@uOttawa.ca</a></p>
+<p>École de <strong>science informatique</strong> et de génie électrique (<strong>SI</strong>GE)</p>
+<p>Université d’Ottawa</p>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../assets/images/uottawa_hor_black.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://turcotte.xyz/teaching/csi-4506">turcotte.xyz/teaching/csi-4506</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copié");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copié");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/turcotte\.xyz\/teaching\/csi-4506");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+<script src="https://platform.twitter.com/widgets.js"></script>
+</body></html>
