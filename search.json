@@ -160,7 +160,7 @@
     "href": "course-schedule.html",
     "title": "CSI 4506: Introduction à l’intelligence artificielle",
     "section": "",
-    "text": "Cette page présente un calendrier des sujets, des contenus et des devoirs pour le trimestre.\nVeuillez noter que cette page sera mis à jour au fur et à mesure que le trimestre avance, avec toutes les modifications documentées ici.\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nSujet\nPréparation\nPrésentation\nDevoir\nExamen\n\n\n\n\n9 sept.\nDéfinir l’IA\n\n\n-\n-\n\n\n14 sept.\nIntroduction à l’apprentissage automatique\n\n\n-\n-\n\n\n16 sept.\nAlgorithmes d’apprentissage\n\n\n-\n-\n\n\n21 sept.\nRégression linéaire et descente de gradient\n\n\n-\n-\n\n\n23 sept.\nRégression logistique\n\n\n-\n-\n\n\n28 sept.\nEntropie croisée, interprétation géométrique\n\n\n-\n-\n\n\n30 sept.\nÉvaluation des modèles\n\n\n-\n-\n\n\n5 oct.\nValidation croisée et ajustement des hyperparamètres\n\n\n-\n-\n\n\n5 oct.\n-\n-\n-\nD1: Jupyter\n-\n\n\n7 oct.\n-\n-\n-\n-\nQuiz\n\n\n14 oct.\nIngénierie de l’apprentissage automatique\n\n\n-\n-\n\n\n19 oct.\nIntroduction aux réseaux de neurones artificiels\n\n\n-\n-\n\n\n21 oct.\nEntraîner un réseau de neurones artificiels (1/2)\n\n\n-\n-\n\n\n26 oct.\nSemaine de lecture - pas de cours\n-\n-\n-\n-\n\n\n28 oct.\nSemaine de lecture - pas de cours\n-\n-\n-\n-\n\n\n2 nov.\n\n\n-\nD2: ML\n-\n\n\n2 nov.\nEntraîner un réseau de neurones artificiels (2/2)\n\n\n-\n-\n\n\n4 nov.\nSoftmax, entropie croisée et régularisation\n\n\n-\n-\n\n\n9 nov\nArchitectures des réseaux de neurones artificiels\n\n\n-\n-\n\n\n11 nov.\nIntroduction aux algorithmes de recherche\n\n\n-\n-\n\n\n16 nov.\nRecherche informée\n\n\n-\n-\n\n\n18 nov.\nRecherche locale\n\n\n-\n-\n\n\n18 nov.\n-\n-\n-\nD3: DL\n-\n\n\n23 nov.\n-\n-\n-\n-\nQuiz\n\n\n25 nov.\nMétaheuristiques à population\n\n\n-\n-\n\n\n30 nov.\nMétaheuristiques à population (suite)\n\n\n-\n-\n\n\n2 dec.\nRecherche adversariale\n\n\n-\n-\n\n\n7 dec.\nRecherche Arborescente de Monte-Carlo\n\n\n-\n-\n\n\n9 dec.\nRecherche Arborescente de Monte-Carlo (suite)\n\n\n-\n-\n\n\n9 dec.\n-\n-\n-\nD4: Recherche\n-",
+    "text": "Cette page présente un calendrier des sujets, des contenus et des devoirs pour le trimestre.\nVeuillez noter que cette page sera mis à jour au fur et à mesure que le trimestre avance, avec toutes les modifications documentées ici.\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nSujet\nPréparation\nPrésentation\nDevoir\nExamen\n\n\n\n\n9 sept.\nDéfinir l’IA\n\n\n-\n-\n\n\n14 sept.\nIntroduction à l’apprentissage automatique\n\n\n-\n-\n\n\n16 sept.\nAlgorithmes d’apprentissage\n\n\n-\n-\n\n\n21 sept.\nRégression linéaire et descente de gradient\n\n\n-\n-\n\n\n23 sept.\nRégression logistique\n\n\n-\n-\n\n\n28 sept.\nEntropie croisée, interprétation géométrique\n\n\n-\n-\n\n\n30 sept.\nÉvaluation des modèles\n\n\n-\n-\n\n\n5 oct.\nValidation croisée et ajustement des hyperparamètres\n\n\n-\n-\n\n\n5 oct.\n-\n-\n-\nD1: Jupyter\n-\n\n\n7 oct.\n-\n-\n-\n-\nQuiz\n\n\n12 oct.\nAction de grâce - pas de cours\n-\n-\n-\n-\n\n\n14 oct.\nIngénierie de l’apprentissage automatique\n\n\n-\n-\n\n\n19 oct.\nIntroduction aux réseaux de neurones artificiels\n\n\n-\n-\n\n\n21 oct.\nEntraîner un réseau de neurones artificiels (1/2)\n\n\n-\n-\n\n\n26 oct.\n\n\n-\nD2: ML\n-\n\n\n26 oct.\nSemaine de lecture - pas de cours\n-\n-\n-\n-\n\n\n28 oct.\nSemaine de lecture - pas de cours\n-\n-\n-\n-\n\n\n2 nov.\nEntraîner un réseau de neurones artificiels (2/2)\n\n\n-\n-\n\n\n4 nov.\nSoftmax, entropie croisée et régularisation\n\n\n-\n-\n\n\n9 nov\nArchitectures des réseaux de neurones artificiels\n\n\n-\n-\n\n\n11 nov.\nIntroduction aux algorithmes de recherche\n\n\n-\n-\n\n\n16 nov.\nRecherche informée\n\n\n-\n-\n\n\n16 nov.\n-\n-\n-\nD3: DL\n-\n\n\n18 nov.\n-\n-\n-\n-\nQuiz\n\n\n23 nov.\nRecherche locale\n\n\n-\n-\n\n\n25 nov.\nMétaheuristiques à population\n\n\n-\n-\n\n\n30 nov.\nMétaheuristiques à population (suite)\n\n\n-\n-\n\n\n2 dec.\nRecherche adversariale\n\n\n-\n-\n\n\n7 dec.\nRecherche Arborescente de Monte-Carlo\n\n\n-\n-\n\n\n9 dec.\nRecherche Arborescente de Monte-Carlo (suite)\n\n\n-\n-\n\n\n9 dec.\n-\n-\n-\nD4: Recherche\n-",
     "crumbs": [
       "**Information du cours**",
       "Calendrier"
@@ -279,23 +279,37 @@
   {
     "objectID": "lectures/18/index.html",
     "href": "lectures/18/index.html",
-    "title": "Recherche locale",
+    "title": "Quiz 2",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 18 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.\nÉchéance : Le Quiz 2 est prévu pour ce mercredi 23 novembre 2026, pendant le cours. Des détails supplémentaires sont disponibles dans la FAQ."
+    "text": "Important\n\n\n\nCe quiz a une durée d’une (1) heure (60 minutes).\nLes copies sont imprimées sur une seule face.\nParfois, des difficultés surviennent en raison d’une mauvaise gestion du temps, où 80 % du temps est consacré à 20 % des questions. Si vous êtes bloqué, une stratégie efficace est d’annoter la question problématique, passer à la suivante, et y revenir plus tard si le temps le permet. Maximisez le nombre de points obtenus.\nSi vous avez besoin d’aller aux toilettes, veuillez y aller maintenant, car 60 minutes est une courte période de temps."
   },
   {
-    "objectID": "lectures/18/index.html#participer",
-    "href": "lectures/18/index.html#participer",
-    "title": "Recherche locale",
-    "section": "Participer",
-    "text": "Participer\n– présentation (PDF, Jupyter Notebook)"
+    "objectID": "lectures/18/index.html#avant-le-quiz",
+    "href": "lectures/18/index.html#avant-le-quiz",
+    "title": "Quiz 2",
+    "section": "Avant le quiz",
+    "text": "Avant le quiz\nJ’ai quelques crayons et un aiguisoir à l’avant."
+  },
+  {
+    "objectID": "lectures/18/index.html#quiz",
+    "href": "lectures/18/index.html#quiz",
+    "title": "Quiz 2",
+    "section": "Quiz",
+    "text": "Quiz\nN’ouvrez pas le quiz avant que je donne le signal.\nÉcrivez votre nom et votre numéro d’étudiant sur le questionnaire et sur le Scantron.\nLisez attentivement les instructions.\nPendant l’examen, nous circulerons avec les feuilles de présence.\nVous devez compléter à la fois le formulaire de questions et la feuille Scantron."
+  },
+  {
+    "objectID": "lectures/18/index.html#après-le-quiz",
+    "href": "lectures/18/index.html#après-le-quiz",
+    "title": "Quiz 2",
+    "section": "Après le quiz",
+    "text": "Après le quiz\nIl est impératif de ne pas quitter la salle avec votre copie d’examen, conformément aux droits d’auteur mentionnés en bas de page.\nSi vous terminez avant la fin du temps imparti et que la situation est calme, restez assis, levez la main et je viendrai récupérer votre copie, puis vous pourrez partir.\nCependant, si plusieurs personnes terminent en même temps, je vous demanderai de rester assis pour éviter de déranger les autres étudiants qui sont encore en train d’écrire.\nNous devons nous assurer que toutes les copies sont collectées 10 minutes avant le début du cours suivant."
   },
   {
     "objectID": "lectures/16/index.html",
     "href": "lectures/16/index.html",
     "title": "Introduction aux algorithmes de recherche",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 18 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 16 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/16/index.html#participer",
@@ -309,7 +323,7 @@
     "href": "lectures/14/index.html",
     "title": "Softmax, entropie croisée, régularisation",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 18 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 16 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/14/index.html#participer",
@@ -330,7 +344,7 @@
     "href": "lectures/12/index.html",
     "title": "Entraîner un réseau de neurones artificiels",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 2 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/12/index.html#participer",
@@ -351,7 +365,7 @@
     "href": "lectures/10/index.html",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 2 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/10/index.html#préparer",
@@ -2223,648 +2237,11 @@
     "text": "Réferences\n\n\nBelmadani, Manuel. 2016. « MotifGP: DNA Motif Discovery Using Multiobjective Evolution ». Master of Computer Science, University of Ottawa, School of Electrical Engineering; Computer Science.\n\n\nBelmadani, Manuel, et Marcel Turcotte. 2016. « MotifGP: Using Multi-Objective Evolutionary Computing for Mining Network Expressions in DNA Sequences ». CIBCB 2016 - Annual IEEE International Conference on Computational Intelligence in Bioinformatics and Computational Biology (Chiang Mai, Thailand).\n\n\nBye, Robin T., Magnus Gribbestad, Ramesh Chandra, et Ottar L. Osen. 2021. « A Comparison of GA Crossover and Mutation Methods for the Traveling Salesman Problem ». In Innovations in Computational Intelligence and Computer Vision, édité par Manoj Kumar Sharma, Vijaypal Singh Dhaka, Thinagaran Perumal, Nilanjan Dey, et João Manuel R. S. Tavares. Springer Singapore.\n\n\nCattolico, Mike, et Vincent A Cicirello. 2006. « Non-wrapping order crossover: an order preserving crossover operator that respects absolute position ». Proceedings of the 8th annual conference on Genetic and evolutionary computation, 1125‑32. https://doi.org/10.1145/1143997.1144177.\n\n\nDavis, Lawrence. 2014. « Job shop scheduling with genetic algorithms ». Proceedings of the first International Conference on Genetic Algorithms and their Applications, 136‑40.\n\n\nDennett, Daniel C. 1995. « Darwin’s dangerous idea ». The Sciences 35 (3): 34‑40.\n\n\nEddaly, M., B. Jarboui, et P. Siarry. 2023. Metaheuristics for Machine Learning: New Advances and Tools. Computational Intelligence Methods et Applications. Springer Nature Singapore. https://books.google.ca/books?id=yXMtzwEACAAJ.\n\n\nGeorgiev, Bogdan, Javier Gómez-Serrano, Terence Tao, et Adam Zsolt Wagner. 2025. Mathematical exploration and discovery at scale. https://arxiv.org/abs/2511.02864.\n\n\nGil-Rios, Miguel-Angel, Ivan Cruz-Aceves, Fernando Cervantes-Sanchez, Igor Guryev, et Juan-Manuel López-Hernández. 2021. « Automatic enhancement of coronary arteries using convolutional gray-level templates and path-based metaheuristics ». Chap. 8 in Recent Trends in Computational Intelligence Enabled Research, édité par Siddhartha Bhattacharyya, Paramartha Dutta, Debabrata Samanta, Anirban Mukherjee, et Indrajit Pan. Academic Press.\n\n\nGoldberg, David E, et Robert Lingle. 2014. « Alleles, loci, and the traveling salesman problem ». Proceedings of the first international conference on genetic algorithms and their applications, 154‑59.\n\n\nGregory, T. Ryan. 2009. « Understanding Natural Selection: Essential Concepts and Common Misconceptions ». Evolution: Education and Outreach 2 (2): 156‑75. https://doi.org/10.1007/s12052-009-0128-1.\n\n\nHolland, John H. 1973. « Genetic Algorithms and the Optimal Allocation of Trials ». SIAM Journal on Computing 2 (2): 88‑105. https://doi.org/10.1137/0202009.\n\n\nHolland, John H. 1992. « Genetic Algorithms ». Scientific American 267: 66‑73. https://www.jstor.org/stable/10.2307/24939139.\n\n\nKramer, Oliver. 2017. Genetic algorithm essentials. Studies in computational intelligence ; 679. Springer.\n\n\nMayr, Ernst. 1982. The growth of biological thought: Diversity, evolution, and inheritance. Harvard University Press.\n\n\nOliva, D., E. H. Houssein, et S. Hinojosa. 2021. Metaheuristics in Machine Learning: Theory and Applications. Studies in Computational Intelligence. Springer International Publishing. https://books.google.ca/books?id=Zlw4EAAAQBAJ.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/.\n\n\nSantos Amorim, Elisa Portes dos, Carolina Ribeiro Xavier, Ricardo Silva Campos, et Rodrigo Weber dos Santos. 2012. « Comparison between Genetic Algorithms and Differential Evolution for Solving the History Matching Problem ». In Computational Science and Its Applications - ICCSA 2012 - 12th International Conference, Salvador de Bahia, Brazil, June 18-21, 2012, Proceedings, Part I, édité par Beniamino Murgante, Osvaldo Gervasi, Sanjay Misra, et al., vol. 7333. Lecture Notes in Computer Science. Springer. https://doi.org/10.1007/978-3-642-31125-3\\_48.\n\n\nSkiena, Steven S. 2008. The Algorithm Design Manual. Springer. https://doi.org/10.1007/978-1-84800-070-4."
   },
   {
-    "objectID": "lectures/18/slides.html#message-du-jour",
-    "href": "lectures/18/slides.html#message-du-jour",
-    "title": "Recherche locale",
-    "section": "Message du jour",
-    "text": "Message du jour\n\n\n\n\n\n\n\nUniversities are embracing AI: will students get smarter or stop thinking?, Nature News, 2025-10-21."
-  },
-  {
-    "objectID": "lectures/18/slides.html#objectifs-dapprentissage",
-    "href": "lectures/18/slides.html#objectifs-dapprentissage",
-    "title": "Recherche locale",
-    "section": "Objectifs d’apprentissage",
-    "text": "Objectifs d’apprentissage\n\nComprendre le concept et l’application des algorithmes de recherche locale dans les problèmes d’optimisation.\nImplémenter et analyser l’algorithme de montée de colline (hill climbing), en reconnaissant ses limitations comme les maxima locaux et les plateaux.\nAppliquer des stratégies efficaces de représentation des états dans des problèmes comme les 8-Reines pour améliorer l’efficacité de la recherche.\nExpliquer comment le recuit simulé surmonte les optima locaux en acceptant probabilistiquement des états pires.\nAnalyser l’influence de la température et de la différence d’énergie sur la probabilité d’acceptation dans le recuit simulé.\nReconnaître l’application du recuit simulé dans la résolution de problèmes d’optimisation complexes comme le problème du voyageur de commerce.\n\n\nDans cette présentation, nous analyserons deux algorithmes de recherche locale : la montée de colline et le recuit simulé. Notre but est d’expliquer le concept de recherche locale et d’examiner les méthodes permettant d’éviter les minima (ou maxima) locaux. Nous aborderons rapidement la montée de colline, compte tenu de sa simplicité, et nous consacrerons plus de temps au recuit simulé, un algorithme très utile."
-  },
-  {
-    "objectID": "lectures/18/slides.html#contexte",
-    "href": "lectures/18/slides.html#contexte",
-    "title": "Recherche locale",
-    "section": "Contexte",
-    "text": "Contexte\n\nL’accent a été mis sur la recherche de chemins dans un espace d’états.\nCertains problèmes privilégient l’état final par rapport au chemin.\n\nConception de circuits intégrés\nOrdonnancement d’atelier\nProgrammation automatique\n\n\n\nL’importance du chemin par rapport à l’état final dépend de la nature du problème. Par exemple, dans un problème d’itinéraire, le chemin est la pièce d’information cruciale recherchée."
-  },
-  {
-    "objectID": "lectures/18/slides.html#problème-des-8-reines",
-    "href": "lectures/18/slides.html#problème-des-8-reines",
-    "title": "Recherche locale",
-    "section": "Problème des 8-Reines",
-    "text": "Problème des 8-Reines\n\n\nCode\nimport matplotlib.pyplot as plt\nfrom matplotlib.colors import ListedColormap\nimport numpy as np\n\ndef display_n_queens(board, width):\n    n = len(board)\n\n    # Créer un motif d'échiquier\n    board_matrix = np.zeros((n, n))\n    for row in range(n):\n        for col in range(n):\n            if (row + col) % 2 == 0:\n                board_matrix[row, col] = 1  # Cases blanches\n            else:\n                board_matrix[row, col] = 0.5\n\n    # Créer un colormap personnalisé : gris pour 0.5 et blanc pour 1\n    cmap = ListedColormap(['lightgray', 'white'])\n\n    # Créer le graphique\n    fig, ax = plt.subplots(figsize=(width, width))\n    ax.imshow(board_matrix, cmap=cmap, extent=(0, n, 0, n))\n\n    # Ajouter les marqueurs de reine\n    for col in range(n):\n        row = board[col]\n        ax.text(col + 0.5, n - row - 0.5, '♛', fontsize=32, ha='center', va='center', color='black')\n\n    # Ajouter des lignes de grille\n    ax.set_xticks(np.arange(n+1), minor=True)\n    ax.set_yticks(np.arange(n+1), minor=True)\n    ax.grid(which='minor', color='black', linestyle='-', linewidth=2)\n\n    # Supprimer les étiquettes d'axes et les ticks\n    ax.set_xticks([])\n    ax.set_yticks([])\n    ax.tick_params(axis='both', which='both', length=0)\n\n    plt.title(f\"Problème des {n} Reines\")\n    plt.show()\n\nDRAFT = False"
-  },
-  {
-    "objectID": "lectures/18/slides.html#problème-des-8-reines-1",
-    "href": "lectures/18/slides.html#problème-des-8-reines-1",
-    "title": "Recherche locale",
-    "section": "Problème des 8-Reines",
-    "text": "Problème des 8-Reines\n\n\n\nCode\n# Exemple de plateau pour le problème des 8-Reines\n# Représente une solution valide\nboard = [0, 4, 7, 5, 2, 6, 1, 3]  \n\ndisplay_n_queens(board, 5)\n\n\n\n\n\n\n\n\n\n\n\n\nPour un échiquier de \\(8 \\times 8\\), il existe exactement 92 solutions distinctes. En éliminant les solutions symmétrique, on se retrouve avec 12 solutions fondamentales. Dans le cas plus général d’un échiquier \\(n \\times n\\), le nombre exact de solutions a été déterminé pour toutes les valeurs de \\(n\\) allant jusqu’à 27 inclus.\n\n\nLe problème des 8-Reines (8-Dames ou 8-Queens) consiste à placer huit Reines sur un échiquier de \\(8 \\times 8\\) de sorte qu’aucune reine ne se menace, c’est-à-dire qu’aucune reine ne partage la même ligne, colonne ou diagonale."
-  },
-  {
-    "objectID": "lectures/18/slides.html#définition",
-    "href": "lectures/18/slides.html#définition",
-    "title": "Recherche locale",
-    "section": "Définition",
-    "text": "Définition\n\n\n\nNote\n\n\n (Russell et Norvig 2020, 110)\nLes algorithmes de recherche locale opèrent en cherchant d’un état initial à des états voisins, sans tenir compte des chemins ni de l’ensemble des états atteints.\n\n\n\n\n\nCet algorithme manque d’une approche systématique et ne garantit pas la découverte d’une solution optimale.\n\n\nOptimise l’utilisation de la mémoire tout en résolvant efficacement des problèmes dans des espaces d’états immenses ou infinis."
-  },
-  {
-    "objectID": "lectures/18/slides.html#définition-du-problème",
-    "href": "lectures/18/slides.html#définition-du-problème",
-    "title": "Recherche locale",
-    "section": "Définition du problème",
-    "text": "Définition du problème\nTrouver l’état “meilleur” selon une fonction objectif, en localisant ainsi le “maximum global”.\n\n\nLes guillemets autour du terme “maximum global” signalent que, dans le cadre de la présentation d’aujourd’hui, les algorithmes examinés ne fournissent pas de garanties formelles quant à l’identification du maximum global.\n\n\nCe problème d’optimisation est couramment appelé montée de colline (hill climbing)."
-  },
-  {
-    "objectID": "lectures/18/slides.html#montée-de-colline-hill-climbing",
-    "href": "lectures/18/slides.html#montée-de-colline-hill-climbing",
-    "title": "Recherche locale",
-    "section": "Montée de colline (Hill Climbing)",
-    "text": "Montée de colline (Hill Climbing)\n\n\n\n\n\n\n\nAttribution: adapté de Russell et Norvig (2020), page 111."
-  },
-  {
-    "objectID": "lectures/18/slides.html#hill-climbing-1",
-    "href": "lectures/18/slides.html#hill-climbing-1",
-    "title": "Recherche locale",
-    "section": "Hill Climbing",
-    "text": "Hill Climbing\nÉtant donné en entrée un problème\n\ncurrent est l’état initial du problème\ntant que non terminé faire\n\nneighbour est l’état successeur de plus grande valeur de current\nsi valeur(neighbour) \\(\\le\\) valeur(current) alors retourner current\nassigner neighbour à current\n\n\n\nLa montée de colline ne garde pas la trace des états visités précédemment et n’anticipe pas au-delà de ses voisins immédiats. Elle conserve un état courant et se déplace dans la direction de l’ascension la plus abrupte.\nEn inversant le signe de la fonction objectif, l’algorithme peut être adapté pour rechercher un minimum local."
-  },
-  {
-    "objectID": "lectures/18/slides.html#reines",
-    "href": "lectures/18/slides.html#reines",
-    "title": "Recherche locale",
-    "section": "8-Reines",
-    "text": "8-Reines\nComment représenteriez-vous l’état courant?\n\nPourquoi l’utilisation d’une grille pour représenter l’état courant est-elle sous-optimale?\n\n\nUne représentation en grille permet le placement illégal de reines dans la même colonne.\n\n\nÀ la place, nous pouvons représenter l’état comme une liste (\\(\\mathrm{état}\\)), où chaque élément correspond à la position de la ligne de la reine dans sa colonne respective.\nEn d’autres termes, \\(\\mathrm{état}[i]\\) est la ligne de la reine dans la colonne \\(i\\)."
-  },
-  {
-    "objectID": "lectures/18/slides.html#représentation-de-létat",
-    "href": "lectures/18/slides.html#représentation-de-létat",
-    "title": "Recherche locale",
-    "section": "Représentation de l’état",
-    "text": "Représentation de l’état\n\n\n# Exemple de plateau pour le problème des 8-Reines\n# Représente une solution valide pour les 8-Reines\nboard = [0, 4, 7, 5, 2, 6, 1, 3]  \n\ndisplay_n_queens(board, 5)\n\n\n\n\n\n\n\n\n\n\n\n\netat = [0, 4, 7, 5, 2, 6, 1, 3]"
-  },
-  {
-    "objectID": "lectures/18/slides.html#create_initial_state",
-    "href": "lectures/18/slides.html#create_initial_state",
-    "title": "Recherche locale",
-    "section": "create_initial_state",
-    "text": "create_initial_state\n\nimport random\nrandom.seed(7)\n\ndef create_initial_state(n):\n\n    \"\"\"Génère un état initial aléatoire avec une reine par colonne.\"\"\"\n\n    return [random.randint(0, n - 1) for _ in range(n)]\n\n\n\nQu’en pensez-vous ?"
-  },
-  {
-    "objectID": "lectures/18/slides.html#create_initial_state-1",
-    "href": "lectures/18/slides.html#create_initial_state-1",
-    "title": "Recherche locale",
-    "section": "create_initial_state",
-    "text": "create_initial_state\n\n\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)\n\n\n\n\n\n\n\n\n\n\netat \n\n[5, 2, 6, 0, 1, 1, 5, 0]\n\n\n\nPermet deux Reines dans la même ligne? Comment cela peut-il être corrigé ?"
-  },
-  {
-    "objectID": "lectures/18/slides.html#représentation-des-8-reines",
-    "href": "lectures/18/slides.html#représentation-des-8-reines",
-    "title": "Recherche locale",
-    "section": "Représentation des 8-Reines",
-    "text": "Représentation des 8-Reines\nÉchiquier \\(8 \\times 8\\).\n\nPlacement sans contrainte : \\(\\binom{64}{8} = 4,426,165,368\\) configurations possibles, représentant la sélection de 8 cases parmi 64.\nContrainte de colonne : Utilisez une liste de longueur 8, chaque entrée indiquant la ligne d’une reine dans sa colonne respective, ce qui donne \\(8^8 = 16,777,216\\) configurations.\nContraintes de ligne et de colonne : Modélisez les états du plateau comme des permutations des indices de ligne des 8 reines, réduisant les configurations à \\(8! = 40,320\\).\n\n\n\nCela souligne l’importance de choisir une bonne représentation."
-  },
-  {
-    "objectID": "lectures/18/slides.html#create_initial_state-2",
-    "href": "lectures/18/slides.html#create_initial_state-2",
-    "title": "Recherche locale",
-    "section": "create_initial_state",
-    "text": "create_initial_state\n\nimport random\nrandom.seed(7)\n\ndef create_initial_state(n):\n\n    \"\"\"Génère une permutation des nombres de 0 à n-1 comme état initial.\"\"\"\n\n    etat = list(range(n))\n    random.shuffle(etat)\n\n    return etat"
-  },
-  {
-    "objectID": "lectures/18/slides.html#create_initial_state-3",
-    "href": "lectures/18/slides.html#create_initial_state-3",
-    "title": "Recherche locale",
-    "section": "create_initial_state",
-    "text": "create_initial_state\n\n\n\nCode\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)\n\n\n\n\n\n\n\n\n\n\n\netat \n\n[6, 7, 2, 4, 0, 3, 1, 5]"
-  },
-  {
-    "objectID": "lectures/18/slides.html#calculate_conflicts",
-    "href": "lectures/18/slides.html#calculate_conflicts",
-    "title": "Recherche locale",
-    "section": "calculate_conflicts",
-    "text": "calculate_conflicts\n\ndef calculate_conflicts(etat):\n\n    n = len(etat)\n    conflits = 0\n\n    for col_i in range(n):\n        for col_j in range(col_i + 1, n):\n            row_i = etat[col_i]\n            row_j = etat[col_j]\n            if row_i == row_j:                 # même ligne\n                conflits += 1\n            if col_i - row_i == col_j - row_j: # même diagonale\n                conflits += 1\n            if col_i + row_i == col_j + row_j: # même antidiagonale\n                conflits += 1\n\n    return conflits"
-  },
-  {
-    "objectID": "lectures/18/slides.html#calculate_conflicts-1",
-    "href": "lectures/18/slides.html#calculate_conflicts-1",
-    "title": "Recherche locale",
-    "section": "calculate_conflicts",
-    "text": "calculate_conflicts\n\n\nCode\ndisplay_n_queens(etat, 5)\n\n\n\n\n\n\n\n\n\n\n\n\n\n5"
-  },
-  {
-    "objectID": "lectures/18/slides.html#get_neighbors_rn",
-    "href": "lectures/18/slides.html#get_neighbors_rn",
-    "title": "Recherche locale",
-    "section": "get_neighbors_rn",
-    "text": "get_neighbors_rn\n\ndef get_neighbors_rn(etat):\n\n    \"\"\"Génère des états voisins en déplaçant une reine à la fois vers une nouvelle ligne.\"\"\"\n\n    voisins = []\n    n = len(etat)\n\n    for col in range(n):\n        for row in range(n):\n            if (etat[col] != row):\n              nouvel_etat = etat[:]  # copie de l'état\n              nouvel_etat[col] = row\n              voisins.append(nouvel_etat)\n\n    return voisins\n\n\n\nRussell et Norvig (2020), \\(8 \\times 7 = 56\\) voisins"
-  },
-  {
-    "objectID": "lectures/18/slides.html#get_neighbors_rn-1",
-    "href": "lectures/18/slides.html#get_neighbors_rn-1",
-    "title": "Recherche locale",
-    "section": "get_neighbors_rn",
-    "text": "get_neighbors_rn\n\n\nCode\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#get_neighbors_rn-2",
-    "href": "lectures/18/slides.html#get_neighbors_rn-2",
-    "title": "Recherche locale",
-    "section": "get_neighbors_rn",
-    "text": "get_neighbors_rn\n\ninitial_state_8 = create_initial_state(8)\nprint(initial_state_8)\nfor s in get_neighbors_rn(initial_state_8):\n  print(f\"{s} -&gt; # of conflicts = {calculate_conflicts(s)}\")\n\n[7, 4, 2, 5, 1, 0, 3, 6]\n[0, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[1, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[2, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[3, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[4, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[5, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 8\n[6, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 0, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 1, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 2, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 3, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 5, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 6, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 7, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 0, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 1, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 3, 5, 1, 0, 3, 6] -&gt; # of conflicts = 8\n[7, 4, 4, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 5, 5, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[7, 4, 6, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 7, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 0, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[7, 4, 2, 1, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 2, 1, 0, 3, 6] -&gt; # of conflicts = 9\n[7, 4, 2, 3, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 4, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 6, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[7, 4, 2, 7, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 0, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 2, 0, 3, 6] -&gt; # of conflicts = 2\n[7, 4, 2, 5, 3, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 4, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 5, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 6, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 7, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 1, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 2, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 3, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 4, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 5, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 6, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 7, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 0, 0, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 0, 1, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 0, 2, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 4, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 0, 5, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 6, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 7, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 3, 0] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 0, 3, 1] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 0, 3, 2] -&gt; # of conflicts = 7\n[7, 4, 2, 5, 1, 0, 3, 3] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 3, 4] -&gt; # of conflicts = 7\n[7, 4, 2, 5, 1, 0, 3, 5] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 3, 7] -&gt; # of conflicts = 6"
-  },
-  {
-    "objectID": "lectures/18/slides.html#get_neighbors",
-    "href": "lectures/18/slides.html#get_neighbors",
-    "title": "Recherche locale",
-    "section": "get_neighbors",
-    "text": "get_neighbors\n\ndef get_neighbors(etat):\n    \"\"\"Génère des états voisins en échangeant deux lignes.\"\"\"\n    voisins = []\n    n = len(etat)\n\n    for i in range(n):\n        for j in range(i + 1, n):\n            nouvel_etat = etat[:]\n            nouvel_etat[i], nouvel_etat[j] = nouvel_etat[j], nouvel_etat[i]\n            voisins.append(nouvel_etat)\n\n    return voisins\n\n\n\n\\(\\frac{8 \\times 7}{2} = 28\\) voisins"
-  },
-  {
-    "objectID": "lectures/18/slides.html#get_neighbors-1",
-    "href": "lectures/18/slides.html#get_neighbors-1",
-    "title": "Recherche locale",
-    "section": "get_neighbors",
-    "text": "get_neighbors\n\n\nCode\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#get_neighbors-2",
-    "href": "lectures/18/slides.html#get_neighbors-2",
-    "title": "Recherche locale",
-    "section": "get_neighbors",
-    "text": "get_neighbors\n\nprint(initial_state_8)\nfor s in get_neighbors(initial_state_8):\n  print(f\"{s} -&gt; # of conflicts = {calculate_conflicts(s)}\")\n\n[7, 4, 2, 5, 1, 0, 3, 6]\n[4, 7, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[2, 4, 7, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[5, 4, 2, 7, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[1, 4, 2, 5, 7, 0, 3, 6] -&gt; # of conflicts = 2\n[0, 4, 2, 5, 1, 7, 3, 6] -&gt; # of conflicts = 4\n[3, 4, 2, 5, 1, 0, 7, 6] -&gt; # of conflicts = 5\n[6, 4, 2, 5, 1, 0, 3, 7] -&gt; # of conflicts = 5\n[7, 2, 4, 5, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 5, 2, 4, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 1, 2, 5, 4, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 0, 2, 5, 1, 4, 3, 6] -&gt; # of conflicts = 5\n[7, 3, 2, 5, 1, 0, 4, 6] -&gt; # of conflicts = 3\n[7, 6, 2, 5, 1, 0, 3, 4] -&gt; # of conflicts = 5\n[7, 4, 5, 2, 1, 0, 3, 6] -&gt; # of conflicts = 10\n[7, 4, 1, 5, 2, 0, 3, 6] -&gt; # of conflicts = 2\n[7, 4, 0, 5, 1, 2, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 3, 5, 1, 0, 2, 6] -&gt; # of conflicts = 7\n[7, 4, 6, 5, 1, 0, 3, 2] -&gt; # of conflicts = 7\n[7, 4, 2, 1, 5, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 0, 1, 5, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 3, 1, 0, 5, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 6, 1, 0, 3, 5] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 0, 1, 3, 6] -&gt; # of conflicts = 2\n[7, 4, 2, 5, 3, 0, 1, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 6, 0, 3, 1] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 3, 0, 6] -&gt; # of conflicts = 2\n[7, 4, 2, 5, 1, 6, 3, 0] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 0, 6, 3] -&gt; # of conflicts = 4"
-  },
-  {
-    "objectID": "lectures/18/slides.html#hill_climbing",
-    "href": "lectures/18/slides.html#hill_climbing",
-    "title": "Recherche locale",
-    "section": "hill_climbing",
-    "text": "hill_climbing\n\nimport numpy as np\n\ndef hill_climbing(etat_courant):\n\n    conflits_courants = calculate_conflicts(etat_courant)\n\n    while True:\n\n        if conflits_courants == 0:\n          return etat_courant\n\n        voisins = get_neighbors(etat_courant)\n\n        conflits = [calculate_conflicts(voisin) for voisin in voisins]\n\n        if (min(conflits)) &gt; conflits_courants:\n          return None # Aucune amélioration trouvée, bloqué dans un minimum local\n\n        arg_best = np.argmin(conflits)\n        etat_courant = voisins[arg_best]\n        conflits_courants = conflits[arg_best]\n\n\nLe programme ci-haut présente un défi majeur. Quel est-il exactement ?\nIl est important de noter que, dans ce contexte particulier, le problème est défini de manière à ce que la solution recherchée soit exempte de tout conflit. Cependant, dans certains problèmes d’optimisation, la valeur minimale de la fonction objective n’est pas préalablement déterminée.\nLe principal problème est que l’algorithme risque d’entrer dans une boucle infinie si la condition min(conflits == conflits_courant) est satisfaite.\nDeux scénarios peuvent se présenter : soit le plateau est suivi d’une pente ascendante, soit il représente un maximum local. Dans le premier cas, l’algorithme pourrait potentiellement sortir du plateau, bien que cela ne soit pas garanti. Pour prévenir les boucles infinies, il serait judicieux d’implémenter un mécanisme approprié."
-  },
-  {
-    "objectID": "lectures/18/slides.html#hill_climbing-version-2",
-    "href": "lectures/18/slides.html#hill_climbing-version-2",
-    "title": "Recherche locale",
-    "section": "hill_climbing (version 2)",
-    "text": "hill_climbing (version 2)\n\nMAX_SIDE_MOVES = 100\n\ndef hill_climbing(etat_courant):\n\n    conflits_courants = calculate_conflicts(etat_courant)\n    mouvements_lateraux = 0\n\n    while True:\n\n        if conflits_courants == 0:\n          return etat_courant\n\n        voisins = get_neighbors(etat_courant)\n\n        conflits = [calculate_conflicts(voisin) for voisin in voisins]\n\n        if (min(conflits)) &gt; conflits_courants:\n          return None  # Aucune amélioration trouvée, bloqué dans un minimum local\n\n        if (min(conflits)) == conflits_courants:\n          mouvements_lateraux += 1  # Plateau\n\n        if mouvements_lateraux &gt; MAX_SIDE_MOVES:\n          return None\n\n        arg_best = np.argmin(conflits)\n        etat_courant = voisins[arg_best]\n        conflits_courants = conflits[arg_best]"
-  },
-  {
-    "objectID": "lectures/18/slides.html#résoudre",
-    "href": "lectures/18/slides.html#résoudre",
-    "title": "Recherche locale",
-    "section": "Résoudre",
-    "text": "Résoudre\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\nexplored = set()\nnb_explored = 0\n\nfor i in range(10):\n  etat = create_initial_state(8)\n\n  nouvel_etat = hill_climbing(etat)\n\n  if (nouvel_etat != None):\n    display_n_queens(nouvel_etat, 6)\n    if tuple(nouvel_etat) in explored:\n      nb_explored += 1\n    else:\n      explored.add(tuple(nouvel_etat))\n\n    solutions += 1\n\nprint(f\"10 essais, nombre de solutions = {solutions}, {nb_explored} déjà vues\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10 essais, nombre de solutions = 9, 0 déjà vues"
-  },
-  {
-    "objectID": "lectures/18/slides.html#résoudre-2",
-    "href": "lectures/18/slides.html#résoudre-2",
-    "title": "Recherche locale",
-    "section": "Résoudre (2)",
-    "text": "Résoudre (2)\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 10 if DRAFT else 1000\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(8)\n\n  new_state = hill_climbing(state)\n\n  if (new_state != None):\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\n\n1000 essais, nombre de solutions = 704, 92 uniques"
-  },
-  {
-    "objectID": "lectures/18/slides.html#résoudre-40-reines",
-    "href": "lectures/18/slides.html#résoudre-40-reines",
-    "title": "Recherche locale",
-    "section": "Résoudre 40-Reines",
-    "text": "Résoudre 40-Reines\n\\(40! = 8.1591528325 \\times 10^{47}\\)\n\n\n\nCode\nimport time\n\nstart_time = time.time()  # Record the start time\n\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 1 if DRAFT else 10\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(40)\n\n  new_state = hill_climbing(state)\n\n  if (new_state != None):\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\none_board = next(iter(explored))\ndisplay_n_queens(one_board, 12)\n\nend_time = time.time()  # Record the end time\nelapsed_time = end_time - start_time  # Calculate the elapsed time\n\nprint(f\"Temps écoulé : {elapsed_time:.4f} secondes\")\n\n\n10 essais, nombre de solutions = 6, 6 uniques\n\n\n\n\n\n\n\n\n\nTemps écoulé : 14.3088 secondes"
-  },
-  {
-    "objectID": "lectures/18/slides.html#itérations-et-mouvement-latéraux",
-    "href": "lectures/18/slides.html#itérations-et-mouvement-latéraux",
-    "title": "Recherche locale",
-    "section": "Itérations et mouvement latéraux",
-    "text": "Itérations et mouvement latéraux\n\n\nCode\nMAX_SIDE_MOVES = 100\n\ndef hill_climbing_counts(etat_courant):\n\n    \"\"\"Algorithme de montée de colline pour résoudre le problème des N-Reines.\"\"\"\n\n    conflits_courants = calculate_conflicts(etat_courant)\n    mouvements_lateraux = 0\n    iterations = 0\n\n    while True:\n\n        if conflits_courants == 0:\n          return (iterations, mouvements_lateraux, etat_courant)\n\n        iterations += 1\n\n        voisins = get_neighbors(etat_courant)\n\n        conflits = [calculate_conflicts(voisin) for voisin in voisins]\n\n        if (min(conflits)) &gt; conflits_courants:\n          print(\"here\")\n          return (iterations, 1, None)  # Aucune amélioration trouvée, bloqué dans un minimum local\n\n        if (min(conflits)) == conflits_courants:\n          mouvements_lateraux += 1  # Plateau\n\n        if mouvements_lateraux &gt; MAX_SIDE_MOVES:\n          return (iterations, 2, None)\n\n        arg_best = np.argmin(conflits)\n        etat_courant = voisins[arg_best]\n        conflits_courants = conflits[arg_best]\n\n\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 10 if DRAFT else 1000\n\niterations = []\nsides = []\n\niterations_none = []\nsides_none = []\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(8)\n\n  (i, s, new_state) = hill_climbing_counts(state)\n\n  if new_state != None:\n    iterations.append(i)\n    sides.append(s)\n  else:\n    iterations_none.append(i)\n    sides_none.append(s)\n\n  if new_state != None:\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\n\n1000 essais, nombre de solutions = 704, 92 uniques"
-  },
-  {
-    "objectID": "lectures/18/slides.html#itérations-et-mouvement-latéraux-1",
-    "href": "lectures/18/slides.html#itérations-et-mouvement-latéraux-1",
-    "title": "Recherche locale",
-    "section": "Itérations et mouvement latéraux",
-    "text": "Itérations et mouvement latéraux\n\n\nCode\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Configurer la structure des sous-graphiques\nfig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True)\n\n# Tracer l'histogramme pour `iterations`\nsns.histplot(iterations, kde=True, color='green', ax=axes[0], edgecolor='black')\naxes[0].set_title(\"Histogramme des itérations\")\naxes[0].set_xlabel(\"Itérations\")\naxes[0].set_ylabel(\"Fréquence\")\n\n# Tracer l'histogramme pour `sides`\nsns.histplot(sides, kde=True, color='blue', ax=axes[1], edgecolor='black')\n\naxes[1].set_title(\"Histogramme des mouvements latéraux\")\naxes[1].set_xlabel(\"# Mouvements latéraux\")\n\n# Afficher le graphique\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "lectures/18/slides.html#itérations-et-mouvement-latéraux-1-output",
-    "href": "lectures/18/slides.html#itérations-et-mouvement-latéraux-1-output",
-    "title": "Recherche locale",
-    "section": "Itérations et mouvement latéraux",
-    "text": "Itérations et mouvement latéraux"
-  },
-  {
-    "objectID": "lectures/18/slides.html#reines-1",
-    "href": "lectures/18/slides.html#reines-1",
-    "title": "Recherche locale",
-    "section": "20-Reines",
-    "text": "20-Reines\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 10 if DRAFT else 1000\n\niterations = []\nsides = []\n\niterations_none = []\nsides_none = []\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(20)\n\n  (i, s, new_state) = hill_climbing_counts(state)\n\n  if new_state != None:\n    iterations.append(i)\n    sides.append(s)\n  else:\n    iterations_none.append(i)\n    sides_none.append(s)\n\n  if new_state != None:\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\n\n1000 essais, nombre de solutions = 566, 566 uniques\n\n\n\n\nCode\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Configurer la structure des sous-graphiques\nfig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True)\n\n# Tracer l'histogramme pour `iterations`\nsns.histplot(iterations, kde=True, color='green', ax=axes[0], edgecolor='black')\naxes[0].set_title(\"Histogramme des itérations\")\naxes[0].set_xlabel(\"Itérations\")\naxes[0].set_ylabel(\"Fréquence\")\n\n# Tracer l'histogramme pour `sides`\nsns.histplot(sides, kde=True, color='blue', ax=axes[1], edgecolor='black')\n\naxes[1].set_title(\"Histogramme des mouvements latéraux\")\naxes[1].set_xlabel(\"# Mouvements latéraux\")\n\n# Afficher le graphique\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "lectures/18/slides.html#reines-1-output",
-    "href": "lectures/18/slides.html#reines-1-output",
-    "title": "Recherche locale",
-    "section": "20-Reines",
-    "text": "20-Reines"
-  },
-  {
-    "objectID": "lectures/18/slides.html#russell-norvig",
-    "href": "lectures/18/slides.html#russell-norvig",
-    "title": "Recherche locale",
-    "section": "Russell & Norvig",
-    "text": "Russell & Norvig\n\nLa montée de colline échoue 86 % du temps.\n\nLes tentatives réussies nécessitent en moyenne 4 étapes pour une solution.\n\nPermettre 100 mouvements latéraux augmente le taux de réussite de 14 % à 94 %.\nL’espace de recherche contient \\(8^8 = 16,777,216\\) états.\n\nImplémentation de Russell & Norvig\n\n\n\n\nDans l’implémentation que j’ai proposée, il ne semble pas y avoir de minimums locaux. Toutefois, cela nécessite une vérification plus approfondie.\n\n\nPossède de nombreuses variantes, notamment la montée de colline avec redémarrage aléatoire."
-  },
-  {
-    "objectID": "lectures/18/slides.html#échapper-à-un-optimum-local",
-    "href": "lectures/18/slides.html#échapper-à-un-optimum-local",
-    "title": "Recherche locale",
-    "section": "Échapper à un optimum local",
-    "text": "Échapper à un optimum local\nQuels mécanismes permettraient à l’algorithme de montée de colline d’échapper à un optimum local, qu’il s’agisse d’un minimum ou d’un maximum local ?\n\nIl doit accepter de descendre.\nUne approche de marche aléatoire, qui ignore la valeur de la fonction objectif, pourrait théoriquement trouver le maximum global. Cependant, cette méthode est extrêmement inefficace."
-  },
-  {
-    "objectID": "lectures/18/slides.html#remarque",
-    "href": "lectures/18/slides.html#remarque",
-    "title": "Recherche locale",
-    "section": "Remarque",
-    "text": "Remarque\nSupposons que le problème d’optimisation soit une minimisation, où l’objectif est de trouver une solution avec le coût minimum.\n\n\nDescente de colline, descente de gradient."
-  },
-  {
-    "objectID": "lectures/18/slides.html#définition-1",
-    "href": "lectures/18/slides.html#définition-1",
-    "title": "Recherche locale",
-    "section": "Définition",
-    "text": "Définition\nLe recuit simulé (simulated annealing) est un algorithme d’optimisation inspiré du processus de recuit en métallurgie. Il explore l’espace de solutions de manière probabiliste en permettant des déplacements occasionnels vers le haut, ce qui aide à échapper aux optima locaux. L’algorithme réduit progressivement la probabilité d’accepter des solutions pires en diminuant un paramètre de “température”, convergeant ainsi vers une solution optimale ou quasi-optimale."
-  },
-  {
-    "objectID": "lectures/18/slides.html#recuit",
-    "href": "lectures/18/slides.html#recuit",
-    "title": "Recherche locale",
-    "section": "Recuit",
-    "text": "Recuit\n\n\n\nNote\n\n\n (Russell et Norvig 2020, 114)\nEn métallurgie, le recuit est le processus de durcissement des métaux et du verre en les chauffant à haute température et en les refroidissant progressivement, permettant ainsi au matériau d’atteindre un état cristallin à faible énergie.\n\n\n\n\nLe solide est chauffé jusqu’à son point de fusion, ce qui rend les particules distribuées de manière aléatoire.\nEnsuite, le matériau est refroidi progressivement, permettant aux particules de se réorganiser en un état de faible énergie."
-  },
-  {
-    "objectID": "lectures/18/slides.html#algorithme",
-    "href": "lectures/18/slides.html#algorithme",
-    "title": "Recherche locale",
-    "section": "Algorithme",
-    "text": "Algorithme\n\n\n\n\n\n\n\n1.  Cet algorithme ressemble à la montée de colline mais diffère en sélectionnant aléatoirement l’état suivant au lieu de choisir le meilleur mouvement.\n2.  Si le déplacement réduit la valeur de la fonction objectif, il est accepté sans condition.\n3.  Sinon, l’acceptation est probabiliste, en fonction de $\\Delta E$ et $T$.\n\n\nAttribution : (Russell et Norvig 2020, 115)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#variation-de-delta-e",
-    "href": "lectures/18/slides.html#variation-de-delta-e",
-    "title": "Recherche locale",
-    "section": "Variation de \\(\\Delta E\\)",
-    "text": "Variation de \\(\\Delta E\\)\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir une température fixe, T\nT = 1.0  # Vous pouvez ajuster cette valeur\n\n# Définir une gamme de changements d'énergie, ΔE\ndelta_E = np.linspace(0, 5, 500)\n\n# Calculer la fonction e^(-ΔE/T)\ny = np.exp(-delta_E / T)\n\n# Tracer la fonction\nplt.figure(figsize=(8, 5))\nplt.plot(delta_E, y, label=r'$e^{-\\frac{\\Delta E}{T}}$', color='blue')\nplt.title(r\"Graphique de $e^{-\\Delta E / T}$\")\nplt.xlabel(r\"Changement d'énergie ($\\Delta E$)\")\nplt.ylabel(r'$e^{-\\Delta E / T}$')\nplt.ylim(0, 1.1)\nplt.xlim(0, 5)\nplt.grid(True)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nLes mouvements entraînant des changements négatifs significatifs (pires) de la fonction objectif sont moins susceptibles d’être acceptés."
-  },
-  {
-    "objectID": "lectures/18/slides.html#variation-de-la-température-t",
-    "href": "lectures/18/slides.html#variation-de-la-température-t",
-    "title": "Recherche locale",
-    "section": "Variation de la température, \\(T\\)",
-    "text": "Variation de la température, \\(T\\)\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir le changement d'énergie, ΔE\ndelta_E = 0.1  # Vous pouvez ajuster cette valeur\n\n# Définir une gamme de températures, T\nT = np.linspace(0.1, 5, 500)  # Éviter T=0 pour éviter la division par zéro\n\n# Calculer la fonction e^(-ΔE/T)\ny = np.exp(-delta_E / T)\n\n# Tracer la fonction\nplt.figure(figsize=(8, 5))\nplt.plot(T, y, label=r'$e^{-\\frac{\\Delta E}{T}}$', color='blue')\nplt.title(r'Graphique de $e^{-\\Delta E / T}$')\nplt.xlabel('Température (T)')\nplt.ylabel(r'$e^{-\\Delta E / T}$')\nplt.ylim(0, 1.1)\nplt.xlim(0, 5)\nplt.grid(True)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nPour un \\(\\Delta E\\) fixé (ici \\(0.1\\)), les changements sont plus susceptibles d’être acceptés lorsque \\(T\\) est élevé, au début de l’algorithme."
-  },
-  {
-    "objectID": "lectures/18/slides.html#variation-de-la-température-et-de-delta-e",
-    "href": "lectures/18/slides.html#variation-de-la-température-et-de-delta-e",
-    "title": "Recherche locale",
-    "section": "Variation de la température et de \\(\\Delta E\\)",
-    "text": "Variation de la température et de \\(\\Delta E\\)\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir une gamme de températures, T\nT = np.linspace(0.1, 5, 500)  # Éviter T=0 pour éviter la division par zéro\n\n# Définir des valeurs spécifiques pour le changement d'énergie, ΔE\ndelta_E_values = [0.001, 0.01, 0.1, 1.0, 2.0]\n\n# Tracer la fonction pour chaque ΔE\nplt.figure(figsize=(10, 6))\nfor delta_E in delta_E_values:\n    y = np.exp(-delta_E / T)\n    plt.plot(T, y, label=r'$\\Delta E = {:.3f}$'.format(delta_E))\n\n# Personnaliser le graphique\nplt.title(r'Graphique de $e^{-\\Delta E / T}$ pour différentes valeurs de $\\Delta E$')\nplt.xlabel('Température (T)')\nplt.ylabel(r'$e^{-\\Delta E / T}$')\nplt.ylim(0, 1.1)\nplt.xlim(0, 5)\nplt.grid(True)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLes mauvais mouvements sont plus susceptibles d’être acceptés au début, lorsque \\(T\\) est élevé, et moins susceptibles de l’être lorsque \\(T\\) diminue."
-  },
-  {
-    "objectID": "lectures/18/slides.html#faire-varier-la-température-et-delta-e",
-    "href": "lectures/18/slides.html#faire-varier-la-température-et-delta-e",
-    "title": "Recherche locale",
-    "section": "Faire varier la température et \\(\\Delta E\\)",
-    "text": "Faire varier la température et \\(\\Delta E\\)\n\nimport { Inputs, Plot } from \"@observablehq/plot\"\n\nviewof deltaE = Inputs.range([0.01, 100], {step: 0.01, value: 0.1, label: \"ΔE\", width: 300})\n\nT_values = Array.from({length: 1000}, (_, i) =&gt; (i + 1) * 0.1)\n\nfunction computeData(deltaE) {\n  return T_values.map(T =&gt; ({\n    T: T,\n    value: Math.exp(-deltaE / T)\n  }))\n}\n\ndata = computeData(deltaE)\n\nPlot.plot({\n  marks: [\n    Plot.line(data, {\n      x: \"T\", \n      y: \"value\", \n      stroke: \"steelblue\", \n      strokeWidth: 2\n    }),\n    Plot.ruleX([0], {stroke: \"black\"}), // X-axis line\n    Plot.ruleY([0], {stroke: \"black\"})  // Y-axis line\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGraphique interactif à l’aide d’Observable JS."
-  },
-  {
-    "objectID": "lectures/18/slides.html#théorie",
-    "href": "lectures/18/slides.html#théorie",
-    "title": "Recherche locale",
-    "section": "Théorie",
-    "text": "Théorie\n\n\n\nNote\n\n\n (Russell et Norvig 2020, 114)\nSi le calendrier abaisse \\(T\\) à 0 suffisamment lentement, une propriété de la distribution de Boltzmann (alias Gibbs), \\(e^{\\frac{\\Delta E}{T}}\\), est que toute la probabilité se concentre sur les maxima globaux, que l’algorithme trouvera avec une probabilité tendant vers 1.\n\n\n\n\n\nVoir aussi: Laarhoven et Aarts (1987), Aarts et Korst (1989), Gendreau et Potvin (2019)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#définition-2",
-    "href": "lectures/18/slides.html#définition-2",
-    "title": "Recherche locale",
-    "section": "Définition",
-    "text": "Définition\nLe problème du voyageur de commerce (travelling salesman problem) (TSP) est un problème d’optimisation classique qui cherche l’itinéraire le plus court possible pour un voyageur devant visiter un ensemble de villes, en revenant à la ville d’origine, tout en visitant chaque ville exactement une fois.\n\nLe défi est de déterminer le chemin le plus efficace, surtout lorsque le nombre de villes augmente, en raison de l’explosion combinatoire des itinéraires possibles."
-  },
-  {
-    "objectID": "lectures/18/slides.html#voyageur-de-commerce",
-    "href": "lectures/18/slides.html#voyageur-de-commerce",
-    "title": "Recherche locale",
-    "section": "Voyageur de commerce",
-    "text": "Voyageur de commerce\n\n\nCode\n# On s'assure de toujours générer les mêmes coordonnées\n\nnp.random.seed(42)\n\n# Générer des coordonnées aléatoires pour les villes\n\nnum_cities = 20\ncoordinates = np.random.rand(num_cities, 2) * 100\n\n# Calculer la matrice des distances\n\ndistance_matrix = np.sqrt(((coordinates[:, np.newaxis] - coordinates[np.newaxis, :]) ** 2).sum(axis=2))\n\n\n\n\nCode\nimport matplotlib.pyplot as plt\n\ndef plot_cities(coordinates, title=\"Villes du Problème du Voyageur de Commerce\"):\n\n    \"\"\"\n    Trace les coordonnées données représentant les villes.\n    \n    Paramètres :\n    - coordinates : Un tableau 2D NumPy de forme (n, 2) représentant les coordonnées (x, y).\n    - title : Titre du graphique.\n    \"\"\"\n\n    # Extraire les coordonnées x et y\n    x = coordinates[:, 0]\n    y = coordinates[:, 1]\n\n    plt.figure(figsize=(6, 6))\n\n    # Tracer les villes sous forme de points rouges\n    plt.scatter(x, y, c='red', zorder=2)\n\n    # Annoter les villes avec leurs indices\n    for i, (xi, yi) in enumerate(zip(x, y)):\n        plt.annotate(str(i + 1), (xi, yi), textcoords=\"offset points\", xytext=(0, 5), ha='center')\n\n    # Définir le titre et les étiquettes\n    plt.title(title)\n    plt.xlabel('Coordonnée X')\n    plt.ylabel('Coordonnée Y')\n    plt.grid(True)\n    plt.axis('equal')  # Échelle égale pour les axes x et y\n    plt.show()\n\nplot_cities(distance_matrix)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#voyageur-de-commerce-output",
-    "href": "lectures/18/slides.html#voyageur-de-commerce-output",
-    "title": "Recherche locale",
-    "section": "Voyageur de commerce",
-    "text": "Voyageur de commerce"
-  },
-  {
-    "objectID": "lectures/18/slides.html#comment-représenter-une-solution",
-    "href": "lectures/18/slides.html#comment-représenter-une-solution",
-    "title": "Recherche locale",
-    "section": "Comment représenter une solution?",
-    "text": "Comment représenter une solution?\n\nNous utiliserons une liste dans laquelle chaque élément représente l’indice d’une ville, et l’ordre des éléments indique la séquence de visite des villes."
-  },
-  {
-    "objectID": "lectures/18/slides.html#solution-aléatoire",
-    "href": "lectures/18/slides.html#solution-aléatoire",
-    "title": "Recherche locale",
-    "section": "Solution aléatoire",
-    "text": "Solution aléatoire\n\n\n\nCode\ndef plot_tsp_path(coordinates, path=None, title=\"Problème du Voyageur de Commerce\"):\n\n    \"\"\"\n    Trace les coordonnées données et éventuellement un chemin pour le TSP.\n    \n    Paramètres :\n    - coordinates : Un tableau 2D NumPy de forme (n, 2) représentant les coordonnées (x, y).\n    - path : Une liste ou un tableau d'indices représentant l'ordre des villes à visiter. Si None, les nœuds sont connectés dans l'ordre d'entrée.\n    - title : Titre du graphique.\n    \"\"\"\n\n    # Extraire les coordonnées x et y\n    x = coordinates[:, 0]\n    y = coordinates[:, 1]\n\n    plt.figure(figsize=(6, 6))\n\n    # Si un chemin est donné, réorganiser les coordonnées\n    if path is not None:\n        x = x[path]\n        y = y[path]\n    \n    # Tracer les nœuds\n    plt.scatter(x, y, c='red', zorder=2)\n\n    # Annoter les nœuds avec leurs indices\n    for i, (xi, yi) in enumerate(zip(x, y)):\n        plt.annotate(str(i + 1), (xi, yi), textcoords=\"offset points\", xytext=(0, 5), ha='center')\n\n    # Tracer le chemin\n    plt.plot(x, y, 'b-', zorder=1)\n\n    # Si un chemin est fourni, connecter le dernier point au premier pour compléter le tour\n    if path is not None:\n        plt.plot([x[-1], x[0]], [y[-1], y[0]], 'b-', zorder=1)\n\n    # Définir le titre et les étiquettes\n    plt.title(title)\n    plt.xlabel('Coordonnée X')\n    plt.ylabel('Coordonnée Y')\n    plt.grid(True)\n    plt.axis('equal')  # Échelle égale pour les axes x et y\n    plt.show()\n\nnum_cities = len(distance_matrix)\ncurrent_route = np.arange(num_cities)\nnp.random.shuffle(current_route)\nplot_tsp_path(distance_matrix,current_route)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#calcul-de-la-distance-totale",
-    "href": "lectures/18/slides.html#calcul-de-la-distance-totale",
-    "title": "Recherche locale",
-    "section": "Calcul de la distance totale",
-    "text": "Calcul de la distance totale\n\n# Fonction pour calculer la distance totale d'un itinéraire donné\n\ndef calculate_total_distance(route, distance_matrix):\n\n    total_distance = 0\n\n    for i in range(len(route) - 1):\n        total_distance += distance_matrix[route[i], route[i + 1]]\n\n    total_distance += distance_matrix[route[-1], route[0]]  # Retourner au point de départ\n\n    return total_distance"
-  },
-  {
-    "objectID": "lectures/18/slides.html#voisinage",
-    "href": "lectures/18/slides.html#voisinage",
-    "title": "Recherche locale",
-    "section": "Voisinage",
-    "text": "Voisinage\n\n\n\nCode\nplot_tsp_path(distance_matrix,current_route)\n\n\n\n\n\n\n\n\n\n\n\n\nComment générer une solution voisine?"
-  },
-  {
-    "objectID": "lectures/18/slides.html#voisinage-1",
-    "href": "lectures/18/slides.html#voisinage-1",
-    "title": "Recherche locale",
-    "section": "Voisinage",
-    "text": "Voisinage\nComment générer une solution voisine?"
-  },
-  {
-    "objectID": "lectures/18/slides.html#échanger-deux-villes",
-    "href": "lectures/18/slides.html#échanger-deux-villes",
-    "title": "Recherche locale",
-    "section": "Échanger deux villes",
-    "text": "Échanger deux villes\n\nDescription : Sélectionner deux villes au hasard et échanger leurs positions.\nAvantages : Simple et efficace pour explorer des solutions voisines.\nInconvénients : Le changement peut être trop minime, ce qui peut ralentir la convergence."
-  },
-  {
-    "objectID": "lectures/18/slides.html#inverser-le-segment",
-    "href": "lectures/18/slides.html#inverser-le-segment",
-    "title": "Recherche locale",
-    "section": "Inverser le segment",
-    "text": "Inverser le segment\n\nDescription : Sélectionner deux indices et inverser le segment entre eux.\nAvantages : Plus efficace pour trouver des chemins plus courts par rapport aux échanges simples.\nInconvénients : Peut être coûteux en calcul à mesure que le nombre de villes augmente."
-  },
-  {
-    "objectID": "lectures/18/slides.html#supprimer-reconnecter",
-    "href": "lectures/18/slides.html#supprimer-reconnecter",
-    "title": "Recherche locale",
-    "section": "Supprimer & reconnecter",
-    "text": "Supprimer & reconnecter\n\nDescription : Supprime trois arêtes de l’itinéraire et reconnecte les segments de la meilleure façon possible. Cela peut générer jusqu’à 7 itinéraires différents.\nAvantages : Apporte des changements plus importants et peut échapper aux optima locaux plus efficacement.\nInconvénients : Plus complexe et coûteux en calcul à mettre en œuvre."
-  },
-  {
-    "objectID": "lectures/18/slides.html#mouvement-dinsertion",
-    "href": "lectures/18/slides.html#mouvement-dinsertion",
-    "title": "Recherche locale",
-    "section": "Mouvement d’insertion",
-    "text": "Mouvement d’insertion\n\nDescription : Sélectionner une ville et la déplacer à une position différente dans l’itinéraire.\nAvantages : Offre un équilibre entre petits et grands changements, utile pour affiner les solutions.\nInconvénients : Peut nécessiter plus d’itérations pour converger vers une solution optimale."
-  },
-  {
-    "objectID": "lectures/18/slides.html#mélanger-le-sous-ensemble",
-    "href": "lectures/18/slides.html#mélanger-le-sous-ensemble",
-    "title": "Recherche locale",
-    "section": "Mélanger le sous-ensemble",
-    "text": "Mélanger le sous-ensemble\n\nDescription : Sélectionner un sous-ensemble de villes dans l’itinéraire et mélanger leur ordre de manière aléatoire.\nAvantages : Introduit des changements plus importants et peut aider à échapper aux minima locaux.\nInconvénients : Peut conduire à des itinéraires moins efficaces si mal géré."
-  },
-  {
-    "objectID": "lectures/18/slides.html#générer-une-solution-voisine-aléatoire",
-    "href": "lectures/18/slides.html#générer-une-solution-voisine-aléatoire",
-    "title": "Recherche locale",
-    "section": "Générer une solution voisine aléatoire",
-    "text": "Générer une solution voisine aléatoire\n\n# Fonction pour générer une solution voisine aléatoire\n\ndef get_neighbor(route):\n\n    a, b = np.random.randint(0, len(route), size=2)\n    if a &gt; b:\n        a, b = b, a\n\n    new_route = route.copy()\n    new_route[a:b+1] = new_route[a:b+1][::-1]  # Inverser le segment entre a et b\n\n    return new_route"
-  },
-  {
-    "objectID": "lectures/18/slides.html#recuit-simulé-1",
-    "href": "lectures/18/slides.html#recuit-simulé-1",
-    "title": "Recherche locale",
-    "section": "Recuit simulé",
-    "text": "Recuit simulé\n\ndef simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations):\n\n    num_cities = len(distance_matrix)\n    current_route = np.arange(num_cities)\n    np.random.shuffle(current_route)\n\n    current_cost = calculate_total_distance(current_route, distance_matrix)\n    \n    best_route = current_route.copy()\n    best_cost = current_cost\n\n    temperature = initial_temp\n\n    for iteration in range(max_iterations):\n\n        neighbor_route = get_neighbor(current_route)\n        neighbor_cost = calculate_total_distance(neighbor_route, distance_matrix)\n        \n        # Accepter le voisin s'il est meilleur, ou avec une probabilité s'il est pire.\n\n        delta_E = neighbor_cost - current_cost\n\n        if neighbor_cost &lt; current_cost or np.random.rand() &lt; np.exp(-(delta_E)/temperature):\n            current_route = neighbor_route\n            current_cost = neighbor_cost\n\n            if current_cost &lt; best_cost:\n                best_route = current_route.copy()\n                best_cost = current_cost\n\n        # Refroidir la température\n        temperature *= cooling_rate\n\n    return best_route, best_cost, temperatures, costs"
-  },
-  {
-    "objectID": "lectures/18/slides.html#remarques",
-    "href": "lectures/18/slides.html#remarques",
-    "title": "Recherche locale",
-    "section": "Remarques",
-    "text": "Remarques\n\nLorsque \\(t \\to \\infty\\), l’algorithme présente un comportement caractéristique d’une marche aléatoire (random walk). Pendant cette phase, tout état voisin, qu’il améliore ou non la fonction objectif, est accepté. Cela facilite l’exploration et se produit au début de l’exécution de l’algorithme."
-  },
-  {
-    "objectID": "lectures/18/slides.html#remarques-1",
-    "href": "lectures/18/slides.html#remarques-1",
-    "title": "Recherche locale",
-    "section": "Remarques",
-    "text": "Remarques\n\nÀ l’inverse, lorsque \\(t \\to 0\\), l’algorithme se comporte comme une montée de colline (hill climbing). Dans cette phase, seuls les états qui améliorent la valeur de la fonction objectif sont acceptés, garantissant que l’algorithme se dirige systématiquement vers des solutions optimales — spécifiquement, vers des valeurs plus basses dans les problèmes de minimisation. Cette phase met l’accent sur l’exploitation des solutions prometteuses et se produit vers la fin de l’algorithme.\n\n\n\n\nExploration :\n\n\nL’exploration implique de rechercher dans une large zone de l’espace de recherche pour découvrir de nouvelles possibilités, solutions ou informations. L’objectif de l’exploration est de rassembler un ensemble diversifié de points de données ou de solutions qui pourraient potentiellement conduire à la découverte de meilleurs optima globaux. Elle empêche le processus de recherche de se bloquer dans des optima locaux en encourageant la considération de régions moins visitées ou inexplorées de l’espace de recherche.\nDans les algorithmes, l’exploration peut être mise en œuvre en introduisant de la randomisation, en essayant de nouveaux chemins ou des chemins moins prometteurs, ou en utilisant des stratégies comme le recuit simulé ou les algorithmes génétiques qui encouragent la diversité.\n\n\nExploitation :\n\n\nL’exploitation se concentre sur l’utilisation des informations connues pour affiner et améliorer les solutions existantes. Elle implique de concentrer l’effort de recherche autour des zones censées contenir des solutions de haute qualité basées sur des connaissances ou expériences antérieures. L’objectif est d’optimiser et de peaufiner ces solutions pour obtenir le meilleur résultat possible dans ces régions.\nDans les algorithmes, l’exploitation peut être observée dans des stratégies telles que la montée de colline, la montée/descente de gradient ou les algorithmes gloutons, où la recherche est axée sur l’amélioration locale et la réalisation de gains incrémentaux.\n\n\n\nVoir aussi : Properties of Simulated Annealing - Georgia Tech - Machine Learning. Vidéo Udacity (4m 10s). Publiée le 2015-02-23."
-  },
-  {
-    "objectID": "lectures/18/slides.html#exemple",
-    "href": "lectures/18/slides.html#exemple",
-    "title": "Recherche locale",
-    "section": "Exemple",
-    "text": "Exemple\n\n# On s'assure de toujours générer les mêmes coordonnées\nnp.random.seed(42)\n\n# Générer des coordonnées aléatoires pour les villes\nnum_cities = 20\ncoordinates = np.random.rand(num_cities, 2) * 100\n\n# Calculer la matrice des distances\ndistance_matrix = np.sqrt(((coordinates[:, np.newaxis] - coordinates[np.newaxis, :]) ** 2).sum(axis=2))\n\n# Paramètres du recuit simulé\n\ninitial_temp = 15\ncooling_rate = 0.995\nmax_iterations = 1000"
-  },
-  {
-    "objectID": "lectures/18/slides.html#algorithme-de-heldkarp",
-    "href": "lectures/18/slides.html#algorithme-de-heldkarp",
-    "title": "Recherche locale",
-    "section": "Algorithme de Held–Karp",
-    "text": "Algorithme de Held–Karp\n\nIntroduction : 1962 par Held, Karp et indépendamment par Bellman.\nProblème : Résout le problème du voyageur de commerce (TSP) avec la programmation dynamique.\nComplexité temporelle : \\(\\Theta(2^n n^2)\\).\nComplexité spatiale : \\(\\Theta(2^n n)\\).\nEfficacité : Meilleur que la méthode exhaustive \\(\\Theta(n!)\\), mais reste exponentiel."
-  },
-  {
-    "objectID": "lectures/18/slides.html#algorithme-de-heldkarp-1",
-    "href": "lectures/18/slides.html#algorithme-de-heldkarp-1",
-    "title": "Recherche locale",
-    "section": "Algorithme de Held–Karp",
-    "text": "Algorithme de Held–Karp\n\n\nCode\nfrom itertools import combinations\nimport numpy as np\n\ndef held_karp(distance_matrix):\n    # Number of cities\n    n = len(distance_matrix)\n\n    # DP table: dp[subset][last_visited] = minimum cost to reach `last_visited` with `subset` of cities visited\n    dp = {}\n\n    # Initialize the DP table with the distances from the starting point (city 0)\n    for i in range(1, n):\n        dp[(1 &lt;&lt; i, i)] = distance_matrix[0][i]\n\n    # Iterate over all subset sizes\n    for subset_size in range(2, n):\n        for subset in combinations(range(1, n), subset_size):\n            # Bitmask of the subset, excluding the starting city\n            subset_mask = sum(1 &lt;&lt; i for i in subset)\n            for last in subset:\n                # Update the DP table with the minimum cost for this subset and last city\n                prev_subset_mask = subset_mask & ~(1 &lt;&lt; last)\n                dp[(subset_mask, last)] = min(\n                    dp[(prev_subset_mask, k)] + distance_matrix[k][last]\n                    for k in subset if k != last\n                )\n\n    # Find the minimum cost to complete the tour back to the starting point (city 0)\n    full_mask = (1 &lt;&lt; n) - 2  # All cities visited except starting city\n    return min(dp[(full_mask, last)] + distance_matrix[last][0] for last in range(1, n))\n\n# Example usage with a sample distance matrix\n# distance_matrix = [\n#     [0, 10, 15, 20],\n#     [10, 0, 35, 25],\n#     [15, 35, 0, 30],\n#     [20, 25, 30, 0]\n# ]\nmin_cost = held_karp(distance_matrix)\nprint(f\"Held–Karp pour trouver le coût minimum: {min_cost:.2f}\")\n\n\nHeld–Karp pour trouver le coût minimum: 386.43\n\n\n\n\nHeld et Karp (1962) and Bellman (1962)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#trace-dexécution",
-    "href": "lectures/18/slides.html#trace-dexécution",
-    "title": "Recherche locale",
-    "section": "Trace d’exécution",
-    "text": "Trace d’exécution\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Simulated Annealing function\ndef simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations):\n    num_cities = len(distance_matrix)\n    current_route = np.arange(num_cities)\n    np.random.shuffle(current_route)\n    current_cost = calculate_total_distance(current_route, distance_matrix)\n    \n    best_route = current_route.copy()\n    best_cost = current_cost\n\n    temperatures = []\n    costs = []\n\n    temperature = initial_temp\n\n    # Collect intermediate solutions\n    intermediate_solutions = []\n    for iteration in range(max_iterations):\n        neighbor_route = get_neighbor(current_route)\n        neighbor_cost = calculate_total_distance(neighbor_route, distance_matrix)\n        \n        # Accept neighbor if it's better, or with a probability if it's worse\n        if neighbor_cost &lt; current_cost or np.random.rand() &lt; np.exp(-(neighbor_cost - current_cost) / temperature):\n            current_route = neighbor_route\n            current_cost = neighbor_cost\n\n            if current_cost &lt; best_cost:\n                best_route = current_route.copy()\n                best_cost = current_cost\n\n        # Store temperature and cost for plotting\n        temperatures.append(temperature)\n        costs.append(current_cost)\n\n        # Cool down the temperature\n        temperature *= cooling_rate\n\n        # Collect intermediate solutions at regular intervals\n        if iteration % (max_iterations // 10) == 0:\n            intermediate_solutions.append((current_route.copy(), current_cost))\n\n    # Plot 20 intermediate solutions in a 4x5 grid\n    fig, axes = plt.subplots(2, 5, figsize=(15, 6))\n    axes = axes.flatten()\n    for idx, (route, cost) in enumerate(intermediate_solutions):\n        ax = axes[idx]\n        ax.scatter(*zip(*coordinates), c='red', marker='o')\n        ax.plot(*zip(*coordinates[route]), 'b-', alpha=0.6)\n        ax.set_title(f\"Itération: {idx*100} - Coût: {cost:.0f}\")\n        ax.axis('off')  # Turn off the axes for a cleaner look\n    plt.tight_layout()\n    plt.show()\n\n    return best_route, best_cost, temperatures, costs\n\nbest_route, best_cost, temperatures, costs = simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations)\n\n\n\n\n\n\n\n\n\n\nLorsque j’ai initialement publié ces diapositives, la température initiale sélectionnée de 1000 était excessivement élevée par rapport au coût de la fonction objectif. En ajustant la température initiale à 15, nous obtenons un équilibre plus efficace entre exploration et exploitation.\nEn raison des instantanés pris toutes les 100 itérations, les augmentations de coût ne sont pas visibles. Cela est illustré sur la diapositive “Température et Coût”."
-  },
-  {
-    "objectID": "lectures/18/slides.html#meilleur-itinéraire",
-    "href": "lectures/18/slides.html#meilleur-itinéraire",
-    "title": "Recherche locale",
-    "section": "Meilleur itinéraire",
-    "text": "Meilleur itinéraire\n\n\nCode\n# Plot the final best route\nplt.figure(figsize=(5, 5))\nplt.scatter(*zip(*coordinates), c='red', marker='o')\nplt.plot(*zip(*coordinates[best_route]), 'b-', alpha=0.6)\nplt.title(f\"Meilleur itinéraire - Coût: {best_cost:.2f}\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nNous avons identifié une solution optimale!"
-  },
-  {
-    "objectID": "lectures/18/slides.html#température-et-coût",
-    "href": "lectures/18/slides.html#température-et-coût",
-    "title": "Recherche locale",
-    "section": "Température et coût",
-    "text": "Température et coût\n\n\nCode\n# Plot temperature and cost graphs\nplt.figure(figsize=(12, 5))\n\nplt.subplot(1, 2, 1)\nplt.plot(temperatures)\nplt.title(\"Température au fil des itérations\")\nplt.xlabel(\"Itération\")\nplt.ylabel(\"Température\")\nplt.subplot(1, 2, 2)\n\nplt.plot(costs)\nplt.title(\"Coût au fil des itérations\")\n\nplt.xlabel(\"Itération\")\nplt.ylabel(\"Coût\")\n\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "lectures/18/slides.html#échange-de-voisins",
-    "href": "lectures/18/slides.html#échange-de-voisins",
-    "title": "Recherche locale",
-    "section": "Échange de voisins",
-    "text": "Échange de voisins\n\nDescription : Sélectionner deux villes au hasard et échanger leurs positions.\nAvantages : Simple et efficace pour explorer des solutions voisines.\nInconvénients : Le changement peut être trop minime, ce qui peut ralentir la convergence.\n\n\ndef get_neighbor_swap(route):\n    a, b = np.random.randint(0, len(route), size=2)\n    new_route = route.copy()\n    new_route[a], new_route[b] = new_route[b], new_route[a]\n    return new_route"
-  },
-  {
-    "objectID": "lectures/18/slides.html#trace-dexécution-1",
-    "href": "lectures/18/slides.html#trace-dexécution-1",
-    "title": "Recherche locale",
-    "section": "Trace d’exécution",
-    "text": "Trace d’exécution\n\n\nCode\n# Plot the final best route\nget_neighbor = get_neighbor_swap\n\nbest_route, best_cost, temperatures, costs = simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#meilleur-chemin",
-    "href": "lectures/18/slides.html#meilleur-chemin",
-    "title": "Recherche locale",
-    "section": "Meilleur chemin",
-    "text": "Meilleur chemin\n\n\n\nCode\n# Plot the final best route\nplt.figure(figsize=(5, 5))\nplt.scatter(*zip(*coordinates), c='red', marker='o')\nplt.plot(*zip(*coordinates[best_route]), 'b-', alpha=0.6)\nplt.title(f\"Meilleur Itinéraire - Coût: {best_cost:.2f}\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nDans ce cas précis et pour le problème donné, la réversion de segment (coût = 386,43) s’est avérée plus efficace par rapport à l’échange de voisins (coût = 430,03)."
-  },
-  {
-    "objectID": "lectures/18/slides.html#température-et-coût-1",
-    "href": "lectures/18/slides.html#température-et-coût-1",
-    "title": "Recherche locale",
-    "section": "Température et coût",
-    "text": "Température et coût\n\n\nCode\n# Plot temperature and cost graphs\nplt.figure(figsize=(12, 5))\n\nplt.subplot(1, 2, 1)\nplt.plot(temperatures)\nplt.title(\"Température au fil des itérations\")\nplt.xlabel(\"Itération\")\nplt.ylabel(\"Température\")\nplt.subplot(1, 2, 2)\n\nplt.plot(costs)\nplt.title(\"Coût au fil des itérations\")\nplt.xlabel(\"Itération\")\n\nplt.ylabel(\"Coût\")\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "lectures/18/slides.html#sélection-dune-stratégie-de-voisinage",
-    "href": "lectures/18/slides.html#sélection-dune-stratégie-de-voisinage",
-    "title": "Recherche locale",
-    "section": "Sélection d’une stratégie de voisinage",
-    "text": "Sélection d’une stratégie de voisinage\n\nMouvements simples (échange, insertion) : Efficaces pour l’exploration initiale ; risque d’être piégé dans des optima locaux.\nMouvements complexes : Améliorent la capacité à échapper aux optima locaux et accélèrent la convergence ; impliquent un coût computationnel plus élevé.\nApproches hybrides : Intégrer diverses stratégies pour la génération de voisinage. Utiliser des mouvements simples au début, en passant à des mouvements complexes à mesure que la convergence progresse."
-  },
-  {
-    "objectID": "lectures/18/slides.html#température-initiale",
-    "href": "lectures/18/slides.html#température-initiale",
-    "title": "Recherche locale",
-    "section": "Température initiale",
-    "text": "Température initiale\nInfluence : Étant donné que la probabilité d’accepter un nouvel état est donnée par \\(e^{-\\frac{\\Delta E}{T}}\\), la sélection de la température initiale est directement influencée par \\(\\Delta E\\) et donc par la valeur de la fonction objectif pour un état aléatoire, \\(f(s)\\)."
-  },
-  {
-    "objectID": "lectures/18/slides.html#température-initiale-1",
-    "href": "lectures/18/slides.html#température-initiale-1",
-    "title": "Recherche locale",
-    "section": "Température initiale",
-    "text": "Température initiale\n\nProblèmes exemple : Considérons deux scénarios : le problème \\(a\\) avec \\(f(a) = 1,000\\) et le problème \\(b\\) avec \\(f(b) = 100\\).\nDifférence d’énergie : Accepter un état 10 % pire entraîne des différences d’énergie de \\(\\Delta E = 0.1 \\cdot f(a) = 100\\) pour le problème \\(a\\) et \\(\\Delta E = 0.1 \\cdot f(b) = 10\\) pour le problème \\(b\\).\nProbabilité d’acceptation : Pour accepter un tel état 60 % du temps, on fixe \\(e^{-\\frac{\\Delta E}{T}} = 0.6\\). La résolution pour \\(T\\) donne des températures initiales d’environ \\(T \\approx 195.8\\) pour le problème \\(a\\) et \\(T \\approx 19.58\\) pour le problème \\(b\\)."
-  },
-  {
-    "objectID": "lectures/18/slides.html#température-initiale-2",
-    "href": "lectures/18/slides.html#température-initiale-2",
-    "title": "Recherche locale",
-    "section": "Température initiale",
-    "text": "Température initiale\nUne approche populaire consiste à définir la température initiale de sorte qu’une portion significative des mouvements (souvent autour de 60-80%) soit acceptée.\nCela peut être réalisé en exécutant une phase préliminaire où la température est ajustée jusqu’à ce que le ratio d’acceptation se stabilise dans cette plage.\n\n\nBen-Ameur (2004) propose une méthodologie mathématique plus rigoureuse."
-  },
-  {
-    "objectID": "lectures/18/slides.html#stratégies-de-refroidissement",
-    "href": "lectures/18/slides.html#stratégies-de-refroidissement",
-    "title": "Recherche locale",
-    "section": "Stratégies de refroidissement",
-    "text": "Stratégies de refroidissement\nDans le cadre du recuit simulé, le refroidissement est essentiel pour gérer la convergence de l’algorithme. Le calendrier de refroidissement détermine le taux de diminution de la température, influençant ainsi la capacité de l’algorithme à échapper aux optima locaux et à converger vers une solution quasi-optimale.\n\n\nNourani et Andresen (1998) et Alex et al. (2017)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#refroidissement-linéaire",
-    "href": "lectures/18/slides.html#refroidissement-linéaire",
-    "title": "Recherche locale",
-    "section": "Refroidissement linéaire",
-    "text": "Refroidissement linéaire\n\nDescription : La température diminue linéairement à chaque itération.\nFormule : \\(T = T_0 - \\alpha \\cdot k\\)\n\n\\(T_0\\) : Température initiale\n\\(\\alpha\\) : Un décrément constant\n\\(k\\) : Itération actuelle\n\nAvantages : Simple à mettre en œuvre et à comprendre.\nInconvénients : Conduit souvent à une convergence prématurée car la température diminue trop rapidement.\n\n\ntemperature = initial_temp - alpha * iteration"
-  },
-  {
-    "objectID": "lectures/18/slides.html#refroidissement-géométrique",
-    "href": "lectures/18/slides.html#refroidissement-géométrique",
-    "title": "Recherche locale",
-    "section": "Refroidissement géométrique",
-    "text": "Refroidissement géométrique\n\nDescription : La température diminue de manière exponentielle à chaque itération.\nFormule : \\(T = T_0 \\cdot \\alpha^k\\)\n\n\\(\\alpha\\) : Taux de refroidissement, généralement entre 0,8 et 0,99\n\\(k\\) : Itération actuelle\n\nAvantages : Largement utilisé pour sa simplicité et son efficacité.\nInconvénients : Le choix de \\(\\alpha\\) est crucial ; s’il est trop petit, la température baisse trop rapidement, et s’il est trop grand, la convergence peut être lente.\n\n\ntemperature = initial_temp * (cooling_rate ** iteration)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#refroidissement-logarithmique",
-    "href": "lectures/18/slides.html#refroidissement-logarithmique",
-    "title": "Recherche locale",
-    "section": "Refroidissement logarithmique",
-    "text": "Refroidissement logarithmique\n\nDescription : La température diminue lentement selon une fonction logarithmique.\nFormule : \\(T = \\frac{\\alpha \\cdot T_0}{\\log(1+k)}\\)\n\n\\(\\alpha\\) : Une constante de mise à l’échelle\n\\(k\\) : Itération actuelle\n\nAvantages : Offre un taux de refroidissement plus lent, utile pour les problèmes nécessitant une exploration approfondie de l’espace de solution.\nInconvénients : La convergence peut être très lente, nécessitant de nombreuses itérations.\n\n\ntemperature = alpha * initial_temp / (np.log(1 + iteration))"
-  },
-  {
-    "objectID": "lectures/18/slides.html#refroidissement-inverse",
-    "href": "lectures/18/slides.html#refroidissement-inverse",
-    "title": "Recherche locale",
-    "section": "Refroidissement inverse",
-    "text": "Refroidissement inverse\n\nDescription : La température diminue selon une fonction inverse du numéro d’itération.\nFormule : \\(T = \\frac{T_0}{1+\\alpha \\cdot k}\\)\n\n\\(\\alpha\\) : Une constante de mise à l’échelle\n\\(k\\) : Itération actuelle\n\nAvantages : Permet un processus de refroidissement plus contrôlé, équilibrant exploration et exploitation.\nInconvénients : Peut nécessiter un ajustement minutieux de \\(\\alpha\\) pour être efficace.\n\n\ntemperature = initial_temp / (1 + alpha * iteration)"
-  },
-  {
-    "objectID": "lectures/18/slides.html#refroidissement-adaptatif",
-    "href": "lectures/18/slides.html#refroidissement-adaptatif",
-    "title": "Recherche locale",
-    "section": "Refroidissement adaptatif",
-    "text": "Refroidissement adaptatif\n\nDescription : Le calendrier de refroidissement est ajusté dynamiquement en fonction des performances de l’algorithme.\nStratégie : Si l’algorithme ne progresse pas de manière significative, le taux de refroidissement peut être ralenti. Inversement, si le progrès est régulier, le taux de refroidissement peut être accéléré.\nAvantages : Plus flexible et peut s’adapter aux caractéristiques du problème.\nInconvénients : Plus complexe à mettre en œuvre et nécessite une conception minutieuse pour éviter l’instabilité.\n\n\nif no_significant_change_in_cost:\n    temperature *= 0.99 # Ralentir le refroidissement\nelse:\n    temperature *= 0.95 # Accélérer le refroidissement"
-  },
-  {
-    "objectID": "lectures/18/slides.html#stratégies-de-refroidissement-1",
-    "href": "lectures/18/slides.html#stratégies-de-refroidissement-1",
-    "title": "Recherche locale",
-    "section": "Stratégies de refroidissement",
-    "text": "Stratégies de refroidissement\n\n\n\nCode\n# Constants\ninitial_temp = 100\nalpha = 0.995\niterations = np.arange(0, 1001)\n\n# Cooling strategies\ndef exponential_cooling(initial_temp, alpha, iteration):\n    return initial_temp * (alpha ** iteration)\n\ndef linear_cooling(initial_temp, alpha, iteration):\n    return max(0, initial_temp - alpha * iteration)\n\ndef logarithmic_cooling(initial_temp, alpha, iteration):\n    return min(initial_temp, alpha * initial_temp / (np.log(1 + iteration) + 10e-9))\n\ndef inverse_cooling(initial_temp, alpha, iteration):\n    return initial_temp / (1 + alpha * iteration)\n\n# Calculate temperatures\nlinear_temps = [linear_cooling(initial_temp, alpha, i) for i in iterations]\nexponential_temps = [exponential_cooling(initial_temp, alpha, i) for i in iterations]\nlogarithmic_temps = [logarithmic_cooling(initial_temp, alpha, i) for i in iterations]\ninverse_temps = [inverse_cooling(initial_temp, alpha, i) for i in iterations]\n\n# Plotting\nplt.figure(figsize=(8, 6))\nplt.plot(iterations, exponential_temps, label='Refroidissement exponentiel')\nplt.plot(iterations, linear_temps, label='Refroidissement linéaire')\nplt.plot(iterations, logarithmic_temps, label='Refroidissement logarithmique')\nplt.plot(iterations, inverse_temps, label='Refroidissement inverse')\nplt.xlabel('Itération')\nplt.ylabel('Température')\nplt.title(r'Stratégies de refroidissement ($\\alpha = 0.995$)')\nplt.legend()\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nVoir aussi : Effective Simulated Annealing with Python par Nathan A. Rooy, 2024-11-05."
-  },
-  {
-    "objectID": "lectures/18/slides.html#choisir-la-bonne-stratégie",
-    "href": "lectures/18/slides.html#choisir-la-bonne-stratégie",
-    "title": "Recherche locale",
-    "section": "Choisir la bonne stratégie",
-    "text": "Choisir la bonne stratégie\n\nSpécifique au problème : Le choix du calendrier de refroidissement dépend souvent des caractéristiques du problème à résoudre. Certains problèmes bénéficient d’un taux de refroidissement plus lent, tandis que d’autres peuvent nécessiter une convergence plus rapide.\nExpérimentation : Il est courant d’expérimenter différentes stratégies et paramètres pour trouver le meilleur équilibre entre exploration (recherche large) et exploitation (affinement des meilleures solutions actuelles)."
-  },
-  {
-    "objectID": "lectures/18/slides.html#conclusion",
-    "href": "lectures/18/slides.html#conclusion",
-    "title": "Recherche locale",
-    "section": "Conclusion",
-    "text": "Conclusion\nAprès l’application du recuit simulé, une méthode de recherche locale comme la montée de colline peut être utilisée pour affiner la solution.\n\nLe recuit simulé est efficace pour explorer l’espace de solutions et éviter les minima locaux, tandis que la recherche locale se concentre sur l’exploration des solutions voisines de celle obtenue."
-  },
-  {
-    "objectID": "lectures/18/slides.html#visualisation-du-recuit-simulé",
-    "href": "lectures/18/slides.html#visualisation-du-recuit-simulé",
-    "title": "Recherche locale",
-    "section": "Visualisation du recuit simulé",
-    "text": "Visualisation du recuit simulé\n\n\n\nAttribution: ComputationalScientist, publié le 06-01-2018."
-  },
-  {
-    "objectID": "lectures/18/slides.html#résumé",
-    "href": "lectures/18/slides.html#résumé",
-    "title": "Recherche locale",
-    "section": "Résumé",
-    "text": "Résumé\n\nLes algorithmes de recherche locale se concentrent sur la recherche d’états objectifs en se déplaçant entre des états voisins sans suivre les chemins.\nL’algorithme de montée de colline recherche le voisin de plus grande valeur mais peut se retrouver coincé dans des maxima locaux ou des plateaux.\nUne représentation efficace de l’état, comme l’utilisation de permutations dans le problème des 8-Reines, évite les placements illégaux et améliore les performances.\nLe recuit simulé permet des déplacements occasionnels vers le haut pour échapper aux optima locaux, contrôlés par un paramètre de température décroissant.\nLa probabilité d’acceptation dans le recuit simulé diminue à mesure que la température baisse et que la différence d’énergie augmente.\nLe recuit simulé résout efficacement des problèmes complexes comme le problème du voyageur de commerce en explorant l’espace des solutions de manière probabiliste."
-  },
-  {
-    "objectID": "lectures/18/slides.html#lectures-complémentaires",
-    "href": "lectures/18/slides.html#lectures-complémentaires",
-    "title": "Recherche locale",
-    "section": "Lectures complémentaires",
-    "text": "Lectures complémentaires\n\n\n\n\n\n\n\n\n“La méthodologie globale du recuit simulé [simulated annealing] est ensuite déployée en détail sur une application réelle : un problème de planification de trajectoire aérienne à grande échelle impliquant près de 30 000 vols à l’échelle continentale européenne.”\n(Gendreau et Potvin 2019, chap. 1)\n\n\n\nSaviez-vous que vous pouvez accéder gratuitement à l’ensemble de la collection de livres de Springer ? En utilisant un appareil connecté à une adresse IP de l’uOttawa et en visitant Springer Link, vous avez la possibilité de télécharger des livres en format PDF ou EPUB.\nLe livre est co-édité par Jean-Yves Potvin et Michel Gendreau. Jean-Yves Potvin est professeur à l’Université de Montréal, tandis que Michel Gendreau est professeur à l’École Polytechnique de Montréal.\n\n\nGendreau et Potvin (2019), accès via Springer Link."
-  },
-  {
-    "objectID": "lectures/18/slides.html#prochain-cours",
-    "href": "lectures/18/slides.html#prochain-cours",
-    "title": "Recherche locale",
-    "section": "Prochain cours",
-    "text": "Prochain cours\n\nNous discuterons des algorithmes basés sur la population."
-  },
-  {
-    "objectID": "lectures/18/slides.html#références",
-    "href": "lectures/18/slides.html#références",
-    "title": "Recherche locale",
-    "section": "Références",
-    "text": "Références\n\n\nAarts, E. H. L., et J. H. M. Korst. 1989. Simulated annealing and Boltzmann machines : a stochastic approach to combinatorial optimization and neural computing. Wiley-Interscience series in discrete mathematics et optimization. Wiley.\n\n\nAlex, Kwaku Peprah, Kojo Appiah Simon, et Kwame Amponsah Samuel. 2017. « An Optimal Cooling Schedule Using a Simulated Annealing Based Approach ». Applied Mathematics 08 (08): 1195‑210. https://doi.org/10.4236/am.2017.88090.\n\n\nBellman, Richard. 1962. « Dynamic Programming Treatment of the Travelling Salesman Problem ». Journal of the ACM (JACM) 9 (1): 61‑63. https://doi.org/10.1145/321105.321111.\n\n\nBen-Ameur, Walid. 2004. « Computing the Initial Temperature of Simulated Annealing ». Computational Optimization and Applications 29 (3): 369‑85. https://doi.org/10.1023/b:coap.0000044187.23143.bd.\n\n\nGendreau, M., et J. Y. Potvin. 2019. Handbook of Metaheuristics. International Series in Operations Research & Management Science. Springer International Publishing. https://books.google.com.ag/books?id=RbfFwQEACAAJ.\n\n\nHeld, Michael, et Richard M. Karp. 1962. « A Dynamic Programming Approach to Sequencing Problems ». Journal of the Society for Industrial and Applied Mathematics 10 (1): 196‑210. https://doi.org/10.1137/0110015.\n\n\nLaarhoven, P. J. M., et E. H. L. Aarts. 1987. Simulated annealing: theory and applications. Kluwer Academic Publishers.\n\n\nNourani, Yaghout, et Bjarne Andresen. 1998. « A comparison of simulated annealing cooling strategies ». Journal of Physics A: Mathematical and General 31 (41): 8373.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
-  },
-  {
-    "objectID": "lectures/18/slides.html#prochain-cours-1",
-    "href": "lectures/18/slides.html#prochain-cours-1",
-    "title": "Recherche locale",
-    "section": "Prochain cours",
-    "text": "Prochain cours\n\nNous discuterons des algorithmes basés sur les populations."
-  },
-  {
-    "objectID": "lectures/18/slides.html#références-1",
-    "href": "lectures/18/slides.html#références-1",
-    "title": "Recherche locale",
-    "section": "Références",
-    "text": "Références\n\n\nAarts, E. H. L., et J. H. M. Korst. 1989. Simulated annealing and Boltzmann machines : a stochastic approach to combinatorial optimization and neural computing. Wiley-Interscience series in discrete mathematics et optimization. Wiley.\n\n\nAlex, Kwaku Peprah, Kojo Appiah Simon, et Kwame Amponsah Samuel. 2017. « An Optimal Cooling Schedule Using a Simulated Annealing Based Approach ». Applied Mathematics 08 (08): 1195‑210. https://doi.org/10.4236/am.2017.88090.\n\n\nBellman, Richard. 1962. « Dynamic Programming Treatment of the Travelling Salesman Problem ». Journal of the ACM (JACM) 9 (1): 61‑63. https://doi.org/10.1145/321105.321111.\n\n\nBen-Ameur, Walid. 2004. « Computing the Initial Temperature of Simulated Annealing ». Computational Optimization and Applications 29 (3): 369‑85. https://doi.org/10.1023/b:coap.0000044187.23143.bd.\n\n\nGendreau, M., et J. Y. Potvin. 2019. Handbook of Metaheuristics. International Series in Operations Research & Management Science. Springer International Publishing. https://books.google.com.ag/books?id=RbfFwQEACAAJ.\n\n\nHeld, Michael, et Richard M. Karp. 1962. « A Dynamic Programming Approach to Sequencing Problems ». Journal of the Society for Industrial and Applied Mathematics 10 (1): 196‑210. https://doi.org/10.1137/0110015.\n\n\nLaarhoven, P. J. M., et E. H. L. Aarts. 1987. Simulated annealing: theory and applications. Kluwer Academic Publishers.\n\n\nNourani, Yaghout, et Bjarne Andresen. 1998. « A comparison of simulated annealing cooling strategies ». Journal of Physics A: Mathematical and General 31 (41): 8373.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
+    "objectID": "lectures/18/slides.html#csi-4506",
+    "href": "lectures/18/slides.html#csi-4506",
+    "title": "Quiz 2",
+    "section": "CSI 4506",
+    "text": "CSI 4506\n\n\n\n\n\n\nAttendez le signal pour commencer.\nÉcrivez votre nom et numéro d’étudiant sur le questionnaire et le Scantron.\nSi terminé, levez la main pour soumettre et partir.\nRestez assis si plusieurs finissent en même temps.\nRemettez toutes les copies 10 min avant le prochain cours."
   },
   {
     "objectID": "lectures/16/slides.html#message-du-jour",
@@ -10158,11 +9535,648 @@
     "text": "Références\n\n\nHart, Peter E., Nils J. Nilsson, et Bertram Raphael. 1968. « A Formal Basis for the Heuristic Determination of Minimum Cost Paths ». IEEE Transactions on Systems Science and Cybernetics 4 (2): 100‑107. https://doi.org/10.1109/tssc.1968.300136.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
   },
   {
-    "objectID": "lectures/19/slides.html#csi-4506",
-    "href": "lectures/19/slides.html#csi-4506",
-    "title": "Quiz 2",
-    "section": "CSI 4506",
-    "text": "CSI 4506\n\n\n\n\n\n\nAttendez le signal pour commencer.\nÉcrivez votre nom et numéro d’étudiant sur le questionnaire et le Scantron.\nSi terminé, levez la main pour soumettre et partir.\nRestez assis si plusieurs finissent en même temps.\nRemettez toutes les copies 10 min avant le prochain cours."
+    "objectID": "lectures/19/slides.html#message-du-jour",
+    "href": "lectures/19/slides.html#message-du-jour",
+    "title": "Recherche locale",
+    "section": "Message du jour",
+    "text": "Message du jour\n\n\n\n\n\n\n\nUniversities are embracing AI: will students get smarter or stop thinking?, Nature News, 2025-10-21."
+  },
+  {
+    "objectID": "lectures/19/slides.html#objectifs-dapprentissage",
+    "href": "lectures/19/slides.html#objectifs-dapprentissage",
+    "title": "Recherche locale",
+    "section": "Objectifs d’apprentissage",
+    "text": "Objectifs d’apprentissage\n\nComprendre le concept et l’application des algorithmes de recherche locale dans les problèmes d’optimisation.\nImplémenter et analyser l’algorithme de montée de colline (hill climbing), en reconnaissant ses limitations comme les maxima locaux et les plateaux.\nAppliquer des stratégies efficaces de représentation des états dans des problèmes comme les 8-Reines pour améliorer l’efficacité de la recherche.\nExpliquer comment le recuit simulé surmonte les optima locaux en acceptant probabilistiquement des états pires.\nAnalyser l’influence de la température et de la différence d’énergie sur la probabilité d’acceptation dans le recuit simulé.\nReconnaître l’application du recuit simulé dans la résolution de problèmes d’optimisation complexes comme le problème du voyageur de commerce.\n\n\nDans cette présentation, nous analyserons deux algorithmes de recherche locale : la montée de colline et le recuit simulé. Notre but est d’expliquer le concept de recherche locale et d’examiner les méthodes permettant d’éviter les minima (ou maxima) locaux. Nous aborderons rapidement la montée de colline, compte tenu de sa simplicité, et nous consacrerons plus de temps au recuit simulé, un algorithme très utile."
+  },
+  {
+    "objectID": "lectures/19/slides.html#contexte",
+    "href": "lectures/19/slides.html#contexte",
+    "title": "Recherche locale",
+    "section": "Contexte",
+    "text": "Contexte\n\nL’accent a été mis sur la recherche de chemins dans un espace d’états.\nCertains problèmes privilégient l’état final par rapport au chemin.\n\nConception de circuits intégrés\nOrdonnancement d’atelier\nProgrammation automatique\n\n\n\nL’importance du chemin par rapport à l’état final dépend de la nature du problème. Par exemple, dans un problème d’itinéraire, le chemin est la pièce d’information cruciale recherchée."
+  },
+  {
+    "objectID": "lectures/19/slides.html#problème-des-8-reines",
+    "href": "lectures/19/slides.html#problème-des-8-reines",
+    "title": "Recherche locale",
+    "section": "Problème des 8-Reines",
+    "text": "Problème des 8-Reines\n\n\nCode\nimport matplotlib.pyplot as plt\nfrom matplotlib.colors import ListedColormap\nimport numpy as np\n\ndef display_n_queens(board, width):\n    n = len(board)\n\n    # Créer un motif d'échiquier\n    board_matrix = np.zeros((n, n))\n    for row in range(n):\n        for col in range(n):\n            if (row + col) % 2 == 0:\n                board_matrix[row, col] = 1  # Cases blanches\n            else:\n                board_matrix[row, col] = 0.5\n\n    # Créer un colormap personnalisé : gris pour 0.5 et blanc pour 1\n    cmap = ListedColormap(['lightgray', 'white'])\n\n    # Créer le graphique\n    fig, ax = plt.subplots(figsize=(width, width))\n    ax.imshow(board_matrix, cmap=cmap, extent=(0, n, 0, n))\n\n    # Ajouter les marqueurs de reine\n    for col in range(n):\n        row = board[col]\n        ax.text(col + 0.5, n - row - 0.5, '♛', fontsize=32, ha='center', va='center', color='black')\n\n    # Ajouter des lignes de grille\n    ax.set_xticks(np.arange(n+1), minor=True)\n    ax.set_yticks(np.arange(n+1), minor=True)\n    ax.grid(which='minor', color='black', linestyle='-', linewidth=2)\n\n    # Supprimer les étiquettes d'axes et les ticks\n    ax.set_xticks([])\n    ax.set_yticks([])\n    ax.tick_params(axis='both', which='both', length=0)\n\n    plt.title(f\"Problème des {n} Reines\")\n    plt.show()\n\nDRAFT = False"
+  },
+  {
+    "objectID": "lectures/19/slides.html#problème-des-8-reines-1",
+    "href": "lectures/19/slides.html#problème-des-8-reines-1",
+    "title": "Recherche locale",
+    "section": "Problème des 8-Reines",
+    "text": "Problème des 8-Reines\n\n\n\nCode\n# Exemple de plateau pour le problème des 8-Reines\n# Représente une solution valide\nboard = [0, 4, 7, 5, 2, 6, 1, 3]  \n\ndisplay_n_queens(board, 5)\n\n\n\n\n\n\n\n\n\n\n\n\nPour un échiquier de \\(8 \\times 8\\), il existe exactement 92 solutions distinctes. En éliminant les solutions symmétrique, on se retrouve avec 12 solutions fondamentales. Dans le cas plus général d’un échiquier \\(n \\times n\\), le nombre exact de solutions a été déterminé pour toutes les valeurs de \\(n\\) allant jusqu’à 27 inclus.\n\n\nLe problème des 8-Reines (8-Dames ou 8-Queens) consiste à placer huit Reines sur un échiquier de \\(8 \\times 8\\) de sorte qu’aucune reine ne se menace, c’est-à-dire qu’aucune reine ne partage la même ligne, colonne ou diagonale."
+  },
+  {
+    "objectID": "lectures/19/slides.html#définition",
+    "href": "lectures/19/slides.html#définition",
+    "title": "Recherche locale",
+    "section": "Définition",
+    "text": "Définition\n\n\n\nNote\n\n\n (Russell et Norvig 2020, 110)\nLes algorithmes de recherche locale opèrent en cherchant d’un état initial à des états voisins, sans tenir compte des chemins ni de l’ensemble des états atteints.\n\n\n\n\n\nCet algorithme manque d’une approche systématique et ne garantit pas la découverte d’une solution optimale.\n\n\nOptimise l’utilisation de la mémoire tout en résolvant efficacement des problèmes dans des espaces d’états immenses ou infinis."
+  },
+  {
+    "objectID": "lectures/19/slides.html#définition-du-problème",
+    "href": "lectures/19/slides.html#définition-du-problème",
+    "title": "Recherche locale",
+    "section": "Définition du problème",
+    "text": "Définition du problème\nTrouver l’état “meilleur” selon une fonction objectif, en localisant ainsi le “maximum global”.\n\n\nLes guillemets autour du terme “maximum global” signalent que, dans le cadre de la présentation d’aujourd’hui, les algorithmes examinés ne fournissent pas de garanties formelles quant à l’identification du maximum global.\n\n\nCe problème d’optimisation est couramment appelé montée de colline (hill climbing)."
+  },
+  {
+    "objectID": "lectures/19/slides.html#montée-de-colline-hill-climbing",
+    "href": "lectures/19/slides.html#montée-de-colline-hill-climbing",
+    "title": "Recherche locale",
+    "section": "Montée de colline (Hill Climbing)",
+    "text": "Montée de colline (Hill Climbing)\n\n\n\n\n\n\n\nAttribution: adapté de Russell et Norvig (2020), page 111."
+  },
+  {
+    "objectID": "lectures/19/slides.html#hill-climbing-1",
+    "href": "lectures/19/slides.html#hill-climbing-1",
+    "title": "Recherche locale",
+    "section": "Hill Climbing",
+    "text": "Hill Climbing\nÉtant donné en entrée un problème\n\ncurrent est l’état initial du problème\ntant que non terminé faire\n\nneighbour est l’état successeur de plus grande valeur de current\nsi valeur(neighbour) \\(\\le\\) valeur(current) alors retourner current\nassigner neighbour à current\n\n\n\nLa montée de colline ne garde pas la trace des états visités précédemment et n’anticipe pas au-delà de ses voisins immédiats. Elle conserve un état courant et se déplace dans la direction de l’ascension la plus abrupte.\nEn inversant le signe de la fonction objectif, l’algorithme peut être adapté pour rechercher un minimum local."
+  },
+  {
+    "objectID": "lectures/19/slides.html#reines",
+    "href": "lectures/19/slides.html#reines",
+    "title": "Recherche locale",
+    "section": "8-Reines",
+    "text": "8-Reines\nComment représenteriez-vous l’état courant?\n\nPourquoi l’utilisation d’une grille pour représenter l’état courant est-elle sous-optimale?\n\n\nUne représentation en grille permet le placement illégal de reines dans la même colonne.\n\n\nÀ la place, nous pouvons représenter l’état comme une liste (\\(\\mathrm{état}\\)), où chaque élément correspond à la position de la ligne de la reine dans sa colonne respective.\nEn d’autres termes, \\(\\mathrm{état}[i]\\) est la ligne de la reine dans la colonne \\(i\\)."
+  },
+  {
+    "objectID": "lectures/19/slides.html#représentation-de-létat",
+    "href": "lectures/19/slides.html#représentation-de-létat",
+    "title": "Recherche locale",
+    "section": "Représentation de l’état",
+    "text": "Représentation de l’état\n\n\n# Exemple de plateau pour le problème des 8-Reines\n# Représente une solution valide pour les 8-Reines\nboard = [0, 4, 7, 5, 2, 6, 1, 3]  \n\ndisplay_n_queens(board, 5)\n\n\n\n\n\n\n\n\n\n\n\n\netat = [0, 4, 7, 5, 2, 6, 1, 3]"
+  },
+  {
+    "objectID": "lectures/19/slides.html#create_initial_state",
+    "href": "lectures/19/slides.html#create_initial_state",
+    "title": "Recherche locale",
+    "section": "create_initial_state",
+    "text": "create_initial_state\n\nimport random\nrandom.seed(7)\n\ndef create_initial_state(n):\n\n    \"\"\"Génère un état initial aléatoire avec une reine par colonne.\"\"\"\n\n    return [random.randint(0, n - 1) for _ in range(n)]\n\n\n\nQu’en pensez-vous ?"
+  },
+  {
+    "objectID": "lectures/19/slides.html#create_initial_state-1",
+    "href": "lectures/19/slides.html#create_initial_state-1",
+    "title": "Recherche locale",
+    "section": "create_initial_state",
+    "text": "create_initial_state\n\n\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)\n\n\n\n\n\n\n\n\n\n\netat \n\n[5, 2, 6, 0, 1, 1, 5, 0]\n\n\n\nPermet deux Reines dans la même ligne? Comment cela peut-il être corrigé ?"
+  },
+  {
+    "objectID": "lectures/19/slides.html#représentation-des-8-reines",
+    "href": "lectures/19/slides.html#représentation-des-8-reines",
+    "title": "Recherche locale",
+    "section": "Représentation des 8-Reines",
+    "text": "Représentation des 8-Reines\nÉchiquier \\(8 \\times 8\\).\n\nPlacement sans contrainte : \\(\\binom{64}{8} = 4,426,165,368\\) configurations possibles, représentant la sélection de 8 cases parmi 64.\nContrainte de colonne : Utilisez une liste de longueur 8, chaque entrée indiquant la ligne d’une reine dans sa colonne respective, ce qui donne \\(8^8 = 16,777,216\\) configurations.\nContraintes de ligne et de colonne : Modélisez les états du plateau comme des permutations des indices de ligne des 8 reines, réduisant les configurations à \\(8! = 40,320\\).\n\n\n\nCela souligne l’importance de choisir une bonne représentation."
+  },
+  {
+    "objectID": "lectures/19/slides.html#create_initial_state-2",
+    "href": "lectures/19/slides.html#create_initial_state-2",
+    "title": "Recherche locale",
+    "section": "create_initial_state",
+    "text": "create_initial_state\n\nimport random\nrandom.seed(7)\n\ndef create_initial_state(n):\n\n    \"\"\"Génère une permutation des nombres de 0 à n-1 comme état initial.\"\"\"\n\n    etat = list(range(n))\n    random.shuffle(etat)\n\n    return etat"
+  },
+  {
+    "objectID": "lectures/19/slides.html#create_initial_state-3",
+    "href": "lectures/19/slides.html#create_initial_state-3",
+    "title": "Recherche locale",
+    "section": "create_initial_state",
+    "text": "create_initial_state\n\n\n\nCode\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)\n\n\n\n\n\n\n\n\n\n\n\netat \n\n[6, 7, 2, 4, 0, 3, 1, 5]"
+  },
+  {
+    "objectID": "lectures/19/slides.html#calculate_conflicts",
+    "href": "lectures/19/slides.html#calculate_conflicts",
+    "title": "Recherche locale",
+    "section": "calculate_conflicts",
+    "text": "calculate_conflicts\n\ndef calculate_conflicts(etat):\n\n    n = len(etat)\n    conflits = 0\n\n    for col_i in range(n):\n        for col_j in range(col_i + 1, n):\n            row_i = etat[col_i]\n            row_j = etat[col_j]\n            if row_i == row_j:                 # même ligne\n                conflits += 1\n            if col_i - row_i == col_j - row_j: # même diagonale\n                conflits += 1\n            if col_i + row_i == col_j + row_j: # même antidiagonale\n                conflits += 1\n\n    return conflits"
+  },
+  {
+    "objectID": "lectures/19/slides.html#calculate_conflicts-1",
+    "href": "lectures/19/slides.html#calculate_conflicts-1",
+    "title": "Recherche locale",
+    "section": "calculate_conflicts",
+    "text": "calculate_conflicts\n\n\nCode\ndisplay_n_queens(etat, 5)\n\n\n\n\n\n\n\n\n\n\n\n\n\n5"
+  },
+  {
+    "objectID": "lectures/19/slides.html#get_neighbors_rn",
+    "href": "lectures/19/slides.html#get_neighbors_rn",
+    "title": "Recherche locale",
+    "section": "get_neighbors_rn",
+    "text": "get_neighbors_rn\n\ndef get_neighbors_rn(etat):\n\n    \"\"\"Génère des états voisins en déplaçant une reine à la fois vers une nouvelle ligne.\"\"\"\n\n    voisins = []\n    n = len(etat)\n\n    for col in range(n):\n        for row in range(n):\n            if (etat[col] != row):\n              nouvel_etat = etat[:]  # copie de l'état\n              nouvel_etat[col] = row\n              voisins.append(nouvel_etat)\n\n    return voisins\n\n\n\nRussell et Norvig (2020), \\(8 \\times 7 = 56\\) voisins"
+  },
+  {
+    "objectID": "lectures/19/slides.html#get_neighbors_rn-1",
+    "href": "lectures/19/slides.html#get_neighbors_rn-1",
+    "title": "Recherche locale",
+    "section": "get_neighbors_rn",
+    "text": "get_neighbors_rn\n\n\nCode\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#get_neighbors_rn-2",
+    "href": "lectures/19/slides.html#get_neighbors_rn-2",
+    "title": "Recherche locale",
+    "section": "get_neighbors_rn",
+    "text": "get_neighbors_rn\n\ninitial_state_8 = create_initial_state(8)\nprint(initial_state_8)\nfor s in get_neighbors_rn(initial_state_8):\n  print(f\"{s} -&gt; # of conflicts = {calculate_conflicts(s)}\")\n\n[7, 4, 2, 5, 1, 0, 3, 6]\n[0, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[1, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[2, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[3, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[4, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[5, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 8\n[6, 4, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 0, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 1, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 2, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 3, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 5, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 6, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 7, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 0, 5, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 1, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 3, 5, 1, 0, 3, 6] -&gt; # of conflicts = 8\n[7, 4, 4, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 5, 5, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[7, 4, 6, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 7, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 0, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[7, 4, 2, 1, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 2, 1, 0, 3, 6] -&gt; # of conflicts = 9\n[7, 4, 2, 3, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 4, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 6, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[7, 4, 2, 7, 1, 0, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 0, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 2, 0, 3, 6] -&gt; # of conflicts = 2\n[7, 4, 2, 5, 3, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 4, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 5, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 6, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 7, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 1, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 2, 3, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 3, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 4, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 5, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 6, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 7, 3, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 0, 0, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 0, 1, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 0, 2, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 4, 6] -&gt; # of conflicts = 4\n[7, 4, 2, 5, 1, 0, 5, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 6, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 7, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 3, 0] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 0, 3, 1] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 1, 0, 3, 2] -&gt; # of conflicts = 7\n[7, 4, 2, 5, 1, 0, 3, 3] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 3, 4] -&gt; # of conflicts = 7\n[7, 4, 2, 5, 1, 0, 3, 5] -&gt; # of conflicts = 5\n[7, 4, 2, 5, 1, 0, 3, 7] -&gt; # of conflicts = 6"
+  },
+  {
+    "objectID": "lectures/19/slides.html#get_neighbors",
+    "href": "lectures/19/slides.html#get_neighbors",
+    "title": "Recherche locale",
+    "section": "get_neighbors",
+    "text": "get_neighbors\n\ndef get_neighbors(etat):\n    \"\"\"Génère des états voisins en échangeant deux lignes.\"\"\"\n    voisins = []\n    n = len(etat)\n\n    for i in range(n):\n        for j in range(i + 1, n):\n            nouvel_etat = etat[:]\n            nouvel_etat[i], nouvel_etat[j] = nouvel_etat[j], nouvel_etat[i]\n            voisins.append(nouvel_etat)\n\n    return voisins\n\n\n\n\\(\\frac{8 \\times 7}{2} = 28\\) voisins"
+  },
+  {
+    "objectID": "lectures/19/slides.html#get_neighbors-1",
+    "href": "lectures/19/slides.html#get_neighbors-1",
+    "title": "Recherche locale",
+    "section": "get_neighbors",
+    "text": "get_neighbors\n\n\nCode\netat = create_initial_state(8)\ndisplay_n_queens(etat, 5)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#get_neighbors-2",
+    "href": "lectures/19/slides.html#get_neighbors-2",
+    "title": "Recherche locale",
+    "section": "get_neighbors",
+    "text": "get_neighbors\n\nprint(initial_state_8)\nfor s in get_neighbors(initial_state_8):\n  print(f\"{s} -&gt; # of conflicts = {calculate_conflicts(s)}\")\n\n[7, 4, 2, 5, 1, 0, 3, 6]\n[4, 7, 2, 5, 1, 0, 3, 6] -&gt; # of conflicts = 4\n[2, 4, 7, 5, 1, 0, 3, 6] -&gt; # of conflicts = 6\n[5, 4, 2, 7, 1, 0, 3, 6] -&gt; # of conflicts = 7\n[1, 4, 2, 5, 7, 0, 3, 6] -&gt; # of conflicts = 2\n[0, 4, 2, 5, 1, 7, 3, 6] -&gt; # of conflicts = 4\n[3, 4, 2, 5, 1, 0, 7, 6] -&gt; # of conflicts = 5\n[6, 4, 2, 5, 1, 0, 3, 7] -&gt; # of conflicts = 5\n[7, 2, 4, 5, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 5, 2, 4, 1, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 1, 2, 5, 4, 0, 3, 6] -&gt; # of conflicts = 4\n[7, 0, 2, 5, 1, 4, 3, 6] -&gt; # of conflicts = 5\n[7, 3, 2, 5, 1, 0, 4, 6] -&gt; # of conflicts = 3\n[7, 6, 2, 5, 1, 0, 3, 4] -&gt; # of conflicts = 5\n[7, 4, 5, 2, 1, 0, 3, 6] -&gt; # of conflicts = 10\n[7, 4, 1, 5, 2, 0, 3, 6] -&gt; # of conflicts = 2\n[7, 4, 0, 5, 1, 2, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 3, 5, 1, 0, 2, 6] -&gt; # of conflicts = 7\n[7, 4, 6, 5, 1, 0, 3, 2] -&gt; # of conflicts = 7\n[7, 4, 2, 1, 5, 0, 3, 6] -&gt; # of conflicts = 3\n[7, 4, 2, 0, 1, 5, 3, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 3, 1, 0, 5, 6] -&gt; # of conflicts = 5\n[7, 4, 2, 6, 1, 0, 3, 5] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 0, 1, 3, 6] -&gt; # of conflicts = 2\n[7, 4, 2, 5, 3, 0, 1, 6] -&gt; # of conflicts = 6\n[7, 4, 2, 5, 6, 0, 3, 1] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 3, 0, 6] -&gt; # of conflicts = 2\n[7, 4, 2, 5, 1, 6, 3, 0] -&gt; # of conflicts = 3\n[7, 4, 2, 5, 1, 0, 6, 3] -&gt; # of conflicts = 4"
+  },
+  {
+    "objectID": "lectures/19/slides.html#hill_climbing",
+    "href": "lectures/19/slides.html#hill_climbing",
+    "title": "Recherche locale",
+    "section": "hill_climbing",
+    "text": "hill_climbing\n\nimport numpy as np\n\ndef hill_climbing(etat_courant):\n\n    conflits_courants = calculate_conflicts(etat_courant)\n\n    while True:\n\n        if conflits_courants == 0:\n          return etat_courant\n\n        voisins = get_neighbors(etat_courant)\n\n        conflits = [calculate_conflicts(voisin) for voisin in voisins]\n\n        if (min(conflits)) &gt; conflits_courants:\n          return None # Aucune amélioration trouvée, bloqué dans un minimum local\n\n        arg_best = np.argmin(conflits)\n        etat_courant = voisins[arg_best]\n        conflits_courants = conflits[arg_best]\n\n\nLe programme ci-haut présente un défi majeur. Quel est-il exactement ?\nIl est important de noter que, dans ce contexte particulier, le problème est défini de manière à ce que la solution recherchée soit exempte de tout conflit. Cependant, dans certains problèmes d’optimisation, la valeur minimale de la fonction objective n’est pas préalablement déterminée.\nLe principal problème est que l’algorithme risque d’entrer dans une boucle infinie si la condition min(conflits == conflits_courant) est satisfaite.\nDeux scénarios peuvent se présenter : soit le plateau est suivi d’une pente ascendante, soit il représente un maximum local. Dans le premier cas, l’algorithme pourrait potentiellement sortir du plateau, bien que cela ne soit pas garanti. Pour prévenir les boucles infinies, il serait judicieux d’implémenter un mécanisme approprié."
+  },
+  {
+    "objectID": "lectures/19/slides.html#hill_climbing-version-2",
+    "href": "lectures/19/slides.html#hill_climbing-version-2",
+    "title": "Recherche locale",
+    "section": "hill_climbing (version 2)",
+    "text": "hill_climbing (version 2)\n\nMAX_SIDE_MOVES = 100\n\ndef hill_climbing(etat_courant):\n\n    conflits_courants = calculate_conflicts(etat_courant)\n    mouvements_lateraux = 0\n\n    while True:\n\n        if conflits_courants == 0:\n          return etat_courant\n\n        voisins = get_neighbors(etat_courant)\n\n        conflits = [calculate_conflicts(voisin) for voisin in voisins]\n\n        if (min(conflits)) &gt; conflits_courants:\n          return None  # Aucune amélioration trouvée, bloqué dans un minimum local\n\n        if (min(conflits)) == conflits_courants:\n          mouvements_lateraux += 1  # Plateau\n\n        if mouvements_lateraux &gt; MAX_SIDE_MOVES:\n          return None\n\n        arg_best = np.argmin(conflits)\n        etat_courant = voisins[arg_best]\n        conflits_courants = conflits[arg_best]"
+  },
+  {
+    "objectID": "lectures/19/slides.html#résoudre",
+    "href": "lectures/19/slides.html#résoudre",
+    "title": "Recherche locale",
+    "section": "Résoudre",
+    "text": "Résoudre\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\nexplored = set()\nnb_explored = 0\n\nfor i in range(10):\n  etat = create_initial_state(8)\n\n  nouvel_etat = hill_climbing(etat)\n\n  if (nouvel_etat != None):\n    display_n_queens(nouvel_etat, 6)\n    if tuple(nouvel_etat) in explored:\n      nb_explored += 1\n    else:\n      explored.add(tuple(nouvel_etat))\n\n    solutions += 1\n\nprint(f\"10 essais, nombre de solutions = {solutions}, {nb_explored} déjà vues\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10 essais, nombre de solutions = 9, 0 déjà vues"
+  },
+  {
+    "objectID": "lectures/19/slides.html#résoudre-2",
+    "href": "lectures/19/slides.html#résoudre-2",
+    "title": "Recherche locale",
+    "section": "Résoudre (2)",
+    "text": "Résoudre (2)\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 10 if DRAFT else 1000\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(8)\n\n  new_state = hill_climbing(state)\n\n  if (new_state != None):\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\n\n1000 essais, nombre de solutions = 704, 92 uniques"
+  },
+  {
+    "objectID": "lectures/19/slides.html#résoudre-40-reines",
+    "href": "lectures/19/slides.html#résoudre-40-reines",
+    "title": "Recherche locale",
+    "section": "Résoudre 40-Reines",
+    "text": "Résoudre 40-Reines\n\\(40! = 8.1591528325 \\times 10^{47}\\)\n\n\n\nCode\nimport time\n\nstart_time = time.time()  # Record the start time\n\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 1 if DRAFT else 10\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(40)\n\n  new_state = hill_climbing(state)\n\n  if (new_state != None):\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\none_board = next(iter(explored))\ndisplay_n_queens(one_board, 12)\n\nend_time = time.time()  # Record the end time\nelapsed_time = end_time - start_time  # Calculate the elapsed time\n\nprint(f\"Temps écoulé : {elapsed_time:.4f} secondes\")\n\n\n10 essais, nombre de solutions = 6, 6 uniques\n\n\n\n\n\n\n\n\n\nTemps écoulé : 14.8818 secondes"
+  },
+  {
+    "objectID": "lectures/19/slides.html#itérations-et-mouvement-latéraux",
+    "href": "lectures/19/slides.html#itérations-et-mouvement-latéraux",
+    "title": "Recherche locale",
+    "section": "Itérations et mouvement latéraux",
+    "text": "Itérations et mouvement latéraux\n\n\nCode\nMAX_SIDE_MOVES = 100\n\ndef hill_climbing_counts(etat_courant):\n\n    \"\"\"Algorithme de montée de colline pour résoudre le problème des N-Reines.\"\"\"\n\n    conflits_courants = calculate_conflicts(etat_courant)\n    mouvements_lateraux = 0\n    iterations = 0\n\n    while True:\n\n        if conflits_courants == 0:\n          return (iterations, mouvements_lateraux, etat_courant)\n\n        iterations += 1\n\n        voisins = get_neighbors(etat_courant)\n\n        conflits = [calculate_conflicts(voisin) for voisin in voisins]\n\n        if (min(conflits)) &gt; conflits_courants:\n          print(\"here\")\n          return (iterations, 1, None)  # Aucune amélioration trouvée, bloqué dans un minimum local\n\n        if (min(conflits)) == conflits_courants:\n          mouvements_lateraux += 1  # Plateau\n\n        if mouvements_lateraux &gt; MAX_SIDE_MOVES:\n          return (iterations, 2, None)\n\n        arg_best = np.argmin(conflits)\n        etat_courant = voisins[arg_best]\n        conflits_courants = conflits[arg_best]\n\n\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 10 if DRAFT else 1000\n\niterations = []\nsides = []\n\niterations_none = []\nsides_none = []\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(8)\n\n  (i, s, new_state) = hill_climbing_counts(state)\n\n  if new_state != None:\n    iterations.append(i)\n    sides.append(s)\n  else:\n    iterations_none.append(i)\n    sides_none.append(s)\n\n  if new_state != None:\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\n\n1000 essais, nombre de solutions = 704, 92 uniques"
+  },
+  {
+    "objectID": "lectures/19/slides.html#itérations-et-mouvement-latéraux-1",
+    "href": "lectures/19/slides.html#itérations-et-mouvement-latéraux-1",
+    "title": "Recherche locale",
+    "section": "Itérations et mouvement latéraux",
+    "text": "Itérations et mouvement latéraux\n\n\nCode\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Configurer la structure des sous-graphiques\nfig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True)\n\n# Tracer l'histogramme pour `iterations`\nsns.histplot(iterations, kde=True, color='green', ax=axes[0], edgecolor='black')\naxes[0].set_title(\"Histogramme des itérations\")\naxes[0].set_xlabel(\"Itérations\")\naxes[0].set_ylabel(\"Fréquence\")\n\n# Tracer l'histogramme pour `sides`\nsns.histplot(sides, kde=True, color='blue', ax=axes[1], edgecolor='black')\n\naxes[1].set_title(\"Histogramme des mouvements latéraux\")\naxes[1].set_xlabel(\"# Mouvements latéraux\")\n\n# Afficher le graphique\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "lectures/19/slides.html#itérations-et-mouvement-latéraux-1-output",
+    "href": "lectures/19/slides.html#itérations-et-mouvement-latéraux-1-output",
+    "title": "Recherche locale",
+    "section": "Itérations et mouvement latéraux",
+    "text": "Itérations et mouvement latéraux"
+  },
+  {
+    "objectID": "lectures/19/slides.html#reines-1",
+    "href": "lectures/19/slides.html#reines-1",
+    "title": "Recherche locale",
+    "section": "20-Reines",
+    "text": "20-Reines\n\n\nCode\nrandom.seed(7)\n\nsolutions = 0\n\nexplored = set()\nnb_duplicates = 0\n\nnb_runs = 10 if DRAFT else 1000\n\niterations = []\nsides = []\n\niterations_none = []\nsides_none = []\n\nfor i in range(nb_runs):\n\n  state = create_initial_state(20)\n\n  (i, s, new_state) = hill_climbing_counts(state)\n\n  if new_state != None:\n    iterations.append(i)\n    sides.append(s)\n  else:\n    iterations_none.append(i)\n    sides_none.append(s)\n\n  if new_state != None:\n\n    if tuple(new_state) in explored:\n      nb_duplicates += 1\n    else:\n      explored.add(tuple(new_state))\n\n    solutions += 1\n\nprint(f\"{nb_runs} essais, nombre de solutions = {solutions}, {len(explored)} uniques\")\n\n\n1000 essais, nombre de solutions = 566, 566 uniques\n\n\n\n\nCode\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Configurer la structure des sous-graphiques\nfig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True)\n\n# Tracer l'histogramme pour `iterations`\nsns.histplot(iterations, kde=True, color='green', ax=axes[0], edgecolor='black')\naxes[0].set_title(\"Histogramme des itérations\")\naxes[0].set_xlabel(\"Itérations\")\naxes[0].set_ylabel(\"Fréquence\")\n\n# Tracer l'histogramme pour `sides`\nsns.histplot(sides, kde=True, color='blue', ax=axes[1], edgecolor='black')\n\naxes[1].set_title(\"Histogramme des mouvements latéraux\")\naxes[1].set_xlabel(\"# Mouvements latéraux\")\n\n# Afficher le graphique\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "lectures/19/slides.html#reines-1-output",
+    "href": "lectures/19/slides.html#reines-1-output",
+    "title": "Recherche locale",
+    "section": "20-Reines",
+    "text": "20-Reines"
+  },
+  {
+    "objectID": "lectures/19/slides.html#russell-norvig",
+    "href": "lectures/19/slides.html#russell-norvig",
+    "title": "Recherche locale",
+    "section": "Russell & Norvig",
+    "text": "Russell & Norvig\n\nLa montée de colline échoue 86 % du temps.\n\nLes tentatives réussies nécessitent en moyenne 4 étapes pour une solution.\n\nPermettre 100 mouvements latéraux augmente le taux de réussite de 14 % à 94 %.\nL’espace de recherche contient \\(8^8 = 16,777,216\\) états.\n\nImplémentation de Russell & Norvig\n\n\n\n\nDans l’implémentation que j’ai proposée, il ne semble pas y avoir de minimums locaux. Toutefois, cela nécessite une vérification plus approfondie.\n\n\nPossède de nombreuses variantes, notamment la montée de colline avec redémarrage aléatoire."
+  },
+  {
+    "objectID": "lectures/19/slides.html#échapper-à-un-optimum-local",
+    "href": "lectures/19/slides.html#échapper-à-un-optimum-local",
+    "title": "Recherche locale",
+    "section": "Échapper à un optimum local",
+    "text": "Échapper à un optimum local\nQuels mécanismes permettraient à l’algorithme de montée de colline d’échapper à un optimum local, qu’il s’agisse d’un minimum ou d’un maximum local ?\n\nIl doit accepter de descendre.\nUne approche de marche aléatoire, qui ignore la valeur de la fonction objectif, pourrait théoriquement trouver le maximum global. Cependant, cette méthode est extrêmement inefficace."
+  },
+  {
+    "objectID": "lectures/19/slides.html#remarque",
+    "href": "lectures/19/slides.html#remarque",
+    "title": "Recherche locale",
+    "section": "Remarque",
+    "text": "Remarque\nSupposons que le problème d’optimisation soit une minimisation, où l’objectif est de trouver une solution avec le coût minimum.\n\n\nDescente de colline, descente de gradient."
+  },
+  {
+    "objectID": "lectures/19/slides.html#définition-1",
+    "href": "lectures/19/slides.html#définition-1",
+    "title": "Recherche locale",
+    "section": "Définition",
+    "text": "Définition\nLe recuit simulé (simulated annealing) est un algorithme d’optimisation inspiré du processus de recuit en métallurgie. Il explore l’espace de solutions de manière probabiliste en permettant des déplacements occasionnels vers le haut, ce qui aide à échapper aux optima locaux. L’algorithme réduit progressivement la probabilité d’accepter des solutions pires en diminuant un paramètre de “température”, convergeant ainsi vers une solution optimale ou quasi-optimale."
+  },
+  {
+    "objectID": "lectures/19/slides.html#recuit",
+    "href": "lectures/19/slides.html#recuit",
+    "title": "Recherche locale",
+    "section": "Recuit",
+    "text": "Recuit\n\n\n\nNote\n\n\n (Russell et Norvig 2020, 114)\nEn métallurgie, le recuit est le processus de durcissement des métaux et du verre en les chauffant à haute température et en les refroidissant progressivement, permettant ainsi au matériau d’atteindre un état cristallin à faible énergie.\n\n\n\n\nLe solide est chauffé jusqu’à son point de fusion, ce qui rend les particules distribuées de manière aléatoire.\nEnsuite, le matériau est refroidi progressivement, permettant aux particules de se réorganiser en un état de faible énergie."
+  },
+  {
+    "objectID": "lectures/19/slides.html#algorithme",
+    "href": "lectures/19/slides.html#algorithme",
+    "title": "Recherche locale",
+    "section": "Algorithme",
+    "text": "Algorithme\n\n\n\n\n\n\n\n1.  Cet algorithme ressemble à la montée de colline mais diffère en sélectionnant aléatoirement l’état suivant au lieu de choisir le meilleur mouvement.\n2.  Si le déplacement réduit la valeur de la fonction objectif, il est accepté sans condition.\n3.  Sinon, l’acceptation est probabiliste, en fonction de $\\Delta E$ et $T$.\n\n\nAttribution : (Russell et Norvig 2020, 115)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#variation-de-delta-e",
+    "href": "lectures/19/slides.html#variation-de-delta-e",
+    "title": "Recherche locale",
+    "section": "Variation de \\(\\Delta E\\)",
+    "text": "Variation de \\(\\Delta E\\)\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir une température fixe, T\nT = 1.0  # Vous pouvez ajuster cette valeur\n\n# Définir une gamme de changements d'énergie, ΔE\ndelta_E = np.linspace(0, 5, 500)\n\n# Calculer la fonction e^(-ΔE/T)\ny = np.exp(-delta_E / T)\n\n# Tracer la fonction\nplt.figure(figsize=(8, 5))\nplt.plot(delta_E, y, label=r'$e^{-\\frac{\\Delta E}{T}}$', color='blue')\nplt.title(r\"Graphique de $e^{-\\Delta E / T}$\")\nplt.xlabel(r\"Changement d'énergie ($\\Delta E$)\")\nplt.ylabel(r'$e^{-\\Delta E / T}$')\nplt.ylim(0, 1.1)\nplt.xlim(0, 5)\nplt.grid(True)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nLes mouvements entraînant des changements négatifs significatifs (pires) de la fonction objectif sont moins susceptibles d’être acceptés."
+  },
+  {
+    "objectID": "lectures/19/slides.html#variation-de-la-température-t",
+    "href": "lectures/19/slides.html#variation-de-la-température-t",
+    "title": "Recherche locale",
+    "section": "Variation de la température, \\(T\\)",
+    "text": "Variation de la température, \\(T\\)\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir le changement d'énergie, ΔE\ndelta_E = 0.1  # Vous pouvez ajuster cette valeur\n\n# Définir une gamme de températures, T\nT = np.linspace(0.1, 5, 500)  # Éviter T=0 pour éviter la division par zéro\n\n# Calculer la fonction e^(-ΔE/T)\ny = np.exp(-delta_E / T)\n\n# Tracer la fonction\nplt.figure(figsize=(8, 5))\nplt.plot(T, y, label=r'$e^{-\\frac{\\Delta E}{T}}$', color='blue')\nplt.title(r'Graphique de $e^{-\\Delta E / T}$')\nplt.xlabel('Température (T)')\nplt.ylabel(r'$e^{-\\Delta E / T}$')\nplt.ylim(0, 1.1)\nplt.xlim(0, 5)\nplt.grid(True)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nPour un \\(\\Delta E\\) fixé (ici \\(0.1\\)), les changements sont plus susceptibles d’être acceptés lorsque \\(T\\) est élevé, au début de l’algorithme."
+  },
+  {
+    "objectID": "lectures/19/slides.html#variation-de-la-température-et-de-delta-e",
+    "href": "lectures/19/slides.html#variation-de-la-température-et-de-delta-e",
+    "title": "Recherche locale",
+    "section": "Variation de la température et de \\(\\Delta E\\)",
+    "text": "Variation de la température et de \\(\\Delta E\\)\n\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir une gamme de températures, T\nT = np.linspace(0.1, 5, 500)  # Éviter T=0 pour éviter la division par zéro\n\n# Définir des valeurs spécifiques pour le changement d'énergie, ΔE\ndelta_E_values = [0.001, 0.01, 0.1, 1.0, 2.0]\n\n# Tracer la fonction pour chaque ΔE\nplt.figure(figsize=(10, 6))\nfor delta_E in delta_E_values:\n    y = np.exp(-delta_E / T)\n    plt.plot(T, y, label=r'$\\Delta E = {:.3f}$'.format(delta_E))\n\n# Personnaliser le graphique\nplt.title(r'Graphique de $e^{-\\Delta E / T}$ pour différentes valeurs de $\\Delta E$')\nplt.xlabel('Température (T)')\nplt.ylabel(r'$e^{-\\Delta E / T}$')\nplt.ylim(0, 1.1)\nplt.xlim(0, 5)\nplt.grid(True)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLes mauvais mouvements sont plus susceptibles d’être acceptés au début, lorsque \\(T\\) est élevé, et moins susceptibles de l’être lorsque \\(T\\) diminue."
+  },
+  {
+    "objectID": "lectures/19/slides.html#faire-varier-la-température-et-delta-e",
+    "href": "lectures/19/slides.html#faire-varier-la-température-et-delta-e",
+    "title": "Recherche locale",
+    "section": "Faire varier la température et \\(\\Delta E\\)",
+    "text": "Faire varier la température et \\(\\Delta E\\)\n\nimport { Inputs, Plot } from \"@observablehq/plot\"\n\nviewof deltaE = Inputs.range([0.01, 100], {step: 0.01, value: 0.1, label: \"ΔE\", width: 300})\n\nT_values = Array.from({length: 1000}, (_, i) =&gt; (i + 1) * 0.1)\n\nfunction computeData(deltaE) {\n  return T_values.map(T =&gt; ({\n    T: T,\n    value: Math.exp(-deltaE / T)\n  }))\n}\n\ndata = computeData(deltaE)\n\nPlot.plot({\n  marks: [\n    Plot.line(data, {\n      x: \"T\", \n      y: \"value\", \n      stroke: \"steelblue\", \n      strokeWidth: 2\n    }),\n    Plot.ruleX([0], {stroke: \"black\"}), // X-axis line\n    Plot.ruleY([0], {stroke: \"black\"})  // Y-axis line\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGraphique interactif à l’aide d’Observable JS."
+  },
+  {
+    "objectID": "lectures/19/slides.html#théorie",
+    "href": "lectures/19/slides.html#théorie",
+    "title": "Recherche locale",
+    "section": "Théorie",
+    "text": "Théorie\n\n\n\nNote\n\n\n (Russell et Norvig 2020, 114)\nSi le calendrier abaisse \\(T\\) à 0 suffisamment lentement, une propriété de la distribution de Boltzmann (alias Gibbs), \\(e^{\\frac{\\Delta E}{T}}\\), est que toute la probabilité se concentre sur les maxima globaux, que l’algorithme trouvera avec une probabilité tendant vers 1.\n\n\n\n\n\nVoir aussi: Laarhoven et Aarts (1987), Aarts et Korst (1989), Gendreau et Potvin (2019)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#définition-2",
+    "href": "lectures/19/slides.html#définition-2",
+    "title": "Recherche locale",
+    "section": "Définition",
+    "text": "Définition\nLe problème du voyageur de commerce (travelling salesman problem) (TSP) est un problème d’optimisation classique qui cherche l’itinéraire le plus court possible pour un voyageur devant visiter un ensemble de villes, en revenant à la ville d’origine, tout en visitant chaque ville exactement une fois.\n\nLe défi est de déterminer le chemin le plus efficace, surtout lorsque le nombre de villes augmente, en raison de l’explosion combinatoire des itinéraires possibles."
+  },
+  {
+    "objectID": "lectures/19/slides.html#voyageur-de-commerce",
+    "href": "lectures/19/slides.html#voyageur-de-commerce",
+    "title": "Recherche locale",
+    "section": "Voyageur de commerce",
+    "text": "Voyageur de commerce\n\n\nCode\n# On s'assure de toujours générer les mêmes coordonnées\n\nnp.random.seed(42)\n\n# Générer des coordonnées aléatoires pour les villes\n\nnum_cities = 20\ncoordinates = np.random.rand(num_cities, 2) * 100\n\n# Calculer la matrice des distances\n\ndistance_matrix = np.sqrt(((coordinates[:, np.newaxis] - coordinates[np.newaxis, :]) ** 2).sum(axis=2))\n\n\n\n\nCode\nimport matplotlib.pyplot as plt\n\ndef plot_cities(coordinates, title=\"Villes du Problème du Voyageur de Commerce\"):\n\n    \"\"\"\n    Trace les coordonnées données représentant les villes.\n    \n    Paramètres :\n    - coordinates : Un tableau 2D NumPy de forme (n, 2) représentant les coordonnées (x, y).\n    - title : Titre du graphique.\n    \"\"\"\n\n    # Extraire les coordonnées x et y\n    x = coordinates[:, 0]\n    y = coordinates[:, 1]\n\n    plt.figure(figsize=(6, 6))\n\n    # Tracer les villes sous forme de points rouges\n    plt.scatter(x, y, c='red', zorder=2)\n\n    # Annoter les villes avec leurs indices\n    for i, (xi, yi) in enumerate(zip(x, y)):\n        plt.annotate(str(i + 1), (xi, yi), textcoords=\"offset points\", xytext=(0, 5), ha='center')\n\n    # Définir le titre et les étiquettes\n    plt.title(title)\n    plt.xlabel('Coordonnée X')\n    plt.ylabel('Coordonnée Y')\n    plt.grid(True)\n    plt.axis('equal')  # Échelle égale pour les axes x et y\n    plt.show()\n\nplot_cities(distance_matrix)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#voyageur-de-commerce-output",
+    "href": "lectures/19/slides.html#voyageur-de-commerce-output",
+    "title": "Recherche locale",
+    "section": "Voyageur de commerce",
+    "text": "Voyageur de commerce"
+  },
+  {
+    "objectID": "lectures/19/slides.html#comment-représenter-une-solution",
+    "href": "lectures/19/slides.html#comment-représenter-une-solution",
+    "title": "Recherche locale",
+    "section": "Comment représenter une solution?",
+    "text": "Comment représenter une solution?\n\nNous utiliserons une liste dans laquelle chaque élément représente l’indice d’une ville, et l’ordre des éléments indique la séquence de visite des villes."
+  },
+  {
+    "objectID": "lectures/19/slides.html#solution-aléatoire",
+    "href": "lectures/19/slides.html#solution-aléatoire",
+    "title": "Recherche locale",
+    "section": "Solution aléatoire",
+    "text": "Solution aléatoire\n\n\n\nCode\ndef plot_tsp_path(coordinates, path=None, title=\"Problème du Voyageur de Commerce\"):\n\n    \"\"\"\n    Trace les coordonnées données et éventuellement un chemin pour le TSP.\n    \n    Paramètres :\n    - coordinates : Un tableau 2D NumPy de forme (n, 2) représentant les coordonnées (x, y).\n    - path : Une liste ou un tableau d'indices représentant l'ordre des villes à visiter. Si None, les nœuds sont connectés dans l'ordre d'entrée.\n    - title : Titre du graphique.\n    \"\"\"\n\n    # Extraire les coordonnées x et y\n    x = coordinates[:, 0]\n    y = coordinates[:, 1]\n\n    plt.figure(figsize=(6, 6))\n\n    # Si un chemin est donné, réorganiser les coordonnées\n    if path is not None:\n        x = x[path]\n        y = y[path]\n    \n    # Tracer les nœuds\n    plt.scatter(x, y, c='red', zorder=2)\n\n    # Annoter les nœuds avec leurs indices\n    for i, (xi, yi) in enumerate(zip(x, y)):\n        plt.annotate(str(i + 1), (xi, yi), textcoords=\"offset points\", xytext=(0, 5), ha='center')\n\n    # Tracer le chemin\n    plt.plot(x, y, 'b-', zorder=1)\n\n    # Si un chemin est fourni, connecter le dernier point au premier pour compléter le tour\n    if path is not None:\n        plt.plot([x[-1], x[0]], [y[-1], y[0]], 'b-', zorder=1)\n\n    # Définir le titre et les étiquettes\n    plt.title(title)\n    plt.xlabel('Coordonnée X')\n    plt.ylabel('Coordonnée Y')\n    plt.grid(True)\n    plt.axis('equal')  # Échelle égale pour les axes x et y\n    plt.show()\n\nnum_cities = len(distance_matrix)\ncurrent_route = np.arange(num_cities)\nnp.random.shuffle(current_route)\nplot_tsp_path(distance_matrix,current_route)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#calcul-de-la-distance-totale",
+    "href": "lectures/19/slides.html#calcul-de-la-distance-totale",
+    "title": "Recherche locale",
+    "section": "Calcul de la distance totale",
+    "text": "Calcul de la distance totale\n\n# Fonction pour calculer la distance totale d'un itinéraire donné\n\ndef calculate_total_distance(route, distance_matrix):\n\n    total_distance = 0\n\n    for i in range(len(route) - 1):\n        total_distance += distance_matrix[route[i], route[i + 1]]\n\n    total_distance += distance_matrix[route[-1], route[0]]  # Retourner au point de départ\n\n    return total_distance"
+  },
+  {
+    "objectID": "lectures/19/slides.html#voisinage",
+    "href": "lectures/19/slides.html#voisinage",
+    "title": "Recherche locale",
+    "section": "Voisinage",
+    "text": "Voisinage\n\n\n\nCode\nplot_tsp_path(distance_matrix,current_route)\n\n\n\n\n\n\n\n\n\n\n\n\nComment générer une solution voisine?"
+  },
+  {
+    "objectID": "lectures/19/slides.html#voisinage-1",
+    "href": "lectures/19/slides.html#voisinage-1",
+    "title": "Recherche locale",
+    "section": "Voisinage",
+    "text": "Voisinage\nComment générer une solution voisine?"
+  },
+  {
+    "objectID": "lectures/19/slides.html#échanger-deux-villes",
+    "href": "lectures/19/slides.html#échanger-deux-villes",
+    "title": "Recherche locale",
+    "section": "Échanger deux villes",
+    "text": "Échanger deux villes\n\nDescription : Sélectionner deux villes au hasard et échanger leurs positions.\nAvantages : Simple et efficace pour explorer des solutions voisines.\nInconvénients : Le changement peut être trop minime, ce qui peut ralentir la convergence."
+  },
+  {
+    "objectID": "lectures/19/slides.html#inverser-le-segment",
+    "href": "lectures/19/slides.html#inverser-le-segment",
+    "title": "Recherche locale",
+    "section": "Inverser le segment",
+    "text": "Inverser le segment\n\nDescription : Sélectionner deux indices et inverser le segment entre eux.\nAvantages : Plus efficace pour trouver des chemins plus courts par rapport aux échanges simples.\nInconvénients : Peut être coûteux en calcul à mesure que le nombre de villes augmente."
+  },
+  {
+    "objectID": "lectures/19/slides.html#supprimer-reconnecter",
+    "href": "lectures/19/slides.html#supprimer-reconnecter",
+    "title": "Recherche locale",
+    "section": "Supprimer & reconnecter",
+    "text": "Supprimer & reconnecter\n\nDescription : Supprime trois arêtes de l’itinéraire et reconnecte les segments de la meilleure façon possible. Cela peut générer jusqu’à 7 itinéraires différents.\nAvantages : Apporte des changements plus importants et peut échapper aux optima locaux plus efficacement.\nInconvénients : Plus complexe et coûteux en calcul à mettre en œuvre."
+  },
+  {
+    "objectID": "lectures/19/slides.html#mouvement-dinsertion",
+    "href": "lectures/19/slides.html#mouvement-dinsertion",
+    "title": "Recherche locale",
+    "section": "Mouvement d’insertion",
+    "text": "Mouvement d’insertion\n\nDescription : Sélectionner une ville et la déplacer à une position différente dans l’itinéraire.\nAvantages : Offre un équilibre entre petits et grands changements, utile pour affiner les solutions.\nInconvénients : Peut nécessiter plus d’itérations pour converger vers une solution optimale."
+  },
+  {
+    "objectID": "lectures/19/slides.html#mélanger-le-sous-ensemble",
+    "href": "lectures/19/slides.html#mélanger-le-sous-ensemble",
+    "title": "Recherche locale",
+    "section": "Mélanger le sous-ensemble",
+    "text": "Mélanger le sous-ensemble\n\nDescription : Sélectionner un sous-ensemble de villes dans l’itinéraire et mélanger leur ordre de manière aléatoire.\nAvantages : Introduit des changements plus importants et peut aider à échapper aux minima locaux.\nInconvénients : Peut conduire à des itinéraires moins efficaces si mal géré."
+  },
+  {
+    "objectID": "lectures/19/slides.html#générer-une-solution-voisine-aléatoire",
+    "href": "lectures/19/slides.html#générer-une-solution-voisine-aléatoire",
+    "title": "Recherche locale",
+    "section": "Générer une solution voisine aléatoire",
+    "text": "Générer une solution voisine aléatoire\n\n# Fonction pour générer une solution voisine aléatoire\n\ndef get_neighbor(route):\n\n    a, b = np.random.randint(0, len(route), size=2)\n    if a &gt; b:\n        a, b = b, a\n\n    new_route = route.copy()\n    new_route[a:b+1] = new_route[a:b+1][::-1]  # Inverser le segment entre a et b\n\n    return new_route"
+  },
+  {
+    "objectID": "lectures/19/slides.html#recuit-simulé-1",
+    "href": "lectures/19/slides.html#recuit-simulé-1",
+    "title": "Recherche locale",
+    "section": "Recuit simulé",
+    "text": "Recuit simulé\n\ndef simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations):\n\n    num_cities = len(distance_matrix)\n    current_route = np.arange(num_cities)\n    np.random.shuffle(current_route)\n\n    current_cost = calculate_total_distance(current_route, distance_matrix)\n    \n    best_route = current_route.copy()\n    best_cost = current_cost\n\n    temperature = initial_temp\n\n    for iteration in range(max_iterations):\n\n        neighbor_route = get_neighbor(current_route)\n        neighbor_cost = calculate_total_distance(neighbor_route, distance_matrix)\n        \n        # Accepter le voisin s'il est meilleur, ou avec une probabilité s'il est pire.\n\n        delta_E = neighbor_cost - current_cost\n\n        if neighbor_cost &lt; current_cost or np.random.rand() &lt; np.exp(-(delta_E)/temperature):\n            current_route = neighbor_route\n            current_cost = neighbor_cost\n\n            if current_cost &lt; best_cost:\n                best_route = current_route.copy()\n                best_cost = current_cost\n\n        # Refroidir la température\n        temperature *= cooling_rate\n\n    return best_route, best_cost, temperatures, costs"
+  },
+  {
+    "objectID": "lectures/19/slides.html#remarques",
+    "href": "lectures/19/slides.html#remarques",
+    "title": "Recherche locale",
+    "section": "Remarques",
+    "text": "Remarques\n\nLorsque \\(t \\to \\infty\\), l’algorithme présente un comportement caractéristique d’une marche aléatoire (random walk). Pendant cette phase, tout état voisin, qu’il améliore ou non la fonction objectif, est accepté. Cela facilite l’exploration et se produit au début de l’exécution de l’algorithme."
+  },
+  {
+    "objectID": "lectures/19/slides.html#remarques-1",
+    "href": "lectures/19/slides.html#remarques-1",
+    "title": "Recherche locale",
+    "section": "Remarques",
+    "text": "Remarques\n\nÀ l’inverse, lorsque \\(t \\to 0\\), l’algorithme se comporte comme une montée de colline (hill climbing). Dans cette phase, seuls les états qui améliorent la valeur de la fonction objectif sont acceptés, garantissant que l’algorithme se dirige systématiquement vers des solutions optimales — spécifiquement, vers des valeurs plus basses dans les problèmes de minimisation. Cette phase met l’accent sur l’exploitation des solutions prometteuses et se produit vers la fin de l’algorithme.\n\n\n\n\nExploration :\n\n\nL’exploration implique de rechercher dans une large zone de l’espace de recherche pour découvrir de nouvelles possibilités, solutions ou informations. L’objectif de l’exploration est de rassembler un ensemble diversifié de points de données ou de solutions qui pourraient potentiellement conduire à la découverte de meilleurs optima globaux. Elle empêche le processus de recherche de se bloquer dans des optima locaux en encourageant la considération de régions moins visitées ou inexplorées de l’espace de recherche.\nDans les algorithmes, l’exploration peut être mise en œuvre en introduisant de la randomisation, en essayant de nouveaux chemins ou des chemins moins prometteurs, ou en utilisant des stratégies comme le recuit simulé ou les algorithmes génétiques qui encouragent la diversité.\n\n\nExploitation :\n\n\nL’exploitation se concentre sur l’utilisation des informations connues pour affiner et améliorer les solutions existantes. Elle implique de concentrer l’effort de recherche autour des zones censées contenir des solutions de haute qualité basées sur des connaissances ou expériences antérieures. L’objectif est d’optimiser et de peaufiner ces solutions pour obtenir le meilleur résultat possible dans ces régions.\nDans les algorithmes, l’exploitation peut être observée dans des stratégies telles que la montée de colline, la montée/descente de gradient ou les algorithmes gloutons, où la recherche est axée sur l’amélioration locale et la réalisation de gains incrémentaux.\n\n\n\nVoir aussi : Properties of Simulated Annealing - Georgia Tech - Machine Learning. Vidéo Udacity (4m 10s). Publiée le 2015-02-23."
+  },
+  {
+    "objectID": "lectures/19/slides.html#exemple",
+    "href": "lectures/19/slides.html#exemple",
+    "title": "Recherche locale",
+    "section": "Exemple",
+    "text": "Exemple\n\n# On s'assure de toujours générer les mêmes coordonnées\nnp.random.seed(42)\n\n# Générer des coordonnées aléatoires pour les villes\nnum_cities = 20\ncoordinates = np.random.rand(num_cities, 2) * 100\n\n# Calculer la matrice des distances\ndistance_matrix = np.sqrt(((coordinates[:, np.newaxis] - coordinates[np.newaxis, :]) ** 2).sum(axis=2))\n\n# Paramètres du recuit simulé\n\ninitial_temp = 15\ncooling_rate = 0.995\nmax_iterations = 1000"
+  },
+  {
+    "objectID": "lectures/19/slides.html#algorithme-de-heldkarp",
+    "href": "lectures/19/slides.html#algorithme-de-heldkarp",
+    "title": "Recherche locale",
+    "section": "Algorithme de Held–Karp",
+    "text": "Algorithme de Held–Karp\n\nIntroduction : 1962 par Held, Karp et indépendamment par Bellman.\nProblème : Résout le problème du voyageur de commerce (TSP) avec la programmation dynamique.\nComplexité temporelle : \\(\\Theta(2^n n^2)\\).\nComplexité spatiale : \\(\\Theta(2^n n)\\).\nEfficacité : Meilleur que la méthode exhaustive \\(\\Theta(n!)\\), mais reste exponentiel."
+  },
+  {
+    "objectID": "lectures/19/slides.html#algorithme-de-heldkarp-1",
+    "href": "lectures/19/slides.html#algorithme-de-heldkarp-1",
+    "title": "Recherche locale",
+    "section": "Algorithme de Held–Karp",
+    "text": "Algorithme de Held–Karp\n\n\nCode\nfrom itertools import combinations\nimport numpy as np\n\ndef held_karp(distance_matrix):\n    # Number of cities\n    n = len(distance_matrix)\n\n    # DP table: dp[subset][last_visited] = minimum cost to reach `last_visited` with `subset` of cities visited\n    dp = {}\n\n    # Initialize the DP table with the distances from the starting point (city 0)\n    for i in range(1, n):\n        dp[(1 &lt;&lt; i, i)] = distance_matrix[0][i]\n\n    # Iterate over all subset sizes\n    for subset_size in range(2, n):\n        for subset in combinations(range(1, n), subset_size):\n            # Bitmask of the subset, excluding the starting city\n            subset_mask = sum(1 &lt;&lt; i for i in subset)\n            for last in subset:\n                # Update the DP table with the minimum cost for this subset and last city\n                prev_subset_mask = subset_mask & ~(1 &lt;&lt; last)\n                dp[(subset_mask, last)] = min(\n                    dp[(prev_subset_mask, k)] + distance_matrix[k][last]\n                    for k in subset if k != last\n                )\n\n    # Find the minimum cost to complete the tour back to the starting point (city 0)\n    full_mask = (1 &lt;&lt; n) - 2  # All cities visited except starting city\n    return min(dp[(full_mask, last)] + distance_matrix[last][0] for last in range(1, n))\n\n# Example usage with a sample distance matrix\n# distance_matrix = [\n#     [0, 10, 15, 20],\n#     [10, 0, 35, 25],\n#     [15, 35, 0, 30],\n#     [20, 25, 30, 0]\n# ]\nmin_cost = held_karp(distance_matrix)\nprint(f\"Held–Karp pour trouver le coût minimum: {min_cost:.2f}\")\n\n\nHeld–Karp pour trouver le coût minimum: 386.43\n\n\n\n\nHeld et Karp (1962) and Bellman (1962)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#trace-dexécution",
+    "href": "lectures/19/slides.html#trace-dexécution",
+    "title": "Recherche locale",
+    "section": "Trace d’exécution",
+    "text": "Trace d’exécution\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Simulated Annealing function\ndef simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations):\n    num_cities = len(distance_matrix)\n    current_route = np.arange(num_cities)\n    np.random.shuffle(current_route)\n    current_cost = calculate_total_distance(current_route, distance_matrix)\n    \n    best_route = current_route.copy()\n    best_cost = current_cost\n\n    temperatures = []\n    costs = []\n\n    temperature = initial_temp\n\n    # Collect intermediate solutions\n    intermediate_solutions = []\n    for iteration in range(max_iterations):\n        neighbor_route = get_neighbor(current_route)\n        neighbor_cost = calculate_total_distance(neighbor_route, distance_matrix)\n        \n        # Accept neighbor if it's better, or with a probability if it's worse\n        if neighbor_cost &lt; current_cost or np.random.rand() &lt; np.exp(-(neighbor_cost - current_cost) / temperature):\n            current_route = neighbor_route\n            current_cost = neighbor_cost\n\n            if current_cost &lt; best_cost:\n                best_route = current_route.copy()\n                best_cost = current_cost\n\n        # Store temperature and cost for plotting\n        temperatures.append(temperature)\n        costs.append(current_cost)\n\n        # Cool down the temperature\n        temperature *= cooling_rate\n\n        # Collect intermediate solutions at regular intervals\n        if iteration % (max_iterations // 10) == 0:\n            intermediate_solutions.append((current_route.copy(), current_cost))\n\n    # Plot 20 intermediate solutions in a 4x5 grid\n    fig, axes = plt.subplots(2, 5, figsize=(15, 6))\n    axes = axes.flatten()\n    for idx, (route, cost) in enumerate(intermediate_solutions):\n        ax = axes[idx]\n        ax.scatter(*zip(*coordinates), c='red', marker='o')\n        ax.plot(*zip(*coordinates[route]), 'b-', alpha=0.6)\n        ax.set_title(f\"Itération: {idx*100} - Coût: {cost:.0f}\")\n        ax.axis('off')  # Turn off the axes for a cleaner look\n    plt.tight_layout()\n    plt.show()\n\n    return best_route, best_cost, temperatures, costs\n\nbest_route, best_cost, temperatures, costs = simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations)\n\n\n\n\n\n\n\n\n\n\nLorsque j’ai initialement publié ces diapositives, la température initiale sélectionnée de 1000 était excessivement élevée par rapport au coût de la fonction objectif. En ajustant la température initiale à 15, nous obtenons un équilibre plus efficace entre exploration et exploitation.\nEn raison des instantanés pris toutes les 100 itérations, les augmentations de coût ne sont pas visibles. Cela est illustré sur la diapositive “Température et Coût”."
+  },
+  {
+    "objectID": "lectures/19/slides.html#meilleur-itinéraire",
+    "href": "lectures/19/slides.html#meilleur-itinéraire",
+    "title": "Recherche locale",
+    "section": "Meilleur itinéraire",
+    "text": "Meilleur itinéraire\n\n\nCode\n# Plot the final best route\nplt.figure(figsize=(5, 5))\nplt.scatter(*zip(*coordinates), c='red', marker='o')\nplt.plot(*zip(*coordinates[best_route]), 'b-', alpha=0.6)\nplt.title(f\"Meilleur itinéraire - Coût: {best_cost:.2f}\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nNous avons identifié une solution optimale!"
+  },
+  {
+    "objectID": "lectures/19/slides.html#température-et-coût",
+    "href": "lectures/19/slides.html#température-et-coût",
+    "title": "Recherche locale",
+    "section": "Température et coût",
+    "text": "Température et coût\n\n\nCode\n# Plot temperature and cost graphs\nplt.figure(figsize=(12, 5))\n\nplt.subplot(1, 2, 1)\nplt.plot(temperatures)\nplt.title(\"Température au fil des itérations\")\nplt.xlabel(\"Itération\")\nplt.ylabel(\"Température\")\nplt.subplot(1, 2, 2)\n\nplt.plot(costs)\nplt.title(\"Coût au fil des itérations\")\n\nplt.xlabel(\"Itération\")\nplt.ylabel(\"Coût\")\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "lectures/19/slides.html#échange-de-voisins",
+    "href": "lectures/19/slides.html#échange-de-voisins",
+    "title": "Recherche locale",
+    "section": "Échange de voisins",
+    "text": "Échange de voisins\n\nDescription : Sélectionner deux villes au hasard et échanger leurs positions.\nAvantages : Simple et efficace pour explorer des solutions voisines.\nInconvénients : Le changement peut être trop minime, ce qui peut ralentir la convergence.\n\n\ndef get_neighbor_swap(route):\n    a, b = np.random.randint(0, len(route), size=2)\n    new_route = route.copy()\n    new_route[a], new_route[b] = new_route[b], new_route[a]\n    return new_route"
+  },
+  {
+    "objectID": "lectures/19/slides.html#trace-dexécution-1",
+    "href": "lectures/19/slides.html#trace-dexécution-1",
+    "title": "Recherche locale",
+    "section": "Trace d’exécution",
+    "text": "Trace d’exécution\n\n\nCode\n# Plot the final best route\nget_neighbor = get_neighbor_swap\n\nbest_route, best_cost, temperatures, costs = simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#meilleur-chemin",
+    "href": "lectures/19/slides.html#meilleur-chemin",
+    "title": "Recherche locale",
+    "section": "Meilleur chemin",
+    "text": "Meilleur chemin\n\n\n\nCode\n# Plot the final best route\nplt.figure(figsize=(5, 5))\nplt.scatter(*zip(*coordinates), c='red', marker='o')\nplt.plot(*zip(*coordinates[best_route]), 'b-', alpha=0.6)\nplt.title(f\"Meilleur Itinéraire - Coût: {best_cost:.2f}\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nDans ce cas précis et pour le problème donné, la réversion de segment (coût = 386,43) s’est avérée plus efficace par rapport à l’échange de voisins (coût = 430,03)."
+  },
+  {
+    "objectID": "lectures/19/slides.html#température-et-coût-1",
+    "href": "lectures/19/slides.html#température-et-coût-1",
+    "title": "Recherche locale",
+    "section": "Température et coût",
+    "text": "Température et coût\n\n\nCode\n# Plot temperature and cost graphs\nplt.figure(figsize=(12, 5))\n\nplt.subplot(1, 2, 1)\nplt.plot(temperatures)\nplt.title(\"Température au fil des itérations\")\nplt.xlabel(\"Itération\")\nplt.ylabel(\"Température\")\nplt.subplot(1, 2, 2)\n\nplt.plot(costs)\nplt.title(\"Coût au fil des itérations\")\nplt.xlabel(\"Itération\")\n\nplt.ylabel(\"Coût\")\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "lectures/19/slides.html#sélection-dune-stratégie-de-voisinage",
+    "href": "lectures/19/slides.html#sélection-dune-stratégie-de-voisinage",
+    "title": "Recherche locale",
+    "section": "Sélection d’une stratégie de voisinage",
+    "text": "Sélection d’une stratégie de voisinage\n\nMouvements simples (échange, insertion) : Efficaces pour l’exploration initiale ; risque d’être piégé dans des optima locaux.\nMouvements complexes : Améliorent la capacité à échapper aux optima locaux et accélèrent la convergence ; impliquent un coût computationnel plus élevé.\nApproches hybrides : Intégrer diverses stratégies pour la génération de voisinage. Utiliser des mouvements simples au début, en passant à des mouvements complexes à mesure que la convergence progresse."
+  },
+  {
+    "objectID": "lectures/19/slides.html#température-initiale",
+    "href": "lectures/19/slides.html#température-initiale",
+    "title": "Recherche locale",
+    "section": "Température initiale",
+    "text": "Température initiale\nInfluence : Étant donné que la probabilité d’accepter un nouvel état est donnée par \\(e^{-\\frac{\\Delta E}{T}}\\), la sélection de la température initiale est directement influencée par \\(\\Delta E\\) et donc par la valeur de la fonction objectif pour un état aléatoire, \\(f(s)\\)."
+  },
+  {
+    "objectID": "lectures/19/slides.html#température-initiale-1",
+    "href": "lectures/19/slides.html#température-initiale-1",
+    "title": "Recherche locale",
+    "section": "Température initiale",
+    "text": "Température initiale\n\nProblèmes exemple : Considérons deux scénarios : le problème \\(a\\) avec \\(f(a) = 1,000\\) et le problème \\(b\\) avec \\(f(b) = 100\\).\nDifférence d’énergie : Accepter un état 10 % pire entraîne des différences d’énergie de \\(\\Delta E = 0.1 \\cdot f(a) = 100\\) pour le problème \\(a\\) et \\(\\Delta E = 0.1 \\cdot f(b) = 10\\) pour le problème \\(b\\).\nProbabilité d’acceptation : Pour accepter un tel état 60 % du temps, on fixe \\(e^{-\\frac{\\Delta E}{T}} = 0.6\\). La résolution pour \\(T\\) donne des températures initiales d’environ \\(T \\approx 195.8\\) pour le problème \\(a\\) et \\(T \\approx 19.58\\) pour le problème \\(b\\)."
+  },
+  {
+    "objectID": "lectures/19/slides.html#température-initiale-2",
+    "href": "lectures/19/slides.html#température-initiale-2",
+    "title": "Recherche locale",
+    "section": "Température initiale",
+    "text": "Température initiale\nUne approche populaire consiste à définir la température initiale de sorte qu’une portion significative des mouvements (souvent autour de 60-80%) soit acceptée.\nCela peut être réalisé en exécutant une phase préliminaire où la température est ajustée jusqu’à ce que le ratio d’acceptation se stabilise dans cette plage.\n\n\nBen-Ameur (2004) propose une méthodologie mathématique plus rigoureuse."
+  },
+  {
+    "objectID": "lectures/19/slides.html#stratégies-de-refroidissement",
+    "href": "lectures/19/slides.html#stratégies-de-refroidissement",
+    "title": "Recherche locale",
+    "section": "Stratégies de refroidissement",
+    "text": "Stratégies de refroidissement\nDans le cadre du recuit simulé, le refroidissement est essentiel pour gérer la convergence de l’algorithme. Le calendrier de refroidissement détermine le taux de diminution de la température, influençant ainsi la capacité de l’algorithme à échapper aux optima locaux et à converger vers une solution quasi-optimale.\n\n\nNourani et Andresen (1998) et Alex et al. (2017)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#refroidissement-linéaire",
+    "href": "lectures/19/slides.html#refroidissement-linéaire",
+    "title": "Recherche locale",
+    "section": "Refroidissement linéaire",
+    "text": "Refroidissement linéaire\n\nDescription : La température diminue linéairement à chaque itération.\nFormule : \\(T = T_0 - \\alpha \\cdot k\\)\n\n\\(T_0\\) : Température initiale\n\\(\\alpha\\) : Un décrément constant\n\\(k\\) : Itération actuelle\n\nAvantages : Simple à mettre en œuvre et à comprendre.\nInconvénients : Conduit souvent à une convergence prématurée car la température diminue trop rapidement.\n\n\ntemperature = initial_temp - alpha * iteration"
+  },
+  {
+    "objectID": "lectures/19/slides.html#refroidissement-géométrique",
+    "href": "lectures/19/slides.html#refroidissement-géométrique",
+    "title": "Recherche locale",
+    "section": "Refroidissement géométrique",
+    "text": "Refroidissement géométrique\n\nDescription : La température diminue de manière exponentielle à chaque itération.\nFormule : \\(T = T_0 \\cdot \\alpha^k\\)\n\n\\(\\alpha\\) : Taux de refroidissement, généralement entre 0,8 et 0,99\n\\(k\\) : Itération actuelle\n\nAvantages : Largement utilisé pour sa simplicité et son efficacité.\nInconvénients : Le choix de \\(\\alpha\\) est crucial ; s’il est trop petit, la température baisse trop rapidement, et s’il est trop grand, la convergence peut être lente.\n\n\ntemperature = initial_temp * (cooling_rate ** iteration)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#refroidissement-logarithmique",
+    "href": "lectures/19/slides.html#refroidissement-logarithmique",
+    "title": "Recherche locale",
+    "section": "Refroidissement logarithmique",
+    "text": "Refroidissement logarithmique\n\nDescription : La température diminue lentement selon une fonction logarithmique.\nFormule : \\(T = \\frac{\\alpha \\cdot T_0}{\\log(1+k)}\\)\n\n\\(\\alpha\\) : Une constante de mise à l’échelle\n\\(k\\) : Itération actuelle\n\nAvantages : Offre un taux de refroidissement plus lent, utile pour les problèmes nécessitant une exploration approfondie de l’espace de solution.\nInconvénients : La convergence peut être très lente, nécessitant de nombreuses itérations.\n\n\ntemperature = alpha * initial_temp / (np.log(1 + iteration))"
+  },
+  {
+    "objectID": "lectures/19/slides.html#refroidissement-inverse",
+    "href": "lectures/19/slides.html#refroidissement-inverse",
+    "title": "Recherche locale",
+    "section": "Refroidissement inverse",
+    "text": "Refroidissement inverse\n\nDescription : La température diminue selon une fonction inverse du numéro d’itération.\nFormule : \\(T = \\frac{T_0}{1+\\alpha \\cdot k}\\)\n\n\\(\\alpha\\) : Une constante de mise à l’échelle\n\\(k\\) : Itération actuelle\n\nAvantages : Permet un processus de refroidissement plus contrôlé, équilibrant exploration et exploitation.\nInconvénients : Peut nécessiter un ajustement minutieux de \\(\\alpha\\) pour être efficace.\n\n\ntemperature = initial_temp / (1 + alpha * iteration)"
+  },
+  {
+    "objectID": "lectures/19/slides.html#refroidissement-adaptatif",
+    "href": "lectures/19/slides.html#refroidissement-adaptatif",
+    "title": "Recherche locale",
+    "section": "Refroidissement adaptatif",
+    "text": "Refroidissement adaptatif\n\nDescription : Le calendrier de refroidissement est ajusté dynamiquement en fonction des performances de l’algorithme.\nStratégie : Si l’algorithme ne progresse pas de manière significative, le taux de refroidissement peut être ralenti. Inversement, si le progrès est régulier, le taux de refroidissement peut être accéléré.\nAvantages : Plus flexible et peut s’adapter aux caractéristiques du problème.\nInconvénients : Plus complexe à mettre en œuvre et nécessite une conception minutieuse pour éviter l’instabilité.\n\n\nif no_significant_change_in_cost:\n    temperature *= 0.99 # Ralentir le refroidissement\nelse:\n    temperature *= 0.95 # Accélérer le refroidissement"
+  },
+  {
+    "objectID": "lectures/19/slides.html#stratégies-de-refroidissement-1",
+    "href": "lectures/19/slides.html#stratégies-de-refroidissement-1",
+    "title": "Recherche locale",
+    "section": "Stratégies de refroidissement",
+    "text": "Stratégies de refroidissement\n\n\n\nCode\n# Constants\ninitial_temp = 100\nalpha = 0.995\niterations = np.arange(0, 1001)\n\n# Cooling strategies\ndef exponential_cooling(initial_temp, alpha, iteration):\n    return initial_temp * (alpha ** iteration)\n\ndef linear_cooling(initial_temp, alpha, iteration):\n    return max(0, initial_temp - alpha * iteration)\n\ndef logarithmic_cooling(initial_temp, alpha, iteration):\n    return min(initial_temp, alpha * initial_temp / (np.log(1 + iteration) + 10e-9))\n\ndef inverse_cooling(initial_temp, alpha, iteration):\n    return initial_temp / (1 + alpha * iteration)\n\n# Calculate temperatures\nlinear_temps = [linear_cooling(initial_temp, alpha, i) for i in iterations]\nexponential_temps = [exponential_cooling(initial_temp, alpha, i) for i in iterations]\nlogarithmic_temps = [logarithmic_cooling(initial_temp, alpha, i) for i in iterations]\ninverse_temps = [inverse_cooling(initial_temp, alpha, i) for i in iterations]\n\n# Plotting\nplt.figure(figsize=(8, 6))\nplt.plot(iterations, exponential_temps, label='Refroidissement exponentiel')\nplt.plot(iterations, linear_temps, label='Refroidissement linéaire')\nplt.plot(iterations, logarithmic_temps, label='Refroidissement logarithmique')\nplt.plot(iterations, inverse_temps, label='Refroidissement inverse')\nplt.xlabel('Itération')\nplt.ylabel('Température')\nplt.title(r'Stratégies de refroidissement ($\\alpha = 0.995$)')\nplt.legend()\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nVoir aussi : Effective Simulated Annealing with Python par Nathan A. Rooy, 2024-11-05."
+  },
+  {
+    "objectID": "lectures/19/slides.html#choisir-la-bonne-stratégie",
+    "href": "lectures/19/slides.html#choisir-la-bonne-stratégie",
+    "title": "Recherche locale",
+    "section": "Choisir la bonne stratégie",
+    "text": "Choisir la bonne stratégie\n\nSpécifique au problème : Le choix du calendrier de refroidissement dépend souvent des caractéristiques du problème à résoudre. Certains problèmes bénéficient d’un taux de refroidissement plus lent, tandis que d’autres peuvent nécessiter une convergence plus rapide.\nExpérimentation : Il est courant d’expérimenter différentes stratégies et paramètres pour trouver le meilleur équilibre entre exploration (recherche large) et exploitation (affinement des meilleures solutions actuelles)."
+  },
+  {
+    "objectID": "lectures/19/slides.html#conclusion",
+    "href": "lectures/19/slides.html#conclusion",
+    "title": "Recherche locale",
+    "section": "Conclusion",
+    "text": "Conclusion\nAprès l’application du recuit simulé, une méthode de recherche locale comme la montée de colline peut être utilisée pour affiner la solution.\n\nLe recuit simulé est efficace pour explorer l’espace de solutions et éviter les minima locaux, tandis que la recherche locale se concentre sur l’exploration des solutions voisines de celle obtenue."
+  },
+  {
+    "objectID": "lectures/19/slides.html#visualisation-du-recuit-simulé",
+    "href": "lectures/19/slides.html#visualisation-du-recuit-simulé",
+    "title": "Recherche locale",
+    "section": "Visualisation du recuit simulé",
+    "text": "Visualisation du recuit simulé\n\n\n\nAttribution: ComputationalScientist, publié le 06-01-2018."
+  },
+  {
+    "objectID": "lectures/19/slides.html#résumé",
+    "href": "lectures/19/slides.html#résumé",
+    "title": "Recherche locale",
+    "section": "Résumé",
+    "text": "Résumé\n\nLes algorithmes de recherche locale se concentrent sur la recherche d’états objectifs en se déplaçant entre des états voisins sans suivre les chemins.\nL’algorithme de montée de colline recherche le voisin de plus grande valeur mais peut se retrouver coincé dans des maxima locaux ou des plateaux.\nUne représentation efficace de l’état, comme l’utilisation de permutations dans le problème des 8-Reines, évite les placements illégaux et améliore les performances.\nLe recuit simulé permet des déplacements occasionnels vers le haut pour échapper aux optima locaux, contrôlés par un paramètre de température décroissant.\nLa probabilité d’acceptation dans le recuit simulé diminue à mesure que la température baisse et que la différence d’énergie augmente.\nLe recuit simulé résout efficacement des problèmes complexes comme le problème du voyageur de commerce en explorant l’espace des solutions de manière probabiliste."
+  },
+  {
+    "objectID": "lectures/19/slides.html#lectures-complémentaires",
+    "href": "lectures/19/slides.html#lectures-complémentaires",
+    "title": "Recherche locale",
+    "section": "Lectures complémentaires",
+    "text": "Lectures complémentaires\n\n\n\n\n\n\n\n\n“La méthodologie globale du recuit simulé [simulated annealing] est ensuite déployée en détail sur une application réelle : un problème de planification de trajectoire aérienne à grande échelle impliquant près de 30 000 vols à l’échelle continentale européenne.”\n(Gendreau et Potvin 2019, chap. 1)\n\n\n\nSaviez-vous que vous pouvez accéder gratuitement à l’ensemble de la collection de livres de Springer ? En utilisant un appareil connecté à une adresse IP de l’uOttawa et en visitant Springer Link, vous avez la possibilité de télécharger des livres en format PDF ou EPUB.\nLe livre est co-édité par Jean-Yves Potvin et Michel Gendreau. Jean-Yves Potvin est professeur à l’Université de Montréal, tandis que Michel Gendreau est professeur à l’École Polytechnique de Montréal.\n\n\nGendreau et Potvin (2019), accès via Springer Link."
+  },
+  {
+    "objectID": "lectures/19/slides.html#prochain-cours",
+    "href": "lectures/19/slides.html#prochain-cours",
+    "title": "Recherche locale",
+    "section": "Prochain cours",
+    "text": "Prochain cours\n\nNous discuterons des algorithmes basés sur la population."
+  },
+  {
+    "objectID": "lectures/19/slides.html#références",
+    "href": "lectures/19/slides.html#références",
+    "title": "Recherche locale",
+    "section": "Références",
+    "text": "Références\n\n\nAarts, E. H. L., et J. H. M. Korst. 1989. Simulated annealing and Boltzmann machines : a stochastic approach to combinatorial optimization and neural computing. Wiley-Interscience series in discrete mathematics et optimization. Wiley.\n\n\nAlex, Kwaku Peprah, Kojo Appiah Simon, et Kwame Amponsah Samuel. 2017. « An Optimal Cooling Schedule Using a Simulated Annealing Based Approach ». Applied Mathematics 08 (08): 1195‑210. https://doi.org/10.4236/am.2017.88090.\n\n\nBellman, Richard. 1962. « Dynamic Programming Treatment of the Travelling Salesman Problem ». Journal of the ACM (JACM) 9 (1): 61‑63. https://doi.org/10.1145/321105.321111.\n\n\nBen-Ameur, Walid. 2004. « Computing the Initial Temperature of Simulated Annealing ». Computational Optimization and Applications 29 (3): 369‑85. https://doi.org/10.1023/b:coap.0000044187.23143.bd.\n\n\nGendreau, M., et J. Y. Potvin. 2019. Handbook of Metaheuristics. International Series in Operations Research & Management Science. Springer International Publishing. https://books.google.com.ag/books?id=RbfFwQEACAAJ.\n\n\nHeld, Michael, et Richard M. Karp. 1962. « A Dynamic Programming Approach to Sequencing Problems ». Journal of the Society for Industrial and Applied Mathematics 10 (1): 196‑210. https://doi.org/10.1137/0110015.\n\n\nLaarhoven, P. J. M., et E. H. L. Aarts. 1987. Simulated annealing: theory and applications. Kluwer Academic Publishers.\n\n\nNourani, Yaghout, et Bjarne Andresen. 1998. « A comparison of simulated annealing cooling strategies ». Journal of Physics A: Mathematical and General 31 (41): 8373.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
+  },
+  {
+    "objectID": "lectures/19/slides.html#prochain-cours-1",
+    "href": "lectures/19/slides.html#prochain-cours-1",
+    "title": "Recherche locale",
+    "section": "Prochain cours",
+    "text": "Prochain cours\n\nNous discuterons des algorithmes basés sur les populations."
+  },
+  {
+    "objectID": "lectures/19/slides.html#références-1",
+    "href": "lectures/19/slides.html#références-1",
+    "title": "Recherche locale",
+    "section": "Références",
+    "text": "Références\n\n\nAarts, E. H. L., et J. H. M. Korst. 1989. Simulated annealing and Boltzmann machines : a stochastic approach to combinatorial optimization and neural computing. Wiley-Interscience series in discrete mathematics et optimization. Wiley.\n\n\nAlex, Kwaku Peprah, Kojo Appiah Simon, et Kwame Amponsah Samuel. 2017. « An Optimal Cooling Schedule Using a Simulated Annealing Based Approach ». Applied Mathematics 08 (08): 1195‑210. https://doi.org/10.4236/am.2017.88090.\n\n\nBellman, Richard. 1962. « Dynamic Programming Treatment of the Travelling Salesman Problem ». Journal of the ACM (JACM) 9 (1): 61‑63. https://doi.org/10.1145/321105.321111.\n\n\nBen-Ameur, Walid. 2004. « Computing the Initial Temperature of Simulated Annealing ». Computational Optimization and Applications 29 (3): 369‑85. https://doi.org/10.1023/b:coap.0000044187.23143.bd.\n\n\nGendreau, M., et J. Y. Potvin. 2019. Handbook of Metaheuristics. International Series in Operations Research & Management Science. Springer International Publishing. https://books.google.com.ag/books?id=RbfFwQEACAAJ.\n\n\nHeld, Michael, et Richard M. Karp. 1962. « A Dynamic Programming Approach to Sequencing Problems ». Journal of the Society for Industrial and Applied Mathematics 10 (1): 196‑210. https://doi.org/10.1137/0110015.\n\n\nLaarhoven, P. J. M., et E. H. L. Aarts. 1987. Simulated annealing: theory and applications. Kluwer Academic Publishers.\n\n\nNourani, Yaghout, et Bjarne Andresen. 1998. « A comparison of simulated annealing cooling strategies ». Journal of Physics A: Mathematical and General 31 (41): 8373.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
   },
   {
     "objectID": "lectures/21/slides.html#message-du-jour",
@@ -11142,7 +11156,7 @@
     "href": "lectures/01/index.html#approfondissement",
     "title": "Administration, exploration des divers définitions de l’IA",
     "section": "Approfondissement",
-    "text": "Approfondissement\n\n\nLes 18 premières minutes de cette vidéo de 47 minutes offrent une vue d’ensemble historique de l’intelligence artificielle.\nPour saisir pleinement l’évolution de l’intelligence artificielle (IA), il est important de se pencher sur son histoire, surtout à une époque où nous atteignons un pic d’optimisme spéculatif. En effet, on affirme souvent que l’avènement de l’intelligence artificielle générale (IAG) est proche. Cette vidéo révélera que de telles prédictions ont été régulièrement émises depuis les années 1950.\n\nMelanie Mitchell est une voix influente dans les débats actuels sur l’intelligence artificielle, notamment en ce qui concerne l’évaluation des systèmes logiciels. Pour ceux qui s’intéressent à la nature de l’intelligence, je recommande vivement sa série de balados, composée de six épisodes, chacun durant entre 35 et 50 minutes.\n\nSanta Fe Institute, Complexity Podcast, The Nature of Intelligence"
+    "text": "Approfondissement\n\n\nLes 18 premières minutes de cette vidéo de 47 minutes offrent une vue d’ensemble historique de l’intelligence artificielle.\nPour saisir pleinement l’évolution de l’intelligence artificielle (IA), il est important de se pencher sur son histoire, surtout à une époque où nous atteignons un pic d’optimisme spéculatif. En effet, on affirme souvent que l’avènement de l’intelligence artificielle générale (IAG) est proche. Cette vidéo révélera que de telles prédictions ont été régulièrement émises depuis les années 1950.\n\nMelanie Mitchell est une voix influente dans les débats actuels sur l’intelligence artificielle, notamment en ce qui concerne l’évaluation des systèmes logiciels. Pour ceux qui s’intéressent à la nature de l’intelligence, je recommande vivement sa série de balados, composée de six épisodes, chacun durant entre 35 et 50 minutes.\n\nSanta Fe Institute, Complexity Podcast, The Nature of Intelligence, published from September to December 2024\nAre We Thinking Correctly About AI Intelligence? The Joy of Why, published on 2026-08-20"
   },
   {
     "objectID": "lectures/03/index.html",
@@ -11261,7 +11275,7 @@
     "href": "lectures/11/index.html",
     "title": "Introduction aux réseaux de neurones artificiels",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 2 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/11/index.html#participer",
@@ -11282,7 +11296,7 @@
     "href": "lectures/13/index.html",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 2 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/13/index.html#participer",
@@ -11303,7 +11317,7 @@
     "href": "lectures/15/index.html",
     "title": "Architectures des réseaux de neurones artificiels",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 18 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 16 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/15/index.html#participer",
@@ -11324,7 +11338,7 @@
     "href": "lectures/17/index.html",
     "title": "Recherche informée",
     "section": "",
-    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 18 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.\nÉchéance : Le Quiz 2 est prévu pour mercredi 23 novembre 2026, pendant le cours. Des détails supplémentaires sont disponibles dans la FAQ."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 16 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.\nÉchéance : Le Quiz 2 est prévu pour mercredi 18 novembre 2026, pendant le cours. Des détails supplémentaires sont disponibles dans la FAQ."
   },
   {
     "objectID": "lectures/17/index.html#participer",
@@ -11336,30 +11350,16 @@
   {
     "objectID": "lectures/19/index.html",
     "href": "lectures/19/index.html",
-    "title": "Quiz 2",
+    "title": "Recherche locale",
     "section": "",
-    "text": "Important\n\n\n\nCe quiz a une durée d’une (1) heure (60 minutes).\nLes copies sont imprimées sur une seule face.\nParfois, des difficultés surviennent en raison d’une mauvaise gestion du temps, où 80 % du temps est consacré à 20 % des questions. Si vous êtes bloqué, une stratégie efficace est d’annoter la question problématique, passer à la suivante, et y revenir plus tard si le temps le permet. Maximisez le nombre de points obtenus.\nSi vous avez besoin d’aller aux toilettes, veuillez y aller maintenant, car 60 minutes est une courte période de temps."
+    "text": "Important\n\n\n\nÉchéance : Le devoir 4 doit être soumis au plus tard le 9 décembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.\nPour le devoir 4, il est nécessaire de s’inscrire à un groupe sur la plateforme Brightspace, que vous choisissiez de travailler individuellement ou en binôme. Cette inscription est nécessaire pour accéder à l’énoncé du devoir."
   },
   {
-    "objectID": "lectures/19/index.html#avant-le-quiz",
-    "href": "lectures/19/index.html#avant-le-quiz",
-    "title": "Quiz 2",
-    "section": "Avant le quiz",
-    "text": "Avant le quiz\nJ’ai quelques crayons et un aiguisoir à l’avant."
-  },
-  {
-    "objectID": "lectures/19/index.html#quiz",
-    "href": "lectures/19/index.html#quiz",
-    "title": "Quiz 2",
-    "section": "Quiz",
-    "text": "Quiz\nN’ouvrez pas le quiz avant que je donne le signal.\nÉcrivez votre nom et votre numéro d’étudiant sur le questionnaire et sur le Scantron.\nLisez attentivement les instructions.\nPendant l’examen, nous circulerons avec les feuilles de présence.\nVous devez compléter à la fois le formulaire de questions et la feuille Scantron."
-  },
-  {
-    "objectID": "lectures/19/index.html#après-le-quiz",
-    "href": "lectures/19/index.html#après-le-quiz",
-    "title": "Quiz 2",
-    "section": "Après le quiz",
-    "text": "Après le quiz\nIl est impératif de ne pas quitter la salle avec votre copie d’examen, conformément aux droits d’auteur mentionnés en bas de page.\nSi vous terminez avant la fin du temps imparti et que la situation est calme, restez assis, levez la main et je viendrai récupérer votre copie, puis vous pourrez partir.\nCependant, si plusieurs personnes terminent en même temps, je vous demanderai de rester assis pour éviter de déranger les autres étudiants qui sont encore en train d’écrire.\nNous devons nous assurer que toutes les copies sont collectées 10 minutes avant le début du cours suivant."
+    "objectID": "lectures/19/index.html#participer",
+    "href": "lectures/19/index.html#participer",
+    "title": "Recherche locale",
+    "section": "Participer",
+    "text": "Participer\n– présentation (PDF, Jupyter Notebook)"
   },
   {
     "objectID": "lectures/21/index.html",
