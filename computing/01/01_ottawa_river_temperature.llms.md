@@ -14,7 +14,7 @@ Université d’Ottawa
 
 Date de publication
 
-5 septembre 2025
+31 août 2026
 
 # Objectifs d’apprentissage
 

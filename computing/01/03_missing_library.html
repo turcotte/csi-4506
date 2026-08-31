@@ -514,7 +514,7 @@ Important
 <h1>Import</h1>
 <p>Dans ce cahier, nous utilisons la bibliothèque <a href="https://github.com/Mimino666/langdetect">langdetect</a> pour identifier avec précision la langue des échantillons de texte donnés.</p>
 <p>Tout d’abord, importons <code>langdetect</code>.</p>
-<div id="e40a2757" class="cell" data-execution_count="1">
+<div id="e40a2757" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langdetect <span class="im">import</span> detect</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>L’exécution de la cellule de code ci-dessus entraînera une erreur, car la bibliothèque <code>langdetect</code> n’est pas installée par défaut dans Google Colab.</p>
@@ -535,7 +535,7 @@ bouton "Open Examples" ci-dessous.
 <p>Ce problème peut être résolu en ajoutant la ligne de code suivante avant la première instruction <code>import</code>. Essayez-le !</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">! </span><span class="ex">pip</span> install langdetect</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Une fois ce problème résolu, nous pouvons appeler <code>detect</code>. Essayez-le !</p>
-<div id="7db3b526" class="cell" data-execution_count="2">
+<div id="7db3b526" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>detect(<span class="st">"Bonjour tout le monde!"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>

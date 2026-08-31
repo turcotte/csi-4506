@@ -150,7 +150,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/computing/01/01_ottawa_river_temperature.html</loc>
-    <lastmod>2025-09-05T18:06:08.000Z</lastmod>
+    <lastmod>2026-08-31T17:51:11.633Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/08/bias_variance.html</loc>
@@ -166,7 +166,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/computing/01/slides.html</loc>
-    <lastmod>2026-08-09T14:59:07.442Z</lastmod>
+    <lastmod>2026-08-31T17:51:11.633Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/01/slides.html</loc>
@@ -250,7 +250,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/15/index.html</loc>
-    <lastmod>2026-08-10T17:39:27.044Z</lastmod>
+    <lastmod>2026-08-31T17:26:35.615Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/17/index.html</loc>
@@ -307,5 +307,9 @@
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/20/knapsack.html</loc>
     <lastmod>2024-11-21T13:45:48.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://turcotte.xyz/teaching/csi-4506/lectures/15/tang_cnn_tutorial.html</loc>
+    <lastmod>2026-08-31T13:18:49.046Z</lastmod>
   </url>
 </urlset>

@@ -12,4 +12,5 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Practiquer
 
+- [Prédiction de la charge ribosomique moyenne avec un réseau neuronal convolutif 1D](../../lectures/15/tang_cnn_tutorial.llms.md)
 - [ConvNetJS: Deep Learning in your browser](https://cs.stanford.edu/people/karpathy/convnetjs/)

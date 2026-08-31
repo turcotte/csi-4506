@@ -498,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 septembre 2025</p>
+      <p class="date">31 août 2026</p>
     </div>
   </div>
   
@@ -523,16 +523,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="utiliser-ce-cahier-en-ligne-sans-rien-installer" class="level2">
 <h2 class="anchored" data-anchor-id="utiliser-ce-cahier-en-ligne-sans-rien-installer">Utiliser ce cahier en ligne sans rien installer</h2>
 <p>Bien que les spécificités du code seront discutées dans les cahiers suivants, il est important de noter que celui-ci nécessite l’installation de <a href="https://pandas.pydata.org">pandas</a> et <a href="https://matplotlib.org">matplotlib</a>. Ces bibliothèques sont préinstallées sur <a href="https://colab.research.google.com">Google Colab</a>, facilitant ainsi leur utilisation immédiate. Il faut cependant un compte Google afin d’exécuter le document.</p>
-<p><a target="_blank" href="https://colab.research.google.com/github/turcotte/csi4506-a25/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p><a target="_blank" href="https://colab.research.google.com/github/turcotte/csi4506-a25/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb">
+<p><a target="_blank" href="https://colab.research.google.com/github/turcotte/csi4506-a26/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p><a target="_blank" href="https://colab.research.google.com/github/turcotte/csi4506-a26/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb">
 <p><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></p>
-</a><p><a target="_blank" href="https://colab.research.google.com/github/turcotte/csi4506-a25/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p>
+</a><p><a target="_blank" href="https://colab.research.google.com/github/turcotte/csi4506-a26/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p>
 <p>Si vous consultez ce document sur le site du cours, vous voyez le résultat de la conversion d’un Jupyter Notebook en HTML. Vous pouvez télécharger le Jupyter Notebook correspondant à partir du sommaire, généralement situé dans le coin supérieur droit lorsque vous naviguez sur un ordinateur. Alternativement, vous pouvez le télécharger directement <a href="01_ottawa_river_temperature.ipynb">ici</a>.</p>
 </section>
 <section id="consulter-ce-cahier-sans-exécuter-de-code" class="level2">
 <h2 class="anchored" data-anchor-id="consulter-ce-cahier-sans-exécuter-de-code">Consulter ce cahier sans exécuter de code</h2>
-<p><a target="_blank" href="https://nbviewer.jupyter.org/github/turcotte/csi4506-a25/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p><a target="_blank" href="https://nbviewer.jupyter.org/github/turcotte/csi4506-a25/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb">
+<p><a target="_blank" href="https://nbviewer.jupyter.org/github/turcotte/csi4506-a26/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p><a target="_blank" href="https://nbviewer.jupyter.org/github/turcotte/csi4506-a26/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb">
 <p><img src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg" alt="Open In nbviewer"></p>
-</a><p><a target="_blank" href="https://nbviewer.jupyter.org/github/turcotte/csi4506-a25/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p>
+</a><p><a target="_blank" href="https://nbviewer.jupyter.org/github/turcotte/csi4506-a26/blob/main/notebooks/computing/01/01_ottawa_river_temperature.ipynb"></a></p>
 </section>
 </section>
 <section id="concepts" class="level1">
@@ -559,7 +559,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Dans cet exemple, nous utilisons le jeu de données <a href="https://open.ottawa.ca/documents/2dff4bca304f4308996681aa6265f64d/about"><strong>Température de la rivière des Outaouais</strong></a>, disponible via le <a href="https://open.ottawa.ca">portail des données ouvertes de la Ville d’Ottawa</a>.</p>
 <section id="importation-des-bibliothèques-nécessaires" class="level2">
 <h2 class="anchored" data-anchor-id="importation-des-bibliothèques-nécessaires">Importation des bibliothèques nécessaires</h2>
-<div id="515ee873" class="cell" data-execution_count="1">
+<div id="515ee873" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -582,7 +582,7 @@ Avertissement
 <p>Vous êtes également responsable de vous assurer que le code source de vos devoirs reste privé et n’est pas accessible publiquement.</p>
 </div>
 </div>
-<div id="49a86b8d" class="cell" data-execution_count="2">
+<div id="49a86b8d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL du fichier Excel</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://www.arcgis.com/sharing/rest/content/items/2dff4bca304f4308996681aa6265f64d/data'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -593,7 +593,7 @@ Avertissement
 </section>
 <section id="lecture-du-fichier-excel" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-du-fichier-excel">Lecture du fichier Excel</h2>
-<div id="d44db778" class="cell" data-execution_count="3">
+<div id="d44db778" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lire le fichier Excel dans un DataFrame pandas</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(BytesIO(response.content), sheet_name<span class="op">=</span><span class="st">'Britannia raw water temperature'</span>, header<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -601,7 +601,7 @@ Avertissement
 <section id="extraction-des-données-du-fichier-excel" class="level2">
 <h2 class="anchored" data-anchor-id="extraction-des-données-du-fichier-excel">Extraction des données du fichier Excel</h2>
 <p>Les colonnes B à U contiennent les températures moyennes quotidiennes pour chaque année de 2005 à 2023, chaque colonne correspondant à une année spécifique. Les lignes 11 à 375 représentent les valeurs moyennes quotidiennes, où la ligne 11 correspond au 1er janvier et la ligne 375 correspond au 31 décembre. Par exemple, la cellule B11 contient la température moyenne du 1er janvier 2005, tandis que la cellule U375 contient la température moyenne du 31 décembre 2023.</p>
-<div id="5d167948" class="cell" data-execution_count="4">
+<div id="5d167948" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Définir la plage d'années et les colonnes</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2005</span>, <span class="dv">2023</span> <span class="op">+</span> <span class="dv">1</span>) <span class="co"># Jusqu'à 2023 selon votre description</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>) <span class="co"># Colonnes B à U (indexées à 1 dans Excel, indexées à 0 dans pandas)</span></span>
@@ -617,7 +617,7 @@ Avertissement
 </section>
 <section id="tracer-les-données" class="level2">
 <h2 class="anchored" data-anchor-id="tracer-les-données">Tracer les données</h2>
-<div id="f06e7656" class="cell" data-execution_count="5">
+<div id="f06e7656" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tracer les données</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
