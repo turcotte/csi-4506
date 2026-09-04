@@ -8,7 +8,7 @@ Marcel Turcotte
 
 Date de publication
 
-Version : 31 août 2026, 09h18
+Version : 31 août 2026, 18h44
 
 # 1 Introduction
 
@@ -72,7 +72,7 @@ N_TRAIN = 220_000
 N_VALIDATION = 27_500
 N_TEST = 27_500
 
-BATCH_SIZE = 128
+BATCH_SIZE = 256
 MAX_EPOCHS = 50
 PATIENCE = 5
 
@@ -729,41 +729,49 @@ history = model.fit(
 ```
 
     Epoch 1/50
-    1719/1719 - 88s - 51ms/step - loss: 0.3234 - pearson_r: 0.8230 - r2: 0.6766 - val_loss: 0.1446 - val_pearson_r: 0.9270 - val_r2: 0.8555
+    860/860 - 82s - 95ms/step - loss: 0.3765 - pearson_r: 0.7908 - r2: 0.6235 - val_loss: 0.2153 - val_pearson_r: 0.8923 - val_r2: 0.7849
     Epoch 2/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1435 - pearson_r: 0.9255 - r2: 0.8565 - val_loss: 0.1175 - val_pearson_r: 0.9411 - val_r2: 0.8826
+    860/860 - 79s - 92ms/step - loss: 0.1669 - pearson_r: 0.9128 - r2: 0.8331 - val_loss: 0.1323 - val_pearson_r: 0.9366 - val_r2: 0.8678
     Epoch 3/50
-    1719/1719 - 87s - 51ms/step - loss: 0.1235 - pearson_r: 0.9362 - r2: 0.8765 - val_loss: 0.1041 - val_pearson_r: 0.9467 - val_r2: 0.8960
+    860/860 - 79s - 92ms/step - loss: 0.1300 - pearson_r: 0.9328 - r2: 0.8700 - val_loss: 0.1132 - val_pearson_r: 0.9443 - val_r2: 0.8869
     Epoch 4/50
-    1719/1719 - 87s - 51ms/step - loss: 0.1154 - pearson_r: 0.9405 - r2: 0.8846 - val_loss: 0.1033 - val_pearson_r: 0.9472 - val_r2: 0.8967
+    860/860 - 79s - 91ms/step - loss: 0.1187 - pearson_r: 0.9388 - r2: 0.8813 - val_loss: 0.1099 - val_pearson_r: 0.9471 - val_r2: 0.8902
     Epoch 5/50
-    1719/1719 - 88s - 51ms/step - loss: 0.1100 - pearson_r: 0.9434 - r2: 0.8900 - val_loss: 0.0985 - val_pearson_r: 0.9498 - val_r2: 0.9016
+    860/860 - 79s - 92ms/step - loss: 0.1127 - pearson_r: 0.9420 - r2: 0.8873 - val_loss: 0.1040 - val_pearson_r: 0.9485 - val_r2: 0.8961
     Epoch 6/50
-    1719/1719 - 85s - 50ms/step - loss: 0.1060 - pearson_r: 0.9455 - r2: 0.8940 - val_loss: 0.0986 - val_pearson_r: 0.9510 - val_r2: 0.9014
+    860/860 - 79s - 91ms/step - loss: 0.1089 - pearson_r: 0.9440 - r2: 0.8911 - val_loss: 0.1001 - val_pearson_r: 0.9504 - val_r2: 0.9000
     Epoch 7/50
-    1719/1719 - 84s - 49ms/step - loss: 0.1028 - pearson_r: 0.9472 - r2: 0.8972 - val_loss: 0.0963 - val_pearson_r: 0.9510 - val_r2: 0.9038
+    860/860 - 82s - 96ms/step - loss: 0.1057 - pearson_r: 0.9457 - r2: 0.8943 - val_loss: 0.0995 - val_pearson_r: 0.9506 - val_r2: 0.9006
     Epoch 8/50
-    1719/1719 - 85s - 49ms/step - loss: 0.0994 - pearson_r: 0.9490 - r2: 0.9006 - val_loss: 0.0948 - val_pearson_r: 0.9521 - val_r2: 0.9052
+    860/860 - 82s - 95ms/step - loss: 0.1036 - pearson_r: 0.9468 - r2: 0.8964 - val_loss: 0.1065 - val_pearson_r: 0.9500 - val_r2: 0.8936
     Epoch 9/50
-    1719/1719 - 85s - 49ms/step - loss: 0.0967 - pearson_r: 0.9504 - r2: 0.9033 - val_loss: 0.0930 - val_pearson_r: 0.9527 - val_r2: 0.9071
+    860/860 - 83s - 97ms/step - loss: 0.1011 - pearson_r: 0.9481 - r2: 0.8989 - val_loss: 0.0953 - val_pearson_r: 0.9524 - val_r2: 0.9047
     Epoch 10/50
-    1719/1719 - 85s - 49ms/step - loss: 0.0946 - pearson_r: 0.9515 - r2: 0.9054 - val_loss: 0.1004 - val_pearson_r: 0.9523 - val_r2: 0.8996
+    860/860 - 84s - 98ms/step - loss: 0.0992 - pearson_r: 0.9491 - r2: 0.9008 - val_loss: 0.0934 - val_pearson_r: 0.9527 - val_r2: 0.9067
     Epoch 11/50
-    1719/1719 - 85s - 49ms/step - loss: 0.0924 - pearson_r: 0.9527 - r2: 0.9076 - val_loss: 0.0936 - val_pearson_r: 0.9529 - val_r2: 0.9064
+    860/860 - 83s - 97ms/step - loss: 0.0973 - pearson_r: 0.9501 - r2: 0.9027 - val_loss: 0.0919 - val_pearson_r: 0.9533 - val_r2: 0.9082
     Epoch 12/50
-    1719/1719 - 86s - 50ms/step - loss: 0.0902 - pearson_r: 0.9538 - r2: 0.9098 - val_loss: 0.0930 - val_pearson_r: 0.9529 - val_r2: 0.9071
+    860/860 - 81s - 94ms/step - loss: 0.0955 - pearson_r: 0.9511 - r2: 0.9045 - val_loss: 0.0925 - val_pearson_r: 0.9536 - val_r2: 0.9075
     Epoch 13/50
-    1719/1719 - 85s - 49ms/step - loss: 0.0882 - pearson_r: 0.9549 - r2: 0.9118 - val_loss: 0.0935 - val_pearson_r: 0.9530 - val_r2: 0.9065
+    860/860 - 81s - 94ms/step - loss: 0.0933 - pearson_r: 0.9522 - r2: 0.9067 - val_loss: 0.0908 - val_pearson_r: 0.9537 - val_r2: 0.9093
     Epoch 14/50
-    1719/1719 - 85s - 50ms/step - loss: 0.0860 - pearson_r: 0.9560 - r2: 0.9140 - val_loss: 0.0934 - val_pearson_r: 0.9531 - val_r2: 0.9067
+    860/860 - 87s - 101ms/step - loss: 0.0918 - pearson_r: 0.9530 - r2: 0.9082 - val_loss: 0.0931 - val_pearson_r: 0.9534 - val_r2: 0.9070
     Epoch 15/50
-    1719/1719 - 86s - 50ms/step - loss: 0.0844 - pearson_r: 0.9569 - r2: 0.9156 - val_loss: 0.0972 - val_pearson_r: 0.9526 - val_r2: 0.9029
+    860/860 - 89s - 104ms/step - loss: 0.0902 - pearson_r: 0.9538 - r2: 0.9098 - val_loss: 0.0914 - val_pearson_r: 0.9537 - val_r2: 0.9086
     Epoch 16/50
-    1719/1719 - 86s - 50ms/step - loss: 0.0824 - pearson_r: 0.9579 - r2: 0.9176 - val_loss: 0.0951 - val_pearson_r: 0.9518 - val_r2: 0.9050
+    860/860 - 84s - 97ms/step - loss: 0.0883 - pearson_r: 0.9548 - r2: 0.9117 - val_loss: 0.0898 - val_pearson_r: 0.9544 - val_r2: 0.9102
     Epoch 17/50
-    1719/1719 - 87s - 50ms/step - loss: 0.0808 - pearson_r: 0.9587 - r2: 0.9192 - val_loss: 0.0949 - val_pearson_r: 0.9520 - val_r2: 0.9052
-    Epoch 17: early stopping
-    Restoring model weights from the end of the best epoch: 12.
+    860/860 - 81s - 94ms/step - loss: 0.0870 - pearson_r: 0.9555 - r2: 0.9130 - val_loss: 0.0924 - val_pearson_r: 0.9536 - val_r2: 0.9076
+    Epoch 18/50
+    860/860 - 80s - 93ms/step - loss: 0.0849 - pearson_r: 0.9566 - r2: 0.9151 - val_loss: 0.0924 - val_pearson_r: 0.9530 - val_r2: 0.9077
+    Epoch 19/50
+    860/860 - 77s - 89ms/step - loss: 0.0836 - pearson_r: 0.9573 - r2: 0.9164 - val_loss: 0.0915 - val_pearson_r: 0.9532 - val_r2: 0.9086
+    Epoch 20/50
+    860/860 - 76s - 88ms/step - loss: 0.0821 - pearson_r: 0.9581 - r2: 0.9179 - val_loss: 0.0915 - val_pearson_r: 0.9533 - val_r2: 0.9086
+    Epoch 21/50
+    860/860 - 76s - 88ms/step - loss: 0.0806 - pearson_r: 0.9588 - r2: 0.9194 - val_loss: 0.0939 - val_pearson_r: 0.9531 - val_r2: 0.9062
+    Epoch 21: early stopping
+    Restoring model weights from the end of the best epoch: 16.
 
 ## 6.4 Visualisation de la dynamique d’apprentissage
 
@@ -857,9 +865,9 @@ test_metrics = regression_metrics(test_observed, test_predicted)
 pd.DataFrame([test_metrics], index=["Ensemble de test aléatoire"]).round(4)
 ```
 
-|                            | n     | Pearson r | Spearman rho | R2     | RMSE  |
-|----------------------------|-------|-----------|--------------|--------|-------|
-| Ensemble de test aléatoire | 27500 | 0.9525    | 0.9193       | 0.9064 | 0.492 |
+|                            | n     | Pearson r | Spearman rho | R2     | RMSE   |
+|----------------------------|-------|-----------|--------------|--------|--------|
+| Ensemble de test aléatoire | 27500 | 0.9539    | 0.9237       | 0.9093 | 0.4844 |
 
 Avec des dizaines de milliers de points, un nuage de points ordinaire souffre d’une forte superposition. Un diagramme de densité hexagonal montre où se concentrent les observations, tandis que les histogrammes marginaux présentent la distribution le long de chaque axe.
 
@@ -1056,8 +1064,8 @@ evaluation_summary.round(4)
 
 |                            | n      | Pearson r | Spearman rho | R2     | RMSE   |
 |----------------------------|--------|-----------|--------------|--------|--------|
-| Ensemble de test aléatoire | 27500  | 0.9525    | 0.9193       | 0.9064 | 0.4920 |
-| Lymphocytes T indépendants | 100000 | 0.9276    | 0.8886       | 0.4335 | 1.0813 |
+| Ensemble de test aléatoire | 27500  | 0.9539    | 0.9237       | 0.9093 | 0.4844 |
+| Lymphocytes T indépendants | 100000 | 0.9292    | 0.8929       | 0.4036 | 1.1095 |
 
 ``` python
 plot_observed_vs_predicted(
@@ -1138,9 +1146,9 @@ pd.DataFrame(
 
 |     | utr                                               | predicted_mrl |
 |-----|---------------------------------------------------|---------------|
-| 0   | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA... | 8.451         |
-| 1   | CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC... | 5.160         |
-| 2   | ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTAC... | 7.146         |
+| 0   | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA... | 8.462         |
+| 1   | CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC... | 5.189         |
+| 2   | ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTAC... | 6.898         |
 
 # 7 Expérience 2 : partitionnement selon le nombre de lectures
 
@@ -1335,43 +1343,41 @@ read_history = read_count_model.fit(
 ```
 
     Epoch 1/50
-    1719/1719 - 91s - 53ms/step - loss: 0.3320 - pearson_r: 0.8178 - r2: 0.6680 - val_loss: 0.1624 - val_pearson_r: 0.9158 - val_r2: 0.8375
+    860/860 - 77s - 90ms/step - loss: 0.3927 - pearson_r: 0.7804 - r2: 0.6073 - val_loss: 0.2668 - val_pearson_r: 0.8870 - val_r2: 0.7331
     Epoch 2/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1581 - pearson_r: 0.9176 - r2: 0.8419 - val_loss: 0.1265 - val_pearson_r: 0.9364 - val_r2: 0.8734
+    860/860 - 76s - 88ms/step - loss: 0.1746 - pearson_r: 0.9085 - r2: 0.8254 - val_loss: 0.1496 - val_pearson_r: 0.9342 - val_r2: 0.8503
     Epoch 3/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1352 - pearson_r: 0.9299 - r2: 0.8648 - val_loss: 0.1206 - val_pearson_r: 0.9402 - val_r2: 0.8794
+    860/860 - 78s - 91ms/step - loss: 0.1392 - pearson_r: 0.9278 - r2: 0.8608 - val_loss: 0.1322 - val_pearson_r: 0.9383 - val_r2: 0.8677
     Epoch 4/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1253 - pearson_r: 0.9352 - r2: 0.8747 - val_loss: 0.1178 - val_pearson_r: 0.9419 - val_r2: 0.8822
+    860/860 - 81s - 94ms/step - loss: 0.1279 - pearson_r: 0.9339 - r2: 0.8721 - val_loss: 0.1206 - val_pearson_r: 0.9416 - val_r2: 0.8793
     Epoch 5/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1195 - pearson_r: 0.9384 - r2: 0.8805 - val_loss: 0.1121 - val_pearson_r: 0.9439 - val_r2: 0.8878
+    860/860 - 81s - 94ms/step - loss: 0.1217 - pearson_r: 0.9372 - r2: 0.8783 - val_loss: 0.1146 - val_pearson_r: 0.9433 - val_r2: 0.8854
     Epoch 6/50
-    1719/1719 - 85s - 49ms/step - loss: 0.1146 - pearson_r: 0.9409 - r2: 0.8854 - val_loss: 0.1088 - val_pearson_r: 0.9440 - val_r2: 0.8911
+    860/860 - 81s - 94ms/step - loss: 0.1175 - pearson_r: 0.9394 - r2: 0.8825 - val_loss: 0.1110 - val_pearson_r: 0.9446 - val_r2: 0.8889
     Epoch 7/50
-    1719/1719 - 87s - 50ms/step - loss: 0.1109 - pearson_r: 0.9429 - r2: 0.8891 - val_loss: 0.1121 - val_pearson_r: 0.9453 - val_r2: 0.8879
+    860/860 - 81s - 94ms/step - loss: 0.1136 - pearson_r: 0.9415 - r2: 0.8864 - val_loss: 0.1087 - val_pearson_r: 0.9462 - val_r2: 0.8913
     Epoch 8/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1077 - pearson_r: 0.9446 - r2: 0.8923 - val_loss: 0.1080 - val_pearson_r: 0.9461 - val_r2: 0.8919
+    860/860 - 81s - 94ms/step - loss: 0.1110 - pearson_r: 0.9429 - r2: 0.8890 - val_loss: 0.1100 - val_pearson_r: 0.9458 - val_r2: 0.8899
     Epoch 9/50
-    1719/1719 - 86s - 50ms/step - loss: 0.1049 - pearson_r: 0.9461 - r2: 0.8951 - val_loss: 0.1035 - val_pearson_r: 0.9472 - val_r2: 0.8965
+    860/860 - 81s - 94ms/step - loss: 0.1087 - pearson_r: 0.9441 - r2: 0.8913 - val_loss: 0.1046 - val_pearson_r: 0.9471 - val_r2: 0.8954
     Epoch 10/50
-    1719/1719 - 87s - 51ms/step - loss: 0.1023 - pearson_r: 0.9475 - r2: 0.8977 - val_loss: 0.1034 - val_pearson_r: 0.9470 - val_r2: 0.8966
+    860/860 - 83s - 96ms/step - loss: 0.1067 - pearson_r: 0.9451 - r2: 0.8933 - val_loss: 0.1044 - val_pearson_r: 0.9478 - val_r2: 0.8955
     Epoch 11/50
-    1719/1719 - 87s - 51ms/step - loss: 0.1001 - pearson_r: 0.9486 - r2: 0.8999 - val_loss: 0.1039 - val_pearson_r: 0.9470 - val_r2: 0.8961
+    860/860 - 86s - 99ms/step - loss: 0.1041 - pearson_r: 0.9465 - r2: 0.8959 - val_loss: 0.1086 - val_pearson_r: 0.9475 - val_r2: 0.8914
     Epoch 12/50
-    1719/1719 - 86s - 50ms/step - loss: 0.0979 - pearson_r: 0.9498 - r2: 0.9021 - val_loss: 0.1023 - val_pearson_r: 0.9476 - val_r2: 0.8976
+    860/860 - 83s - 97ms/step - loss: 0.1023 - pearson_r: 0.9475 - r2: 0.8977 - val_loss: 0.1035 - val_pearson_r: 0.9482 - val_r2: 0.8965
     Epoch 13/50
-    1719/1719 - 85s - 50ms/step - loss: 0.0958 - pearson_r: 0.9509 - r2: 0.9042 - val_loss: 0.1022 - val_pearson_r: 0.9479 - val_r2: 0.8977
+    860/860 - 78s - 91ms/step - loss: 0.1006 - pearson_r: 0.9484 - r2: 0.8994 - val_loss: 0.1051 - val_pearson_r: 0.9476 - val_r2: 0.8949
     Epoch 14/50
-    1719/1719 - 87s - 51ms/step - loss: 0.0938 - pearson_r: 0.9520 - r2: 0.9062 - val_loss: 0.1034 - val_pearson_r: 0.9475 - val_r2: 0.8966
+    860/860 - 77s - 90ms/step - loss: 0.0984 - pearson_r: 0.9495 - r2: 0.9016 - val_loss: 0.1038 - val_pearson_r: 0.9483 - val_r2: 0.8962
     Epoch 15/50
-    1719/1719 - 86s - 50ms/step - loss: 0.0921 - pearson_r: 0.9529 - r2: 0.9079 - val_loss: 0.1028 - val_pearson_r: 0.9475 - val_r2: 0.8972
+    860/860 - 83s - 97ms/step - loss: 0.0964 - pearson_r: 0.9506 - r2: 0.9036 - val_loss: 0.1083 - val_pearson_r: 0.9468 - val_r2: 0.8916
     Epoch 16/50
-    1719/1719 - 85s - 49ms/step - loss: 0.0903 - pearson_r: 0.9538 - r2: 0.9097 - val_loss: 0.1057 - val_pearson_r: 0.9481 - val_r2: 0.8943
+    860/860 - 81s - 94ms/step - loss: 0.0946 - pearson_r: 0.9515 - r2: 0.9054 - val_loss: 0.1047 - val_pearson_r: 0.9482 - val_r2: 0.8953
     Epoch 17/50
-    1719/1719 - 87s - 51ms/step - loss: 0.0886 - pearson_r: 0.9547 - r2: 0.9114 - val_loss: 0.1044 - val_pearson_r: 0.9475 - val_r2: 0.8956
-    Epoch 18/50
-    1719/1719 - 86s - 50ms/step - loss: 0.0867 - pearson_r: 0.9557 - r2: 0.9133 - val_loss: 0.1031 - val_pearson_r: 0.9476 - val_r2: 0.8969
-    Epoch 18: early stopping
-    Restoring model weights from the end of the best epoch: 13.
+    860/860 - 77s - 90ms/step - loss: 0.0931 - pearson_r: 0.9523 - r2: 0.9069 - val_loss: 0.1038 - val_pearson_r: 0.9475 - val_r2: 0.8961
+    Epoch 17: early stopping
+    Restoring model weights from the end of the best epoch: 12.
 
 Nous examinons d’abord la dynamique d’apprentissage et vérifions que l’arrêt précoce a sélectionné un modèle dont les performances de validation sont stables.
 
@@ -1406,8 +1412,8 @@ split_comparison.round(4)
 
 |  | n | Pearson r | Spearman rho | R2 | RMSE |
 |----|----|----|----|----|----|
-| Sélection aléatoire du test | 27500 | 0.9525 | 0.9193 | 0.9064 | 0.492 |
-| Sélection du test selon les lectures | 27500 | 0.9713 | 0.9560 | 0.9429 | 0.436 |
+| Sélection aléatoire du test | 27500 | 0.9539 | 0.9237 | 0.9093 | 0.4844 |
+| Sélection du test selon les lectures | 27500 | 0.9718 | 0.9568 | 0.9425 | 0.4376 |
 
 ``` python
 plot_observed_vs_predicted(
@@ -1452,8 +1458,8 @@ cross_cell_comparison.round(4)
 
 |  | n | Pearson r | Spearman rho | R2 | RMSE |
 |----|----|----|----|----|----|
-| Expérience 1 : partition aléatoire | 100000 | 0.9276 | 0.8886 | 0.4335 | 1.0813 |
-| Expérience 2 : partition selon les lectures | 100000 | 0.9292 | 0.8930 | 0.4514 | 1.0642 |
+| Expérience 1 : partition aléatoire | 100000 | 0.9292 | 0.8929 | 0.4036 | 1.1095 |
+| Expérience 2 : partition selon les lectures | 100000 | 0.9268 | 0.8923 | 0.4393 | 1.0758 |
 
 ``` python
 plot_observed_vs_predicted(

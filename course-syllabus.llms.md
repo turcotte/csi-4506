@@ -6,14 +6,14 @@ Marcel Turcotte
 
 Date de publication
 
-9 août 2026
+24 août 2026
 
 # Informations sur le cours
 
 |                  | Jour     | Heure       | Lieu     |
 |------------------|----------|-------------|----------|
-| Cours 1          | Lundi    | 10:00-11:30 | \-       |
-| Cours 2          | Mercredi | 08:30-09:50 | \-       |
+| Cours 1          | Lundi    | 10:00-11:30 | SMD 430  |
+| Cours 2          | Mercredi | 08:30-09:50 | CBY B205 |
 | Heures de bureau | Lundi    | 15:00-16:20 | STE 5106 |
 
 # Description (officielle)
