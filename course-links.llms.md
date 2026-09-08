@@ -2,7 +2,7 @@
 
 Date de publication
 
-23 août 2026
+8 septembre 2026
 
 # Datasets
 
@@ -31,6 +31,7 @@ Voici une liste de sites web proposant des jeux de données pertinents pour les 
 
 # Emploi
 
+- [How AI Is Eroding the First Rung of the Tech Job Ladder](https://youtu.be/0yWr-L1CecE), Bloomberg Tech, publié sur YouTube le 2026-09-04.
 - [There will be no AI jobpocalypse](https://info.deeplearning.ai/seedance-makes-splash-nvidias-ai-guided-chip-designs-helping-robots-not-forget), The Batch, Andrew Ng, 2026-05-08.
 - [L’IA ne va pas tous vous éliminer (pas tout de suite, en tout cas)](https://www.lapresse.ca/affaires/2026-02-23/vie-au-travail/l-ia-ne-va-pas-tous-vous-eliminer-pas-tout-de-suite-en-tout-cas.php), **La Presse+**, 2026-02-23.
 - [At \$250 million, top AI salaries dwarf those of the Manhattan Project and the Space Race](https://arstechnica.com/ai/2025/08/at-250-million-top-ai-salaries-dwarf-those-of-the-manhattan-project-and-the-space-race/), Ars Technica, 1 aout 2025.

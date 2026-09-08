@@ -348,7 +348,7 @@ Marcel Turcotte
 </div>
 </div>
 </div>
-<div id="96f175ed" class="cell" data-execution_count="1">
+<div id="96f175ed" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a aria-label="2"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb1-3"><a aria-label="3"></a></span>
@@ -372,7 +372,7 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 </section>
-<section id="ensemble-de-données---openml-output" class="slide level2 scrollable output-location-slide"><h2>Ensemble de données - openml</h2><div class="cell output-location-slide" data-execution_count="1">
+<section id="ensemble-de-données---openml-output" class="slide level2 scrollable output-location-slide"><h2>Ensemble de données - openml</h2><div class="cell output-location-slide" data-execution_count="2">
 <p><strong>Author</strong>: <a href="vgs@aplcen.apl.jhu.edu">Vincent Sigillito</a></p>
 <p><strong>Source</strong>: <a href="https://archive.ics.uci.edu/ml/datasets/pima+indians+diabetes">Obtained from UCI</a></p>
 <p><strong>Please cite</strong>: <a href="https://archive.ics.uci.edu/ml/citation_policy.html">UCI citation policy</a></p>
@@ -427,12 +427,12 @@ From: 1 To: tested_positive</p>
 </div></section><section id="ensemble-de-données---return_x_y" class="slide level2">
 <h2>Ensemble de données - <code>return_X_y</code></h2>
 <p><code>fetch_openml</code> renvoie un <code>Bunch</code>, un <code>DataFrame</code> ou <code>X</code> et <code>y</code></p>
-<div id="e2a50c22" class="cell" data-execution_count="2">
+<div id="e2a50c22" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>X, y <span class="op">=</span> fetch_openml(name<span class="op">=</span><span class="st">'diabetes'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Déséquilibre modéré (rapport inférieur à 3 ou 4)</p>
-<div id="bda0b7c2" class="cell" data-execution_count="3">
+<div id="bda0b7c2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="bu">print</span>(y.value_counts())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class
@@ -444,7 +444,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 <div class="fragment">
 <p>Conversion des étiquettes cibles en 0 et 1</p>
-<div id="538ddfa3" class="cell" data-execution_count="4">
+<div id="538ddfa3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>y <span class="op">=</span> y.<span class="bu">map</span>({<span class="st">'tested_negative'</span>: <span class="dv">0</span>, <span class="st">'tested_positive'</span>: <span class="dv">1</span>})</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -571,7 +571,7 @@ Name: count, dtype: int64</code></pre>
 </div></aside></section>
 <section id="validation-croisée-en-3-plis" class="slide level2">
 <h2>Validation croisée en 3 plis</h2>
-<div id="c4f25003" class="cell" data-execution_count="6">
+<div id="c4f25003" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -586,7 +586,7 @@ Name: count, dtype: int64</code></pre>
 </div></aside></section>
 <section id="validation-croisée-en-5-plis" class="slide level2">
 <h2>Validation croisée en 5 plis</h2>
-<div id="0e652942" class="cell" data-execution_count="7">
+<div id="0e652942" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -668,7 +668,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="cross_val_score" class="slide level2">
 <h2><code>cross_val_score</code></h2>
-<div id="219cd15b" class="cell" data-execution_count="8">
+<div id="219cd15b" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
 <span id="cb14-2"><a aria-label="2"></a></span>
 <span id="cb14-3"><a aria-label="3"></a>clf <span class="op">=</span> tree.DecisionTreeClassifier()</span>
@@ -737,7 +737,7 @@ Moyenne: 0.73
 </div></aside></section>
 <section id="implémentation-du-flux-de-travail" class="slide level2">
 <h2>Implémentation du flux de travail</h2>
-<div id="5d6277c0" class="cell" data-execution_count="9">
+<div id="5d6277c0" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
 <span id="cb16-2"><a aria-label="2"></a></span>
 <span id="cb16-3"><a aria-label="3"></a>X, y <span class="op">=</span> fetch_openml(name<span class="op">=</span><span class="st">'diabetes'</span>, version<span class="op">=</span><span class="dv">1</span>, return_X_y<span class="op">=</span><span class="va">True</span>)</span>
@@ -803,7 +803,7 @@ Moyenne: 0.73
 </div></aside></section>
 <section id="expérience-max_depth" class="slide level2">
 <h2>Expérience : <code>max_depth</code></h2>
-<div id="5761f11e" class="cell" data-execution_count="10">
+<div id="5761f11e" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="cf">for</span> value <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="va">None</span>]:</span>
 <span id="cb17-2"><a aria-label="2"></a></span>
 <span id="cb17-3"><a aria-label="3"></a>  clf <span class="op">=</span> tree.DecisionTreeClassifier(max_depth<span class="op">=</span>value)</span>
@@ -835,7 +835,7 @@ Moyenne: 0.71
 </section>
 <section id="expérience-criterion" class="slide level2">
 <h2>Expérience : <code>criterion</code></h2>
-<div id="4c730aa5" class="cell" data-execution_count="11">
+<div id="4c730aa5" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="cf">for</span> value <span class="kw">in</span> [<span class="st">"gini"</span>, <span class="st">"entropy"</span>, <span class="st">"log_loss"</span>]:</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a>  clf <span class="op">=</span> tree.DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">5</span>, criterion<span class="op">=</span>value)</span>
@@ -876,7 +876,7 @@ Moyenne: 0.75
 </section>
 <section id="expérience-n_neighbors" class="slide level2 scrollable">
 <h2>Expérience : <code>n_neighbors</code></h2>
-<div id="82c7d854" class="cell" data-execution_count="12">
+<div id="82c7d854" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb21-2"><a aria-label="2"></a></span>
 <span id="cb21-3"><a aria-label="3"></a><span class="cf">for</span> value <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
@@ -891,7 +891,7 @@ Moyenne: 0.75
 </div>
 
 </section>
-<section id="expérience-n_neighbors-output" class="slide level2 scrollable output-location-slide"><h2>Expérience : <code>n_neighbors</code></h2><div class="cell output-location-slide" data-execution_count="12">
+<section id="expérience-n_neighbors-output" class="slide level2 scrollable output-location-slide"><h2>Expérience : <code>n_neighbors</code></h2><div class="cell output-location-slide" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 n_neighbors =  1
@@ -936,7 +936,7 @@ Moyenne: 0.73
 </div>
 </div></section><section id="expérience-weights" class="slide level2">
 <h2>Expérience : <code>weights</code></h2>
-<div id="275a56f3" class="cell" data-execution_count="13">
+<div id="275a56f3" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb23-2"><a aria-label="2"></a></span>
 <span id="cb23-3"><a aria-label="3"></a><span class="cf">for</span> value <span class="kw">in</span> [<span class="st">"uniform"</span>, <span class="st">"distance"</span>]:</span>
@@ -1009,7 +1009,7 @@ Moyenne: 0.73
 </div></aside></section>
 <section id="gridsearchcv" class="slide level2">
 <h2><code>GridSearchCV</code></h2>
-<div id="7d9c0995" class="cell" data-execution_count="14">
+<div id="7d9c0995" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
 <span id="cb25-2"><a aria-label="2"></a></span>
 <span id="cb25-3"><a aria-label="3"></a>param_grid <span class="op">=</span> [</span>
@@ -1031,7 +1031,7 @@ Moyenne: 0.73
 </section>
 <section id="gridsearchcv-1" class="slide level2">
 <h2><code>GridSearchCV</code></h2>
-<div id="4cb5e29e" class="cell" data-execution_count="15">
+<div id="4cb5e29e" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>param_grid <span class="op">=</span> [</span>
 <span id="cb27-2"><a aria-label="2"></a>  {<span class="st">'n_neighbors'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>),</span>
 <span id="cb27-3"><a aria-label="3"></a>   <span class="st">'weights'</span>: [<span class="st">"uniform"</span>, <span class="st">"distance"</span>]}</span>
@@ -1065,7 +1065,7 @@ Moyenne: 0.73
 </section>
 <section id="gridsearchcv-2" class="slide level2">
 <h2><code>GridSearchCV</code></h2>
-<div id="7a3cc134" class="cell" data-execution_count="17">
+<div id="7a3cc134" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb29-2"><a aria-label="2"></a></span>
 <span id="cb29-3"><a aria-label="3"></a><span class="co"># 2 * 5 * 5 * 3 = 150 tests!</span></span>
@@ -1131,7 +1131,7 @@ Moyenne: 0.73
 </div></aside></section>
 <section id="enfin-nous-procédons-aux-tests" class="slide level2">
 <h2>Enfin, nous procédons aux tests</h2>
-<div id="92f7ad6f" class="cell" data-execution_count="18">
+<div id="92f7ad6f" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a>clf <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">100</span>, penalty<span class="op">=</span><span class="st">'l2'</span>, solver<span class="op">=</span><span class="st">'newton-cg'</span>, tol<span class="op">=</span><span class="fl">0.001</span>)</span>
 <span id="cb31-2"><a aria-label="2"></a></span>
 <span id="cb31-3"><a aria-label="3"></a>clf.fit(X_train, y_train)</span>

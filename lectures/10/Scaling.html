@@ -544,7 +544,7 @@ window.Quarto = {
 </section>
 <section id="données-trois-maisons" class="level2">
 <h2 class="anchored" data-anchor-id="données-trois-maisons">Données (trois maisons)</h2>
-<div id="4031567d" class="cell" data-execution_count="1">
+<div id="4031567d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -632,7 +632,7 @@ window.Quarto = {
 \|u-v\|_2^2 = \sum_j (u_j - v_j)^2.
 \]</span></p>
 <p>Lorsqu’un attribut a une échelle beaucoup plus grande (par exemple, la superficie en pieds carrés), elle peut dominer la somme.</p>
-<div id="c527368f" class="cell" data-execution_count="2">
+<div id="c527368f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> pairwise_distances</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dist_unscaled <span class="op">=</span> pd.DataFrame(</span>
@@ -678,7 +678,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="ee7367d0" class="cell" data-execution_count="3">
+<div id="ee7367d0" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Le plus proche de 'a' (non normalisé) :"</span>, dist_unscaled.loc[<span class="st">"a"</span>].drop(<span class="st">"a"</span>).idxmin())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Le plus proche de 'a' (non normalisé) : b</code></pre>
@@ -692,7 +692,7 @@ window.Quarto = {
 <p><span class="math display">\[
 z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 \]</span></p>
-<div id="e3f0926a" class="cell" data-execution_count="4">
+<div id="e3f0926a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train_idx <span class="op">=</span> [<span class="st">"b"</span>, <span class="st">"c"</span>]</span>
@@ -745,7 +745,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </section>
 <section id="distances-euclidiennes-après-mise-à-léchelle" class="level2">
 <h2 class="anchored" data-anchor-id="distances-euclidiennes-après-mise-à-léchelle">Distances euclidiennes (après mise à l’échelle)</h2>
-<div id="94f7ff4f" class="cell" data-execution_count="5">
+<div id="94f7ff4f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dist_scaled <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    pairwise_distances(Z.values, metric<span class="op">=</span><span class="st">"euclidean"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>Z.index, columns<span class="op">=</span>Z.index</span>
@@ -789,7 +789,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </div>
 </div>
 </div>
-<div id="d7a97ce5" class="cell" data-execution_count="6">
+<div id="d7a97ce5" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Le plus proche de 'a' (échelle ajustée) :"</span>, dist_scaled.loc[<span class="st">"a"</span>].drop(<span class="st">"a"</span>).idxmin())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Le plus proche de 'a' (échelle ajustée) : c</code></pre>
@@ -800,7 +800,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <section id="régression-knn-inversion-dans-la-prédiction" class="level2">
 <h2 class="anchored" data-anchor-id="régression-knn-inversion-dans-la-prédiction">Régression KNN : inversion dans la prédiction</h2>
 <p>Nous exécuterons un régressseur 1-NN (donc la prédiction est exactement le prix du voisin le plus proche) <strong>avec et sans</strong> mise à l’échelle.</p>
-<div id="61b1fc55" class="cell" data-execution_count="7">
+<div id="61b1fc55" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -882,7 +882,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <section id="montrer-uniquement-la-distance-aux-voisins" class="level2">
 <h2 class="anchored" data-anchor-id="montrer-uniquement-la-distance-aux-voisins">Montrer uniquement la distance aux voisins</h2>
 <p>Distances de <strong>a</strong> à {<strong>b</strong>, <strong>c</strong>} avant et après normalisation.</p>
-<div id="1586c2a4" class="cell" data-execution_count="8">
+<div id="1586c2a4" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_pair(name_from, names_to, D):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> D.loc[name_from, names_to].to_frame(<span class="st">"distance"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -956,7 +956,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 |u-v|_1 = \sum_j |u_j - v_j|.
 \]</span></p>
 <p>Essayez de remplacer <code>metric="euclidean"</code> par <code>metric="manhattan"</code>—vous verrez la même sensibilité à l’échelle des attributs.</p>
-<div id="51f2f6af" class="cell" data-execution_count="9">
+<div id="51f2f6af" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>

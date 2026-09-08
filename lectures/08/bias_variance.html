@@ -283,7 +283,7 @@ Marcel Turcotte
 </section>
 <section id="exploration" class="slide level2">
 <h2>Exploration</h2>
-<div id="2d568621" class="cell" data-execution_count="1">
+<div id="2d568621" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -337,7 +337,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="régression-linéaire" class="slide level2">
 <h2>Régression linéaire</h2>
-<div id="3d5539c7" class="cell" data-execution_count="2">
+<div id="3d5539c7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
@@ -405,14 +405,14 @@ Marcel Turcotte
 </section>
 <section id="polynomialfeatures" class="slide level2">
 <h2><code>PolynomialFeatures</code></h2>
-<div id="521458bb" class="cell" data-execution_count="3">
+<div id="521458bb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
 <span id="cb3-2"><a aria-label="2"></a></span>
 <span id="cb3-3"><a aria-label="3"></a>poly_features <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>, include_bias<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb3-4"><a aria-label="4"></a>X_poly <span class="op">=</span> poly_features.fit_transform(X)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<div id="4e403e7e" class="cell" data-execution_count="4">
+<div id="4e403e7e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>X[<span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="110">
 <pre><code>array([-0.75275929])</code></pre>
@@ -420,7 +420,7 @@ Marcel Turcotte
 </div>
 </div>
 <div class="fragment">
-<div id="f0a074e8" class="cell" data-execution_count="5">
+<div id="f0a074e8" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>X_poly[<span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="111">
 <pre><code>array([-0.75275929,  0.56664654])</code></pre>
@@ -474,7 +474,7 @@ Marcel Turcotte
 </section>
 <section id="régression-polynomiale" class="slide level2">
 <h2>Régression polynomiale</h2>
-<div id="dda8bf23" class="cell" data-execution_count="6">
+<div id="dda8bf23" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>lin_reg <span class="op">=</span> LinearRegression()</span>
@@ -503,7 +503,7 @@ Marcel Turcotte
 </div>
 </div>
 <p><code>LinearRegression</code> sur <code>PolynomialFeatures</code></p>
-<div id="f4fff8b8" class="cell" data-execution_count="7">
+<div id="f4fff8b8" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>lin_reg <span class="op">=</span> LinearRegression()</span>
 <span id="cb9-2"><a aria-label="2"></a>lin_reg.fit(X_poly, y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -512,7 +512,7 @@ Marcel Turcotte
 <h2>Régression polynomiale</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="88054489" class="cell" data-execution_count="8">
+<div id="88054489" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -531,7 +531,7 @@ Marcel Turcotte
   \hat{y} = 0.56 x^2 + (-1.06) x + 1.78
 \]</span></p>
 </div></div>
-<div id="b9305132" class="cell" data-execution_count="9">
+<div id="b9305132" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>lin_reg.coef_, lin_reg.intercept_</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="114">
 <pre><code>(array([[-1.06633107,  0.56456263]]), array([1.78134581]))</code></pre>
@@ -574,7 +574,7 @@ Marcel Turcotte
 <h2>Complexité du modèle</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="f463342b" class="cell" data-execution_count="10">
+<div id="f463342b" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
@@ -748,7 +748,7 @@ Marcel Turcotte
 <h2>Courbe d’apprentissage – Sous-ajustement</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="44945d79" class="cell" data-execution_count="11">
+<div id="44945d79" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> learning_curve</span>
@@ -816,7 +816,7 @@ Marcel Turcotte
 <h2>Courbe d’apprentissage – Surapprentissage</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="8b539d54" class="cell" data-execution_count="12">
+<div id="8b539d54" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
@@ -880,7 +880,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="surapprentissage---réseaux-profonds" class="slide level2">
 <h2>Surapprentissage - Réseaux profonds</h2>
-<div id="26bbe55a" class="cell" data-execution_count="17">
+<div id="26bbe55a" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -913,7 +913,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="surapprentissage---réseau-profond" class="slide level2">
 <h2>Surapprentissage - Réseau profond</h2>
-<div id="d9a86544" class="cell" data-execution_count="18">
+<div id="d9a86544" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1034,7 +1034,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="biais-élevé-faible-variance" class="slide level2">
 <h2>Biais élevé, faible variance</h2>
-<div id="2ffe8ad8" class="cell" data-execution_count="19">
+<div id="2ffe8ad8" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
@@ -1132,7 +1132,7 @@ Marcel Turcotte
 </section>
 <section id="biais-faible-variance-élevée" class="slide level2">
 <h2>Biais faible, variance élevée</h2>
-<div id="16b4cb04" class="cell" data-execution_count="20">
+<div id="16b4cb04" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>_ <span class="op">=</span> plot_fold_predictions(<span class="dv">15</span>, X, y, X_grid, y_true_grid, n_splits<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1148,7 +1148,7 @@ Marcel Turcotte
 </section>
 <section id="parfait" class="slide level2">
 <h2>Parfait</h2>
-<div id="6b5f9b2a" class="cell" data-execution_count="21">
+<div id="6b5f9b2a" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>_ <span class="op">=</span> plot_fold_predictions(<span class="dv">3</span>, X, y, X_grid, y_true_grid, n_splits<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1164,7 +1164,7 @@ Marcel Turcotte
 </section>
 <section id="biais-variance-et-erreur-de-validation" class="slide level2 smaller">
 <h2>Biais, variance et erreur de validation</h2>
-<div id="7548a63d" class="cell" data-execution_count="22">
+<div id="7548a63d" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="co"># --- Compute Bias², Variance, and CV Error Across Degrees 1 to 10 ---</span></span>
@@ -1230,7 +1230,7 @@ Marcel Turcotte
 </section>
 <section id="abre-de-décision" class="slide level2">
 <h2>Abre de décision</h2>
-<div id="8d335f73" class="cell" data-execution_count="23">
+<div id="8d335f73" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
@@ -1293,7 +1293,7 @@ Marcel Turcotte
 </section>
 <section id="arbre-de-décision" class="slide level2">
 <h2>Arbre de décision</h2>
-<div id="f84c3607" class="cell" data-execution_count="24">
+<div id="f84c3607" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a>_ <span class="op">=</span> plot_tree_fold_predictions(<span class="dv">10</span>, X, y, X_grid, y_true_grid, n_splits<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1309,7 +1309,7 @@ Marcel Turcotte
 </section>
 <section id="arbre-de-décision-1" class="slide level2">
 <h2>Arbre de décision</h2>
-<div id="5a5b4d32" class="cell" data-execution_count="25">
+<div id="5a5b4d32" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>_ <span class="op">=</span> plot_tree_fold_predictions(<span class="dv">3</span>, X, y, X_grid, y_true_grid, n_splits<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1325,7 +1325,7 @@ Marcel Turcotte
 </section>
 <section id="biais-variance-et-erreur-de-validation-1" class="slide level2 smaller">
 <h2>Biais, variance et erreur de validation</h2>
-<div id="848b170b" class="cell" data-execution_count="26">
+<div id="848b170b" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="co"># --- Compute Bias², Variance, and CV Error vs. Tree Depth ---</span></span>
@@ -1388,7 +1388,7 @@ Marcel Turcotte
 </section>
 <section id="knn-regression" class="slide level2">
 <h2>KNN Regression</h2>
-<div id="f4a20345" class="cell" data-execution_count="27">
+<div id="f4a20345" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
@@ -1452,7 +1452,7 @@ Marcel Turcotte
 </section>
 <section id="knn-regression-1" class="slide level2">
 <h2>KNN Regression</h2>
-<div id="448536f2" class="cell" data-execution_count="28">
+<div id="448536f2" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>_ <span class="op">=</span> plot_knn_fold_predictions(<span class="dv">10</span>, X, y, X_grid, y_true_grid, n_splits<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1468,7 +1468,7 @@ Marcel Turcotte
 </section>
 <section id="knn-regression-2" class="slide level2">
 <h2>KNN Regression</h2>
-<div id="99b3260d" class="cell" data-execution_count="29">
+<div id="99b3260d" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>_ <span class="op">=</span> plot_knn_fold_predictions(<span class="dv">4</span>, X, y, X_grid, y_true_grid, n_splits<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1484,7 +1484,7 @@ Marcel Turcotte
 </section>
 <section id="biais-variance-et-erreur-de-validation-2" class="slide level2 smaller">
 <h2>Biais, variance et erreur de validation</h2>
-<div id="a7b71100" class="cell" data-execution_count="30">
+<div id="a7b71100" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="co"># --- Compute Bias², Variance, and CV Error vs. Number of Neighbors ---</span></span>
@@ -1611,7 +1611,7 @@ Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</sp
 <section id="données" class="slide level2">
 <h2>Données</h2>
 <p>Génération d’un jeu de données comprenant un cercle intérieur (classe 1) et un anneau extérieur (classe 0).</p>
-<div id="53005917" class="cell" data-execution_count="31">
+<div id="53005917" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="co"># Générer et tracer le jeu de données "cercles"</span></span>
@@ -1685,7 +1685,7 @@ r = x_1^2 + x_2^2,
 </section>
 <section id="vue-3d" class="slide level2">
 <h2>Vue 3D</h2>
-<div id="83de835c" class="cell" data-execution_count="32">
+<div id="83de835c" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1774,7 +1774,7 @@ if (outputEl) {{
 <section id="séparabilité-linéaire-en-1d-espace-r" class="slide level2 scrollable smaller">
 <h2>Séparabilité linéaire en 1D (espace-r)</h2>
 <p>En comparant deux modèles, <code>clf_r</code> utilise un seul attribut, <span class="math inline">\(r=x_1^2+x_2^2\)</span>, tandis que <code>quad</code> inclut des caractéristiques polynomiales de degré 2.</p>
-<div id="acb77c42" class="cell" data-execution_count="33">
+<div id="acb77c42" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb29-2"><a aria-label="2"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
 <span id="cb29-3"><a aria-label="3"></a></span>
@@ -1796,7 +1796,7 @@ if (outputEl) {{
 </section>
 <section id="visualisation" class="slide level2">
 <h2>Visualisation</h2>
-<div id="6acdb32f" class="cell" data-execution_count="34">
+<div id="6acdb32f" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>), dpi<span class="op">=</span><span class="dv">140</span>)</span>
@@ -1820,7 +1820,7 @@ if (outputEl) {{
 </section>
 <section id="espace-r-en-1d" class="slide level2">
 <h2>Espace r en 1D</h2>
-<div id="f8e4f98f" class="cell" data-execution_count="35">
+<div id="f8e4f98f" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a>order <span class="op">=</span> np.argsort(r.ravel())</span>
@@ -1851,7 +1851,7 @@ if (outputEl) {{
 <section id="r-x1²-x2²" class="slide level2">
 <h2>r = x1² + x2²</h2>
 <p>Utilise <code>clf_r.predict_proba</code> pour tracer la frontière de décision.</p>
-<div id="5d2caa9f" class="cell" data-execution_count="36">
+<div id="5d2caa9f" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>xx, yy <span class="op">=</span> np.meshgrid(</span>
@@ -1883,7 +1883,7 @@ if (outputEl) {{
 <h2>Caractéristiques quadratiques</h2>
 <p>Utilise <code>quad.predict_proba</code> pour tracer la frontière de décision.</p>
 <p>(En effet, les deux modèles produisent le même résultat.)</p>
-<div id="8194acf1" class="cell" data-execution_count="37">
+<div id="8194acf1" class="cell" data-execution_count="38">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a aria-label="1"></a>p_quad <span class="op">=</span> quad.predict_proba(grid)[:, <span class="dv">1</span>].reshape(xx.shape)</span>

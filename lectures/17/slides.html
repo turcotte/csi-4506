@@ -305,7 +305,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="exemple-8-puzzle" class="slide level2">
 <h2>Exemple : 8-Puzzle</h2>
-<div id="1fba4d2d" class="cell" data-execution_count="1">
+<div id="1fba4d2d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> random</span>
@@ -362,7 +362,7 @@ Marcel Turcotte
 </section>
 <section id="exemple-8-puzzle-1" class="slide level2">
 <h2>Exemple : 8-Puzzle</h2>
-<div id="7beeedd6" class="cell" data-execution_count="2">
+<div id="7beeedd6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="kw">def</span> main():</span>
@@ -515,7 +515,7 @@ Marcel Turcotte
 </section>
 <section id="is_empty" class="slide level2">
 <h2><code>is_empty</code></h2>
-<div id="3174cf87" class="cell" data-execution_count="3">
+<div id="3174cf87" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="kw">def</span> is_empty(frontier):</span>
 <span id="cb3-2"><a aria-label="2"></a>    <span class="co">"""Vérifie si la frontière est vide."""</span></span>
 <span id="cb3-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">len</span>(frontier) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -540,7 +540,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="is_goal" class="slide level2">
 <h2><code>is_goal</code></h2>
-<div id="f74e5a90" class="cell" data-execution_count="4">
+<div id="f74e5a90" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="kw">def</span> is_goal(state, goal_state):</span>
 <span id="cb4-2"><a aria-label="2"></a>    <span class="co">"""Détermine si un état donné correspond à l'état objectif."""</span></span>
 <span id="cb4-3"><a aria-label="3"></a>    <span class="cf">return</span> state <span class="op">==</span> goal_state</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -551,7 +551,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="expand" class="slide level2">
 <h2><code>expand</code></h2>
-<div id="86f65a34" class="cell" data-execution_count="5">
+<div id="86f65a34" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">def</span> expand(state):</span>
 <span id="cb5-2"><a aria-label="2"></a>    <span class="co">"""Génère les états successeurs en déplaçant la tuile vide dans toutes les directions possibles."""</span></span>
 <span id="cb5-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(state) <span class="op">**</span> <span class="fl">0.5</span>) <span class="co"># Déterminer la taille du puzzle (3 pour le 8-Puzzle, 4 pour le 15-Puzzle)</span></span>
@@ -575,7 +575,7 @@ Marcel Turcotte
 </section>
 <section id="print_solution" class="slide level2">
 <h2><code>print_solution</code></h2>
-<div id="bf5c2566" class="cell" data-execution_count="6">
+<div id="bf5c2566" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="kw">def</span> print_solution(solution):</span>
 <span id="cb6-2"><a aria-label="2"></a>    <span class="co">"""Affiche la séquence d'étapes de l'état initial à l'état objectif."""</span></span>
 <span id="cb6-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(solution[<span class="dv">0</span>]) <span class="op">**</span> <span class="fl">0.5</span>)</span>
@@ -589,14 +589,14 @@ Marcel Turcotte
 </section>
 <section id="recherche-en-largeur" class="slide level2">
 <h2>Recherche en largeur</h2>
-<div id="ed86fc05" class="cell" data-execution_count="7">
+<div id="ed86fc05" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La <strong>recherche en largeur (BFS)</strong> utilise une <strong>file</strong> pour gérer les nœuds de la frontière, également connus sous le nom de liste ouverte.</p>
 </section>
 <section id="recherche-en-largeur-1" class="slide level2 scrollable">
 <h2>Recherche en largeur</h2>
-<div id="a09717fa" class="cell" data-execution_count="8">
+<div id="a09717fa" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="kw">def</span> bfs(initial_state, goal_state):</span>
 <span id="cb8-2"><a aria-label="2"></a>    frontier <span class="op">=</span> deque() <span class="co"># Initialiser la file pour BFS</span></span>
 <span id="cb8-3"><a aria-label="3"></a>    frontier.append((initial_state, [])) <span class="co"># Chaque élément est un tuple : (état, chemin)</span></span>
@@ -629,7 +629,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="recherche-en-profondeur" class="slide level2 scrollable">
 <h2>Recherche en profondeur</h2>
-<div id="b5231c06" class="cell" data-execution_count="9">
+<div id="b5231c06" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="kw">def</span> dfs(initial_state, goal_state):</span>
 <span id="cb9-2"><a aria-label="2"></a>    frontier <span class="op">=</span> [(initial_state, [])] <span class="co"># Chaque élément est un tuple : (état, chemin)</span></span>
 <span id="cb9-3"><a aria-label="3"></a></span>
@@ -926,7 +926,7 @@ Marcel Turcotte
 </ul></li>
 </ul>
 <div class="fragment">
-<div id="86c2ec6e" class="cell" data-execution_count="10">
+<div id="86c2ec6e" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="im">import</span> heapq</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -1092,7 +1092,7 @@ h(n) \leq h^*(n)
 <h2>Distance du nombre d’inversions</h2>
 <p>Peut-on utiliser le nombre d’inversions comme fonction heuristique, <span class="math inline">\(h(n)\)</span>, pour le 8-Puzzle?</p>
 <div class="fragment">
-<div id="436cf756" class="cell" data-execution_count="11">
+<div id="436cf756" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="co"># Définir l'état initial</span></span>
@@ -1147,7 +1147,7 @@ h(n) \leq h^*(n)
 </section>
 <section id="distance-des-tuiles-mal-placées" class="slide level2">
 <h2>Distance des tuiles mal placées</h2>
-<div id="97668e70" class="cell" data-execution_count="12">
+<div id="97668e70" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> misplaced_tiles_distance(state, goal_state):</span>
 <span id="cb12-2"><a aria-label="2"></a>    <span class="co"># Comptez le nombre de tuiles mal placées</span></span>
 <span id="cb12-3"><a aria-label="3"></a>    misplaced_tiles <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> s, g <span class="kw">in</span> <span class="bu">zip</span>(state, goal_state) <span class="cf">if</span> s <span class="op">!=</span> g <span class="kw">and</span> s <span class="op">!=</span> <span class="dv">0</span>)</span>
@@ -1174,7 +1174,7 @@ h(n) \leq h^*(n)
 </div></aside></section>
 <section id="puzzle-1" class="slide level2">
 <h2>8-Puzzle</h2>
-<div id="9d25f021" class="cell" data-execution_count="13">
+<div id="9d25f021" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1215,7 +1215,7 @@ h(n) \leq h^*(n)
 </section>
 <section id="recherche-du-meilleur-dabord" class="slide level2 scrollable">
 <h2>Recherche du meilleur d’abord</h2>
-<div id="41970bd8" class="cell" data-execution_count="14">
+<div id="41970bd8" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="kw">def</span> best_first_search(initial_state, goal_state):</span>
 <span id="cb14-2"><a aria-label="2"></a></span>
 <span id="cb14-3"><a aria-label="3"></a>    frontier <span class="op">=</span> []  <span class="co"># Initialisez la file de priorité</span></span>
@@ -1251,7 +1251,7 @@ h(n) \leq h^*(n)
 </section>
 <section id="cas-simple" class="slide level2 scrollable">
 <h2>Cas simple</h2>
-<div id="caa2dcc9" class="cell" data-execution_count="15">
+<div id="caa2dcc9" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1282,7 +1282,7 @@ h(n) \leq h^*(n)
 </div>
 </div>
 </div>
-<div id="72f6cb22" class="cell" data-execution_count="16">
+<div id="72f6cb22" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb17-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
 <span id="cb17-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
@@ -1303,7 +1303,7 @@ h(n) \leq h^*(n)
 </section>
 <section id="cas-difficile" class="slide level2 scrollable">
 <h2>Cas difficile</h2>
-<div id="c45fad73" class="cell" data-execution_count="17">
+<div id="c45fad73" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
 <span id="cb20-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
 <span id="cb20-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
@@ -1459,7 +1459,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </section>
 <section id="puzzle-2" class="slide level2">
 <h2>8-Puzzle</h2>
-<div id="cfd9c591" class="cell" data-execution_count="18">
+<div id="cfd9c591" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="kw">def</span> manhattan_distance(state, goal_state):</span>
 <span id="cb22-2"><a aria-label="2"></a>    distance <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb22-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(state) <span class="op">**</span> <span class="fl">0.5</span>)</span>
@@ -1493,7 +1493,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </div></aside></section>
 <section id="puzzle-3" class="slide level2">
 <h2>8-Puzzle</h2>
-<div id="8e174a0a" class="cell" data-execution_count="19">
+<div id="8e174a0a" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1542,7 +1542,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </section>
 <section id="puzzle-5" class="slide level2">
 <h2>8-Puzzle</h2>
-<div id="ac929db2" class="cell" data-execution_count="20">
+<div id="ac929db2" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1590,7 +1590,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </section>
 <section id="puzzle-6" class="slide level2">
 <h2>8-Puzzle</h2>
-<div id="ae2f845c" class="cell" data-execution_count="21">
+<div id="ae2f845c" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1652,7 +1652,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </section>
 <section id="recherche-du-meilleur-dabord-1" class="slide level2">
 <h2>Recherche du meilleur d’abord</h2>
-<div id="9f60fdae" class="cell" data-execution_count="22">
+<div id="9f60fdae" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="kw">def</span> best_first_search_revised(initial_state, goal_state):</span>
 <span id="cb26-2"><a aria-label="2"></a>    frontier <span class="op">=</span> [] <span class="co"># Initialiser la file de priorité</span></span>
 <span id="cb26-3"><a aria-label="3"></a>    initial_h <span class="op">=</span> manhattan_distance(initial_state, goal_state)</span>
@@ -1700,7 +1700,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </section>
 <section id="cas-simple-1" class="slide level2 scrollable">
 <h2>Cas simple</h2>
-<div id="ac3d22d6" class="cell" data-execution_count="23">
+<div id="ac3d22d6" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1732,7 +1732,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </div>
 </div>
 </div>
-<div id="b5d29200" class="cell" data-execution_count="24">
+<div id="b5d29200" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb29-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
 <span id="cb29-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
@@ -1754,7 +1754,7 @@ Solution trouvée par best_first_search en 25 mouvements :
 </section>
 <section id="cas-difficile-1" class="slide level2 scrollable">
 <h2>Cas difficile</h2>
-<div id="5a16abf3" class="cell" data-execution_count="25">
+<div id="5a16abf3" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
 <span id="cb32-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
 <span id="cb32-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
@@ -1911,7 +1911,7 @@ Solution best_first_search trouvée en 25 mouvements :
 </section>
 <section id="expérimentation" class="slide level2">
 <h2>Expérimentation</h2>
-<div id="3e8a6f5c" class="cell" data-execution_count="26">
+<div id="3e8a6f5c" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a><span class="kw">def</span> best_first_search_count(initial_state, goal_state):</span>
@@ -1946,7 +1946,7 @@ Solution best_first_search trouvée en 25 mouvements :
 <span id="cb34-30"><a aria-label="30"></a>    <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="a50ad415" class="cell" data-execution_count="27">
+<div id="a50ad415" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a><span class="kw">def</span> best_first_search_revised_count(initial_state, goal_state):</span>
@@ -1987,7 +1987,7 @@ Solution best_first_search trouvée en 25 mouvements :
 </div></aside></section>
 <section id="expériences" class="slide level2">
 <h2>1000 Expériences</h2>
-<div id="31d0aa87" class="cell" data-execution_count="28">
+<div id="31d0aa87" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
@@ -2042,7 +2042,7 @@ Solution best_first_search trouvée en 25 mouvements :
 </section>
 <section id="diagramme-de-dispersion" class="slide level2 smaller">
 <h2>Diagramme de dispersion</h2>
-<div id="574cfc3d" class="cell" data-execution_count="29">
+<div id="574cfc3d" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a><span class="co"># Créer un diagramme de dispersion</span></span>

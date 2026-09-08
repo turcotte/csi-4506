@@ -365,7 +365,7 @@ Marcel Turcotte
 </section>
 <section id="histogramme" class="slide level2">
 <h2>Histogramme</h2>
-<div id="ab253748" class="cell" data-execution_count="1">
+<div id="ab253748" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -446,7 +446,7 @@ Marcel Turcotte
 </section>
 <section id="visualiser-nos-données" class="slide level2">
 <h2>Visualiser nos données</h2>
-<div id="91dbb80d" class="cell" data-execution_count="2">
+<div id="91dbb80d" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Diagramme de dispersion de la longueur des nageoires vs. étiquette binaire (Gentoo ou Non Gentoo)</span></span>
@@ -487,7 +487,7 @@ Marcel Turcotte
 <section id="intuition" class="slide level2">
 <h2>Intuition</h2>
 <p>Ajuster une régression linéaire n’est pas la solution, mais <span class="math inline">\(\ldots\)</span></p>
-<div id="8a38d6b7" class="cell" data-execution_count="3">
+<div id="8a38d6b7" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
@@ -524,7 +524,7 @@ Marcel Turcotte
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="93da2929" class="cell" data-execution_count="4">
+<div id="93da2929" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -545,7 +545,7 @@ Marcel Turcotte
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="46346f14" class="cell" data-execution_count="5">
+<div id="46346f14" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -565,7 +565,7 @@ Marcel Turcotte
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="de8513d3" class="cell" data-execution_count="7">
+<div id="de8513d3" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -585,7 +585,7 @@ Marcel Turcotte
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="f96b0d6d" class="cell" data-execution_count="8">
+<div id="f96b0d6d" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -614,7 +614,7 @@ Marcel Turcotte
   \sigma(t) = \frac{1}{1+e^{-t}}
 \]</span></p>
 </div><div class="column" style="width:60%;">
-<div id="d9e6ad08" class="cell" data-execution_count="9">
+<div id="d9e6ad08" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="co"># Fonction Sigmoïde</span></span>
@@ -685,7 +685,7 @@ Marcel Turcotte
 <h2>Régression logistique (intuition)</h2>
 <div class="columns">
 <div class="column" style="width:65%;">
-<div id="2dc6bed1" class="cell" data-execution_count="10">
+<div id="2dc6bed1" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -695,7 +695,7 @@ Marcel Turcotte
 </div>
 </div>
 </div><div class="column" style="width:35%;">
-<div id="3a9dbf4e" class="cell" data-execution_count="11">
+<div id="3a9dbf4e" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -716,7 +716,7 @@ Marcel Turcotte
 <div class="column" style="width:60%;">
 <p>Une courbe en forme de S, telle que la fonction logistique standard (également appelée <strong>sigmoïde</strong>), est qualifiée de <strong>fonction d’écrasement</strong> (<em>squashing function</em>) car elle transforme un large domaine d’entrée en une plage de sortie restreinte.</p>
 </div><div class="column" style="width:40%;">
-<div id="5be3a519" class="cell" data-execution_count="12">
+<div id="5be3a519" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -768,7 +768,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <h2>Régression logistique (deux attributs)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="c956c094" class="cell" data-execution_count="13">
+<div id="c956c094" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -849,13 +849,13 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-1" class="slide level2">
 <h2>Chiffres manuscrits</h2>
 <p>Chargement du jeu de données</p>
-<div id="d32cee2f" class="cell" data-execution_count="14">
+<div id="d32cee2f" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_digits</span>
 <span id="cb5-2"><a aria-label="2"></a></span>
 <span id="cb5-3"><a aria-label="3"></a>digits <span class="op">=</span> load_digits()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Quel est le type de <code>digits.data</code></p>
-<div id="67f3df9f" class="cell" data-execution_count="15">
+<div id="67f3df9f" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="bu">type</span>(digits.data)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>numpy.ndarray</code></pre>
@@ -868,18 +868,18 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-2" class="slide level2">
 <h2>Chiffres manuscrits</h2>
 <p>Combien d’exemples (<code>N</code>) et combien d’attributs (<code>D</code>)?</p>
-<div id="9aa195fc" class="cell" data-execution_count="16">
+<div id="9aa195fc" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>digits.data.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>(1797, 64)</code></pre>
 </div>
 </div>
 <p>Définition des valeurs de <code>N</code> et <code>D</code></p>
-<div id="e116b9f6" class="cell" data-execution_count="17">
+<div id="e116b9f6" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>N, D <span class="op">=</span> digits.data.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>target</code> a-t-il le même nombre d’entrées (exemples) que <code>data</code> ?</p>
-<div id="4006da65" class="cell" data-execution_count="18">
+<div id="4006da65" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>digits.target.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>(1797,)</code></pre>
@@ -889,21 +889,21 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-3" class="slide level2">
 <h2>Chiffres manuscrits</h2>
 <p>Quelles sont la largeur et la hauteur de ces images ?</p>
-<div id="e61902e5" class="cell" data-execution_count="19">
+<div id="e61902e5" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>digits.images.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>(1797, 8, 8)</code></pre>
 </div>
 </div>
 <p>Définition des valeurs de <code>width</code> et <code>height</code></p>
-<div id="fc70383e" class="cell" data-execution_count="20">
+<div id="fc70383e" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>_, width, height <span class="op">=</span> digits.images.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="chiffres-manuscrits-4" class="slide level2">
 <h2>Chiffres manuscrits</h2>
 <p>Définition des valeurs de <code>X</code> et <code>y</code></p>
-<div id="480667db" class="cell" data-execution_count="21">
+<div id="480667db" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>X <span class="op">=</span> digits.data</span>
 <span id="cb16-2"><a aria-label="2"></a>y <span class="op">=</span> digits.target</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -911,7 +911,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-5" class="slide level2 smaller">
 <h2>Chiffres manuscrits</h2>
 <p><code>X[0]</code> est un vecteur de taille <code>width * height = D</code> (<span class="math inline">\(8 \times 8 = 64\)</span>).</p>
-<div id="65aa1bdd" class="cell" data-execution_count="22">
+<div id="65aa1bdd" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>X[<span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>array([ 0.,  0.,  5., 13.,  9.,  1.,  0.,  0.,  0.,  0., 13., 15., 10.,
@@ -923,7 +923,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 </div>
 <div class="fragment">
 <p>Il correspond à une image de <span class="math inline">\(8 \times 8 = 64\)</span>.</p>
-<div id="762aa113" class="cell" data-execution_count="23">
+<div id="762aa113" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>X[<span class="dv">0</span>].reshape(width, height)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>array([[ 0.,  0.,  5., 13.,  9.,  1.,  0.,  0.],
@@ -941,7 +941,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-6" class="slide level2 smaller">
 <h2>Chiffres manuscrits</h2>
 <p>Afficher les <code>n=5</code> premiers exemples.</p>
-<div id="e71f1fbb" class="cell" data-execution_count="24">
+<div id="e71f1fbb" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-2"><a aria-label="2"></a></span>
 <span id="cb21-3"><a aria-label="3"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">2</span>))</span>
@@ -976,7 +976,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 </section>
 <section id="chiffres-manuscrits-7" class="slide level2 smaller">
 <h2>Chiffres manuscrits</h2>
-<div id="e030dbe7" class="cell" data-execution_count="25">
+<div id="e030dbe7" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1005,7 +1005,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 </section>
 <section id="chiffres-manuscrits-8" class="slide level2">
 <h2>Chiffres manuscrits</h2>
-<div id="58bf47ca" class="cell" data-execution_count="26">
+<div id="58bf47ca" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1022,7 +1022,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-9" class="slide level2">
 <h2>Chiffres manuscrits</h2>
 <p>Préparation de notre expérience en apprentissage automatique</p>
-<div id="f24a517d" class="cell" data-execution_count="27">
+<div id="f24a517d" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb23-2"><a aria-label="2"></a></span>
 <span id="cb23-3"><a aria-label="3"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.1</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1031,7 +1031,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <section id="chiffres-manuscrits-10" class="slide level2">
 <h2>Chiffres manuscrits</h2>
 <p>Les algorithmes d’optimisation fonctionnent généralement mieux lorsque les attributs ont des plages de valeurs similaires.</p>
-<div id="32091736" class="cell" data-execution_count="28">
+<div id="32091736" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb24-2"><a aria-label="2"></a></span>
 <span id="cb24-3"><a aria-label="3"></a>scaler <span class="op">=</span> StandardScaler()</span>
@@ -1073,7 +1073,7 @@ z = \frac{(x - \mu)}{\sigma}
 </div></aside></section>
 <section id="chiffres-manuscrits-11" class="slide level2">
 <h2>Chiffres manuscrits</h2>
-<div id="6038488b" class="cell" data-execution_count="29">
+<div id="6038488b" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb25-2"><a aria-label="2"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsRestClassifier</span>
 <span id="cb25-3"><a aria-label="3"></a></span>
@@ -1100,7 +1100,7 @@ z = \frac{(x - \mu)}{\sigma}
 <section id="chiffres-manuscrits-12" class="slide level2 smaller">
 <h2>Chiffres manuscrits</h2>
 <p>Application du classificateur à notre ensemble de test</p>
-<div id="6db43e4b" class="cell" data-execution_count="30">
+<div id="6db43e4b" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
 <span id="cb26-2"><a aria-label="2"></a></span>
 <span id="cb26-3"><a aria-label="3"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
@@ -1130,7 +1130,7 @@ weighted avg       0.98      0.98      0.98       180
 <section id="visualisation" class="slide level2">
 <h2>Visualisation</h2>
 <p>Combien de classes ?</p>
-<div id="c75b1b7b" class="cell" data-execution_count="31">
+<div id="c75b1b7b" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>clf.classes_</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
@@ -1138,7 +1138,7 @@ weighted avg       0.98      0.98      0.98       180
 </div>
 <div class="fragment">
 <p>Les coefficients et les intercepts sont dans des tableaux distincts.</p>
-<div id="811f6f1b" class="cell" data-execution_count="32">
+<div id="811f6f1b" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>(clf.estimators_[<span class="dv">0</span>].coef_.shape, clf.estimators_[<span class="dv">0</span>].intercept_.shape)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>((1, 64), (1,))</code></pre>
@@ -1154,7 +1154,7 @@ weighted avg       0.98      0.98      0.98       180
 </div></aside></section>
 <section id="visualisation-1" class="slide level2">
 <h2>Visualisation</h2>
-<div id="205551f4" class="cell" data-execution_count="33">
+<div id="205551f4" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>clf.estimators_[<span class="dv">0</span>].coef_[<span class="dv">0</span>].<span class="bu">round</span>(<span class="dv">2</span>).reshape(width, height)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>array([[ 0.  , -0.25,  0.04,  0.21,  0.02, -0.58, -0.36, -0.05],
@@ -1170,7 +1170,7 @@ weighted avg       0.98      0.98      0.98       180
 </section>
 <section id="visualisation-2" class="slide level2">
 <h2>Visualisation</h2>
-<div id="4b19a352" class="cell" data-execution_count="34">
+<div id="4b19a352" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a>coef <span class="op">=</span> clf.estimators_[<span class="dv">0</span>].coef_</span>
 <span id="cb34-2"><a aria-label="2"></a>plt.imshow(coef[<span class="dv">0</span>].reshape(width,height))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1184,7 +1184,7 @@ weighted avg       0.98      0.98      0.98       180
 </section>
 <section id="visualisation-3" class="slide level2">
 <h2>Visualisation</h2>
-<div id="1fb255a6" class="cell" data-execution_count="35">
+<div id="1fb255a6" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
@@ -1222,7 +1222,7 @@ weighted avg       0.98      0.98      0.98       180
 </section>
 <section id="visualisation-4" class="slide level2">
 <h2>Visualisation</h2>
-<div id="b0f36cf8" class="cell" data-execution_count="36">
+<div id="b0f36cf8" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
@@ -1304,7 +1304,7 @@ Wu, Qianfan, Adel Boueiz, Alican Bozkurt, et al. 2018. <span>«&nbsp;<a href="ht
 </section>
 <section id="un-contre-tous-complet-1" class="slide level2">
 <h2>Un-contre-Tous (complet)</h2>
-<div id="69b62f0c" class="cell" data-execution_count="38">
+<div id="69b62f0c" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a><span class="co"># Train a One-vs-All classifier for each class</span></span>
 <span id="cb38-2"><a aria-label="2"></a></span>
 <span id="cb38-3"><a aria-label="3"></a>classifiers <span class="op">=</span> []</span>
@@ -1319,7 +1319,7 @@ Wu, Qianfan, Adel Boueiz, Alican Bozkurt, et al. 2018. <span>«&nbsp;<a href="ht
 </div></aside></section>
 <section id="un-contre-tous-complet-2" class="slide level2">
 <h2>Un-contre-Tous (complet)</h2>
-<div id="5825e510" class="cell" data-execution_count="39">
+<div id="5825e510" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="co"># Predict on a new sample</span></span>
 <span id="cb39-2"><a aria-label="2"></a>new_sample <span class="op">=</span> X_test[<span class="dv">0</span>].reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb39-3"><a aria-label="3"></a></span>
@@ -1339,7 +1339,7 @@ True class: versicolor</code></pre>
 </section>
 <section id="label_binarized" class="slide level2 smaller">
 <h2><code>label_binarized</code></h2>
-<div id="12f5c89e" class="cell" data-execution_count="40">
+<div id="12f5c89e" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> label_binarize</span>
 <span id="cb41-2"><a aria-label="2"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
 <span id="cb41-3"><a aria-label="3"></a></span>

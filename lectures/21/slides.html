@@ -326,7 +326,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="game" class="slide level2 scrollable">
 <h2><code>Game</code></h2>
-<div id="bbf0bb0f" class="cell" data-execution_count="1">
+<div id="bbf0bb0f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="kw">class</span> Game:</span>
@@ -402,7 +402,7 @@ Marcel Turcotte
 </section>
 <section id="game-1" class="slide level2 scrollable">
 <h2><code>Game</code></h2>
-<div id="62894b6a" class="cell" data-execution_count="2">
+<div id="62894b6a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="kw">class</span> Game:</span>
 <span id="cb2-2"><a aria-label="2"></a></span>
 <span id="cb2-3"><a aria-label="3"></a>    <span class="kw">def</span> initial_state(<span class="va">self</span>):</span>
@@ -429,7 +429,7 @@ Marcel Turcotte
 </section>
 <section id="bibliothèques-requises" class="slide level2">
 <h2>Bibliothèques requises</h2>
-<div id="4b83a4ba" class="cell" data-execution_count="3">
+<div id="4b83a4ba" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> math</span>
 <span id="cb3-2"><a aria-label="2"></a><span class="im">import</span> random</span>
 <span id="cb3-3"><a aria-label="3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -438,7 +438,7 @@ Marcel Turcotte
 </section>
 <section id="tictactoe" class="slide level2">
 <h2><code>TicTacToe</code></h2>
-<div id="7e06bfec" class="cell" data-execution_count="4">
+<div id="7e06bfec" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="kw">class</span> TicTacToe(Game):</span>
@@ -580,7 +580,7 @@ Marcel Turcotte
 </section>
 <section id="tictactoe-1" class="slide level2">
 <h2><code>TicTacToe</code></h2>
-<div id="0348fcef" class="cell" data-execution_count="5">
+<div id="0348fcef" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">class</span> TicTacToe(Game):</span>
 <span id="cb5-2"><a aria-label="2"></a></span>
 <span id="cb5-3"><a aria-label="3"></a>    <span class="co">"""</span></span>
@@ -598,7 +598,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="initial_state" class="slide level2">
 <h2><code>initial_state</code></h2>
-<div id="f4800027" class="cell" data-execution_count="6">
+<div id="f4800027" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>    <span class="kw">def</span> initial_state(<span class="va">self</span>):</span>
 <span id="cb6-2"><a aria-label="2"></a></span>
 <span id="cb6-3"><a aria-label="3"></a>        <span class="co">"""Retourne un plateau vide de 3x3."""</span></span>
@@ -608,7 +608,7 @@ Marcel Turcotte
 </section>
 <section id="get_valid_moves" class="slide level2">
 <h2><code>get_valid_moves</code></h2>
-<div id="c5c45a58" class="cell" data-execution_count="7">
+<div id="c5c45a58" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>    <span class="kw">def</span> get_valid_moves(<span class="va">self</span>, state):</span>
 <span id="cb7-2"><a aria-label="2"></a></span>
 <span id="cb7-3"><a aria-label="3"></a>        <span class="co">"""Tous les couples (i, j) où la case du plateau est vide."""</span></span>
@@ -623,7 +623,7 @@ Marcel Turcotte
 </section>
 <section id="make_move" class="slide level2">
 <h2><code>make_move</code></h2>
-<div id="312a2ba5" class="cell" data-execution_count="8">
+<div id="312a2ba5" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>    <span class="kw">def</span> make_move(<span class="va">self</span>, state, move, player):</span>
 <span id="cb8-2"><a aria-label="2"></a></span>
 <span id="cb8-3"><a aria-label="3"></a>        <span class="co">"""</span></span>
@@ -639,7 +639,7 @@ Marcel Turcotte
 </section>
 <section id="get_opponent" class="slide level2">
 <h2><code>get_opponent</code></h2>
-<div id="615e71a9" class="cell" data-execution_count="9">
+<div id="615e71a9" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>    <span class="kw">def</span> get_opponent(<span class="va">self</span>, player):</span>
 <span id="cb9-2"><a aria-label="2"></a></span>
 <span id="cb9-3"><a aria-label="3"></a>        <span class="co">"""Inverse les étiquettes des joueurs entre 'X' et 'O'."""</span></span>
@@ -649,7 +649,7 @@ Marcel Turcotte
 </section>
 <section id="evaluate" class="slide level2 scrollable">
 <h2><code>evaluate</code></h2>
-<div id="f2750d9b" class="cell" data-execution_count="10">
+<div id="f2750d9b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>    <span class="kw">def</span> evaluate(<span class="va">self</span>, state):</span>
 <span id="cb10-2"><a aria-label="2"></a></span>
 <span id="cb10-3"><a aria-label="3"></a>        lignes <span class="op">=</span> []</span>
@@ -674,7 +674,7 @@ Marcel Turcotte
 </section>
 <section id="is_terminal" class="slide level2">
 <h2><code>is_terminal</code></h2>
-<div id="0dd2301b" class="cell" data-execution_count="11">
+<div id="0dd2301b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>    <span class="kw">def</span> is_terminal(<span class="va">self</span>, state):</span>
 <span id="cb11-2"><a aria-label="2"></a></span>
 <span id="cb11-3"><a aria-label="3"></a>        <span class="co">"""</span></span>
@@ -690,7 +690,7 @@ Marcel Turcotte
 </section>
 <section id="display" class="slide level2">
 <h2><code>display</code></h2>
-<div id="532e1392" class="cell" data-execution_count="12">
+<div id="532e1392" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>    <span class="kw">def</span> display(<span class="va">self</span>, state):</span>
@@ -746,7 +746,7 @@ Marcel Turcotte
 </section>
 <section id="solver" class="slide level2">
 <h2><code>Solver</code></h2>
-<div id="c0369154" class="cell" data-execution_count="13">
+<div id="c0369154" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">class</span> Solver:</span>
@@ -809,7 +809,7 @@ Marcel Turcotte
 </section>
 <section id="solver-1" class="slide level2">
 <h2><code>Solver</code></h2>
-<div id="9f5977be" class="cell" data-execution_count="14">
+<div id="9f5977be" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="kw">class</span> Solver:</span>
 <span id="cb14-2"><a aria-label="2"></a></span>
 <span id="cb14-3"><a aria-label="3"></a>    <span class="kw">def</span> select_move(<span class="va">self</span>, game, state, player):</span>
@@ -827,7 +827,7 @@ Marcel Turcotte
 </section>
 <section id="randomsolver" class="slide level2">
 <h2><code>RandomSolver</code></h2>
-<div id="01699e98" class="cell" data-execution_count="15">
+<div id="01699e98" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">class</span> RandomSolver(Solver):</span>
@@ -856,7 +856,7 @@ Marcel Turcotte
 <span id="cb15-24"><a aria-label="24"></a>        <span class="cf">pass</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="008e0f74" class="cell" data-execution_count="16">
+<div id="008e0f74" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">class</span> RandomSolver(Solver):</span>
 <span id="cb16-2"><a aria-label="2"></a></span>
 <span id="cb16-3"><a aria-label="3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, seed<span class="op">=</span><span class="va">None</span>):</span>
@@ -873,7 +873,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="gamerunner" class="slide level2">
 <h2><code>GameRunner</code></h2>
-<div id="dea5b089" class="cell" data-execution_count="17">
+<div id="dea5b089" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="kw">class</span> GameRunner:</span>
@@ -934,7 +934,7 @@ Marcel Turcotte
 </section>
 <section id="gamerunner-1" class="slide level2">
 <h2><code>GameRunner</code></h2>
-<div id="96b16c06" class="cell" data-execution_count="18">
+<div id="96b16c06" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="kw">class</span> GameRunner:</span>
 <span id="cb18-2"><a aria-label="2"></a></span>
 <span id="cb18-3"><a aria-label="3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, game):</span>
@@ -958,7 +958,7 @@ Marcel Turcotte
 </section>
 <section id="exemple" class="slide level2 scrollable">
 <h2>Exemple</h2>
-<div id="bfd02a28" class="cell" data-execution_count="19">
+<div id="bfd02a28" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>jeu <span class="op">=</span> TicTacToe()</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
 <span id="cb19-3"><a aria-label="3"></a>gestionnaire <span class="op">=</span> GameRunner(jeu, verbose<span class="op">=</span><span class="va">True</span>)</span>
@@ -970,7 +970,7 @@ Marcel Turcotte
 </div>
 
 </section>
-<section id="exemple-output" class="slide level2 scrollable output-location-slide"><h2>Exemple</h2><div class="cell output-location-slide" data-execution_count="19">
+<section id="exemple-output" class="slide level2 scrollable output-location-slide"><h2>Exemple</h2><div class="cell output-location-slide" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1033,7 +1033,7 @@ Marcel Turcotte
 </div>
 </div></section><section id="evaluate_solvers" class="slide level2">
 <h2><code>evaluate_solvers</code></h2>
-<div id="6a8dd698" class="cell" data-execution_count="20">
+<div id="6a8dd698" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="kw">def</span> evaluate_solvers(game, solver_X, solver_O, num_games, verbose<span class="op">=</span><span class="va">False</span>):</span>
@@ -1116,7 +1116,7 @@ Marcel Turcotte
 </section>
 <section id="pouvez-vous-deviner-le-résultat" class="slide level2">
 <h2>Pouvez-vous deviner le résultat&nbsp;?</h2>
-<div id="8033062c" class="cell" data-execution_count="21">
+<div id="8033062c" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb22-2"><a aria-label="2"></a></span>
 <span id="cb22-3"><a aria-label="3"></a>a <span class="op">=</span> RandomSolver(<span class="dv">7</span>)</span>
@@ -1143,7 +1143,7 @@ Marcel Turcotte
       }</style></aside>
 <aside><div>
 <p>X_victoires : <span class="math inline">\(\frac{1}{3}\)</span>, O_victoires : <span class="math inline">\(\frac{1}{3}\)</span>, nulles : <span class="math inline">\(\frac{1}{3}\)</span> ou X_victoires : <span class="math inline">\(\frac{2}{5}\)</span>, O_victoires : <span class="math inline">\(\frac{2}{5}\)</span>, nulles : <span class="math inline">\(\frac{1}{5}\)</span> ou autre chose&nbsp;?</p>
-</div></aside></section><section id="pouvez-vous-deviner-le-résultat-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat&nbsp;?</h2><div class="cell output-location-slide" data-execution_count="21">
+</div></aside></section><section id="pouvez-vous-deviner-le-résultat-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat&nbsp;?</h2><div class="cell output-location-slide" data-execution_count="22">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>{'X_wins': 581, 'O_wins': 290, 'draws': 129}</code></pre>
 </div>
@@ -1297,7 +1297,7 @@ T : S \times A \to S
 </section>
 <section id="count_valid_sequences" class="slide level2 scrollable">
 <h2><code>count_valid_sequences</code></h2>
-<div id="ab928fd8" class="cell" data-execution_count="22">
+<div id="ab928fd8" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="kw">def</span> count_valid_sequences(game, state, player):</span>
 <span id="cb24-2"><a aria-label="2"></a></span>
 <span id="cb24-3"><a aria-label="3"></a>    <span class="cf">if</span> game.is_terminal(state):</span>
@@ -1312,7 +1312,7 @@ T : S \times A \to S
 <span id="cb24-12"><a aria-label="12"></a></span>
 <span id="cb24-13"><a aria-label="13"></a>    <span class="cf">return</span> total</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="0aef50c3" class="cell" data-execution_count="23">
+<div id="0aef50c3" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
@@ -1582,7 +1582,7 @@ T : S \times A \to S
 </div></aside></section>
 <section id="minimaxsolverv1" class="slide level2">
 <h2><code>MinimaxSolverV1</code></h2>
-<div id="8797f8ee" class="cell" data-execution_count="24">
+<div id="8797f8ee" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxSolverV1(Solver):</span>
@@ -1702,7 +1702,7 @@ T : S \times A \to S
 </section>
 <section id="minimaxsolverv1-1" class="slide level2">
 <h2><code>MinimaxSolverV1</code></h2>
-<div id="024beaf0" class="cell" data-execution_count="25">
+<div id="024beaf0" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxSolverV1(Solver):</span>
 <span id="cb28-2"><a aria-label="2"></a></span>
 <span id="cb28-3"><a aria-label="3"></a>    <span class="kw">def</span> select_move(<span class="va">self</span>, game, state, player):</span>
@@ -1720,7 +1720,7 @@ T : S \times A \to S
 </div></aside></section>
 <section id="minimax-3" class="slide level2">
 <h2><code>_minimax</code></h2>
-<div id="1bafdd4c" class="cell" data-execution_count="26">
+<div id="1bafdd4c" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>   <span class="kw">def</span> _minimax(<span class="va">self</span>, game, state, player, maximizing):</span>
 <span id="cb29-2"><a aria-label="2"></a></span>
 <span id="cb29-3"><a aria-label="3"></a>        <span class="cf">if</span> game.is_terminal(state):</span>
@@ -1731,7 +1731,7 @@ T : S \times A \to S
 </section>
 <section id="minimax-if-maximizing" class="slide level2">
 <h2><code>_minimax</code>: if maximizing</h2>
-<div id="8cbc3597" class="cell" data-execution_count="27">
+<div id="8cbc3597" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>        <span class="cf">if</span> maximizing:</span>
 <span id="cb30-2"><a aria-label="2"></a>            best_value <span class="op">=</span> <span class="op">-</span>math.inf</span>
 <span id="cb30-3"><a aria-label="3"></a>            best_move <span class="op">=</span> <span class="va">None</span></span>
@@ -1753,7 +1753,7 @@ T : S \times A \to S
 </section>
 <section id="minimax-if-minimizing" class="slide level2">
 <h2><code>_minimax</code>: if minimizing</h2>
-<div id="4a830f7c" class="cell" data-execution_count="28">
+<div id="4a830f7c" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a>        <span class="cf">else</span>:</span>
 <span id="cb31-2"><a aria-label="2"></a>            best_value <span class="op">=</span> math.inf</span>
 <span id="cb31-3"><a aria-label="3"></a>            best_move <span class="op">=</span> <span class="va">None</span></span>
@@ -1775,7 +1775,7 @@ T : S \times A \to S
 </section>
 <section id="exécution-12" class="slide level2 scrollable">
 <h2>Exécution (1/2)</h2>
-<div id="da72ad47" class="cell" data-execution_count="29">
+<div id="da72ad47" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a><span class="im">import</span> time</span>
@@ -1784,7 +1784,7 @@ T : S \times A \to S
 <span id="cb32-4"><a aria-label="4"></a>start_time <span class="op">=</span> time.perf_counter()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="3ea6bcfd" class="cell" data-execution_count="30">
+<div id="3ea6bcfd" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a aria-label="1"></a>a <span class="op">=</span> RandomSolver(<span class="dv">13</span>)</span>
 <span id="cb33-2"><a aria-label="2"></a>b <span class="op">=</span> MinimaxSolverV1()</span>
 <span id="cb33-3"><a aria-label="3"></a></span>
@@ -1794,7 +1794,7 @@ T : S \times A \to S
 <pre><code>{'X_wins': 0, 'O_wins': 0, 'draws': 1}</code></pre>
 </div>
 </div>
-<div id="f617d601" class="cell" data-execution_count="31">
+<div id="f617d601" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a><span class="co"># Enregistrer le temps de fin</span></span>
@@ -1809,7 +1809,7 @@ T : S \times A \to S
 </div>
 
 </section>
-<section id="exécution-12-output" class="slide level2 scrollable output-location-slide"><h2>Exécution (1/2)</h2><div class="cell output-location-slide" data-execution_count="31">
+<section id="exécution-12-output" class="slide level2 scrollable output-location-slide"><h2>Exécution (1/2)</h2><div class="cell output-location-slide" data-execution_count="32">
 <div class="cell-output cell-output-stdout">
 <pre><code>Temps écoulé : 1.613307 secondes !</code></pre>
 </div>
@@ -1830,7 +1830,7 @@ T : S \times A \to S
 </section>
 <section id="mémorisation-mise-en-cache" class="slide level2">
 <h2>Mémorisation (Mise en cache)</h2>
-<div id="f97aacc7" class="cell" data-execution_count="32">
+<div id="f97aacc7" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a><span class="im">from</span> functools <span class="im">import</span> lru_cache</span>
 <span id="cb37-2"><a aria-label="2"></a></span>
 <span id="cb37-3"><a aria-label="3"></a><span class="kw">def</span> canonical(state):</span>
@@ -1847,7 +1847,7 @@ T : S \times A \to S
 </section>
 <section id="minimaxsolver" class="slide level2">
 <h2><code>MinimaxSolver</code></h2>
-<div id="e6087e72" class="cell" data-execution_count="33">
+<div id="e6087e72" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxSolver(Solver):</span>
 <span id="cb38-2"><a aria-label="2"></a></span>
 <span id="cb38-3"><a aria-label="3"></a>    <span class="co">"""</span></span>
@@ -1938,7 +1938,7 @@ T : S \times A \to S
 </section>
 <section id="exécution-22" class="slide level2 scrollable">
 <h2>Exécution (2/2)</h2>
-<div id="5b2e2223" class="cell" data-execution_count="34">
+<div id="5b2e2223" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="im">import</span> time</span>
@@ -1947,7 +1947,7 @@ T : S \times A \to S
 <span id="cb39-4"><a aria-label="4"></a>start_time <span class="op">=</span> time.perf_counter()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="959d8d61" class="cell" data-execution_count="35">
+<div id="959d8d61" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a aria-label="1"></a>a <span class="op">=</span> RandomSolver(<span class="dv">13</span>)</span>
 <span id="cb40-2"><a aria-label="2"></a>b <span class="op">=</span> MinimaxSolver()</span>
 <span id="cb40-3"><a aria-label="3"></a></span>
@@ -1957,7 +1957,7 @@ T : S \times A \to S
 <pre><code>{'X_wins': 0, 'O_wins': 0, 'draws': 1}</code></pre>
 </div>
 </div>
-<div id="d1ac2b17" class="cell" data-execution_count="36">
+<div id="d1ac2b17" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a aria-label="1"></a><span class="co"># Enregistrer le temps de fin</span></span>
@@ -1972,13 +1972,13 @@ T : S \times A \to S
 </div>
 
 </section>
-<section id="exécution-22-output" class="slide level2 scrollable output-location-slide"><h2>Exécution (2/2)</h2><div class="cell output-location-slide" data-execution_count="36">
+<section id="exécution-22-output" class="slide level2 scrollable output-location-slide"><h2>Exécution (2/2)</h2><div class="cell output-location-slide" data-execution_count="37">
 <div class="cell-output cell-output-stdout">
 <pre><code>Temps écoulé : 0.084096 secondes !</code></pre>
 </div>
 </div></section><section id="encore-une-digression" class="slide level2">
 <h2>Encore une digression</h2>
-<div id="68e14ceb" class="cell" data-execution_count="37">
+<div id="68e14ceb" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a aria-label="1"></a>    <span class="kw">def</span> get_valid_moves(<span class="va">self</span>, state):</span>
 <span id="cb44-2"><a aria-label="2"></a></span>
 <span id="cb44-3"><a aria-label="3"></a>        moves <span class="op">=</span> [</span>
@@ -2020,7 +2020,7 @@ T : S \times A \to S
 </div></aside></section>
 <section id="pouvez-vous-deviner-le-résultat-1" class="slide level2">
 <h2>Pouvez-vous deviner le résultat ?</h2>
-<div id="e9fd3edb" class="cell" data-execution_count="38">
+<div id="e9fd3edb" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb45-2"><a aria-label="2"></a></span>
 <span id="cb45-3"><a aria-label="3"></a>a <span class="op">=</span> MinimaxSolver()</span>
@@ -2032,13 +2032,13 @@ T : S \times A \to S
 </div>
 
 </section>
-<section id="pouvez-vous-deviner-le-résultat-1-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat ?</h2><div class="cell output-location-slide" data-execution_count="38">
+<section id="pouvez-vous-deviner-le-résultat-1-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat ?</h2><div class="cell output-location-slide" data-execution_count="39">
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>{'X_wins': 998, 'O_wins': 0, 'draws': 2}</code></pre>
 </div>
 </div></section><section id="pouvez-vous-deviner-le-résultat-2" class="slide level2">
 <h2>Pouvez-vous deviner le résultat ?</h2>
-<div id="b6778dfe" class="cell" data-execution_count="39">
+<div id="b6778dfe" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb47-2"><a aria-label="2"></a></span>
 <span id="cb47-3"><a aria-label="3"></a>a <span class="op">=</span> RandomSolver(<span class="dv">7</span>)</span>
@@ -2050,13 +2050,13 @@ T : S \times A \to S
 </div>
 
 </section>
-<section id="pouvez-vous-deviner-le-résultat-2-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat ?</h2><div class="cell output-location-slide" data-execution_count="39">
+<section id="pouvez-vous-deviner-le-résultat-2-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat ?</h2><div class="cell output-location-slide" data-execution_count="40">
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>{'X_wins': 0, 'O_wins': 793, 'draws': 207}</code></pre>
 </div>
 </div></section><section id="pouvez-vous-deviner-le-résultat-3" class="slide level2">
 <h2>Pouvez-vous deviner le résultat&nbsp;?</h2>
-<div id="d43e785b" class="cell" data-execution_count="40">
+<div id="d43e785b" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb49-2"><a aria-label="2"></a></span>
 <span id="cb49-3"><a aria-label="3"></a>a <span class="op">=</span> MinimaxSolver()</span>
@@ -2068,7 +2068,7 @@ T : S \times A \to S
 </div>
 
 </section>
-<section id="pouvez-vous-deviner-le-résultat-3-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat&nbsp;?</h2><div class="cell output-location-slide" data-execution_count="40">
+<section id="pouvez-vous-deviner-le-résultat-3-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat&nbsp;?</h2><div class="cell output-location-slide" data-execution_count="41">
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>{'X_wins': 0, 'O_wins': 0, 'draws': 1000}</code></pre>
 </div>
@@ -2450,7 +2450,7 @@ T : S \times A \to S
 </div></aside></section>
 <section id="minimaxalphabetasolverv1" class="slide level2">
 <h2><code>MinimaxAlphaBetaSolverV1</code></h2>
-<div id="d51eb0f2" class="cell" data-execution_count="41">
+<div id="d51eb0f2" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxAlphaBetaSolverV1(Solver):</span>
@@ -2589,7 +2589,7 @@ T : S \times A \to S
 </section>
 <section id="minimaxalphabetasolverv1-1" class="slide level2">
 <h2><code>MinimaxAlphaBetaSolverV1</code></h2>
-<div id="f0a11746" class="cell" data-execution_count="42">
+<div id="f0a11746" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxAlphaBetaSolverV1(Solver):</span>
 <span id="cb52-2"><a aria-label="2"></a></span>
 <span id="cb52-3"><a aria-label="3"></a>    <span class="kw">def</span> select_move(<span class="va">self</span>, game, state, player):</span>
@@ -2614,7 +2614,7 @@ T : S \times A \to S
 </div></aside></section>
 <section id="alphabeta" class="slide level2">
 <h2><code>_alphabeta</code></h2>
-<div id="9524fbf4" class="cell" data-execution_count="43">
+<div id="9524fbf4" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a aria-label="1"></a>    <span class="kw">def</span> _alphabeta(<span class="va">self</span>, state, player, maximizing, depth, alpha, beta):</span>
 <span id="cb53-2"><a aria-label="2"></a></span>
 <span id="cb53-3"><a aria-label="3"></a>        <span class="cf">if</span> <span class="va">self</span>.game.is_terminal(state) <span class="kw">or</span> depth <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -2626,7 +2626,7 @@ T : S \times A \to S
 </section>
 <section id="alphabeta-si-maximisant" class="slide level2">
 <h2><code>_alphabeta</code> : si maximisant</h2>
-<div id="fb24e013" class="cell" data-execution_count="44">
+<div id="fb24e013" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a aria-label="1"></a>        <span class="cf">if</span> maximizing:</span>
 <span id="cb54-2"><a aria-label="2"></a>            value <span class="op">=</span> <span class="op">-</span>math.inf</span>
 <span id="cb54-3"><a aria-label="3"></a></span>
@@ -2658,7 +2658,7 @@ T : S \times A \to S
 </section>
 <section id="alphabeta-si-on-minimise" class="slide level2">
 <h2><code>_alphabeta</code> : si on minimise</h2>
-<div id="05e99d81" class="cell" data-execution_count="45">
+<div id="05e99d81" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a aria-label="1"></a>        <span class="cf">else</span>:</span>
 <span id="cb55-2"><a aria-label="2"></a>            value <span class="op">=</span> math.inf</span>
 <span id="cb55-3"><a aria-label="3"></a></span>
@@ -2822,7 +2822,7 @@ T : S \times A \to S
 </div></aside></section>
 <section id="vérification-de-validité" class="slide level2">
 <h2>Vérification de validité</h2>
-<div id="81f118e0" class="cell" data-execution_count="46">
+<div id="81f118e0" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb56-2"><a aria-label="2"></a></span>
 <span id="cb56-3"><a aria-label="3"></a>a <span class="op">=</span> MinimaxAlphaBetaSolverV1()</span>
@@ -2838,7 +2838,7 @@ T : S \times A \to S
 </section>
 <section id="vérification-de-validité-1" class="slide level2">
 <h2>Vérification de validité</h2>
-<div id="9613f91d" class="cell" data-execution_count="47">
+<div id="9613f91d" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb58-2"><a aria-label="2"></a></span>
 <span id="cb58-3"><a aria-label="3"></a>a <span class="op">=</span> RandomSolver(<span class="dv">7</span>)</span>
@@ -2854,7 +2854,7 @@ T : S \times A \to S
 </section>
 <section id="vérification-de-validité-2" class="slide level2">
 <h2>Vérification de validité</h2>
-<div id="60857745" class="cell" data-execution_count="48">
+<div id="60857745" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a aria-label="1"></a>game <span class="op">=</span> TicTacToe()</span>
 <span id="cb60-2"><a aria-label="2"></a></span>
 <span id="cb60-3"><a aria-label="3"></a>a <span class="op">=</span> MinimaxAlphaBetaSolverV1()</span>
@@ -2944,7 +2944,7 @@ T : S \times A \to S
 </section>
 <section id="minimaxsolverv2-instrumenté" class="slide level2 smaller">
 <h2><code>MinimaxSolverV2</code> (INSTRUMENTÉ)</h2>
-<div id="f584c083" class="cell" data-execution_count="49">
+<div id="f584c083" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxSolverV2(Solver):</span>
@@ -3088,7 +3088,7 @@ T : S \times A \to S
 </section>
 <section id="minimaxalphabetasolverv2-instrumenté" class="slide level2 smaller">
 <h2><code>MinimaxAlphaBetaSolverV2</code> (INSTRUMENTÉ)</h2>
-<div id="288564c0" class="cell" data-execution_count="50">
+<div id="288564c0" class="cell" data-execution_count="51">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a aria-label="1"></a><span class="kw">class</span> MinimaxAlphaBetaSolverV2(Solver):</span>
@@ -3251,7 +3251,7 @@ T : S \times A \to S
 </section>
 <section id="pouvez-vous-deviner-le-résultat-4" class="slide level2">
 <h2>Pouvez-vous deviner le résultat&nbsp;?</h2>
-<div id="315a8bd1" class="cell" data-execution_count="51">
+<div id="315a8bd1" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a aria-label="1"></a>runner <span class="op">=</span> GameRunner(game)</span>
 <span id="cb64-2"><a aria-label="2"></a></span>
 <span id="cb64-3"><a aria-label="3"></a>mm <span class="op">=</span> MinimaxSolverV2()</span>
@@ -3279,7 +3279,7 @@ T : S \times A \to S
           display:block!important;
       }</style></aside>
 </section>
-<section id="pouvez-vous-deviner-le-résultat-4-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat&nbsp;?</h2><div class="cell output-location-slide" data-execution_count="51">
+<section id="pouvez-vous-deviner-le-résultat-4-output" class="slide level2 output-location-slide"><h2>Pouvez-vous deviner le résultat&nbsp;?</h2><div class="cell output-location-slide" data-execution_count="52">
 <div class="cell-output cell-output-stdout">
 <pre><code>Nœuds visités pour MinimaxSolverV2&nbsp;: 557492
 Nœuds visités pour MinimaxAlphaBetaSolverV2&nbsp;: 2435
@@ -3287,7 +3287,7 @@ Efficacité de l'élagage&nbsp;: 0.996</code></pre>
 </div>
 </div></section><section id="mémorisation" class="slide level2">
 <h2>Mémorisation</h2>
-<div id="a41e2982" class="cell" data-execution_count="52">
+<div id="a41e2982" class="cell" data-execution_count="53">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a aria-label="1"></a><span class="kw">class</span> AlphaBetaSolver(Solver):</span>

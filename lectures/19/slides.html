@@ -315,7 +315,7 @@ Marcel Turcotte
 </section>
 <section id="problème-des-8-reines" class="slide level2">
 <h2>Problème des 8-Reines</h2>
-<div id="effb4081" class="cell" data-execution_count="1">
+<div id="effb4081" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -365,7 +365,7 @@ Marcel Turcotte
 </section>
 <section id="problème-des-8-reines-1" class="slide level2">
 <h2>Problème des 8-Reines</h2>
-<div id="8d3064a3" class="cell columns column-output-location" data-execution_count="2">
+<div id="8d3064a3" class="cell columns column-output-location" data-execution_count="3">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -510,7 +510,7 @@ Marcel Turcotte
 </section>
 <section id="représentation-de-létat" class="slide level2">
 <h2>Représentation de l’état</h2>
-<div id="181918cd" class="cell columns column-output-location" data-execution_count="3">
+<div id="181918cd" class="cell columns column-output-location" data-execution_count="4">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="co"># Exemple de plateau pour le problème des 8-Reines</span></span>
 <span id="cb3-2"><a aria-label="2"></a><span class="co"># Représente une solution valide pour les 8-Reines</span></span>
@@ -528,13 +528,13 @@ Marcel Turcotte
 </div></div>
 
 <aside><div>
-<div id="e4ed7fd9" class="cell" data-execution_count="4">
+<div id="e4ed7fd9" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>etat <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></aside></section>
 <section id="create_initial_state" class="slide level2">
 <h2><code>create_initial_state</code></h2>
-<div id="968e27d8" class="cell" data-execution_count="5">
+<div id="968e27d8" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb5-2"><a aria-label="2"></a>random.seed(<span class="dv">7</span>)</span>
 <span id="cb5-3"><a aria-label="3"></a></span>
@@ -550,7 +550,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="create_initial_state-1" class="slide level2">
 <h2><code>create_initial_state</code></h2>
-<div id="7a4ae21f" class="cell columns column-output-location" data-execution_count="6">
+<div id="7a4ae21f" class="cell columns column-output-location" data-execution_count="7">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>etat <span class="op">=</span> create_initial_state(<span class="dv">8</span>)</span>
 <span id="cb6-2"><a aria-label="2"></a>display_n_queens(etat, <span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -563,7 +563,7 @@ Marcel Turcotte
 </div>
 </div>
 </div></div>
-<div id="17ec5c01" class="cell" data-execution_count="7">
+<div id="17ec5c01" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>etat </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>[5, 2, 6, 0, 1, 1, 5, 0]</code></pre>
@@ -597,7 +597,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="create_initial_state-2" class="slide level2">
 <h2><code>create_initial_state</code></h2>
-<div id="5db7ed69" class="cell" data-execution_count="8">
+<div id="5db7ed69" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb9-2"><a aria-label="2"></a>random.seed(<span class="dv">7</span>)</span>
 <span id="cb9-3"><a aria-label="3"></a></span>
@@ -613,7 +613,7 @@ Marcel Turcotte
 </section>
 <section id="create_initial_state-3" class="slide level2">
 <h2><code>create_initial_state</code></h2>
-<div id="1292205c" class="cell columns column-output-location" data-execution_count="9">
+<div id="1292205c" class="cell columns column-output-location" data-execution_count="10">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -629,7 +629,7 @@ Marcel Turcotte
 </div>
 </div>
 </div></div>
-<div id="41a52be4" class="cell" data-execution_count="10">
+<div id="41a52be4" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>etat </span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>[6, 7, 2, 4, 0, 3, 1, 5]</code></pre>
@@ -638,7 +638,7 @@ Marcel Turcotte
 </section>
 <section id="calculate_conflicts" class="slide level2">
 <h2><code>calculate_conflicts</code></h2>
-<div id="e52c6029" class="cell" data-execution_count="11">
+<div id="e52c6029" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">def</span> calculate_conflicts(etat):</span>
 <span id="cb13-2"><a aria-label="2"></a></span>
 <span id="cb13-3"><a aria-label="3"></a>    n <span class="op">=</span> <span class="bu">len</span>(etat)</span>
@@ -660,7 +660,7 @@ Marcel Turcotte
 </section>
 <section id="calculate_conflicts-1" class="slide level2">
 <h2><code>calculate_conflicts</code></h2>
-<div id="9a5fe782" class="cell" data-execution_count="12">
+<div id="9a5fe782" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>display_n_queens(etat, <span class="dv">5</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -675,7 +675,7 @@ Marcel Turcotte
 </div>
 
 <aside><div>
-<div id="33f72927" class="cell" data-execution_count="13">
+<div id="33f72927" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>5</code></pre>
 </div>
@@ -683,7 +683,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="get_neighbors_rn" class="slide level2">
 <h2><code>get_neighbors_rn</code></h2>
-<div id="4912e6c1" class="cell" data-execution_count="14">
+<div id="4912e6c1" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">def</span> get_neighbors_rn(etat):</span>
 <span id="cb16-2"><a aria-label="2"></a></span>
 <span id="cb16-3"><a aria-label="3"></a>    <span class="co">"""Génère des états voisins en déplaçant une reine à la fois vers une nouvelle ligne."""</span></span>
@@ -706,7 +706,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="get_neighbors_rn-1" class="slide level2">
 <h2><code>get_neighbors_rn</code></h2>
-<div id="fb425e4c" class="cell" data-execution_count="15">
+<div id="fb425e4c" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>etat <span class="op">=</span> create_initial_state(<span class="dv">8</span>)</span>
@@ -723,7 +723,7 @@ Marcel Turcotte
 </section>
 <section id="get_neighbors_rn-2" class="slide level2 scrollable">
 <h2><code>get_neighbors_rn</code></h2>
-<div id="b764eced" class="cell" data-execution_count="16">
+<div id="b764eced" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> create_initial_state(<span class="dv">8</span>)</span>
 <span id="cb18-2"><a aria-label="2"></a><span class="bu">print</span>(initial_state_8)</span>
 <span id="cb18-3"><a aria-label="3"></a><span class="cf">for</span> s <span class="kw">in</span> get_neighbors_rn(initial_state_8):</span>
@@ -791,7 +791,7 @@ Marcel Turcotte
 </section>
 <section id="get_neighbors" class="slide level2">
 <h2><code>get_neighbors</code></h2>
-<div id="d28229c8" class="cell" data-execution_count="17">
+<div id="d28229c8" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a aria-label="1"></a><span class="kw">def</span> get_neighbors(etat):</span>
 <span id="cb20-2"><a aria-label="2"></a>    <span class="co">"""Génère des états voisins en échangeant deux lignes."""</span></span>
 <span id="cb20-3"><a aria-label="3"></a>    voisins <span class="op">=</span> []</span>
@@ -811,7 +811,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="get_neighbors-1" class="slide level2">
 <h2><code>get_neighbors</code></h2>
-<div id="3ac30672" class="cell" data-execution_count="18">
+<div id="3ac30672" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>etat <span class="op">=</span> create_initial_state(<span class="dv">8</span>)</span>
@@ -828,7 +828,7 @@ Marcel Turcotte
 </section>
 <section id="get_neighbors-2" class="slide level2 scrollable">
 <h2><code>get_neighbors</code></h2>
-<div id="70354ea1" class="cell" data-execution_count="19">
+<div id="70354ea1" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="bu">print</span>(initial_state_8)</span>
 <span id="cb22-2"><a aria-label="2"></a><span class="cf">for</span> s <span class="kw">in</span> get_neighbors(initial_state_8):</span>
 <span id="cb22-3"><a aria-label="3"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss"> -&gt; # of conflicts = </span><span class="sc">{</span>calculate_conflicts(s)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -867,7 +867,7 @@ Marcel Turcotte
 </section>
 <section id="hill_climbing" class="slide level2">
 <h2><code>hill_climbing</code></h2>
-<div id="04bb9305" class="cell" data-execution_count="20">
+<div id="04bb9305" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-2"><a aria-label="2"></a></span>
 <span id="cb24-3"><a aria-label="3"></a><span class="kw">def</span> hill_climbing(etat_courant):</span>
@@ -909,7 +909,7 @@ Marcel Turcotte
 </section>
 <section id="hill_climbing-version-2" class="slide level2">
 <h2><code>hill_climbing</code> (version 2)</h2>
-<div id="c62d1d39" class="cell" data-execution_count="21">
+<div id="c62d1d39" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>MAX_SIDE_MOVES <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb25-2"><a aria-label="2"></a></span>
 <span id="cb25-3"><a aria-label="3"></a><span class="kw">def</span> hill_climbing(etat_courant):</span>
@@ -942,7 +942,7 @@ Marcel Turcotte
 </section>
 <section id="résoudre" class="slide level2 scrollable">
 <h2>Résoudre</h2>
-<div id="01996f2b" class="cell" data-execution_count="22">
+<div id="01996f2b" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a>random.seed(<span class="dv">7</span>)</span>
@@ -1037,7 +1037,7 @@ Marcel Turcotte
 </section>
 <section id="résoudre-2" class="slide level2 scrollable">
 <h2>Résoudre (2)</h2>
-<div id="59f1df1e" class="cell" data-execution_count="23">
+<div id="59f1df1e" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>random.seed(<span class="dv">7</span>)</span>
@@ -1075,7 +1075,7 @@ Marcel Turcotte
 <h2>Résoudre 40-Reines</h2>
 <p><span class="math inline">\(40! = 8.1591528325 \times 10^{47}\)</span></p>
 <div class="fragment">
-<div id="01d62bc7" class="cell" data-execution_count="25">
+<div id="01d62bc7" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a><span class="im">import</span> time</span>
@@ -1134,7 +1134,7 @@ Marcel Turcotte
 </section>
 <section id="itérations-et-mouvement-latéraux" class="slide level2">
 <h2>Itérations et mouvement latéraux</h2>
-<div id="36fe1bfe" class="cell" data-execution_count="26">
+<div id="36fe1bfe" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a aria-label="1"></a>MAX_SIDE_MOVES <span class="op">=</span> <span class="dv">100</span></span>
@@ -1173,7 +1173,7 @@ Marcel Turcotte
 <span id="cb33-34"><a aria-label="34"></a>        conflits_courants <span class="op">=</span> conflits[arg_best]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="e6a05e71" class="cell" data-execution_count="27">
+<div id="e6a05e71" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a>random.seed(<span class="dv">7</span>)</span>
@@ -1222,7 +1222,7 @@ Marcel Turcotte
 </section>
 <section id="itérations-et-mouvement-latéraux-1" class="slide level2">
 <h2>Itérations et mouvement latéraux</h2>
-<div id="cc6b56ac" class="cell" data-execution_count="28">
+<div id="cc6b56ac" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -1250,7 +1250,7 @@ Marcel Turcotte
 </div>
 
 </section>
-<section id="itérations-et-mouvement-latéraux-1-output" class="slide level2 output-location-slide"><h2>Itérations et mouvement latéraux</h2><div class="cell output-location-slide" data-execution_count="28">
+<section id="itérations-et-mouvement-latéraux-1-output" class="slide level2 output-location-slide"><h2>Itérations et mouvement latéraux</h2><div class="cell output-location-slide" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1260,7 +1260,7 @@ Marcel Turcotte
 </div>
 </div></section><section id="reines-1" class="slide level2">
 <h2>20-Reines</h2>
-<div id="42db2efb" class="cell" data-execution_count="29">
+<div id="42db2efb" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a>random.seed(<span class="dv">7</span>)</span>
@@ -1306,7 +1306,7 @@ Marcel Turcotte
 <pre><code>1000 essais, nombre de solutions = 566, 566 uniques</code></pre>
 </div>
 </div>
-<div id="4a2b0714" class="cell" data-execution_count="30">
+<div id="4a2b0714" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -1334,7 +1334,7 @@ Marcel Turcotte
 </div>
 
 </section>
-<section id="reines-1-output" class="slide level2 output-location-slide"><h2>20-Reines</h2><div class="cell output-location-slide" data-execution_count="30">
+<section id="reines-1-output" class="slide level2 output-location-slide"><h2>20-Reines</h2><div class="cell output-location-slide" data-execution_count="31">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1462,7 +1462,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="variation-de-delta-e" class="slide level2">
 <h2>Variation de <span class="math inline">\(\Delta E\)</span></h2>
-<div id="01e62b48" class="cell columns column-output-location" data-execution_count="31">
+<div id="01e62b48" class="cell columns column-output-location" data-execution_count="32">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1505,7 +1505,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="variation-de-la-température-t" class="slide level2">
 <h2>Variation de la température, <span class="math inline">\(T\)</span></h2>
-<div id="17d07436" class="cell columns column-output-location" data-execution_count="32">
+<div id="17d07436" class="cell columns column-output-location" data-execution_count="33">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1548,7 +1548,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="variation-de-la-température-et-de-delta-e" class="slide level2">
 <h2>Variation de la température et de <span class="math inline">\(\Delta E\)</span></h2>
-<div id="b39aa963" class="cell columns column-output-location" data-execution_count="33">
+<div id="b39aa963" class="cell columns column-output-location" data-execution_count="34">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1713,7 +1713,7 @@ Marcel Turcotte
 </section>
 <section id="voyageur-de-commerce" class="slide level2">
 <h2>Voyageur de commerce</h2>
-<div id="387c36f1" class="cell" data-execution_count="34">
+<div id="387c36f1" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a aria-label="1"></a><span class="co"># On s'assure de toujours générer les mêmes coordonnées</span></span>
@@ -1730,7 +1730,7 @@ Marcel Turcotte
 <span id="cb45-12"><a aria-label="12"></a>distance_matrix <span class="op">=</span> np.sqrt(((coordinates[:, np.newaxis] <span class="op">-</span> coordinates[np.newaxis, :]) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="7d9c3f53" class="cell" data-execution_count="35">
+<div id="7d9c3f53" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1771,7 +1771,7 @@ Marcel Turcotte
 </div>
 
 </section>
-<section id="voyageur-de-commerce-output" class="slide level2 output-location-slide"><h2>Voyageur de commerce</h2><div class="cell output-location-slide" data-execution_count="35">
+<section id="voyageur-de-commerce-output" class="slide level2 output-location-slide"><h2>Voyageur de commerce</h2><div class="cell output-location-slide" data-execution_count="36">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1787,7 +1787,7 @@ Marcel Turcotte
 </section>
 <section id="solution-aléatoire" class="slide level2">
 <h2>Solution aléatoire</h2>
-<div id="9f090fa4" class="cell columns column-output-location" data-execution_count="36">
+<div id="9f090fa4" class="cell columns column-output-location" data-execution_count="37">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1852,7 +1852,7 @@ Marcel Turcotte
 </section>
 <section id="calcul-de-la-distance-totale" class="slide level2">
 <h2>Calcul de la distance totale</h2>
-<div id="144d6b39" class="cell" data-execution_count="37">
+<div id="144d6b39" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a aria-label="1"></a><span class="co"># Fonction pour calculer la distance totale d'un itinéraire donné</span></span>
 <span id="cb48-2"><a aria-label="2"></a></span>
 <span id="cb48-3"><a aria-label="3"></a><span class="kw">def</span> calculate_total_distance(route, distance_matrix):</span>
@@ -1869,7 +1869,7 @@ Marcel Turcotte
 </section>
 <section id="voisinage" class="slide level2">
 <h2>Voisinage</h2>
-<div id="d7266c1d" class="cell columns column-output-location" data-execution_count="38">
+<div id="d7266c1d" class="cell columns column-output-location" data-execution_count="39">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1934,7 +1934,7 @@ Marcel Turcotte
 </section>
 <section id="générer-une-solution-voisine-aléatoire" class="slide level2">
 <h2>Générer une solution voisine aléatoire</h2>
-<div id="18722b0d" class="cell" data-execution_count="39">
+<div id="18722b0d" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a aria-label="1"></a><span class="co"># Fonction pour générer une solution voisine aléatoire</span></span>
 <span id="cb50-2"><a aria-label="2"></a></span>
 <span id="cb50-3"><a aria-label="3"></a><span class="kw">def</span> get_neighbor(route):</span>
@@ -1951,7 +1951,7 @@ Marcel Turcotte
 </section>
 <section id="recuit-simulé-1" class="slide level2 scrollable">
 <h2>Recuit simulé</h2>
-<div id="998502ea" class="cell" data-execution_count="40">
+<div id="998502ea" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a aria-label="1"></a><span class="kw">def</span> simulated_annealing(distance_matrix, initial_temp, cooling_rate, max_iterations):</span>
 <span id="cb51-2"><a aria-label="2"></a></span>
 <span id="cb51-3"><a aria-label="3"></a>    num_cities <span class="op">=</span> <span class="bu">len</span>(distance_matrix)</span>
@@ -2031,7 +2031,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="exemple" class="slide level2">
 <h2>Exemple</h2>
-<div id="8ec77499" class="cell" data-execution_count="41">
+<div id="8ec77499" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a aria-label="1"></a><span class="co"># On s'assure de toujours générer les mêmes coordonnées</span></span>
 <span id="cb52-2"><a aria-label="2"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb52-3"><a aria-label="3"></a></span>
@@ -2061,7 +2061,7 @@ Marcel Turcotte
 </section>
 <section id="algorithme-de-heldkarp-1" class="slide level2">
 <h2>Algorithme de Held–Karp</h2>
-<div id="fd9f1132" class="cell" data-execution_count="42">
+<div id="fd9f1132" class="cell" data-execution_count="43">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a aria-label="1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span>
@@ -2115,7 +2115,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="trace-dexécution" class="slide level2 scrollable">
 <h2>Trace d’exécution</h2>
-<div id="d20629a2" class="cell" data-execution_count="43">
+<div id="d20629a2" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2203,7 +2203,7 @@ Marcel Turcotte
 </section>
 <section id="meilleur-itinéraire" class="slide level2">
 <h2>Meilleur itinéraire</h2>
-<div id="af44a0ce" class="cell" data-execution_count="44">
+<div id="af44a0ce" class="cell" data-execution_count="45">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a aria-label="1"></a><span class="co"># Plot the final best route</span></span>
@@ -2227,7 +2227,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="température-et-coût" class="slide level2">
 <h2>Température et coût</h2>
-<div id="19acd783" class="cell" data-execution_count="45">
+<div id="19acd783" class="cell" data-execution_count="46">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a aria-label="1"></a><span class="co"># Plot temperature and cost graphs</span></span>
@@ -2265,7 +2265,7 @@ Marcel Turcotte
 <li><p><strong>Avantages</strong> : Simple et efficace pour explorer des solutions voisines.</p></li>
 <li><p><strong>Inconvénients</strong> : Le changement peut être trop minime, ce qui peut ralentir la convergence.</p></li>
 </ul>
-<div id="8e85186e" class="cell" data-execution_count="46">
+<div id="8e85186e" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a aria-label="1"></a><span class="kw">def</span> get_neighbor_swap(route):</span>
 <span id="cb58-2"><a aria-label="2"></a>    a, b <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="bu">len</span>(route), size<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb58-3"><a aria-label="3"></a>    new_route <span class="op">=</span> route.copy()</span>
@@ -2275,7 +2275,7 @@ Marcel Turcotte
 </section>
 <section id="trace-dexécution-1" class="slide level2 scrollable">
 <h2>Trace d’exécution</h2>
-<div id="1e299479" class="cell" data-execution_count="47">
+<div id="1e299479" class="cell" data-execution_count="48">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a aria-label="1"></a><span class="co"># Plot the final best route</span></span>
@@ -2294,7 +2294,7 @@ Marcel Turcotte
 </section>
 <section id="meilleur-chemin" class="slide level2">
 <h2>Meilleur chemin</h2>
-<div id="8fdb215a" class="cell columns column-output-location" data-execution_count="48">
+<div id="8fdb215a" class="cell columns column-output-location" data-execution_count="49">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>
@@ -2320,7 +2320,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="température-et-coût-1" class="slide level2">
 <h2>Température et coût</h2>
-<div id="f3a04092" class="cell" data-execution_count="49">
+<div id="f3a04092" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a aria-label="1"></a><span class="co"># Plot temperature and cost graphs</span></span>
@@ -2398,7 +2398,7 @@ Marcel Turcotte
 <li><strong>Avantages</strong> : Simple à mettre en œuvre et à comprendre.</li>
 <li><strong>Inconvénients</strong> : Conduit souvent à une <strong>convergence prématurée</strong> car la température diminue trop rapidement.</li>
 </ul>
-<div id="f9c1508a" class="cell" data-execution_count="50">
+<div id="f9c1508a" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a aria-label="1"></a>temperature <span class="op">=</span> initial_temp <span class="op">-</span> alpha <span class="op">*</span> iteration</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -2414,7 +2414,7 @@ Marcel Turcotte
 <li><strong>Avantages</strong> : Largement utilisé pour sa simplicité et son efficacité.</li>
 <li><strong>Inconvénients</strong> : Le choix de <span class="math inline">\(\alpha\)</span> est crucial ; s’il est trop petit, la température baisse trop rapidement, et s’il est trop grand, la convergence peut être lente.</li>
 </ul>
-<div id="fbe52d9f" class="cell" data-execution_count="51">
+<div id="fbe52d9f" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a aria-label="1"></a>temperature <span class="op">=</span> initial_temp <span class="op">*</span> (cooling_rate <span class="op">**</span> iteration)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -2430,7 +2430,7 @@ Marcel Turcotte
 <li><strong>Avantages</strong> : Offre un taux de refroidissement plus lent, utile pour les problèmes nécessitant une exploration approfondie de l’espace de solution.</li>
 <li><strong>Inconvénients</strong> : La convergence peut être très lente, nécessitant de nombreuses itérations.</li>
 </ul>
-<div id="e65ce5a5" class="cell" data-execution_count="52">
+<div id="e65ce5a5" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a aria-label="1"></a>temperature <span class="op">=</span> alpha <span class="op">*</span> initial_temp <span class="op">/</span> (np.log(<span class="dv">1</span> <span class="op">+</span> iteration))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -2446,7 +2446,7 @@ Marcel Turcotte
 <li><strong>Avantages</strong> : Permet un processus de refroidissement plus contrôlé, équilibrant exploration et exploitation.</li>
 <li><strong>Inconvénients</strong> : Peut nécessiter un ajustement minutieux de <span class="math inline">\(\alpha\)</span> pour être efficace.</li>
 </ul>
-<div id="0a857da1" class="cell" data-execution_count="53">
+<div id="0a857da1" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a aria-label="1"></a>temperature <span class="op">=</span> initial_temp <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> alpha <span class="op">*</span> iteration)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -2458,7 +2458,7 @@ Marcel Turcotte
 <li><strong>Avantages</strong> : Plus flexible et peut s’adapter aux caractéristiques du problème.</li>
 <li><strong>Inconvénients</strong> : Plus complexe à mettre en œuvre et nécessite une conception minutieuse pour éviter l’instabilité.</li>
 </ul>
-<div id="bc49ba42" class="cell" data-execution_count="54">
+<div id="bc49ba42" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a aria-label="1"></a><span class="cf">if</span> no_significant_change_in_cost:</span>
 <span id="cb66-2"><a aria-label="2"></a>    temperature <span class="op">*=</span> <span class="fl">0.99</span> <span class="co"># Ralentir le refroidissement</span></span>
 <span id="cb66-3"><a aria-label="3"></a><span class="cf">else</span>:</span>
@@ -2467,7 +2467,7 @@ Marcel Turcotte
 </section>
 <section id="stratégies-de-refroidissement-1" class="slide level2">
 <h2>Stratégies de refroidissement</h2>
-<div id="03a5db3f" class="cell columns column-output-location" data-execution_count="55">
+<div id="03a5db3f" class="cell columns column-output-location" data-execution_count="56">
 <div class="column">
 <details class="code-fold">
 <summary>Code</summary>

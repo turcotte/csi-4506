@@ -544,7 +544,7 @@ window.Quarto = {
 <section id="données" class="level2">
 <h2 class="anchored" data-anchor-id="données">Données</h2>
 <p>Lors du cours, j’ai recommandé d’utiliser <a href="https://playground.tensorflow.org">TensorFlow Playground</a> comme un outil interactif pour approfondir votre compréhension intuitive des réseaux de neurones et des principes de l’apprentissage automatique. En particulier, j’ai conseillé d’expérimenter avec le jeu de données comprenant un cercle intérieur (classe 1) et un anneau extérieur (classe 0). Ce notebook offre une exploration plus détaillée de ces concepts.</p>
-<div id="3de7d03b" class="cell" data-execution_count="1">
+<div id="3de7d03b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Générer et tracer le jeu de données "cercles"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_circles</span>
@@ -613,7 +613,7 @@ r = x_1^2 + x_2^2,
 <section id="vue-3d" class="level2">
 <h2 class="anchored" data-anchor-id="vue-3d">Vue 3D</h2>
 <p><span class="math inline">\((x_1,x_2,r)\)</span> avec <span class="math inline">\(r=x_1^2+x_2^2\)</span></p>
-<div id="1b4cfbce" class="cell" data-execution_count="2">
+<div id="1b4cfbce" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_circles</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
@@ -696,7 +696,7 @@ if (outputEl) {{
 <section id="séparabilité-linéaire-en-1d-espace-r" class="level2">
 <h2 class="anchored" data-anchor-id="séparabilité-linéaire-en-1d-espace-r">Séparabilité linéaire en 1D (espace-r)</h2>
 <p>En comparant deux modèles, <code>clf_r</code> utilise un seul attribut, <span class="math inline">\(r=x_1^2+x_2^2\)</span>, tandis que <code>quad</code> inclut des attributs polynomiaux de degré 2.</p>
-<div id="b6c2173a" class="cell" data-execution_count="3">
+<div id="b6c2173a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -715,7 +715,7 @@ if (outputEl) {{
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="bu">float</span>(clf_r.coef_[<span class="dv">0</span>][<span class="dv">0</span>])<span class="op">;</span> b <span class="op">=</span> <span class="bu">float</span>(clf_r.intercept_[<span class="dv">0</span>])</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>r_thresh <span class="op">=</span> <span class="op">-</span>b <span class="op">/</span> w <span class="cf">if</span> <span class="bu">abs</span>(w) <span class="op">&gt;</span> <span class="fl">1e-12</span> <span class="cf">else</span> <span class="va">None</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="37bfbbe7" class="cell" data-execution_count="4">
+<div id="37bfbbe7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">140</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.linspace(r.<span class="bu">min</span>(), r.<span class="bu">max</span>(), <span class="dv">40</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.hist(r[y<span class="op">==</span><span class="dv">0</span>], bins<span class="op">=</span>bins, alpha<span class="op">=</span><span class="fl">0.65</span>, label<span class="op">=</span><span class="st">"classe 0 (anneau)"</span>)</span>
@@ -736,7 +736,7 @@ if (outputEl) {{
 </section>
 <section id="modèle-logistique-dans-lespace-r-en-1d" class="level2">
 <h2 class="anchored" data-anchor-id="modèle-logistique-dans-lespace-r-en-1d">Modèle logistique dans l’espace r en 1D</h2>
-<div id="8b92ee46" class="cell" data-execution_count="5">
+<div id="8b92ee46" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> np.argsort(r.ravel())</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>r_sorted <span class="op">=</span> r.ravel()[order]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p_sorted <span class="op">=</span> clf_r.predict_proba(r_sorted.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))[:,<span class="dv">1</span>]</span>
@@ -764,7 +764,7 @@ if (outputEl) {{
 <section id="frontière-de-décision-à-partir-de-r-x1²-x2²-logistique" class="level2">
 <h2 class="anchored" data-anchor-id="frontière-de-décision-à-partir-de-r-x1²-x2²-logistique">Frontière de décision à partir de r = x1² + x2² (logistique)</h2>
 <p>Utilise <code>clf_r.predict_proba</code> pour tracer la frontière de décision.</p>
-<div id="54dca7d4" class="cell" data-execution_count="6">
+<div id="54dca7d4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xx, yy <span class="op">=</span> np.meshgrid(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    np.linspace(X[:,<span class="dv">0</span>].<span class="bu">min</span>()<span class="op">-</span><span class="fl">0.3</span>, X[:,<span class="dv">0</span>].<span class="bu">max</span>()<span class="op">+</span><span class="fl">0.3</span>, <span class="dv">400</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    np.linspace(X[:,<span class="dv">1</span>].<span class="bu">min</span>()<span class="op">-</span><span class="fl">0.3</span>, X[:,<span class="dv">1</span>].<span class="bu">max</span>()<span class="op">+</span><span class="fl">0.3</span>, <span class="dv">400</span>)</span>
@@ -792,7 +792,7 @@ if (outputEl) {{
 <section id="frontière-de-décision-à-partir-des-attributs-quadratiques-logistique" class="level2">
 <h2 class="anchored" data-anchor-id="frontière-de-décision-à-partir-des-attributs-quadratiques-logistique">Frontière de décision à partir des attributs quadratiques (logistique)</h2>
 <p>Utilise <code>quad.predict_proba</code> pour tracer la frontière de décision. (En effet, les deux modèles produisent le même résultat.)</p>
-<div id="d230fd1a" class="cell" data-execution_count="7">
+<div id="d230fd1a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p_quad <span class="op">=</span> quad.predict_proba(grid)[:, <span class="dv">1</span>].reshape(xx.shape)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">5.2</span>,<span class="fl">5.2</span>), dpi<span class="op">=</span><span class="dv">140</span>)</span>
@@ -814,7 +814,7 @@ if (outputEl) {{
 <section id="réseau-de-neurones" class="level2">
 <h2 class="anchored" data-anchor-id="réseau-de-neurones">Réseau de neurones</h2>
 <p>Pour approfondir notre compréhension du comportement des réseaux de neurones, configurons un modèle pour n’utiliser que les attributs <span class="math inline">\(x_1\)</span> et <span class="math inline">\(x_2\)</span>. Nous allons mettre en place deux couches cachées, chacune composée de quatre neurones. Dans mes expériences, la fonction d’activation <code>Tanh</code> a conduit à une convergence rapide du réseau. La fonction <code>Sigmoid</code> a également convergé, bien que plus lentement. De même, la fonction d’activation <code>ReLU</code> a permis une convergence rapide mais a produit une frontière de décision composée de segments linéaires.</p>
-<div id="1c9db35a" class="cell" data-execution_count="8">
+<div id="1c9db35a" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Réseau MLP Keras à deux couches (4 + 4) sur make_circles + tracé de la frontière de décision</span></span>
@@ -834,7 +834,7 @@ if (outputEl) {{
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="dd313a17" class="cell" data-execution_count="9">
+<div id="dd313a17" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Modèle : 2 couches cachées avec 4 unités chacune</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tanh fonctionne bien ici en raison de la symétrie circulaire (ReLU est bien aussi).</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -845,12 +845,12 @@ if (outputEl) {{
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="bd73bee8" class="cell" data-execution_count="10">
+<div id="bd73bee8" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.01</span>),</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              metrics<span class="op">=</span>[<span class="st">"accuracy"</span>])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="c00b1a06" class="cell" data-execution_count="11">
+<div id="c00b1a06" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optionnel : arrêt précoce pour une convergence rapide</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>es <span class="op">=</span> keras.callbacks.EarlyStopping(patience<span class="op">=</span><span class="dv">20</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>, monitor<span class="op">=</span><span class="st">"val_loss"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -869,7 +869,7 @@ if (outputEl) {{
 <pre><code>Train acc: 1.000 | Val acc (best): 1.000</code></pre>
 </div>
 </div>
-<div id="13d06d46" class="cell" data-execution_count="12">
+<div id="13d06d46" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Fonction d'aide au tracé : frontière de décision dans le plan original (x1, x2)</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_decision_boundary(model, X, y, title<span class="op">=</span><span class="st">"Frontière de décision MLP Keras"</span>):</span>
@@ -910,7 +910,7 @@ if (outputEl) {{
 <section id="ensemble-de-données-xor" class="level2">
 <h2 class="anchored" data-anchor-id="ensemble-de-données-xor">Ensemble de données XOR</h2>
 <p>Cet exemple utilise un ensemble de données classique, caractérisé par un motif “ou exclusif” (XOR), qui est fréquemment utilisé pour démontrer des frontières de décision non linéaires et pour souligner la nécessité des réseaux de neurones dans le traitement de telles complexités.</p>
-<div id="a675544c" class="cell" data-execution_count="13">
+<div id="a675544c" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Générer l'ensemble de données XOR</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>n_samples <span class="op">=</span> <span class="dv">800</span></span>
@@ -953,7 +953,7 @@ if (outputEl) {{
 </div>
 </div>
 <p>Serait-il raisonnable de penser que les attributs conçus pour les données circulaires pourraient être bénéfiques dans ce contexte ?</p>
-<div id="52da41f7" class="cell" data-execution_count="14">
+<div id="52da41f7" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> (x1<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> x2<span class="op">**</span><span class="dv">2</span>).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Modèles</span></span>
@@ -970,7 +970,7 @@ if (outputEl) {{
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>r_thresh <span class="op">=</span> <span class="op">-</span>b <span class="op">/</span> w <span class="cf">if</span> <span class="bu">abs</span>(w) <span class="op">&gt;</span> <span class="fl">1e-12</span> <span class="cf">else</span> <span class="va">None</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pas du tout!</p>
-<div id="c1dc8b68" class="cell" data-execution_count="15">
+<div id="c1dc8b68" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>), dpi<span class="op">=</span><span class="dv">140</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.linspace(r.<span class="bu">min</span>(), r.<span class="bu">max</span>(), <span class="dv">40</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.hist(r[y<span class="op">==</span><span class="dv">0</span>], bins<span class="op">=</span>bins, alpha<span class="op">=</span><span class="fl">0.65</span>, label<span class="op">=</span><span class="st">"classe 0 (anneau)"</span>)</span>
@@ -990,7 +990,7 @@ if (outputEl) {{
 </div>
 <p>Pour résoudre le problème en utilisant la régression logistique, il serait nécessaire de créer de nouveaux attributs. Pouvez-vous proposer de tels attributs ?</p>
 <p>Qu’en est-il de notre modèle de réseau de neurones ? Pouvons-nous raisonnablement nous attendre à ce qu’il fonctionne bien sur cet ensemble de données ? Vous trouverez ci-dessous une copie verbatim du code.</p>
-<div id="903652ec" class="cell" data-execution_count="16">
+<div id="903652ec" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0) Reproductibilité</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
@@ -1002,7 +1002,7 @@ if (outputEl) {{
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ecd65870" class="cell" data-execution_count="17">
+<div id="ecd65870" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Modèle : 2 couches cachées avec 4 unités chacune</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tanh fonctionne bien ici en raison de la symétrie circulaire (ReLU fonctionne aussi).</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1013,12 +1013,12 @@ if (outputEl) {{
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="2fc14574" class="cell" data-execution_count="18">
+<div id="2fc14574" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.01</span>),</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>              loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>,</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>              metrics<span class="op">=</span>[<span class="st">"accuracy"</span>])</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ed69ca7e" class="cell" data-execution_count="19">
+<div id="ed69ca7e" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optionnel : arrêt précoce pour une convergence rapide</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>es <span class="op">=</span> keras.callbacks.EarlyStopping(patience<span class="op">=</span><span class="dv">20</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>, monitor<span class="op">=</span><span class="st">"val_loss"</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1037,7 +1037,7 @@ if (outputEl) {{
 <pre><code>Train acc: 1.000 | Val acc (meilleur): 0.995</code></pre>
 </div>
 </div>
-<div id="69560d9f" class="cell" data-execution_count="20">
+<div id="69560d9f" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Outil de tracé : frontière de décision dans le plan original (x1, x2)</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_decision_boundary(model, X, y, title<span class="op">=</span><span class="st">"Frontière de décision du MLP Keras"</span>):</span>
