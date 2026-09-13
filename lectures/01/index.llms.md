@@ -1,11 +1,11 @@
-# Administration, exploration des divers définitions de l’IA
+# Administration, exploration des diverses définitions de l’IA
 
 CSI4506 Introduction à l’intelligence artificielle
 
 ## Préparation
 
 - Consultez le [plan de cours](../../course-syllabus.llms.md)
-- Écoutez [Super Intelligence](https://www.bloomberg.com/news/videos/2024-09-12/super-intelligence-the-future-with-hannah-fry-video) tirée de la série [The Future with Hannah Fry](https://www.bloomberg.com/originals/series/the-future-hannah-fry) diffusée le 2024-09-12.
+- Écoutez [Super Intelligence](https://www.bloomberg.com/news/videos/2024-09-12/super-intelligence-the-future-with-hannah-fry-video), tirée de la série [The Future with Hannah Fry](https://www.bloomberg.com/originals/series/the-future-hannah-fry) et diffusée le 2024-09-12.
 
 ## Participation
 
@@ -22,5 +22,5 @@ Unable to execute JavaScript.
 
 **Melanie Mitchell** est une voix influente dans les débats actuels sur l’intelligence artificielle, notamment en ce qui concerne l’évaluation des systèmes logiciels. Pour ceux qui s’intéressent à la nature de l’intelligence, je recommande vivement sa série de balados, composée de six épisodes, chacun durant entre 35 et 50 minutes.
 
-- [Santa Fe Institute, Complexity Podcast, The Nature of Intelligence](https://www.santafe.edu/culture/podcasts), published from September to December 2024
-- [Are We Thinking Correctly About **AI Intelligence**? The Joy of Why](https://www.youtube.com/watch?v=cSZo8GZIUYI), published on 2026-08-20
+- [Santa Fe Institute, Complexity Podcast, The Nature of Intelligence](https://www.santafe.edu/culture/podcasts), publié de septembre à décembre 2024
+- [Are We Thinking Correctly About **AI Intelligence**? The Joy of Why](https://www.youtube.com/watch?v=cSZo8GZIUYI), publié le 2026-08-20

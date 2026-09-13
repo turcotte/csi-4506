@@ -4,7 +4,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Préparer
 
-- [CSI4506 Tutoriel Jupyter Notebooks et Google Colab](../../computing/01/index.llms.md)
+- [Tutoriel sur les notebooks Jupyter et Google Colab pour CSI4506 ](../../computing/01/index.llms.md)
 
 ## Participer
 
@@ -12,8 +12,8 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
-Pour ceux qui ne sont pas encore familiers avec `numpy` et `pandas`, il est recommandé d’explorer ces tutoriels dans les semaines à venir à votre propre rythme. Les notebooks d’Aurélien Géron offrent des informations essentielles sur les concepts de base de l’apprentissage automatique.
+Si vous ne connaissez pas encore `numpy` et `pandas`, nous vous recommandons d’explorer ces tutoriels à votre propre rythme au cours des prochaines semaines. Les cahiers d’Aurélien Géron présentent plusieurs concepts et outils fondamentaux de l’apprentissage automatique.
 
-- [numpy](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_numpy.ipynb) – a fundamental library centered around N-dimensional array objects.
-- [pandas](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_pandas.ipynb) – powerfull data analysis tools, centered around the `DataFrame`.
-- [visualization](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_matplotlib.ipynb) – demonstrates how to use the `matplotlib` to produce beautiful graphs.
+- [numpy](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_numpy.ipynb) – une bibliothèque fondamentale centrée sur les tableaux à \\N\\ dimensions.
+- [pandas](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_pandas.ipynb) – de puissants outils d’analyse de données centrés sur le `DataFrame`.
+- [visualisation](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_matplotlib.ipynb) – une introduction à l’utilisation de `matplotlib` pour produire des graphiques efficaces.
