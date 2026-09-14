@@ -5375,9 +5375,9 @@
   {
     "objectID": "computing/01/index.html#exemples",
     "href": "computing/01/index.html#exemples",
-    "title": "Tutoriel Jupyter Notebook et Google Colab",
+    "title": "Tutoriel sur les notebooks Jupyter et Google Colab",
     "section": "Exemples",
-    "text": "Exemples\n\n01_ottawa_river_temperature (Jupyter Notebook){download=“01_ottawa_river_temperature.ipynb”}\n02_empty (Jupyter Notebook){download=“02_empty.ipynb”}\n03_missing_library (Jupyter Notebook){download=“03_missing_library.ipynb”}\n04_stock_price (Jupyter Notebook){download=“04_stock_price.ipynb”}\n05_central_limit (Jupyter Notebook){download=“5_central_limit.ipynb”}\n\nTrois cahiers d’Aurélien Géron introduisant des concepts essentiels pour l’apprentissage automatique. Dans les semaines à venir, vous pourriez les parcourir à votre propre rythme.\n\nnumpy – une bibliothèque fondamentale centrée sur les tableaux N-dimensionnel.\npandas – des outils puissants d’analyse de données, centrés sur le DataFrame.\nvisualisation – démontre comment utiliser matplotlib pour produire de beaux graphiques.",
+    "text": "Exemples\n\n01_ottawa_river_temperature  (notebook Jupyter)\n02_empty  (notebook Jupyter)\n03_missing_library  (notebook Jupyter)\n04_stock_price  (notebook Jupyter)\n05_central_limit  (notebook Jupyter)\n\nTrois cahiers d’Aurélien Géron introduisant des concepts essentiels pour l’apprentissage automatique. Dans les semaines à venir, vous pourriez les parcourir à votre propre rythme.\n\nnumpy – une bibliothèque fondamentale centrée sur les tableaux à \\(N\\) dimensions.\npandas – de puissants outils d’analyse de données centrés sur le DataFrame.\nvisualisation – une introduction à l’utilisation de matplotlib pour produire des graphiques efficaces.",
     "crumbs": [
       "**Informatique**",
       "Tutoriel 1"
