@@ -125,6 +125,22 @@
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="../../assets/css/reveal-common.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -238,7 +254,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version : 13 sept. 2026 17h42</p>
+  <p class="date">Version : 15 sept. 2026 15h04</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -288,7 +304,7 @@ Marcel Turcotte
 <li><strong>Interpréter</strong> les frontières de décision et le concept de séparabilité linéaire.</li>
 </ul>
 <aside class="notes">
-<p>Comme je l’ai indiqué dans le cours d’introduction, je souhaite présenter une série de concepts menant à l’apprentissage profond. La régression linéaire constituerait un point de départ logique. Il est toutefois tout aussi important d’acquérir une compréhension générale d’autres algorithmes d’apprentissage, car leurs structures de modèles et leurs processus d’entraînement diffèrent considérablement. Nous étudierons donc les arbres de décision et les <span class="math inline">\(k\)</span> plus proches voisins avant d’introduire la régression linéaire.</p>
+<p>Comme je l’ai indiqué dans le cours d’introduction, je souhaite présenter une série de concepts menant à l’apprentissage profond. La régression linéaire constituerait un point de départ logique. Il est toutefois tout aussi important d’acquérir une compréhension générale d’autres algorithmes d’apprentissage, car leurs structures de modèles et leurs processus d’entraînement diffèrent considérablement. Nous étudierons donc les arbres de décision et les <span class="math inline">k</span> plus proches voisins avant d’introduire la régression linéaire.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -315,7 +331,7 @@ Marcel Turcotte
 </div>
 
 <aside class="notes">
-<p>Les arbres de décision sont utiles parce qu’ils exposent clairement les règles apprises par le modèle. L’arbre ci-dessus illustre les résultats d’une étude sur les symptômes d’anxiété cliniquement significatifs. Dans ce cas, le premier facteur était la présence déclarée d’un milieu familial positif.</p>
+<p>Les arbres de décision sont utiles parce qu’ils exposent clairement les règles apprises par le modèle. L’arbre ci-dessus illustre les résultats d’une étude sur les symptômes d’anxiété cliniquement significatifs. Dans ce cas, le premier facteur était la présence déclarée d’un milieu familial positif <span class="citation" data-cites="Battista:2023aa">(<a href="#/références" role="doc-biblioref" onclick="">Battista et al. 2023</a>)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -328,13 +344,13 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p><strong>Attribution :</strong> <a href="https://www.canada.ca/fr/sante-publique/services/rapports-publications/promotion-sante-prevention-maladies-chroniques-canada-recherche-politiques-pratiques/vol-43-no-2-2023/arbres-decisionnels-recherche-surveillance-sante-populationnelle-sante-mentale-jeunes-etude-competences.html">Agence de la santé publique du Canada</a></p>
+<p><strong>Attribution :</strong> <a href="https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-43-no-2-2023/decision-trees-population-health-surveillance-research-youth-mental-health-compass-study.html">Agence de la santé publique du Canada</a></p>
 </div></aside></section>
 <section id="quest-ce-quun-arbre-de-décision" class="slide level2 smaller">
 <h2>Qu’est-ce qu’un arbre de décision ?</h2>
 <ul>
 <li class="fragment">Un arbre de décision est une <strong>structure hiérarchique enracinée</strong> utilisée pour des tâches de <strong>classification</strong> et de <strong>régression</strong>.</li>
-<li class="fragment">Chaque <strong>nœud interne</strong> est un nœud de décision qui effectue un test binaire sur un attribut particulier (<span class="math inline">\(j\)</span>), par exemple pour déterminer si le nombre de liens à l’école dépasse un seuil donné.</li>
+<li class="fragment">Chaque <strong>nœud interne</strong> est un nœud de décision qui effectue un test binaire sur un attribut particulier (<span class="math inline">j</span>), par exemple pour déterminer si le nombre de liens à l’école dépasse un seuil donné.</li>
 <li class="fragment">Chaque <strong>feuille</strong> produit une prédiction : une étiquette ou des probabilités de classes en classification, ou une valeur numérique en régression.</li>
 </ul>
 
@@ -358,14 +374,14 @@ Marcel Turcotte
 <h2>Classifier de nouvelles instances (inférence)</h2>
 <ul>
 <li class="fragment">Commencer à la <strong>racine</strong> de l’arbre. Répondre ensuite à une suite de <strong>questions binaires</strong> jusqu’à atteindre une <strong>feuille</strong>. L’étiquette associée à cette feuille constitue la <strong>classification</strong> de l’instance.</li>
-<li class="fragment">Certains algorithmes conservent plutôt une <strong>distribution de probabilités</strong> dans la feuille, représentant la proportion des exemples d’entraînement appartenant à chacune des classes <span class="math inline">\(k\)</span>.</li>
+<li class="fragment">Certains algorithmes conservent plutôt une <strong>distribution de probabilités</strong> dans la feuille, représentant la proportion des exemples d’entraînement appartenant à chacune des classes <span class="math inline">k</span>.</li>
 </ul>
 <aside class="notes">
 <p>Lorsqu’un <strong>arbre de décision</strong> résout une tâche de <strong>régression</strong>, chaque <strong>feuille</strong> conserve une <strong>valeur prédite</strong>. Plus précisément :</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \hat{y}_\text{leaf} = \frac{1}{N_\text{leaf}} \sum_{i \in \text{leaf}} y_i,
-\]</span></p>
-<p>où <span class="math inline">\(N_\text{leaf}\)</span> est le nombre d’exemples d’entraînement qui ont atteint cette feuille et les <span class="math inline">\(y_i\)</span> sont leurs valeurs cibles.</p>
+</span></p>
+<p>où <span class="math inline">N_\text{leaf}</span> est le nombre d’exemples d’entraînement qui ont atteint cette feuille et les <span class="math inline">y_i</span> sont leurs valeurs cibles.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -385,7 +401,7 @@ Marcel Turcotte
 </section>
 <section id="manchots-de-palmer" class="slide level2 scrollable nostretch hide-code-toggle">
 <h2>Manchots de Palmer</h2>
-<div id="d9dc3deb" class="cell" data-execution_count="2">
+<div id="bc45be24" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="co"># Chargement du jeu de données</span></span>
@@ -428,7 +444,7 @@ Marcel Turcotte
 </section>
 <section id="définition" class="slide level2">
 <h2>Définition</h2>
-<p>Une <strong>frontière de décision</strong> est une « frontière » qui divise l’espace des attributs en <strong>régions</strong> correspondant à <strong>différentes étiquettes de classes</strong>.</p>
+<p>Une <strong>frontière de décision</strong> (<em>decision boundary</em>) est une «frontière» qui divise l’espace des attributs en <strong>régions</strong> correspondant à <strong>différentes étiquettes de classes</strong>.</p>
 
 <aside><div>
 <p>Le terme <strong>frontière</strong> sera précisé dans les prochaines diapositives.</p>
@@ -436,7 +452,7 @@ Marcel Turcotte
 <section id="frontière-de-décision-1" class="slide level2 hide-code-toggle">
 <h2>Frontière de décision</h2>
 <p>La frontière de décision entre ces attributs peut être représentée par une <strong>droite</strong>.</p>
-<div id="1d0c9c09" class="cell" data-execution_count="3">
+<div id="4e353b2a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Importer les bibliothèques nécessaires</span></span>
@@ -500,7 +516,7 @@ Marcel Turcotte
 </div></section><section id="frontière-de-décision-2" class="slide level2 hide-code-toggle">
 <h2>Frontière de décision</h2>
 <p>La frontière de décision entre ces attributs peut être représentée par une <strong>droite</strong>.</p>
-<div id="dc1d94ed" class="cell" data-execution_count="4">
+<div id="a7ec8019" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="co"># Entraîner un modèle de régression logistique</span></span>
@@ -556,7 +572,7 @@ Marcel Turcotte
 <p><em>(a)</em> données d’entraînement, <em>(b)</em> courbe quadratique et <em>(c)</em> fonction linéaire.</p>
 
 <aside class="notes">
-<p>Le tableau de gauche présente des données d’entraînement pour une tâche hypothétique de <strong>classification binaire</strong> en médecine. Les deux attributs, <span class="math inline">\(X_1\)</span> et <span class="math inline">\(X_2\)</span>, servent à prédire la cible <span class="math inline">\(y\)</span>, qui prend deux valeurs : <em>malade</em> ou <em>en santé</em>. On peut imaginer que <span class="math inline">\(X_1\)</span> et <span class="math inline">\(X_2\)</span> représentent la pression artérielle et la fréquence cardiaque, ou encore les taux de cholestérol et de glucose.</p>
+<p>Le tableau de gauche présente des données d’entraînement pour une tâche hypothétique de <strong>classification binaire</strong> en médecine. Les deux attributs, <span class="math inline">X_1</span> et <span class="math inline">X_2</span>, servent à prédire la cible <span class="math inline">y</span>, qui prend deux valeurs : <em>malade</em> ou <em>en santé</em>. On peut imaginer que <span class="math inline">X_1</span> et <span class="math inline">X_2</span> représentent la pression artérielle et la fréquence cardiaque, ou encore les taux de cholestérol et de glucose.</p>
 <p>La <strong>régression logistique</strong> (c) utilise une <strong>frontière de décision linéaire</strong>. Ici, cette frontière est une droite. Son emploi entraîne plusieurs erreurs de classification : des points rouges au-dessus de la droite, qui devraient être classés « malades », sont prédits « en santé », et inversement pour certains points verts sous la droite.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -620,13 +636,13 @@ Marcel Turcotte
 <section id="optimalité" class="slide level2">
 <h2>Optimalité</h2>
 <ul>
-<li>Soit <span class="math inline">\(X = \{x_1, \ldots, x_n\}\)</span> un ensemble fini d’<strong>objets</strong>.</li>
-<li>Soit <span class="math inline">\(\mathcal{T} = \{T_1, \ldots, T_t\}\)</span> un ensemble fini de <strong>tests</strong>.</li>
+<li>Soit <span class="math inline">X = \{x_1, \ldots, x_n\}</span> un ensemble fini d’<strong>objets</strong>.</li>
+<li>Soit <span class="math inline">\mathcal{T} = \{T_1, \ldots, T_t\}</span> un ensemble fini de <strong>tests</strong>.</li>
 <li>Pour chaque objet et chaque test :
 <ul>
-<li><span class="math inline">\(T_i(x_j)\)</span> est <strong>vrai</strong> ou <strong>faux</strong>.</li>
+<li><span class="math inline">T_i(x_j)</span> est <strong>vrai</strong> ou <strong>faux</strong>.</li>
 </ul></li>
-<li>Un arbre <strong>optimal</strong> identifie complètement tous les objets de <span class="math inline">\(X\)</span> en employant un nombre <strong>minimal</strong> de tests.</li>
+<li>Un arbre <strong>optimal</strong> identifie complètement tous les objets de <span class="math inline">X</span> en employant un nombre <strong>minimal</strong> de tests.</li>
 </ul>
 
 <aside class="notes">
@@ -659,7 +675,7 @@ Marcel Turcotte
 <ul>
 <li><strong>Construction du premier nœud</strong> :
 <ul>
-<li>pour établir la racine, évaluer chacun des <span class="math inline">\(D\)</span> attributs;
+<li>pour établir la racine, évaluer chacun des <span class="math inline">D</span> attributs;
 <ul>
 <li>pour chaque attribut, évaluer plusieurs seuils dérivés des valeurs observées dans le jeu d’entraînement.</li>
 </ul></li>
@@ -680,10 +696,9 @@ Marcel Turcotte
 <li class="fragment">Un <strong>nœud mélangé</strong> contient des exemples de plusieurs classes.</li>
 <li class="fragment">Une division utile produit des enfants <strong>moins mélangés</strong> que leur parent.</li>
 </ul>
-<p>Pour le nœud <span class="math inline">\(i\)</span>, soit <span class="math inline">\(p_{i,k}\)</span> la proportion d’exemples de la classe <span class="math inline">\(k\)</span>.</p>
+<p>Pour le nœud <span class="math inline">i</span>, soit <span class="math inline">p_{i,k}</span> la proportion d’exemples de la classe <span class="math inline">k</span>.</p>
 <aside class="notes">
 <p>Il nous faut un score numérique pour comparer les divisions candidates. Ce score devrait être nul pour un nœud pur et augmenter à mesure que les proportions des classes s’équilibrent.</p>
-<p>Pour l’instant, on peut considérer ce score comme une recette permettant de mesurer le mélange dans un nœud. Son interprétation plus profonde sera développée dans les cours suivants.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -696,15 +711,15 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 </section>
-<section id="entropie" class="slide level2">
+<section id="entropie" class="slide level2 smaller">
 <h2>Entropie</h2>
-<p>L’<strong>entropie</strong> du nœud <span class="math inline">\(i\)</span> est</p>
-<p><span class="math display">\[
+<p>L’<strong>entropie</strong> du nœud <span class="math inline">i</span> est</p>
+<p><span class="math display">
 H_i = -\sum_{k=1}^{K} p_{i,k}\log_2 p_{i,k}.
-\]</span></p>
+</span></p>
 <ul>
-<li class="fragment"><span class="math inline">\(H_i=0\)</span> lorsque le nœud est <strong>pur</strong>.</li>
-<li class="fragment"><span class="math inline">\(H_i\)</span> augmente lorsque les classes sont représentées de façon <strong>plus équilibrée</strong>.</li>
+<li class="fragment"><span class="math inline">H_i=0</span> lorsque le nœud est <strong>pur</strong>.</li>
+<li class="fragment"><span class="math inline">H_i</span> augmente lorsque les classes sont représentées de façon <strong>plus équilibrée</strong>.</li>
 <li class="fragment">Une valeur <strong>plus petite</strong> est donc préférable.</li>
 </ul>
 
@@ -723,26 +738,51 @@ H_i = -\sum_{k=1}^{K} p_{i,k}\log_2 p_{i,k}.
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Nous utilisons la convention <span class="math inline">\(0\log_2 0=0\)</span>.</p>
+<p>Nous utilisons la convention <span class="math inline">0\log_2 0=0</span>.</p>
 </div></aside></section>
-<section id="entropie-binaire" class="slide level2 nostretch">
+<section id="entropie-binaire" class="slide level2 smaller nostretch hide-code-toggle">
 <h2>Entropie binaire</h2>
-<p>Si <span class="math inline">\(p\)</span> est la proportion de manchots Gentoo, alors</p>
-<p><span class="math display">\[
+<p>Si <span class="math inline">p</span> est la proportion de manchots Gentoo, alors</p>
+<p><span class="math display">
 H(p)=-p\log_2 p-(1-p)\log_2(1-p).
-\]</span></p>
+</span></p>
 <div id="cell-decision-tree-binary-entropy" class="cell" data-fig-height="2.8" data-fig-width="2.8" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a aria-label="3"></a></span>
+<span id="cb4-4"><a aria-label="4"></a>p <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">201</span>)</span>
+<span id="cb4-5"><a aria-label="5"></a>h <span class="op">=</span> np.zeros_like(p)</span>
+<span id="cb4-6"><a aria-label="6"></a>inside <span class="op">=</span> (p <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (p <span class="op">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb4-7"><a aria-label="7"></a>h[inside] <span class="op">=</span> <span class="op">-</span>(</span>
+<span id="cb4-8"><a aria-label="8"></a>    p[inside] <span class="op">*</span> np.log2(p[inside])</span>
+<span id="cb4-9"><a aria-label="9"></a>    <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> p[inside]) <span class="op">*</span> np.log2(<span class="dv">1</span> <span class="op">-</span> p[inside])</span>
+<span id="cb4-10"><a aria-label="10"></a>)</span>
+<span id="cb4-11"><a aria-label="11"></a></span>
+<span id="cb4-12"><a aria-label="12"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
+<span id="cb4-13"><a aria-label="13"></a>    figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>),</span>
+<span id="cb4-14"><a aria-label="14"></a>    constrained_layout<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-15"><a aria-label="15"></a>)</span>
+<span id="cb4-16"><a aria-label="16"></a>ax.plot(p, h, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-17"><a aria-label="17"></a>ax.scatter([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb4-18"><a aria-label="18"></a>ax.set_box_aspect(<span class="dv">1</span>)</span>
+<span id="cb4-19"><a aria-label="19"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Proportion de manchots Gentoo, p"</span>,</span>
+<span id="cb4-20"><a aria-label="20"></a>       ylabel<span class="op">=</span><span class="st">"Entropie H(p) (bits)"</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>))</span>
+<span id="cb4-21"><a aria-label="21"></a>ax.grid(alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb4-22"><a aria-label="22"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/decision-tree-binary-entropy-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/decision-tree-binary-entropy-output-1.png" id="decision-tree-binary-entropy" class="quarto-figure quarto-figure-center" width="439" height="431"></a></p>
+<p><a href="slides_files/figure-revealjs/decision-tree-binary-entropy-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/decision-tree-binary-entropy-output-1.png" id="decision-tree-binary-entropy" class="quarto-figure quarto-figure-center" width="395" height="387"></a></p>
 </figure>
 </div>
 </div>
 </div>
 
 <aside class="notes">
-<p>À <span class="math inline">\(p=0\)</span> ou <span class="math inline">\(p=1\)</span>, la classe est certaine et l’entropie est nulle. À <span class="math inline">\(p=0{,}5\)</span>, aucune classe n’est plus probable et l’entropie atteint son maximum d’un bit.</p>
+<p>À <span class="math inline">p=0</span> ou <span class="math inline">p=1</span>, la classe est certaine et l’entropie est nulle. À <span class="math inline">p=0{,}5</span>, aucune classe n’est plus probable et l’entropie atteint son maximum d’un bit.</p>
 <p>Cette courbe donne une interprétation intuitive du score d’un nœud sans exiger une étude plus générale de la théorie de l’information.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -761,22 +801,22 @@ H(p)=-p\log_2 p-(1-p)\log_2(1-p).
 <section id="entropie-en-python" class="slide level2">
 <h2>Entropie en Python</h2>
 <div id="decision-tree-entropy" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a aria-label="2"></a></span>
-<span id="cb4-3"><a aria-label="3"></a><span class="kw">def</span> class_probabilities(y, classes):</span>
-<span id="cb4-4"><a aria-label="4"></a>    <span class="co">"""Retourner la proportion d'exemples de chaque classe."""</span></span>
-<span id="cb4-5"><a aria-label="5"></a>    <span class="cf">return</span> np.array([np.mean(y <span class="op">==</span> label) <span class="cf">for</span> label <span class="kw">in</span> classes])</span>
-<span id="cb4-6"><a aria-label="6"></a></span>
-<span id="cb4-7"><a aria-label="7"></a><span class="kw">def</span> entropy(y, classes):</span>
-<span id="cb4-8"><a aria-label="8"></a>    <span class="co">"""Mesurer le mélange des classes; zéro correspond à un nœud pur."""</span></span>
-<span id="cb4-9"><a aria-label="9"></a>    probabilities <span class="op">=</span> class_probabilities(y, classes)</span>
-<span id="cb4-10"><a aria-label="10"></a>    probabilities <span class="op">=</span> probabilities[probabilities <span class="op">&gt;</span> <span class="dv">0</span>]</span>
-<span id="cb4-11"><a aria-label="11"></a>    <span class="cf">if</span> <span class="bu">len</span>(probabilities) <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb4-12"><a aria-label="12"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
-<span id="cb4-13"><a aria-label="13"></a>    <span class="cf">return</span> <span class="bu">float</span>(<span class="op">-</span>np.<span class="bu">sum</span>(probabilities <span class="op">*</span> np.log2(probabilities)))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a><span class="kw">def</span> class_probabilities(y, classes):</span>
+<span id="cb5-4"><a aria-label="4"></a>    <span class="co">"""Retourner la proportion d'exemples de chaque classe."""</span></span>
+<span id="cb5-5"><a aria-label="5"></a>    <span class="cf">return</span> np.array([np.mean(y <span class="op">==</span> label) <span class="cf">for</span> label <span class="kw">in</span> classes])</span>
+<span id="cb5-6"><a aria-label="6"></a></span>
+<span id="cb5-7"><a aria-label="7"></a><span class="kw">def</span> entropy(y, classes):</span>
+<span id="cb5-8"><a aria-label="8"></a>    <span class="co">"""Mesurer le mélange des classes; zéro correspond à un nœud pur."""</span></span>
+<span id="cb5-9"><a aria-label="9"></a>    probabilities <span class="op">=</span> class_probabilities(y, classes)</span>
+<span id="cb5-10"><a aria-label="10"></a>    probabilities <span class="op">=</span> probabilities[probabilities <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb5-11"><a aria-label="11"></a>    <span class="cf">if</span> <span class="bu">len</span>(probabilities) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb5-12"><a aria-label="12"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb5-13"><a aria-label="13"></a>    <span class="cf">return</span> <span class="bu">float</span>(<span class="op">-</span>np.<span class="bu">sum</span>(probabilities <span class="op">*</span> np.log2(probabilities)))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
-<p>Cette implémentation utilise directement les étiquettes de classes. Les probabilités nulles sont retirées avant l’application du logarithme, ce qui met en œuvre la convention <span class="math inline">\(0\log_2 0=0\)</span>.</p>
+<p>Cette implémentation utilise directement les étiquettes de classes. Les probabilités nulles sont retirées avant l’application du logarithme, ce qui met en œuvre la convention <span class="math inline">0\log_2 0=0</span>.</p>
 <p>La fonction accepte deux classes ou plus. Le tableau <code>classes</code> fixe l’ordre des probabilités retournées et sera ensuite conservé par le classificateur.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -792,19 +832,19 @@ H(p)=-p\log_2 p-(1-p)\log_2(1-p).
 </section>
 <section id="évaluer-une-division" class="slide level2 smaller">
 <h2>Évaluer une division</h2>
-<p>Une division utilisant l’<strong>attribut</strong> <span class="math inline">\(j\)</span> et le <strong>seuil</strong> <span class="math inline">\(t\)</span> produit deux enfants :</p>
-<p><span class="math display">\[
+<p>Une division utilisant l’<strong>attribut</strong> <span class="math inline">j</span> et le <strong>seuil</strong> <span class="math inline">t</span> produit deux enfants :</p>
+<p><span class="math display">
 X_{\text{left}}=\{x:x^{(j)}\leq t\}, \qquad
 X_{\text{right}}=\{x:x^{(j)}&gt;t\}.
-\]</span></p>
+</span></p>
 <p>Son score est l’<strong>entropie pondérée</strong> :</p>
-<p><span class="math display">\[
+<p><span class="math display">
 J(j,t)=
 \frac{N_{\text{left}}}{N_{\text{parent}}}H_{\text{left}}
 +
 \frac{N_{\text{right}}}{N_{\text{parent}}}H_{\text{right}}.
-\]</span></p>
-<p>Choisir l’attribut et le seuil qui <strong>minimisent</strong> <span class="math inline">\(J(j,t)\)</span>.</p>
+</span></p>
+<p>Choisir l’attribut et le seuil qui <strong>minimisent</strong> <span class="math inline">J(j,t)</span>.</p>
 
 <aside class="notes">
 <p>Les poids sont importants. Isoler un seul exemple pur ne devrait pas compenser le fait de laisser presque tous les exemples dans un enfant très mélangé. L’influence de chaque enfant est donc proportionnelle au nombre d’exemples qu’il contient.</p>
@@ -838,32 +878,32 @@ J(j,t)=
 <tr class="header">
 <th>Candidate</th>
 <th style="text-align: right;">Enfant gauche</th>
-<th style="text-align: right;"><span class="math inline">\(H_{\text{gauche}}\)</span></th>
+<th style="text-align: right;"><span class="math inline">H_{\text{gauche}}</span></th>
 <th style="text-align: right;">Enfant droit</th>
-<th style="text-align: right;"><span class="math inline">\(H_{\text{droit}}\)</span></th>
+<th style="text-align: right;"><span class="math inline">H_{\text{droit}}</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Désordonnée</td>
 <td style="text-align: right;">3 G, 2 non-G</td>
-<td style="text-align: right;"><span class="math inline">\(0{,}971\)</span></td>
+<td style="text-align: right;"><span class="math inline">0{,}971</span></td>
 <td style="text-align: right;">2 G, 3 non-G</td>
-<td style="text-align: right;"><span class="math inline">\(0{,}971\)</span></td>
+<td style="text-align: right;"><span class="math inline">0{,}971</span></td>
 </tr>
 <tr class="even">
 <td>Isole un exemple</td>
 <td style="text-align: right;">1 G, 0 non-G</td>
-<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: right;"><span class="math inline">0</span></td>
 <td style="text-align: right;">4 G, 5 non-G</td>
-<td style="text-align: right;"><span class="math inline">\(0{,}991\)</span></td>
+<td style="text-align: right;"><span class="math inline">0{,}991</span></td>
 </tr>
 <tr class="odd">
 <td>Utile</td>
 <td style="text-align: right;">4 G, 1 non-G</td>
-<td style="text-align: right;"><span class="math inline">\(0{,}722\)</span></td>
+<td style="text-align: right;"><span class="math inline">0{,}722</span></td>
 <td style="text-align: right;">1 G, 4 non-G</td>
-<td style="text-align: right;"><span class="math inline">\(0{,}722\)</span></td>
+<td style="text-align: right;"><span class="math inline">0{,}722</span></td>
 </tr>
 </tbody>
 </table>
@@ -885,34 +925,34 @@ J(j,t)=
 </section>
 <section id="pourquoi-pondérer-les-enfants" class="slide level2 smaller">
 <h2>Pourquoi pondérer les enfants ?</h2>
-<table class="caption-top">
+<table class="caption-top" style="width:91%;">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 36%">
-<col style="width: 36%">
+<col style="width: 4%">
+<col style="width: 43%">
+<col style="width: 44%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Candidate</th>
 <th style="text-align: right;">Moyenne non pondérée</th>
-<th style="text-align: right;">Entropie pondérée <span class="math inline">\(J\)</span></th>
+<th style="text-align: right;">Entropie pondérée <span class="math inline">J</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Désordonnée</td>
-<td style="text-align: right;"><span class="math inline">\((0{,}971+0{,}971)/2=0{,}971\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(\frac{5}{10}(0{,}971)+\frac{5}{10}(0{,}971)=0{,}971\)</span></td>
+<td style="text-align: right;"><span class="math inline">(0{,}971+0{,}971)/2=0{,}971</span></td>
+<td style="text-align: right;"><span class="math inline">\frac{5}{10}(0{,}971)+\frac{5}{10}(0{,}971)=0{,}971</span></td>
 </tr>
 <tr class="even">
 <td>Isole un exemple</td>
-<td style="text-align: right;"><span class="math inline">\((0+0{,}991)/2=\mathbf{0{,}496}\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(\frac{1}{10}(0)+\frac{9}{10}(0{,}991)=0{,}892\)</span></td>
+<td style="text-align: right;"><span class="math inline">(0+0{,}991)/2=\mathbf{0{,}496}</span></td>
+<td style="text-align: right;"><span class="math inline">\frac{1}{10}(0)+\frac{9}{10}(0{,}991)=0{,}892</span></td>
 </tr>
 <tr class="odd">
 <td>Utile</td>
-<td style="text-align: right;"><span class="math inline">\((0{,}722+0{,}722)/2=0{,}722\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(\frac{5}{10}(0{,}722)+\frac{5}{10}(0{,}722)=\mathbf{0{,}722}\)</span></td>
+<td style="text-align: right;"><span class="math inline">(0{,}722+0{,}722)/2=0{,}722</span></td>
+<td style="text-align: right;"><span class="math inline">\frac{5}{10}(0{,}722)+\frac{5}{10}(0{,}722)=\mathbf{0{,}722}</span></td>
 </tr>
 </tbody>
 </table>
@@ -935,21 +975,21 @@ J(j,t)=
 <section id="évaluer-une-division-en-python" class="slide level2">
 <h2>Évaluer une division en Python</h2>
 <div id="decision-tree-split-score" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">def</span> weighted_entropy(y_left, y_right, classes):</span>
-<span id="cb5-2"><a aria-label="2"></a>    <span class="co">"""Retourner l'entropie pondérée produite par une division."""</span></span>
-<span id="cb5-3"><a aria-label="3"></a>    n_left <span class="op">=</span> <span class="bu">len</span>(y_left)</span>
-<span id="cb5-4"><a aria-label="4"></a>    n_right <span class="op">=</span> <span class="bu">len</span>(y_right)</span>
-<span id="cb5-5"><a aria-label="5"></a>    n_parent <span class="op">=</span> n_left <span class="op">+</span> n_right</span>
-<span id="cb5-6"><a aria-label="6"></a></span>
-<span id="cb5-7"><a aria-label="7"></a>    <span class="cf">return</span> (</span>
-<span id="cb5-8"><a aria-label="8"></a>        n_left <span class="op">/</span> n_parent <span class="op">*</span> entropy(y_left, classes)</span>
-<span id="cb5-9"><a aria-label="9"></a>        <span class="op">+</span> n_right <span class="op">/</span> n_parent <span class="op">*</span> entropy(y_right, classes)</span>
-<span id="cb5-10"><a aria-label="10"></a>    )</span>
-<span id="cb5-11"><a aria-label="11"></a></span>
-<span id="cb5-12"><a aria-label="12"></a><span class="kw">def</span> candidate_thresholds(values):</span>
-<span id="cb5-13"><a aria-label="13"></a>    <span class="co">"""Retourner les milieux entre les valeurs distinctes consécutives."""</span></span>
-<span id="cb5-14"><a aria-label="14"></a>    values <span class="op">=</span> np.unique(values)</span>
-<span id="cb5-15"><a aria-label="15"></a>    <span class="cf">return</span> (values[:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> values[<span class="dv">1</span>:]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="kw">def</span> weighted_entropy(y_left, y_right, classes):</span>
+<span id="cb6-2"><a aria-label="2"></a>    <span class="co">"""Retourner l'entropie pondérée produite par une division."""</span></span>
+<span id="cb6-3"><a aria-label="3"></a>    n_left <span class="op">=</span> <span class="bu">len</span>(y_left)</span>
+<span id="cb6-4"><a aria-label="4"></a>    n_right <span class="op">=</span> <span class="bu">len</span>(y_right)</span>
+<span id="cb6-5"><a aria-label="5"></a>    n_parent <span class="op">=</span> n_left <span class="op">+</span> n_right</span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a>    <span class="cf">return</span> (</span>
+<span id="cb6-8"><a aria-label="8"></a>        n_left <span class="op">/</span> n_parent <span class="op">*</span> entropy(y_left, classes)</span>
+<span id="cb6-9"><a aria-label="9"></a>        <span class="op">+</span> n_right <span class="op">/</span> n_parent <span class="op">*</span> entropy(y_right, classes)</span>
+<span id="cb6-10"><a aria-label="10"></a>    )</span>
+<span id="cb6-11"><a aria-label="11"></a></span>
+<span id="cb6-12"><a aria-label="12"></a><span class="kw">def</span> candidate_thresholds(values):</span>
+<span id="cb6-13"><a aria-label="13"></a>    <span class="co">"""Retourner les milieux entre les valeurs distinctes consécutives."""</span></span>
+<span id="cb6-14"><a aria-label="14"></a>    values <span class="op">=</span> np.unique(values)</span>
+<span id="cb6-15"><a aria-label="15"></a>    <span class="cf">return</span> (values[:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> values[<span class="dv">1</span>:]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Pour un attribut numérique, les seuils candidats sont les milieux entre les valeurs distinctes consécutives. Tout seuil situé entre ces deux valeurs produirait la même partition; le milieu fournit un représentant déterministe.</p>
@@ -977,7 +1017,7 @@ J(j,t)=
 </ol>
 <aside class="notes">
 <p>Cette recherche est gloutonne : elle choisit la meilleure division immédiate sans réexaminer les décisions précédentes. Elle ne garantit donc pas de trouver le meilleur arbre possible.</p>
-<p>Cette implémentation didactique recalcule les masques et les proportions de classes pour chaque candidate. Dans un nœud contenant <span class="math inline">\(n\)</span> exemples et <span class="math inline">\(D\)</span> attributs, elle effectue jusqu’à <span class="math inline">\(D(n-1)\)</span> évaluations, chacune exigeant un autre parcours des données. Le coût est donc approximativement <span class="math inline">\(\mathcal{O}(Dn^2)\)</span> dans ce nœud.</p>
+<p>Cette implémentation didactique recalcule les masques et les proportions de classes pour chaque candidate. Dans un nœud contenant <span class="math inline">n</span> exemples et <span class="math inline">D</span> attributs, elle effectue jusqu’à <span class="math inline">D(n-1)</span> évaluations, chacune exigeant un autre parcours des données. Le coût est donc approximativement <span class="math inline">\mathcal{O}(Dn^2)</span> dans ce nœud.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -993,29 +1033,29 @@ J(j,t)=
 <section id="recherche-gloutonne-en-python" class="slide level2 smaller">
 <h2>Recherche gloutonne en Python</h2>
 <div id="decision-tree-best-split" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="kw">def</span> find_best_split(X, y, classes, min_samples_leaf):</span>
-<span id="cb6-2"><a aria-label="2"></a>    best_split <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb6-3"><a aria-label="3"></a>    best_score <span class="op">=</span> entropy(y, classes)</span>
-<span id="cb6-4"><a aria-label="4"></a>    n_candidates <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-5"><a aria-label="5"></a></span>
-<span id="cb6-6"><a aria-label="6"></a>    <span class="cf">for</span> feature <span class="kw">in</span> <span class="bu">range</span>(X.shape[<span class="dv">1</span>]):</span>
-<span id="cb6-7"><a aria-label="7"></a>        <span class="cf">for</span> threshold <span class="kw">in</span> candidate_thresholds(X[:, feature]):</span>
-<span id="cb6-8"><a aria-label="8"></a>            go_left <span class="op">=</span> X[:, feature] <span class="op">&lt;=</span> threshold</span>
-<span id="cb6-9"><a aria-label="9"></a>            n_left <span class="op">=</span> np.<span class="bu">sum</span>(go_left)</span>
-<span id="cb6-10"><a aria-label="10"></a>            n_right <span class="op">=</span> <span class="bu">len</span>(y) <span class="op">-</span> n_left</span>
-<span id="cb6-11"><a aria-label="11"></a></span>
-<span id="cb6-12"><a aria-label="12"></a>            <span class="cf">if</span> <span class="bu">min</span>(n_left, n_right) <span class="op">&lt;</span> min_samples_leaf:</span>
-<span id="cb6-13"><a aria-label="13"></a>                <span class="cf">continue</span></span>
-<span id="cb6-14"><a aria-label="14"></a></span>
-<span id="cb6-15"><a aria-label="15"></a>            n_candidates <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb6-16"><a aria-label="16"></a>            score <span class="op">=</span> weighted_entropy(</span>
-<span id="cb6-17"><a aria-label="17"></a>                y[go_left], y[<span class="op">~</span>go_left], classes</span>
-<span id="cb6-18"><a aria-label="18"></a>            )</span>
-<span id="cb6-19"><a aria-label="19"></a>            <span class="cf">if</span> score <span class="op">&lt;</span> best_score:</span>
-<span id="cb6-20"><a aria-label="20"></a>                best_score <span class="op">=</span> score</span>
-<span id="cb6-21"><a aria-label="21"></a>                best_split <span class="op">=</span> (feature, <span class="bu">float</span>(threshold), go_left)</span>
-<span id="cb6-22"><a aria-label="22"></a></span>
-<span id="cb6-23"><a aria-label="23"></a>    <span class="cf">return</span> best_split, n_candidates</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="kw">def</span> find_best_split(X, y, classes, min_samples_leaf):</span>
+<span id="cb7-2"><a aria-label="2"></a>    best_split <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb7-3"><a aria-label="3"></a>    best_score <span class="op">=</span> entropy(y, classes)</span>
+<span id="cb7-4"><a aria-label="4"></a>    n_candidates <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-5"><a aria-label="5"></a></span>
+<span id="cb7-6"><a aria-label="6"></a>    <span class="cf">for</span> feature <span class="kw">in</span> <span class="bu">range</span>(X.shape[<span class="dv">1</span>]):</span>
+<span id="cb7-7"><a aria-label="7"></a>        <span class="cf">for</span> threshold <span class="kw">in</span> candidate_thresholds(X[:, feature]):</span>
+<span id="cb7-8"><a aria-label="8"></a>            go_left <span class="op">=</span> X[:, feature] <span class="op">&lt;=</span> threshold</span>
+<span id="cb7-9"><a aria-label="9"></a>            n_left <span class="op">=</span> np.<span class="bu">sum</span>(go_left)</span>
+<span id="cb7-10"><a aria-label="10"></a>            n_right <span class="op">=</span> <span class="bu">len</span>(y) <span class="op">-</span> n_left</span>
+<span id="cb7-11"><a aria-label="11"></a></span>
+<span id="cb7-12"><a aria-label="12"></a>            <span class="cf">if</span> <span class="bu">min</span>(n_left, n_right) <span class="op">&lt;</span> min_samples_leaf:</span>
+<span id="cb7-13"><a aria-label="13"></a>                <span class="cf">continue</span></span>
+<span id="cb7-14"><a aria-label="14"></a></span>
+<span id="cb7-15"><a aria-label="15"></a>            n_candidates <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-16"><a aria-label="16"></a>            score <span class="op">=</span> weighted_entropy(</span>
+<span id="cb7-17"><a aria-label="17"></a>                y[go_left], y[<span class="op">~</span>go_left], classes</span>
+<span id="cb7-18"><a aria-label="18"></a>            )</span>
+<span id="cb7-19"><a aria-label="19"></a>            <span class="cf">if</span> score <span class="op">&lt;</span> best_score:</span>
+<span id="cb7-20"><a aria-label="20"></a>                best_score <span class="op">=</span> score</span>
+<span id="cb7-21"><a aria-label="21"></a>                best_split <span class="op">=</span> (feature, <span class="bu">float</span>(threshold), go_left)</span>
+<span id="cb7-22"><a aria-label="22"></a></span>
+<span id="cb7-23"><a aria-label="23"></a>    <span class="cf">return</span> best_split, n_candidates</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Le code suit directement les cinq étapes de la diapositive précédente. Le tableau booléen <code>go_left</code> indique les exemples affectés à l’enfant gauche; son complément sélectionne l’enfant droit.</p>
@@ -1039,146 +1079,146 @@ J(j,t)=
 <div id="decision-tree-complete-implementation" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Afficher l’implémentation complète</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
-<span id="cb7-2"><a aria-label="2"></a></span>
-<span id="cb7-3"><a aria-label="3"></a><span class="at">@dataclass</span></span>
-<span id="cb7-4"><a aria-label="4"></a><span class="kw">class</span> Node:</span>
-<span id="cb7-5"><a aria-label="5"></a>    probabilities: np.ndarray</span>
-<span id="cb7-6"><a aria-label="6"></a>    n_samples: <span class="bu">int</span></span>
-<span id="cb7-7"><a aria-label="7"></a>    loss: <span class="bu">float</span></span>
-<span id="cb7-8"><a aria-label="8"></a>    feature: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-9"><a aria-label="9"></a>    threshold: <span class="bu">float</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-10"><a aria-label="10"></a>    left: <span class="st">"Node | None"</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-11"><a aria-label="11"></a>    right: <span class="st">"Node | None"</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-12"><a aria-label="12"></a></span>
-<span id="cb7-13"><a aria-label="13"></a>    <span class="at">@property</span></span>
-<span id="cb7-14"><a aria-label="14"></a>    <span class="kw">def</span> is_leaf(<span class="va">self</span>):</span>
-<span id="cb7-15"><a aria-label="15"></a>        <span class="cf">return</span> <span class="va">self</span>.feature <span class="kw">is</span> <span class="va">None</span></span>
-<span id="cb7-16"><a aria-label="16"></a></span>
-<span id="cb7-17"><a aria-label="17"></a></span>
-<span id="cb7-18"><a aria-label="18"></a><span class="kw">class</span> SimpleDecisionTreeClassifier:</span>
-<span id="cb7-19"><a aria-label="19"></a>    <span class="co">"""Un classificateur didactique avec une petite interface de type scikit-learn."""</span></span>
-<span id="cb7-20"><a aria-label="20"></a></span>
-<span id="cb7-21"><a aria-label="21"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(</span>
-<span id="cb7-22"><a aria-label="22"></a>        <span class="va">self</span>,</span>
-<span id="cb7-23"><a aria-label="23"></a>        max_depth<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb7-24"><a aria-label="24"></a>        min_samples_split<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb7-25"><a aria-label="25"></a>        min_samples_leaf<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb7-26"><a aria-label="26"></a>    ):</span>
-<span id="cb7-27"><a aria-label="27"></a>        <span class="va">self</span>.max_depth <span class="op">=</span> max_depth</span>
-<span id="cb7-28"><a aria-label="28"></a>        <span class="va">self</span>.min_samples_split <span class="op">=</span> min_samples_split</span>
-<span id="cb7-29"><a aria-label="29"></a>        <span class="va">self</span>.min_samples_leaf <span class="op">=</span> min_samples_leaf</span>
-<span id="cb7-30"><a aria-label="30"></a></span>
-<span id="cb7-31"><a aria-label="31"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y):</span>
-<span id="cb7-32"><a aria-label="32"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb7-33"><a aria-label="33"></a>        y <span class="op">=</span> np.asarray(y)</span>
-<span id="cb7-34"><a aria-label="34"></a>        <span class="va">self</span>._validate_training_data(X, y)</span>
-<span id="cb7-35"><a aria-label="35"></a></span>
-<span id="cb7-36"><a aria-label="36"></a>        <span class="va">self</span>.classes_ <span class="op">=</span> np.unique(y)</span>
-<span id="cb7-37"><a aria-label="37"></a>        <span class="va">self</span>.n_features_in_ <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
-<span id="cb7-38"><a aria-label="38"></a>        <span class="va">self</span>.n_candidate_splits_ <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-39"><a aria-label="39"></a>        <span class="va">self</span>.tree_ <span class="op">=</span> <span class="va">self</span>._grow_tree(X, y, depth<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb7-40"><a aria-label="40"></a>        <span class="cf">return</span> <span class="va">self</span></span>
-<span id="cb7-41"><a aria-label="41"></a></span>
-<span id="cb7-42"><a aria-label="42"></a>    <span class="kw">def</span> _grow_tree(<span class="va">self</span>, X, y, depth):</span>
-<span id="cb7-43"><a aria-label="43"></a>        probabilities <span class="op">=</span> class_probabilities(y, <span class="va">self</span>.classes_)</span>
-<span id="cb7-44"><a aria-label="44"></a>        node <span class="op">=</span> Node(</span>
-<span id="cb7-45"><a aria-label="45"></a>            probabilities<span class="op">=</span>probabilities,</span>
-<span id="cb7-46"><a aria-label="46"></a>            n_samples<span class="op">=</span><span class="bu">len</span>(y),</span>
-<span id="cb7-47"><a aria-label="47"></a>            loss<span class="op">=</span>entropy(y, <span class="va">self</span>.classes_),</span>
-<span id="cb7-48"><a aria-label="48"></a>        )</span>
-<span id="cb7-49"><a aria-label="49"></a></span>
-<span id="cb7-50"><a aria-label="50"></a>        depth_limit <span class="op">=</span> <span class="va">self</span>.max_depth <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> depth <span class="op">&gt;=</span> <span class="va">self</span>.max_depth</span>
-<span id="cb7-51"><a aria-label="51"></a>        pure_node <span class="op">=</span> np.count_nonzero(probabilities) <span class="op">==</span> <span class="dv">1</span></span>
-<span id="cb7-52"><a aria-label="52"></a>        too_small <span class="op">=</span> <span class="bu">len</span>(y) <span class="op">&lt;</span> <span class="va">self</span>.min_samples_split</span>
-<span id="cb7-53"><a aria-label="53"></a></span>
-<span id="cb7-54"><a aria-label="54"></a>        <span class="cf">if</span> pure_node <span class="kw">or</span> depth_limit <span class="kw">or</span> too_small:</span>
-<span id="cb7-55"><a aria-label="55"></a>            <span class="cf">return</span> node</span>
-<span id="cb7-56"><a aria-label="56"></a></span>
-<span id="cb7-57"><a aria-label="57"></a>        split, n_candidates <span class="op">=</span> find_best_split(</span>
-<span id="cb7-58"><a aria-label="58"></a>            X, y, <span class="va">self</span>.classes_, <span class="va">self</span>.min_samples_leaf</span>
-<span id="cb7-59"><a aria-label="59"></a>        )</span>
-<span id="cb7-60"><a aria-label="60"></a>        <span class="va">self</span>.n_candidate_splits_ <span class="op">+=</span> n_candidates</span>
-<span id="cb7-61"><a aria-label="61"></a>        <span class="cf">if</span> split <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb7-62"><a aria-label="62"></a>            <span class="cf">return</span> node</span>
-<span id="cb7-63"><a aria-label="63"></a></span>
-<span id="cb7-64"><a aria-label="64"></a>        node.feature, node.threshold, go_left <span class="op">=</span> split</span>
-<span id="cb7-65"><a aria-label="65"></a>        node.left <span class="op">=</span> <span class="va">self</span>._grow_tree(X[go_left], y[go_left], depth <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb7-66"><a aria-label="66"></a>        node.right <span class="op">=</span> <span class="va">self</span>._grow_tree(X[<span class="op">~</span>go_left], y[<span class="op">~</span>go_left], depth <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb7-67"><a aria-label="67"></a>        <span class="cf">return</span> node</span>
-<span id="cb7-68"><a aria-label="68"></a></span>
-<span id="cb7-69"><a aria-label="69"></a>    <span class="kw">def</span> _find_leaf(<span class="va">self</span>, x):</span>
-<span id="cb7-70"><a aria-label="70"></a>        node <span class="op">=</span> <span class="va">self</span>.tree_</span>
-<span id="cb7-71"><a aria-label="71"></a>        <span class="cf">while</span> <span class="kw">not</span> node.is_leaf:</span>
-<span id="cb7-72"><a aria-label="72"></a>            <span class="cf">if</span> x[node.feature] <span class="op">&lt;=</span> node.threshold:</span>
-<span id="cb7-73"><a aria-label="73"></a>                node <span class="op">=</span> node.left</span>
-<span id="cb7-74"><a aria-label="74"></a>            <span class="cf">else</span>:</span>
-<span id="cb7-75"><a aria-label="75"></a>                node <span class="op">=</span> node.right</span>
-<span id="cb7-76"><a aria-label="76"></a>        <span class="cf">return</span> node</span>
-<span id="cb7-77"><a aria-label="77"></a></span>
-<span id="cb7-78"><a aria-label="78"></a>    <span class="kw">def</span> predict_proba(<span class="va">self</span>, X):</span>
-<span id="cb7-79"><a aria-label="79"></a>        X <span class="op">=</span> <span class="va">self</span>._validate_prediction_data(X)</span>
-<span id="cb7-80"><a aria-label="80"></a>        <span class="cf">return</span> np.vstack([<span class="va">self</span>._find_leaf(x).probabilities <span class="cf">for</span> x <span class="kw">in</span> X])</span>
-<span id="cb7-81"><a aria-label="81"></a></span>
-<span id="cb7-82"><a aria-label="82"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
-<span id="cb7-83"><a aria-label="83"></a>        probabilities <span class="op">=</span> <span class="va">self</span>.predict_proba(X)</span>
-<span id="cb7-84"><a aria-label="84"></a>        <span class="cf">return</span> <span class="va">self</span>.classes_[np.argmax(probabilities, axis<span class="op">=</span><span class="dv">1</span>)]</span>
-<span id="cb7-85"><a aria-label="85"></a></span>
-<span id="cb7-86"><a aria-label="86"></a>    <span class="kw">def</span> score(<span class="va">self</span>, X, y):</span>
-<span id="cb7-87"><a aria-label="87"></a>        <span class="cf">return</span> <span class="bu">float</span>(np.mean(<span class="va">self</span>.predict(X) <span class="op">==</span> np.asarray(y)))</span>
-<span id="cb7-88"><a aria-label="88"></a></span>
-<span id="cb7-89"><a aria-label="89"></a>    <span class="kw">def</span> export_text(<span class="va">self</span>, feature_names<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb7-90"><a aria-label="90"></a>        <span class="cf">if</span> feature_names <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb7-91"><a aria-label="91"></a>            feature_names <span class="op">=</span> [<span class="ss">f"x[</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">]"</span> <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.n_features_in_)]</span>
-<span id="cb7-92"><a aria-label="92"></a>        <span class="cf">if</span> <span class="bu">len</span>(feature_names) <span class="op">!=</span> <span class="va">self</span>.n_features_in_:</span>
-<span id="cb7-93"><a aria-label="93"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"feature_names doit correspondre au nombre d'attributs"</span>)</span>
-<span id="cb7-94"><a aria-label="94"></a></span>
-<span id="cb7-95"><a aria-label="95"></a>        lines <span class="op">=</span> []</span>
-<span id="cb7-96"><a aria-label="96"></a></span>
-<span id="cb7-97"><a aria-label="97"></a>        <span class="kw">def</span> visit(node, indent):</span>
-<span id="cb7-98"><a aria-label="98"></a>            <span class="cf">if</span> node.is_leaf:</span>
-<span id="cb7-99"><a aria-label="99"></a>                prediction <span class="op">=</span> <span class="va">self</span>.classes_[np.argmax(node.probabilities)]</span>
-<span id="cb7-100"><a aria-label="100"></a>                <span class="cf">if</span> <span class="bu">isinstance</span>(prediction, np.generic):</span>
-<span id="cb7-101"><a aria-label="101"></a>                    prediction <span class="op">=</span> prediction.item()</span>
-<span id="cb7-102"><a aria-label="102"></a>                probabilities <span class="op">=</span> np.<span class="bu">round</span>(node.probabilities, <span class="dv">3</span>)</span>
-<span id="cb7-103"><a aria-label="103"></a>                lines.append(</span>
-<span id="cb7-104"><a aria-label="104"></a>                    <span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">prédire </span><span class="sc">{</span>prediction<span class="sc">!r}</span><span class="ss"> "</span></span>
-<span id="cb7-105"><a aria-label="105"></a>                    <span class="ss">f"(p=</span><span class="sc">{</span>probabilities<span class="sc">}</span><span class="ss">, n=</span><span class="sc">{</span>node<span class="sc">.</span>n_samples<span class="sc">}</span><span class="ss">)"</span></span>
-<span id="cb7-106"><a aria-label="106"></a>                )</span>
-<span id="cb7-107"><a aria-label="107"></a>                <span class="cf">return</span></span>
-<span id="cb7-108"><a aria-label="108"></a></span>
-<span id="cb7-109"><a aria-label="109"></a>            name <span class="op">=</span> feature_names[node.feature]</span>
-<span id="cb7-110"><a aria-label="110"></a>            lines.append(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">si </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> &lt;= </span><span class="sc">{</span>node<span class="sc">.</span>threshold<span class="sc">:.3f}</span><span class="ss"> :"</span>)</span>
-<span id="cb7-111"><a aria-label="111"></a>            visit(node.left, indent <span class="op">+</span> <span class="st">"    "</span>)</span>
-<span id="cb7-112"><a aria-label="112"></a>            lines.append(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">sinon :"</span>)</span>
-<span id="cb7-113"><a aria-label="113"></a>            visit(node.right, indent <span class="op">+</span> <span class="st">"    "</span>)</span>
-<span id="cb7-114"><a aria-label="114"></a></span>
-<span id="cb7-115"><a aria-label="115"></a>        visit(<span class="va">self</span>.tree_, <span class="st">""</span>)</span>
-<span id="cb7-116"><a aria-label="116"></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(lines)</span>
-<span id="cb7-117"><a aria-label="117"></a></span>
-<span id="cb7-118"><a aria-label="118"></a>    <span class="kw">def</span> _validate_training_data(<span class="va">self</span>, X, y):</span>
-<span id="cb7-119"><a aria-label="119"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> y.ndim <span class="op">!=</span> <span class="dv">1</span> <span class="kw">or</span> <span class="bu">len</span>(X) <span class="op">!=</span> <span class="bu">len</span>(y):</span>
-<span id="cb7-120"><a aria-label="120"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"X doit être 2D et y doit être 1D, avec le même nombre de lignes"</span>)</span>
-<span id="cb7-121"><a aria-label="121"></a>        <span class="cf">if</span> <span class="bu">len</span>(y) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb7-122"><a aria-label="122"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"le jeu d'entraînement ne peut pas être vide"</span>)</span>
-<span id="cb7-123"><a aria-label="123"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
-<span id="cb7-124"><a aria-label="124"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span>)</span>
-<span id="cb7-125"><a aria-label="125"></a>        <span class="cf">if</span> <span class="va">self</span>.max_depth <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> <span class="va">self</span>.max_depth <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb7-126"><a aria-label="126"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"max_depth doit être positif ou nul, ou None"</span>)</span>
-<span id="cb7-127"><a aria-label="127"></a>        <span class="cf">if</span> <span class="va">self</span>.min_samples_split <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb7-128"><a aria-label="128"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"min_samples_split doit être au moins 2"</span>)</span>
-<span id="cb7-129"><a aria-label="129"></a>        <span class="cf">if</span> <span class="va">self</span>.min_samples_leaf <span class="op">&lt;</span> <span class="dv">1</span>:</span>
-<span id="cb7-130"><a aria-label="130"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"min_samples_leaf doit être au moins 1"</span>)</span>
-<span id="cb7-131"><a aria-label="131"></a></span>
-<span id="cb7-132"><a aria-label="132"></a>    <span class="kw">def</span> _validate_prediction_data(<span class="va">self</span>, X):</span>
-<span id="cb7-133"><a aria-label="133"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb7-134"><a aria-label="134"></a>        <span class="cf">if</span> X.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb7-135"><a aria-label="135"></a>            X <span class="op">=</span> X.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb7-136"><a aria-label="136"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> X.shape[<span class="dv">1</span>] <span class="op">!=</span> <span class="va">self</span>.n_features_in_:</span>
-<span id="cb7-137"><a aria-label="137"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"X n'a pas le bon nombre d'attributs"</span>)</span>
-<span id="cb7-138"><a aria-label="138"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
-<span id="cb7-139"><a aria-label="139"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span>)</span>
-<span id="cb7-140"><a aria-label="140"></a>        <span class="cf">return</span> X</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb8-2"><a aria-label="2"></a></span>
+<span id="cb8-3"><a aria-label="3"></a><span class="at">@dataclass</span></span>
+<span id="cb8-4"><a aria-label="4"></a><span class="kw">class</span> Node:</span>
+<span id="cb8-5"><a aria-label="5"></a>    probabilities: np.ndarray</span>
+<span id="cb8-6"><a aria-label="6"></a>    n_samples: <span class="bu">int</span></span>
+<span id="cb8-7"><a aria-label="7"></a>    loss: <span class="bu">float</span></span>
+<span id="cb8-8"><a aria-label="8"></a>    feature: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-9"><a aria-label="9"></a>    threshold: <span class="bu">float</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-10"><a aria-label="10"></a>    left: <span class="st">"Node | None"</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-11"><a aria-label="11"></a>    right: <span class="st">"Node | None"</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-12"><a aria-label="12"></a></span>
+<span id="cb8-13"><a aria-label="13"></a>    <span class="at">@property</span></span>
+<span id="cb8-14"><a aria-label="14"></a>    <span class="kw">def</span> is_leaf(<span class="va">self</span>):</span>
+<span id="cb8-15"><a aria-label="15"></a>        <span class="cf">return</span> <span class="va">self</span>.feature <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb8-16"><a aria-label="16"></a></span>
+<span id="cb8-17"><a aria-label="17"></a></span>
+<span id="cb8-18"><a aria-label="18"></a><span class="kw">class</span> SimpleDecisionTreeClassifier:</span>
+<span id="cb8-19"><a aria-label="19"></a>    <span class="co">"""Un classificateur didactique avec une petite interface de type scikit-learn."""</span></span>
+<span id="cb8-20"><a aria-label="20"></a></span>
+<span id="cb8-21"><a aria-label="21"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(</span>
+<span id="cb8-22"><a aria-label="22"></a>        <span class="va">self</span>,</span>
+<span id="cb8-23"><a aria-label="23"></a>        max_depth<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb8-24"><a aria-label="24"></a>        min_samples_split<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb8-25"><a aria-label="25"></a>        min_samples_leaf<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb8-26"><a aria-label="26"></a>    ):</span>
+<span id="cb8-27"><a aria-label="27"></a>        <span class="va">self</span>.max_depth <span class="op">=</span> max_depth</span>
+<span id="cb8-28"><a aria-label="28"></a>        <span class="va">self</span>.min_samples_split <span class="op">=</span> min_samples_split</span>
+<span id="cb8-29"><a aria-label="29"></a>        <span class="va">self</span>.min_samples_leaf <span class="op">=</span> min_samples_leaf</span>
+<span id="cb8-30"><a aria-label="30"></a></span>
+<span id="cb8-31"><a aria-label="31"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y):</span>
+<span id="cb8-32"><a aria-label="32"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb8-33"><a aria-label="33"></a>        y <span class="op">=</span> np.asarray(y)</span>
+<span id="cb8-34"><a aria-label="34"></a>        <span class="va">self</span>._validate_training_data(X, y)</span>
+<span id="cb8-35"><a aria-label="35"></a></span>
+<span id="cb8-36"><a aria-label="36"></a>        <span class="va">self</span>.classes_ <span class="op">=</span> np.unique(y)</span>
+<span id="cb8-37"><a aria-label="37"></a>        <span class="va">self</span>.n_features_in_ <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb8-38"><a aria-label="38"></a>        <span class="va">self</span>.n_candidate_splits_ <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-39"><a aria-label="39"></a>        <span class="va">self</span>.tree_ <span class="op">=</span> <span class="va">self</span>._grow_tree(X, y, depth<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-40"><a aria-label="40"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb8-41"><a aria-label="41"></a></span>
+<span id="cb8-42"><a aria-label="42"></a>    <span class="kw">def</span> _grow_tree(<span class="va">self</span>, X, y, depth):</span>
+<span id="cb8-43"><a aria-label="43"></a>        probabilities <span class="op">=</span> class_probabilities(y, <span class="va">self</span>.classes_)</span>
+<span id="cb8-44"><a aria-label="44"></a>        node <span class="op">=</span> Node(</span>
+<span id="cb8-45"><a aria-label="45"></a>            probabilities<span class="op">=</span>probabilities,</span>
+<span id="cb8-46"><a aria-label="46"></a>            n_samples<span class="op">=</span><span class="bu">len</span>(y),</span>
+<span id="cb8-47"><a aria-label="47"></a>            loss<span class="op">=</span>entropy(y, <span class="va">self</span>.classes_),</span>
+<span id="cb8-48"><a aria-label="48"></a>        )</span>
+<span id="cb8-49"><a aria-label="49"></a></span>
+<span id="cb8-50"><a aria-label="50"></a>        depth_limit <span class="op">=</span> <span class="va">self</span>.max_depth <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> depth <span class="op">&gt;=</span> <span class="va">self</span>.max_depth</span>
+<span id="cb8-51"><a aria-label="51"></a>        pure_node <span class="op">=</span> np.count_nonzero(probabilities) <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb8-52"><a aria-label="52"></a>        too_small <span class="op">=</span> <span class="bu">len</span>(y) <span class="op">&lt;</span> <span class="va">self</span>.min_samples_split</span>
+<span id="cb8-53"><a aria-label="53"></a></span>
+<span id="cb8-54"><a aria-label="54"></a>        <span class="cf">if</span> pure_node <span class="kw">or</span> depth_limit <span class="kw">or</span> too_small:</span>
+<span id="cb8-55"><a aria-label="55"></a>            <span class="cf">return</span> node</span>
+<span id="cb8-56"><a aria-label="56"></a></span>
+<span id="cb8-57"><a aria-label="57"></a>        split, n_candidates <span class="op">=</span> find_best_split(</span>
+<span id="cb8-58"><a aria-label="58"></a>            X, y, <span class="va">self</span>.classes_, <span class="va">self</span>.min_samples_leaf</span>
+<span id="cb8-59"><a aria-label="59"></a>        )</span>
+<span id="cb8-60"><a aria-label="60"></a>        <span class="va">self</span>.n_candidate_splits_ <span class="op">+=</span> n_candidates</span>
+<span id="cb8-61"><a aria-label="61"></a>        <span class="cf">if</span> split <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-62"><a aria-label="62"></a>            <span class="cf">return</span> node</span>
+<span id="cb8-63"><a aria-label="63"></a></span>
+<span id="cb8-64"><a aria-label="64"></a>        node.feature, node.threshold, go_left <span class="op">=</span> split</span>
+<span id="cb8-65"><a aria-label="65"></a>        node.left <span class="op">=</span> <span class="va">self</span>._grow_tree(X[go_left], y[go_left], depth <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb8-66"><a aria-label="66"></a>        node.right <span class="op">=</span> <span class="va">self</span>._grow_tree(X[<span class="op">~</span>go_left], y[<span class="op">~</span>go_left], depth <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb8-67"><a aria-label="67"></a>        <span class="cf">return</span> node</span>
+<span id="cb8-68"><a aria-label="68"></a></span>
+<span id="cb8-69"><a aria-label="69"></a>    <span class="kw">def</span> _find_leaf(<span class="va">self</span>, x):</span>
+<span id="cb8-70"><a aria-label="70"></a>        node <span class="op">=</span> <span class="va">self</span>.tree_</span>
+<span id="cb8-71"><a aria-label="71"></a>        <span class="cf">while</span> <span class="kw">not</span> node.is_leaf:</span>
+<span id="cb8-72"><a aria-label="72"></a>            <span class="cf">if</span> x[node.feature] <span class="op">&lt;=</span> node.threshold:</span>
+<span id="cb8-73"><a aria-label="73"></a>                node <span class="op">=</span> node.left</span>
+<span id="cb8-74"><a aria-label="74"></a>            <span class="cf">else</span>:</span>
+<span id="cb8-75"><a aria-label="75"></a>                node <span class="op">=</span> node.right</span>
+<span id="cb8-76"><a aria-label="76"></a>        <span class="cf">return</span> node</span>
+<span id="cb8-77"><a aria-label="77"></a></span>
+<span id="cb8-78"><a aria-label="78"></a>    <span class="kw">def</span> predict_proba(<span class="va">self</span>, X):</span>
+<span id="cb8-79"><a aria-label="79"></a>        X <span class="op">=</span> <span class="va">self</span>._validate_prediction_data(X)</span>
+<span id="cb8-80"><a aria-label="80"></a>        <span class="cf">return</span> np.vstack([<span class="va">self</span>._find_leaf(x).probabilities <span class="cf">for</span> x <span class="kw">in</span> X])</span>
+<span id="cb8-81"><a aria-label="81"></a></span>
+<span id="cb8-82"><a aria-label="82"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
+<span id="cb8-83"><a aria-label="83"></a>        probabilities <span class="op">=</span> <span class="va">self</span>.predict_proba(X)</span>
+<span id="cb8-84"><a aria-label="84"></a>        <span class="cf">return</span> <span class="va">self</span>.classes_[np.argmax(probabilities, axis<span class="op">=</span><span class="dv">1</span>)]</span>
+<span id="cb8-85"><a aria-label="85"></a></span>
+<span id="cb8-86"><a aria-label="86"></a>    <span class="kw">def</span> score(<span class="va">self</span>, X, y):</span>
+<span id="cb8-87"><a aria-label="87"></a>        <span class="cf">return</span> <span class="bu">float</span>(np.mean(<span class="va">self</span>.predict(X) <span class="op">==</span> np.asarray(y)))</span>
+<span id="cb8-88"><a aria-label="88"></a></span>
+<span id="cb8-89"><a aria-label="89"></a>    <span class="kw">def</span> export_text(<span class="va">self</span>, feature_names<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb8-90"><a aria-label="90"></a>        <span class="cf">if</span> feature_names <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-91"><a aria-label="91"></a>            feature_names <span class="op">=</span> [<span class="ss">f"x[</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">]"</span> <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.n_features_in_)]</span>
+<span id="cb8-92"><a aria-label="92"></a>        <span class="cf">if</span> <span class="bu">len</span>(feature_names) <span class="op">!=</span> <span class="va">self</span>.n_features_in_:</span>
+<span id="cb8-93"><a aria-label="93"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"feature_names doit correspondre au nombre d'attributs"</span>)</span>
+<span id="cb8-94"><a aria-label="94"></a></span>
+<span id="cb8-95"><a aria-label="95"></a>        lines <span class="op">=</span> []</span>
+<span id="cb8-96"><a aria-label="96"></a></span>
+<span id="cb8-97"><a aria-label="97"></a>        <span class="kw">def</span> visit(node, indent):</span>
+<span id="cb8-98"><a aria-label="98"></a>            <span class="cf">if</span> node.is_leaf:</span>
+<span id="cb8-99"><a aria-label="99"></a>                prediction <span class="op">=</span> <span class="va">self</span>.classes_[np.argmax(node.probabilities)]</span>
+<span id="cb8-100"><a aria-label="100"></a>                <span class="cf">if</span> <span class="bu">isinstance</span>(prediction, np.generic):</span>
+<span id="cb8-101"><a aria-label="101"></a>                    prediction <span class="op">=</span> prediction.item()</span>
+<span id="cb8-102"><a aria-label="102"></a>                probabilities <span class="op">=</span> np.<span class="bu">round</span>(node.probabilities, <span class="dv">3</span>)</span>
+<span id="cb8-103"><a aria-label="103"></a>                lines.append(</span>
+<span id="cb8-104"><a aria-label="104"></a>                    <span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">prédire </span><span class="sc">{</span>prediction<span class="sc">!r}</span><span class="ss"> "</span></span>
+<span id="cb8-105"><a aria-label="105"></a>                    <span class="ss">f"(p=</span><span class="sc">{</span>probabilities<span class="sc">}</span><span class="ss">, n=</span><span class="sc">{</span>node<span class="sc">.</span>n_samples<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb8-106"><a aria-label="106"></a>                )</span>
+<span id="cb8-107"><a aria-label="107"></a>                <span class="cf">return</span></span>
+<span id="cb8-108"><a aria-label="108"></a></span>
+<span id="cb8-109"><a aria-label="109"></a>            name <span class="op">=</span> feature_names[node.feature]</span>
+<span id="cb8-110"><a aria-label="110"></a>            lines.append(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">si </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> &lt;= </span><span class="sc">{</span>node<span class="sc">.</span>threshold<span class="sc">:.3f}</span><span class="ss"> :"</span>)</span>
+<span id="cb8-111"><a aria-label="111"></a>            visit(node.left, indent <span class="op">+</span> <span class="st">"    "</span>)</span>
+<span id="cb8-112"><a aria-label="112"></a>            lines.append(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">sinon :"</span>)</span>
+<span id="cb8-113"><a aria-label="113"></a>            visit(node.right, indent <span class="op">+</span> <span class="st">"    "</span>)</span>
+<span id="cb8-114"><a aria-label="114"></a></span>
+<span id="cb8-115"><a aria-label="115"></a>        visit(<span class="va">self</span>.tree_, <span class="st">""</span>)</span>
+<span id="cb8-116"><a aria-label="116"></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(lines)</span>
+<span id="cb8-117"><a aria-label="117"></a></span>
+<span id="cb8-118"><a aria-label="118"></a>    <span class="kw">def</span> _validate_training_data(<span class="va">self</span>, X, y):</span>
+<span id="cb8-119"><a aria-label="119"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> y.ndim <span class="op">!=</span> <span class="dv">1</span> <span class="kw">or</span> <span class="bu">len</span>(X) <span class="op">!=</span> <span class="bu">len</span>(y):</span>
+<span id="cb8-120"><a aria-label="120"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"X doit être 2D et y doit être 1D, avec le même nombre de lignes"</span>)</span>
+<span id="cb8-121"><a aria-label="121"></a>        <span class="cf">if</span> <span class="bu">len</span>(y) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-122"><a aria-label="122"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"le jeu d'entraînement ne peut pas être vide"</span>)</span>
+<span id="cb8-123"><a aria-label="123"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
+<span id="cb8-124"><a aria-label="124"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span>)</span>
+<span id="cb8-125"><a aria-label="125"></a>        <span class="cf">if</span> <span class="va">self</span>.max_depth <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> <span class="va">self</span>.max_depth <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-126"><a aria-label="126"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"max_depth doit être positif ou nul, ou None"</span>)</span>
+<span id="cb8-127"><a aria-label="127"></a>        <span class="cf">if</span> <span class="va">self</span>.min_samples_split <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb8-128"><a aria-label="128"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"min_samples_split doit être au moins 2"</span>)</span>
+<span id="cb8-129"><a aria-label="129"></a>        <span class="cf">if</span> <span class="va">self</span>.min_samples_leaf <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb8-130"><a aria-label="130"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"min_samples_leaf doit être au moins 1"</span>)</span>
+<span id="cb8-131"><a aria-label="131"></a></span>
+<span id="cb8-132"><a aria-label="132"></a>    <span class="kw">def</span> _validate_prediction_data(<span class="va">self</span>, X):</span>
+<span id="cb8-133"><a aria-label="133"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb8-134"><a aria-label="134"></a>        <span class="cf">if</span> X.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb8-135"><a aria-label="135"></a>            X <span class="op">=</span> X.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb8-136"><a aria-label="136"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> X.shape[<span class="dv">1</span>] <span class="op">!=</span> <span class="va">self</span>.n_features_in_:</span>
+<span id="cb8-137"><a aria-label="137"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"X n'a pas le bon nombre d'attributs"</span>)</span>
+<span id="cb8-138"><a aria-label="138"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
+<span id="cb8-139"><a aria-label="139"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span>)</span>
+<span id="cb8-140"><a aria-label="140"></a>        <span class="cf">return</span> X</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <aside class="notes">
@@ -1199,29 +1239,29 @@ J(j,t)=
 <section id="entraînement-sur-les-manchots-de-palmer" class="slide level2 smaller">
 <h2>Entraînement sur les manchots de Palmer</h2>
 <div id="cell-decision-tree-penguins" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
-<span id="cb8-2"><a aria-label="2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb8-3"><a aria-label="3"></a></span>
-<span id="cb8-4"><a aria-label="4"></a>feature_names <span class="op">=</span> [<span class="st">"bill_depth_mm"</span>, <span class="st">"body_mass_g"</span>]</span>
-<span id="cb8-5"><a aria-label="5"></a>penguins_tree <span class="op">=</span> load_penguins()</span>
-<span id="cb8-6"><a aria-label="6"></a>penguins_tree <span class="op">=</span> penguins_tree[</span>
-<span id="cb8-7"><a aria-label="7"></a>    feature_names <span class="op">+</span> [<span class="st">"species"</span>]</span>
-<span id="cb8-8"><a aria-label="8"></a>].dropna().copy()</span>
-<span id="cb8-9"><a aria-label="9"></a></span>
-<span id="cb8-10"><a aria-label="10"></a>X <span class="op">=</span> penguins_tree[feature_names].to_numpy()</span>
-<span id="cb8-11"><a aria-label="11"></a>y <span class="op">=</span> np.where(</span>
-<span id="cb8-12"><a aria-label="12"></a>    penguins_tree[<span class="st">"species"</span>].to_numpy() <span class="op">==</span> <span class="st">"Gentoo"</span>,</span>
-<span id="cb8-13"><a aria-label="13"></a>    <span class="st">"Gentoo"</span>,</span>
-<span id="cb8-14"><a aria-label="14"></a>    <span class="st">"Pas Gentoo"</span>,</span>
-<span id="cb8-15"><a aria-label="15"></a>)</span>
-<span id="cb8-16"><a aria-label="16"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb8-17"><a aria-label="17"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
-<span id="cb8-18"><a aria-label="18"></a>)</span>
-<span id="cb8-19"><a aria-label="19"></a></span>
-<span id="cb8-20"><a aria-label="20"></a>model <span class="op">=</span> SimpleDecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">2</span>, min_samples_leaf<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb8-21"><a aria-label="21"></a>model.fit(X_train, y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a>feature_names <span class="op">=</span> [<span class="st">"bill_depth_mm"</span>, <span class="st">"body_mass_g"</span>]</span>
+<span id="cb9-5"><a aria-label="5"></a>penguins_tree <span class="op">=</span> load_penguins()</span>
+<span id="cb9-6"><a aria-label="6"></a>penguins_tree <span class="op">=</span> penguins_tree[</span>
+<span id="cb9-7"><a aria-label="7"></a>    feature_names <span class="op">+</span> [<span class="st">"species"</span>]</span>
+<span id="cb9-8"><a aria-label="8"></a>].dropna().copy()</span>
+<span id="cb9-9"><a aria-label="9"></a></span>
+<span id="cb9-10"><a aria-label="10"></a>X <span class="op">=</span> penguins_tree[feature_names].to_numpy()</span>
+<span id="cb9-11"><a aria-label="11"></a>y <span class="op">=</span> np.where(</span>
+<span id="cb9-12"><a aria-label="12"></a>    penguins_tree[<span class="st">"species"</span>].to_numpy() <span class="op">==</span> <span class="st">"Gentoo"</span>,</span>
+<span id="cb9-13"><a aria-label="13"></a>    <span class="st">"Gentoo"</span>,</span>
+<span id="cb9-14"><a aria-label="14"></a>    <span class="st">"Pas Gentoo"</span>,</span>
+<span id="cb9-15"><a aria-label="15"></a>)</span>
+<span id="cb9-16"><a aria-label="16"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb9-17"><a aria-label="17"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y</span>
+<span id="cb9-18"><a aria-label="18"></a>)</span>
+<span id="cb9-19"><a aria-label="19"></a></span>
+<span id="cb9-20"><a aria-label="20"></a>model <span class="op">=</span> SimpleDecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">2</span>, min_samples_leaf<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb9-21"><a aria-label="21"></a>model.fit(X_train, y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="decision-tree-penguins" class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>&lt;__main__.SimpleDecisionTreeClassifier at 0x115fe7cb0&gt;</code></pre>
+<pre><code>&lt;__main__.SimpleDecisionTreeClassifier at 0x11b7a3020&gt;</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1242,11 +1282,11 @@ J(j,t)=
 <section id="qua-appris-larbre" class="slide level2 smaller">
 <h2>Qu’a appris l’arbre ?</h2>
 <div id="decision-tree-penguins-results" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f"Exactitude sur le jeu de test : </span><span class="sc">{</span>model<span class="sc">.</span>score(X_test, y_test)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb10-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="ss">f"Divisions candidates évaluées : </span><span class="sc">{</span>model<span class="sc">.</span>n_candidate_splits_<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="ss">f"Ordre des classes : </span><span class="sc">{</span>model<span class="sc">.</span>classes_<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Règles apprises :</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb10-5"><a aria-label="5"></a><span class="bu">print</span>(model.export_text(feature_names))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="bu">print</span>(<span class="ss">f"Exactitude sur le jeu de test : </span><span class="sc">{</span>model<span class="sc">.</span>score(X_test, y_test)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb11-2"><a aria-label="2"></a><span class="bu">print</span>(<span class="ss">f"Divisions candidates évaluées : </span><span class="sc">{</span>model<span class="sc">.</span>n_candidate_splits_<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="ss">f"Ordre des classes : </span><span class="sc">{</span>model<span class="sc">.</span>classes_<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Règles apprises :</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb11-5"><a aria-label="5"></a><span class="bu">print</span>(model.export_text(feature_names))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Exactitude sur le jeu de test : 1.000
 Divisions candidates évaluées : 312
@@ -1286,34 +1326,34 @@ sinon :
 <div id="cell-decision-tree-penguins-boundary" class="cell" data-fig-height="5" data-fig-width="9" data-execution_count="12">
 <details class="code-fold">
 <summary>Afficher le code de la figure</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a><span class="kw">def</span> plot_tree_boundary(X, y, model, feature_names):</span>
-<span id="cb12-2"><a aria-label="2"></a>    x0 <span class="op">=</span> np.linspace(X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span>, <span class="dv">300</span>)</span>
-<span id="cb12-3"><a aria-label="3"></a>    x1 <span class="op">=</span> np.linspace(X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">200</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">200</span>, <span class="dv">300</span>)</span>
-<span id="cb12-4"><a aria-label="4"></a>    xx0, xx1 <span class="op">=</span> np.meshgrid(x0, x1)</span>
-<span id="cb12-5"><a aria-label="5"></a></span>
-<span id="cb12-6"><a aria-label="6"></a>    grid <span class="op">=</span> np.column_stack([xx0.ravel(), xx1.ravel()])</span>
-<span id="cb12-7"><a aria-label="7"></a>    predicted <span class="op">=</span> model.predict(grid)</span>
-<span id="cb12-8"><a aria-label="8"></a>    regions <span class="op">=</span> np.array([</span>
-<span id="cb12-9"><a aria-label="9"></a>        np.flatnonzero(model.classes_ <span class="op">==</span> label)[<span class="dv">0</span>]</span>
-<span id="cb12-10"><a aria-label="10"></a>        <span class="cf">for</span> label <span class="kw">in</span> predicted</span>
-<span id="cb12-11"><a aria-label="11"></a>    ]).reshape(xx0.shape)</span>
-<span id="cb12-12"><a aria-label="12"></a></span>
-<span id="cb12-13"><a aria-label="13"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
-<span id="cb12-14"><a aria-label="14"></a>    plt.contourf(xx0, xx1, regions, alpha<span class="op">=</span><span class="fl">0.25</span>, cmap<span class="op">=</span><span class="st">"Set2"</span>)</span>
-<span id="cb12-15"><a aria-label="15"></a>    <span class="cf">for</span> label <span class="kw">in</span> model.classes_:</span>
-<span id="cb12-16"><a aria-label="16"></a>        selected <span class="op">=</span> y <span class="op">==</span> label</span>
-<span id="cb12-17"><a aria-label="17"></a>        plt.scatter(</span>
-<span id="cb12-18"><a aria-label="18"></a>            X[selected, <span class="dv">0</span>], X[selected, <span class="dv">1</span>],</span>
-<span id="cb12-19"><a aria-label="19"></a>            edgecolor<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span>label</span>
-<span id="cb12-20"><a aria-label="20"></a>        )</span>
-<span id="cb12-21"><a aria-label="21"></a>    plt.xlabel(feature_names[<span class="dv">0</span>])</span>
-<span id="cb12-22"><a aria-label="22"></a>    plt.ylabel(feature_names[<span class="dv">1</span>])</span>
-<span id="cb12-23"><a aria-label="23"></a>    plt.title(<span class="st">"Régions de classification de l'arbre de décision"</span>)</span>
-<span id="cb12-24"><a aria-label="24"></a>    plt.legend()</span>
-<span id="cb12-25"><a aria-label="25"></a>    plt.tight_layout()</span>
-<span id="cb12-26"><a aria-label="26"></a>    plt.show()</span>
-<span id="cb12-27"><a aria-label="27"></a></span>
-<span id="cb12-28"><a aria-label="28"></a>plot_tree_boundary(X_train, y_train, model, feature_names)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">def</span> plot_tree_boundary(X, y, model, feature_names):</span>
+<span id="cb13-2"><a aria-label="2"></a>    x0 <span class="op">=</span> np.linspace(X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span>, <span class="dv">300</span>)</span>
+<span id="cb13-3"><a aria-label="3"></a>    x1 <span class="op">=</span> np.linspace(X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">200</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb13-4"><a aria-label="4"></a>    xx0, xx1 <span class="op">=</span> np.meshgrid(x0, x1)</span>
+<span id="cb13-5"><a aria-label="5"></a></span>
+<span id="cb13-6"><a aria-label="6"></a>    grid <span class="op">=</span> np.column_stack([xx0.ravel(), xx1.ravel()])</span>
+<span id="cb13-7"><a aria-label="7"></a>    predicted <span class="op">=</span> model.predict(grid)</span>
+<span id="cb13-8"><a aria-label="8"></a>    regions <span class="op">=</span> np.array([</span>
+<span id="cb13-9"><a aria-label="9"></a>        np.flatnonzero(model.classes_ <span class="op">==</span> label)[<span class="dv">0</span>]</span>
+<span id="cb13-10"><a aria-label="10"></a>        <span class="cf">for</span> label <span class="kw">in</span> predicted</span>
+<span id="cb13-11"><a aria-label="11"></a>    ]).reshape(xx0.shape)</span>
+<span id="cb13-12"><a aria-label="12"></a></span>
+<span id="cb13-13"><a aria-label="13"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
+<span id="cb13-14"><a aria-label="14"></a>    plt.contourf(xx0, xx1, regions, alpha<span class="op">=</span><span class="fl">0.25</span>, cmap<span class="op">=</span><span class="st">"Set2"</span>)</span>
+<span id="cb13-15"><a aria-label="15"></a>    <span class="cf">for</span> label <span class="kw">in</span> model.classes_:</span>
+<span id="cb13-16"><a aria-label="16"></a>        selected <span class="op">=</span> y <span class="op">==</span> label</span>
+<span id="cb13-17"><a aria-label="17"></a>        plt.scatter(</span>
+<span id="cb13-18"><a aria-label="18"></a>            X[selected, <span class="dv">0</span>], X[selected, <span class="dv">1</span>],</span>
+<span id="cb13-19"><a aria-label="19"></a>            edgecolor<span class="op">=</span><span class="st">"black"</span>, label<span class="op">=</span>label</span>
+<span id="cb13-20"><a aria-label="20"></a>        )</span>
+<span id="cb13-21"><a aria-label="21"></a>    plt.xlabel(feature_names[<span class="dv">0</span>])</span>
+<span id="cb13-22"><a aria-label="22"></a>    plt.ylabel(feature_names[<span class="dv">1</span>])</span>
+<span id="cb13-23"><a aria-label="23"></a>    plt.title(<span class="st">"Régions de classification de l'arbre de décision"</span>)</span>
+<span id="cb13-24"><a aria-label="24"></a>    plt.legend()</span>
+<span id="cb13-25"><a aria-label="25"></a>    plt.tight_layout()</span>
+<span id="cb13-26"><a aria-label="26"></a>    plt.show()</span>
+<span id="cb13-27"><a aria-label="27"></a></span>
+<span id="cb13-28"><a aria-label="28"></a>plot_tree_boundary(X_train, y_train, model, feature_names)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1325,7 +1365,6 @@ sinon :
 </div>
 <aside class="notes">
 <p>Chaque décision compare un attribut à un seuil. En deux dimensions, chaque décision correspond donc à une droite verticale ou horizontale. La combinaison de plusieurs décisions produit des régions de classification rectangulaires et une frontière de décision globale non linéaire.</p>
-<p>La fonction de traçage est du code auxiliaire. Les étudiants peuvent l’afficher dans le matériel interactif, mais il n’est pas nécessaire de la présenter en classe.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1378,67 +1417,67 @@ sinon :
 <aside><div>
 <p><span class="citation" data-cites="Stiglic:2012aa">(<a href="#/références" role="doc-biblioref" onclick="">Stiglic et al. 2012</a>)</span></p>
 </div></aside></section>
-<section id="petites-modifications-du-jeu-de-données" class="slide level2 hide-code-toggle scrollable">
-<h2>Petites modifications du jeu de données</h2>
-<div id="72697b92" class="cell" data-execution_count="13">
+<section id="sensibilité-aux-petites-modifications" class="slide level2 hide-code-toggle scrollable">
+<h2>Sensibilité aux petites modifications</h2>
+<div id="2e5fe7d9" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
-<span id="cb13-2"><a aria-label="2"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
-<span id="cb13-3"><a aria-label="3"></a></span>
-<span id="cb13-4"><a aria-label="4"></a><span class="co"># Chargement du jeu de données</span></span>
-<span id="cb13-5"><a aria-label="5"></a></span>
-<span id="cb13-6"><a aria-label="6"></a>X, y <span class="op">=</span> load_penguins(return_X_y <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb13-7"><a aria-label="7"></a></span>
-<span id="cb13-8"><a aria-label="8"></a>target_names <span class="op">=</span> [<span class="st">'Adelie'</span>,<span class="st">'Chinstrap'</span>,<span class="st">'Gentoo'</span>]</span>
-<span id="cb13-9"><a aria-label="9"></a></span>
-<span id="cb13-10"><a aria-label="10"></a><span class="co"># Division en jeux d'entraînement et de test</span></span>
-<span id="cb13-11"><a aria-label="11"></a></span>
-<span id="cb13-12"><a aria-label="12"></a><span class="cf">for</span> seed <span class="kw">in</span> (<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">90</span>, <span class="dv">96</span>, <span class="dv">99</span>, <span class="dv">2</span>):</span>
-<span id="cb13-13"><a aria-label="13"></a></span>
-<span id="cb13-14"><a aria-label="14"></a>  <span class="bu">print</span>(<span class="ss">f'Graine : </span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb13-15"><a aria-label="15"></a></span>
-<span id="cb13-16"><a aria-label="16"></a>  <span class="co"># Créer de nouveaux jeux selon une graine différente</span></span>
-<span id="cb13-17"><a aria-label="17"></a></span>
-<span id="cb13-18"><a aria-label="18"></a>  X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb13-19"><a aria-label="19"></a>      X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>seed, stratify<span class="op">=</span>y</span>
-<span id="cb13-20"><a aria-label="20"></a>  )</span>
-<span id="cb13-21"><a aria-label="21"></a></span>
-<span id="cb13-22"><a aria-label="22"></a>  <span class="co"># Créer un nouveau classificateur</span></span>
-<span id="cb13-23"><a aria-label="23"></a></span>
-<span id="cb13-24"><a aria-label="24"></a>  clf <span class="op">=</span> tree.DecisionTreeClassifier(</span>
-<span id="cb13-25"><a aria-label="25"></a>      criterion<span class="op">=</span><span class="st">"entropy"</span>, random_state<span class="op">=</span>seed</span>
-<span id="cb13-26"><a aria-label="26"></a>  )</span>
-<span id="cb13-27"><a aria-label="27"></a></span>
-<span id="cb13-28"><a aria-label="28"></a>  <span class="co"># Entraînement</span></span>
-<span id="cb13-29"><a aria-label="29"></a></span>
-<span id="cb13-30"><a aria-label="30"></a>  clf.fit(X_train, y_train)</span>
-<span id="cb13-31"><a aria-label="31"></a></span>
-<span id="cb13-32"><a aria-label="32"></a>  <span class="co"># Effectuer les prédictions</span></span>
-<span id="cb13-33"><a aria-label="33"></a></span>
-<span id="cb13-34"><a aria-label="34"></a>  y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb13-35"><a aria-label="35"></a></span>
-<span id="cb13-36"><a aria-label="36"></a>  <span class="co"># Tracer l'arbre</span></span>
-<span id="cb13-37"><a aria-label="37"></a></span>
-<span id="cb13-38"><a aria-label="38"></a>  tree.plot_tree(clf, </span>
-<span id="cb13-39"><a aria-label="39"></a>               feature_names <span class="op">=</span> X.columns,</span>
-<span id="cb13-40"><a aria-label="40"></a>               class_names <span class="op">=</span> target_names,</span>
-<span id="cb13-41"><a aria-label="41"></a>               filled <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb13-42"><a aria-label="42"></a>  plt.show()</span>
-<span id="cb13-43"><a aria-label="43"></a></span>
-<span id="cb13-44"><a aria-label="44"></a>  <span class="co"># Évaluer le modèle</span></span>
-<span id="cb13-45"><a aria-label="45"></a></span>
-<span id="cb13-46"><a aria-label="46"></a>  accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb13-47"><a aria-label="47"></a></span>
-<span id="cb13-48"><a aria-label="48"></a>  report <span class="op">=</span> classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names)</span>
-<span id="cb13-49"><a aria-label="49"></a></span>
-<span id="cb13-50"><a aria-label="50"></a>  <span class="bu">print</span>(<span class="ss">f'Exactitude : </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb13-51"><a aria-label="51"></a>  <span class="bu">print</span>(<span class="st">'Rapport de classification :'</span>)</span>
-<span id="cb13-52"><a aria-label="52"></a>  <span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb14-2"><a aria-label="2"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb14-3"><a aria-label="3"></a></span>
+<span id="cb14-4"><a aria-label="4"></a><span class="co"># Chargement du jeu de données</span></span>
+<span id="cb14-5"><a aria-label="5"></a></span>
+<span id="cb14-6"><a aria-label="6"></a>X, y <span class="op">=</span> load_penguins(return_X_y <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb14-7"><a aria-label="7"></a></span>
+<span id="cb14-8"><a aria-label="8"></a>target_names <span class="op">=</span> [<span class="st">'Adelie'</span>,<span class="st">'Chinstrap'</span>,<span class="st">'Gentoo'</span>]</span>
+<span id="cb14-9"><a aria-label="9"></a></span>
+<span id="cb14-10"><a aria-label="10"></a><span class="co"># Division en jeux d'entraînement et de test</span></span>
+<span id="cb14-11"><a aria-label="11"></a></span>
+<span id="cb14-12"><a aria-label="12"></a><span class="cf">for</span> seed <span class="kw">in</span> (<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">90</span>, <span class="dv">96</span>, <span class="dv">99</span>, <span class="dv">2</span>):</span>
+<span id="cb14-13"><a aria-label="13"></a></span>
+<span id="cb14-14"><a aria-label="14"></a>  <span class="bu">print</span>(<span class="ss">f'Graine : </span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb14-15"><a aria-label="15"></a></span>
+<span id="cb14-16"><a aria-label="16"></a>  <span class="co"># Créer de nouveaux jeux selon une graine différente</span></span>
+<span id="cb14-17"><a aria-label="17"></a></span>
+<span id="cb14-18"><a aria-label="18"></a>  X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb14-19"><a aria-label="19"></a>      X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>seed, stratify<span class="op">=</span>y</span>
+<span id="cb14-20"><a aria-label="20"></a>  )</span>
+<span id="cb14-21"><a aria-label="21"></a></span>
+<span id="cb14-22"><a aria-label="22"></a>  <span class="co"># Créer un nouveau classificateur</span></span>
+<span id="cb14-23"><a aria-label="23"></a></span>
+<span id="cb14-24"><a aria-label="24"></a>  clf <span class="op">=</span> tree.DecisionTreeClassifier(</span>
+<span id="cb14-25"><a aria-label="25"></a>      criterion<span class="op">=</span><span class="st">"entropy"</span>, random_state<span class="op">=</span>seed</span>
+<span id="cb14-26"><a aria-label="26"></a>  )</span>
+<span id="cb14-27"><a aria-label="27"></a></span>
+<span id="cb14-28"><a aria-label="28"></a>  <span class="co"># Entraînement</span></span>
+<span id="cb14-29"><a aria-label="29"></a></span>
+<span id="cb14-30"><a aria-label="30"></a>  clf.fit(X_train, y_train)</span>
+<span id="cb14-31"><a aria-label="31"></a></span>
+<span id="cb14-32"><a aria-label="32"></a>  <span class="co"># Effectuer les prédictions</span></span>
+<span id="cb14-33"><a aria-label="33"></a></span>
+<span id="cb14-34"><a aria-label="34"></a>  y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb14-35"><a aria-label="35"></a></span>
+<span id="cb14-36"><a aria-label="36"></a>  <span class="co"># Tracer l'arbre</span></span>
+<span id="cb14-37"><a aria-label="37"></a></span>
+<span id="cb14-38"><a aria-label="38"></a>  tree.plot_tree(clf, </span>
+<span id="cb14-39"><a aria-label="39"></a>               feature_names <span class="op">=</span> X.columns,</span>
+<span id="cb14-40"><a aria-label="40"></a>               class_names <span class="op">=</span> target_names,</span>
+<span id="cb14-41"><a aria-label="41"></a>               filled <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb14-42"><a aria-label="42"></a>  plt.show()</span>
+<span id="cb14-43"><a aria-label="43"></a></span>
+<span id="cb14-44"><a aria-label="44"></a>  <span class="co"># Évaluer le modèle</span></span>
+<span id="cb14-45"><a aria-label="45"></a></span>
+<span id="cb14-46"><a aria-label="46"></a>  accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb14-47"><a aria-label="47"></a></span>
+<span id="cb14-48"><a aria-label="48"></a>  report <span class="op">=</span> classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names)</span>
+<span id="cb14-49"><a aria-label="49"></a></span>
+<span id="cb14-50"><a aria-label="50"></a>  <span class="bu">print</span>(<span class="ss">f'Exactitude : </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb14-51"><a aria-label="51"></a>  <span class="bu">print</span>(<span class="st">'Rapport de classification :'</span>)</span>
+<span id="cb14-52"><a aria-label="52"></a>  <span class="bu">print</span>(report)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 
-</section><section id="petites-modifications-du-jeu-de-données-output" class="slide level2 hide-code-toggle scrollable output-location-slide"><h2>Petites modifications du jeu de données</h2><div class="cell output-location-slide" data-execution_count="13">
+</section><section id="sensibilité-aux-petites-modifications-output" class="slide level2 hide-code-toggle scrollable output-location-slide"><h2>Sensibilité aux petites modifications</h2><div class="cell output-location-slide" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>Graine : 4</code></pre>
 </div>
@@ -1579,7 +1618,7 @@ weighted avg       0.97      0.97      0.97        69
 <h1>KNN</h1>
 
 </section>
-<section id="k-plus-proches-voisins-knn" class="slide level2 scrollable">
+<section id="k-plus-proches-voisins-knn" class="slide level2 smaller">
 <h2>k plus proches voisins (KNN)</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1611,13 +1650,13 @@ weighted avg       0.97      0.97      0.97        69
 </div></aside></section>
 <section id="apprentissage-mémoriser-les-données" class="slide level2">
 <h2>Apprentissage : mémoriser les données</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="kw">def</span> fit(<span class="va">self</span>, X, y):</span>
-<span id="cb21-2"><a aria-label="2"></a>    <span class="va">self</span>.X_train_ <span class="op">=</span> X.copy()</span>
-<span id="cb21-3"><a aria-label="3"></a>    <span class="va">self</span>.y_train_ <span class="op">=</span> y.copy()</span>
-<span id="cb21-4"><a aria-label="4"></a>    <span class="cf">return</span> <span class="va">self</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="kw">def</span> fit(<span class="va">self</span>, X, y):</span>
+<span id="cb22-2"><a aria-label="2"></a>    <span class="va">self</span>.X_train_ <span class="op">=</span> X.copy()</span>
+<span id="cb22-3"><a aria-label="3"></a>    <span class="va">self</span>.y_train_ <span class="op">=</span> y.copy()</span>
+<span id="cb22-4"><a aria-label="4"></a>    <span class="cf">return</span> <span class="va">self</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 
 <aside class="notes">
-<p>KNN est souvent qualifié d’algorithme d’<em>apprentissage paresseux</em>. L’étape d’apprentissage du classificateur se réduit à mémoriser le jeu d’entraînement. En conserver une copie demande <span class="math inline">\(\mathcal{O}(ND)\)</span> mémoire pour <span class="math inline">\(N\)</span> exemples comportant <span class="math inline">\(D\)</span> attributs.</p>
+<p>KNN est souvent qualifié d’algorithme d’<em>apprentissage paresseux</em>. L’étape d’apprentissage du classificateur se réduit à mémoriser le jeu d’entraînement. En conserver une copie demande <span class="math inline">\mathcal{O}(ND)</span> mémoire pour <span class="math inline">N</span> exemples comportant <span class="math inline">D</span> attributs.</p>
 <p>La préparation des données et le choix des hyperparamètres peuvent néanmoins comprendre un apprentissage. Par exemple, une étape de standardisation estime des moyennes et des écarts-types à partir des données d’entraînement. Le point important est que le classificateur KNN lui-même n’ajuste pas de paramètres.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1635,21 +1674,21 @@ weighted avg       0.97      0.97      0.97        69
 </div></aside></section>
 <section id="trouver-les-plus-proches-voisins" class="slide level2 smaller">
 <h2>Trouver les plus proches voisins</h2>
-<p>Pour une requête <span class="math inline">\(x\)</span> et un exemple d’entraînement <span class="math inline">\(x_i\)</span>, la distance euclidienne est</p>
-<p><span class="math display">\[
+<p>Pour une requête <span class="math inline">x</span> et un exemple d’entraînement <span class="math inline">x_i</span>, la distance euclidienne est</p>
+<p><span class="math display">
 d(x,x_i)=\sqrt{\sum_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}.
-\]</span></p>
+</span></p>
 <div id="knn-nearest-neighbors" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb22-2"><a aria-label="2"></a></span>
-<span id="cb22-3"><a aria-label="3"></a><span class="kw">def</span> nearest_neighbors(X_train, x, n_neighbors):</span>
-<span id="cb22-4"><a aria-label="4"></a>    distances <span class="op">=</span> np.sqrt(np.<span class="bu">sum</span>((X_train <span class="op">-</span> x) <span class="op">**</span> <span class="dv">2</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb22-5"><a aria-label="5"></a>    indices <span class="op">=</span> np.argsort(distances, kind<span class="op">=</span><span class="st">"stable"</span>)[:n_neighbors]</span>
-<span id="cb22-6"><a aria-label="6"></a>    <span class="cf">return</span> indices, distances[indices]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-2"><a aria-label="2"></a></span>
+<span id="cb23-3"><a aria-label="3"></a><span class="kw">def</span> nearest_neighbors(X_train, x, n_neighbors):</span>
+<span id="cb23-4"><a aria-label="4"></a>    distances <span class="op">=</span> np.sqrt(np.<span class="bu">sum</span>((X_train <span class="op">-</span> x) <span class="op">**</span> <span class="dv">2</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb23-5"><a aria-label="5"></a>    indices <span class="op">=</span> np.argsort(distances, kind<span class="op">=</span><span class="st">"stable"</span>)[:n_neighbors]</span>
+<span id="cb23-6"><a aria-label="6"></a>    <span class="cf">return</span> indices, distances[indices]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
-<p>Le calcul de toutes les distances coûte <span class="math inline">\(\mathcal{O}(ND)\)</span> et leur tri coûte <span class="math inline">\(\mathcal{O}(N\log N)\)</span>. Une implémentation de production peut sélectionner les éléments les plus proches sans effectuer un tri complet et employer parfois des structures comme un arbre kd ou un arbre métrique (<em>ball tree</em>).</p>
+<p>Le calcul de toutes les distances coûte <span class="math inline">\mathcal{O}(ND)</span> et leur tri coûte <span class="math inline">\mathcal{O}(N\log N)</span>. Une implémentation de production peut sélectionner les éléments les plus proches sans effectuer un tri complet et employer parfois des structures comme un arbre kd ou un arbre métrique (<em>ball tree</em>).</p>
 <p>Le tri stable donne un comportement déterministe lorsque deux exemples se trouvent à la même distance. Il s’agit d’un choix d’implémentation simple et non d’un élément essentiel de KNN.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1663,21 +1702,21 @@ d(x,x_i)=\sqrt{\sum_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}.
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>L’implémentation directe avec tri complet coûte <span class="math inline">\(\mathcal{O}(ND+N\log N)\)</span> par requête.</p>
+<p>L’implémentation directe avec tri complet coûte <span class="math inline">\mathcal{O}(ND+N\log N)</span> par requête.</p>
 </div></aside></section>
 <section id="voter-et-calculer-une-moyenne" class="slide level2 smaller">
 <h2>Voter et calculer une moyenne</h2>
-<p>Après avoir sélectionné les <span class="math inline">\(k\)</span> exemples les plus proches :</p>
+<p>Après avoir sélectionné les <span class="math inline">k</span> exemples les plus proches :</p>
 <ul>
 <li class="fragment"><strong>Classification :</strong> chaque voisin vote pour sa classe.</li>
 <li class="fragment"><strong>Régression :</strong> calculer la moyenne des cibles numériques des voisins.</li>
 <li class="fragment"><strong>Poids uniformes :</strong> chaque voisin exerce la même influence.</li>
-<li class="fragment"><strong>Poids selon la distance :</strong> les voisins plus proches reçoivent le poids <span class="math inline">\(w_i=1/d_i\)</span>.</li>
+<li class="fragment"><strong>Poids selon la distance :</strong> les voisins plus proches reçoivent le poids <span class="math inline">w_i=1/d_i</span>.</li>
 </ul>
 <p>Pour la régression pondérée par la distance,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \hat y(x)=\frac{\sum_{i=1}^{k}w_i y_i}{\sum_{i=1}^{k}w_i}.
-\]</span></p>
+</span></p>
 <aside class="notes">
 <p>La recherche du voisinage est identique pour la classification et la régression; seule l’étape d’agrégation change. La classification additionne les votes par classe, tandis que la régression calcule la moyenne de valeurs numériques.</p>
 <p>La pondération par la distance donne plus d’influence aux exemples les plus proches. Si une requête correspond exactement à un ou plusieurs exemples d’entraînement, l’implémentation laisse seulement ces correspondances exactes voter. Cette règle évite la division par zéro et possède une interprétation intuitive.</p>
@@ -1696,22 +1735,22 @@ d(x,x_i)=\sqrt{\sum_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}.
 <section id="vote-en-python" class="slide level2 smaller">
 <h2>Vote en Python</h2>
 <div id="knn-voting" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="kw">def</span> voting_weights(distances, mode):</span>
-<span id="cb23-2"><a aria-label="2"></a>    <span class="cf">if</span> mode <span class="op">==</span> <span class="st">"uniform"</span>:</span>
-<span id="cb23-3"><a aria-label="3"></a>        <span class="cf">return</span> np.ones(<span class="bu">len</span>(distances))</span>
-<span id="cb23-4"><a aria-label="4"></a></span>
-<span id="cb23-5"><a aria-label="5"></a>    exact_matches <span class="op">=</span> distances <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb23-6"><a aria-label="6"></a>    <span class="cf">if</span> np.<span class="bu">any</span>(exact_matches):</span>
-<span id="cb23-7"><a aria-label="7"></a>        <span class="cf">return</span> exact_matches.astype(<span class="bu">float</span>)</span>
-<span id="cb23-8"><a aria-label="8"></a></span>
-<span id="cb23-9"><a aria-label="9"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> distances</span>
-<span id="cb23-10"><a aria-label="10"></a></span>
-<span id="cb23-11"><a aria-label="11"></a><span class="kw">def</span> vote_probabilities(labels, weights, classes):</span>
-<span id="cb23-12"><a aria-label="12"></a>    scores <span class="op">=</span> np.array([</span>
-<span id="cb23-13"><a aria-label="13"></a>        np.<span class="bu">sum</span>(weights[labels <span class="op">==</span> label])</span>
-<span id="cb23-14"><a aria-label="14"></a>        <span class="cf">for</span> label <span class="kw">in</span> classes</span>
-<span id="cb23-15"><a aria-label="15"></a>    ])</span>
-<span id="cb23-16"><a aria-label="16"></a>    <span class="cf">return</span> scores <span class="op">/</span> np.<span class="bu">sum</span>(scores)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="kw">def</span> voting_weights(distances, mode):</span>
+<span id="cb24-2"><a aria-label="2"></a>    <span class="cf">if</span> mode <span class="op">==</span> <span class="st">"uniform"</span>:</span>
+<span id="cb24-3"><a aria-label="3"></a>        <span class="cf">return</span> np.ones(<span class="bu">len</span>(distances))</span>
+<span id="cb24-4"><a aria-label="4"></a></span>
+<span id="cb24-5"><a aria-label="5"></a>    exact_matches <span class="op">=</span> distances <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb24-6"><a aria-label="6"></a>    <span class="cf">if</span> np.<span class="bu">any</span>(exact_matches):</span>
+<span id="cb24-7"><a aria-label="7"></a>        <span class="cf">return</span> exact_matches.astype(<span class="bu">float</span>)</span>
+<span id="cb24-8"><a aria-label="8"></a></span>
+<span id="cb24-9"><a aria-label="9"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> distances</span>
+<span id="cb24-10"><a aria-label="10"></a></span>
+<span id="cb24-11"><a aria-label="11"></a><span class="kw">def</span> vote_probabilities(labels, weights, classes):</span>
+<span id="cb24-12"><a aria-label="12"></a>    scores <span class="op">=</span> np.array([</span>
+<span id="cb24-13"><a aria-label="13"></a>        np.<span class="bu">sum</span>(weights[labels <span class="op">==</span> label])</span>
+<span id="cb24-14"><a aria-label="14"></a>        <span class="cf">for</span> label <span class="kw">in</span> classes</span>
+<span id="cb24-15"><a aria-label="15"></a>    ])</span>
+<span id="cb24-16"><a aria-label="16"></a>    <span class="cf">return</span> scores <span class="op">/</span> np.<span class="bu">sum</span>(scores)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Les comparaisons <code>labels == label</code> sélectionnent les voisins appartenant à chaque classe. Leurs poids sont additionnés, puis normalisés afin que la somme des scores obtenus soit égale à un.</p>
@@ -1734,78 +1773,77 @@ d(x,x_i)=\sqrt{\sum_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}.
 <div id="knn-complete-implementation" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Afficher l’implémentation complète</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="kw">class</span> SimpleKNeighborsClassifier:</span>
-<span id="cb24-2"><a aria-label="2"></a>    <span class="co">"""Un classificateur didactique avec une petite interface de type scikit-learn."""</span></span>
-<span id="cb24-3"><a aria-label="3"></a></span>
-<span id="cb24-4"><a aria-label="4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n_neighbors<span class="op">=</span><span class="dv">5</span>, weights<span class="op">=</span><span class="st">"uniform"</span>):</span>
-<span id="cb24-5"><a aria-label="5"></a>        <span class="va">self</span>.n_neighbors <span class="op">=</span> n_neighbors</span>
-<span id="cb24-6"><a aria-label="6"></a>        <span class="va">self</span>.weights <span class="op">=</span> weights</span>
-<span id="cb24-7"><a aria-label="7"></a></span>
-<span id="cb24-8"><a aria-label="8"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y):</span>
-<span id="cb24-9"><a aria-label="9"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb24-10"><a aria-label="10"></a>        y <span class="op">=</span> np.asarray(y)</span>
-<span id="cb24-11"><a aria-label="11"></a>        <span class="va">self</span>._validate_training_data(X, y)</span>
-<span id="cb24-12"><a aria-label="12"></a></span>
-<span id="cb24-13"><a aria-label="13"></a>        <span class="va">self</span>.X_train_ <span class="op">=</span> X.copy()</span>
-<span id="cb24-14"><a aria-label="14"></a>        <span class="va">self</span>.y_train_ <span class="op">=</span> y.copy()</span>
-<span id="cb24-15"><a aria-label="15"></a>        <span class="va">self</span>.classes_ <span class="op">=</span> np.unique(y)</span>
-<span id="cb24-16"><a aria-label="16"></a>        <span class="va">self</span>.n_features_in_ <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
-<span id="cb24-17"><a aria-label="17"></a>        <span class="cf">return</span> <span class="va">self</span></span>
-<span id="cb24-18"><a aria-label="18"></a></span>
-<span id="cb24-19"><a aria-label="19"></a>    <span class="kw">def</span> _predict_proba_one(<span class="va">self</span>, x):</span>
-<span id="cb24-20"><a aria-label="20"></a>        indices, distances <span class="op">=</span> nearest_neighbors(</span>
-<span id="cb24-21"><a aria-label="21"></a>            <span class="va">self</span>.X_train_, x, <span class="va">self</span>.n_neighbors</span>
-<span id="cb24-22"><a aria-label="22"></a>        )</span>
-<span id="cb24-23"><a aria-label="23"></a>        labels <span class="op">=</span> <span class="va">self</span>.y_train_[indices]</span>
-<span id="cb24-24"><a aria-label="24"></a>        weights <span class="op">=</span> voting_weights(distances, <span class="va">self</span>.weights)</span>
-<span id="cb24-25"><a aria-label="25"></a>        <span class="cf">return</span> vote_probabilities(labels, weights, <span class="va">self</span>.classes_)</span>
-<span id="cb24-26"><a aria-label="26"></a></span>
-<span id="cb24-27"><a aria-label="27"></a>    <span class="kw">def</span> predict_proba(<span class="va">self</span>, X):</span>
-<span id="cb24-28"><a aria-label="28"></a>        X <span class="op">=</span> <span class="va">self</span>._validate_prediction_data(X)</span>
-<span id="cb24-29"><a aria-label="29"></a>        <span class="cf">return</span> np.vstack([<span class="va">self</span>._predict_proba_one(x) <span class="cf">for</span> x <span class="kw">in</span> X])</span>
-<span id="cb24-30"><a aria-label="30"></a></span>
-<span id="cb24-31"><a aria-label="31"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
-<span id="cb24-32"><a aria-label="32"></a>        probabilities <span class="op">=</span> <span class="va">self</span>.predict_proba(X)</span>
-<span id="cb24-33"><a aria-label="33"></a>        <span class="cf">return</span> <span class="va">self</span>.classes_[np.argmax(probabilities, axis<span class="op">=</span><span class="dv">1</span>)]</span>
-<span id="cb24-34"><a aria-label="34"></a></span>
-<span id="cb24-35"><a aria-label="35"></a>    <span class="kw">def</span> score(<span class="va">self</span>, X, y):</span>
-<span id="cb24-36"><a aria-label="36"></a>        <span class="cf">return</span> <span class="bu">float</span>(np.mean(<span class="va">self</span>.predict(X) <span class="op">==</span> np.asarray(y)))</span>
-<span id="cb24-37"><a aria-label="37"></a></span>
-<span id="cb24-38"><a aria-label="38"></a>    <span class="kw">def</span> _validate_training_data(<span class="va">self</span>, X, y):</span>
-<span id="cb24-39"><a aria-label="39"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> y.ndim <span class="op">!=</span> <span class="dv">1</span> <span class="kw">or</span> <span class="bu">len</span>(X) <span class="op">!=</span> <span class="bu">len</span>(y):</span>
-<span id="cb24-40"><a aria-label="40"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
-<span id="cb24-41"><a aria-label="41"></a>                <span class="st">"X doit être 2D et y doit être 1D, avec le même nombre de lignes"</span></span>
-<span id="cb24-42"><a aria-label="42"></a>            )</span>
-<span id="cb24-43"><a aria-label="43"></a>        <span class="cf">if</span> <span class="bu">len</span>(y) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb24-44"><a aria-label="44"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"le jeu d'entraînement ne peut pas être vide"</span>)</span>
-<span id="cb24-45"><a aria-label="45"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
-<span id="cb24-46"><a aria-label="46"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
-<span id="cb24-47"><a aria-label="47"></a>                <span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span></span>
-<span id="cb24-48"><a aria-label="48"></a>            )</span>
-<span id="cb24-49"><a aria-label="49"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(<span class="va">self</span>.n_neighbors, (<span class="bu">int</span>, np.integer)):</span>
-<span id="cb24-50"><a aria-label="50"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"n_neighbors doit être un entier"</span>)</span>
-<span id="cb24-51"><a aria-label="51"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="dv">1</span> <span class="op">&lt;=</span> <span class="va">self</span>.n_neighbors <span class="op">&lt;=</span> <span class="bu">len</span>(y):</span>
-<span id="cb24-52"><a aria-label="52"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"n_neighbors doit être compris entre 1 et len(y)"</span>)</span>
-<span id="cb24-53"><a aria-label="53"></a>        <span class="cf">if</span> <span class="va">self</span>.weights <span class="kw">not</span> <span class="kw">in</span> {<span class="st">"uniform"</span>, <span class="st">"distance"</span>}:</span>
-<span id="cb24-54"><a aria-label="54"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"weights doit être 'uniform' ou 'distance'"</span>)</span>
-<span id="cb24-55"><a aria-label="55"></a></span>
-<span id="cb24-56"><a aria-label="56"></a>    <span class="kw">def</span> _validate_prediction_data(<span class="va">self</span>, X):</span>
-<span id="cb24-57"><a aria-label="57"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">hasattr</span>(<span class="va">self</span>, <span class="st">"X_train_"</span>):</span>
-<span id="cb24-58"><a aria-label="58"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"appelez fit avant d'effectuer des prédictions"</span>)</span>
-<span id="cb24-59"><a aria-label="59"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb24-60"><a aria-label="60"></a>        <span class="cf">if</span> X.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb24-61"><a aria-label="61"></a>            X <span class="op">=</span> X.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb24-62"><a aria-label="62"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> X.shape[<span class="dv">1</span>] <span class="op">!=</span> <span class="va">self</span>.n_features_in_:</span>
-<span id="cb24-63"><a aria-label="63"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"X n'a pas le bon nombre d'attributs"</span>)</span>
-<span id="cb24-64"><a aria-label="64"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
-<span id="cb24-65"><a aria-label="65"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
-<span id="cb24-66"><a aria-label="66"></a>                <span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span></span>
-<span id="cb24-67"><a aria-label="67"></a>            )</span>
-<span id="cb24-68"><a aria-label="68"></a>        <span class="cf">return</span> X</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="kw">class</span> SimpleKNeighborsClassifier:</span>
+<span id="cb25-2"><a aria-label="2"></a>    <span class="co">"""Un classificateur didactique avec une petite interface de type scikit-learn."""</span></span>
+<span id="cb25-3"><a aria-label="3"></a></span>
+<span id="cb25-4"><a aria-label="4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n_neighbors<span class="op">=</span><span class="dv">5</span>, weights<span class="op">=</span><span class="st">"uniform"</span>):</span>
+<span id="cb25-5"><a aria-label="5"></a>        <span class="va">self</span>.n_neighbors <span class="op">=</span> n_neighbors</span>
+<span id="cb25-6"><a aria-label="6"></a>        <span class="va">self</span>.weights <span class="op">=</span> weights</span>
+<span id="cb25-7"><a aria-label="7"></a></span>
+<span id="cb25-8"><a aria-label="8"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y):</span>
+<span id="cb25-9"><a aria-label="9"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb25-10"><a aria-label="10"></a>        y <span class="op">=</span> np.asarray(y)</span>
+<span id="cb25-11"><a aria-label="11"></a>        <span class="va">self</span>._validate_training_data(X, y)</span>
+<span id="cb25-12"><a aria-label="12"></a></span>
+<span id="cb25-13"><a aria-label="13"></a>        <span class="va">self</span>.X_train_ <span class="op">=</span> X.copy()</span>
+<span id="cb25-14"><a aria-label="14"></a>        <span class="va">self</span>.y_train_ <span class="op">=</span> y.copy()</span>
+<span id="cb25-15"><a aria-label="15"></a>        <span class="va">self</span>.classes_ <span class="op">=</span> np.unique(y)</span>
+<span id="cb25-16"><a aria-label="16"></a>        <span class="va">self</span>.n_features_in_ <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb25-17"><a aria-label="17"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb25-18"><a aria-label="18"></a></span>
+<span id="cb25-19"><a aria-label="19"></a>    <span class="kw">def</span> _predict_proba_one(<span class="va">self</span>, x):</span>
+<span id="cb25-20"><a aria-label="20"></a>        indices, distances <span class="op">=</span> nearest_neighbors(</span>
+<span id="cb25-21"><a aria-label="21"></a>            <span class="va">self</span>.X_train_, x, <span class="va">self</span>.n_neighbors</span>
+<span id="cb25-22"><a aria-label="22"></a>        )</span>
+<span id="cb25-23"><a aria-label="23"></a>        labels <span class="op">=</span> <span class="va">self</span>.y_train_[indices]</span>
+<span id="cb25-24"><a aria-label="24"></a>        weights <span class="op">=</span> voting_weights(distances, <span class="va">self</span>.weights)</span>
+<span id="cb25-25"><a aria-label="25"></a>        <span class="cf">return</span> vote_probabilities(labels, weights, <span class="va">self</span>.classes_)</span>
+<span id="cb25-26"><a aria-label="26"></a></span>
+<span id="cb25-27"><a aria-label="27"></a>    <span class="kw">def</span> predict_proba(<span class="va">self</span>, X):</span>
+<span id="cb25-28"><a aria-label="28"></a>        X <span class="op">=</span> <span class="va">self</span>._validate_prediction_data(X)</span>
+<span id="cb25-29"><a aria-label="29"></a>        <span class="cf">return</span> np.vstack([<span class="va">self</span>._predict_proba_one(x) <span class="cf">for</span> x <span class="kw">in</span> X])</span>
+<span id="cb25-30"><a aria-label="30"></a></span>
+<span id="cb25-31"><a aria-label="31"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
+<span id="cb25-32"><a aria-label="32"></a>        probabilities <span class="op">=</span> <span class="va">self</span>.predict_proba(X)</span>
+<span id="cb25-33"><a aria-label="33"></a>        <span class="cf">return</span> <span class="va">self</span>.classes_[np.argmax(probabilities, axis<span class="op">=</span><span class="dv">1</span>)]</span>
+<span id="cb25-34"><a aria-label="34"></a></span>
+<span id="cb25-35"><a aria-label="35"></a>    <span class="kw">def</span> score(<span class="va">self</span>, X, y):</span>
+<span id="cb25-36"><a aria-label="36"></a>        <span class="cf">return</span> <span class="bu">float</span>(np.mean(<span class="va">self</span>.predict(X) <span class="op">==</span> np.asarray(y)))</span>
+<span id="cb25-37"><a aria-label="37"></a></span>
+<span id="cb25-38"><a aria-label="38"></a>    <span class="kw">def</span> _validate_training_data(<span class="va">self</span>, X, y):</span>
+<span id="cb25-39"><a aria-label="39"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> y.ndim <span class="op">!=</span> <span class="dv">1</span> <span class="kw">or</span> <span class="bu">len</span>(X) <span class="op">!=</span> <span class="bu">len</span>(y):</span>
+<span id="cb25-40"><a aria-label="40"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb25-41"><a aria-label="41"></a>                <span class="st">"X doit être 2D et y doit être 1D, avec le même nombre de lignes"</span></span>
+<span id="cb25-42"><a aria-label="42"></a>            )</span>
+<span id="cb25-43"><a aria-label="43"></a>        <span class="cf">if</span> <span class="bu">len</span>(y) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb25-44"><a aria-label="44"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"le jeu d'entraînement ne peut pas être vide"</span>)</span>
+<span id="cb25-45"><a aria-label="45"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
+<span id="cb25-46"><a aria-label="46"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb25-47"><a aria-label="47"></a>                <span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span></span>
+<span id="cb25-48"><a aria-label="48"></a>            )</span>
+<span id="cb25-49"><a aria-label="49"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(<span class="va">self</span>.n_neighbors, (<span class="bu">int</span>, np.integer)):</span>
+<span id="cb25-50"><a aria-label="50"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"n_neighbors doit être un entier"</span>)</span>
+<span id="cb25-51"><a aria-label="51"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="dv">1</span> <span class="op">&lt;=</span> <span class="va">self</span>.n_neighbors <span class="op">&lt;=</span> <span class="bu">len</span>(y):</span>
+<span id="cb25-52"><a aria-label="52"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"n_neighbors doit être compris entre 1 et len(y)"</span>)</span>
+<span id="cb25-53"><a aria-label="53"></a>        <span class="cf">if</span> <span class="va">self</span>.weights <span class="kw">not</span> <span class="kw">in</span> {<span class="st">"uniform"</span>, <span class="st">"distance"</span>}:</span>
+<span id="cb25-54"><a aria-label="54"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"weights doit être 'uniform' ou 'distance'"</span>)</span>
+<span id="cb25-55"><a aria-label="55"></a></span>
+<span id="cb25-56"><a aria-label="56"></a>    <span class="kw">def</span> _validate_prediction_data(<span class="va">self</span>, X):</span>
+<span id="cb25-57"><a aria-label="57"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">hasattr</span>(<span class="va">self</span>, <span class="st">"X_train_"</span>):</span>
+<span id="cb25-58"><a aria-label="58"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"appelez fit avant d'effectuer des prédictions"</span>)</span>
+<span id="cb25-59"><a aria-label="59"></a>        X <span class="op">=</span> np.asarray(X, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb25-60"><a aria-label="60"></a>        <span class="cf">if</span> X.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb25-61"><a aria-label="61"></a>            X <span class="op">=</span> X.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb25-62"><a aria-label="62"></a>        <span class="cf">if</span> X.ndim <span class="op">!=</span> <span class="dv">2</span> <span class="kw">or</span> X.shape[<span class="dv">1</span>] <span class="op">!=</span> <span class="va">self</span>.n_features_in_:</span>
+<span id="cb25-63"><a aria-label="63"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"X n'a pas le bon nombre d'attributs"</span>)</span>
+<span id="cb25-64"><a aria-label="64"></a>        <span class="cf">if</span> <span class="kw">not</span> np.isfinite(X).<span class="bu">all</span>():</span>
+<span id="cb25-65"><a aria-label="65"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb25-66"><a aria-label="66"></a>                <span class="st">"les valeurs manquantes ou non finies ne sont pas prises en charge"</span></span>
+<span id="cb25-67"><a aria-label="67"></a>            )</span>
+<span id="cb25-68"><a aria-label="68"></a>        <span class="cf">return</span> X</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <aside class="notes">
-<p>L’algorithme destiné aux étudiants se trouve dans <code>fit</code>, <code>_predict_proba_one</code> et les trois fonctions auxiliaires des diapositives précédentes. La validation permet au notebook de produire des messages clairs pour les entrées non prises en charge, mais elle n’a pas à être présentée en classe.</p>
 <p>Lorsque les votes pondérés sont à égalité, <code>np.argmax</code> choisit la première classe du tableau trié <code>classes_</code>. Les logiciels de production peuvent offrir d’autres règles pour départager les égalités.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1822,30 +1860,30 @@ d(x,x_i)=\sqrt{\sum_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}.
 <section id="knn-sur-les-manchots-de-palmer" class="slide level2 smaller">
 <h2>KNN sur les manchots de Palmer</h2>
 <div id="knn-penguins" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
-<span id="cb25-2"><a aria-label="2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb25-3"><a aria-label="3"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb25-4"><a aria-label="4"></a></span>
-<span id="cb25-5"><a aria-label="5"></a>knn_features <span class="op">=</span> [<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>]</span>
-<span id="cb25-6"><a aria-label="6"></a>penguins_knn <span class="op">=</span> load_penguins()</span>
-<span id="cb25-7"><a aria-label="7"></a>penguins_knn <span class="op">=</span> penguins_knn[</span>
-<span id="cb25-8"><a aria-label="8"></a>    knn_features <span class="op">+</span> [<span class="st">"species"</span>]</span>
-<span id="cb25-9"><a aria-label="9"></a>].dropna().copy()</span>
-<span id="cb25-10"><a aria-label="10"></a></span>
-<span id="cb25-11"><a aria-label="11"></a>X_knn <span class="op">=</span> penguins_knn[knn_features].to_numpy()</span>
-<span id="cb25-12"><a aria-label="12"></a>y_knn <span class="op">=</span> penguins_knn[<span class="st">"species"</span>].to_numpy()</span>
-<span id="cb25-13"><a aria-label="13"></a>X_knn_train, X_knn_test, y_knn_train, y_knn_test <span class="op">=</span> train_test_split(</span>
-<span id="cb25-14"><a aria-label="14"></a>    X_knn, y_knn, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y_knn</span>
-<span id="cb25-15"><a aria-label="15"></a>)</span>
-<span id="cb25-16"><a aria-label="16"></a></span>
-<span id="cb25-17"><a aria-label="17"></a>knn_scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb25-18"><a aria-label="18"></a>X_knn_train_scaled <span class="op">=</span> knn_scaler.fit_transform(X_knn_train)</span>
-<span id="cb25-19"><a aria-label="19"></a>X_knn_test_scaled <span class="op">=</span> knn_scaler.transform(X_knn_test)</span>
-<span id="cb25-20"><a aria-label="20"></a></span>
-<span id="cb25-21"><a aria-label="21"></a><span class="cf">for</span> mode <span class="kw">in</span> (<span class="st">"uniform"</span>, <span class="st">"distance"</span>):</span>
-<span id="cb25-22"><a aria-label="22"></a>    knn <span class="op">=</span> SimpleKNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>, weights<span class="op">=</span>mode)</span>
-<span id="cb25-23"><a aria-label="23"></a>    knn.fit(X_knn_train_scaled, y_knn_train)</span>
-<span id="cb25-24"><a aria-label="24"></a>    <span class="bu">print</span>(<span class="ss">f"weights='</span><span class="sc">{</span>mode<span class="sc">}</span><span class="ss">' : </span><span class="sc">{</span>knn<span class="sc">.</span>score(X_knn_test_scaled, y_knn_test)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb26-2"><a aria-label="2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb26-3"><a aria-label="3"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb26-4"><a aria-label="4"></a></span>
+<span id="cb26-5"><a aria-label="5"></a>knn_features <span class="op">=</span> [<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>]</span>
+<span id="cb26-6"><a aria-label="6"></a>penguins_knn <span class="op">=</span> load_penguins()</span>
+<span id="cb26-7"><a aria-label="7"></a>penguins_knn <span class="op">=</span> penguins_knn[</span>
+<span id="cb26-8"><a aria-label="8"></a>    knn_features <span class="op">+</span> [<span class="st">"species"</span>]</span>
+<span id="cb26-9"><a aria-label="9"></a>].dropna().copy()</span>
+<span id="cb26-10"><a aria-label="10"></a></span>
+<span id="cb26-11"><a aria-label="11"></a>X_knn <span class="op">=</span> penguins_knn[knn_features].to_numpy()</span>
+<span id="cb26-12"><a aria-label="12"></a>y_knn <span class="op">=</span> penguins_knn[<span class="st">"species"</span>].to_numpy()</span>
+<span id="cb26-13"><a aria-label="13"></a>X_knn_train, X_knn_test, y_knn_train, y_knn_test <span class="op">=</span> train_test_split(</span>
+<span id="cb26-14"><a aria-label="14"></a>    X_knn, y_knn, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y_knn</span>
+<span id="cb26-15"><a aria-label="15"></a>)</span>
+<span id="cb26-16"><a aria-label="16"></a></span>
+<span id="cb26-17"><a aria-label="17"></a>knn_scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb26-18"><a aria-label="18"></a>X_knn_train_scaled <span class="op">=</span> knn_scaler.fit_transform(X_knn_train)</span>
+<span id="cb26-19"><a aria-label="19"></a>X_knn_test_scaled <span class="op">=</span> knn_scaler.transform(X_knn_test)</span>
+<span id="cb26-20"><a aria-label="20"></a></span>
+<span id="cb26-21"><a aria-label="21"></a><span class="cf">for</span> mode <span class="kw">in</span> (<span class="st">"uniform"</span>, <span class="st">"distance"</span>):</span>
+<span id="cb26-22"><a aria-label="22"></a>    knn <span class="op">=</span> SimpleKNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>, weights<span class="op">=</span>mode)</span>
+<span id="cb26-23"><a aria-label="23"></a>    knn.fit(X_knn_train_scaled, y_knn_train)</span>
+<span id="cb26-24"><a aria-label="24"></a>    <span class="bu">print</span>(<span class="ss">f"weights='</span><span class="sc">{</span>mode<span class="sc">}</span><span class="ss">' : </span><span class="sc">{</span>knn<span class="sc">.</span>score(X_knn_test_scaled, y_knn_test)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>weights='uniform' : 0.957
 weights='distance' : 0.957</code></pre>
@@ -1871,55 +1909,55 @@ weights='distance' : 0.957</code></pre>
 <div id="cell-knn-decision-boundaries" class="cell" data-fig-height="7" data-fig-width="11" data-execution_count="18">
 <details class="code-fold">
 <summary>Afficher le code de la figure scikit-learn</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb27-2"><a aria-label="2"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> DecisionBoundaryDisplay</span>
-<span id="cb27-3"><a aria-label="3"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb27-4"><a aria-label="4"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb27-5"><a aria-label="5"></a></span>
-<span id="cb27-6"><a aria-label="6"></a>configurations <span class="op">=</span> [</span>
-<span id="cb27-7"><a aria-label="7"></a>    (<span class="dv">1</span>, <span class="st">"uniform"</span>),</span>
-<span id="cb27-8"><a aria-label="8"></a>    (<span class="dv">5</span>, <span class="st">"uniform"</span>),</span>
-<span id="cb27-9"><a aria-label="9"></a>    (<span class="dv">25</span>, <span class="st">"uniform"</span>),</span>
-<span id="cb27-10"><a aria-label="10"></a>    (<span class="dv">5</span>, <span class="st">"distance"</span>),</span>
-<span id="cb27-11"><a aria-label="11"></a>]</span>
-<span id="cb27-12"><a aria-label="12"></a>weight_names <span class="op">=</span> {<span class="st">"uniform"</span>: <span class="st">"uniforme"</span>, <span class="st">"distance"</span>: <span class="st">"distance"</span>}</span>
-<span id="cb27-13"><a aria-label="13"></a>classes, y_encoded <span class="op">=</span> np.unique(y_knn_train, return_inverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-14"><a aria-label="14"></a></span>
-<span id="cb27-15"><a aria-label="15"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">7</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-16"><a aria-label="16"></a><span class="cf">for</span> ax, (n_neighbors, weights) <span class="kw">in</span> <span class="bu">zip</span>(axes.ravel(), configurations):</span>
-<span id="cb27-17"><a aria-label="17"></a>    sklearn_knn <span class="op">=</span> make_pipeline(</span>
-<span id="cb27-18"><a aria-label="18"></a>        StandardScaler(),</span>
-<span id="cb27-19"><a aria-label="19"></a>        KNeighborsClassifier(n_neighbors<span class="op">=</span>n_neighbors, weights<span class="op">=</span>weights),</span>
-<span id="cb27-20"><a aria-label="20"></a>    )</span>
-<span id="cb27-21"><a aria-label="21"></a>    sklearn_knn.fit(X_knn_train, y_encoded)</span>
-<span id="cb27-22"><a aria-label="22"></a>    DecisionBoundaryDisplay.from_estimator(</span>
-<span id="cb27-23"><a aria-label="23"></a>        sklearn_knn,</span>
-<span id="cb27-24"><a aria-label="24"></a>        X_knn_train,</span>
-<span id="cb27-25"><a aria-label="25"></a>        response_method<span class="op">=</span><span class="st">"predict"</span>,</span>
-<span id="cb27-26"><a aria-label="26"></a>        multiclass_colors<span class="op">=</span><span class="st">"Set2"</span>,</span>
-<span id="cb27-27"><a aria-label="27"></a>        alpha<span class="op">=</span><span class="fl">0.25</span>,</span>
-<span id="cb27-28"><a aria-label="28"></a>        ax<span class="op">=</span>ax,</span>
-<span id="cb27-29"><a aria-label="29"></a>    )</span>
-<span id="cb27-30"><a aria-label="30"></a></span>
-<span id="cb27-31"><a aria-label="31"></a>    <span class="cf">for</span> label, name <span class="kw">in</span> <span class="bu">enumerate</span>(classes):</span>
-<span id="cb27-32"><a aria-label="32"></a>        selected <span class="op">=</span> y_encoded <span class="op">==</span> label</span>
-<span id="cb27-33"><a aria-label="33"></a>        ax.scatter(</span>
-<span id="cb27-34"><a aria-label="34"></a>            X_knn_train[selected, <span class="dv">0</span>],</span>
-<span id="cb27-35"><a aria-label="35"></a>            X_knn_train[selected, <span class="dv">1</span>],</span>
-<span id="cb27-36"><a aria-label="36"></a>            color<span class="op">=</span>plt.get_cmap(<span class="st">"Set2"</span>)(label),</span>
-<span id="cb27-37"><a aria-label="37"></a>            edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
-<span id="cb27-38"><a aria-label="38"></a>            s<span class="op">=</span><span class="dv">20</span>,</span>
-<span id="cb27-39"><a aria-label="39"></a>            label<span class="op">=</span>name,</span>
-<span id="cb27-40"><a aria-label="40"></a>        )</span>
-<span id="cb27-41"><a aria-label="41"></a></span>
-<span id="cb27-42"><a aria-label="42"></a>    ax.set_title(<span class="ss">f"k=</span><span class="sc">{</span>n_neighbors<span class="sc">}</span><span class="ss">, poids='</span><span class="sc">{</span>weight_names[weights]<span class="sc">}</span><span class="ss">'"</span>)</span>
-<span id="cb27-43"><a aria-label="43"></a>    ax.set_xlabel(<span class="st">"Longueur du bec (mm)"</span>)</span>
-<span id="cb27-44"><a aria-label="44"></a>    ax.set_ylabel(<span class="st">"Profondeur du bec (mm)"</span>)</span>
-<span id="cb27-45"><a aria-label="45"></a></span>
-<span id="cb27-46"><a aria-label="46"></a>handles, labels <span class="op">=</span> axes[<span class="dv">0</span>, <span class="dv">0</span>].get_legend_handles_labels()</span>
-<span id="cb27-47"><a aria-label="47"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">"upper center"</span>, ncols<span class="op">=</span><span class="bu">len</span>(classes))</span>
-<span id="cb27-48"><a aria-label="48"></a>fig.tight_layout(rect<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.93</span>))</span>
-<span id="cb27-49"><a aria-label="49"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-2"><a aria-label="2"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> DecisionBoundaryDisplay</span>
+<span id="cb28-3"><a aria-label="3"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb28-4"><a aria-label="4"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb28-5"><a aria-label="5"></a></span>
+<span id="cb28-6"><a aria-label="6"></a>configurations <span class="op">=</span> [</span>
+<span id="cb28-7"><a aria-label="7"></a>    (<span class="dv">1</span>, <span class="st">"uniform"</span>),</span>
+<span id="cb28-8"><a aria-label="8"></a>    (<span class="dv">5</span>, <span class="st">"uniform"</span>),</span>
+<span id="cb28-9"><a aria-label="9"></a>    (<span class="dv">25</span>, <span class="st">"uniform"</span>),</span>
+<span id="cb28-10"><a aria-label="10"></a>    (<span class="dv">5</span>, <span class="st">"distance"</span>),</span>
+<span id="cb28-11"><a aria-label="11"></a>]</span>
+<span id="cb28-12"><a aria-label="12"></a>weight_names <span class="op">=</span> {<span class="st">"uniform"</span>: <span class="st">"uniforme"</span>, <span class="st">"distance"</span>: <span class="st">"distance"</span>}</span>
+<span id="cb28-13"><a aria-label="13"></a>classes, y_encoded <span class="op">=</span> np.unique(y_knn_train, return_inverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb28-14"><a aria-label="14"></a></span>
+<span id="cb28-15"><a aria-label="15"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">7</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb28-16"><a aria-label="16"></a><span class="cf">for</span> ax, (n_neighbors, weights) <span class="kw">in</span> <span class="bu">zip</span>(axes.ravel(), configurations):</span>
+<span id="cb28-17"><a aria-label="17"></a>    sklearn_knn <span class="op">=</span> make_pipeline(</span>
+<span id="cb28-18"><a aria-label="18"></a>        StandardScaler(),</span>
+<span id="cb28-19"><a aria-label="19"></a>        KNeighborsClassifier(n_neighbors<span class="op">=</span>n_neighbors, weights<span class="op">=</span>weights),</span>
+<span id="cb28-20"><a aria-label="20"></a>    )</span>
+<span id="cb28-21"><a aria-label="21"></a>    sklearn_knn.fit(X_knn_train, y_encoded)</span>
+<span id="cb28-22"><a aria-label="22"></a>    DecisionBoundaryDisplay.from_estimator(</span>
+<span id="cb28-23"><a aria-label="23"></a>        sklearn_knn,</span>
+<span id="cb28-24"><a aria-label="24"></a>        X_knn_train,</span>
+<span id="cb28-25"><a aria-label="25"></a>        response_method<span class="op">=</span><span class="st">"predict"</span>,</span>
+<span id="cb28-26"><a aria-label="26"></a>        multiclass_colors<span class="op">=</span><span class="st">"Set2"</span>,</span>
+<span id="cb28-27"><a aria-label="27"></a>        alpha<span class="op">=</span><span class="fl">0.25</span>,</span>
+<span id="cb28-28"><a aria-label="28"></a>        ax<span class="op">=</span>ax,</span>
+<span id="cb28-29"><a aria-label="29"></a>    )</span>
+<span id="cb28-30"><a aria-label="30"></a></span>
+<span id="cb28-31"><a aria-label="31"></a>    <span class="cf">for</span> label, name <span class="kw">in</span> <span class="bu">enumerate</span>(classes):</span>
+<span id="cb28-32"><a aria-label="32"></a>        selected <span class="op">=</span> y_encoded <span class="op">==</span> label</span>
+<span id="cb28-33"><a aria-label="33"></a>        ax.scatter(</span>
+<span id="cb28-34"><a aria-label="34"></a>            X_knn_train[selected, <span class="dv">0</span>],</span>
+<span id="cb28-35"><a aria-label="35"></a>            X_knn_train[selected, <span class="dv">1</span>],</span>
+<span id="cb28-36"><a aria-label="36"></a>            color<span class="op">=</span>plt.get_cmap(<span class="st">"Set2"</span>)(label),</span>
+<span id="cb28-37"><a aria-label="37"></a>            edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb28-38"><a aria-label="38"></a>            s<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb28-39"><a aria-label="39"></a>            label<span class="op">=</span>name,</span>
+<span id="cb28-40"><a aria-label="40"></a>        )</span>
+<span id="cb28-41"><a aria-label="41"></a></span>
+<span id="cb28-42"><a aria-label="42"></a>    ax.set_title(<span class="ss">f"k=</span><span class="sc">{</span>n_neighbors<span class="sc">}</span><span class="ss">, poids='</span><span class="sc">{</span>weight_names[weights]<span class="sc">}</span><span class="ss">'"</span>)</span>
+<span id="cb28-43"><a aria-label="43"></a>    ax.set_xlabel(<span class="st">"Longueur du bec (mm)"</span>)</span>
+<span id="cb28-44"><a aria-label="44"></a>    ax.set_ylabel(<span class="st">"Profondeur du bec (mm)"</span>)</span>
+<span id="cb28-45"><a aria-label="45"></a></span>
+<span id="cb28-46"><a aria-label="46"></a>handles, labels <span class="op">=</span> axes[<span class="dv">0</span>, <span class="dv">0</span>].get_legend_handles_labels()</span>
+<span id="cb28-47"><a aria-label="47"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">"upper center"</span>, ncols<span class="op">=</span><span class="bu">len</span>(classes))</span>
+<span id="cb28-48"><a aria-label="48"></a>fig.tight_layout(rect<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.93</span>))</span>
+<span id="cb28-49"><a aria-label="49"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1930,8 +1968,8 @@ weights='distance' : 0.957</code></pre>
 </div>
 </div>
 <aside class="notes">
-<p>Avec <span class="math inline">\(k=1\)</span>, chaque observation d’entraînement contrôle une petite région autour d’elle. La frontière est donc irrégulière et sensible aux exemples individuels. Augmenter <span class="math inline">\(k\)</span> lisse la frontière, car un voisinage plus grand doit s’accorder.</p>
-<p>La pondération par la distance donne plus d’influence aux observations les plus proches. Avec <span class="math inline">\(k=5\)</span>, sa frontière peut donc conserver plus de détails locaux que le vote uniforme employant le même <span class="math inline">\(k\)</span>.</p>
+<p>Avec <span class="math inline">k=1</span>, chaque observation d’entraînement contrôle une petite région autour d’elle. La frontière est donc irrégulière et sensible aux exemples individuels. Augmenter <span class="math inline">k</span> lisse la frontière, car un voisinage plus grand doit s’accorder.</p>
+<p>La pondération par la distance donne plus d’influence aux observations les plus proches. Avec <span class="math inline">k=5</span>, sa frontière peut donc conserver plus de détails locaux que le vote uniforme employant le même <span class="math inline">k</span>.</p>
 <p>Le diagramme utilise délibérément scikit-learn plutôt que d’alourdir l’implémentation didactique avec du code de visualisation. Le pipeline standardise les attributs à l’interne tout en conservant leurs unités originales sur les axes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1951,7 +1989,7 @@ weights='distance' : 0.957</code></pre>
 <li class="fragment">La prédiction conserve et parcourt les données d’entraînement.</li>
 <li class="fragment">Les distances sont sensibles à la <strong>mise à l’échelle des attributs</strong> et à la métrique choisie.</li>
 <li class="fragment">Les voisinages deviennent moins informatifs dans les espaces de grande dimension.</li>
-<li class="fragment">Un petit <span class="math inline">\(k\)</span> peut être sensible au bruit; un grand <span class="math inline">\(k\)</span> peut masquer la structure locale.</li>
+<li class="fragment">Un petit <span class="math inline">k</span> peut être sensible au bruit; un grand <span class="math inline">k</span> peut masquer la structure locale.</li>
 <li class="fragment">Le déséquilibre des classes peut dominer le vote d’un voisinage.</li>
 </ul>
 <aside class="notes">
@@ -1971,14 +2009,14 @@ weights='distance' : 0.957</code></pre>
 </section>
 <section id="exercices-et-ressources-sur-knn" class="slide level2">
 <h2>Exercices et ressources sur KNN</h2>
-<p>Expérimentez en modifiant <span class="math inline">\(k\)</span>, la pondération des votes, la distance et la mise à l’échelle des attributs :</p>
+<p>Expérimentez en modifiant <span class="math inline">k</span>, la pondération des votes, la distance et la mise à l’échelle des attributs :</p>
 <ul>
 <li><a href="https://scikit-learn.org/stable/auto_examples/neighbors/plot_classification.html">Nearest Neighbors Classification</a></li>
 <li><a href="https://scikit-learn.org/stable/auto_examples/neighbors/plot_regression.html">Nearest Neighbors Regression</a></li>
 <li><a href="https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html">Importance of Feature Scaling</a></li>
 </ul>
 <aside class="notes">
-<p>Les exemples de scikit-learn peuvent être téléchargés sous forme de notebooks Jupyter. Les étudiants peuvent également modifier le notebook exécutable produit à partir de ce cours, par exemple en changeant les quatre configurations de la cellule consacrée aux frontières de décision.</p>
+<p>Les exemples de scikit-learn peuvent être téléchargés sous forme de notebooks Jupyter. Vous pouvez également modifier le notebook exécutable produit à partir de ce cours, par exemple en changeant les quatre configurations de la cellule consacrée aux frontières de décision.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1994,7 +2032,7 @@ weights='distance' : 0.957</code></pre>
 <section id="résumé" class="slide level2">
 <h2>Résumé</h2>
 <ul>
-<li>Le cours a présenté les <strong>arbres de décision</strong> et les <strong><span class="math inline">\(k\)</span> plus proches voisins (KNN)</strong>, et utilisé la <strong>régression logistique</strong> pour illustrer une frontière de décision linéaire.</li>
+<li>Le cours a présenté les <strong>arbres de décision</strong> et les <strong><span class="math inline">k</span> plus proches voisins (KNN)</strong>, et utilisé la <strong>régression logistique</strong> pour illustrer une frontière de décision linéaire.</li>
 <li>Nous avons construit un arbre de décision qui minimise gloutonnement l’entropie pondérée et un classificateur KNN qui <strong>mémorise, cherche et vote</strong>.</li>
 <li>Les exemples des manchots de Palmer ont illustré comment différents algorithmes d’apprentissage produisent différentes <strong>frontières de décision</strong>.</li>
 </ul>
@@ -2015,6 +2053,9 @@ weights='distance' : 0.957</code></pre>
 <section id="références" class="slide level2 smaller scrollable">
 <h2>Références</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Battista:2023aa" class="csl-entry" role="listitem">
+Battista, Katelyn, Liqun Diao, Karen A Patte, Joel A Dubin, et Scott T Leatherdale. 2023. <span>«&nbsp;Examining the use of decision trees in population health surveillance research: an application to youth mental health survey data in the <span>COMPASS</span> study&nbsp;»</span>. <em>Health Promotion and Chronic Disease Prevention in Canada</em> 43 (2): 73‑86. <a href="https://doi.org/10.24095/hpcdp.43.2.03">https://doi.org/10.24095/hpcdp.43.2.03</a>.
+</div>
 <div id="ref-Geurts:2009aa" class="csl-entry" role="listitem">
 Geurts, Pierre, Alexandre Irrthum, et Louis Wehenkel. 2009. <span>«&nbsp;Supervised learning with decision tree-based methods in computational and systems biology&nbsp;»</span>. <em>Molecular bioSystems</em> 5 (12): 1593‑605. <a href="https://doi.org/10.1039/b907946g">https://doi.org/10.1039/b907946g</a>.
 </div>
@@ -2060,13 +2101,14 @@ Stiglic, Gregor, Simon Kocbek, Igor Pernek, et Peter Kokol. 2012. <span>«&nbsp;
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="../../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -2083,6 +2125,7 @@ Stiglic, Gregor, Simon Kocbek, Igor Pernek, et Peter Kokol. 2012. <span>«&nbsp;
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
+'multiplex': {"secret":null,"id":"4333f20ae77a976526fdff333fa14df5d7f65902692bd839cd0918bcd391f5ac","url":"https://multiplex.up.railway.app/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2235,28 +2278,10 @@ Stiglic, Gregor, Simon Kocbek, Igor Pernek, et Peter Kokol. 2012. <span>«&nbsp;
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
