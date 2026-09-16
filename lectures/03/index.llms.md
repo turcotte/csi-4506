@@ -8,7 +8,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Participer
 
-- [diapositives](slides.llms.md) ([PDF](slides.pdf), [notebook Jupyter](slides.ipynb))
+- [Présentation](slides.llms.md) ([PDF](slides.pdf), [notebook Jupyter](slides.ipynb))
 
 ## Pratiquer
 
@@ -21,7 +21,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 Si vous ne connaissez pas encore `numpy` et `pandas`, explorez ces tutoriels à votre rythme au cours des prochaines semaines. Les notebooks d’Aurélien Géron présentent des outils essentiels à l’apprentissage automatique.
 
-- [numpy](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_numpy.ipynb) — bibliothèque fondamentale centrée sur les tableaux à \\N\\ dimensions.
+- [numpy](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_numpy.ipynb) — bibliothèque fondamentale centrée sur les tableaux à N dimensions.
 - [pandas](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_pandas.ipynb) — outils d’analyse de données centrés sur le `DataFrame`.
 - [visualisation](https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_matplotlib.ipynb) — utilisation de `matplotlib` pour produire des graphiques.
 

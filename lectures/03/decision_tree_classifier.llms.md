@@ -8,7 +8,7 @@ Marcel Turcotte
 
 Date de publication
 
-13 septembre 2026
+15 septembre 2026
 
 # Introduction
 
@@ -74,9 +74,9 @@ print(f"Exemples de test : {len(X_test)}")
 
 # Entropie
 
-Pour un nœud dont les proportions des classes sont \\p_1,\ldots,p_K\\, l’entropie est
+Pour un nœud dont les proportions des classes sont p_1,\ldots,p_K, l’entropie est
 
-\\ H=-\sum\_{k=1}^{K}p_k\log_2p_k. \\
+H=-\sum\_{k=1}^{K}p_k\log_2p_k.
 
 Un nœud pur a une entropie nulle. L’entropie augmente lorsque les proportions des classes deviennent plus équilibrées.
 
@@ -114,7 +114,7 @@ print(f"Nœud pur : {entropy(pure, binary_classes):.3f} bit")
 
 Une division candidate crée un enfant gauche et un enfant droit. Nous l’évaluons au moyen de leur entropie pondérée :
 
-\\ J= \frac{N\_{\mathrm{left}}}{N\_{\mathrm{parent}}}H\_{\mathrm{left}} + \frac{N\_{\mathrm{right}}}{N\_{\mathrm{parent}}}H\_{\mathrm{right}}. \\
+J= \frac{N\_{\mathrm{left}}}{N\_{\mathrm{parent}}}H\_{\mathrm{left}} + \frac{N\_{\mathrm{right}}}{N\_{\mathrm{parent}}}H\_{\mathrm{right}}.
 
 La pondération empêche un minuscule enfant pur d’avoir autant d’influence qu’un enfant beaucoup plus grand dont les classes sont mélangées.
 
@@ -407,11 +407,9 @@ def plot_decision_boundary(X, y, model, feature_names):
     xx0, xx1 = np.meshgrid(x0, x1)
 
     grid = np.column_stack([xx0.ravel(), xx1.ravel()])
-    predicted = model.predict(grid)
-    regions = np.array([
-        np.flatnonzero(model.classes_ == label)[0]
-        for label in predicted
-    ]).reshape(xx0.shape)
+    regions = np.argmax(
+        model.predict_proba(grid), axis=1
+    ).reshape(xx0.shape)
 
     plt.figure(figsize=(9, 5))
     plt.contourf(xx0, xx1, regions, alpha=0.25, cmap="Set2")
@@ -423,8 +421,8 @@ def plot_decision_boundary(X, y, model, feature_names):
             edgecolor="black",
             label=label,
         )
-    plt.xlabel("Profondeur du bec (mm)")
-    plt.ylabel("Masse corporelle (g)")
+    plt.xlabel(feature_names[0])
+    plt.ylabel(feature_names[1])
     plt.title("Régions de classification de l'arbre de décision")
     plt.legend()
     plt.tight_layout()
@@ -438,7 +436,7 @@ plt.show()
 
 # Complexité et limites
 
-Dans un nœud contenant \\n\\ exemples et \\D\\ attributs, cette implémentation évalue jusqu’à \\D(n-1)\\ seuils. Chaque évaluation parcourt de nouveau les exemples; la recherche d’une division demande donc approximativement \\\mathcal{O}(Dn^2)\\ opérations. Les implémentations de production réutilisent les valeurs triées et des statistiques suffisantes pour éviter une grande partie de ce travail.
+Dans un nœud contenant n exemples et D attributs, cette implémentation évalue jusqu’à D(n-1) seuils. Chaque évaluation parcourt de nouveau les exemples; la recherche d’une division demande donc approximativement \mathcal{O}(Dn^2) opérations. Les implémentations de production réutilisent les valeurs triées et des statistiques suffisantes pour éviter une grande partie de ce travail.
 
 Parmi les autres limites importantes :
 

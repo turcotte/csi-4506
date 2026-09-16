@@ -113,8 +113,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -512,7 +526,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 septembre 2026</p>
+      <p class="date">15 septembre 2026</p>
     </div>
   </div>
   
@@ -538,7 +552,7 @@ window.Quarto = {
 <section id="préparation" class="level1">
 <h1>Préparation</h1>
 <p>La seule dépendance non standard est <code>palmerpenguins</code>. L’installation ne s’exécute que si ce paquet est absent, ce qui permet d’utiliser le cahier dans une nouvelle session Google Colab.</p>
-<div id="imports" class="cell" data-execution_count="2">
+<div id="imports" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
@@ -560,7 +574,7 @@ window.Quarto = {
 <section id="manchots-de-palmer" class="level1">
 <h1>Manchots de Palmer</h1>
 <p>Nous conservons deux attributs numériques et formulons une tâche de classification binaire : <strong>Gentoo</strong> ou <strong>pas Gentoo</strong>. Avec seulement deux attributs, nous pouvons représenter les régions de décision apprises.</p>
-<div id="penguins-data" class="cell" data-execution_count="3">
+<div id="penguins-data" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> [<span class="st">"bill_depth_mm"</span>, <span class="st">"body_mass_g"</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> load_penguins()</span>
@@ -587,12 +601,12 @@ Exemples de test : 69</code></pre>
 </section>
 <section id="entropie" class="level1">
 <h1>Entropie</h1>
-<p>Pour un nœud dont les proportions des classes sont <span class="math inline">\(p_1,\ldots,p_K\)</span>, l’entropie est</p>
-<p><span class="math display">\[
+<p>Pour un nœud dont les proportions des classes sont <span class="math inline">p_1,\ldots,p_K</span>, l’entropie est</p>
+<p><span class="math display">
 H=-\sum_{k=1}^{K}p_k\log_2p_k.
-\]</span></p>
+</span></p>
 <p>Un nœud pur a une entropie nulle. L’entropie augmente lorsque les proportions des classes deviennent plus équilibrées.</p>
-<div id="entropy" class="cell" data-execution_count="4">
+<div id="entropy" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> class_probabilities(y, classes):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Retourner la proportion d'exemples de chaque classe."""</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([np.mean(y <span class="op">==</span> label) <span class="cf">for</span> label <span class="kw">in</span> classes])</span>
@@ -607,7 +621,7 @@ H=-\sum_{k=1}^{K}p_k\log_2p_k.
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(<span class="op">-</span>np.<span class="bu">sum</span>(probabilities <span class="op">*</span> np.log2(probabilities)))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Cette petite vérification retrouve les valeurs binaires familières : un nœud équilibré possède un bit d’entropie, tandis qu’un nœud pur n’en possède aucun.</p>
-<div id="entropy-check" class="cell" data-execution_count="5">
+<div id="entropy-check" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>binary_classes <span class="op">=</span> np.array([<span class="st">"Gentoo"</span>, <span class="st">"Pas Gentoo"</span>])</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>balanced <span class="op">=</span> np.array([<span class="st">"Gentoo"</span>, <span class="st">"Pas Gentoo"</span>])</span>
@@ -624,14 +638,14 @@ Nœud pur : 0.000 bit</code></pre>
 <section id="évaluation-dune-division" class="level1">
 <h1>Évaluation d’une division</h1>
 <p>Une division candidate crée un enfant gauche et un enfant droit. Nous l’évaluons au moyen de leur entropie pondérée :</p>
-<p><span class="math display">\[
+<p><span class="math display">
 J=
 \frac{N_{\mathrm{left}}}{N_{\mathrm{parent}}}H_{\mathrm{left}}
 +
 \frac{N_{\mathrm{right}}}{N_{\mathrm{parent}}}H_{\mathrm{right}}.
-\]</span></p>
+</span></p>
 <p>La pondération empêche un minuscule enfant pur d’avoir autant d’influence qu’un enfant beaucoup plus grand dont les classes sont mélangées.</p>
-<div id="split-score" class="cell" data-execution_count="6">
+<div id="split-score" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> weighted_entropy(y_left, y_right, classes):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Retourner l'entropie pondérée produite par une division."""</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    n_left <span class="op">=</span> <span class="bu">len</span>(y_left)</span>
@@ -652,7 +666,7 @@ J=
 <section id="trois-divisions-candidates" class="level2">
 <h2 class="anchored" data-anchor-id="trois-divisions-candidates">Trois divisions candidates</h2>
 <p>L’exemple suivant compare les cas présentés en classe. Sans pondération, isoler un seul exemple pur semble artificiellement avantageux.</p>
-<div id="split-score-check" class="cell" data-execution_count="7">
+<div id="split-score-check" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>split_examples <span class="op">=</span> {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"désordonnée"</span>: (</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        np.array([<span class="st">"Gentoo"</span>] <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> [<span class="st">"Pas Gentoo"</span>] <span class="op">*</span> <span class="dv">2</span>),</span>
@@ -685,7 +699,7 @@ J=
 <section id="recherche-gloutonne-dune-division" class="level1">
 <h1>Recherche gloutonne d’une division</h1>
 <p>Pour chaque attribut, nous examinons les milieux entre les valeurs distinctes consécutives. La fonction conserve la division candidate dont l’entropie pondérée est la plus faible.</p>
-<div id="best-split" class="cell" data-execution_count="8">
+<div id="best-split" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_best_split(X, y, classes, min_samples_leaf):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Retourner la meilleure division et le nombre de candidates évaluées."""</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    best_split <span class="op">=</span> <span class="va">None</span></span>
@@ -714,7 +728,7 @@ J=
 <section id="représentation-de-larbre" class="level1">
 <h1>Représentation de l’arbre</h1>
 <p>Chaque nœud conserve les proportions des classes parmi les exemples qui l’atteignent. Une feuille utilise ces proportions pour effectuer des prédictions. Un nœud interne conserve en plus un attribut, un seuil et deux enfants.</p>
-<div id="node" class="cell" data-execution_count="9">
+<div id="node" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Node:</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    probabilities: np.ndarray</span>
@@ -734,7 +748,7 @@ J=
 <h1>Classificateur</h1>
 <p>La méthode récursive <code>_grow_tree</code> est au cœur de l’apprentissage. Elle crée un nœud, vérifie les conditions d’arrêt, trouve une division, puis construit récursivement ses enfants.</p>
 <p>Les méthodes de validation et de mise en forme du texte facilitent l’utilisation du classificateur. Il s’agit de code auxiliaire et non de nouveaux concepts d’apprentissage automatique.</p>
-<div id="classifier" class="cell" data-execution_count="10">
+<div id="classifier" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Afficher SimpleDecisionTreeClassifier</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SimpleDecisionTreeClassifier:</span>
@@ -874,7 +888,7 @@ J=
 <section id="entraînement" class="level1">
 <h1>Entraînement</h1>
 <p>Nous limitons l’arbre à deux décisions sur tout chemin et exigeons que chaque feuille contienne au moins cinq exemples d’entraînement.</p>
-<div id="training" class="cell" data-execution_count="11">
+<div id="training" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tree_model <span class="op">=</span> SimpleDecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">2</span>, min_samples_leaf<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tree_model.fit(X_train, y_train)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -906,7 +920,7 @@ sinon :
 <section id="régions-de-décision" class="level1">
 <h1>Régions de décision</h1>
 <p>Chaque test de cet arbre compare un attribut à un seuil. En deux dimensions, les régions obtenues sont donc délimitées par des frontières horizontales et verticales.</p>
-<div id="cell-decision-regions" class="cell" data-fig-height="5" data-fig-width="9" data-execution_count="12">
+<div id="cell-decision-regions" class="cell" data-fig-height="5" data-fig-width="9" data-execution_count="11">
 <details class="code-fold">
 <summary>Afficher le code de la figure</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_decision_boundary(X, y, model, feature_names):</span>
@@ -915,31 +929,29 @@ sinon :
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    xx0, xx1 <span class="op">=</span> np.meshgrid(x0, x1)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    grid <span class="op">=</span> np.column_stack([xx0.ravel(), xx1.ravel()])</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    predicted <span class="op">=</span> model.predict(grid)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    regions <span class="op">=</span> np.array([</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        np.flatnonzero(model.classes_ <span class="op">==</span> label)[<span class="dv">0</span>]</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> label <span class="kw">in</span> predicted</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    ]).reshape(xx0.shape)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    plt.contourf(xx0, xx1, regions, alpha<span class="op">=</span><span class="fl">0.25</span>, cmap<span class="op">=</span><span class="st">"Set2"</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> label <span class="kw">in</span> model.classes_:</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        selected <span class="op">=</span> y <span class="op">==</span> label</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        plt.scatter(</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>            X[selected, <span class="dv">0</span>],</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            X[selected, <span class="dv">1</span>],</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>            edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>label,</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"Profondeur du bec (mm)"</span>)</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Masse corporelle (g)"</span>)</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Régions de classification de l'arbre de décision"</span>)</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>plot_decision_boundary(X_train, y_train, tree_model, feature_names)</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    regions <span class="op">=</span> np.argmax(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        model.predict_proba(grid), axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    ).reshape(xx0.shape)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    plt.contourf(xx0, xx1, regions, alpha<span class="op">=</span><span class="fl">0.25</span>, cmap<span class="op">=</span><span class="st">"Set2"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> label <span class="kw">in</span> model.classes_:</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        selected <span class="op">=</span> y <span class="op">==</span> label</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        plt.scatter(</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            X[selected, <span class="dv">0</span>],</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            X[selected, <span class="dv">1</span>],</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>            edgecolor<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>label,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(feature_names[<span class="dv">0</span>])</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(feature_names[<span class="dv">1</span>])</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Régions de classification de l'arbre de décision"</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>plot_decision_boundary(X_train, y_train, tree_model, feature_names)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -952,7 +964,7 @@ sinon :
 </section>
 <section id="complexité-et-limites" class="level1">
 <h1>Complexité et limites</h1>
-<p>Dans un nœud contenant <span class="math inline">\(n\)</span> exemples et <span class="math inline">\(D\)</span> attributs, cette implémentation évalue jusqu’à <span class="math inline">\(D(n-1)\)</span> seuils. Chaque évaluation parcourt de nouveau les exemples; la recherche d’une division demande donc approximativement <span class="math inline">\(\mathcal{O}(Dn^2)\)</span> opérations. Les implémentations de production réutilisent les valeurs triées et des statistiques suffisantes pour éviter une grande partie de ce travail.</p>
+<p>Dans un nœud contenant <span class="math inline">n</span> exemples et <span class="math inline">D</span> attributs, cette implémentation évalue jusqu’à <span class="math inline">D(n-1)</span> seuils. Chaque évaluation parcourt de nouveau les exemples; la recherche d’une division demande donc approximativement <span class="math inline">\mathcal{O}(Dn^2)</span> opérations. Les implémentations de production réutilisent les valeurs triées et des statistiques suffisantes pour éviter une grande partie de ce travail.</p>
 <p>Parmi les autres limites importantes :</p>
 <ul>
 <li>seuls les attributs numériques et les divisions binaires par seuil sont pris en charge;</li>

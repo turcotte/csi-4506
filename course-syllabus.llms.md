@@ -6,14 +6,14 @@ Marcel Turcotte
 
 Date de publication
 
-24 août 2026
+16 septembre 2026
 
 # Informations sur le cours
 
 |                  | Jour     | Heure       | Lieu     |
 |------------------|----------|-------------|----------|
 | Cours 1          | Lundi    | 10:00-11:30 | SMD 430  |
-| Cours 2          | Mercredi | 08:30-09:50 | CBY B205 |
+| Cours 2          | Mercredi | 08:30-09:50 | SMD 224  |
 | Heures de bureau | Lundi    | 15:00-16:20 | STE 5106 |
 
 # Description (officielle)
@@ -68,7 +68,7 @@ La note finale du cours sera calculée comme suit :
 
 Consultez le [calendrier](course-schedule.llms.md) pour les dates.
 
-Pour réussir le cours, les étudiantes et étudiants doivent obtenir une moyenne combinée d’au moins 50 % aux tests et à l’examen final. Plus précisément, \\(Q1 + Q2 + F)/60 \geq 0{,}50,\\ où \\Q1\\, \\Q2\\ et \\F\\ désignent respectivement les notes du premier test, du deuxième test et de l’examen final.
+Pour réussir le cours, les étudiantes et étudiants doivent obtenir une moyenne combinée d’au moins 50 % aux tests et à l’examen final. Plus précisément, (Q1 + Q2 + F)/60 \geq 0{,}50, où Q1, Q2 et F désignent respectivement les notes du premier test, du deuxième test et de l’examen final.
 
 Les travaux, les tests et l’examen final constituent des éléments d’évaluation obligatoires. Pour être admissibles à l’examen final, les étudiantes et étudiants doivent avoir complété au moins un des deux tests et au moins deux des quatre travaux. Le non-respect de ces exigences d’évaluation obligatoires entraînera automatiquement la note finale `EIN`.
 

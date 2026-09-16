@@ -12,7 +12,7 @@ Date de publication
 
 # Introduction
 
-Ce cahier construit un petit classificateur des \\k\\ plus proches voisins (KNN) à partir des principes fondamentaux. KNN illustre une approche de l’apprentissage très différente de la construction d’un arbre de décision ou de l’estimation des coefficients d’un modèle linéaire. Son idée centrale tient en trois mots :
+Ce cahier construit un petit classificateur des k plus proches voisins (KNN) à partir des principes fondamentaux. KNN illustre une approche de l’apprentissage très différente de la construction d’un arbre de décision ou de l’estimation des coefficients d’un modèle linéaire. Son idée centrale tient en trois mots :
 
 > **Mémoriser, chercher, voter.**
 
@@ -71,7 +71,7 @@ print(f"Classes : {np.unique(y_train)}")
 
 La distance euclidienne dépend de l’échelle numérique. Nous standardisons donc chaque attribut à l’aide de la moyenne et de l’écart-type du jeu d’entraînement :
 
-\\ z=\frac{x-\mu\_{\mathrm{train}}}{\sigma\_{\mathrm{train}}}. \\
+z=\frac{x-\mu\_{\mathrm{train}}}{\sigma\_{\mathrm{train}}}.
 
 Le transformateur est ajusté uniquement sur les données d’entraînement. Les données de test ne doivent pas influencer les choix de prétraitement effectués pendant l’apprentissage.
 
@@ -83,11 +83,11 @@ X_test_scaled = scaler.transform(X_test)
 
 # Recherche des voisins
 
-Pour une requête \\x\\ et un exemple d’entraînement \\x_i\\, la distance euclidienne est
+Pour une requête x et un exemple d’entraînement x_i, la distance euclidienne est
 
-\\ d(x,x_i)=\sqrt{\sum\_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}. \\
+d(x,x_i)=\sqrt{\sum\_{j=1}^{D}\left(x^{(j)}-x_i^{(j)}\right)^2}.
 
-L’implémentation la plus directe calcule toutes les distances, les trie et conserve les \\k\\ premiers indices.
+L’implémentation la plus directe calcule toutes les distances, les trie et conserve les k premiers indices.
 
 ``` python
 def nearest_neighbors(X_train, x, n_neighbors):
@@ -101,11 +101,11 @@ Le tri stable rend le résultat déterministe lorsque deux exemples d’entraîn
 
 # Vote
 
-Avec le vote uniforme, tous les voisins retenus reçoivent le poids 1. Avec le vote pondéré par la distance, le voisin \\i\\ reçoit le poids
+Avec le vote uniforme, tous les voisins retenus reçoivent le poids 1. Avec le vote pondéré par la distance, le voisin i reçoit le poids
 
-\\ w_i=\frac{1}{d_i}. \\
+w_i=\frac{1}{d_i}.
 
-Une correspondance exacte demande un traitement particulier, car \\1/0\\ n’est pas défini. S’il en existe, notre implémentation laisse seulement ces observations voter.
+Une correspondance exacte demande un traitement particulier, car 1/0 n’est pas défini. S’il en existe, notre implémentation laisse seulement ces observations voter.
 
 ``` python
 def voting_weights(distances, mode):
@@ -309,7 +309,7 @@ plt.show()
 
 ![](knn_classifier_files/figure-html/decision-boundaries-output-1.png)
 
-Avec \\k=1\\, des observations d’entraînement individuelles contrôlent de petites régions, ce qui produit une frontière très irrégulière. Augmenter \\k\\ lisse la frontière, car un voisinage plus grand doit s’accorder. La pondération par la distance permet aux observations proches de conserver une plus grande influence locale.
+Avec k=1, des observations d’entraînement individuelles contrôlent de petites régions, ce qui produit une frontière très irrégulière. Augmenter k lisse la frontière, car un voisinage plus grand doit s’accorder. La pondération par la distance permet aux observations proches de conserver une plus grande influence locale.
 
 # Régression
 
@@ -325,13 +325,13 @@ Puisque le résultat est une moyenne des cibles observées dans le voisinage, la
 
 # Complexité et limites
 
-Pour chaque requête, cette implémentation directe calcule les distances en \\\mathcal{O}(ND)\\ et effectue un tri complet en \\\mathcal{O}(N\log N)\\. Elle conserve également le jeu d’entraînement de taille \\\mathcal{O}(ND)\\ en mémoire.
+Pour chaque requête, cette implémentation directe calcule les distances en \mathcal{O}(ND) et effectue un tri complet en \mathcal{O}(N\log N). Elle conserve également le jeu d’entraînement de taille \mathcal{O}(ND) en mémoire.
 
 Parmi les autres limites importantes :
 
 - les distances sont sensibles à l’échelle des attributs et à la métrique choisie;
 - les voisinages deviennent moins informatifs dans les espaces de grande dimension;
-- un petit \\k\\ peut être sensible au bruit, tandis qu’un grand \\k\\ peut masquer la structure locale;
+- un petit k peut être sensible au bruit, tandis qu’un grand k peut masquer la structure locale;
 - le déséquilibre des classes peut dominer le vote d’un voisinage.
 
 # Expériences suggérées

@@ -79,8 +79,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -479,7 +493,7 @@ window.Quarto = {
 <section id="participer" class="level2">
 <h2 class="anchored" data-anchor-id="participer">Participer</h2>
 <ul>
-<li><a href="slides.html">diapositives</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_slides-03.ipynb">notebook Jupyter</a>)</li>
+<li><a href="slides.html">Présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_slides-03.ipynb">notebook Jupyter</a>)</li>
 </ul>
 </section>
 <section id="pratiquer" class="level2">
@@ -495,7 +509,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="python-et-jeux-de-données">Python et jeux de données</h3>
 <p>Si vous ne connaissez pas encore <code>numpy</code> et <code>pandas</code>, explorez ces tutoriels à votre rythme au cours des prochaines semaines. Les notebooks d’Aurélien Géron présentent des outils essentiels à l’apprentissage automatique.</p>
 <ul>
-<li><a href="https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_numpy.ipynb" class="external" data-icon="true">numpy</a> — bibliothèque fondamentale centrée sur les tableaux à <span class="math inline">\(N\)</span> dimensions.</li>
+<li><a href="https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_numpy.ipynb" class="external" data-icon="true">numpy</a> — bibliothèque fondamentale centrée sur les tableaux à <span class="math inline">N</span> dimensions.</li>
 <li><a href="https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_pandas.ipynb" class="external" data-icon="true">pandas</a> — outils d’analyse de données centrés sur le <code>DataFrame</code>.</li>
 <li><a href="https://colab.research.google.com/github/ageron/handson-ml3/blob/main/tools_matplotlib.ipynb" class="external" data-icon="true">visualisation</a> — utilisation de <code>matplotlib</code> pour produire des graphiques.</li>
 </ul>
