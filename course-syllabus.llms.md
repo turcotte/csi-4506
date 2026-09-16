@@ -12,8 +12,8 @@ Date de publication
 
 |                  | Jour     | Heure       | Lieu     |
 |------------------|----------|-------------|----------|
-| Cours 1          | Lundi    | 10:00-11:30 | SMD 430  |
-| Cours 2          | Mercredi | 08:30-09:50 | SMD 224  |
+| Cours 1          | Lundi    | 10:00-11:30 | SMD 224  |
+| Cours 2          | Mercredi | 08:30-09:50 | CBY B205 |
 | Heures de bureau | Lundi    | 15:00-16:20 | STE 5106 |
 
 # Description (officielle)
