@@ -2,7 +2,7 @@
 
 Date de publication
 
-9 août 2026
+18 septembre 2026
 
 # Instructeur
 
@@ -14,8 +14,9 @@ Date de publication
 
 # Aide à l’enseignement
 
-| Assistant.e. d’enseignement | Disponibilité | Heure | Pièce |
-|-----------------------------|---------------|-------|-------|
-| Abderrahman Bouayad         | \-            | \-    | \-    |
+| Assistant.e. d’enseignement | Disponibilité | Heure       | Pièce    |
+|-----------------------------|---------------|-------------|----------|
+| Jean-Damien Marcelin        | Mercredi      | 13h - 14h20 | Courriel |
+| Abderrahman Bouayad         | Mercredi      | 15h – 16h20 | Courriel |
 
-Veuillez consulter Brightspace pour trouver les adresses électroniques de nos assistants d’enseignement, disponibles soit dans la section « Aperçu », soit dans la section « Informations sur le cours ».
+En attendant la confirmation de la salle où se tiendront les heures de disponibilité de Jean-Damien et d’Abderrahman, veuillez communiquer avec eux par courriel. Leurs coordonnées sont accessibles sur Brightspace, dans les sections « Aperçu » ou « Informations sur le cours ».

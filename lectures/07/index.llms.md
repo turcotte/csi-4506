@@ -16,4 +16,4 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
-- [Régression Logistique](../../lectures/07/LogisticRegression.llms.md) - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts.
+- [Régression Logistique ](../../lectures/07/LogisticRegression.llms.md) - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts.

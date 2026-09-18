@@ -149,7 +149,7 @@
     "href": "course-team.html",
     "title": "Équipe pédagogique",
     "section": "",
-    "text": "Instructeur\nMarcel Turcotte est professeur d’informatique à l’École de science informatique et de génie électrique de l’Université d’Ottawa. Son groupe applique l’apprentissage automatique, la conception d’algorithmes et des structures de données efficaces pour résoudre des problèmes bioinformatiques complexes tels que l’identification de signatures d’ADN spécifiques au type cellulaire de la liaison des facteurs de transcription, la classification des séquences d’ARN non codant et la détermination de la susceptibilité hôte-virus de l’ARN. Pou en savoir plus, consultez mon parcours académique\n\n\n\nDisponibilité\nHeure\nPièce\n\n\n\n\nLundi\n15h – 16h20\nSTE 5106\n\n\n\n\n\nAide à l’enseignement\n\n\n\n\n\n\n\n\n\nAssistant.e. d’enseignement\nDisponibilité\nHeure\nPièce\n\n\n\n\nAbderrahman Bouayad\n-\n-\n-\n\n\n\nVeuillez consulter Brightspace pour trouver les adresses électroniques de nos assistants d’enseignement, disponibles soit dans la section « Aperçu », soit dans la section « Informations sur le cours ».",
+    "text": "Instructeur\nMarcel Turcotte est professeur d’informatique à l’École de science informatique et de génie électrique de l’Université d’Ottawa. Son groupe applique l’apprentissage automatique, la conception d’algorithmes et des structures de données efficaces pour résoudre des problèmes bioinformatiques complexes tels que l’identification de signatures d’ADN spécifiques au type cellulaire de la liaison des facteurs de transcription, la classification des séquences d’ARN non codant et la détermination de la susceptibilité hôte-virus de l’ARN. Pou en savoir plus, consultez mon parcours académique\n\n\n\nDisponibilité\nHeure\nPièce\n\n\n\n\nLundi\n15h – 16h20\nSTE 5106\n\n\n\n\n\nAide à l’enseignement\n\n\n\n\n\n\n\n\n\nAssistant.e. d’enseignement\nDisponibilité\nHeure\nPièce\n\n\n\n\nJean-Damien Marcelin\nMercredi\n13h - 14h20\nCourriel\n\n\nAbderrahman Bouayad\nMercredi\n15h – 16h20\nCourriel\n\n\n\nEn attendant la confirmation de la salle où se tiendront les heures de disponibilité de Jean-Damien et d’Abderrahman, veuillez communiquer avec eux par courriel. Leurs coordonnées sont accessibles sur Brightspace, dans les sections « Aperçu » ou « Informations sur le cours ».",
     "crumbs": [
       "**Information du cours**",
       "Équipe pédagogique"
@@ -386,7 +386,7 @@
     "href": "lectures/10/index.html#pratiquer",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Pratiquer",
-    "text": "Pratiquer\n\nMise à l’échelle - Nous appliquons la régression par k plus proches voisins (k-NN) pour prédire les prix des maisons, en utilisant deux attributs : le nombre de pièces et la superficie, qui possèdent intrinsèquement des échelles différentes. Nous comparons la performance du modèle avec et sans mise à l’échelle des attributs."
+    "text": "Pratiquer\n\nMise à l’échelle  - Nous appliquons la régression par k plus proches voisins (k-NN) pour prédire les prix des maisons, en utilisant deux attributs : le nombre de pièces et la superficie, qui possèdent intrinsèquement des échelles différentes. Nous comparons la performance du modèle avec et sans mise à l’échelle des attributs."
   },
   {
     "objectID": "lectures/08/index.html",
@@ -421,7 +421,7 @@
     "href": "lectures/06/index.html#pratiquer",
     "title": "Entropie croisée, interprétation géométrique, et implémentation",
     "section": "Pratiquer",
-    "text": "Pratiquer\n\nRégression Logistique - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts."
+    "text": "Pratiquer\n\nRégression Logistique  - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts."
   },
   {
     "objectID": "lectures/04/index.html",
@@ -11240,7 +11240,7 @@
     "href": "lectures/07/index.html#pratiquer",
     "title": "Évaluation des modèles",
     "section": "Pratiquer",
-    "text": "Pratiquer\n\nRégression Logistique - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts."
+    "text": "Pratiquer\n\nRégression Logistique  - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts."
   },
   {
     "objectID": "lectures/09/index.html",
@@ -11289,7 +11289,7 @@
     "href": "lectures/11/index.html#practiquer",
     "title": "Introduction aux réseaux de neurones artificiels",
     "section": "Practiquer",
-    "text": "Practiquer\n\nSéparabilité Circulaire : Pour compléter votre exploration de TensorFlow Playground (ci-dessous), j’ai développé un cahier se concentrant sur l’ingénierie des attributs.\nTensorFlow Playground\n\nOptions de jeu de données : Les utilisateurs peuvent choisir parmi quatre types de jeux de données : circulaire, XOR, gaussien et spirale.\nIngénierie des attributs : Permet la création de nouveaux attributs pour améliorer la performance du modèle.\nArchitecture du modèle : Permet la personnalisation de l’architecture du réseau de neurones, y compris la variation du nombre de couches et de neurones par couche.\nRéglage des hyperparamètres : Offre des options pour ajuster le taux d’apprentissage, les fonctions d’activation, les techniques de régularisation et les spécifications des tâches pour observer leurs effets sur l’entraînement du modèle.\nSuggestion 1 : Pour le jeu de données gaussien, qui est linéairement séparable, configurez un réseau sans couches cachées et un seul neurone de sortie utilisant la fonction d’activation sigmoïde. Cette configuration construit efficacement un modèle de régression logistique.\nSuggestion 2 : Le jeu de données circulaire n’est pas linéairement séparable en utilisant seulement les attributs originaux \\(x_1\\) et \\(x_2\\). Cependant, en créant de neauveaux attributs, \\(x_1^2\\) et \\(x_2^2\\), le problème devient linéairement séparable dans l’espace des attributs transformé. Un réseau sans couches cachées et un seul nœud de sortie est suffisant pour cette tâche."
+    "text": "Practiquer\n\nSéparabilité Circulaire  : Pour compléter votre exploration de TensorFlow Playground (ci-dessous), j’ai développé un cahier se concentrant sur l’ingénierie des attributs.\nTensorFlow Playground\n\nOptions de jeu de données : Les utilisateurs peuvent choisir parmi quatre types de jeux de données : circulaire, XOR, gaussien et spirale.\nIngénierie des attributs : Permet la création de nouveaux attributs pour améliorer la performance du modèle.\nArchitecture du modèle : Permet la personnalisation de l’architecture du réseau de neurones, y compris la variation du nombre de couches et de neurones par couche.\nRéglage des hyperparamètres : Offre des options pour ajuster le taux d’apprentissage, les fonctions d’activation, les techniques de régularisation et les spécifications des tâches pour observer leurs effets sur l’entraînement du modèle.\nSuggestion 1 : Pour le jeu de données gaussien, qui est linéairement séparable, configurez un réseau sans couches cachées et un seul neurone de sortie utilisant la fonction d’activation sigmoïde. Cette configuration construit efficacement un modèle de régression logistique.\nSuggestion 2 : Le jeu de données circulaire n’est pas linéairement séparable en utilisant seulement les attributs originaux x_1 et x_2. Cependant, en créant de neauveaux attributs, x_1^2 et x_2^2, le problème devient linéairement séparable dans l’espace des attributs transformé. Un réseau sans couches cachées et un seul nœud de sortie est suffisant pour cette tâche."
   },
   {
     "objectID": "lectures/13/index.html",
@@ -11331,7 +11331,7 @@
     "href": "lectures/15/index.html#practiquer",
     "title": "Architectures des réseaux de neurones artificiels",
     "section": "Practiquer",
-    "text": "Practiquer\n\nPrédiction de la charge ribosomique moyenne avec un réseau neuronal convolutif 1D\nConvNetJS: Deep Learning in your browser"
+    "text": "Practiquer\n\nPrédiction de la charge ribosomique moyenne avec un réseau neuronal convolutif 1D \nConvNetJS: Deep Learning in your browser"
   },
   {
     "objectID": "lectures/17/index.html",

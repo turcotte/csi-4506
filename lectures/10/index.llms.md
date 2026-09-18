@@ -16,7 +16,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
-- [Mise à l’échelle](../../lectures/10/Scaling.llms.md) - Nous appliquons la **régression par k plus proches voisins (k-NN)** pour prédire les prix des maisons, en utilisant deux attributs : le nombre de pièces et la superficie, qui possèdent intrinsèquement des échelles différentes. Nous comparons la performance du modèle avec et sans mise à l’échelle des attributs.
+- [Mise à l’échelle ](../../lectures/10/Scaling.llms.md) - Nous appliquons la **régression par k plus proches voisins (k-NN)** pour prédire les prix des maisons, en utilisant deux attributs : le nombre de pièces et la superficie, qui possèdent intrinsèquement des échelles différentes. Nous comparons la performance du modèle avec et sans mise à l’échelle des attributs.
 
 ## Les références
 
