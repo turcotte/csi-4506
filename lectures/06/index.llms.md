@@ -1,4 +1,4 @@
-# Entropie croisée, interprétation géométrique, et implémentation
+# Régression logistique : entropie croisée et géométrie
 
 CSI4506 Introduction à l’intelligence artificielle
 
@@ -12,4 +12,4 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
-- [Régression Logistique ](../../lectures/07/LogisticRegression.llms.md) - Voici une implémentation de la régression logistique, complétée par des discussions sur les courbes ROC (Receiver Operating Characteristic) et l’aire sous la courbe (AUC). Elle inclut également des exemples illustratifs pour démontrer ces concepts.
+- [Régression logistique ](../../lectures/06/LogisticRegression.llms.md) - Ce carnet met en œuvre une régression logistique par descente de gradient par lot et visualise la perte d’entraînement, la surface de probabilité, la frontière de décision et le vecteur normal.

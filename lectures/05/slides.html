@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -124,6 +124,23 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="../../assets/css/reveal-common.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -217,6 +234,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <meta property="og:title" content="Régression logistique – CSI 4506 - Automne 2026">
 <meta property="og:description" content="CSI 4506 - automne 2026">
 <meta property="og:site_name" content="CSI 4506 - Automne 2026">
@@ -237,7 +257,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: août 9, 2026 11h49</p>
+  <p class="date">Version : 20 septembre 2026 17h02</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -248,17 +268,19 @@ Marcel Turcotte
 <h2>Message du jour</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://cdn.theatlantic.com/thumbor/e3cWq_N5d7ra9OaF0EH0Qi4yH4E=/0x0:2000x1125/1952x1098/media/img/mt/2025/09/AIA_S2_Ep_9/original.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.theatlantic.com/thumbor/e3cWq_N5d7ra9OaF0EH0Qi4yH4E=/0x0:2000x1125/1952x1098/media/img/mt/2025/09/AIA_S2_Ep_9/original.jpg" class="quarto-figure quarto-figure-center" height="475"></a></p>
+<p><a href="https://www.science.org/content/article/openai-breakthrough-triggers-existential-crisis-math"><img data-src="../../assets/images/20260915_on_navier_stokes.jpg" class="quarto-figure quarto-figure-center" alt="Illustration conceptuelle d'un vortex dans la solution annoncée par OpenAI au problème de Navier–Stokes." height="475"></a></p>
 </figure>
 </div>
 
 <aside class="notes">
-<p>Un podcast de 30 minutes où Garry Kasparov est rejoint par le scientifique cognitif Gary Marcus.</p>
-<p><a href="https://www.kasparov.com">Garry Kasparov</a> (né en 1963) est un grand maître d’échecs russe et ancien champion du monde, largement considéré comme l’un des plus grands joueurs de l’histoire. Il a occupé le premier rang mondial pendant près de deux décennies et est également connu pour ses matchs contre Deep Blue d’IBM ainsi que pour son activisme politique et ses écrits ultérieurs.</p>
-<p><a href="http://garymarcus.com/">Gary Marcus</a> (né en 1965) est un scientifique cognitif américain, auteur et entrepreneur. Il est connu pour ses critiques de l’apprentissage profond, ses travaux sur l’acquisition du langage et le développement cognitif, et pour avoir fondé plusieurs startups en intelligence artificielle.</p>
-<blockquote>
-<p>Kasparov et Marcus s’accordent à dire que l’IA est un outil—ni intrinsèquement utopique ni dystopique—and que les véritables risques proviennent de la manière dont elle est utilisée et par qui. Marcus souligne que les systèmes d’IA actuels manquent encore de véritable compréhension; ils fonctionnent par reconnaissance de motifs sur de vastes ensembles de données, et non par la compréhension de règles ou de concepts, ce qui entraîne des problèmes d’alignement : les machines font fréquemment des erreurs ou agissent de manière imprévue. Une préoccupation majeure est la manière dont l’IA amplifie la tromperie politique, la surveillance et la manipulation de l’information—des outils prisés par les intérêts autocratiques ou oligarchiques. Du côté positif, ils soutiennent que nous ne sommes pas impuissants : les sociétés démocratiques ont encore des leviers—réglementation légale, action de masse, résistance, insistance sur la responsabilité—et pourraient encore orienter l’IA pour qu’elle profite à la démocratie plutôt que de la saper. Le chemin par défaut est dangereux, mais avec une volonté politique, il n’est pas nécessaire de glisser irréversiblement vers le techno-fascisme. (Résumé généré par ChatGPT 5 le 2025-09-16)</p>
-</blockquote>
+<p>Le 8 septembre, OpenAI a annoncé qu’un système d’IA interne avait produit une solution au problème d’existence et de régularité des équations de Navier–Stokes, l’un des problèmes du prix du millénaire. OpenAI a publié à la fois une démonstration écrite et une formalisation en Lean. La communauté mathématique examine toujours le résultat; il faut donc parler d’une <strong>solution annoncée</strong>, et non d’un résultat définitivement établi <span class="citation" data-cites="Zhao:2026aa">(<a href="#/références" role="doc-biblioref" onclick="">Zhao 2026</a>)</span>.</p>
+<p>Ici, la « crise existentielle » désigne un débat sur la raison d’être et l’avenir des mathématiques, et non une menace existentielle pour l’humanité. L’article demande ce que signifie comprendre les mathématiques lorsqu’un système d’IA produit une démonstration formellement vérifiée que les humains peinent à comprendre. Il soulève aussi des questions sur l’attribution du mérite et sur l’accès inégal aux ressources informatiques requises pour ce type de recherche.</p>
+<ul>
+<li>Une démonstration formellement vérifiée procure-t-elle une compréhension mathématique, ou seulement une certitude mathématique?</li>
+<li>Comment l’accès à de puissants systèmes d’IA pourrait-il changer la répartition des possibilités et de la reconnaissance en recherche?</li>
+</ul>
+<p>Aujourd’hui, nous quittons ce système de pointe pour revenir à l’un des modèles de classification les plus simples et les plus interprétables.</p>
+<p>Crédit de l’image : OpenAI, par l’entremise de <em>Science</em>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -271,14 +293,17 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p><a href="https://www.theatlantic.com/podcasts/archive/2025/09/ai-and-the-fight-between-democracy-and-autocracy/684095/">AI and the Rise of Techno-Fascism in the United States</a> par Gary Kasparov, The Atlantic, 2025-09-05. (31m 13s)</p>
+<p><a href="https://www.science.org/content/article/openai-breakthrough-triggers-existential-crisis-math">“OpenAI breakthrough triggers ‘existential crisis’ in math”</a>, C. Zhao, <em>Science</em>, 2026-09-15.</p>
 </div></aside></section>
-<section id="objectifs-dapprentissage" class="slide level2">
+<section id="objectifs-dapprentissage" class="slide level2 smaller">
 <h2>Objectifs d’apprentissage</h2>
 <ul>
-<li><strong>Différencier</strong> entre les paradigmes de classification binaire et de classification multi-classes.</li>
-<li><strong>Décrire</strong> une méthodologie pour convertir des problèmes de classification multi-classes en tâches de classification binaire.</li>
-<li><strong>Implémenter</strong> un algorithme de régression logistique, en se concentrant sur son application aux problèmes de classification.</li>
+<li><strong>Distinguer</strong> les tâches de classification binaire, multiclasse et multi-étiquette.</li>
+<li><strong>Expliquer</strong> comment la régression logistique transforme un score linéaire en probabilité à l’aide de la fonction sigmoïde.</li>
+<li><strong>Relier</strong> le seuil de classification de <span class="math inline">0.5</span> à la frontière de décision linéaire.</li>
+<li><strong>Expliquer</strong> comment la stratégie un contre tous étend un classificateur binaire aux problèmes multiclasses.</li>
+<li><strong>Entraîner</strong> un modèle de régression logistique sans laisser filtrer d’information provenant de l’ensemble de test.</li>
+<li><strong>Interpréter</strong> les coefficients appris par des classificateurs de chiffres un contre tous.</li>
 </ul>
 </section></section>
 <section>
@@ -289,14 +314,14 @@ Marcel Turcotte
 <section id="définitions" class="slide level2">
 <h2>Définitions</h2>
 <ul>
-<li class="fragment"><p>La <strong>classification binaire</strong> est une tâche d’apprentissage supervisé dont l’objectif est de catégoriser des instances (exemples) en <strong>deux classes distinctes</strong>.</p></li>
-<li class="fragment"><p>Une tâche de <strong>classification multi-classes</strong> est un type de problème d’apprentissage supervisé où l’objectif est de catégoriser des instances en <strong>trois classes distinctes ou plus</strong>.</p></li>
+<li class="fragment"><p>La <strong>classification binaire</strong> est une tâche d’apprentissage supervisé dont l’objectif est de classer des instances (exemples) dans l’une de <strong>deux classes distinctes</strong>.</p></li>
+<li class="fragment"><p>La <strong>classification multiclasse</strong> est une tâche d’apprentissage supervisé dont l’objectif est de classer des instances dans l’une de <strong>trois classes distinctes ou plus</strong>.</p></li>
 </ul>
 
 <aside class="notes">
 <ul>
-<li><p>Un exemple de tâche de classification binaire est la prédiction du statut de maladie à l’aide de données génomiques <span class="citation" data-cites="Wu:2018aa">(<a href="#/références" role="doc-biblioref" onclick="">Wu et al. 2018</a>)</span>.</p></li>
-<li><p>Les chercheurs cherchent souvent à classifier avec précision le type, le sous-type ou le stade d’un cancer en utilisant des données d’expression génique. Par exemple, dans le Pan-Cancer Atlas, des cancers spécifiques tels que le cancer du sein (BRCA), l’adénocarcinome du côlon (COAD), l’adénocarcinome pulmonaire (LUAD), le cancer de l’ovaire (OV) et le cancer de la thyroïde (THCA) peuvent être différenciés sur la base de leurs profils d’expression génique uniques <span class="citation" data-cites="Alharbi:2023aa">(<a href="#/références" role="doc-biblioref" onclick="">Alharbi et Vakanski 2023</a>)</span>.</p></li>
+<li>La prédiction de l’état pathologique à partir de données génomiques est un exemple de classification binaire <span class="citation" data-cites="Wu:2018aa">(<a href="#/références" role="doc-biblioref" onclick="">Wu et al. 2018</a>)</span>.</li>
+<li>Les chercheurs cherchent souvent à classifier avec précision le type, le sous-type ou le stade d’un cancer à partir de données d’expression génique. Par exemple, dans le Pan-Cancer Atlas, le cancer du sein (BRCA), l’adénocarcinome du côlon (COAD), l’adénocarcinome pulmonaire (LUAD), le cancer de l’ovaire (OV) et le cancer de la thyroïde (THCA) peuvent être différenciés grâce à leurs profils d’expression génique <span class="citation" data-cites="Alharbi:2023aa">(<a href="#/références" role="doc-biblioref" onclick="">Alharbi et Vakanski 2023</a>)</span>.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -310,18 +335,18 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p><strong>Attention</strong> : La <strong>classification multi-classes</strong> ne doit pas être confondue avec la <strong>classification multi-étiquettes</strong>, qui permet à une instance d’être associée à plusieurs classes. Les algorithmes conçus pour traiter ces tâches diffèrent de manière significative.</p>
+<p><strong>Attention :</strong> il ne faut pas confondre la <strong>classification multiclasse</strong> avec la <strong>classification multi-étiquette</strong>, dans laquelle une instance peut être associée à plusieurs classes.</p>
 </div></aside></section>
 <section id="classification-binaire" class="slide level2">
 <h2>Classification binaire</h2>
 <ul>
-<li class="fragment">Certains algorithmes de machine learning sont spécifiquement conçus pour résoudre des problèmes de classification binaire.
+<li class="fragment">Certains algorithmes d’apprentissage automatique sont conçus spécialement pour résoudre des problèmes de classification binaire.
 <ul>
 <li class="fragment">La <strong>régression logistique</strong> et les <strong>machines à vecteurs de support</strong> (SVM) en sont des exemples.</li>
 </ul></li>
 </ul>
 <aside class="notes">
-<p>Plus tard dans la présentation, assurez-vous de comprendre pourquoi la régression logistique est spécifiquement conçue pour résoudre les problèmes de classification binaire.</p>
+<p>Plus tard dans la présentation, assurez-vous de comprendre pourquoi la régression logistique est conçue expressément pour résoudre des problèmes de classification binaire.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -334,20 +359,20 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 </section>
-<section id="classification-multi-classes" class="slide level2 smaller">
-<h2>Classification multi-classes</h2>
+<section id="classification-multiclasse" class="slide level2 smaller">
+<h2>Classification multiclasse</h2>
 <ul>
-<li class="fragment">Tout <strong>problème de classification multi-classes</strong> peut être transformé en un <strong>problème de classification binaire</strong>.</li>
-<li class="fragment"><strong>Un-contre-tous (One-vs-All – OvA)</strong>
+<li class="fragment">Un <strong>problème de classification multiclasse</strong> peut être traité comme un ensemble de <strong>tâches de classification binaire</strong>.</li>
+<li class="fragment"><strong>Un contre tous</strong> (<em>one-vs-rest</em>, OvR)
 <ul>
 <li class="fragment">Un <strong>classificateur binaire distinct</strong> est entraîné <strong>pour chaque classe</strong>.</li>
-<li class="fragment">Pour chaque classificateur, <strong>une classe</strong> est traitée comme la <strong>classe positive</strong>, et <strong>toutes les autres classes</strong> sont traitées comme les <strong>classes négatives</strong>.</li>
-<li class="fragment">L’<strong>attribution finale</strong> d’une étiquette de classe est effectuée en fonction du classificateur qui produit le <strong>score de confiance le plus élevé</strong> pour une entrée donnée.</li>
+<li class="fragment">Pour chaque classificateur, <strong>une classe</strong> est considérée comme la <strong>classe positive</strong>, et <strong>toutes les autres</strong> comme la <strong>classe négative</strong>.</li>
+<li class="fragment">L’<strong>attribution finale</strong> sélectionne la classe dont le classificateur produit le <strong>score le plus élevé</strong> pour l’entrée donnée.</li>
 </ul></li>
 </ul>
 
 <aside><div>
-<p>Scikit-learn propose <a href="https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier"><code>OneVsRestClassifier</code></a>, un utilitaire conçu pour étendre les classificateurs binaires aux tâches de classification multi-classes via la stratégie One-vs-Rest.</p>
+<p>Scikit-learn propose <a href="https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier"><code>OneVsRestClassifier</code></a>, un utilitaire qui étend les classificateurs binaires aux tâches multiclasses. La stratégie <em>one-vs-rest</em> est aussi appelée <em>one-vs-all</em>.</p>
 <p>Un exemple complet sera présenté à la fin du cours.</p>
 </div></aside></section></section>
 <section>
@@ -358,70 +383,79 @@ Marcel Turcotte
 <section id="données-et-problème" class="slide level2">
 <h2>Données et problème</h2>
 <ul>
-<li><strong>Jeu de données</strong> : Palmer Penguins</li>
-<li><strong>Tâche</strong> : Classification binaire pour distinguer les manchots Gentoo des espèces non-Gentoo</li>
-<li><strong>Attribut</strong> : Longueur des nageoires</li>
+<li><strong>Jeu de données :</strong> Palmer Penguins</li>
+<li><strong>Tâche :</strong> classification binaire qui distingue les manchots Gentoo des autres espèces</li>
+<li><strong>Attribut étudié :</strong> longueur des nageoires</li>
 </ul>
 </section>
-<section id="histogramme" class="slide level2">
+<section id="histogramme" class="slide level2 hide-code-toggle">
 <h2>Histogramme</h2>
-<div id="ab253748" class="cell" data-execution_count="2">
+<div id="b1f864c5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a aria-label="2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a aria-label="3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-4"><a aria-label="4"></a></span>
-<span id="cb1-5"><a aria-label="5"></a><span class="cf">try</span>:</span>
-<span id="cb1-6"><a aria-label="6"></a>    <span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
-<span id="cb1-7"><a aria-label="7"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
-<span id="cb1-8"><a aria-label="8"></a>    <span class="op">!</span> pip install palmerpenguins</span>
-<span id="cb1-9"><a aria-label="9"></a>    <span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
-<span id="cb1-10"><a aria-label="10"></a></span>
-<span id="cb1-11"><a aria-label="11"></a><span class="co"># Charger le jeu de données Palmer Penguins</span></span>
-<span id="cb1-12"><a aria-label="12"></a>df <span class="op">=</span> load_penguins()</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a aria-label="3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a aria-label="4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a aria-label="5"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb1-6"><a aria-label="6"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_digits, load_iris</span>
+<span id="cb1-7"><a aria-label="7"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression, LogisticRegression</span>
+<span id="cb1-8"><a aria-label="8"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb1-9"><a aria-label="9"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-10"><a aria-label="10"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsRestClassifier</span>
+<span id="cb1-11"><a aria-label="11"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb1-12"><a aria-label="12"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, label_binarize</span>
 <span id="cb1-13"><a aria-label="13"></a></span>
-<span id="cb1-14"><a aria-label="14"></a><span class="co"># Ne garder que 'flipper_length_mm' et 'species'</span></span>
-<span id="cb1-15"><a aria-label="15"></a>df <span class="op">=</span> df[[<span class="st">'flipper_length_mm'</span>, <span class="st">'species'</span>]]</span>
+<span id="cb1-14"><a aria-label="14"></a><span class="co"># Charger le jeu de données Palmer Penguins</span></span>
+<span id="cb1-15"><a aria-label="15"></a>penguin_df <span class="op">=</span> load_penguins()[[<span class="st">'flipper_length_mm'</span>, <span class="st">'species'</span>]].dropna().copy()</span>
 <span id="cb1-16"><a aria-label="16"></a></span>
-<span id="cb1-17"><a aria-label="17"></a><span class="co"># Supprimer les lignes avec des valeurs manquantes (NaNs)</span></span>
-<span id="cb1-18"><a aria-label="18"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-19"><a aria-label="19"></a></span>
-<span id="cb1-20"><a aria-label="20"></a><span class="co"># Créer une étiquette binaire : 1 si Gentoo, 0 sinon</span></span>
-<span id="cb1-21"><a aria-label="21"></a>df[<span class="st">'is_gentoo'</span>] <span class="op">=</span> (df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'Gentoo'</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb1-22"><a aria-label="22"></a></span>
-<span id="cb1-23"><a aria-label="23"></a><span class="co"># Séparer les attributs (X) et les étiquettes (y)</span></span>
-<span id="cb1-24"><a aria-label="24"></a>X <span class="op">=</span> df[[<span class="st">'flipper_length_mm'</span>]]</span>
-<span id="cb1-25"><a aria-label="25"></a>y <span class="op">=</span> df[<span class="st">'is_gentoo'</span>]</span>
-<span id="cb1-26"><a aria-label="26"></a></span>
-<span id="cb1-27"><a aria-label="27"></a><span class="co"># Tracer la distribution des longueurs de nageoires par étiquette d'espèce binaire</span></span>
-<span id="cb1-28"><a aria-label="28"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb1-29"><a aria-label="29"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'flipper_length_mm'</span>, hue<span class="op">=</span><span class="st">'is_gentoo'</span>, kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">30</span>, palette<span class="op">=</span><span class="st">'Set1'</span>)</span>
-<span id="cb1-30"><a aria-label="30"></a>plt.title(<span class="st">'Distribution de la longueur des nageoires (Gentoo vs. Autres)'</span>)</span>
-<span id="cb1-31"><a aria-label="31"></a>plt.xlabel(<span class="st">'Longueur des nageoires (mm)'</span>)</span>
-<span id="cb1-32"><a aria-label="32"></a>plt.ylabel(<span class="st">'Fréquence'</span>)</span>
-<span id="cb1-33"><a aria-label="33"></a>plt.legend(title<span class="op">=</span><span class="st">'Espèce'</span>, labels<span class="op">=</span>[<span class="st">'Gentoo'</span>, <span class="st">'Non Gentoo'</span>])</span>
-<span id="cb1-34"><a aria-label="34"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-17"><a aria-label="17"></a><span class="co"># Créer une étiquette binaire : 1 pour Gentoo, 0 autrement</span></span>
+<span id="cb1-18"><a aria-label="18"></a>penguin_df[<span class="st">'is_gentoo'</span>] <span class="op">=</span> (penguin_df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'Gentoo'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb1-19"><a aria-label="19"></a>penguin_df[<span class="st">'class_name'</span>] <span class="op">=</span> np.where(</span>
+<span id="cb1-20"><a aria-label="20"></a>    penguin_df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">1</span>,</span>
+<span id="cb1-21"><a aria-label="21"></a>    <span class="st">'Gentoo'</span>,</span>
+<span id="cb1-22"><a aria-label="22"></a>    <span class="st">'Non Gentoo'</span></span>
+<span id="cb1-23"><a aria-label="23"></a>)</span>
+<span id="cb1-24"><a aria-label="24"></a></span>
+<span id="cb1-25"><a aria-label="25"></a><span class="co"># Séparer les attributs (X) et les étiquettes (y)</span></span>
+<span id="cb1-26"><a aria-label="26"></a>penguin_X <span class="op">=</span> penguin_df[[<span class="st">'flipper_length_mm'</span>]]</span>
+<span id="cb1-27"><a aria-label="27"></a>penguin_y <span class="op">=</span> penguin_df[<span class="st">'is_gentoo'</span>]</span>
+<span id="cb1-28"><a aria-label="28"></a></span>
+<span id="cb1-29"><a aria-label="29"></a><span class="co"># Tracer la distribution de la longueur des nageoires selon l'étiquette binaire</span></span>
+<span id="cb1-30"><a aria-label="30"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-31"><a aria-label="31"></a>sns.histplot(</span>
+<span id="cb1-32"><a aria-label="32"></a>    data<span class="op">=</span>penguin_df,</span>
+<span id="cb1-33"><a aria-label="33"></a>    x<span class="op">=</span><span class="st">'flipper_length_mm'</span>,</span>
+<span id="cb1-34"><a aria-label="34"></a>    hue<span class="op">=</span><span class="st">'class_name'</span>,</span>
+<span id="cb1-35"><a aria-label="35"></a>    hue_order<span class="op">=</span>[<span class="st">'Non Gentoo'</span>, <span class="st">'Gentoo'</span>],</span>
+<span id="cb1-36"><a aria-label="36"></a>    kde<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-37"><a aria-label="37"></a>    bins<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb1-38"><a aria-label="38"></a>    palette<span class="op">=</span><span class="st">'Set1'</span></span>
+<span id="cb1-39"><a aria-label="39"></a>)</span>
+<span id="cb1-40"><a aria-label="40"></a>plt.title(<span class="st">'Distribution de la longueur des nageoires (Gentoo ou autre)'</span>)</span>
+<span id="cb1-41"><a aria-label="41"></a>plt.xlabel(<span class="st">'Longueur des nageoires (mm)'</span>)</span>
+<span id="cb1-42"><a aria-label="42"></a>plt.ylabel(<span class="st">'Fréquence'</span>)</span>
+<span id="cb1-43"><a aria-label="43"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="slides_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="809" height="525"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="slides_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="809" height="525"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 <section id="régression-logistique-logit" class="slide level2">
-<h2>Régression logistique (Logit)</h2>
+<h2>Régression logistique (logit)</h2>
 <ul>
-<li class="fragment"><p>Malgré son nom, la <strong>régression logistique</strong> sert de <strong>technique de classification</strong> plutôt que de méthode de régression.</p></li>
-<li class="fragment"><p>Les <strong>étiquettes</strong> en régression logistique sont des valeurs binaires, notées <span class="math inline">\(y_i \in \{0,1\}\)</span>, ce qui en fait une <strong>tâche de classification binaire</strong>.</p></li>
-<li class="fragment"><p>L’objectif principal de la régression logistique est de déterminer la <strong>probabilité</strong> qu’un exemple donné <span class="math inline">\(x_i\)</span> appartienne à la <strong>classe positive</strong>, c’est-à-dire <span class="math inline">\(y_i = 1\)</span>.</p></li>
+<li class="fragment"><p>Malgré son nom, la <strong>régression logistique</strong> est un algorithme de <strong>classification</strong>, et non une technique de régression.</p></li>
+<li class="fragment"><p>Les <strong>étiquettes</strong> de la régression logistique sont des valeurs binaires, notées <span class="math inline">y_i \in \{0,1\}</span>; il s’agit donc d’une <strong>tâche de classification binaire</strong>.</p></li>
+<li class="fragment"><p>L’objectif principal de la régression logistique est de déterminer la <strong>probabilité</strong> qu’une instance <span class="math inline">x_i</span> appartienne à la <strong>classe positive</strong>, c’est-à-dire que <span class="math inline">y_i = 1</span>.</p></li>
 </ul>
 <aside class="notes">
-<p>La représentation des deux classes, <strong>négative</strong> et <strong>positive</strong>, par les valeurs 0 et 1 respectivement, n’est pas arbitraire. Ce choix est intrinsèquement lié à notre objectif de déterminer la <strong>probabilité</strong> qu’une instance <span class="math inline">\(x_i\)</span> appartienne à la classe positive.</p>
-<p>Bien que cet algorithme d’apprentissage puisse sembler peu remarquable au départ, il est essentiel de continuer à s’y intéresser, car la régression logistique s’avérera plus tard cruciale dans la discussion sur les réseaux de neurones artificiels.</p>
+<p>La représentation des classes <strong>négative</strong> et <strong>positive</strong> par les valeurs 0 et 1 n’est pas arbitraire. Elle est directement liée à notre objectif : déterminer la <strong>probabilité</strong> qu’une instance <span class="math inline">x_i</span> appartienne à la classe positive.</p>
+<p>Même si cet algorithme peut sembler banal au premier abord, il faut bien le comprendre : la régression logistique jouera plus tard un rôle essentiel dans notre étude des réseaux de neurones artificiels.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -437,40 +471,40 @@ Marcel Turcotte
 <section id="modèle" class="slide level2">
 <h2>Modèle</h2>
 <ul>
-<li class="fragment"><strong>Cas Général :</strong> <span class="math inline">\(P(y = k | x, \theta)\)</span>, où <span class="math inline">\(k\)</span> est une étiquette de classe.</li>
-<li class="fragment"><strong>Cas Binaire :</strong> <span class="math inline">\(y \in \{0,1\}\)</span>
+<li class="fragment"><strong>Cas général :</strong> <span class="math inline">P(y = k | x, \theta)</span>, où <span class="math inline">k</span> est une étiquette de classe.</li>
+<li class="fragment"><strong>Cas binaire :</strong> <span class="math inline">y \in \{0,1\}</span>
 <ul>
-<li class="fragment"><strong>Prédire</strong> <span class="math inline">\(P(y = 1 | x, \theta)\)</span></li>
+<li class="fragment"><strong>Prédire</strong> <span class="math inline">P(y = 1 | x, \theta)</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="visualiser-nos-données" class="slide level2">
-<h2>Visualiser nos données</h2>
-<div id="91dbb80d" class="cell" data-execution_count="3">
+<section id="visualisation-des-données" class="slide level2 hide-code-toggle">
+<h2>Visualisation des données</h2>
+<div id="84378bab" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Diagramme de dispersion de la longueur des nageoires vs. étiquette binaire (Gentoo ou Non Gentoo)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Nuage de points : longueur des nageoires et étiquette binaire</span></span>
 <span id="cb2-2"><a aria-label="2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-3"><a aria-label="3"></a></span>
-<span id="cb2-4"><a aria-label="4"></a><span class="co"># Points étiquetés comme Gentoo (is_gentoo = 1)</span></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="co"># Tracer les points Gentoo (is_gentoo = 1)</span></span>
 <span id="cb2-5"><a aria-label="5"></a>plt.scatter(</span>
-<span id="cb2-6"><a aria-label="6"></a>    df.loc[df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'flipper_length_mm'</span>],</span>
-<span id="cb2-7"><a aria-label="7"></a>    df.loc[df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'is_gentoo'</span>],</span>
+<span id="cb2-6"><a aria-label="6"></a>    penguin_df.loc[penguin_df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'flipper_length_mm'</span>],</span>
+<span id="cb2-7"><a aria-label="7"></a>    penguin_df.loc[penguin_df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">1</span>, <span class="st">'is_gentoo'</span>],</span>
 <span id="cb2-8"><a aria-label="8"></a>    color<span class="op">=</span><span class="st">'blue'</span>,</span>
 <span id="cb2-9"><a aria-label="9"></a>    label<span class="op">=</span><span class="st">'Gentoo'</span></span>
 <span id="cb2-10"><a aria-label="10"></a>)</span>
 <span id="cb2-11"><a aria-label="11"></a></span>
-<span id="cb2-12"><a aria-label="12"></a><span class="co"># Points étiquetés comme Non Gentoo (is_gentoo = 0)</span></span>
+<span id="cb2-12"><a aria-label="12"></a><span class="co"># Tracer les points non Gentoo (is_gentoo = 0)</span></span>
 <span id="cb2-13"><a aria-label="13"></a>plt.scatter(</span>
-<span id="cb2-14"><a aria-label="14"></a>    df.loc[df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">0</span>, <span class="st">'flipper_length_mm'</span>],</span>
-<span id="cb2-15"><a aria-label="15"></a>    df.loc[df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">0</span>, <span class="st">'is_gentoo'</span>],</span>
+<span id="cb2-14"><a aria-label="14"></a>    penguin_df.loc[penguin_df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">0</span>, <span class="st">'flipper_length_mm'</span>],</span>
+<span id="cb2-15"><a aria-label="15"></a>    penguin_df.loc[penguin_df[<span class="st">'is_gentoo'</span>] <span class="op">==</span> <span class="dv">0</span>, <span class="st">'is_gentoo'</span>],</span>
 <span id="cb2-16"><a aria-label="16"></a>    color<span class="op">=</span><span class="st">'red'</span>,</span>
 <span id="cb2-17"><a aria-label="17"></a>    label<span class="op">=</span><span class="st">'Non Gentoo'</span></span>
 <span id="cb2-18"><a aria-label="18"></a>)</span>
 <span id="cb2-19"><a aria-label="19"></a></span>
-<span id="cb2-20"><a aria-label="20"></a>plt.title(<span class="st">'Longueur des Nageoires vs. Indicateur Gentoo'</span>)</span>
-<span id="cb2-21"><a aria-label="21"></a>plt.xlabel(<span class="st">'Longueur des Nageoires (mm)'</span>)</span>
-<span id="cb2-22"><a aria-label="22"></a>plt.ylabel(<span class="st">'Étiquette Binaire (1 = Gentoo, 0 = Non Gentoo)'</span>)</span>
+<span id="cb2-20"><a aria-label="20"></a>plt.title(<span class="st">'Longueur des nageoires et indicateur Gentoo'</span>)</span>
+<span id="cb2-21"><a aria-label="21"></a>plt.xlabel(<span class="st">'Longueur des nageoires (mm)'</span>)</span>
+<span id="cb2-22"><a aria-label="22"></a>plt.ylabel(<span class="st">'Étiquette binaire (1 = Gentoo, 0 = Non Gentoo)'</span>)</span>
 <span id="cb2-23"><a aria-label="23"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
 <span id="cb2-24"><a aria-label="24"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb2-25"><a aria-label="25"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -478,176 +512,246 @@ Marcel Turcotte
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="815" height="525"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="slides_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="815" height="525"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="intuition" class="slide level2">
+<section id="intuition" class="slide level2 hide-code-toggle">
 <h2>Intuition</h2>
-<p>Ajuster une régression linéaire n’est pas la solution, mais <span class="math inline">\(\ldots\)</span></p>
-<div id="8a38d6b7" class="cell" data-execution_count="4">
+<p>Ajuster une régression linéaire n’est pas la solution, mais <span class="math inline">\ldots</span></p>
+<div id="5def54d4" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb3-2"><a aria-label="2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>penguin_linear_model <span class="op">=</span> LinearRegression()</span>
+<span id="cb3-2"><a aria-label="2"></a>penguin_linear_model.fit(penguin_X, penguin_y)</span>
 <span id="cb3-3"><a aria-label="3"></a></span>
-<span id="cb3-4"><a aria-label="4"></a>lin_reg <span class="op">=</span> LinearRegression()</span>
-<span id="cb3-5"><a aria-label="5"></a>lin_reg.fit(X, y)</span>
-<span id="cb3-6"><a aria-label="6"></a></span>
-<span id="cb3-7"><a aria-label="7"></a>X_new <span class="op">=</span> pd.DataFrame([X.<span class="bu">min</span>(), X.<span class="bu">max</span>()], columns<span class="op">=</span>X.columns)</span>
-<span id="cb3-8"><a aria-label="8"></a></span>
-<span id="cb3-9"><a aria-label="9"></a>y_pred <span class="op">=</span> lin_reg.predict(X_new)</span>
-<span id="cb3-10"><a aria-label="10"></a></span>
-<span id="cb3-11"><a aria-label="11"></a><span class="co"># Tracer le nuage de points</span></span>
-<span id="cb3-12"><a aria-label="12"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
-<span id="cb3-13"><a aria-label="13"></a>plt.scatter(X, y, c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">'bwr'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb3-14"><a aria-label="14"></a>plt.plot(X_new, y_pred, <span class="st">"r-"</span>)</span>
-<span id="cb3-15"><a aria-label="15"></a>plt.xlabel(<span class="st">'Longueur des nageoires (mm)'</span>)</span>
-<span id="cb3-16"><a aria-label="16"></a>plt.ylabel(<span class="st">'Étiquette binaire (Gentoo ou Non Gentoo)'</span>)</span>
-<span id="cb3-17"><a aria-label="17"></a>plt.title(<span class="st">'Longueur des nageoires vs. Étiquette binaire (Gentoo ou Non Gentoo)'</span>)</span>
-<span id="cb3-18"><a aria-label="18"></a>plt.yticks([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="st">'Non Gentoo'</span>, <span class="st">'Gentoo'</span>])</span>
-<span id="cb3-19"><a aria-label="19"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb3-20"><a aria-label="20"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a aria-label="4"></a>penguin_line_X <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-5"><a aria-label="5"></a>    <span class="st">'flipper_length_mm'</span>: np.linspace(</span>
+<span id="cb3-6"><a aria-label="6"></a>        penguin_X[<span class="st">'flipper_length_mm'</span>].<span class="bu">min</span>(),</span>
+<span id="cb3-7"><a aria-label="7"></a>        penguin_X[<span class="st">'flipper_length_mm'</span>].<span class="bu">max</span>(),</span>
+<span id="cb3-8"><a aria-label="8"></a>        <span class="dv">200</span></span>
+<span id="cb3-9"><a aria-label="9"></a>    )</span>
+<span id="cb3-10"><a aria-label="10"></a>})</span>
+<span id="cb3-11"><a aria-label="11"></a>penguin_line_y <span class="op">=</span> penguin_linear_model.predict(penguin_line_X)</span>
+<span id="cb3-12"><a aria-label="12"></a></span>
+<span id="cb3-13"><a aria-label="13"></a><span class="co"># Le seuil se trouve là où la droite ajustée atteint 0.5.</span></span>
+<span id="cb3-14"><a aria-label="14"></a>linear_boundary_mm <span class="op">=</span> <span class="bu">float</span>(</span>
+<span id="cb3-15"><a aria-label="15"></a>    (<span class="fl">0.5</span> <span class="op">-</span> penguin_linear_model.intercept_) <span class="op">/</span></span>
+<span id="cb3-16"><a aria-label="16"></a>    penguin_linear_model.coef_[<span class="dv">0</span>]</span>
+<span id="cb3-17"><a aria-label="17"></a>)</span>
+<span id="cb3-18"><a aria-label="18"></a></span>
+<span id="cb3-19"><a aria-label="19"></a><span class="kw">def</span> plot_penguin_linear_fit():</span>
+<span id="cb3-20"><a aria-label="20"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb3-21"><a aria-label="21"></a>    plt.scatter(</span>
+<span id="cb3-22"><a aria-label="22"></a>        penguin_X[<span class="st">'flipper_length_mm'</span>],</span>
+<span id="cb3-23"><a aria-label="23"></a>        penguin_y,</span>
+<span id="cb3-24"><a aria-label="24"></a>        c<span class="op">=</span>penguin_y,</span>
+<span id="cb3-25"><a aria-label="25"></a>        cmap<span class="op">=</span><span class="st">'bwr'</span>,</span>
+<span id="cb3-26"><a aria-label="26"></a>        edgecolor<span class="op">=</span><span class="st">'k'</span></span>
+<span id="cb3-27"><a aria-label="27"></a>    )</span>
+<span id="cb3-28"><a aria-label="28"></a>    plt.plot(penguin_line_X[<span class="st">'flipper_length_mm'</span>], penguin_line_y, <span class="st">'r-'</span>)</span>
+<span id="cb3-29"><a aria-label="29"></a>    plt.axhline(<span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-30"><a aria-label="30"></a>    plt.axvline(linear_boundary_mm, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-31"><a aria-label="31"></a>    plt.xlabel(<span class="st">'Longueur des nageoires (mm)'</span>)</span>
+<span id="cb3-32"><a aria-label="32"></a>    plt.ylabel(<span class="st">'Sortie du modèle'</span>)</span>
+<span id="cb3-33"><a aria-label="33"></a>    plt.yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>], [<span class="st">'Non Gentoo'</span>, <span class="st">'Seuil'</span>, <span class="st">'Gentoo'</span>])</span>
+<span id="cb3-34"><a aria-label="34"></a>    plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-35"><a aria-label="35"></a>    plt.show()</span>
+<span id="cb3-36"><a aria-label="36"></a></span>
+<span id="cb3-37"><a aria-label="37"></a>plot_penguin_linear_fit()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="598" height="316"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="502" height="283"></a></p>
 </figure>
 </div>
 </div>
 </div>
+<div id="9ccda23c" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>plot_penguin_linear_fit()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
-<section id="intuition-suite" class="slide level2">
+<section id="intuition-suite" class="slide level2 hide-code-toggle smaller">
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="93da2929" class="cell" data-execution_count="5">
+<div id="2c6f5251" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a>plot_penguin_linear_fit()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="588" height="316"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="502" height="283"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:65%;">
 <ul>
-<li class="fragment"><p>Une haute <strong><code>flipper_length_mm</code></strong> aboutit généralement à une sortie du modèle proche de 1.</p></li>
-<li class="fragment"><p>Inversement, une faible <strong><code>flipper_length_mm</code></strong> produit généralement une sortie du modèle proche de 0.</p></li>
-<li class="fragment"><p>Notamment, les sorties du modèle ne sont pas confinées à l’intervalle [0, 1] et peuvent occasionnellement être inférieures à 0 ou dépasser 1.</p></li>
+<li class="fragment"><p>Une valeur élevée de <strong><code>flipper_length_mm</code></strong> produit généralement une sortie du modèle proche de 1.</p></li>
+<li class="fragment"><p>Inversement, une faible valeur de <strong><code>flipper_length_mm</code></strong> produit généralement une sortie proche de 0.</p></li>
+<li class="fragment"><p>Les sorties du modèle ne sont toutefois pas limitées à l’intervalle [0, 1] : elles peuvent être inférieures à 0 ou supérieures à 1.</p></li>
 </ul>
 </div></div>
 </section>
-<section id="intuition-suite-1" class="slide level2">
+<section id="intuition-suite-1" class="slide level2 hide-code-toggle">
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="46346f14" class="cell" data-execution_count="6">
+<div id="5e3b1f1d" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>plot_penguin_linear_fit()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/cell-6-output-1.png" class="quarto-figure quarto-figure-center" width="598" height="316"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/cell-7-output-1.png" class="quarto-figure quarto-figure-center" width="502" height="283"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:65%;">
 <ul>
-<li class="fragment">Pour un <strong>seul attribut</strong>, la frontière de décision est un <strong>point spécifique</strong>.</li>
-<li class="fragment">Dans ce cas, la <strong>frontière de décision</strong> est d’environ 205.</li>
+<li class="fragment">Avec un <strong>seul attribut</strong>, la frontière de décision est un <strong>point précis</strong>.</li>
+<li class="fragment">Ici, la droite ajustée atteint le seuil de <span class="math inline">0.5</span> à environ <span class="math inline">205.6</span> mm.</li>
 </ul>
 </div></div>
 </section>
-<section id="intuition-suite-2" class="slide level2">
+<section id="intuition-suite-2" class="slide level2 hide-code-toggle">
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="de8513d3" class="cell" data-execution_count="8">
+<div id="1973ac64" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>plot_penguin_linear_fit()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="598" height="315"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="502" height="283"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:65%;">
 <ul>
-<li class="fragment">À mesure que <strong><code>longueur_nageoire_mm</code></strong> augmente de 205 à 230, la confiance dans la classification de l’exemple en tant que Gentoo augmente.</li>
-<li class="fragment">Inversement, à mesure que <strong><code>longueur_nageoire_mm</code></strong> diminue de 205 à 170, la confiance dans la classification de l’exemple en tant que non-Gentoo augmente.</li>
+<li class="fragment">Lorsque <strong><code>flipper_length_mm</code></strong> dépasse le seuil, la sortie ajustée se rapproche de l’étiquette Gentoo.</li>
+<li class="fragment">Lorsque <strong><code>flipper_length_mm</code></strong> descend sous le seuil, la sortie ajustée se rapproche de l’étiquette non Gentoo.</li>
 </ul>
 </div></div>
 </section>
-<section id="intuition-suite-3" class="slide level2">
+<section id="intuition-suite-3" class="slide level2 hide-code-toggle">
 <h2>Intuition (suite)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="f96b0d6d" class="cell" data-execution_count="9">
+<div id="3889b032" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>plot_penguin_linear_fit()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="581" height="314"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/cell-9-output-1.png" class="quarto-figure quarto-figure-center" width="502" height="283"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:65%;">
 <ul>
-<li class="fragment">Pour <strong>les valeurs proches de la frontière de décision</strong>, 205, certains exemples sont classés comme Gentoo tandis que d’autres ne le sont pas, ce qui conduit à une incertitude de classification comparable à un lancer de pièce (<strong>probabilité de 0,5</strong>).</li>
+<li class="fragment">Près du seuil, la sortie ajustée est proche de <span class="math inline">0.5</span>, mais la régression linéaire ne produit toujours pas un modèle probabiliste valide.</li>
 </ul>
 </div></div>
 </section></section>
 <section>
-<section id="fonction-logistique" class="title-slide slide level1 center">
+<section id="fonction-logistique" class="title-slide slide level1 hide-code-toggle center">
 <h1>Fonction logistique</h1>
-
+<div id="f4a39ec4" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="kw">def</span> sigmoid(t):</span>
+<span id="cb9-2"><a aria-label="2"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>t))</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a>sigmoid_input <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">1000</span>)</span>
+<span id="cb9-5"><a aria-label="5"></a>sigmoid_output <span class="op">=</span> sigmoid(sigmoid_input)</span>
+<span id="cb9-6"><a aria-label="6"></a></span>
+<span id="cb9-7"><a aria-label="7"></a><span class="co"># Ajuster une régression logistique à un attribut afin de distinguer</span></span>
+<span id="cb9-8"><a aria-label="8"></a><span class="co"># son score linéaire de la probabilité obtenue après la sigmoïde.</span></span>
+<span id="cb9-9"><a aria-label="9"></a>penguin_logistic_model <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb9-10"><a aria-label="10"></a>penguin_logistic_model.fit(penguin_X, penguin_y)</span>
+<span id="cb9-11"><a aria-label="11"></a></span>
+<span id="cb9-12"><a aria-label="12"></a>penguin_line_score <span class="op">=</span> penguin_logistic_model.decision_function(penguin_line_X)</span>
+<span id="cb9-13"><a aria-label="13"></a>logistic_boundary_mm <span class="op">=</span> <span class="bu">float</span>(</span>
+<span id="cb9-14"><a aria-label="14"></a>    <span class="op">-</span>penguin_logistic_model.intercept_[<span class="dv">0</span>] <span class="op">/</span></span>
+<span id="cb9-15"><a aria-label="15"></a>    penguin_logistic_model.coef_[<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb9-16"><a aria-label="16"></a>)</span>
+<span id="cb9-17"><a aria-label="17"></a></span>
+<span id="cb9-18"><a aria-label="18"></a><span class="kw">def</span> plot_penguin_logistic_score():</span>
+<span id="cb9-19"><a aria-label="19"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb9-20"><a aria-label="20"></a>    plt.plot(</span>
+<span id="cb9-21"><a aria-label="21"></a>        penguin_line_X[<span class="st">'flipper_length_mm'</span>],</span>
+<span id="cb9-22"><a aria-label="22"></a>        penguin_line_score,</span>
+<span id="cb9-23"><a aria-label="23"></a>        color<span class="op">=</span><span class="st">'blue'</span>,</span>
+<span id="cb9-24"><a aria-label="24"></a>        linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb9-25"><a aria-label="25"></a>    )</span>
+<span id="cb9-26"><a aria-label="26"></a>    plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-27"><a aria-label="27"></a>    plt.axvline(logistic_boundary_mm, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-28"><a aria-label="28"></a>    plt.scatter([logistic_boundary_mm], [<span class="dv">0</span>], color<span class="op">=</span><span class="st">'black'</span>, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb9-29"><a aria-label="29"></a>    plt.xlabel(<span class="st">'Longueur des nageoires (mm)'</span>)</span>
+<span id="cb9-30"><a aria-label="30"></a>    plt.ylabel(<span class="vs">r'Score linéaire </span><span class="dv">$</span><span class="vs">t</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb9-31"><a aria-label="31"></a>    plt.grid(<span class="va">True</span>)</span>
+<span id="cb9-32"><a aria-label="32"></a>    plt.show()</span>
+<span id="cb9-33"><a aria-label="33"></a></span>
+<span id="cb9-34"><a aria-label="34"></a><span class="kw">def</span> plot_sigmoid():</span>
+<span id="cb9-35"><a aria-label="35"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb9-36"><a aria-label="36"></a>    ax.plot(sigmoid_input, sigmoid_output, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-37"><a aria-label="37"></a>    ax.axvline(x<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-38"><a aria-label="38"></a>    ax.axhline(y<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-39"><a aria-label="39"></a>    ax.scatter([<span class="dv">0</span>], [<span class="fl">0.5</span>], color<span class="op">=</span><span class="st">'black'</span>, zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb9-40"><a aria-label="40"></a>    ax.set_yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="fl">1.0</span>])</span>
+<span id="cb9-41"><a aria-label="41"></a>    ax.set_xlabel(<span class="st">'t'</span>)</span>
+<span id="cb9-42"><a aria-label="42"></a>    ax.set_ylabel(<span class="vs">r'</span><span class="dv">$\s</span><span class="vs">igma</span><span class="kw">(</span><span class="vs">t</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb9-43"><a aria-label="43"></a>    ax.grid(<span class="va">True</span>)</span>
+<span id="cb9-44"><a aria-label="44"></a>    plt.show()</span>
+<span id="cb9-45"><a aria-label="45"></a></span>
+<span id="cb9-46"><a aria-label="46"></a>plot_sigmoid()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="67c12034" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>plot_sigmoid()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
-<section id="fonction-logistique-1" class="slide level2">
+<section id="fonction-logistique-1" class="slide level2 hide-code-toggle">
 <h2>Fonction logistique</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<p>La <strong>fonction logistique standard</strong> transforme une entrée à valeur réelle de <span class="math inline">\(\mathbb{R}\)</span> en l’intervalle ouvert <span class="math inline">\((0,1).\)</span> La fonction est définie comme suit :</p>
-<p><span class="math display">\[
+<p>En mathématiques, la <strong>fonction logistique standard</strong> transforme une entrée réelle de <span class="math inline">\mathbb{R}</span> en une valeur dans l’intervalle ouvert <span class="math inline">(0,1)</span>. Elle est définie ainsi :</p>
+<p><span class="math display">
   \sigma(t) = \frac{1}{1+e^{-t}}
-\]</span></p>
+</span></p>
 </div><div class="column" style="width:60%;">
-<div id="d9e6ad08" class="cell" data-execution_count="10">
+<div id="624970b5" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="co"># Fonction Sigmoïde</span></span>
-<span id="cb4-2"><a aria-label="2"></a><span class="kw">def</span> sigmoid(t):</span>
-<span id="cb4-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>t))</span>
-<span id="cb4-4"><a aria-label="4"></a></span>
-<span id="cb4-5"><a aria-label="5"></a><span class="co"># Générer des valeurs de t</span></span>
-<span id="cb4-6"><a aria-label="6"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">1000</span>)</span>
-<span id="cb4-7"><a aria-label="7"></a></span>
-<span id="cb4-8"><a aria-label="8"></a><span class="co"># Calculer les valeurs de y pour la fonction sigmoïde</span></span>
-<span id="cb4-9"><a aria-label="9"></a>sigma <span class="op">=</span> sigmoid(t)</span>
-<span id="cb4-10"><a aria-label="10"></a></span>
-<span id="cb4-11"><a aria-label="11"></a><span class="co"># Créer une figure</span></span>
-<span id="cb4-12"><a aria-label="12"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb4-13"><a aria-label="13"></a>ax.plot(t, sigma, color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)  <span class="co"># Garder la courbe opaque</span></span>
-<span id="cb4-14"><a aria-label="14"></a></span>
-<span id="cb4-15"><a aria-label="15"></a><span class="co"># Tracer l'axe vertical à x = 0</span></span>
-<span id="cb4-16"><a aria-label="16"></a>ax.axvline(x<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-17"><a aria-label="17"></a></span>
-<span id="cb4-18"><a aria-label="18"></a><span class="co"># Ajouter des étiquettes sur l'axe vertical</span></span>
-<span id="cb4-19"><a aria-label="19"></a>ax.set_yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="fl">1.0</span>])</span>
-<span id="cb4-20"><a aria-label="20"></a></span>
-<span id="cb4-21"><a aria-label="21"></a><span class="co"># Ajouter des étiquettes aux axes</span></span>
-<span id="cb4-22"><a aria-label="22"></a>ax.set_xlabel(<span class="st">'t'</span>)</span>
-<span id="cb4-23"><a aria-label="23"></a>ax.set_ylabel(<span class="vs">r'</span><span class="dv">$\s</span><span class="vs">igma</span><span class="kw">(</span><span class="vs">t</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-24"><a aria-label="24"></a></span>
-<span id="cb4-25"><a aria-label="25"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb4-26"><a aria-label="26"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>plot_sigmoid()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/cell-10-output-1.png" class="quarto-figure quarto-figure-center" width="813" height="430"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="441" height="282"></a></p>
 </figure>
 </div>
 </div>
@@ -655,19 +759,19 @@ Marcel Turcotte
 </div></div>
 <aside class="notes">
 <ul>
-<li>Lorsque la variable d’entrée <span class="math inline">\(t\)</span> est égale à 0, la sortie de la fonction logistique est de 0,5.
+<li>Lorsque la variable d’entrée <span class="math inline">t</span> vaut 0, la sortie de la fonction logistique vaut 0.5.
 <ul>
-<li>En effet, <span class="math inline">\(e^{-t} = {e^0} = 1\)</span> et donc <span class="math inline">\(\frac{1}{1+e^{-t}} = \frac{1}{1+1}= \frac{1}{2}.\)</span></li>
+<li>En effet, <span class="math inline">e^{-t} = {e^0} = 1</span> et donc <span class="math inline">\frac{1}{1+e^{-t}} = \frac{1}{1+1}= \frac{1}{2}.</span></li>
 </ul></li>
-<li>À mesure que <span class="math inline">\(t\)</span> augmente, la valeur de sortie se rapproche de 1.
+<li>Lorsque <span class="math inline">t</span> augmente, la sortie tend vers 1.
 <ul>
-<li>Lorsque <span class="math inline">\(t \to \infty\)</span>, <span class="math inline">\(e^{-t} \to 0\)</span>.</li>
+<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">e^{-t} \to 0</span>.</li>
 </ul></li>
-<li>Inversement, à mesure que <span class="math inline">\(t\)</span> devient plus négatif, la valeur de sortie se rapproche de 0.
+<li>Inversement, lorsque <span class="math inline">t</span> devient de plus en plus négatif, la sortie tend vers 0.
 <ul>
-<li>Lorsque <span class="math inline">\(t \to -\infty\)</span>, <span class="math inline">\(e^{-t} \to \infty\)</span> (les deux signes négatifs s’annulent).</li>
+<li>Lorsque <span class="math inline">t \to -\infty</span>, <span class="math inline">e^{-t} \to \infty</span> (les deux signes négatifs s’annulent).</li>
 </ul></li>
-<li>La fonction logistique standard est également couramment appelée <strong>fonction sigmoïde</strong>.</li>
+<li>La fonction logistique standard est aussi communément appelée <strong>fonction sigmoïde</strong>.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -681,128 +785,222 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 </section>
-<section id="régression-logistique-intuition" class="slide level2 smaller">
-<h2>Régression logistique (intuition)</h2>
+<section id="score-linéaire-et-probabilité" class="slide level2 smaller nostretch hide-code-toggle">
+<h2>Score linéaire et probabilité</h2>
 <div class="columns">
-<div class="column" style="width:65%;">
-<div id="2dc6bed1" class="cell" data-execution_count="11">
+<div class="column" style="width:60%;">
+<div id="1e093fd1" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>plot_penguin_logistic_score()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-11-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="slides_files/figure-revealjs/cell-11-output-1.png" class="quarto-figure quarto-figure-center" width="503" height="357"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/cell-13-output-1.png" class="quarto-figure quarto-figure-center" width="449" height="283"></a></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
-<div id="3a9dbf4e" class="cell" data-execution_count="12">
+</div><div class="column" style="width:40%;">
+<div id="7f06b52e" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>plot_sigmoid()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="slides_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="515" height="356"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="slides_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="441" height="282"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 <ul>
-<li class="fragment">Lorsque la <strong>distance à la frontière de décision</strong> est <strong>zéro</strong>, l’incertitude est élevée, rendant une probabilité de <strong>0,5</strong> appropriée.</li>
-<li class="fragment">À mesure que nous nous <strong>éloignons de la frontière de décision</strong>, la confiance augmente, justifiant des probabilités <strong>plus hautes</strong> ou <strong>plus basses</strong> en conséquence.</li>
+<li class="fragment">Le score linéaire ajusté <span class="math inline">t(x)=\theta_0+\theta_1x</span> est nul à la frontière de décision, qui se situe à environ <span class="math inline">207</span> mm dans cet exemple.</li>
+<li class="fragment">La sigmoïde transforme ce score nul en <span class="math inline">P(y=1\mid x)=0.5</span>. Les scores négatifs correspondent à des probabilités inférieures à <span class="math inline">0.5</span>, et les scores positifs à des probabilités supérieures à <span class="math inline">0.5</span>.</li>
 </ul>
 </section>
-<section id="fonction-logistique-2" class="slide level2">
+<section id="fonction-logistique-2" class="slide level2 hide-code-toggle">
 <h2>Fonction logistique</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>Une courbe en forme de S, telle que la fonction logistique standard (également appelée <strong>sigmoïde</strong>), est qualifiée de <strong>fonction d’écrasement</strong> (<em>squashing function</em>) car elle transforme un large domaine d’entrée en une plage de sortie restreinte.</p>
+<p>Une courbe en S, comme la fonction logistique standard (ou <strong>sigmoïde</strong>), est appelée <strong>fonction d’écrasement</strong>, car elle transforme un vaste domaine d’entrée en un intervalle de sortie restreint.</p>
+<p><span class="math display">
+  \sigma(t) = \frac{1}{1+e^{-t}}
+</span></p>
 </div><div class="column" style="width:40%;">
-<div id="5be3a519" class="cell" data-execution_count="13">
+<div id="0c862f04" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>plot_sigmoid()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/cell-13-output-1.png" class="quarto-figure quarto-figure-center" width="515" height="356"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="slides_files/figure-revealjs/cell-15-output-1.png" class="quarto-figure quarto-figure-center" width="441" height="282"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="math display">\[
-  \sigma(t) = \frac{1}{1+e^{-t}}
-\]</span></p>
 </div></div>
 </section>
 <section id="régression-logistique-logit-1" class="slide level2">
-<h2>Régression Logistique (Logit)</h2>
+<h2>Régression logistique (logit)</h2>
 <ul>
-<li class="fragment"><p>De manière analogue à la <strong>régression linéaire</strong>, la <strong>régression logistique</strong> calcule une somme pondérée des attributs d’entrée, exprimée comme suit : <span class="math display">\[
+<li class="fragment"><p>À l’instar de la <strong>régression linéaire</strong>, la <strong>régression logistique</strong> calcule une somme pondérée des attributs d’entrée : <span class="math display">
 \theta_0 + \theta_1 x_i^{(1)} + \theta_2 x_i^{(2)} + \ldots + \theta_D x_i^{(D)}
-\]</span></p></li>
-<li class="fragment"><p>Cependant, l’utilisation de la fonction sigmoïde limite sa sortie à l’intervalle <span class="math inline">\((0,1)\)</span> : <span class="math display">\[
+</span></p></li>
+<li class="fragment"><p>Toutefois, la fonction sigmoïde limite la sortie à l’intervalle <span class="math inline">(0,1)</span> : <span class="math display">
 \sigma(\theta_0 + \theta_1 x_i^{(1)} + \theta_2 x_i^{(2)} + \ldots + \theta_D x_i^{(D)})
-\]</span></p></li>
+</span></p></li>
 </ul>
 </section>
-<section id="notation" class="slide level2">
+<section id="notation" class="slide level2 smaller">
 <h2>Notation</h2>
 <ul>
-<li class="fragment"><p>Equation de la <strong>régression logistique</strong>: <span class="math display">\[
+<li class="fragment"><p>Équation de la <strong>régression logistique</strong> : <span class="math display">
 \sigma(\theta_0 + \theta_1 x_i^{(1)} + \theta_2 x_i^{(2)} + \ldots + \theta_D x_i^{(D)})
-\]</span></p></li>
-<li class="fragment"><p>Multipling <span class="math inline">\(\theta_0\)</span> (intercept/bias) by 1: <span class="math display">\[
+</span></p></li>
+<li class="fragment"><p>Multiplier <span class="math inline">\theta_0</span> (ordonnée à l’origine ou biais) <strong>par 1</strong> : <span class="math display">
 \sigma(\theta_0 \times 1 + \theta_1 x_i^{(1)} + \theta_2 x_i^{(2)} + \ldots + \theta_D x_i^{(D)})
-\]</span></p></li>
-<li class="fragment"><p>Multipling <span class="math inline">\(\theta_0\)</span> by <span class="math inline">\(x_i^{(0)} = 1\)</span>: <span class="math display">\[
+</span></p></li>
+<li class="fragment"><p>Multiplier <span class="math inline">\theta_0</span> par <span class="math inline">x_i^{(0)} = 1</span> : <span class="math display">
 \sigma(\theta_0 x_i^{(0)} + \theta_1 x_i^{(1)} + \theta_2 x_i^{(2)} + \ldots + \theta_D x_i^{(D)})
-\]</span></p></li>
+</span></p></li>
 </ul>
 </section>
-<section id="régression-logistique-1" class="slide level2">
+<section id="régression-logistique-1" class="slide level2 hide-code-toggle">
 <h2>Régression logistique</h2>
-<p>Le modèle de <strong>Régression Logistique</strong>, sous sa forme vectorisée, est défini comme suit : <span class="math display">\[
-h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
-\]</span></p>
+<p>Sous sa forme vectorisée, le modèle de <strong>régression logistique</strong> est défini ainsi :</p>
+<p><span class="math display">
+  h_\theta(x_i) = \sigma(\theta^\top x_i) = \frac{1}{1+e^{-\theta^\top x_i}}
+  </span></p>
 
+<div id="f862d79a" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>penguin_features <span class="op">=</span> [<span class="st">'bill_depth_mm'</span>, <span class="st">'body_mass_g'</span>]</span>
+<span id="cb15-2"><a aria-label="2"></a>penguin_two_feature_df <span class="op">=</span> load_penguins()[penguin_features <span class="op">+</span> [<span class="st">'species'</span>]].dropna().copy()</span>
+<span id="cb15-3"><a aria-label="3"></a>penguin_two_feature_df[<span class="st">'is_gentoo'</span>] <span class="op">=</span> (</span>
+<span id="cb15-4"><a aria-label="4"></a>    penguin_two_feature_df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'Gentoo'</span></span>
+<span id="cb15-5"><a aria-label="5"></a>).astype(<span class="bu">int</span>)</span>
+<span id="cb15-6"><a aria-label="6"></a></span>
+<span id="cb15-7"><a aria-label="7"></a>penguin_two_X <span class="op">=</span> penguin_two_feature_df[penguin_features].to_numpy()</span>
+<span id="cb15-8"><a aria-label="8"></a>penguin_two_y <span class="op">=</span> penguin_two_feature_df[<span class="st">'is_gentoo'</span>].to_numpy()</span>
+<span id="cb15-9"><a aria-label="9"></a></span>
+<span id="cb15-10"><a aria-label="10"></a>penguin_two_X_train, penguin_two_X_test, penguin_two_y_train, penguin_two_y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb15-11"><a aria-label="11"></a>    penguin_two_X,</span>
+<span id="cb15-12"><a aria-label="12"></a>    penguin_two_y,</span>
+<span id="cb15-13"><a aria-label="13"></a>    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb15-14"><a aria-label="14"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb15-15"><a aria-label="15"></a>    stratify<span class="op">=</span>penguin_two_y</span>
+<span id="cb15-16"><a aria-label="16"></a>)</span>
+<span id="cb15-17"><a aria-label="17"></a></span>
+<span id="cb15-18"><a aria-label="18"></a>penguin_two_model <span class="op">=</span> make_pipeline(</span>
+<span id="cb15-19"><a aria-label="19"></a>    StandardScaler(),</span>
+<span id="cb15-20"><a aria-label="20"></a>    LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb15-21"><a aria-label="21"></a>)</span>
+<span id="cb15-22"><a aria-label="22"></a>penguin_two_model.fit(penguin_two_X_train, penguin_two_y_train)</span>
+<span id="cb15-23"><a aria-label="23"></a></span>
+<span id="cb15-24"><a aria-label="24"></a><span class="kw">def</span> plot_penguin_decision_boundary(X_values, y_values, fitted_model):</span>
+<span id="cb15-25"><a aria-label="25"></a>    bill_depth <span class="op">=</span> np.linspace(X_values[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X_values[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span>, <span class="dv">200</span>)</span>
+<span id="cb15-26"><a aria-label="26"></a>    body_mass <span class="op">=</span> np.linspace(X_values[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">200</span>, X_values[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">200</span>, <span class="dv">200</span>)</span>
+<span id="cb15-27"><a aria-label="27"></a>    depth_grid, mass_grid <span class="op">=</span> np.meshgrid(bill_depth, body_mass)</span>
+<span id="cb15-28"><a aria-label="28"></a>    grid <span class="op">=</span> np.column_stack([depth_grid.ravel(), mass_grid.ravel()])</span>
+<span id="cb15-29"><a aria-label="29"></a>    predicted_class <span class="op">=</span> fitted_model.predict(grid).reshape(depth_grid.shape)</span>
+<span id="cb15-30"><a aria-label="30"></a></span>
+<span id="cb15-31"><a aria-label="31"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb15-32"><a aria-label="32"></a>    plt.contourf(depth_grid, mass_grid, predicted_class, alpha<span class="op">=</span><span class="fl">0.3</span>, cmap<span class="op">=</span><span class="st">'RdYlBu'</span>)</span>
+<span id="cb15-33"><a aria-label="33"></a>    plt.scatter(</span>
+<span id="cb15-34"><a aria-label="34"></a>        X_values[y_values <span class="op">==</span> <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb15-35"><a aria-label="35"></a>        X_values[y_values <span class="op">==</span> <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb15-36"><a aria-label="36"></a>        color<span class="op">=</span><span class="st">'orange'</span>,</span>
+<span id="cb15-37"><a aria-label="37"></a>        edgecolors<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb15-38"><a aria-label="38"></a>        label<span class="op">=</span><span class="st">'Gentoo'</span></span>
+<span id="cb15-39"><a aria-label="39"></a>    )</span>
+<span id="cb15-40"><a aria-label="40"></a>    plt.scatter(</span>
+<span id="cb15-41"><a aria-label="41"></a>        X_values[y_values <span class="op">==</span> <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb15-42"><a aria-label="42"></a>        X_values[y_values <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb15-43"><a aria-label="43"></a>        color<span class="op">=</span><span class="st">'blue'</span>,</span>
+<span id="cb15-44"><a aria-label="44"></a>        edgecolors<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb15-45"><a aria-label="45"></a>        label<span class="op">=</span><span class="st">'Non Gentoo'</span></span>
+<span id="cb15-46"><a aria-label="46"></a>    )</span>
+<span id="cb15-47"><a aria-label="47"></a>    plt.xlabel(<span class="st">'Profondeur du bec (mm)'</span>)</span>
+<span id="cb15-48"><a aria-label="48"></a>    plt.ylabel(<span class="st">'Masse corporelle (g)'</span>)</span>
+<span id="cb15-49"><a aria-label="49"></a>    plt.title(<span class="st">'Régions de décision de la régression logistique'</span>)</span>
+<span id="cb15-50"><a aria-label="50"></a>    plt.legend()</span>
+<span id="cb15-51"><a aria-label="51"></a>    plt.show()</span>
+<span id="cb15-52"><a aria-label="52"></a></span>
+<span id="cb15-53"><a aria-label="53"></a>plot_penguin_decision_boundary(</span>
+<span id="cb15-54"><a aria-label="54"></a>    penguin_two_X_train,</span>
+<span id="cb15-55"><a aria-label="55"></a>    penguin_two_y_train,</span>
+<span id="cb15-56"><a aria-label="56"></a>    penguin_two_model</span>
+<span id="cb15-57"><a aria-label="57"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="37ed5b2f" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>plot_penguin_decision_boundary(</span>
+<span id="cb16-2"><a aria-label="2"></a>    penguin_two_X_train,</span>
+<span id="cb16-3"><a aria-label="3"></a>    penguin_two_y_train,</span>
+<span id="cb16-4"><a aria-label="4"></a>    penguin_two_model</span>
+<span id="cb16-5"><a aria-label="5"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 <aside><div>
-<p>Une caractéristique supplémentaire, <span class="math inline">\(x_i^{(0)} = 1\)</span>, a été ajoutée à <span class="math inline">\(x_i\)</span>, et <span class="math inline">\(\theta_0\)</span> est le terme d’interception/biais.</p>
+<p>Un attribut supplémentaire, <span class="math inline">x_i^{(0)} = 1</span>, a été ajouté à <span class="math inline">x_i</span>, et <span class="math inline">\theta_0</span> est l’ordonnée à l’origine, ou biais.</p>
 </div></aside></section>
-<section id="régression-logistique-deux-attributs" class="slide level2">
+<section id="régression-logistique-deux-attributs" class="slide level2 hide-code-toggle">
 <h2>Régression logistique (deux attributs)</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<div id="c956c094" class="cell" data-execution_count="14">
+<div id="43115830" class="cell" data-execution_count="18">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>plot_penguin_decision_boundary(</span>
+<span id="cb17-2"><a aria-label="2"></a>    penguin_two_X_train,</span>
+<span id="cb17-3"><a aria-label="3"></a>    penguin_two_y_train,</span>
+<span id="cb17-4"><a aria-label="4"></a>    penguin_two_model</span>
+<span id="cb17-5"><a aria-label="5"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/cell-14-output-1.png" class="quarto-figure quarto-figure-center" width="751" height="378"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-18-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="slides_files/figure-revealjs/cell-18-output-1.png" class="quarto-figure quarto-figure-center" width="751" height="378"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="math display">\[
-  h_\theta(x_i) = \sigma(\theta x_i)
-\]</span></p>
+<p><span class="math display">
+  h_\theta(x_i) = \sigma(\theta^\top x_i)
+</span></p>
 </div><div class="column" style="width:65%;">
 <ul>
-<li class="fragment">En régression logistique, <strong>la probabilité de classer correctement un exemple augmente à mesure que sa distance par rapport à la frontière de décision augmente</strong>.</li>
-<li class="fragment">Ce principe est valable pour les classes <strong>positives</strong> et <strong>négatives</strong>.</li>
-<li class="fragment">Un exemple situé sur la frontière de décision a une <strong>probabilité de 50%</strong> d’appartenir à l’une ou l’autre des classes.</li>
+<li class="fragment">Le signe de <span class="math inline">\theta^\top x_i</span> détermine de quel côté de la frontière de décision se trouve l’exemple.</li>
+<li class="fragment">Plus le score devient positif ou négatif, plus la probabilité du modèle s’éloigne de <span class="math inline">0.5</span>.</li>
+<li class="fragment">Sur la frontière de décision, <span class="math inline">\theta^\top x_i=0</span> et le modèle attribue une probabilité de <span class="math inline">0.5</span> à chaque classe.</li>
 </ul>
 </div></div>
 </section>
-<section id="régression-logistique-2" class="slide level2">
+<section id="régression-logistique-2" class="slide level2 smaller">
 <h2>Régression logistique</h2>
 <ul>
-<li><p>Le modèle de <strong>Régression Logistique</strong>, sous sa forme vectorisée, est défini comme suit : <span class="math display">\[
-h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
-\]</span></p></li>
-<li><p>Les <strong>prédictions</strong> sont faites comme suit :</p>
+<li><p>Sous sa forme vectorisée, le modèle de <strong>régression logistique</strong> est défini ainsi :</p>
+<p><span class="math display">
+h_\theta(x_i) = \sigma(\theta^\top x_i) = \frac{1}{1+e^{-\theta^\top x_i}}
+</span></p></li>
+<li><p>Les <strong>prédictions</strong> sont obtenues comme suit :</p>
 <ul>
-<li><span class="math inline">\(y_i = 0\)</span>, si <span class="math inline">\(h_\theta(x_i) &lt; 0.5\)</span></li>
-<li><span class="math inline">\(y_i = 1\)</span>, si <span class="math inline">\(h_\theta(x_i) \geq 0.5\)</span></li>
+<li><span class="math inline">\hat{y}_i = 0</span> si <span class="math inline">h_\theta(x_i) &lt; 0.5</span>, ce qui équivaut à <span class="math inline">\theta^\top x_i &lt; 0</span></li>
+<li><span class="math inline">\hat{y}_i = 1</span> si <span class="math inline">h_\theta(x_i) \geq 0.5</span>, ce qui équivaut à <span class="math inline">\theta^\top x_i \geq 0</span></li>
 </ul></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Les valeurs de <span class="math inline">\(\theta\)</span> sont apprises en utilisant la <strong>descente de gradient</strong>.</li>
+<li>Les paramètres <span class="math inline">\theta</span> sont appris en minimisant une fonction de perte. Le prochain cours dérive cette fonction et applique la descente de gradient.</li>
 </ul>
 </div>
 </section>
@@ -811,7 +1009,7 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 <iframe data-external="1" src="https://www.youtube.com/embed/yIYKR4sgzI8" width="100%" height="85%" title="StatQuest: Logistic Regression" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <aside class="notes">
-<p>“StatQuest décompose les méthodes complexes de statistiques et d’apprentissage automatique en petites sections faciles à comprendre. StatQuest ne simplifie pas excessivement le matériel ; au contraire, il vous renforce pour que vous soyez plus intelligent et ayez une meilleure compréhension des statistiques et de l’apprentissage automatique.” C’est souvent un bon point de départ pour acquérir l’intuition nécessaire à la compréhension des concepts statistiques et d’apprentissage automatique.</p>
+<p>StatQuest décompose les méthodes complexes de statistique et d’apprentissage automatique en petits éléments faciles à comprendre. La chaîne ne simplifie pas le contenu à outrance; elle développe plutôt progressivement la compréhension. C’est souvent un bon point de départ pour acquérir l’intuition nécessaire aux concepts statistiques et à l’apprentissage automatique.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -824,11 +1022,11 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
           display:block!important;
       }</style></aside>
 <aside><div>
-<p><strong>Attribution</strong> : <a href="https://youtu.be/yIYKR4sgzI8">StatQuest: Logistic Regression</a> par Josh Starmer.</p>
+<p><strong>Attribution :</strong> <a href="https://youtu.be/yIYKR4sgzI8">StatQuest: Logistic Regression</a>, par Josh Starmer.</p>
 </div></aside></section></section>
 <section>
-<section id="chiffres-manuscrits" class="title-slide slide level1 center">
-<h1>Chiffres manuscrits</h1>
+<section id="exemple-des-chiffres" class="title-slide slide level1 center">
+<h1>Exemple des chiffres</h1>
 
 </section>
 <section id="yann-lecun" class="slide level2">
@@ -837,83 +1035,81 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 </section>
 <section id="reconnaissance-de-chiffres-manuscrits" class="slide level2">
 <h2>Reconnaissance de chiffres manuscrits</h2>
-<h3 id="objectifs">Objectifs :</h3>
+<h3 id="objectif">Objectif :</h3>
 <ul>
 <li><p>Développer un <strong>modèle de régression logistique</strong> pour la <strong>reconnaissance de chiffres manuscrits</strong>.</p></li>
-<li><p>Visualiser les <strong>informations</strong> et les <strong>motifs</strong> acquis par le modèle.</p></li>
+<li><p>Visualiser les <strong>informations</strong> et les <strong>motifs</strong> appris par le modèle.</p></li>
 </ul>
 
 <aside><div>
-<p>Nous utilisons les <a href="https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits">jeux de données UCI ML de chiffres manuscrits</a>.</p>
+<p>Nous utilisons le <a href="https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits">jeu de données UCI ML sur les chiffres manuscrits</a>.</p>
 </div></aside></section>
-<section id="chiffres-manuscrits-1" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<p>Chargement du jeu de données</p>
-<div id="d32cee2f" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_digits</span>
-<span id="cb5-2"><a aria-label="2"></a></span>
-<span id="cb5-3"><a aria-label="3"></a>digits <span class="op">=</span> load_digits()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Charger le jeu de données</p>
+<div id="65583de2" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a>digits <span class="op">=</span> load_digits()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Quel est le type de <code>digits.data</code></p>
-<div id="67f3df9f" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="bu">type</span>(digits.data)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<p>Quel est le type de <code>digits.data</code>?</p>
+<div id="22ef6182" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a><span class="bu">type</span>(digits.data)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>numpy.ndarray</code></pre>
 </div>
 </div>
 
 <aside><div>
-<p>Développement d’un <strong>modèle de régression logistique</strong> pour la <strong>reconnaissance des chiffres manuscrits</strong> de ce jeux de données de l’UCI ML.</p>
+<p>Développer un <strong>modèle de régression logistique</strong> pour la <strong>reconnaissance de chiffres manuscrits</strong>.</p>
 </div></aside></section>
-<section id="chiffres-manuscrits-2" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<p>Combien d’exemples (<code>N</code>) et combien d’attributs (<code>D</code>)?</p>
-<div id="9aa195fc" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a>digits.data.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-1" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Combien y a-t-il d’exemples (<code>N</code>) et d’attributs (<code>D</code>)?</p>
+<div id="8ca2c652" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>digits.data.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>(1797, 64)</code></pre>
 </div>
 </div>
-<p>Définition des valeurs de <code>N</code> et <code>D</code></p>
-<div id="e116b9f6" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>N, D <span class="op">=</span> digits.data.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Attribuer des valeurs à <code>N</code> et <code>D</code></p>
+<div id="fb87dd43" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a>digit_count, digit_feature_count <span class="op">=</span> digits.data.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>target</code> a-t-il le même nombre d’entrées (exemples) que <code>data</code> ?</p>
-<div id="4006da65" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>digits.target.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<p><code>target</code> contient-il le même nombre d’entrées (exemples) que <code>data</code>?</p>
+<div id="ccd99dc9" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>digits.target.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>(1797,)</code></pre>
 </div>
 </div>
 </section>
-<section id="chiffres-manuscrits-3" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<p>Quelles sont la largeur et la hauteur de ces images ?</p>
-<div id="e61902e5" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>digits.images.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-2" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Quelles sont la largeur et la hauteur de ces images?</p>
+<div id="5450c77e" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a>digits.images.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>(1797, 8, 8)</code></pre>
 </div>
 </div>
-<p>Définition des valeurs de <code>width</code> et <code>height</code></p>
-<div id="fc70383e" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a>_, width, height <span class="op">=</span> digits.images.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Attribuer des valeurs à <code>height</code> et <code>width</code></p>
+<div id="669ea43d" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>_, digit_height, digit_width <span class="op">=</span> digits.images.shape</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="chiffres-manuscrits-4" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<p>Définition des valeurs de <code>X</code> et <code>y</code></p>
-<div id="480667db" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a>X <span class="op">=</span> digits.data</span>
-<span id="cb16-2"><a aria-label="2"></a>y <span class="op">=</span> digits.target</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-3" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Attribuer des valeurs à <code>digits_X</code> et <code>digits_y</code></p>
+<div id="3adf836c" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>digits_X <span class="op">=</span> digits.data</span>
+<span id="cb29-2"><a aria-label="2"></a>digits_y <span class="op">=</span> digits.target</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="chiffres-manuscrits-5" class="slide level2 smaller">
-<h2>Chiffres manuscrits</h2>
-<p><code>X[0]</code> est un vecteur de taille <code>width * height = D</code> (<span class="math inline">\(8 \times 8 = 64\)</span>).</p>
-<div id="65aa1bdd" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>X[<span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-4" class="slide level2 smaller">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p><code>digits_X[0]</code> est un vecteur de taille <code>digit_height * digit_width = D</code> (<span class="math inline">8 \times 8 = 64</span>).</p>
+<div id="e7d41f9d" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>digits_X[<span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>array([ 0.,  0.,  5., 13.,  9.,  1.,  0.,  0.,  0.,  0., 13., 15., 10.,
        15.,  5.,  0.,  0.,  3., 15.,  2.,  0., 11.,  8.,  0.,  0.,  4.,
        12.,  0.,  0.,  8.,  8.,  0.,  0.,  5.,  8.,  0.,  0.,  9.,  8.,
@@ -922,10 +1118,10 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 </div>
 </div>
 <div class="fragment">
-<p>Il correspond à une image de <span class="math inline">\(8 \times 8 = 64\)</span>.</p>
-<div id="762aa113" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>X[<span class="dv">0</span>].reshape(width, height)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<p>Il correspond à une image de <span class="math inline">8 \times 8 = 64</span> pixels.</p>
+<div id="79749dab" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>digits_X[<span class="dv">0</span>].reshape(digit_height, digit_width)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>array([[ 0.,  0.,  5., 13.,  9.,  1.,  0.,  0.],
        [ 0.,  0., 13., 15., 10., 15.,  5.,  0.],
        [ 0.,  3., 15.,  2.,  0., 11.,  8.,  0.],
@@ -938,30 +1134,31 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
 </div>
 </div>
 </section>
-<section id="chiffres-manuscrits-6" class="slide level2 smaller">
-<h2>Chiffres manuscrits</h2>
-<p>Afficher les <code>n=5</code> premiers exemples.</p>
-<div id="e71f1fbb" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb21-2"><a aria-label="2"></a></span>
-<span id="cb21-3"><a aria-label="3"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">2</span>))</span>
-<span id="cb21-4"><a aria-label="4"></a>n <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb21-5"><a aria-label="5"></a></span>
-<span id="cb21-6"><a aria-label="6"></a><span class="cf">for</span> index, (image, label) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(X[<span class="dv">0</span>:n], y[<span class="dv">0</span>:n])):</span>
-<span id="cb21-7"><a aria-label="7"></a>    plt.subplot(<span class="dv">1</span>, n, index <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb21-8"><a aria-label="8"></a>    plt.imshow(np.reshape(image, (width,width)), cmap<span class="op">=</span>plt.cm.gray)</span>
-<span id="cb21-9"><a aria-label="9"></a>    plt.title(<span class="ss">f'y = </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-5" class="slide level2 smaller">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Tracer les <code>n=5</code> premiers exemples</p>
+<div id="87bd72bc" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a><span class="kw">def</span> plot_digit_examples(X_values, y_values, count<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb34-2"><a aria-label="2"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">2</span>))</span>
+<span id="cb34-3"><a aria-label="3"></a>    <span class="cf">for</span> index, (image, label) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(X_values[:count], y_values[:count])):</span>
+<span id="cb34-4"><a aria-label="4"></a>        plt.subplot(<span class="dv">1</span>, count, index <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb34-5"><a aria-label="5"></a>        plt.imshow(image.reshape(digit_height, digit_width), cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb34-6"><a aria-label="6"></a>        plt.title(<span class="ss">f'y = </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb34-7"><a aria-label="7"></a>        plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb34-8"><a aria-label="8"></a>    plt.show()</span>
+<span id="cb34-9"><a aria-label="9"></a></span>
+<span id="cb34-10"><a aria-label="10"></a>plot_digit_examples(digits_X, digits_y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-25-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/cell-25-output-1.png" width="781" height="190"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-29-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="slides_files/figure-revealjs/cell-29-output-1.png" width="763" height="168"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Les valeurs d’intensité proches de 0 sont représentées en noir, tandis que les valeurs élevées sont représentées en blanc.</p>
-<p>Utiliser <code>cmap=plt.cm.binary</code> afin d’inverser les images (intensité proches de 0 en blanc, valeurs élevées en noir).</p>
+<p>Les intensités proches de 0 sont représentées en noir, tandis que les valeurs élevées sont représentées en blanc.</p>
+<p>Utilisez <code>cmap=plt.cm.binary</code> pour inverser les images (valeurs proches de 0 en blanc et valeurs élevées en noir).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -974,89 +1171,79 @@ h_\theta(x_i) = \sigma(\theta x_i) = \frac{1}{1+e^{- \theta x_i}}
           display:block!important;
       }</style></aside>
 </section>
-<section id="chiffres-manuscrits-7" class="slide level2 smaller">
-<h2>Chiffres manuscrits</h2>
-<div id="e030dbe7" class="cell" data-execution_count="26">
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-6" class="slide level2 smaller">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<div id="991580e5" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb22-2"><a aria-label="2"></a></span>
-<span id="cb22-3"><a aria-label="3"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">2</span>))</span>
-<span id="cb22-4"><a aria-label="4"></a>n <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb22-5"><a aria-label="5"></a></span>
-<span id="cb22-6"><a aria-label="6"></a><span class="cf">for</span> index, (image, label) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(X[<span class="dv">0</span>:n], y[<span class="dv">0</span>:n])):</span>
-<span id="cb22-7"><a aria-label="7"></a>    plt.subplot(<span class="dv">1</span>, n, index <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb22-8"><a aria-label="8"></a>    plt.imshow(np.reshape(image, (width,width)), cmap<span class="op">=</span>plt.cm.gray)</span>
-<span id="cb22-9"><a aria-label="9"></a>    plt.title(<span class="ss">f'y = </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a>plot_digit_examples(digits_X, digits_y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-26-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/cell-26-output-1.png" width="781" height="190"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-30-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="slides_files/figure-revealjs/cell-30-output-1.png" width="763" height="168"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li class="fragment"><p>Dans notre ensemble de données, chaque <span class="math inline">\(x_i\)</span> est un <strong>vecteur d’attributs</strong> de taille <span class="math inline">\(D = 64\)</span>.</p></li>
-<li class="fragment"><p>Ce vecteur est formé en concaténant les lignes d’une image de <span class="math inline">\(8 \times 8\)</span>.</p></li>
-<li class="fragment"><p>La fonction <code>reshape</code> est utilisée pour convertir ce vecteur de 64 dimensions en son format original d’image <span class="math inline">\(8 \times 8\)</span>.</p></li>
+<li class="fragment"><p>Dans notre jeu de données, chaque <span class="math inline">x_i</span> est un <strong>vecteur d’attributs</strong> de taille <span class="math inline">D = 64</span>.</p></li>
+<li class="fragment"><p>Ce vecteur est formé en concaténant les lignes d’une image de <span class="math inline">8 \times 8</span> pixels.</p></li>
+<li class="fragment"><p>La fonction <code>reshape</code> reconvertit ce vecteur à 64 dimensions dans son format d’image original de <span class="math inline">8 \times 8</span>.</p></li>
 </ul>
 </section>
-<section id="chiffres-manuscrits-8" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<div id="58bf47ca" class="cell" data-execution_count="27">
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-7" class="slide level2 hide-code-toggle">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<div id="154b2076" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a>plot_digit_examples(digits_X, digits_y)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-27-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/cell-27-output-1.png" width="781" height="190"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-31-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/cell-31-output-1.png" width="763" height="168"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li class="fragment"><p>Nous allons entraîner <strong>10 classificateurs</strong>, chacun correspondant à un chiffre spécifique dans une approche <strong>Un-contre-Tous (OvA)</strong>.</p></li>
-<li class="fragment"><p>Chaque classificateur déterminera les valeurs optimales des <span class="math inline">\(\theta_j\)</span> (associées aux attributs pixels), lui permettant de distinguer un chiffre de tous les autres.</p></li>
+<li class="fragment"><p>Nous entraînerons <strong>10 classificateurs</strong>, chacun correspondant à un chiffre précis dans une approche <strong>un contre tous (OvR)</strong>.</p></li>
+<li class="fragment"><p>Chaque classificateur déterminera les valeurs optimales des <span class="math inline">\theta_j</span> associés aux pixels, afin de distinguer un chiffre de tous les autres.</p></li>
 </ul>
 </section>
-<section id="chiffres-manuscrits-9" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<p>Préparation de notre expérience en apprentissage automatique</p>
-<div id="f24a517d" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb23-2"><a aria-label="2"></a></span>
-<span id="cb23-3"><a aria-label="3"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.1</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-8" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Préparer l’expérience d’apprentissage automatique</p>
+<div id="467f5a54" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a>digits_X_train, digits_X_test, digits_y_train, digits_y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb37-2"><a aria-label="2"></a>    digits_X,</span>
+<span id="cb37-3"><a aria-label="3"></a>    digits_y,</span>
+<span id="cb37-4"><a aria-label="4"></a>    test_size<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb37-5"><a aria-label="5"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb37-6"><a aria-label="6"></a>    stratify<span class="op">=</span>digits_y</span>
+<span id="cb37-7"><a aria-label="7"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="chiffres-manuscrits-10" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<p>Les algorithmes d’optimisation fonctionnent généralement mieux lorsque les attributs ont des plages de valeurs similaires.</p>
-<div id="32091736" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb24-2"><a aria-label="2"></a></span>
-<span id="cb24-3"><a aria-label="3"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb24-4"><a aria-label="4"></a>X_train <span class="op">=</span> scaler.fit_transform(X_train)</span>
-<span id="cb24-5"><a aria-label="5"></a>X_test <span class="op">=</span> scaler.transform(X_test)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-9" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Les algorithmes d’optimisation fonctionnent généralement mieux lorsque les attributs ont des échelles comparables.</p>
+<div id="cac2b9f1" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a>digit_scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb38-2"><a aria-label="2"></a>digits_X_train_scaled <span class="op">=</span> digit_scaler.fit_transform(digits_X_train)</span>
+<span id="cb38-3"><a aria-label="3"></a>digits_X_test_scaled <span class="op">=</span> digit_scaler.transform(digits_X_test)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
-<p>Certains classificateurs présentent des performances sous-optimales lorsqu’il existe des variations significatives dans les échelles des attributs. Ce problème est particulièrement accentué dans les classificateurs qui utilisent la descente de gradient pour l’optimisation des paramètres, car ils peuvent être affectés négativement par les écarts d’échelle des attributs. Par conséquent, la standardisation des attributs est une pratique largement adoptée pour atténuer ce problème.</p>
-<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html">StandardScaler</a> est une approche couramment utilisée. Pour un attribut donné, les valeurs sont transformées comme suit :</p>
-<p><span class="math display">\[
-z = \frac{(x - \mu)}{\sigma}
-\]</span></p>
-<p>où <span class="math inline">\(\mu\)</span> est la moyenne de toutes les valeurs pour cet attribut dans les données d’entraînement, et <span class="math inline">\(\sigma\)</span> l’écart type correspondant.</p>
-<p>Appeler <code>fit</code> oblige le scaler à apprendre la moyenne et l’écart type de chaque attribut. Appeler <code>transform</code> applique la transformation sur le jeu de données désigné. Enfin, appeler <code>fit_transform</code> combine les deux étapes.</p>
-<p>Ce serait une erreur d’appliquer <code>fit</code> ou <code>fit_transform</code> sur l’ensemble du jeu de données, une erreur appelée <strong>fuite de données</strong> (<em>data leakage</em>). Les informations du jeu de test influenceraient la moyenne et l’écart type appris par le scaler. Les données d’entraînement seraient transformées en utilisant des informations biaisées par le jeu de test. Le modèle apprendrait à partir de données d’entraînement mises à l’échelle en utilisant des informations biaisées par le jeu de test. Le jeu de test ne serait plus indépendant.</p>
-<p>Il est primordial de mettre à l’échelle les données de test. Le modèle a été entraîné sur des données mises à l’échelle, ici avec des valeurs moyennes centrées à zéro et un écart type de 1. Les données originales étaient probablement sur une échelle très différente. Imaginez un attribut représentant la température en Celsius, avec des valeurs de -40 à 40. Un autre attribut, représentant une note, avec des valeurs de 0 à 100. Le modèle produirait des résultats incohérents sur de telles données. Les données de test doivent être mises à l’échelle en utilisant la moyenne et l’écart type des données d’entraînement, qui représentent le cadre de référence pour son entraînement.</p>
-<ol type="1">
-<li><p><strong>Équité dans l’évaluation (pas de tricherie) :</strong> Si vous utilisez les données de test pour calculer la moyenne et la variance, vous jetez un coup d’œil aux réponses. Même si c’est “juste” une moyenne et un écart type, cela reste des informations provenant du jeu de test. Cela viole le principe selon lequel les données de test doivent rester complètement invisibles jusqu’à l’évaluation.</p></li>
-<li><p><strong>Cohérence de la distribution :</strong> Le modèle a été entraîné en supposant que les attributs sont centrés et mises à l’échelle en utilisant la distribution d’entraînement. Si vous mettez à l’échelle les données de test différemment (par exemple, avec sa propre moyenne/écart type), alors les nombres que le modèle voit ne correspondent plus à la distribution sur laquelle il a été entraîné. C’est comme donner au modèle des entrées dans une “nouvelle langue.”</p></li>
-<li><p><strong>Perspective de déploiement :</strong> Dans les applications réelles, vous n’aurez que la distribution d’entraînement pour calculer les paramètres de mise à l’échelle. Lorsque le modèle est déployé, vous ne pouvez pas arrêter le temps pour recalculer la mise à l’échelle chaque fois que de nouvelles données arrivent — vous devez appliquer la transformation fixe apprise à partir des données d’entraînement.</p></li>
-</ol>
-<p><strong>“Le scaler fait partie du modèle.”</strong> Tout comme les poids dans la régression logistique, la moyenne et la variance du <code>StandardScaler</code> sont <strong>apprises à partir du jeu d’entraînement</strong>. Une fois apprises, elles deviennent des paramètres fixes de votre pipeline de pré-traitement.</p>
-<p><strong>“Entraînement vs.&nbsp;examen.”</strong> Les données d’entraînement sont votre matériel d’étude ; les données de test sont l’examen. Vous ne pouvez pas regarder les questions de l’examen pour préparer vos notes (utiliser les données de test pour la mise à l’échelle), et vous ne pouvez pas changer le système de notation de l’examen à mi-chemin (mise à l’échelle des données de test séparément). Vous devez vous préparer avec vos notes d’étude (distribution d’entraînement) et ensuite passer l’examen dans le même cadre.</p>
-<p><strong>“La même règle pour tout le monde.”</strong> La mise à l’échelle est comme utiliser une règle pour mesurer des hauteurs. Vous calibrez la règle une fois avec les données d’entraînement. Si vous utilisiez une règle différente pour les données de test, les nombres ne seraient plus comparables.</p>
+<p>L’optimisation se comporte généralement mieux lorsque les attributs ont des échelles comparables.</p>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html">StandardScaler</a> est une méthode courante. Pour un attribut donné, les valeurs sont transformées ainsi :</p>
+<p><span class="math display">
+z = (x - \mu) / \sigma
+</span></p>
+<p>où <span class="math inline">\mu</span> est la moyenne de cet attribut dans les données d’entraînement, et <span class="math inline">\sigma</span> son écart-type.</p>
+<p>L’appel à <code>fit</code> apprend la moyenne et l’écart-type de chaque attribut. L’appel à <code>transform</code> applique la transformation apprise. <code>fit_transform</code> combine ces deux opérations.</p>
+<p>Ajuster le normalisateur sur l’ensemble complet provoquerait une <strong>fuite de données</strong>, car l’information de l’ensemble de test influencerait la transformation utilisée pendant l’entraînement.</p>
+<p>Les données de test doivent tout de même être transformées, mais avec la moyenne et l’écart-type appris sur les données d’entraînement. Le normalisateur ajusté fait donc partie du système entraîné.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1069,16 +1256,13 @@ z = \frac{(x - \mu)}{\sigma}
           display:block!important;
       }</style></aside>
 <aside><div>
-<p><strong>Discussion</strong> : importance d’appliquer <code>fit_transform</code> uniquement à <code>X_train</code></p>
+<p><strong>Discussion :</strong> pourquoi faut-il appliquer <code>fit_transform</code> uniquement à <code>digits_X_train</code>?</p>
 </div></aside></section>
-<section id="chiffres-manuscrits-11" class="slide level2">
-<h2>Chiffres manuscrits</h2>
-<div id="6038488b" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb25-2"><a aria-label="2"></a><span class="im">from</span> sklearn.multiclass <span class="im">import</span> OneVsRestClassifier</span>
-<span id="cb25-3"><a aria-label="3"></a></span>
-<span id="cb25-4"><a aria-label="4"></a>clf <span class="op">=</span> OneVsRestClassifier(LogisticRegression())</span>
-<span id="cb25-5"><a aria-label="5"></a>clf <span class="op">=</span> clf.fit(X_train, y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-10" class="slide level2">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<div id="bcf40f1d" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a>digit_classifier <span class="op">=</span> OneVsRestClassifier(LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>))</span>
+<span id="cb39-2"><a aria-label="2"></a>digit_classifier.fit(digits_X_train_scaled, digits_y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
@@ -1095,88 +1279,82 @@ z = \frac{(x - \mu)}{\sigma}
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Demander au classificateur de résoudre une tâche multiclasses en utilisant <strong>un-contre-tous (OvR)</strong>, aussi connu sous le nom d’OvA. Les classificateurs dans <code>sklearn</code> ont un <a href="https://scikit-learn.org/stable/modules/multiclass.html">support multiclasse intégré</a>.</p>
+<p>Le classificateur résout la tâche multiclasse au moyen de la stratégie <strong>un contre tous (OvR)</strong>. Les classificateurs de scikit-learn offrent une <a href="https://scikit-learn.org/stable/modules/multiclass.html">prise en charge multiclasse</a>.</p>
 </div></aside></section>
-<section id="chiffres-manuscrits-12" class="slide level2 smaller">
-<h2>Chiffres manuscrits</h2>
-<p>Application du classificateur à notre ensemble de test</p>
-<div id="6db43e4b" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
-<span id="cb26-2"><a aria-label="2"></a></span>
-<span id="cb26-3"><a aria-label="3"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb26-4"><a aria-label="4"></a></span>
-<span id="cb26-5"><a aria-label="5"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="jeu-de-données-uci-ml-sur-les-chiffres-manuscrits-11" class="slide level2 smaller">
+<h2>Jeu de données UCI ML sur les chiffres manuscrits</h2>
+<p>Appliquer le classificateur à l’ensemble de test</p>
+<div id="0dce9c62" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a aria-label="1"></a>digits_y_pred <span class="op">=</span> digit_classifier.predict(digits_X_test_scaled)</span>
+<span id="cb40-2"><a aria-label="2"></a>digit_test_accuracy <span class="op">=</span> accuracy_score(digits_y_test, digits_y_pred)</span>
+<span id="cb40-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="ss">f'Exactitude sur le test : </span><span class="sc">{</span>digit_test_accuracy<span class="sc">:.3f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00        17
-           1       1.00      1.00      1.00        11
-           2       1.00      1.00      1.00        17
-           3       1.00      0.94      0.97        17
-           4       1.00      1.00      1.00        25
-           5       0.96      1.00      0.98        22
-           6       1.00      1.00      1.00        19
-           7       1.00      0.95      0.97        19
-           8       0.80      1.00      0.89         8
-           9       0.96      0.92      0.94        25
-
-    accuracy                           0.98       180
-   macro avg       0.97      0.98      0.97       180
-weighted avg       0.98      0.98      0.98       180
-</code></pre>
+<pre><code>Exactitude sur le test : 0.967</code></pre>
 </div>
 </div>
-</section>
+
+<aside><div>
+<p>Le cours 7 présente en détail les mesures de performance.</p>
+</div></aside></section>
 <section id="visualisation" class="slide level2">
 <h2>Visualisation</h2>
-<p>Combien de classes ?</p>
-<div id="c75b1b7b" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a aria-label="1"></a>clf.classes_</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<p>Combien y a-t-il de classes?</p>
+<div id="27899053" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a aria-label="1"></a>digit_classifier.classes_</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>Les coefficients et les intercepts sont dans des tableaux distincts.</p>
-<div id="811f6f1b" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>(clf.estimators_[<span class="dv">0</span>].coef_.shape, clf.estimators_[<span class="dv">0</span>].intercept_.shape)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<p>Les coefficients et les ordonnées à l’origine se trouvent dans des tableaux distincts.</p>
+<div id="f1c9099a" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a aria-label="1"></a>(digit_classifier.estimators_[<span class="dv">0</span>].coef_.shape,</span>
+<span id="cb44-2"><a aria-label="2"></a> digit_classifier.estimators_[<span class="dv">0</span>].intercept_.shape)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>((1, 64), (1,))</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>Les intercepts sont <span class="math inline">\(\theta_0\)</span>, tandis que les coefficients sont <span class="math inline">\(\theta_j, j \in [1,64]\)</span>.</p>
+<p>L’ordonnée à l’origine est <span class="math inline">\theta_0</span>. Les 64 coefficients des attributs sont les <span class="math inline">\theta_j</span>, pour <span class="math inline">j \in \{1,\ldots,64\}</span>.</p>
 
 </div>
 <aside><div>
-<p>Adapté de <a href="https://atmamani.github.io/projects/ml/mnist-digits-classification-using-logistic-regression-scikit-learn/">MNIST digits classification using Logistic regression in Scikit-Learn</a>, consulté le 2024-09-23.</p>
+<p>Adapté de <a href="https://atmamani.github.io/projects/ml/mnist-digits-classification-using-logistic-regression-scikit-learn/">MNIST digits classification using Logistic regression in Scikit-Learn</a>, consulté le 23 septembre 2024.</p>
 </div></aside></section>
 <section id="visualisation-1" class="slide level2">
 <h2>Visualisation</h2>
-<div id="205551f4" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>clf.estimators_[<span class="dv">0</span>].coef_[<span class="dv">0</span>].<span class="bu">round</span>(<span class="dv">2</span>).reshape(width, height)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>array([[ 0.  , -0.25,  0.04,  0.21,  0.02, -0.58, -0.36, -0.05],
-       [ 0.  , -0.39,  0.04,  0.43,  0.53,  0.72, -0.03, -0.12],
-       [-0.03,  0.19,  0.28, -0.04, -0.94,  0.84, -0.01, -0.06],
-       [-0.04,  0.27,  0.26, -0.57, -1.75,  0.24,  0.07, -0.03],
-       [ 0.  ,  0.32,  0.57, -0.58, -1.62, -0.15,  0.17,  0.  ],
-       [-0.08, -0.13,  0.92, -0.85, -0.83, -0.01,  0.22, -0.  ],
-       [-0.04, -0.36,  0.61, -0.14,  0.28,  0.01, -0.37, -0.41],
-       [ 0.01, -0.31, -0.31,  0.54, -0.32, -0.18, -0.32, -0.21]])</code></pre>
+<div id="546b5eb9" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a aria-label="1"></a>digit_classifier.estimators_[<span class="dv">0</span>].coef_[<span class="dv">0</span>].<span class="bu">round</span>(<span class="dv">2</span>).reshape(</span>
+<span id="cb46-2"><a aria-label="2"></a>    digit_height,</span>
+<span id="cb46-3"><a aria-label="3"></a>    digit_width</span>
+<span id="cb46-4"><a aria-label="4"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>array([[ 0.  , -0.14, -0.  ,  0.21, -0.01, -0.66, -0.46, -0.05],
+       [ 0.  , -0.22, -0.05,  0.43,  0.57,  0.9 ,  0.02, -0.19],
+       [-0.03,  0.28,  0.43, -0.18, -0.94,  0.82,  0.04, -0.13],
+       [-0.04,  0.21,  0.11, -0.63, -1.78,  0.09,  0.23, -0.04],
+       [ 0.  ,  0.35,  0.5 , -0.6 , -1.73, -0.02,  0.03,  0.  ],
+       [-0.15, -0.13,  0.86, -0.97, -0.73,  0.1 ,  0.26,  0.02],
+       [-0.07, -0.3 ,  0.44,  0.09,  0.25,  0.05, -0.4 , -0.47],
+       [ 0.02, -0.26, -0.43,  0.43, -0.59, -0.08, -0.28, -0.28]])</code></pre>
 </div>
 </div>
 </section>
 <section id="visualisation-2" class="slide level2">
 <h2>Visualisation</h2>
-<div id="4b19a352" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a>coef <span class="op">=</span> clf.estimators_[<span class="dv">0</span>].coef_</span>
-<span id="cb34-2"><a aria-label="2"></a>plt.imshow(coef[<span class="dv">0</span>].reshape(width,height))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c3ba5a09" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a aria-label="1"></a>digit_zero_coefficients <span class="op">=</span> digit_classifier.estimators_[<span class="dv">0</span>].coef_[<span class="dv">0</span>]</span>
+<span id="cb48-2"><a aria-label="2"></a>plt.imshow(</span>
+<span id="cb48-3"><a aria-label="3"></a>    digit_zero_coefficients.reshape(digit_height, digit_width),</span>
+<span id="cb48-4"><a aria-label="4"></a>    cmap<span class="op">=</span>plt.cm.RdBu</span>
+<span id="cb48-5"><a aria-label="5"></a>)</span>
+<span id="cb48-6"><a aria-label="6"></a>plt.colorbar()</span>
+<span id="cb48-7"><a aria-label="7"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-35-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/cell-35-output-1.png" width="407" height="411"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-39-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/cell-39-output-1.png" width="505" height="411"></a></p>
 </figure>
 </div>
 </div>
@@ -1184,30 +1362,43 @@ weighted avg       0.98      0.98      0.98       180
 </section>
 <section id="visualisation-3" class="slide level2">
 <h2>Visualisation</h2>
-<div id="1fb255a6" class="cell" data-execution_count="36">
+<div id="d5eec255" class="cell" data-execution_count="40">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb35-2"><a aria-label="2"></a></span>
-<span id="cb35-3"><a aria-label="3"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(clf.classes_)):</span>
-<span id="cb35-4"><a aria-label="4"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">5</span>, index <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb35-5"><a aria-label="5"></a>    plt.title(<span class="ss">f'y = </span><span class="sc">{</span>clf<span class="sc">.</span>classes_[index]<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb35-6"><a aria-label="6"></a>    <span class="co"># plt.imshow(clf.coef_[index].reshape(width,width), </span></span>
-<span id="cb35-7"><a aria-label="7"></a>    plt.imshow(clf.estimators_[index].coef_.reshape(width,width), </span>
-<span id="cb35-8"><a aria-label="8"></a>               cmap<span class="op">=</span>plt.cm.RdBu)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb49-2"><a aria-label="2"></a>max_abs_coefficient <span class="op">=</span> <span class="bu">max</span>(</span>
+<span id="cb49-3"><a aria-label="3"></a>    np.<span class="bu">abs</span>(estimator.coef_).<span class="bu">max</span>()</span>
+<span id="cb49-4"><a aria-label="4"></a>    <span class="cf">for</span> estimator <span class="kw">in</span> digit_classifier.estimators_</span>
+<span id="cb49-5"><a aria-label="5"></a>)</span>
+<span id="cb49-6"><a aria-label="6"></a></span>
+<span id="cb49-7"><a aria-label="7"></a><span class="cf">for</span> index, class_label <span class="kw">in</span> <span class="bu">enumerate</span>(digit_classifier.classes_):</span>
+<span id="cb49-8"><a aria-label="8"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">5</span>, index <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb49-9"><a aria-label="9"></a>    plt.title(<span class="ss">f'y = </span><span class="sc">{</span>class_label<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb49-10"><a aria-label="10"></a>    plt.imshow(</span>
+<span id="cb49-11"><a aria-label="11"></a>        digit_classifier.estimators_[index].coef_.reshape(</span>
+<span id="cb49-12"><a aria-label="12"></a>            digit_height,</span>
+<span id="cb49-13"><a aria-label="13"></a>            digit_width</span>
+<span id="cb49-14"><a aria-label="14"></a>        ),</span>
+<span id="cb49-15"><a aria-label="15"></a>        cmap<span class="op">=</span>plt.cm.RdBu,</span>
+<span id="cb49-16"><a aria-label="16"></a>        vmin<span class="op">=-</span>max_abs_coefficient,</span>
+<span id="cb49-17"><a aria-label="17"></a>        vmax<span class="op">=</span>max_abs_coefficient</span>
+<span id="cb49-18"><a aria-label="18"></a>    )</span>
+<span id="cb49-19"><a aria-label="19"></a>    plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb49-20"><a aria-label="20"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-36-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/cell-36-output-1.png" width="781" height="392"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-40-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/cell-40-output-1.png" width="763" height="369"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Chaque <code>LogisticRegression</code> apprend <code>D=64</code> paramètres <span class="math inline">\(\theta_j\)</span>.</p>
-<p>Dans les images ci-dessus, les pixels rouges correspondent à des coefficients négatifs, tandis que les pixels bleus correspondent à des coefficients positifs.</p>
-<p>Pour le premier classificateur, qui prédit le chiffre ‘0’, le modèle attribue des poids négatifs aux pixels de haute intensité au centre de l’image et des poids positifs aux pixels de haute intensité dans la région ovale entourant le centre.</p>
+<p>Chaque modèle binaire <code>LogisticRegression</code> apprend 64 coefficients d’attributs et une ordonnée à l’origine, soit 65 paramètres.</p>
+<p>Ces coefficients s’appliquent aux intensités de pixels standardisées utilisées pendant l’entraînement.</p>
+<p>Les pixels rouges correspondent aux coefficients négatifs, et les pixels bleus aux coefficients positifs. Les dix cartes utilisent la même échelle de couleurs.</p>
+<p>Pour le classificateur qui reconnaît le zéro, les pixels de forte intensité au centre réduisent le score de la classe, tandis que les pixels disposés sur l’ovale qui les entoure l’augmentent.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1220,41 +1411,28 @@ weighted avg       0.98      0.98      0.98       180
           display:block!important;
       }</style></aside>
 </section>
-<section id="visualisation-4" class="slide level2">
-<h2>Visualisation</h2>
-<div id="b0f36cf8" class="cell" data-execution_count="37">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb36-2"><a aria-label="2"></a></span>
-<span id="cb36-3"><a aria-label="3"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(clf.classes_)):</span>
-<span id="cb36-4"><a aria-label="4"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">5</span>, index <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb36-5"><a aria-label="5"></a>    plt.title(<span class="ss">f'y = </span><span class="sc">{</span>clf<span class="sc">.</span>classes_[index]<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb36-6"><a aria-label="6"></a>    <span class="co"># plt.imshow(clf.coef_[index].reshape(width,width), </span></span>
-<span id="cb36-7"><a aria-label="7"></a>    plt.imshow(clf.estimators_[index].coef_.reshape(width,width), </span>
-<span id="cb36-8"><a aria-label="8"></a>               cmap<span class="op">=</span>plt.cm.RdBu,</span>
-<span id="cb36-9"><a aria-label="9"></a>               interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/cell-37-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="slides_files/figure-revealjs/cell-37-output-1.png" width="781" height="392"></a></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section class="slide level2">
 
 <iframe data-external="1" src="https://www.youtube.com/embed/AX-ZEC-71DI" width="100%" height="85%" title="Machine Learning and Logistic Regression" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <aside><div>
-<p><strong>Attribution</strong>: <a href="https://youtu.be/AX-ZEC-71DI">Machine Learning and Logistic Regression</a>, IBM Technology, 2024-07-19.</p>
+<p><strong>Attribution :</strong> <a href="https://youtu.be/AX-ZEC-71DI">Machine Learning and Logistic Regression</a>, IBM Technology, 19 juillet 2024.</p>
 </div></aside></section></section>
 <section>
-<section id="prologue" class="title-slide slide level1 center">
-<h1>Prologue</h1>
+<section id="épilogue" class="title-slide slide level1 center">
+<h1>Épilogue</h1>
 
+</section>
+<section id="sommaire" class="slide level2 smaller">
+<h2>Sommaire</h2>
+<ul>
+<li class="fragment">La régression logistique transforme le score linéaire <span class="math inline">\theta^\top x_i</span> en probabilité <span class="math inline">P(y_i=1\mid x_i,\theta)</span> à l’aide de la fonction sigmoïde.</li>
+<li class="fragment">Le seuil <span class="math inline">h_\theta(x_i)=0.5</span> correspond à la frontière de décision linéaire <span class="math inline">\theta^\top x_i=0</span>.</li>
+<li class="fragment">Une probabilité produite par le modèle estime l’appartenance à une classe; ce n’est pas la probabilité que l’étiquette prédite soit correcte.</li>
+<li class="fragment">La stratégie <strong>un contre tous</strong> entraîne un classificateur binaire pour chaque classe et sélectionne celle dont le score est le plus élevé.</li>
+<li class="fragment">Le prétraitement doit être ajusté sur l’ensemble d’entraînement, puis appliqué sans changement à l’ensemble de test.</li>
+<li class="fragment">Les coefficients appris indiquent comment chaque attribut modifie le score linéaire d’un classificateur.</li>
+</ul>
 </section>
 <section id="références" class="slide level2 smaller scrollable">
 <h2>Références</h2>
@@ -1268,18 +1446,21 @@ Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</sp
 <div id="ref-Wu:2018aa" class="csl-entry" role="listitem">
 Wu, Qianfan, Adel Boueiz, Alican Bozkurt, et al. 2018. <span>«&nbsp;<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6530791"><span>Deep Learning Methods for Predicting Disease Status Using Genomic Data</span></a>&nbsp;»</span>. <em>Journal of biometrics &amp; biostatistics</em> 9 (5).
 </div>
+<div id="ref-Zhao:2026aa" class="csl-entry" role="listitem">
+Zhao, Celina. 2026. <span>«&nbsp;<span>OpenAI</span> breakthrough triggers <span><span>“existential crisis”</span></span> in math&nbsp;»</span>. <em>Science</em>, publication en ligne anticipée, septembre. <a href="https://doi.org/10.1126/science.zbgmw3q">https://doi.org/10.1126/science.zbgmw3q</a>.
+</div>
 </div>
 </section>
-<section id="ressource" class="slide level2">
-<h2>Ressource</h2>
+<section id="ressources" class="slide level2">
+<h2>Ressources</h2>
 <ul>
-<li><a href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html">Logistic Regression 3-class Classifier</a> par <code>sklearn</code></li>
+<li><a href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_iris_logistic.html">Logistic Regression 3-class Classifier</a>, dans <code>sklearn</code></li>
 </ul>
 </section>
 <section id="prochain-cours" class="slide level2">
 <h2>Prochain cours</h2>
 <ul>
-<li>Évaluation croisée et mesures de performance</li>
+<li>Log-vraisemblance négative, interprétation géométrique et mise en œuvre</li>
 </ul>
 </section></section>
 <section>
@@ -1287,76 +1468,79 @@ Wu, Qianfan, Adel Boueiz, Alican Bozkurt, et al. 2018. <span>«&nbsp;<a href="ht
 <h1>Annexe</h1>
 
 </section>
-<section id="un-contre-tous-complet" class="slide level2">
-<h2>Un-contre-Tous (complet)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37" data-code-line-numbers="2,9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb37-2"><a aria-label="2"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> label_binarize</span>
-<span id="cb37-3"><a aria-label="3"></a></span>
-<span id="cb37-4"><a aria-label="4"></a><span class="co"># Load the Iris dataset</span></span>
-<span id="cb37-5"><a aria-label="5"></a>iris <span class="op">=</span> load_iris()</span>
-<span id="cb37-6"><a aria-label="6"></a>X, y <span class="op">=</span> iris.data, iris.target</span>
-<span id="cb37-7"><a aria-label="7"></a></span>
-<span id="cb37-8"><a aria-label="8"></a><span class="co"># Binarize the output</span></span>
-<span id="cb37-9"><a aria-label="9"></a>y_bin <span class="op">=</span> label_binarize(y, classes<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb37-10"><a aria-label="10"></a></span>
-<span id="cb37-11"><a aria-label="11"></a><span class="co"># Split the dataset into training and testing sets</span></span>
-<span id="cb37-12"><a aria-label="12"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y_bin, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="classificateur-un-contre-tous" class="slide level2">
+<h2>Classificateur un contre tous</h2>
+<div id="37ca6f3a" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a aria-label="1"></a><span class="co"># Charger le jeu de données Iris</span></span>
+<span id="cb50-2"><a aria-label="2"></a>iris <span class="op">=</span> load_iris()</span>
+<span id="cb50-3"><a aria-label="3"></a>iris_X, iris_y <span class="op">=</span> iris.data, iris.target</span>
+<span id="cb50-4"><a aria-label="4"></a></span>
+<span id="cb50-5"><a aria-label="5"></a><span class="co"># Binariser la sortie</span></span>
+<span id="cb50-6"><a aria-label="6"></a>iris_y_binarized <span class="op">=</span> label_binarize(iris_y, classes<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb50-7"><a aria-label="7"></a></span>
+<span id="cb50-8"><a aria-label="8"></a><span class="co"># Diviser les données en ensembles d'entraînement et de test</span></span>
+<span id="cb50-9"><a aria-label="9"></a>iris_X_train, iris_X_test, iris_y_train, iris_y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb50-10"><a aria-label="10"></a>    iris_X,</span>
+<span id="cb50-11"><a aria-label="11"></a>    iris_y_binarized,</span>
+<span id="cb50-12"><a aria-label="12"></a>    test_size<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb50-13"><a aria-label="13"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb50-14"><a aria-label="14"></a>    stratify<span class="op">=</span>iris_y</span>
+<span id="cb50-15"><a aria-label="15"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="un-contre-tous-complet-1" class="slide level2">
-<h2>Un-contre-Tous (complet)</h2>
-<div id="69b62f0c" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a aria-label="1"></a><span class="co"># Train a One-vs-All classifier for each class</span></span>
-<span id="cb38-2"><a aria-label="2"></a></span>
-<span id="cb38-3"><a aria-label="3"></a>classifiers <span class="op">=</span> []</span>
-<span id="cb38-4"><a aria-label="4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb38-5"><a aria-label="5"></a>    clf <span class="op">=</span> LogisticRegression()</span>
-<span id="cb38-6"><a aria-label="6"></a>    clf.fit(X_train, y_train[:, i])</span>
-<span id="cb38-7"><a aria-label="7"></a>    classifiers.append(clf)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="classificateur-un-contre-tous-1" class="slide level2">
+<h2>Classificateur un contre tous</h2>
+<div id="2d8acbf5" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a aria-label="1"></a><span class="co"># Entraîner un classificateur binaire pour chaque classe</span></span>
+<span id="cb51-2"><a aria-label="2"></a></span>
+<span id="cb51-3"><a aria-label="3"></a>iris_classifiers <span class="op">=</span> []</span>
+<span id="cb51-4"><a aria-label="4"></a><span class="cf">for</span> class_index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(iris.target_names)):</span>
+<span id="cb51-5"><a aria-label="5"></a>    iris_classifier <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb51-6"><a aria-label="6"></a>    iris_classifier.fit(iris_X_train, iris_y_train[:, class_index])</span>
+<span id="cb51-7"><a aria-label="7"></a>    iris_classifiers.append(iris_classifier)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside><div>
 <p>Chaque régression logistique trouve un <strong>hyperplan</strong> dans un <strong>espace à 4 dimensions</strong> qui sépare les données en deux classes.</p>
 </div></aside></section>
-<section id="un-contre-tous-complet-2" class="slide level2">
-<h2>Un-contre-Tous (complet)</h2>
-<div id="5825e510" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="co"># Predict on a new sample</span></span>
-<span id="cb39-2"><a aria-label="2"></a>new_sample <span class="op">=</span> X_test[<span class="dv">0</span>].reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb39-3"><a aria-label="3"></a></span>
-<span id="cb39-4"><a aria-label="4"></a>confidences <span class="op">=</span> [clf.decision_function(new_sample) <span class="cf">for</span> clf <span class="kw">in</span> classifiers]</span>
-<span id="cb39-5"><a aria-label="5"></a></span>
-<span id="cb39-6"><a aria-label="6"></a><span class="co"># Final assignment</span></span>
-<span id="cb39-7"><a aria-label="7"></a>final_class <span class="op">=</span> np.argmax(confidences)</span>
-<span id="cb39-8"><a aria-label="8"></a></span>
-<span id="cb39-9"><a aria-label="9"></a><span class="co"># Printing the result</span></span>
-<span id="cb39-10"><a aria-label="10"></a><span class="bu">print</span>(<span class="ss">f"Final class assigned: </span><span class="sc">{</span>iris<span class="sc">.</span>target_names[final_class]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb39-11"><a aria-label="11"></a><span class="bu">print</span>(<span class="ss">f"True class: </span><span class="sc">{</span>iris<span class="sc">.</span>target_names[np.argmax(y_test[<span class="dv">0</span>])]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="classificateur-un-contre-tous-2" class="slide level2">
+<h2>Classificateur un contre tous</h2>
+<div id="05ec0700" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a aria-label="1"></a><span class="co"># Prédire la classe d'un nouvel exemple</span></span>
+<span id="cb52-2"><a aria-label="2"></a>new_sample <span class="op">=</span> iris_X_test[<span class="dv">0</span>].reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb52-3"><a aria-label="3"></a>confidence_scores <span class="op">=</span> np.array([</span>
+<span id="cb52-4"><a aria-label="4"></a>    classifier.decision_function(new_sample).item()</span>
+<span id="cb52-5"><a aria-label="5"></a>    <span class="cf">for</span> classifier <span class="kw">in</span> iris_classifiers</span>
+<span id="cb52-6"><a aria-label="6"></a>])</span>
+<span id="cb52-7"><a aria-label="7"></a></span>
+<span id="cb52-8"><a aria-label="8"></a><span class="co"># Attribution finale</span></span>
+<span id="cb52-9"><a aria-label="9"></a>final_class <span class="op">=</span> np.argmax(confidence_scores)</span>
+<span id="cb52-10"><a aria-label="10"></a></span>
+<span id="cb52-11"><a aria-label="11"></a><span class="co"># Afficher le résultat</span></span>
+<span id="cb52-12"><a aria-label="12"></a><span class="bu">print</span>(<span class="ss">f"Classe attribuée : </span><span class="sc">{</span>iris<span class="sc">.</span>target_names[final_class]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb52-13"><a aria-label="13"></a><span class="bu">print</span>(<span class="ss">f"Classe réelle : </span><span class="sc">{</span>iris<span class="sc">.</span>target_names[np.argmax(iris_y_test[<span class="dv">0</span>])]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Final class assigned: versicolor
-True class: versicolor</code></pre>
+<pre><code>Classe attribuée : setosa
+Classe réelle : setosa</code></pre>
 </div>
 </div>
 </section>
-<section id="label_binarized" class="slide level2 smaller">
-<h2><code>label_binarized</code></h2>
-<div id="12f5c89e" class="cell" data-execution_count="41">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a aria-label="1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> label_binarize</span>
-<span id="cb41-2"><a aria-label="2"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb41-3"><a aria-label="3"></a></span>
-<span id="cb41-4"><a aria-label="4"></a><span class="co"># Original class labels</span></span>
-<span id="cb41-5"><a aria-label="5"></a>y_train <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
-<span id="cb41-6"><a aria-label="6"></a></span>
-<span id="cb41-7"><a aria-label="7"></a><span class="co"># Binarize the labels</span></span>
-<span id="cb41-8"><a aria-label="8"></a>y_train_binarized <span class="op">=</span> label_binarize(y_train, classes<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb41-9"><a aria-label="9"></a></span>
-<span id="cb41-10"><a aria-label="10"></a><span class="co"># Assume y_train_binarized contains the binarized labels</span></span>
-<span id="cb41-11"><a aria-label="11"></a><span class="bu">print</span>(<span class="st">"Binarized labels:</span><span class="ch">\n</span><span class="st">"</span>, y_train_binarized)</span>
-<span id="cb41-12"><a aria-label="12"></a></span>
-<span id="cb41-13"><a aria-label="13"></a><span class="co"># Convert binarized labels back to the original numerical values</span></span>
-<span id="cb41-14"><a aria-label="14"></a>original_labels <span class="op">=</span> [np.argmax(b) <span class="cf">for</span> b <span class="kw">in</span> y_train_binarized]</span>
-<span id="cb41-15"><a aria-label="15"></a><span class="bu">print</span>(<span class="st">"Original labels:</span><span class="ch">\n</span><span class="st">"</span>, original_labels)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="label_binarize" class="slide level2 smaller">
+<h2><code>label_binarize</code></h2>
+<div id="128bea23" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a aria-label="1"></a><span class="co"># Étiquettes de classe originales</span></span>
+<span id="cb54-2"><a aria-label="2"></a>example_labels <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb54-3"><a aria-label="3"></a></span>
+<span id="cb54-4"><a aria-label="4"></a><span class="co"># Binariser les étiquettes</span></span>
+<span id="cb54-5"><a aria-label="5"></a>example_labels_binarized <span class="op">=</span> label_binarize(example_labels, classes<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb54-6"><a aria-label="6"></a></span>
+<span id="cb54-7"><a aria-label="7"></a><span class="bu">print</span>(<span class="st">"Étiquettes binarisées :</span><span class="ch">\n</span><span class="st">"</span>, example_labels_binarized)</span>
+<span id="cb54-8"><a aria-label="8"></a></span>
+<span id="cb54-9"><a aria-label="9"></a><span class="co"># Reconvertir les étiquettes binarisées en valeurs numériques originales</span></span>
+<span id="cb54-10"><a aria-label="10"></a>original_labels <span class="op">=</span> [np.argmax(label_vector) <span class="cf">for</span> label_vector <span class="kw">in</span> example_labels_binarized]</span>
+<span id="cb54-11"><a aria-label="11"></a><span class="bu">print</span>(<span class="st">"Étiquettes originales :</span><span class="ch">\n</span><span class="st">"</span>, original_labels)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Binarized labels:
+<pre><code>Étiquettes binarisées :
  [[1 0 0]
  [0 1 0]
  [0 0 1]
@@ -1365,7 +1549,7 @@ True class: versicolor</code></pre>
  [0 0 1]
  [0 1 0]
  [1 0 0]]
-Original labels:
+Étiquettes originales :
  [np.int64(0), np.int64(1), np.int64(2), np.int64(0), np.int64(1), np.int64(2), np.int64(1), np.int64(0)]</code></pre>
 </div>
 </div>
@@ -1374,19 +1558,19 @@ Original labels:
 
 <p>Marcel <strong>Turcotte</strong></p>
 <p><a href="mailto:Marcel.Turcotte@uOttawa.ca">Marcel.Turcotte@uOttawa.ca</a></p>
-<p>École de <strong>science informatique</strong> et de génie électrique (<strong>SI</strong>GE)</p>
+<p>École de génie électrique et d’<strong>informatique</strong> (<strong>ÉÉ</strong>CS)</p>
 <p>Université d’Ottawa</p>
 <div class="columns">
 <div class="column" style="width:70%;">
 
 </div><div class="column" style="width:30%;">
-<p><a href="../../assets/images/amigurumi_chihuahua-2024-09-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="../../assets/images/amigurumi_chihuahua-2024-09-16.png"></a></p>
+<p><a href="../../assets/images/amigurumi_chihuahua-2024-09-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="../../assets/images/amigurumi_chihuahua-2024-09-16.png"></a></p>
 </div></div>
 
 
 
 <aside><div>
-<p><strong>Attribution</strong>: “An image of a sad Chihuahua amigurumi with a birthday hat.” Générée par DALL-E, via ChatGPT (GPT-4), OpenAI, 16 septembre, 2024.</p>
+<p><strong>Attribution :</strong> « Une image d’un amigurumi de chihuahua triste coiffé d’un chapeau d’anniversaire. » Générée par DALL-E, par l’entremise de ChatGPT (GPT-4), OpenAI, le 16 septembre 2024.</p>
 </div></aside></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1410,7 +1594,6 @@ Original labels:
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1579,27 +1762,9 @@ Original labels:
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

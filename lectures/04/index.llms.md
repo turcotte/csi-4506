@@ -11,7 +11,7 @@ CSI4506 Introduction à l’intelligence artificielle
 Pages correspondantes du manuel principal. Couvre les cours 3, 4, 5 et 6.
 
 - Russell et Norvig ([2020](#ref-Russell:2020aa)), pages 651–720
-- Géron ([2019](#ref-Geron:2019aa)), \\\S\\ 4
+- Géron ([2019](#ref-Geron:2019aa)), \S 4
 
 ## Participer
 

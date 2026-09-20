@@ -12,6 +12,10 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
+### Aléatoire et reproductibilité
+
+- [Le rôle de l’aléatoire dans l’apprentissage automatique ](../../lectures/03/randomness_in_ml.llms.md) ([notebook Jupyter](randomness_in_ml.ipynb))
+
 ### Classificateurs construits à partir des principes fondamentaux
 
 - [Construire un classificateur par arbre de décision ](../../lectures/03/decision_tree_classifier.llms.md) ([notebook Jupyter](decision_tree_classifier.ipynb), [ouvrir dans Colab](https://colab.research.google.com/github/turcotte/csi-4506/blob/gh-pages/lectures/03/decision_tree_classifier.ipynb))
