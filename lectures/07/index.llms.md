@@ -17,4 +17,4 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
-- [Régression logistique ](../../lectures/07/LogisticRegression.llms.md) - Ce carnet reprend la mise en œuvre de la régression logistique et l’utilise pour étudier les rapports de classification, les matrices de confusion, les courbes ROC, l’AUC et les compromis liés au seuil de décision.
+- [Régression logistique ](../../lectures/07/LogisticRegression.llms.md) - Ce carnet reprend la mise en œuvre de la régression logistique et l’utilise pour étudier les rapports de classification, les matrices de confusion, les courbes ROC, l’AUROC et les compromis liés au seuil de décision.

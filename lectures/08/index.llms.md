@@ -12,6 +12,6 @@ CSI4506 Introduction à l’intelligence artificielle
 
 - [présentation](slides.llms.md) ([PDF](slides.pdf), [Jupyter Notebook](slides.ipynb))
 
-Si le temps le permet, nous explorerons davantage les concepts de sous-ajustement et de surajustement.
+Si le temps le permet, nous approfondirons les concepts de sous-ajustement et de surajustement. Toutefois, le biais et la variance ne seront pas évalués.
 
 - [bias_variance](bias_variance.llms.md) ([PDF](bias_variance.pdf), [Jupyter Notebook](bias_variance.ipynb))

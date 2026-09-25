@@ -257,7 +257,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version : 22 septembre 2026 19h09</p>
+  <p class="date">Version : 23 septembre 2026 07h51</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -1888,22 +1888,14 @@ J(\theta) = \dfrac {1}{N} \displaystyle \sum _{i=1}^N [h_\theta(x_i) - y_i]^2
 <p>Les panneaux montrent les données utilisées pour calculer chaque estimation du gradient; ils ne représentent pas le gradient lui-même. Le gradient est un vecteur dans l’espace des paramètres. Pour des paramètres fixés, le gradient du mini-lot est la moyenne des gradients associés aux exemples mis en évidence.</p>
 <p>Un petit mini-lot aléatoire peut refléter la structure de l’ensemble d’entraînement, mais ce n’est pas garanti pour chaque tirage. L’augmentation de <span class="math inline">B</span> réduit en moyenne la variabilité de l’estimation du gradient; un mini-lot particulier de plus grande taille n’est pas nécessairement plus près du gradient calculé sur toutes les données que chacun des mini-lots plus petits. Lorsque <span class="math inline">B=N</span>, le gradient du mini-lot et le gradient par lot sont identiques.</p>
 <p>Les mini-lots permettent aussi d’exploiter l’accélération matérielle des opérations matricielles, en particulier sur les GPU.</p>
-<p>Les lots de grande taille ne sont pas toujours préférables. Les petits lots produisent des estimations du gradient dont la variabilité d’échantillonnage est plus élevée. Pour des objectifs non convexes, ce caractère stochastique peut parfois aider l’algorithme d’optimisation à s’éloigner des points selles; il peut également influencer la solution atteinte et, par conséquent, la généralisation. Ces avantages possibles ne s’appliquent pas de la même manière à l’objectif convexe fondé sur l’EQM de la régression linéaire ordinaire.</p>
+<p>Les lots de grande taille ne sont pas toujours préférables. Un petit lot utilise une plus faible partie de l’ensemble d’entraînement; son gradient peut donc pointer dans une direction légèrement différente de celle du gradient calculé à partir de tous les exemples. La direction peut ainsi changer davantage d’un mini-lot à l’autre.</p>
 <p>Il importe de distinguer deux idées :</p>
 <ol type="1">
-<li><p><strong>Optimisation :</strong> Pour l’objectif empirique d’entraînement <span class="math display">
-J(\theta)=\frac1N\sum_{i=1}^N \ell_i(\theta),
-</span> le gradient calculé sur le lot complet est <span class="math display">
-\nabla J(\theta)=\frac1N\sum_{i=1}^N\nabla \ell_i(\theta).
-</span> Un mini-lot <span class="math inline">\mathcal{B}</span> de taille <span class="math inline">B</span> fournit l’estimation <span class="math display">
-g_{\mathcal{B}}(\theta)=\frac1B\sum_{i\in\mathcal{B}}\nabla \ell_i(\theta).
-</span> Lorsque l’échantillonnage est uniforme et sans remise, <span class="math display">
-\mathbb{E}_{\mathcal{B}}[g_{\mathcal{B}}(\theta)]=\nabla J(\theta).
-</span> Les petits lots produisent une variance plus élevée entre les sélections aléatoires. Sous certaines conditions, ce bruit peut aider un algorithme d’optimisation à s’éloigner des points selles d’un objectif non convexe, mais ce résultat n’est pas garanti.</p></li>
-<li><p><strong>Généralisation :</strong> Des études empiriques sur les réseaux profonds ont montré que de très grands lots peuvent moins bien généraliser dans certains contextes. Cet effet n’est pas universel : l’ajustement du taux d’apprentissage et de son calendrier, un entraînement plus long ou la modification d’autres aspects de l’optimisation peuvent réduire ou éliminer cet écart. Le bruit associé à la SGD est souvent interprété comme une forme de régularisation implicite, mais un lot plus petit ne garantit pas une meilleure généralisation.</p></li>
+<li><p><strong>Optimisation :</strong> Le gradient par lot combine les contributions de tous les exemples d’entraînement. Le gradient d’un mini-lot combine seulement celles des exemples sélectionnés; il constitue donc une approximation. Lorsque la taille du lot augmente, sa direction devient généralement plus stable et plus semblable à celle du gradient par lot. Lorsque <span class="math inline">B=N</span>, les deux sont identiques. Pour des objectifs non convexes, comme ceux utilisés pour entraîner les réseaux profonds, la variation entre les mises à jour peut parfois aider l’algorithme d’optimisation à s’éloigner des points selles. Cet avantage n’est pas garanti. Il ne s’applique pas de la même manière à l’objectif convexe fondé sur l’EQM utilisé ici pour la régression linéaire, dans lequel tout minimum local est global.</p></li>
+<li><p><strong>Généralisation :</strong> Dans certaines expériences d’apprentissage profond, les modèles entraînés avec de petits lots ont obtenu de meilleurs résultats sur de nouvelles données. Il ne s’agit pas d’une règle générale : avec un taux d’apprentissage, un calendrier et une durée d’entraînement bien ajustés, les grands lots peuvent donner d’aussi bons résultats. Le caractère aléatoire de l’entraînement par mini-lots peut influencer la solution trouvée, même sans ajouter de pénalité explicite; cet effet est souvent appelé <strong>régularisation implicite</strong>.</p></li>
 </ol>
 <p><strong>Pourquoi ne pas utiliser l’ensemble d’entraînement complet pour calculer chaque gradient?</strong></p>
-<p>Un mini-lot est moins coûteux par mise à jour que le calcul du gradient complet, fournit une estimation utile du gradient de l’objectif empirique d’entraînement et permet un calcul vectorisé efficace. Son caractère aléatoire n’est pas nécessairement nuisible : selon le problème et la procédure d’entraînement, il peut parfois favoriser l’optimisation ou la généralisation.</p>
+<p>Un mini-lot est moins coûteux par mise à jour que l’utilisation de l’ensemble d’entraînement complet et peut être traité efficacement au moyen d’opérations matricielles. Son gradient est généralement assez précis pour permettre une progression utile, et son caractère aléatoire n’est pas nécessairement nuisible. Selon le problème et la procédure d’entraînement, il peut parfois favoriser l’optimisation ou la généralisation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
