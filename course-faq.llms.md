@@ -6,7 +6,7 @@ Marcel Turcotte
 
 Date de publication
 
-10 août 2026
+29 septembre 2026
 
 # Comment obtenir de l’aide ?
 
@@ -27,17 +27,32 @@ En cliquant sur **Devoirs**, vous devriez voir l’avis suivant en haut de la pa
 
 > Les devoirs seront affichés ici.
 
-# Quel sera le format du Quiz 1 ?
+# Quel sera le format du Quiz 1 ?
 
-- **Quand** : Consultez la page [Calendrier du cours](course-schedule).
-- **Format** : Livre fermé. Questions à choix multiples et vrai/faux.
-- **Portée** : Cours 1 à 8.
-  - La numérotation se réfère à celle utilisée dans les URLs, par exemple [turcotte.xyz/teaching/csi-4506/lectures/07/slides.html](https://turcotte.xyz/teaching/csi-4506/lectures/07/slides.html) est le cours 7. Par conséquent, le quiz couvre les cours du 9 septembre au 5 octobre inclusivement.
-- **Contenu** : Accent sur les questions conceptuelles plutôt que sur les détails techniques précis (par exemple, comment remodeler un tableau numpy).
-- **Types de questions** : Comprend des extraits de code ou des diagrammes nécessitant l’identification des déclarations correctes.
-- **Nombre de questions** : Entre 25 et 35 questions.
-- **En classe** : Vous passerez le quiz en classe, sur un questionnaire papier, mais nous utiliserons de feuilles de réponse Scantron (vous complétez les deux documents). Veuillez arriver à l’heure pour que nous puissions commencer le plus tôt possible, car la durée totale de l’examen dépend de votre heure d’arrivée. Nous devons ramasser toutes les copies 10 minutes avant la fin du cours afin de permettre au cours suivant de débuter à l’heure.
-- **Carte d’étudiant** : Veuillez apporter votre carte d’étudiant.
+- **Quand** : Consultez la page [Calendrier](course-schedule) du cours pour connaître la date et le lieu officiels.
+- **Durée** : 60 minutes. Veuillez arriver avant le début du cours; une arrivée tardive ne prolongera pas le temps qui vous est accordé.
+- **Format** : Évaluation à livre fermé. Les notes, les aide-mémoire, les calculatrices, les appareils électroniques et toute autre forme d’aide sont interdits.
+- **Matière** : Les cours magistraux 1 à 8. La numérotation correspond à celle utilisée dans les URL du site Web du cours.
+- **Questions et pondération** :
+  - 15 questions vrai ou faux valant 1 point chacune;
+  - 10 questions à choix multiples valant 2 points chacune;
+  - 35 points au total.
+- **Documents à remplir** : Vous recevrez un questionnaire sur papier et une feuille Scantron. Vous devez inscrire vos réponses sur les deux. Pour les questions vrai ou faux, utilisez **A pour vrai** et **B pour faux** sur la feuille Scantron.
+- **Ce que le quiz évalue** : L’accent est mis sur la compréhension conceptuelle et la capacité d’appliquer les notions du cours, plutôt que sur la mémorisation de détails accessoires liés à la mise en œuvre. Les questions peuvent vous demander :
+  - de distinguer des concepts étroitement liés;
+  - de raisonner sur le comportement d’un modèle ou d’une méthode d’apprentissage;
+  - d’interpréter de courts extraits de code, des résultats expérimentaux ou des mesures de performance;
+  - de repérer des problèmes méthodologiques dans une expérience d’apprentissage automatique; ou
+  - d’effectuer un calcul simple ne nécessitant pas de calculatrice.
+- **Comment vous préparer efficacement** :
+  - Révisez les présentations (`slides`) ainsi que les carnets (*Jupyter Notebooks*) qui les accompagnent; ces ressources fournissent des explications et des exemples complémentaires.
+  - Assurez-vous de pouvoir expliquer les concepts importants dans vos propres mots et de reconnaître les situations dans lesquelles leurs hypothèses s’appliquent.
+  - Revoyez les exemples portant sur l’entraînement (*training*), la prédiction (*prediction*), la validation, le prétraitement (*preprocessing*), les mesures d’évaluation (*evaluation metrics*) et l’interprétation des résultats expérimentaux.
+  - Entraînez-vous à expliquer pourquoi une réponse est correcte et pourquoi les autres choix plausibles sont incorrects. Il ne suffit pas de reconnaître la terminologie.
+  - Revoyez la signification des expressions mathématiques et des règles de mise à jour simples présentées en classe. L’objectif est de savoir les interpréter et les appliquer, et non d’effectuer de longs calculs.
+  - Portez une attention particulière aux mots tels que *toujours*, *nécessairement*, *peut* et *ne peut pas*. Lisez chaque énoncé au complet avant de répondre.
+- **Ce qui n’est pas prioritaire** : Vous n’avez pas à mémoriser des détails mineurs de syntaxe propres aux bibliothèques ni des opérations de programmation accessoires, comme la modification de la forme d’un tableau NumPy. Vous devez toutefois comprendre le rôle des principales opérations et des principaux flux de travail présentés en classe.
+- **Matériel à apporter** : Apportez votre carte étudiante et au moins deux crayons à mine convenant à une feuille Scantron.
 
 # Quel sera le format du Quiz 2 ?
 
