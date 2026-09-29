@@ -45,7 +45,7 @@ En cliquant sur **Devoirs**, vous devriez voir l’avis suivant en haut de la pa
   - de repérer des problèmes méthodologiques dans une expérience d’apprentissage automatique; ou
   - d’effectuer un calcul simple ne nécessitant pas de calculatrice.
 - **Comment vous préparer efficacement** :
-  - Révisez les présentations (`slides`) ainsi que les carnets (*Jupyter Notebooks*) qui les accompagnent; ces ressources fournissent des explications et des exemples complémentaires.
+  - Révisez les présentations (*slides*) ainsi que les carnets (*Jupyter notebooks* ) qui les accompagnent; ces ressources fournissent des explications et des exemples complémentaires.
   - Assurez-vous de pouvoir expliquer les concepts importants dans vos propres mots et de reconnaître les situations dans lesquelles leurs hypothèses s’appliquent.
   - Revoyez les exemples portant sur l’entraînement (*training*), la prédiction (*prediction*), la validation, le prétraitement (*preprocessing*), les mesures d’évaluation (*evaluation metrics*) et l’interprétation des résultats expérimentaux.
   - Entraînez-vous à expliquer pourquoi une réponse est correcte et pourquoi les autres choix plausibles sont incorrects. Il ne suffit pas de reconnaître la terminologie.
