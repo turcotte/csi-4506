@@ -39,21 +39,21 @@
     "href": "lectures/10/Scaling.html",
     "title": "Mise à l’échelle",
     "section": "",
-    "text": "Nous prétendons prédire le prix d’une maison en utilisant la régression des k-plus proches voisins (KNN) avec deux attributs :\n\n\\(x_1\\): nombre de chambres (petite échelle)\n\\(x_2\\): superficie en pieds carrés (grande échelle)\n\nNous créons trois exemples a, b, c choisis de manière à ce que :\n\nSans mise à l’échelle, a soit plus proche de b (car la superficie en pieds carrés domine).\nAvec mise à l’échelle (score-z), a devienne plus proche de c (la différence de chambres importe après la remise à l’échelle)."
+    "text": "Ce carnet exécutable de façon autonome approfondit l’exemple de mise à l’échelle de la leçon 10. Il montre comment l’échelle des attributs modifie la géométrie employée par les méthodes fondées sur les plus proches voisins."
   },
   {
     "objectID": "lectures/10/Scaling.html#scénario",
     "href": "lectures/10/Scaling.html#scénario",
     "title": "Mise à l’échelle",
-    "section": "",
-    "text": "Nous prétendons prédire le prix d’une maison en utilisant la régression des k-plus proches voisins (KNN) avec deux attributs :\n\n\\(x_1\\): nombre de chambres (petite échelle)\n\\(x_2\\): superficie en pieds carrés (grande échelle)\n\nNous créons trois exemples a, b, c choisis de manière à ce que :\n\nSans mise à l’échelle, a soit plus proche de b (car la superficie en pieds carrés domine).\nAvec mise à l’échelle (score-z), a devienne plus proche de c (la différence de chambres importe après la remise à l’échelle)."
+    "section": "Scénario",
+    "text": "Scénario\nConsidérons la prédiction du prix d’une maison par régression des k plus proches voisins (KNN) à partir de deux attributs :\n\nx_1 : nombre de pièces (petite échelle)\nx_2 : superficie en pieds carrés (grande échelle)\n\nLes trois exemples a, b et c sont choisis de façon à ce que :\n\nsans mise à l’échelle, a soit plus proche de b, car la superficie domine;\navec une standardisation (score z), a devienne plus proche de c, car la différence du nombre de pièces compte une fois les attributs remis à l’échelle."
   },
   {
     "objectID": "lectures/10/Scaling.html#données-trois-maisons",
     "href": "lectures/10/Scaling.html#données-trois-maisons",
     "title": "Mise à l’échelle",
     "section": "Données (trois maisons)",
-    "text": "Données (trois maisons)\n\nimport numpy as np\nimport pandas as pd\n\n# Trois exemples (pièces, sqft); prix uniquement pour b et c (entraînement)\npoint_names = [\"a\", \"b\", \"c\"]\nX = np.array([\n    [4, 1500.0],  # a (requête)\n    [8, 1520.0],  # b (entraînement)\n    [4, 1300.0],  # c (entraînement)\n], dtype=float)\n\nprices = pd.Series([np.nan, 520_000, 390_000], index=point_names, name=\"prix\")\n\ndf = pd.DataFrame(X, columns=[\"pièces\", \"sqft\"], index=point_names)\ndisplay(df)\ndisplay(prices.to_frame())\n\n\n\n\n\n\n\n\npièces\nsqft\n\n\n\n\na\n4.0\n1500.0\n\n\nb\n8.0\n1520.0\n\n\nc\n4.0\n1300.0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprix\n\n\n\n\na\nNaN\n\n\nb\n520000.0\n\n\nc\n390000.0\n\n\n\n\n\n\n\nRemarque. Nous traiterons b et c comme l’ensemble d’entraînement, et a comme la requête dont nous voulons prédire le prix."
+    "text": "Données (trois maisons)\n\nimport numpy as np\nimport pandas as pd\n\n# Trois exemples (pièces, pieds carrés); prix pour b et c seulement\npoint_names = [\"a\", \"b\", \"c\"]\nX = np.array([\n    [4, 1500.0],  # a (requête)\n    [8, 1520.0],  # b (entraînement)\n    [4, 1300.0],  # c (entraînement)\n], dtype=float)\n\nprices = pd.Series([np.nan, 520_000, 390_000], index=point_names, name=\"prix\")\n\ndf = pd.DataFrame(X, columns=[\"pièces\", \"pieds_carrés\"], index=point_names)\ndisplay(df)\ndisplay(prices.to_frame())\n\n\n\n\n\n\n\n\npièces\npieds_carrés\n\n\n\n\na\n4.0\n1500.0\n\n\nb\n8.0\n1520.0\n\n\nc\n4.0\n1300.0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprix\n\n\n\n\na\nNaN\n\n\nb\n520000.0\n\n\nc\n390000.0\n\n\n\n\n\n\n\nLes exemples b et c forment l’ensemble d’entraînement. L’exemple a constitue la requête dont nous voulons prédire le prix. Ce jeu de données volontairement minuscule illustre la géométrie, et non l’estimation d’un modèle réaliste."
   },
   {
     "objectID": "lectures/10/Scaling.html#distances-euclidiennes-non-normalisées",
@@ -74,7 +74,7 @@
     "href": "lectures/10/Scaling.html#distances-euclidiennes-après-mise-à-léchelle",
     "title": "Mise à l’échelle",
     "section": "Distances euclidiennes (après mise à l’échelle)",
-    "text": "Distances euclidiennes (après mise à l’échelle)\n\ndist_scaled = pd.DataFrame(\n    pairwise_distances(Z.values, metric=\"euclidean\"),\n    index=Z.index, columns=Z.index\n)\ndist_scaled\n\n\n\n\n\n\n\n\na\nb\nc\n\n\n\n\na\n0.000000\n2.008247\n1.818182\n\n\nb\n2.008247\n0.000000\n2.828427\n\n\nc\n1.818182\n2.828427\n0.000000\n\n\n\n\n\n\n\n\nprint(\"Le plus proche de 'a' (échelle ajustée) :\", dist_scaled.loc[\"a\"].drop(\"a\").idxmin())\n\nLe plus proche de 'a' (échelle ajustée) : c\n\n\nMaintenant : a est le plus proche de c (la différence de pièces est importante lorsque les attributs sont sur des échelles comparables)."
+    "text": "Distances euclidiennes (après mise à l’échelle)\n\ndist_scaled = pd.DataFrame(\n    pairwise_distances(Z.values, metric=\"euclidean\"),\n    index=Z.index, columns=Z.index\n)\ndist_scaled\n\n\n\n\n\n\n\n\na\nb\nc\n\n\n\n\na\n0.000000\n2.008247\n1.818182\n\n\nb\n2.008247\n0.000000\n2.828427\n\n\nc\n1.818182\n2.828427\n0.000000\n\n\n\n\n\n\n\n\nprint(\"Plus proche de 'a' (après mise à l'échelle) :\", dist_scaled.loc[\"a\"].drop(\"a\").idxmin())\n\nPlus proche de 'a' (après mise à l'échelle) : c\n\n\nNouveau résultat : a est plus proche de c, car la différence du nombre de pièces compte une fois les attributs placés sur des échelles comparables."
   },
   {
     "objectID": "lectures/10/Scaling.html#régression-knn-inversion-dans-la-prédiction",
@@ -386,7 +386,7 @@
     "href": "lectures/10/index.html#pratiquer",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Pratiquer",
-    "text": "Pratiquer\n\nMise à l’échelle  - Nous appliquons la régression par k plus proches voisins (k-NN) pour prédire les prix des maisons, en utilisant deux attributs : le nombre de pièces et la superficie, qui possèdent intrinsèquement des échelles différentes. Nous comparons la performance du modèle avec et sans mise à l’échelle des attributs."
+    "text": "Pratiquer\n\nMise à l’échelle  - Un exemple de régression KNN exécutable de façon autonome qui montre comment le nombre de pièces et la superficie produisent des géométries, des plus proches voisins et des prédictions différents avant et après une mise à l’échelle sans fuite de données."
   },
   {
     "objectID": "lectures/08/index.html",
@@ -3123,14 +3123,14 @@
     "href": "lectures/10/slides.html#message-du-jour",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Message du jour",
-    "text": "Message du jour\n\n\n\n\n\n\n\nLa Fondation de la famille Weston a octroyé une subvention de 10 millions de dollars à un projet de recherche collaboratif entre l’Université d’Ottawa et l’Université de l’Alberta. Cette initiative vise à mener des recherches novatrices sur syndrome du côlon irritable (SCI).\nAu Canada, plus de 300 000 personnes souffrent de SCI chroniques, qui incluent des affections telles que la maladie de Crohn et la colite ulcéreuse. Le projet s’appuiera sur les données de RapidAIM, une plateforme développée à l’Université d’Ottawa conçue pour évaluer rapidement les effets de divers composés sur les microbiomes individuels.\nUn objectif clé de cette recherche est de poser les bases pour former un modèle d’intelligence artificielle (IA). Ce modèle sera capable de générer des recommandations alimentaires personnalisées, adaptées aux profils microbiens uniques des individus atteints du SCI.\n\n\nL’Université d’Ottawa met au point un outil alimenté par l’IA qui génère des menus personnalisés pour les personnes atteintes du syndrome du côlon irritable, 2025-09-23."
+    "text": "Message du jour\n\n\n\n\n\n\n\n\n\n\n Aidan Gomez, cofondateur et chef de la direction\n\n\nLe Canada est le berceau de Cohere. C’est ici que nous avons fondé l’entreprise, que se trouve une grande partie de nos talents et que nous voulons continuer à bâtir à long terme. Ottawa possède une communauté technologique remarquable et un important bassin de talents. L’ouverture de notre premier bureau dans la ville constitue une étape importante pour investir dans notre équipe et bâtir l’avenir.\n\n\n\nLe semestre a commencé par une présentation de Joëlle Pineau et de son rôle chez Cohere. Nous revenons aujourd’hui à cette entreprise alors qu’elle accroît sa présence au Canada en ouvrant un bureau permanent à Ottawa. Ce développement est stimulant pour la communauté locale de l’IA et pourrait même offrir des possibilités de carrière à certains d’entre vous.\nDeux des cofondateurs de Cohere ont des liens intéressants avec Ottawa et la musique.\nAidan Gomez, cofondateur et chef de la direction de Cohere, est l’un des huit auteurs de l’article marquant de 2017 Attention Is All You Need, qui a introduit l’architecture Transformer à la base des grands modèles de langage modernes. Son parcours en apprentissage automatique possède également un lien avec la musique. Pianiste depuis l’enfance, il a travaillé durant ses études de premier cycle à une application qui utilisait des réseaux de neurones pour suivre une interprétation au piano en direct et tourner automatiquement les pages de la partition.\nNick Frosst, un autre cofondateur de Cohere, a grandi à Ottawa et affirme avoir appris la programmation à l’école secondaire Bell, à Bells Corners. Il a ensuite étudié l’informatique et les sciences cognitives à l’Université de Toronto avant de devenir le premier employé du laboratoire Google Brain de Geoffrey Hinton à Toronto. Frosst mène aussi une seconde carrière plutôt inhabituelle : il est le chanteur principal du groupe canadien de rock indépendant Good Kid.\n\n\nCohere accroît sa présence au Canada avec un nouveau bureau à Ottawa, 2026-10-08."
   },
   {
     "objectID": "lectures/10/slides.html#objectifs-dapprentissage",
     "href": "lectures/10/slides.html#objectifs-dapprentissage",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Objectifs d’apprentissage",
-    "text": "Objectifs d’apprentissage\n\nExpliquer l’extraction de attributs, comparer les méthodes de codage, et justifier les choix en fonction de la nature des données.\nAppliquer la normalisation/standardisation pour l’échelle des attributs et gérer les valeurs manquantes par imputation.\nDéfinir le déséquilibre des classes, explorer des solutions comme le rééchantillonnage et SMOTE, et garantir une application appropriée.\nAppliquer les concepts à des ensembles de données du monde réel, analyser les résultats, et comprendre le pipeline d’apprentissage automatique.\nReconnaître l’impact de la taille de l’ensemble de données, discuter de l’augmentation des données, et explorer l’efficacité des données dans l’apprentissage automatique."
+    "text": "Objectifs d’apprentissage\n\nChoisir un encodage qui respecte la signification d’un attribut et les besoins de l’estimateur.\nExpliquer quand la mise à l’échelle importe et l’appliquer sans fuite d’information provenant des données de validation ou de test.\nComparer les stratégies de traitement des valeurs manquantes et effectuer l’imputation dans un pipeline.\nAppliquer les remèdes au déséquilibre des classes aux données d’entraînement sans modifier la distribution d’évaluation.\nConstruire des attributs non linéaires et des interactions tout en contrôlant la complexité du modèle.\nExpliquer comment la qualité, la couverture et l’augmentation des données influencent la généralisation."
   },
   {
     "objectID": "lectures/10/slides.html#ingénierie-de-lapprentissage-automatique",
@@ -3144,7 +3144,7 @@
     "href": "lectures/10/slides.html#pourquoi",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Pourquoi?",
-    "text": "Pourquoi?\nAprès avoir complété le devoir 1, vous avez généré un fichier .csv contenant des données nettoyées.\nPourquoi des étapes supplémentaires seraient nécessaires?"
+    "text": "Pourquoi?\nAprès avoir terminé le devoir 1, vous avez produit un fichier .csv contenant des données nettoyées.\nPourquoi d’autres étapes seraient-elles nécessaires?"
   },
   {
     "objectID": "lectures/10/slides.html#données---adult",
@@ -3186,14 +3186,14 @@
     "href": "lectures/10/slides.html#données-catégorielles",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Données catégorielles",
-    "text": "Données catégorielles\nPoints clés sur la représentation des données\n\nReprésentation numérique: Certains algorithmes d’apprentissage nécessitent que les données soient sous forme numérique."
+    "text": "Données catégorielles\nPrincipes de représentation des données\n\nReprésentation numérique : de nombreux algorithmes d’apprentissage exigent des vecteurs d’attributs numériques.\nLa signification compte : la représentation doit respecter le caractère non ordonné ou ordonné des catégories."
   },
   {
     "objectID": "lectures/10/slides.html#méthodes-dencodage",
     "href": "lectures/10/slides.html#méthodes-dencodage",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Méthodes d’encodage",
-    "text": "Méthodes d’encodage\nConsidérons l’attribut workclass, qui a 8 valeurs distinctes telles que ‘Federal-gov’, ‘Local-gov’, etc.\n\nQuelle méthode d’encodage est préférable et pourquoi?\n\n\nw = 1, 2, 3, 4, 5, 6, 7, ou 8\nw = [0,0,0], [0,0,1], [0,1,0], \\(\\ldots\\), ou [1,1,1]\nw = [1,0,0,0,0,0,0,0], [0,1,0,0,0,0,0,0], \\(\\ldots\\), ou [0,0,0,0,0,0,0,1]"
+    "text": "Méthodes d’encodage\nConsidérons l’attribut workclass, qui possède huit valeurs distinctes, telles que ‘Federal-gov’ et ‘Local-gov’.\n\nQuelle méthode d’encodage faut-il privilégier et pourquoi?\n\n\nw = 1, 2, 3, 4, 5, 6, 7 ou 8\nw = [0,0,0], [0,0,1], [0,1,0], \\ldots ou [1,1,1]\nw = [1,0,0,0,0,0,0,0], [0,1,0,0,0,0,0,0], \\ldots ou [0,0,0,0,0,0,0,1]"
   },
   {
     "objectID": "lectures/10/slides.html#encodage-pour-les-données-catégorielles",
@@ -3207,49 +3207,49 @@
     "href": "lectures/10/slides.html#définition",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nEncodage One-Hot: Une technique qui convertit les variables catégorielles en une représentation vectorielle binaire, où chaque catégorie est représentée par un vecteur avec un seul ‘1’ et tous les autres éléments à ‘0’.\n\n\nIl existe de nombreuses autres représentations vectorielles, parmi lesquelles les “embeddings” se distinguent par leur efficacité remarquable."
+    "text": "Définition\nL’encodage one-hot transforme une variable catégorielle en vecteur binaire. Chaque catégorie est représentée par un vecteur qui contient un seul « 1 » et des « 0 » partout ailleurs.\n\n\nLes attributs de grande cardinalité peuvent nécessiter d’autres représentations, comme le regroupement des catégories rares, le hachage, l’encodage par la cible ou des plongements appris."
   },
   {
     "objectID": "lectures/10/slides.html#onehotencoder",
     "href": "lectures/10/slides.html#onehotencoder",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "OneHotEncoder",
-    "text": "OneHotEncoder\n\nfrom numpy import array\nfrom sklearn.preprocessing import OneHotEncoder\n\nwork = adult.data[['workclass']]\n\nonehot_encoder = OneHotEncoder()\n\nonehot_encoder.fit(work)\nvalues_encoded = onehot_encoder.transform(work)\n\nfor i in range(5): print(values_encoded.toarray()[i])\n\n[0. 0. 0. 1. 0. 0. 0. 0. 0.]\n[0. 0. 0. 1. 0. 0. 0. 0. 0.]\n[0. 1. 0. 0. 0. 0. 0. 0. 0.]\n[0. 0. 0. 1. 0. 0. 0. 0. 0.]\n[0. 0. 0. 0. 0. 0. 0. 0. 1.]\n\n\n\n\nUne personne de mon groupe de recherche a rencontré un problème difficile à déboguer. Elle a par erreur créé un nouvel encodeur pour l’ensemble de test en utilisant onehot_encoder.fit(X_test['some_attribute']), ce qui a produit une représentation vectorielle différente de celle utilisée lors de l’entraînement. Par conséquent, les résultats sur l’ensemble test étaient médiocres, tandis que les résultats sur l’ensemble d’entraînement semblaient satisfaisants.\nBien que Pandas propose une méthode appelée get_dummies() pour l’encodage One-Hot, il est important de noter les distinctions suivantes :\n\nMémoire des catégories: OneHotEncoder conserve les catégories sur lesquelles il a été entraîné, tandis que get_dummies() ne le fait pas.\nCohérence en production: Il est essentiel d’utiliser le même schéma d’encodage en production que celui utilisé lors de l’entraînement pour garantir des résultats précis.\nDifférences de longueur de vecteur: Si get_dummies() rencontre un nombre différent de catégories dans de nouvelles données, il produira des vecteurs de longueurs variables, ce qui peut entraîner des erreurs.\nGestion des valeurs manquantes: Lors de la gestion des valeurs manquantes, get_dummies() génère une colonne supplémentaire pour les prendre en compte.\n\n\n\nLa cohérence est cruciale: Assurez-vous d’utiliser le même encodage pour : ensemble de validation, ensemble de test, et données en production."
+    "text": "OneHotEncoder\n\nfrom sklearn.preprocessing import OneHotEncoder\n\nwork = adult.data[['workclass']]\n\nonehot_encoder = OneHotEncoder(handle_unknown=\"ignore\")\n\nonehot_encoder.fit(work)\nvalues_encoded = onehot_encoder.transform(work)\n\nvalues_encoded[:5].toarray()\n\narray([[0., 0., 0., 1., 0., 0., 0., 0., 0.],\n       [0., 0., 0., 1., 0., 0., 0., 0., 0.],\n       [0., 1., 0., 0., 0., 0., 0., 0., 0.],\n       [0., 0., 0., 1., 0., 0., 0., 0., 0.],\n       [0., 0., 0., 0., 0., 0., 0., 0., 1.]])\n\n\n\n\nDurant fit, un encodeur apprend les catégories et l’ordre de leurs colonnes. Ajuster un deuxième encodeur sur les données de validation, de test ou de production peut donc changer la signification ou le nombre des colonnes. Il faut plutôt ajuster l’encodeur sur les données d’entraînement et réutiliser sa méthode transform partout ailleurs. Un pipeline applique automatiquement ce principe durant la validation croisée.\nPandas offre aussi la méthode get_dummies() pour effectuer un encodage one-hot, mais les deux outils présentent des différences importantes :\n\nMémorisation des catégories : OneHotEncoder conserve les catégories observées pendant l’entraînement, contrairement à get_dummies().\nCohérence en production : le schéma d’encodage employé en production doit être identique à celui de l’entraînement.\nLongueur des vecteurs : si get_dummies() rencontre un nombre différent de catégories dans de nouvelles données, la longueur des vecteurs peut changer et causer des erreurs.\nValeurs manquantes : par défaut, get_dummies() encode une valeur manquante par des zéros dans toutes les colonnes. Une colonne explicite est créée seulement avec dummy_na=True.\n\nLa cohérence de l’encodage entre les données d’entraînement, de validation et de production est essentielle à l’intégrité du modèle.\n\n\nLa cohérence est essentielle : utilisez le même encodage pour les ensembles de validation et de test ainsi que pour les données de production."
   },
   {
     "objectID": "lectures/10/slides.html#étude-de-cas",
     "href": "lectures/10/slides.html#étude-de-cas",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Étude de cas",
-    "text": "Étude de cas\n\nEnsemble de données : Heart Disease\n\nExemples : 303, Attributs : 13, Cible : Présence/absence de maladie\n\nDonnées catégorielles :\n\nsexe : 1 = homme, 0 = femme\ncp (type de douleur thoracique) :\n\n1 : Angine typique\n2 : Angine atypique\n3 : Douleur non angineuse\n4 : Asymptomatique\n\nAutres : ‘fbs’, ‘restecg’, ‘exang’, ‘slope’, ‘thal’\n\n\n\n\nVoici quelques suggestions pour des recherches ultérieures :\n\nÉvaluer l’impact de l’omission des valeurs manquantes sur l’ensemble de données.\nImplémenter l’ajustement des hyperparamètres pour déterminer si la régularisation \\(L_1\\) ou \\(L_2\\) améliore les performances du modèle.\n\n\n\nPour simplifier l’analyse : Les exemples avec des valeurs manquantes ont été supprimés, aucun ajustement d’hyperparamètres n’a été effectué, les valeurs numériques ont été mises à l’échelle pour la convergence des solveurs."
+    "text": "Étude de cas\n\nJeu de données : Heart Disease\n\nExemples : 303, attributs : 13\nCible : 0 indique l’absence de maladie; les valeurs 1 à 4 indiquent sa présence\n\nDonnées catégorielles :\n\nsex : 1 = homme, 0 = femme\ncp (type de douleur thoracique) :\n\n1 : angine typique\n2 : angine atypique\n3 : douleur non angineuse\n4 : asymptomatique\n\nAutres : ‘fbs’, ‘restecg’, ‘exang’, ‘slope’, ‘thal’\n\n\n\n\nLa cible du jeu de données UCI indique l’absence par 0 et différents degrés de présence par les valeurs 1 à 4. Le code convertit ces valeurs en la tâche binaire décrite sur la diapositive.\nLes lignes supprimées peuvent différer systématiquement des lignes complètes. Ce raccourci peut donc introduire un biais de sélection. Une analyse réaliste examinerait le mécanisme des valeurs manquantes et comparerait une stratégie d’imputation ajustée sur les données d’entraînement.\nL’exemple se limite volontairement au prétraitement. Les choix du modèle et de la régularisation seraient effectués à partir des données de validation ou par validation croisée, tandis que l’ensemble de test serait réservé à l’évaluation finale.\n\n\nPour simplifier l’analyse : les exemples qui contiennent des valeurs manquantes sont supprimés, la cible est ramenée à absence ou présence et aucun réglage d’hyperparamètres n’est effectué."
   },
   {
     "objectID": "lectures/10/slides.html#étude-de-cas-1",
     "href": "lectures/10/slides.html#étude-de-cas-1",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Étude de cas",
-    "text": "Étude de cas\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import fetch_openml\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import classification_report\n\n# Chargement de l'ensemble de données 'Heart-Disease' depuis OpenML\ndata = fetch_openml(name='Heart-Disease', version=1, as_frame=True)\ndf = data.frame\n\n# Remplacer '?' par NaN et convertir les colonnes en numérique\nfor col in df.columns:\n    df[col] = pd.to_numeric(df[col], errors='coerce')\n\n# Supprimer les lignes avec des valeurs manquantes\ndf.dropna(inplace=True)\n\n# Définir les attributs et la cible\nX = df.drop(columns=['target'])\ny = df['target']\n\n# Colonnes à encoder avec OneHotEncoder\ncolonnes_a_encoder = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'thal']\n\n# Identifier les colonnes numériques\ncolonnes_numeriques = X.columns.difference(colonnes_a_encoder)\n\n# Diviser l'ensemble de données en ensembles d'entraînement et de test avant les transformations\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n# Appliquer OneHotEncoder et StandardScaler à l'aide de ColumnTransformer\ncolumn_transformer = ColumnTransformer(\n    transformers=[\n        ('onehot', OneHotEncoder(), colonnes_a_encoder),\n        ('scaler', StandardScaler(), colonnes_numeriques)\n    ]\n)\n\n# Ajuster le transformateur sur les données d'entraînement et transformer les données d'entraînement et de test\nX_train_processed = column_transformer.fit_transform(X_train)\nX_test_processed = column_transformer.transform(X_test)\n\n# Initialiser et entraîner le modèle de régression logistique\nmodel = LogisticRegression(max_iter=1000)\nmodel = model.fit(X_train_processed, y_train)\n\n\nDans le cadre de l’utilisation de ColumnTransformer, le second élément des triplets, habituellement un estimateur, peut également être remplacé par les options drop ou passthrough. L’option drop permet d’exclure la colonne concernée du processus de transformation, tandis que passthrough préserve la colonne dans son état initial, sans apporter de modifications."
+    "text": "Étude de cas\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import fetch_openml\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import classification_report\nfrom sklearn.pipeline import Pipeline\n\n# Charger le jeu de données 'Heart-Disease' depuis OpenML\ndata = fetch_openml(name='Heart-Disease', version=1, as_frame=True)\ndf = data.frame\n\n# Remplacer '?' par NaN et convertir les colonnes en valeurs numériques\nfor col in df.columns:\n    df[col] = pd.to_numeric(df[col], errors='coerce')\n\n# Supprimer les lignes qui contiennent des valeurs manquantes\ndf.dropna(inplace=True)\n\n# Définir les attributs et convertir la cible en absence ou présence\nX = df.drop(columns=['target'])\ny = (df['target'] &gt; 0).astype(int)\n\n# Colonnes à encoder avec OneHotEncoder\ncolumns_to_encode = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'thal']\n\n# Repérer les colonnes numériques\nnumerical_columns = X.columns.difference(columns_to_encode)\n\n# Diviser les données avant d'appliquer les transformations\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42, stratify=y\n)\n\n# Appliquer OneHotEncoder et StandardScaler avec ColumnTransformer\npreprocessor = ColumnTransformer(\n    transformers=[\n        (\n            'onehot',\n            OneHotEncoder(drop='first', handle_unknown='ignore'),\n            columns_to_encode,\n        ),\n        ('scaler', StandardScaler(), numerical_columns)\n    ]\n)\n\n# Le pipeline ajuste le prétraitement et le classificateur sur l'entraînement\nheart_pipeline = Pipeline([\n    ('preprocessor', preprocessor),\n    ('classifier', LogisticRegression()),\n])\nheart_pipeline.fit(X_train, y_train)\n\n\nColumnTransformer applique différentes transformations aux colonnes choisies. Un transformateur peut aussi être drop, qui exclut les colonnes choisies, ou passthrough, qui les conserve sans les modifier.\nLe Pipeline qui l’englobe constitue le principe d’ingénierie essentiel. L’appel à fit apprend les paramètres de prétraitement et le classificateur uniquement à partir des données d’entraînement. L’appel à predict applique les transformations déjà ajustées avant la classification. Durant la validation croisée, chaque pli apprend donc ses propres paramètres de prétraitement à partir de sa partition d’entraînement."
   },
   {
     "objectID": "lectures/10/slides.html#étude-de-cas---résultats",
     "href": "lectures/10/slides.html#étude-de-cas---résultats",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Étude de cas - résultats",
-    "text": "Étude de cas - résultats\n\n# Prédire et évaluer le modèle\ny_pred = model.predict(X_test_processed)\n\nprint(classification_report(y_test, y_pred))\n\n              precision    recall  f1-score   support\n\n         0.0       0.87      0.93      0.90        29\n         1.0       0.93      0.88      0.90        32\n\n    accuracy                           0.90        61\n   macro avg       0.90      0.90      0.90        61\nweighted avg       0.90      0.90      0.90        61"
+    "text": "Étude de cas - résultats\n\n# Prédire et évaluer sur l'ensemble de test resté intact\ny_pred = heart_pipeline.predict(X_test)\n\nprint(classification_report(y_test, y_pred))\n\n              precision    recall  f1-score   support\n\n           0       0.83      0.71      0.77        28\n           1       0.78      0.88      0.83        33\n\n    accuracy                           0.80        61\n   macro avg       0.81      0.80      0.80        61\nweighted avg       0.81      0.80      0.80        61"
   },
   {
     "objectID": "lectures/10/slides.html#étude-de-cas---douleur-thoracique-cp",
     "href": "lectures/10/slides.html#étude-de-cas---douleur-thoracique-cp",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Étude de cas - douleur thoracique (cp)",
-    "text": "Étude de cas - douleur thoracique (cp)\n\n# Récupérer les noms des attributs après transformation à l'aide de get_feature_names_out()\nfeature_names = column_transformer.get_feature_names_out()\n\n# Obtenir les coefficients et les associer aux noms des attributs\ncoefficients = model.coef_[0]\n\n# Créer un DataFrame avec les noms des attributs et les coefficients\ncoef_df = pd.DataFrame({\n    'Attribut': feature_names,\n    'Coefficient': coefficients\n})\n\n# Afficher les coefficients associés à 'cp'\ncp_features = coef_df[coef_df['Attribut'].str.contains('_cp')]\nprint(\"\\nCoefficients associés à 'cp' :\")\nprint(cp_features)\n\n\nCoefficients associés à 'cp' :\n         Attribut  Coefficient\n2  onehot__cp_0.0    -1.013382\n3  onehot__cp_1.0    -0.212284\n4  onehot__cp_2.0     0.599934\n5  onehot__cp_3.0     0.628824"
+    "text": "Étude de cas - douleur thoracique (cp)\n\n# Récupérer les noms des attributs et les coefficients du pipeline ajusté\nfeature_names = heart_pipeline[\n    'preprocessor'\n].get_feature_names_out()\n\ncoefficients = heart_pipeline['classifier'].coef_[0]\n\n# Créer un DataFrame qui associe les attributs et les coefficients\ncoef_df = pd.DataFrame({\n    'Attribut': feature_names,\n    'Coefficient': coefficients\n})\n\n# Afficher les coefficients associés à 'cp'\ncp_features = coef_df[coef_df['Attribut'].str.contains('_cp')]\nprint(\"\\nCoefficients associés à 'cp' :\")\nprint(cp_features)\n\n\nCoefficients associés à 'cp' :\n         Attribut  Coefficient\n1  onehot__cp_1.0     0.754906\n2  onehot__cp_2.0     1.440017\n3  onehot__cp_3.0     1.255102"
   },
   {
     "objectID": "lectures/10/slides.html#étude-de-cas---coefficients",
     "href": "lectures/10/slides.html#étude-de-cas---coefficients",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Étude de cas - coefficients",
-    "text": "Étude de cas - coefficients\n\n# Visualiser les coefficients\n\nplt.figure(figsize=(8, 6))\nplt.barh(coef_df['Attribut'], coef_df['Coefficient'])\nplt.title('Coefficients des attributs')\nplt.xlabel('Valeur du coefficient')\nplt.ylabel('Attribut')\nplt.tight_layout()\nplt.show()\n\n\n\n\nLes coefficients positifs dans un modèle de régression logistique signifient que des valeurs plus élevées de l’attribut correspondant contribuent positivement à la probabilité qu’un exemple appartienne à ‘target = 1.0’. Les coefficients négatifs indiquent l’effet opposé."
+    "text": "Étude de cas - coefficients\n\n\nCode\n# Visualiser les coefficients ajustés\n\ncoef_plot_df = coef_df.sort_values(by='Coefficient')\nplt.figure(figsize=(8, 6))\nplt.barh(coef_plot_df['Attribut'], coef_plot_df['Coefficient'])\nplt.title('Coefficients des attributs')\nplt.xlabel('Valeur du coefficient')\nplt.ylabel('Attribut')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\nLorsque la première catégorie de chaque attribut encodé sert de référence, un coefficient positif augmente le logarithme du rapport des probabilités ajusté de présence d’une maladie cardiaque par rapport à cette référence, toutes les autres valeurs transformées étant maintenues constantes. Un coefficient négatif le réduit.\nL’amplitude d’un coefficient dépend aussi de la mise à l’échelle et de la régularisation. Ces coefficients décrivent des associations dans le modèle ajusté; ils ne démontrent pas qu’un attribut cause une maladie cardiaque."
   },
   {
     "objectID": "lectures/10/slides.html#étude-de-cas---coefficients-output",
@@ -3277,7 +3277,7 @@
     "href": "lectures/10/slides.html#définition-1",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nL’encodage ordinal est une technique qui attribue des valeurs numériques aux attributs catégoriels en fonction de leur ordre ou de leur classement intrinsèque."
+    "text": "Définition\nL’encodage ordinal attribue des valeurs numériques à des catégories selon leur ordre ou leur rang intrinsèque."
   },
   {
     "objectID": "lectures/10/slides.html#encodage-ordinal",
@@ -3291,14 +3291,14 @@
     "href": "lectures/10/slides.html#ordinalencoder-révisé",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "OrdinalEncoder (révisé)",
-    "text": "OrdinalEncoder (révisé)\n\nfrom numpy import array\nfrom sklearn.preprocessing import OrdinalEncoder\n\nX =[['Mauvais'], ['Moyen'], ['Bon'], ['Moyen'], ['Moyen']]\n\nencoder = OrdinalEncoder(categories=[['Mauvais', 'Moyen', 'Bon']])\n\nencoder.fit(X)\n\nX_encoded = encoder.transform(X)\n\nX_encoded\n\narray([[0.],\n       [1.],\n       [2.],\n       [1.],\n       [1.]])\n\n\n\nL’ordre souhaité des catégories doit être fourni explicitement à l’encodeur ; sinon, il adopte l’ordre alphabétique par défaut.\nUn encodeur ordinal est approprié lorsque les attributs catégoriels ont un ordre ou un classement clair et intrinsèque, comme ‘Faible’, ‘Moyen’, et ‘Élevé’, ou ‘Mauvais’, ‘Moyen’, et ‘Bon’. Cette méthode d’encodage préserve les relations ordinales entre les catégories.\nLorsque les données sont intrinsèquement ordinales, cet encodage est plus compact et peut être avantageux pour les modèles d’apprentissage automatique. Cependant, si l’ordinalité des données est incertaine, il est plus sûr d’utiliser un OneHotEncoder."
+    "text": "OrdinalEncoder (révisé)\n\nfrom sklearn.preprocessing import OrdinalEncoder\n\nX =[['Faible'], ['Moyen'], ['Bon'], ['Moyen'], ['Moyen']]\n\nencoder = OrdinalEncoder(categories=[['Faible', 'Moyen', 'Bon']])\n\nencoder.fit(X)\n\nX_encoded = encoder.transform(X)\n\nX_encoded\n\narray([[0.],\n       [1.],\n       [2.],\n       [1.],\n       [1.]])\n\n\n\nL’ordre voulu des catégories doit être fourni explicitement à l’encodeur; autrement, celui-ci utilise l’ordre alphabétique.\nUn encodeur ordinal convient lorsque les valeurs catégorielles possèdent un ordre ou un rang intrinsèque clair, comme « faible », « moyen » et « élevé », ou « médiocre », « moyen » et « bon ». Cette méthode préserve les relations ordinales entre les catégories.\nLorsque les données sont véritablement ordinales, cet encodage compact peut avantager certains modèles. Si leur nature ordinale est incertaine, il est plus prudent d’utiliser OneHotEncoder."
   },
   {
     "objectID": "lectures/10/slides.html#définition-2",
     "href": "lectures/10/slides.html#définition-2",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nLa discrétisation consiste à regrouper des valeurs ordinales en catégories discrètes.\n\n\nAussi appelée binning, bucketing, ou quantification."
+    "text": "Définition\nLa discrétisation transforme un attribut numérique continu ou finement gradué en un ensemble fini d’intervalles.\n\n\nAussi appelée regroupement en intervalles (binning ou bucketing) ou quantification (quantization)."
   },
   {
     "objectID": "lectures/10/slides.html#ingénierie-des-attributs-binning",
@@ -3312,42 +3312,42 @@
     "href": "lectures/10/slides.html#functiontransformer",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "FunctionTransformer",
-    "text": "FunctionTransformer\n\nimport pandas as pd\nimport numpy as np\nfrom sklearn.preprocessing import FunctionTransformer\n\nbins = [0, 1, 13, 20, 60, np.inf]\nlabels = ['nourrisson', 'enfant', 'adolescent', 'adulte', 'senior']\n\ntransformer = FunctionTransformer(\n    pd.cut, kw_args={'bins': bins, 'labels': labels, 'retbins': False}\n)\n\nX = np.array([0.5, 2, 15, 25, 97])\ntransformer.fit_transform(X)\n\n['nourrisson', 'enfant', 'adolescent', 'adulte', 'senior']\nCategories (5, str): ['nourrisson' &lt; 'enfant' &lt; 'adolescent' &lt; 'adulte' &lt; 'senior']\n\n\n\n\nVoir aussi : KBinsDiscretizer"
+    "text": "FunctionTransformer\n\nimport pandas as pd\nimport numpy as np\nfrom sklearn.preprocessing import FunctionTransformer\n\nbins = [0, 1, 13, 20, 60, np.inf]\nlabels = ['nourrisson', 'enfant', 'adolescent', 'adulte', 'personne âgée']\n\ntransformer = FunctionTransformer(\n    pd.cut, kw_args={'bins': bins, 'labels': labels, 'retbins': False}\n)\n\nX = np.array([0.5, 2, 15, 25, 97])\ntransformer.fit_transform(X)\n\n['nourrisson', 'enfant', 'adolescent', 'adulte', 'personne âgée']\nCategories (5, str): ['nourrisson' &lt; 'enfant' &lt; 'adolescent' &lt; 'adulte' &lt; 'personne âgée']\n\n\n\n\nVoir aussi : KBinsDiscretizer"
   },
   {
     "objectID": "lectures/10/slides.html#quest-ce-que-cest",
     "href": "lectures/10/slides.html#quest-ce-que-cest",
     "title": "Ingénierie de l’apprentissage automatique",
-    "section": "Qu’est-ce que c’est ?",
-    "text": "Qu’est-ce que c’est ?\nMettre à l’échelle les attributs garantit que leurs valeurs se situent dans des plages comparables."
+    "section": "Qu’est-ce que c’est?",
+    "text": "Qu’est-ce que c’est?\nLa mise à l’échelle des attributs (feature scaling) place leurs valeurs dans des plages comparables."
   },
   {
     "objectID": "lectures/10/slides.html#pourquoi-1",
     "href": "lectures/10/slides.html#pourquoi-1",
     "title": "Ingénierie de l’apprentissage automatique",
-    "section": "Pourquoi ?",
-    "text": "Pourquoi ?\nPourquoi la mise à l’échelle des données est-elle une bonne pratique ?\n\nLa mise à l’échelle des attributs garantit que leurs valeurs se situent dans des intervalles comparables. De nombreuses études indiquent que cette transformation améliore les performances des modèles.\nCertains algorithmes, tels que les k-plus proches voisins, voient leur efficacité diminuer en présence de disparités importantes dans l’échelle des attributs. Considérons deux attributs : l’un exprimant une proportion sous forme de nombre réel compris entre 0 et 1, et l’autre mesurant un volume en millilitres. Dans ce cas, la distance calculée entre deux exemples sera principalement influencée par les variations de volume plutôt que par celles de la proportion. Les algorithmes basés sur des arbres sont généralement insensibles à l’échelle des données, et par conséquent, la mise à l’échelle n’est pas nécessaire.\nDe surcroît, les méthodes d’optimisation, telles que la descente de gradient, atteignent la convergence plus rapidement lorsque les attributs ont été mis à l’échelle.\nLa normalisation peut être significativement influencée par la présence de valeurs aberrantes, ce qui souvent comprime les données dans une plage plus étroite. Pour atténuer cet effet, une approche courante consiste à limiter les données à un intervalle fixe, \\([a, b]\\). Dans cette méthode, les valeurs inférieures à \\(a\\) sont fixées à \\(a\\), et les valeurs dépassant \\(b\\) sont fixées à \\(b\\). En général, les seuils de découpage sont choisis en fonction des valeurs percentiles, comme les 5e et 95e percentiles, pour garantir une réduction équilibrée des valeurs extrêmes."
+    "section": "Pourquoi?",
+    "text": "Pourquoi?\nPourquoi certains estimateurs exigent-ils des attributs d’échelles comparables?\n\nLa mise à l’échelle modifie la géométrie et le conditionnement numérique d’un problème d’apprentissage. Son utilité dépend de l’estimateur.\nLes méthodes fondées sur les distances, comme les k plus proches voisins et les k moyennes, y sont sensibles puisqu’un attribut à grande échelle peut dominer la distance. Les noyaux RBF et les modèles linéaires régularisés sont aussi sensibles à l’échelle. L’optimisation par gradient converge souvent plus facilement lorsque les attributs ont des échelles comparables.\nLes modèles à base d’arbres comparent des seuils à l’intérieur d’un attribut à la fois. Une remise à l’échelle monotone ne change donc généralement pas les partitions possibles.\nLa mise à l’échelle ne décide pas de l’importance qu’un attribut devrait avoir. La connaissance du domaine et la géométrie recherchée pour le modèle demeurent importantes."
   },
   {
     "objectID": "lectures/10/slides.html#scénario",
     "href": "lectures/10/slides.html#scénario",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Scénario",
-    "text": "Scénario\nNous prétendons prédire le prix d’une maison en utilisant la régression par les k-plus proches voisins (KNN) avec deux attributs :\n\n\\(x_1\\) : nombre de pièces (petite échelle)\n\\(x_2\\) : superficie en pieds carrés (grande échelle)"
+    "text": "Scénario\nNous voulons prédire le prix d’une maison par régression des k plus proches voisins (KNN) à partir de deux attributs :\n\nx_1 : nombre de pièces (petite échelle)\nx_2 : superficie en pieds carrés (grande échelle)"
   },
   {
     "objectID": "lectures/10/slides.html#données-trois-maisons",
     "href": "lectures/10/slides.html#données-trois-maisons",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Données (trois maisons)",
-    "text": "Données (trois maisons)\n\nimport numpy as np\nimport pandas as pd\n\n# Trois exemples (pièces, sqft); prix seulement pour b et c (entraînement)\npoint_names = [\"a\", \"b\", \"c\"]\nX = np.array([\n    [4, 1500.0],  # a (requête)\n    [8, 1520.0],  # b (entraînement)\n    [4, 1300.0],  # c (entraînement)\n], dtype=float)\n\nprices = pd.Series([np.nan, 520_000, 390_000], index=point_names, name=\"price\")\n\ndf = pd.DataFrame(X, columns=[\"rooms\", \"sqft\"], index=point_names)\ndisplay(df)\ndisplay(prices.to_frame())\n\n\nRemarque. Nous considérerons b et c comme l’ensemble d’entraînement, et a comme la requête dont nous voulons prédire le prix."
+    "text": "Données (trois maisons)\n\nimport numpy as np\nimport pandas as pd\n\n# Trois exemples (pièces, pieds carrés); prix pour b et c seulement\npoint_names = [\"a\", \"b\", \"c\"]\nX = np.array([\n    [4, 1500.0],  # a (requête)\n    [8, 1520.0],  # b (entraînement)\n    [4, 1300.0],  # c (entraînement)\n], dtype=float)\n\nprices = pd.Series([np.nan, 520_000, 390_000], index=point_names, name=\"prix\")\n\ndf = pd.DataFrame(X, columns=[\"pièces\", \"pieds_carrés\"], index=point_names)\ndisplay(df)\ndisplay(prices.to_frame())\n\n\nRemarque. Les exemples b et c forment l’ensemble d’entraînement. L’exemple a constitue la requête dont nous voulons prédire le prix."
   },
   {
     "objectID": "lectures/10/slides.html#données-trois-maisons-output",
     "href": "lectures/10/slides.html#données-trois-maisons-output",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Données (trois maisons)",
-    "text": "Données (trois maisons)\n\n\n\n\n\n\n\n\nrooms\nsqft\n\n\n\n\na\n4.0\n1500.0\n\n\nb\n8.0\n1520.0\n\n\nc\n4.0\n1300.0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprice\n\n\n\n\na\nNaN\n\n\nb\n520000.0\n\n\nc\n390000.0"
+    "text": "Données (trois maisons)\n\n\n\n\n\n\n\n\npièces\npieds_carrés\n\n\n\n\na\n4.0\n1500.0\n\n\nb\n8.0\n1520.0\n\n\nc\n4.0\n1300.0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprix\n\n\n\n\na\nNaN\n\n\nb\n520000.0\n\n\nc\n390000.0"
   },
   {
     "objectID": "lectures/10/slides.html#distances-euclidiennes-non-mises-à-léchelle",
@@ -3382,14 +3382,14 @@
     "href": "lectures/10/slides.html#distances-euclidiennes-après-mise-à-léchelle",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Distances euclidiennes (après mise à l’échelle)",
-    "text": "Distances euclidiennes (après mise à l’échelle)\n\ndist_scaled = pd.DataFrame(\n    pairwise_distances(Z.values, metric=\"euclidean\"),\n    index=Z.index, columns=Z.index\n)\ndist_scaled\n\n\n\n\n\n\n\n\na\nb\nc\n\n\n\n\na\n0.000000\n2.008247\n1.818182\n\n\nb\n2.008247\n0.000000\n2.828427\n\n\nc\n1.818182\n2.828427\n0.000000\n\n\n\n\n\n\n\n\nprint(\"Le plus proche de 'a' (mis à l'échelle):\", dist_scaled.loc[\"a\"].drop(\"a\").idxmin())\n\nLe plus proche de 'a' (mis à l'échelle): c"
+    "text": "Distances euclidiennes (après mise à l’échelle)\n\ndist_scaled = pd.DataFrame(\n    pairwise_distances(Z.values, metric=\"euclidean\"),\n    index=Z.index, columns=Z.index\n)\ndist_scaled\n\n\n\n\n\n\n\n\na\nb\nc\n\n\n\n\na\n0.000000\n2.008247\n1.818182\n\n\nb\n2.008247\n0.000000\n2.828427\n\n\nc\n1.818182\n2.828427\n0.000000\n\n\n\n\n\n\n\n\nprint(\"Plus proche de 'a' (après mise à l'échelle) :\", dist_scaled.loc[\"a\"].drop(\"a\").idxmin())\n\nPlus proche de 'a' (après mise à l'échelle) : c"
   },
   {
     "objectID": "lectures/10/slides.html#régression-knn",
     "href": "lectures/10/slides.html#régression-knn",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Régression KNN",
-    "text": "Régression KNN\nNous allons exécuter un régressseur 1-NN (donc la prédiction est exactement le prix du plus proche voisin) avec et sans mise à l’échelle.\n\nfrom sklearn.neighbors import KNeighborsRegressor\nfrom sklearn.pipeline import Pipeline\n\nX_train = df.loc[train_idx].values          # b, c\ny_train = prices.loc[train_idx].values      # prix pour b, c\nX_query = df.loc[query_idx].values          # a"
+    "text": "Régression KNN\nUn régresseur 1-NN prédit le prix de l’exemple d’entraînement le plus proche. Comparons le même estimateur avec et sans mise à l’échelle.\n\nfrom sklearn.neighbors import KNeighborsRegressor\n\nX_train = df.loc[train_idx].values\ny_train = prices.loc[train_idx].values\nX_query = df.loc[query_idx].values\n\nknn_plain = KNeighborsRegressor(n_neighbors=1, metric=\"euclidean\")\nknn_plain.fit(X_train, y_train)\n\nknn_scaled = Pipeline([\n    (\"scaler\", StandardScaler()),\n    (\"knn\", KNeighborsRegressor(n_neighbors=1, metric=\"euclidean\"))\n])\n\nknn_scaled.fit(X_train, y_train)\n\n\nLe pipeline se comporte comme un seul régresseur. Sa méthode fit apprend les paramètres de mise à l’échelle à partir de X_train, puis ajuste KNN dans l’espace transformé. Sa méthode predict applique cette transformation déjà ajustée avant de chercher les voisins."
   },
   {
     "objectID": "lectures/10/slides.html#régression-knn-sans-mise-à-léchelle",
@@ -3409,8 +3409,8 @@
     "objectID": "lectures/10/slides.html#régression-knn-résultats",
     "href": "lectures/10/slides.html#régression-knn-résultats",
     "title": "Ingénierie de l’apprentissage automatique",
-    "section": "Régression KNN (résultats)",
-    "text": "Régression KNN (résultats)\n\npd.DataFrame(\n    {\n        \"prédiction (sans mise à l'échelle)\": [pred_plain],\n        \"prédiction (avec mise à l'échelle)\": [pred_scaled],\n        \"plus proche voisin (sans mise à l'échelle)\": [point_names[1] if pred_plain==prices['b'] else point_names[2]],\n        \"plus proche voisin (avec mise à l'échelle)\": [point_names[1] if pred_scaled==prices['b'] else point_names[2]],\n    },\n    index=[\"a\"]\n)\n\n\n\n\n\n\n\n\nprédiction (sans mise à l'échelle)\nprédiction (avec mise à l'échelle)\nplus proche voisin (sans mise à l'échelle)\nplus proche voisin (avec mise à l'échelle)\n\n\n\n\na\n520000.0\n390000.0\nb\nc"
+    "section": "Régression KNN : résultats",
+    "text": "Régression KNN : résultats\n\n\nCode\npred_plain = knn_plain.predict(X_query)[0]\npred_scaled = knn_scaled.predict(X_query)[0]\n\nplain_index = knn_plain.kneighbors(\n    X_query, return_distance=False\n)[0, 0]\nscaled_query = knn_scaled[\"scaler\"].transform(X_query)\nscaled_index = knn_scaled[\"knn\"].kneighbors(\n    scaled_query, return_distance=False\n)[0, 0]\n\nknn_comparison = pd.DataFrame(\n    {\n        \"prédiction\": [pred_plain, pred_scaled],\n        \"plus proche voisin\": [\n            train_idx[plain_index], train_idx[scaled_index]\n        ],\n    },\n    index=[\"sans mise à l'échelle\", \"avec mise à l'échelle\"],\n)\n\n\n\n\n\n\nPrédiction\nPlus proche voisin\n\n\n\n\nSans mise à l’échelle\n520 000 $\nb\n\n\nAvec mise à l’échelle\n390 000 $\nc\n\n\n\n\nCe jeu de données volontairement minuscule illustre la géométrie, et non la qualité du modèle. Deux observations ne suffisent pas à estimer de façon stable les moyennes et écarts-types de la population. De plus, le prix de la requête est inconnu et ne permet pas de mesurer la performance prédictive. L’exemple montre un changement du voisin et de la prédiction, et non une amélioration de la performance."
   },
   {
     "objectID": "lectures/10/slides.html#normalisation",
@@ -3424,7 +3424,7 @@
     "href": "lectures/10/slides.html#standardisation",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Standardisation",
-    "text": "Standardisation\nLa standardisation (également appelée normalisation par score-z) transforme chaque attribut pour qu’elle ait une distribution normale avec une moyenne (\\(\\mu\\)) de 0 et un écart type (\\(\\sigma\\)) de 1.\n\\[\n\\frac{x_i^{(j)} - \\mu^{(j)}}{\\sigma^{(j)}}\n\\]\nRemarque : Les valeurs ne sont pas bornées !\n\n\nVoir : sklearn.preprocessing.StandardScaler"
+    "text": "Standardisation\nLa standardisation soustrait la moyenne d’entraînement et divise par l’écart-type d’entraînement.\n\n\\frac{x_i^{(j)} - \\mu^{(j)}}{\\sigma^{(j)}}\n\nL’attribut d’entraînement transformé possède une moyenne de 0 et une variance de 1, mais sa distribution ne devient pas normale et son étendue n’est pas bornée.\n\n\nVoir : sklearn.preprocessing.StandardScaler"
   },
   {
     "objectID": "lectures/10/slides.html#standardisation-ou-normalisation",
@@ -3459,7 +3459,7 @@
     "href": "lectures/10/slides.html#standardisation-1",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Standardisation",
-    "text": "Standardisation\n\n\n\n\n\n\n\n\n\n\n\nLors de l’examen du graphique résultant de la standardisation, il ressemble à celui de la normalisation. Néanmoins, une inspection plus approfondie des valeurs révèle que la distribution des données est centrée autour de zéro, avec environ 95 % des observations se situant dans la plage de -2 à 2. Il est important de noter que, contrairement à la normalisation, le StandardScaler n’impose pas de limites aux valeurs de sortie.\n\n\nStandardisation (StandardScaler) des valeurs d’une distribution normale contenant des valeurs aberrantes."
+    "text": "Standardisation\n\n\nCode\nstandard_scaler = StandardScaler()\n\nstandard_norm_values = standard_scaler.fit_transform(\n    norm_values.reshape(-1, 1)\n)\n\n# Tracer l'histogramme\nplt.hist(standard_norm_values, bins=20, edgecolor='black')\n\nplt.title('StandardScaler')\n\nplt.xlabel('Valeur')\nplt.ylabel('Fréquence')\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLa standardisation change le centre et l’échelle, mais préserve la forme de la distribution. La majorité de cet échantillon approximativement normal se trouve près de zéro, tandis que les valeurs aberrantes demeurent aberrantes. L’intervalle [-2,2] constitue une description empirique utile de cet échantillon, et non une garantie de StandardScaler.\n\n\nStandardisation (StandardScaler) de valeurs provenant d’une loi normale qui contient des valeurs aberrantes."
   },
   {
     "objectID": "lectures/10/slides.html#évitez-la-fuite-de-données",
@@ -3473,14 +3473,14 @@
     "href": "lectures/10/slides.html#lectures-complémentaires",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Lectures complémentaires",
-    "text": "Lectures complémentaires\nAmorim et al. (2023) applique 6 méthodes de mise à l’échelle sur 82 jeux de données et évalue l’impact pour 20 algorithms d’apprentissage.\n\n“Results indicated that the choice of scaling technique signif-icantly affects classification performance and that choosing thewrong scaling technique can even be worse than not scalingthe data at all.”\n\nArora et al. (2021) s’intéresse spécifiquement à l’algorithme KNN.\nPour les algorithmes basés sur des distances, tels que KNN, il est essentiel d’appliquer une méthode de mise à l’échelle uniforme à tous les attributs. En revanche, d’autres types d’algorithmes peuvent bénéficier de l’utilisation de méthodes de mise à l’échelle spécifiques à chaque attribut."
+    "text": "Lectures complémentaires\n\n\n\n\n\nMachine Learning Engineering, par Andriy Burkov (Burkov 2020).\nTraite de la collecte, du stockage et du prétraitement des données, de l’ingénierie des attributs, des tests et du débogage, ainsi que du déploiement, du retrait et de l’entretien des modèles.\nÉcrit par l’auteur de The Hundred-Page Machine Learning Book (Burkov 2019).\nOffert selon une formule « lire d’abord, acheter ensuite »."
   },
   {
     "objectID": "lectures/10/slides.html#définition-3",
     "href": "lectures/10/slides.html#définition-3",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nLes valeurs manquantes font référence à l’absence de données ou de valeurs dans un ensemble de données là où une valeur est attendue.\n\n\nExemple: L’âge est souvent une bonne illustration, car certains patients peuvent ne pas divulguer leur âge pour des raisons de confidentialité."
+    "text": "Définition\nLes valeurs manquantes désignent l’absence d’une donnée à un endroit où une valeur est attendue dans un jeu de données.\n\n\nL’âge en constitue un bon exemple, puisque certaines personnes peuvent refuser de le divulguer pour des raisons de confidentialité."
   },
   {
     "objectID": "lectures/10/slides.html#gestion-des-valeurs-manquantes",
@@ -3494,7 +3494,7 @@
     "href": "lectures/10/slides.html#définition-4",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nL’imputation des données est le processus consistant à remplacer les valeurs manquantes dans un ensemble de données par des valeurs substituées, généralement en utilisant des méthodes statistiques ou d’apprentissage automatique."
+    "text": "Définition\nL’imputation des données consiste à remplacer les valeurs manquantes par des valeurs de substitution, généralement calculées à l’aide de méthodes statistiques ou d’apprentissage automatique."
   },
   {
     "objectID": "lectures/10/slides.html#stratégie-dimputation-des-données",
@@ -3528,15 +3528,15 @@
     "objectID": "lectures/10/slides.html#pourquoi-utiliser-ces-méthodes",
     "href": "lectures/10/slides.html#pourquoi-utiliser-ces-méthodes",
     "title": "Ingénierie de l’apprentissage automatique",
-    "section": "Pourquoi utiliser ces méthodes ?",
-    "text": "Pourquoi utiliser ces méthodes ?\n\nAvantages :\n\nTraitent efficacement les relations complexes et les corrélations entre les attributs.\n\nInconvénients :\n\nCoût-intensif en termes de temps de travail, de CPU et de ressources mémoire."
+    "section": "Pourquoi utiliser ces méthodes?",
+    "text": "Pourquoi utiliser ces méthodes?\n\nAvantage possible :\n\nexploiter les relations entre les attributs que l’imputation univariée ignore.\n\nLimites :\n\nl’augmentation du calcul et du nombre de choix de modélisation ne garantit pas de meilleures prédictions;\nl’outil d’imputation doit tout de même être ajusté dans chaque partition d’entraînement ou pli de validation croisée."
   },
   {
     "objectID": "lectures/10/slides.html#définition-5",
     "href": "lectures/10/slides.html#définition-5",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nLe problème de déséquilibre des classes (class imbalance) survient lorsqu’un grand nombre d’exemples appartient à une classe majoritaire, tandis qu’un nombre relativement faible d’exemples appartient à une ou plusieurs classes minoritaires.\n\nLes modèles ont tendance à favoriser la classe majoritaire, ce qui conduit à de mauvaises performances sur la classe minoritaire.\n\n\n\nLes mesures d’évaluation standard comme l’exactitude (accuracy) peuvent être trompeuses en présence d’un déséquilibre des classes."
+    "text": "Définition\nL’ingénierie des attributs (feature engineering) consiste à créer, à transformer et à sélectionner des variables à partir des données brutes afin d’améliorer la performance des modèles d’apprentissage automatique.\n\n\nNous nous concentrons ici sur la création de nouveaux attributs à partir des données brutes."
   },
   {
     "objectID": "lectures/10/slides.html#solutions",
@@ -3550,49 +3550,49 @@
     "href": "lectures/10/slides.html#définition-6",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Définition",
-    "text": "Définition\nL’ingénierie des attributs est le processus de création, transformation et sélection de variables (attributs) à partir de données brutes pour améliorer la performance des modèles d’apprentissage automatique.\n\n\nIci, notre objectif est de créer de nouveaux attributs à partir de données brutes."
+    "text": "Définition\nL’augmentation des données (data augmentation) crée des exemples d’entraînement supplémentaires au moyen de transformations qui devraient préserver l’étiquette cible.\n\n\nBut : encoder des invariances plausibles et améliorer la robustesse aux variations attendues durant le déploiement."
   },
   {
     "objectID": "lectures/10/slides.html#exploration",
     "href": "lectures/10/slides.html#exploration",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Exploration",
-    "text": "Exploration\n\n\nCode\nimport numpy as np\n\nnp.random.seed(42)\n\nX = 6 * np.random.rand(100, 1) - 3\ny = 0.5 * X ** 2 - X + 2 + np.random.randn(100, 1)\n\nimport matplotlib as mpl\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize=(6,4))\n\nplt.plot(X, y, \"b.\")\nplt.xlabel(\"$x$\", fontsize=18)\nplt.ylabel(\"$y$\", rotation=0, fontsize=18)\nplt.axis([-3, 3, 0, 10])\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nDans les expériences d’apprentissage automatique, spécifier le germe du générateur de nombres aléatoires est crucial pour garantir la reproductibilité. En fixant un germe, les programmeurs peuvent garantir que la même séquence de nombres aléatoires sera générée à chaque exécution de l’expérience. Cette cohérence est vitale pour plusieurs raisons :\n\nReproductibilité : Elle permet à d’autres programmeurs de reproduire l’expérience dans les mêmes conditions exactes, facilitant la vérification et la validation des résultats.\nAnalyse comparative : Elle permet une comparaison cohérente entre différents modèles ou algorithmes dans les mêmes conditions initiales, garantissant que les différences observées sont dues aux modèles eux-mêmes plutôt qu’à des variations dans l’initialisation aléatoire.\nDébogage : Elle aide au débogage en fournissant un environnement stable où les problèmes peuvent être reproduits et étudiés de manière cohérente.\n\n\n\nAttribution : Géron (2022), Chapitre 4"
+    "text": "Exploration\n\n\nCode\nimport numpy as np\n\nnp.random.seed(42)\n\nX = 6 * np.random.rand(100, 1) - 3\ny = 0.5 * X ** 2 - X + 2 + np.random.randn(100, 1)\n\nimport matplotlib as mpl\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize=(6,4))\n\nplt.plot(X, y, \"b.\")\nplt.xlabel(\"$x$\", fontsize=18)\nplt.ylabel(\"$y$\", rotation=0, fontsize=18)\nplt.axis([-3, 3, 0, 10])\nplt.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLe nuage de points présente une tendance courbe : la réponse diminue, puis augmente à mesure que x change. Un modèle qui utilise seulement une constante et l’attribut original x ne peut pas représenter cette courbure.\nLa graine aléatoire fixe rend l’échantillon produit reproductible. Cette reproductibilité aide à comparer les modèles et à déboguer le code, mais une seule graine ne démontre pas qu’un résultat serait stable pour tous les échantillons possibles.\n\n\nAttribution : Géron (2022), chapitre 4"
   },
   {
     "objectID": "lectures/10/slides.html#régression-linéaire",
     "href": "lectures/10/slides.html#régression-linéaire",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Régression linéaire",
-    "text": "Régression linéaire\n\n\nCode\nfrom sklearn.linear_model import LinearRegression\n\nlin_reg = LinearRegression()\nlin_reg.fit(X, y)\n\nX_new = np.array([[-3], [3]])\ny_pred = lin_reg.predict(X_new)\n\nplt.figure(figsize=(6,4))\n\nplt.plot(X, y, \"b.\")\nplt.plot(X_new, y_pred, \"r-\")\nplt.xlabel(\"$x$\", fontsize=18)\nplt.ylabel(\"$y$\", rotation=0, fontsize=18)\nplt.axis([-3, 3, 0, 10])\nplt.show()\n\n\n\n\n\n\n\n\n\n\nUn modèle linéaire représente mal ces données. \n\n\nAjuster la pente conduit invariablement à un scénario où les résidus (erreurs) sont minimisés pour certains points de données tout en restant significatifs pour d’autres."
+    "text": "Régression linéaire\n\n\nCode\nfrom sklearn.linear_model import LinearRegression\n\nlin_reg = LinearRegression()\nlin_reg.fit(X, y)\n\nX_new = np.array([[-3], [3]])\ny_pred = lin_reg.predict(X_new)\n\nplt.figure(figsize=(6,4))\n\nplt.plot(X, y, \"b.\")\nplt.plot(X_new, y_pred, \"r-\")\nplt.xlabel(\"$x$\", fontsize=18)\nplt.ylabel(\"$y$\", rotation=0, fontsize=18)\nplt.axis([-3, 3, 0, 10])\nplt.show()\n\n\n\n\n\n\n\n\n\n\nUn modèle linéaire représente mal ce jeu de données. \n\n\nLa droite la mieux ajustée équilibre les résidus dans le jeu de données. Cependant, modifier sa pente et son ordonnée à l’origine ne peut pas créer de point de retournement. Le modèle sous-ajuste les données parce que sa représentation est trop restrictive pour la relation observée."
   },
   {
     "objectID": "lectures/10/slides.html#ingénierie-de-lapprentissage-automatique-1",
     "href": "lectures/10/slides.html#ingénierie-de-lapprentissage-automatique-1",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Ingénierie de l’apprentissage automatique",
-    "text": "Ingénierie de l’apprentissage automatique\n\n\n\n\n\nMachine Learning Engineering par Andriy Burkov (Burkov 2020).\nCouvre la collecte de données, le stockage, le prétraitement, l’ingénierie des attributs, le test et le débogage des modèles, le déploiement, la retraite et la maintenance.\nDe l’auteur de Hundred Page Machine Learning Book (Burkov 2019).\nDisponible sous un modèle “lire d’abord, acheter plus tard”."
+    "text": "Ingénierie de l’apprentissage automatique\n\n\n\n\n\n\n\nLes cours SDS 3786 : Laboratoire de science des données et CSI 4542 : Fondements de la science des données couvrent en détail l’ingénierie de l’apprentissage automatique. Cette leçon présente un sous-ensemble ciblé des concepts de prétraitement et d’ingénierie des attributs abordés dans ces cours.\nComme l’illustre la figure, le cycle de vie d’un projet d’apprentissage automatique comporte généralement plusieurs itérations. Chaque cycle améliore la compréhension du problème et révèle certaines limites. Une qualité insuffisante des données entraîne souvent l’échec d’un projet.\nCaractéristiques de données de haute qualité\n\nVolume : Le jeu de données est-il assez grand pour soutenir la généralisation?\nPertinence : Les attributs modélisent-ils adéquatement le problème?\nReprésentation : Les données reflètent-elles les conditions attendues en production?\n\nCes attributs pourront-ils être obtenus à partir des entrées réelles?\nLe jeu de données couvre-t-il adéquatement les valeurs possibles des attributs?\n\nBiais : Les données sont-elles exemptes de biais?\nCohérence des étiquettes : Les étiquettes sont-elles cohérentes dans tout le jeu de données?\n\nCycle d’un projet d’apprentissage automatique\nLa collecte des données et l’extraction des attributs constituent les deux premières étapes d’un projet d’apprentissage automatique.\n\nRecueillir des données adéquates.\nExtraire des attributs des données brutes :\n\nce processus exige beaucoup de travail;\nil demande de la créativité;\nla connaissance du domaine est très utile.\n\n\n\n\nAttribution : Burkov (2020), figure 3.1"
   },
   {
     "objectID": "lectures/10/slides.html#polynomialfeatures",
     "href": "lectures/10/slides.html#polynomialfeatures",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "PolynomialFeatures",
-    "text": "PolynomialFeatures\n\nfrom sklearn.preprocessing import PolynomialFeatures\n\npoly_features = PolynomialFeatures(degree=2, include_bias=False)\nX_poly = poly_features.fit_transform(X)\n\n\n\nX[0]\n\narray([-0.75275929])\n\n\n\n\n\nX_poly[0]\n\narray([-0.75275929,  0.56664654])\n\n\n\n\n\n\n\n sklearn.preprocessing.PolynomialFeatures\n\n\nGénérez une nouvelle matrice d’attributs constituée de toutes les combinaisons polynomiales des attributs avec un degré inférieur ou égal au degré spécifié. Par exemple, si un échantillon d’entrée est bidimensionnel et de la forme \\([a, b]\\), les attributs polynomials de degré 2 sont \\([1, a, b, a^2, ab, b^2]\\)."
+    "text": "PolynomialFeatures\n\nfrom sklearn.preprocessing import PolynomialFeatures\n\npoly_features = PolynomialFeatures(degree=2, include_bias=False)\nX_poly = poly_features.fit_transform(X)\n\n\n\nX[0]\n\narray([-0.75275929])\n\n\n\n\n\nX_poly[0]\n\narray([-0.75275929,  0.56664654])\n\n\n\n\n\n\n\n sklearn.preprocessing.PolynomialFeatures\n\n\nProduit une nouvelle matrice d’attributs composée de toutes les combinaisons polynomiales dont le degré est inférieur ou égal au degré indiqué. Par exemple, pour un échantillon d’entrée bidimensionnel de la forme [a, b], les attributs polynomiaux de degré 2 sont [1, a, b, a^2, ab, b^2]."
   },
   {
     "objectID": "lectures/10/slides.html#polynomialfeatures-1",
     "href": "lectures/10/slides.html#polynomialfeatures-1",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "PolynomialFeatures",
-    "text": "PolynomialFeatures\nÉtant donné deux attributs \\(a\\) et \\(b\\), PolynomialFeatures avec degree=3 ajouterait \\(a^2\\), \\(a^3\\), \\(b^2\\), \\(b^3\\), ainsi que \\(ab\\), \\(a^2b\\), \\(ab^2\\) !\n\n\n\n\n\n\n\nAvertissement\n\n\nPolynomialFeatures(degree=d) ajoute \\(\\frac{(D+d)!}{d!D!}\\) attributs, où \\(D\\) est le nombre initial d’attributs.\n\n\n\n\nDe plus, vous avez la possibilité de créer vos propres nouveaux attributs."
+    "text": "PolynomialFeatures\nAvec deux attributs a et b, PolynomialFeatures et degree=3 ajoutent a^2, a^3, b^2, b^3, ainsi que ab, a^2b et ab^2.\n\n\n\n\n\n\n\nAvertissement\n\n\nAvec include_bias=True, le nombre total d’attributs de sortie est\n\n\\binom{D+d}{d} = \\frac{(D+d)!}{d!D!},\n\noù D est le nombre d’attributs d’entrée. Avec include_bias=False, il faut en soustraire un.\n\n\n\n\nCe nombre comprend les attributs originaux, leurs puissances et leurs interactions. Il croît rapidement avec D et d, ce qui augmente le calcul et le risque de surajustement. Le degré doit être choisi à l’aide des données de validation et la régularisation doit être utilisée lorsqu’elle convient."
   },
   {
     "objectID": "lectures/10/slides.html#régression-polynomiale",
     "href": "lectures/10/slides.html#régression-polynomiale",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Régression polynomiale",
-    "text": "Régression polynomiale\n\n\nCode\nlin_reg = LinearRegression()\nlin_reg = lin_reg.fit(X_poly, y)\n\nX_new = np.linspace(-3, 3, 100).reshape(100, 1)\nX_new_poly = poly_features.transform(X_new)\ny_new = lin_reg.predict(X_new_poly)\n\nplt.figure(figsize=(5, 3))\nplt.plot(X, y, \"b.\")\nplt.plot(X_new, y_new, \"r-\", linewidth=2, label=\"Prédictions\")\nplt.xlabel(\"$x_1$\")\nplt.ylabel(\"$y$\", rotation=0)\nplt.legend(loc=\"upper left\")\nplt.axis([-3, 3, 0, 10])\nplt.grid()\nplt.show()\n\n\n\n\n\n\n\n\n\nLinearRegression sur PolynomialFeatures\n\nlin_reg = LinearRegression()\nlin_reg.fit(X_poly, y)"
+    "text": "Régression polynomiale\n\n\nCode\nlin_reg = LinearRegression()\nlin_reg = lin_reg.fit(X_poly, y)\n\nX_new = np.linspace(-3, 3, 100).reshape(100, 1)\nX_new_poly = poly_features.transform(X_new)\ny_new = lin_reg.predict(X_new_poly)\n\nplt.figure(figsize=(5, 3))\nplt.plot(X, y, \"b.\")\nplt.plot(X_new, y_new, \"r-\", linewidth=2, label=\"Prédictions\")\nplt.xlabel(\"$x_1$\")\nplt.ylabel(\"$y$\", rotation=0)\nplt.legend(loc=\"upper left\")\nplt.axis([-3, 3, 0, 10])\nplt.grid()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLinearRegression ajustée aux attributs [x, x^2]."
   },
   {
     "objectID": "lectures/10/slides.html#régression-polynomiale-1",
@@ -3606,7 +3606,7 @@
     "href": "lectures/10/slides.html#la-taille-compte",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "La taille compte",
-    "text": "La taille compte\n\n\n“Cependant, ces résultats suggèrent que nous devrions peut-être reconsidérer l’équilibre entre passer du temps et de l’argent à développer des algorithmes, contre investir dans le développement de corpus.”\n\n\n\n\n\nAttribution: Banko et Brill (2001)"
+    "text": "La taille compte\n\n\nPour la tâche langagière étudiée par Banko et Brill, l’augmentation de la taille du corpus d’entraînement a produit des gains importants pour plusieurs algorithmes d’apprentissage.\n\n\n\n\n\nLe résultat de Banko et Brill (2001) porte sur une tâche de désambiguïsation en langage naturel. Il ne faut pas en déduire une loi universelle selon laquelle une plus grande quantité d’exemples résout toujours un problème d’apprentissage.\nDes données supplémentaires aident lorsqu’elles apportent de l’information pertinente, correctement étiquetée et représentative. Elles ne corrigent pas une cible inadéquate, des erreurs systématiques d’étiquetage, des sous-populations absentes ou un décalage de distribution entre l’entraînement et le déploiement.\nPour certains grands modèles neuronaux, des lois d’échelle empiriques relient la perte aux données d’entraînement, au nombre de paramètres et au calcul dans un domaine étudié (Kaplan et al. 2020). Ces régularités n’éliminent pas la nécessité d’examiner la qualité et la couverture des données.\n\n\nAttribution : Banko et Brill (2001)"
   },
   {
     "objectID": "lectures/10/slides.html#efficacité-déraisonnable-des-données",
@@ -3627,7 +3627,7 @@
     "href": "lectures/10/slides.html#augmentation-des-données",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Augmentation des données",
-    "text": "Augmentation des données\n\nPour les images: Rotations, translations, redimensionnement, renversement, ajout de bruit, etc.\n\nHow to find ancient geoglyphs using machine learning?, Sakai et al. (2024)\n\nPour les textes: Remplacement de synonymes, insertion aléatoire, suppression, et permutation des mots.\n\n\n\nLes réseaux antagonistes génératifs (GANs) (une forme d’apprentissage profond) peuvent être utilisés pour générer de nouvelles données synthétiques qui imitent la distribution de l’ensemble de données original. Voir aussi : Shumailov et al. (2024)."
+    "text": "Augmentation des données\n\nImages : rotations, translations, recadrages, symétries ou bruit, lorsque ces transformations préservent l’étiquette.\n\nComment trouver des géoglyphes anciens à l’aide de l’apprentissage automatique?, Sakai et al. (2024)\n\nTexte : paraphrases ou modifications soigneusement contrôlées qui préservent le sens et l’étiquette attribuée.\n\n\n\nUne augmentation est valide seulement si sa transformation préserve la cible de l’application. Une symétrie horizontale peut être sans conséquence pour plusieurs catégories d’objets, mais invalide pour du texte, la latéralité médicale ou des panneaux de signalisation. Le remplacement de synonymes peut également changer la nuance ou la grammaire.\nL’augmentation s’applique uniquement aux exemples d’entraînement et, durant la validation croisée, uniquement au pli d’entraînement. Les ensembles de validation et de test doivent représenter les entrées naturelles.\nLes données synthétiques exigent le même examen que les données recueillies. La réutilisation sans discernement de contenu produit par des modèles peut rétrécir la distribution représentée ou amplifier des artefacts. Shumailov et al. (2024) présente une forme de ce risque.\n\n\nLes modèles génératifs peuvent aussi produire des exemples synthétiques, mais une sortie réaliste ne garantit ni des étiquettes correctes, ni une couverture représentative, ni l’indépendance par rapport aux données sources."
   },
   {
     "objectID": "lectures/10/slides.html#lectures-complémentaires-1",
@@ -3641,7 +3641,7 @@
     "href": "lectures/10/slides.html#résumé",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Résumé",
-    "text": "Résumé\n\nEncodage des attributs : Évaluation des techniques éviter des biais et possiblement faciliter l’apprentissage.\nPrétraitement :\n\nMise à l’échelle des données\nGestion des valeurs manquantes\nGestion du déséquilibre des classes\n\nTaille de l’ensemble d’entraînement : Impact sur l’efficacité du modèle et la généralisation."
+    "text": "Résumé\n\nFaire correspondre l’encodage catégoriel au caractère nominal ou ordinal des données.\nAjuster la mise à l’échelle, l’encodage et l’imputation sur les données d’entraînement au moyen d’un pipeline.\nChoisir la mise à l’échelle selon l’estimateur; elle ne rend pas un attribut normalement distribué.\nAppliquer les remèdes au déséquilibre des classes seulement dans les partitions d’entraînement et évaluer sur la distribution naturelle.\nUtiliser des attributs polynomiaux et des interactions pour enrichir la représentation d’un modèle tout en contrôlant sa complexité.\nPrivilégier des données représentatives et correctement étiquetées, et n’utiliser que des augmentations qui préservent l’étiquette."
   },
   {
     "objectID": "lectures/10/slides.html#prochain-cours",
@@ -3655,14 +3655,14 @@
     "href": "lectures/10/slides.html#références",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Références",
-    "text": "Références\n\n\nAmorim, Lucas B. V. de, George D. C. Cavalcanti, et Rafael M. O. Cruz. 2023. « The choice of scaling technique matters for classification performance ». Applied Soft Computing 133: 109924. https://doi.org/10.1016/j.asoc.2022.109924.\n\n\nArora, Ishan, Namit Khanduja, et Mayank Bansal. 2021. « Effect of Distance Metric and Feature Scaling on KNN Algorithm while Classifying X-rays ». RIF’21: The 10th Seminary of Computer Science Research at Feminine (Constantine 2-Abdelhamid Mehri University, Algeria). https://api.semanticscholar.org/CorpusID:251472012.\n\n\nBanko, Michele, et Eric Brill. 2001. « Scaling to very very large corpora for natural language disambiguation ». Proceedings of the 39th Annual Meeting on Association for Computational Linguistics (USA), ACL ’01, 26‑33. https://doi.org/10.3115/1073012.1073017.\n\n\nBurkov, A. 2020. Machine Learning Engineering. True Positive Incorporated. https://books.google.ca/books?id=HeXizQEACAAJ.\n\n\nBurkov, Andriy. 2019. The Hundred-Page Machine Learning Book. Andriy Burkov.\n\n\nChawla, N V, K W Bowyer, L O Hall, et W P Kegelmeyer. 2002. « SMOTE: Synthetic minority over-sampling technique ». Journal of Artificial Intelligence Research 16: 321‑57.\n\n\nGéron, Aurélien. 2022. Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow. 3ᵉ éd. O’Reilly Media, Inc.\n\n\nHalevy, Alon, Peter Norvig, et Fernando Pereira. 2009. « The Unreasonable Effectiveness of Data ». IEEE Intelligent Systems 24 (2): 8‑12.\n\n\nKaplan, Jared, Sam McCandlish, Tom Henighan, et al. 2020. Scaling Laws for Neural Language Models. https://arxiv.org/abs/2001.08361.\n\n\nPradipta, Gede Angga, Retantyo Wardoyo, Aina Musdholifah, I Nyoman Hariyasa Sanjaya, et Muhammad Ismail. 2021. « SMOTE for Handling Imbalanced Data Problem : A Review ». 2021 Sixth International Conference on Informatics and Computing (ICIC) 00: 1‑8. https://doi.org/10.1109/icic54025.2021.9632912.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/.\n\n\nSakai, Masato, Akihisa Sakurai, Siyuan Lu, et al. 2024. « AI-accelerated Nazca survey nearly doubles the number of known figurative geoglyphs and sheds light on their purpose ». Proceedings of the National Academy of Sciences 121 (40): e2407652121. https://doi.org/10.1073/pnas.2407652121.\n\n\nShumailov, Ilia, Zakhar Shumaylov, Yiren Zhao, Nicolas Papernot, Ross Anderson, et Yarin Gal. 2024. « AI models collapse when trained on recursively generated data ». Nature 631 (8022): 755‑59. https://doi.org/10.1038/s41586-024-07566-y."
+    "text": "Références\n\n\nBanko, Michele, et Eric Brill. 2001. « Scaling to very very large corpora for natural language disambiguation ». Proceedings of the 39th Annual Meeting on Association for Computational Linguistics (USA), ACL ’01, 26‑33. https://doi.org/10.3115/1073012.1073017.\n\n\nBurkov, A. 2020. Machine Learning Engineering. True Positive Incorporated. https://books.google.ca/books?id=HeXizQEACAAJ.\n\n\nBurkov, Andriy. 2019. The Hundred-Page Machine Learning Book. Andriy Burkov.\n\n\nChawla, N V, K W Bowyer, L O Hall, et W P Kegelmeyer. 2002. « SMOTE: Synthetic minority over-sampling technique ». Journal of Artificial Intelligence Research 16: 321‑57.\n\n\nGéron, Aurélien. 2022. Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow. 3ᵉ éd. O’Reilly Media, Inc.\n\n\nHalevy, Alon, Peter Norvig, et Fernando Pereira. 2009. « The Unreasonable Effectiveness of Data ». IEEE Intelligent Systems 24 (2): 8‑12.\n\n\nKaplan, Jared, Sam McCandlish, Tom Henighan, et al. 2020. Scaling Laws for Neural Language Models. https://arxiv.org/abs/2001.08361.\n\n\nSakai, Masato, Akihisa Sakurai, Siyuan Lu, et al. 2024. « AI-accelerated Nazca survey nearly doubles the number of known figurative geoglyphs and sheds light on their purpose ». Proceedings of the National Academy of Sciences 121 (40): e2407652121. https://doi.org/10.1073/pnas.2407652121.\n\n\nShumailov, Ilia, Zakhar Shumaylov, Yiren Zhao, Nicolas Papernot, Ross Anderson, et Yarin Gal. 2024. « AI models collapse when trained on recursively generated data ». Nature 631 (8022): 755‑59. https://doi.org/10.1038/s41586-024-07566-y."
   },
   {
     "objectID": "lectures/10/slides.html#pipeline",
     "href": "lectures/10/slides.html#pipeline",
     "title": "Ingénierie de l’apprentissage automatique",
     "section": "Pipeline",
-    "text": "Pipeline\n\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.preprocessing import StandardScaler\n\nnum_pipeline = Pipeline([\n        ('imputer', SimpleImputer(strategy=\"median\")),\n        ('attribs_adder', CombinedAttributesAdder()),\n        ('std_scaler', StandardScaler()),\n        ])\n\ntraining_num_tr = num_pipeline.fit_transform(training_num)\n\nfull_pipeline = ColumnTransformer([\n        (\"num\", num_pipeline, num_attribs),\n        (\"cat\", OneHotEncoder(), [\"sequence\"]),\n    ])\n\ntraining_prepared = full_pipeline.fit_transform(training)"
+    "text": "Pipeline\n\nfrom sklearn.compose import ColumnTransformer, make_column_selector\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler\n\nnumeric_pipeline = Pipeline([\n    ('imputer', SimpleImputer(strategy=\"median\", add_indicator=True)),\n    ('scaler', StandardScaler()),\n])\n\npreprocessor = ColumnTransformer([\n    (\n        \"numeric\",\n        numeric_pipeline,\n        make_column_selector(dtype_include=np.number),\n    ),\n    (\n        \"categorical\",\n        OneHotEncoder(handle_unknown=\"ignore\"),\n        make_column_selector(dtype_exclude=np.number),\n    ),\n])\n\nfull_pipeline = Pipeline([\n    (\"preprocessor\", preprocessor),\n    (\"classifier\", LogisticRegression()),\n])\n\n\nCe modèle garde chaque étape apprise du prétraitement avec l’estimateur. Les colonnes numériques sont imputées et standardisées, tandis que les colonnes catégorielles sont soumises à un encodage one-hot. Les sélecteurs choisissent les colonnes selon leur type, de sorte que le modèle ne dépend pas des noms utilisés dans cette leçon.\nL’appel à full_pipeline.fit(X_train, y_train) ajuste chaque composante sur les mêmes exemples d’entraînement. Le pipeline ajusté peut ensuite transformer et classifier de façon cohérente les exemples de validation, de test ou de production."
   },
   {
     "objectID": "lectures/10/slides.html#gpt-4o-interactions-2024-09-30",
@@ -7089,14 +7089,14 @@
     "href": "lectures/07/slides.html#matrice-de-confusion",
     "title": "Évaluation des modèles",
     "section": "Matrice de confusion",
-    "text": "Matrice de confusion\n\n\n\n\n\n\n\n\n\nPositif (Prédit)\nNégatif (Prédit)\n\n\n\n\nPositif (Réel)\nVrai positif (VP)\nFaux négatif (FN)\n\n\nNégatif (Réel)\nFaux positif (FP)\nVrai négatif (VN)\n\n\n\n\nUne matrice de confusion est un tableau résumant la performance d’un algorithme de classification (ici pour une tâche de classification binaire).\n\n\n\n\n\nDans l’analyse statistique, les faux positifs (FP) sont communément appelés erreurs de type I, et les faux négatifs (FN) sont connus sous le nom d’erreurs de type II.\nLes éléments de la diagonale représentent les résultats correctement prédits, à savoir les vrais positifs (VP) et les vrais négatifs (VN).\nÀ l’inverse, les éléments hors diagonale correspondent aux prédictions incorrectes, spécifiquement les faux positifs (FP) et les faux négatifs (FN).\nLa matrice de confusion encapsule toutes les informations essentielles nécessaires pour évaluer la performance d’un modèle de classification.\nBien que la matrice de confusion fournisse une vue d’ensemble, des mesures plus concises telles que l’exactitude, la précision, le rappel, et le score F_1 sont souvent plus intuitives et pratiques pour résumer la performance du modèle."
+    "text": "Matrice de confusion\n\n\n\n\n\n\n\n\n\nPositif (Prédit)\nNégatif (Prédit)\n\n\n\n\nPositif (Réel)\nVrai positif (TP)\nFaux négatif (FN)\n\n\nNégatif (Réel)\nFaux positif (FP)\nVrai négatif (TN)\n\n\n\n\nUne matrice de confusion est un tableau résumant la performance d’un algorithme de classification (ici pour une tâche de classification binaire).\n\n\n\n\nDans ce cours, nous utilisons les abréviations anglaises : true positive (TP), false negative (FN), false positive (FP) et true negative (TN). Pour les taux correspondants, nous utilisons aussi true positive rate (TPR) et false positive rate (FPR). Ces abréviations correspondent aux étiquettes des figures et facilitent la consultation de la documentation en anglais.\n\nDans l’analyse statistique, les faux positifs (FP) sont communément appelés erreurs de type I, et les faux négatifs (FN) sont connus sous le nom d’erreurs de type II.\nLes éléments de la diagonale représentent les résultats correctement prédits, à savoir les vrais positifs (TP) et les vrais négatifs (TN).\nÀ l’inverse, les éléments hors diagonale correspondent aux prédictions incorrectes, spécifiquement les faux positifs (FP) et les faux négatifs (FN).\nLa matrice de confusion encapsule toutes les informations essentielles nécessaires pour évaluer la performance d’un modèle de classification.\nBien que la matrice de confusion fournisse une vue d’ensemble, des mesures plus concises telles que l’exactitude, la précision, le rappel, et le score F_1 sont souvent plus intuitives et pratiques pour résumer la performance du modèle."
   },
   {
     "objectID": "lectures/07/slides.html#confusionmatrixdisplay",
     "href": "lectures/07/slides.html#confusionmatrixdisplay",
     "title": "Évaluation des modèles",
     "section": "ConfusionMatrixDisplay",
-    "text": "ConfusionMatrixDisplay\n\n\nCode\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import make_classification\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\n\nseed = 42\n\nX, y = make_classification(n_samples = 500, random_state=seed)\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=0)\n\nclf = LogisticRegression(random_state=seed)\n\nclf.fit(X_train, y_train)\n\npredictions = clf.predict(X_test)\n\ncm = confusion_matrix(y_test, predictions, labels=[1, 0])\n\ndisp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[\"Positive\", \"Negative\"])\n\ndisp.plot()\nplt.show()\n\n\n\n\n\n\n\n\n\n\nNous utilisons la fonction make_classification pour générer un jeu de données synthétique, qui est ensuite analysé à l’aide d’un modèle de LogisticRegression. Pour les deux fonctions confusion_matrix et ConfusionMatrixDisplay, nous configurons les étiquettes pour nous assurer que la classe ‘Positive’ précède, en accord avec les données tabulaires présentées à l’écran précédent. La matrice de confusion résultante donne les valeurs suivantes : Vrais Positifs (VP) = 37, Faux Négatifs (FN) = 10, Faux Positifs (FP) = 3, et Vrais Négatifs (VN) = 50."
+    "text": "ConfusionMatrixDisplay\n\n\nCode\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import make_classification\nfrom sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\n\nseed = 42\n\nX, y = make_classification(n_samples = 500, random_state=seed)\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=0)\n\nclf = LogisticRegression(random_state=seed)\n\nclf.fit(X_train, y_train)\n\npredictions = clf.predict(X_test)\n\ncm = confusion_matrix(y_test, predictions, labels=[1, 0])\n\ndisp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[\"Positive\", \"Negative\"])\n\ndisp.plot()\nplt.show()\n\n\n\n\n\n\n\n\n\n\nNous utilisons la fonction make_classification pour générer un jeu de données synthétique, qui est ensuite analysé à l’aide d’un modèle de LogisticRegression. Pour les deux fonctions confusion_matrix et ConfusionMatrixDisplay, nous configurons les étiquettes pour nous assurer que la classe ‘Positive’ précède, en accord avec les données tabulaires présentées à l’écran précédent. La matrice de confusion résultante donne les valeurs suivantes : vrais positifs (TP) = 37, faux négatifs (FN) = 10, faux positifs (FP) = 3 et vrais négatifs (TN) = 50."
   },
   {
     "objectID": "lectures/07/slides.html#matrice-de-confusion-1",
@@ -7222,7 +7222,7 @@
     "href": "lectures/07/slides.html#exactitude",
     "title": "Évaluation des modèles",
     "section": "Exactitude",
-    "text": "Exactitude\nQuelle est l’exactitude de ce résultat ?\n\n  \\mathrm{exactitude} = \\frac{\\mathrm{VP}+\\mathrm{VN}}{\\mathrm{VP}+\\mathrm{VN}+\\mathrm{FP}+\\mathrm{FN}} = \\frac{\\mathrm{VP}+\\mathrm{VN}}{\\mathrm{N}}\n\n\nfrom sklearn.metrics import accuracy_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\naccuracy_score(y_actual,y_pred)\n\n0.5\n\n\n\n\n\n\n\nDans le contexte francophone, le terme « accuracy » se traduit généralement par « exactitude ». Il est important de noter que certaines applications utilisent à tort le terme « précision » pour désigner « accuracy ». Or, « précision » correspond en réalité au terme anglais « precision », qui possède une signification distincte.\n\n\nL’exactitude est le rapport entre les instances correctement prédites et le nombre total de prédictions."
+    "text": "Exactitude\nQuelle est l’exactitude de ce résultat ?\n\n  \\mathrm{exactitude} = \\frac{\\mathrm{TP}+\\mathrm{TN}}{\\mathrm{TP}+\\mathrm{TN}+\\mathrm{FP}+\\mathrm{FN}} = \\frac{\\mathrm{TP}+\\mathrm{TN}}{\\mathrm{N}}\n\n\nfrom sklearn.metrics import accuracy_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\naccuracy_score(y_actual,y_pred)\n\n0.5\n\n\n\n\n\n\n\nDans le contexte francophone, le terme « accuracy » se traduit généralement par « exactitude ». Il est important de noter que certaines applications utilisent à tort le terme « précision » pour désigner « accuracy ». Or, « précision » correspond en réalité au terme anglais « precision », qui possède une signification distincte.\n\n\nL’exactitude est le rapport entre les instances correctement prédites et le nombre total de prédictions."
   },
   {
     "objectID": "lectures/07/slides.html#exactitude-1",
@@ -7243,7 +7243,7 @@
     "href": "lectures/07/slides.html#précision",
     "title": "Évaluation des modèles",
     "section": "Précision",
-    "text": "Précision\nAussi connu sous le nom de valeur prédictive positive (PPV).\n\n  \\mathrm{précision} = \\frac{\\mathrm{VP}}{\\mathrm{VP}+\\mathrm{FP}}\n\n\nfrom sklearn.metrics import precision_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\nprecision_score(y_actual, y_pred)\n\n0.6666666666666666\n\n\n\n\n\n\n\nPouvez-vous penser à un problème ou à une situation où la précision est particulièrement importante ?\nUn exemple est la sélection de composés candidats en vue d’une validation coûteuse en laboratoire.\n\nUn modèle examine une grande bibliothèque de composés et prédit lesquels sont actifs.\nChaque prédiction positive déclenche une expérience coûteuse.\nUne précision élevée signifie qu’une plus grande proportion des composés testés sont réellement actifs :\n\n\n\\text{Précision} = \\frac{\\text{VP}}{\\text{VP} + \\text{FP}}\n\n\nUne précision plus élevée réduit le nombre d’expériences consacrées à des composés inactifs.\n\nAutres contextes réels où la précision est essentielle :\n\nDétection du pourriel : une précision élevée évite de masquer des messages légitimes.\nRecherche de documents juridiques : une précision élevée réduit le temps consacré à des résultats non pertinents.\nSystèmes de recommandation : une précision élevée rend les recommandations plus susceptibles d’intéresser les utilisateurs.\n\n\n\nLa précision est la proportion de prédictions positives vraies parmi toutes les prédictions positives."
+    "text": "Précision\nAussi connu sous le nom de valeur prédictive positive (PPV).\n\n  \\mathrm{précision} = \\frac{\\mathrm{TP}}{\\mathrm{TP}+\\mathrm{FP}}\n\n\nfrom sklearn.metrics import precision_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\nprecision_score(y_actual, y_pred)\n\n0.6666666666666666\n\n\n\n\n\n\n\nPouvez-vous penser à un problème ou à une situation où la précision est particulièrement importante ?\nUn exemple est la sélection de composés candidats en vue d’une validation coûteuse en laboratoire.\n\nUn modèle examine une grande bibliothèque de composés et prédit lesquels sont actifs.\nChaque prédiction positive déclenche une expérience coûteuse.\nUne précision élevée signifie qu’une plus grande proportion des composés testés sont réellement actifs :\n\n\n\\text{Précision} = \\frac{\\text{TP}}{\\text{TP} + \\text{FP}}\n\n\nUne précision plus élevée réduit le nombre d’expériences consacrées à des composés inactifs.\n\nAutres contextes réels où la précision est essentielle :\n\nDétection du pourriel : une précision élevée évite de masquer des messages légitimes.\nRecherche de documents juridiques : une précision élevée réduit le temps consacré à des résultats non pertinents.\nSystèmes de recommandation : une précision élevée rend les recommandations plus susceptibles d’intéresser les utilisateurs.\n\n\n\nLa précision est la proportion de prédictions positives vraies parmi toutes les prédictions positives."
   },
   {
     "objectID": "lectures/07/slides.html#la-précision-seule-ne-suffit-pas",
@@ -7257,14 +7257,14 @@
     "href": "lectures/07/slides.html#rappel",
     "title": "Évaluation des modèles",
     "section": "Rappel",
-    "text": "Rappel\nAussi connu sous le nom de sensibilité ou taux de vrais positifs (TPR)\n\n  \\mathrm{rappel} = \\frac{\\mathrm{VP}}{\\mathrm{VP}+\\mathrm{FN}}\n\n\nfrom sklearn.metrics import recall_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\nrecall_score(y_actual,y_pred)\n\n0.5714285714285714\n\n\n\n\n\n\n\nPouvez-vous penser à un problème ou une situation où le rappel est primordial ?\nUn exemple où le rappel est la mesure critique : diagnostic du cancer (dépistage des tumeurs malignes).\n\nIci, les faux négatifs (manquer un cas réel de cancer) sont beaucoup plus dangereux que les faux positifs.\nLe rappel mesure la proportion de vrais positifs correctement identifiés :\n\n\n\\text{Rappel} = \\frac{\\text{VP}}{\\text{VP} + \\text{FN}}\n\n\nUn rappel élevé signifie que le test détecte presque tous les patients atteints de cancer, même s’il génère également quelques fausses alertes.\nManquer un cas réel (rappel faible) pourrait signifier qu’un patient ne reçoit pas de traitement à temps — une erreur beaucoup plus grave que d’investiguer quelques faux positifs supplémentaires.\n\nAutres contextes réels où le rappel est le plus important :\n\nSécurité / Détection d’intrusions : Mieux vaut signaler toute activité suspecte (même avec des faux positifs) que de manquer une véritable attaque.\nMoteurs de recherche : Pour certaines requêtes (par exemple, recherche de précédents juridiques, recherche de littérature médicale), le rappel garantit que vous récupérez tous les documents pertinents.\nSystèmes de réponse d’urgence : Pour les alertes de catastrophes naturelles, un rappel élevé garantit qu’aucune menace réelle ne passe inaperçue.\n\n\n\nRappel est la proportion d’instances positives correctes identifiées parmi toutes les instances réellement positives."
+    "text": "Rappel\nAussi connu sous le nom de sensibilité ou taux de vrais positifs (TPR)\n\n  \\mathrm{rappel} = \\frac{\\mathrm{TP}}{\\mathrm{TP}+\\mathrm{FN}}\n\n\nfrom sklearn.metrics import recall_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\nrecall_score(y_actual,y_pred)\n\n0.5714285714285714\n\n\n\n\n\n\n\nPouvez-vous penser à un problème ou une situation où le rappel est primordial ?\nUn exemple où le rappel est la mesure critique : diagnostic du cancer (dépistage des tumeurs malignes).\n\nIci, les faux négatifs (manquer un cas réel de cancer) sont beaucoup plus dangereux que les faux positifs.\nLe rappel mesure la proportion de vrais positifs correctement identifiés :\n\n\n\\text{Rappel} = \\frac{\\text{TP}}{\\text{TP} + \\text{FN}}\n\n\nUn rappel élevé signifie que le test détecte presque tous les patients atteints de cancer, même s’il génère également quelques fausses alertes.\nManquer un cas réel (rappel faible) pourrait signifier qu’un patient ne reçoit pas de traitement à temps — une erreur beaucoup plus grave que d’investiguer quelques faux positifs supplémentaires.\n\nAutres contextes réels où le rappel est le plus important :\n\nSécurité / Détection d’intrusions : Mieux vaut signaler toute activité suspecte (même avec des faux positifs) que de manquer une véritable attaque.\nMoteurs de recherche : Pour certaines requêtes (par exemple, recherche de précédents juridiques, recherche de littérature médicale), le rappel garantit que vous récupérez tous les documents pertinents.\nSystèmes de réponse d’urgence : Pour les alertes de catastrophes naturelles, un rappel élevé garantit qu’aucune menace réelle ne passe inaperçue.\n\n\n\nRappel est la proportion d’instances positives correctes identifiées parmi toutes les instances réellement positives."
   },
   {
     "objectID": "lectures/07/slides.html#score-f_1",
     "href": "lectures/07/slides.html#score-f_1",
     "title": "Évaluation des modèles",
     "section": "Score F_1",
-    "text": "Score F_1\n\n\\begin{align*}\n  F_1~\\mathrm{score} &= \\frac{2}{\\frac{1}{\\mathrm{précision}}+\\frac{1}{\\mathrm{rappel}}} = 2 \\times \\frac{\\mathrm{précision}\\times\\mathrm{rappel}}{\\mathrm{précision}+\\mathrm{rappel}} \\\\\n                     &= \\frac{\\mathrm{VP}}{\\mathrm{VP}+\\frac{\\mathrm{FN}+\\mathrm{FP}}{2}}\n\\end{align*}\n\n\nfrom sklearn.metrics import f1_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\nf1_score(y_actual,y_pred)\n\n0.6153846153846154\n\n\n\n\n\n\n\n\nLa moyenne harmonique est attirée vers la plus faible des deux valeurs. Un score F_1 élevé exige donc une précision et un rappel élevés.\nLe score F_1 accorde la même importance à la précision et au rappel. Une application où les coûts des erreurs sont inégaux peut nécessiter une autre métrique ou un choix explicite du seuil.\nL’augmentation du rappel réduit souvent la précision, et inversement. Cette relation constitue le compromis précision-rappel.\n\n\n\nF_1 est la moyenne harmonique de la précision et du rappel."
+    "text": "Score F_1\n\n\\begin{align*}\n  F_1~\\mathrm{score} &= \\frac{2}{\\frac{1}{\\mathrm{précision}}+\\frac{1}{\\mathrm{rappel}}} = 2 \\times \\frac{\\mathrm{précision}\\times\\mathrm{rappel}}{\\mathrm{précision}+\\mathrm{rappel}} \\\\\n                     &= \\frac{\\mathrm{TP}}{\\mathrm{TP}+\\frac{\\mathrm{FN}+\\mathrm{FP}}{2}}\n\\end{align*}\n\n\nfrom sklearn.metrics import f1_score\n\ny_actual = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]\ny_pred   = [0, 1, 1, 0, 0, 0, 1, 1, 1, 1]\n\nf1_score(y_actual,y_pred)\n\n0.6153846153846154\n\n\n\n\n\n\n\n\nLa moyenne harmonique est attirée vers la plus faible des deux valeurs. Un score F_1 élevé exige donc une précision et un rappel élevés.\nLe score F_1 accorde la même importance à la précision et au rappel. Une application où les coûts des erreurs sont inégaux peut nécessiter une autre métrique ou un choix explicite du seuil.\nL’augmentation du rappel réduit souvent la précision, et inversement. Cette relation constitue le compromis précision-rappel.\n\n\n\nF_1 est la moyenne harmonique de la précision et du rappel."
   },
   {
     "objectID": "lectures/07/slides.html#définition",
@@ -7467,7 +7467,7 @@
     "href": "lectures/07/slides.html#courbe-roc-1",
     "title": "Évaluation des modèles",
     "section": "Courbe ROC",
-    "text": "Courbe ROC\nCourbe caractéristique de fonctionnement du récepteur (ROC)\n\nTaux de vrais positifs (TVP) en fonction du taux de faux positifs (TFP)\nUn classificateur idéal a un TVP proche de 1,0 et un TFP proche de 0,0\n\\mathrm{TVP} = \\frac{\\mathrm{VP}}{\\mathrm{VP}+\\mathrm{FN}} (rappel, sensibilité)\nLe TVP s’approche de un lorsqu’il y a peu de faux négatifs\n\\mathrm{TFP} = \\frac{\\mathrm{FP}}{\\mathrm{FP}+\\mathrm{VN}} = 1-\\mathrm{spécificité}\nLe TFP s’approche de zéro lorsqu’il y a peu de faux positifs\n\n\n\n\n\nUne courbe ROC représente le taux de vrais positifs en fonction du taux de faux positifs lorsque le seuil de décision varie. Chaque seuil produit un point de fonctionnement. Un point idéal se trouve près du coin supérieur gauche, tandis qu’un classement aléatoire produit en moyenne la diagonale.\nLa courbe résume le classement des scores pour tous les seuils, mais le déploiement exige tout de même de choisir un seuil particulier. Les coûts relatifs des faux positifs et des faux négatifs permettent de déterminer le point de fonctionnement approprié. Une évaluation un-contre-tous étend l’analyse ROC aux tâches multiclasses."
+    "text": "Courbe ROC\nCourbe caractéristique de fonctionnement du récepteur (ROC)\n\nTaux de vrais positifs (TPR) en fonction du taux de faux positifs (FPR)\nUn classificateur idéal a un TPR proche de 1,0 et un FPR proche de 0,0\n\\mathrm{TPR} = \\frac{\\mathrm{TP}}{\\mathrm{TP}+\\mathrm{FN}} (rappel, sensibilité)\nLe TPR s’approche de un lorsqu’il y a peu de faux négatifs\n\\mathrm{FPR} = \\frac{\\mathrm{FP}}{\\mathrm{FP}+\\mathrm{TN}} = 1-\\mathrm{spécificité}\nLe FPR s’approche de zéro lorsqu’il y a peu de faux positifs\n\n\n\n\n\nUne courbe ROC représente le taux de vrais positifs en fonction du taux de faux positifs lorsque le seuil de décision varie. Chaque seuil produit un point de fonctionnement. Un point idéal se trouve près du coin supérieur gauche, tandis qu’un classement aléatoire produit en moyenne la diagonale.\nLa courbe résume le classement des scores pour tous les seuils, mais le déploiement exige tout de même de choisir un seuil particulier. Les coûts relatifs des faux positifs et des faux négatifs permettent de déterminer le point de fonctionnement approprié. Une évaluation un-contre-tous étend l’analyse ROC aux tâches multiclasses."
   },
   {
     "objectID": "lectures/07/slides.html#courbe-roc-2",
@@ -7530,7 +7530,7 @@
     "href": "lectures/07/slides.html#régression-logistique",
     "title": "Évaluation des modèles",
     "section": "Régression logistique",
-    "text": "Régression logistique\n\nModèle :\n\nh_\\theta(x_i) = \\sigma(\\theta_0 + x_i^\\top\\theta)\n= \\frac{1}{1+e^{-(\\theta_0+x_i^\\top\\theta)}}\n\nPrédiction :\n\nAttribuer y_i = 0 si h_\\theta(x_i) &lt; 0,5.\nAttribuer y_i = 1 si h_\\theta(x_i) \\geq 0,5.\n\nFonction de perte : entropie croisée\n\n\nJ(\\theta) = -\\frac{1}{N} \\sum_{i=1}^{N}\n\\left[\ny_i \\log h_\\theta(x_i)\n+ (1-y_i) \\log\\left(1-h_\\theta(x_i)\\right)\n\\right]\n\n\nLes décomptes de la matrice de confusion évoluent systématiquement lorsque le seuil de décision passe de 0 à 1.\nAu seuil 0\n\nTous les exemples sont prédits positifs.\nTous les positifs réels sont vrais positifs et tous les négatifs réels sont faux positifs.\n\\text{TVP}=1, \\text{TFP}=1 et le point ROC est (1,1).\n\nLorsque le seuil augmente de 0 à 1\n\nMoins d’exemples sont prédits positifs.\nLes nombres de vrais positifs et de faux positifs diminuent.\nLe TVP et le TFP diminuent de façon monotone.\nLa courbe se déplace vers le bas et la gauche dans l’espace ROC.\n\nAu seuil 1\n\nTous les exemples sont prédits négatifs.\nVP = 0, FP = 0.\n\\text{TVP}=0, \\text{TFP}=0 et le point ROC est (0,0).\n\nEn résumé, un seuil plus faible produit davantage de prédictions positives; les VP, FP, TVP et TFP augmentent. Un seuil plus élevé produit davantage de prédictions négatives; ces quantités diminuent. La forme de la courbe dépend de la capacité du modèle à séparer les deux classes : un modèle parfait monte immédiatement vers (0,1), un classement aléatoire suit en moyenne la diagonale et un classement systématiquement inversé se situe sous celle-ci."
+    "text": "Régression logistique\n\nModèle :\n\nh_\\theta(x_i) = \\sigma(\\theta_0 + x_i^\\top\\theta)\n= \\frac{1}{1+e^{-(\\theta_0+x_i^\\top\\theta)}}\n\nPrédiction :\n\nAttribuer y_i = 0 si h_\\theta(x_i) &lt; 0,5.\nAttribuer y_i = 1 si h_\\theta(x_i) \\geq 0,5.\n\nFonction de perte : entropie croisée\n\n\nJ(\\theta) = -\\frac{1}{N} \\sum_{i=1}^{N}\n\\left[\ny_i \\log h_\\theta(x_i)\n+ (1-y_i) \\log\\left(1-h_\\theta(x_i)\\right)\n\\right]\n\n\nLes décomptes de la matrice de confusion évoluent systématiquement lorsque le seuil de décision passe de 0 à 1.\nAu seuil 0\n\nTous les exemples sont prédits positifs.\nTous les positifs réels sont vrais positifs et tous les négatifs réels sont faux positifs.\n\\text{TPR}=1, \\text{FPR}=1 et le point ROC est (1,1).\n\nLorsque le seuil augmente de 0 à 1\n\nMoins d’exemples sont prédits positifs.\nLes nombres de vrais positifs et de faux positifs diminuent.\nLe TPR et le FPR diminuent de façon monotone.\nLa courbe se déplace vers le bas et la gauche dans l’espace ROC.\n\nAu seuil 1\n\nTous les exemples sont prédits négatifs.\nTP = 0, FP = 0.\n\\text{TPR}=0, \\text{FPR}=0 et le point ROC est (0,0).\n\nEn résumé, un seuil plus faible produit davantage de prédictions positives; les TP, FP, TPR et FPR augmentent. Un seuil plus élevé produit davantage de prédictions négatives; ces quantités diminuent. La forme de la courbe dépend de la capacité du modèle à séparer les deux classes : un modèle parfait monte immédiatement vers (0,1), un classement aléatoire suit en moyenne la diagonale et un classement systématiquement inversé se situe sous celle-ci."
   },
   {
     "objectID": "lectures/07/slides.html#régression-logistique-1",
@@ -7565,7 +7565,7 @@
     "href": "lectures/07/slides.html#exemple-tracer",
     "title": "Évaluation des modèles",
     "section": "Exemple : tracer",
-    "text": "Exemple : tracer\n\n\nCode\n# Calculer les probabilités prédites de la classe positive sur l'ensemble de test\ny_probs = model.predict_proba(X_test)\n\n# Calculer la courbe ROC (TFP et TVP pour chaque seuil)\nfpr, tpr, thresholds = compute_roc_curve(y_test, y_probs)\nauroc_value = compute_auroc(fpr, tpr)\n\nfrom sklearn.metrics import roc_auc_score\nsklearn_auroc = roc_auc_score(y_test, y_probs)\n\nprint(f\"AUROC manuelle :      {auroc_value:.3f}\")\nprint(f\"AUROC scikit-learn :  {sklearn_auroc:.3f}\")\n\n# Tracer la courbe ROC\nplt.figure(figsize=(8, 6))\nplt.plot(\n    fpr,\n    tpr,\n    color=\"blue\",\n    lw=2,\n    label=f\"Courbe ROC (AUROC = {auroc_value:.2f})\",\n)\nplt.plot(\n    [0, 1],\n    [0, 1],\n    color=\"gray\",\n    lw=1,\n    linestyle=\"--\",\n    label=\"Classificateur aléatoire\",\n)\nplt.xlabel(\"Taux de faux positifs\")\nplt.ylabel(\"Taux de vrais positifs\")\nplt.title(\"Courbe caractéristique de fonctionnement du récepteur (ROC)\")\nplt.legend(loc=\"lower right\")\nplt.show()"
+    "text": "Exemple : tracer\n\n\nCode\n# Calculer les probabilités prédites de la classe positive sur l'ensemble de test\ny_probs = model.predict_proba(X_test)\n\n# Calculer la courbe ROC (FPR et TPR pour chaque seuil)\nfpr, tpr, thresholds = compute_roc_curve(y_test, y_probs)\nauroc_value = compute_auroc(fpr, tpr)\n\nfrom sklearn.metrics import roc_auc_score\nsklearn_auroc = roc_auc_score(y_test, y_probs)\n\nprint(f\"AUROC manuelle :      {auroc_value:.3f}\")\nprint(f\"AUROC scikit-learn :  {sklearn_auroc:.3f}\")\n\n# Tracer la courbe ROC\nplt.figure(figsize=(8, 6))\nplt.plot(\n    fpr,\n    tpr,\n    color=\"blue\",\n    lw=2,\n    label=f\"Courbe ROC (AUROC = {auroc_value:.2f})\",\n)\nplt.plot(\n    [0, 1],\n    [0, 1],\n    color=\"gray\",\n    lw=1,\n    linestyle=\"--\",\n    label=\"Classificateur aléatoire\",\n)\nplt.xlabel(\"Taux de faux positifs\")\nplt.ylabel(\"Taux de vrais positifs\")\nplt.title(\"Courbe caractéristique de fonctionnement du récepteur (ROC)\")\nplt.legend(loc=\"lower right\")\nplt.show()"
   },
   {
     "objectID": "lectures/07/slides.html#classificateur-aléatoire-simulation",
@@ -13844,5 +13844,243 @@
     "title": "Régression logistique : entropie croisée et géométrie",
     "section": "ECB : un gradient plus fort",
     "text": "ECB : un gradient plus fort\nPour l’entropie croisée binaire,\n\n\\frac{\\partial \\ell_{\\mathrm{ECB}}}{\\partial z}\n=\\hat{p}-y.\n\nPour le même exemple positif classé incorrectement avec une grande confiance,\n\ny=1,\\quad \\hat{p}\\approx 0\n\\quad\\Longrightarrow\\quad\n\\frac{\\partial \\ell_{\\mathrm{ECB}}}{\\partial z}\\approx -1.\n\nLe facteur presque nul de la sigmoïde se simplifie lors de la dérivation; la correction demeure donc importante.\n\nLa dérivée de l’entropie croisée binaire par rapport à la probabilité prédite contient l’inverse de la dérivée de la sigmoïde :\n\n\\frac{\\partial \\ell_{\\mathrm{ECB}}}{\\partial \\hat{p}}\n=\\frac{\\hat{p}-y}{\\hat{p}(1-\\hat{p})}.\n\nLa règle de dérivation en chaîne donne alors\n\n\\frac{\\partial \\ell_{\\mathrm{ECB}}}{\\partial z}\n=\\frac{\\hat{p}-y}{\\hat{p}(1-\\hat{p})}\n\\hat{p}(1-\\hat{p})\n=\\hat{p}-y.\n\nLe facteur provenant de la sigmoïde se simplifie donc. Pour un exemple positif classé incorrectement avec une grande confiance, cette dérivée est près de -1; la descente de gradient augmente donc le score linéaire de façon importante. C’est ce qui distingue l’ECB du faible gradient de l’EQM présenté à la diapositive précédente."
+  },
+  {
+    "objectID": "lectures/10/slides.html#jeu-de-données-adult",
+    "href": "lectures/10/slides.html#jeu-de-données-adult",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Jeu de données Adult",
+    "text": "Jeu de données Adult\n\nimport numpy as np\nnp.random.seed(42)\n\nfrom sklearn.datasets import fetch_openml\n\nadult = fetch_openml(name='adult', version=2)\n\nprint(adult.DESCR)\n\n\n\nLe jeu de données Adult contient plusieurs attributs à valeurs catégorielles. Il servira de point de départ à une courte présentation de l’encodage de ces valeurs."
+  },
+  {
+    "objectID": "lectures/10/slides.html#jeu-de-données-adult-output",
+    "href": "lectures/10/slides.html#jeu-de-données-adult-output",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Jeu de données Adult",
+    "text": "Jeu de données Adult\nAuthor: Ronny Kohavi and Barry Becker\nSource: UCI - 1996\nPlease cite: Ron Kohavi, “Scaling Up the Accuracy of Naive-Bayes Classifiers: a Decision-Tree Hybrid”, Proceedings of the Second International Conference on Knowledge Discovery and Data Mining, 1996\nPrediction task is to determine whether a person makes over 50K a year. Extraction was done by Barry Becker from the 1994 Census database. A set of reasonably clean records was extracted using the following conditions: ((AAGE&gt;16) && (AGI&gt;100) && (AFNLWGT&gt;1)&& (HRSWK&gt;0))\nThis is the original version from the UCI repository, with training and test sets merged.\nVariable description\nVariables are all self-explanatory except fnlwgt. This is a proxy for the demographic background of the people: “People with similar demographic characteristics should have similar weights”. This similarity-statement is not transferable across the 51 different states.\nDescription from the donor of the database:\nThe weights on the CPS files are controlled to independent estimates of the civilian noninstitutional population of the US. These are prepared monthly for us by Population Division here at the Census Bureau. We use 3 sets of controls. These are: 1. A single cell estimate of the population 16+ for each state. 2. Controls for Hispanic Origin by age and sex. 3. Controls by Race, age and sex.\nWe use all three sets of controls in our weighting program and “rake” through them 6 times so that by the end we come back to all the controls we used. The term estimate refers to population totals derived from CPS by creating “weighted tallies” of any specified socio-economic characteristics of the population. People with similar demographic characteristics should have similar weights. There is one important caveat to remember about this statement. That is that since the CPS sample is actually a collection of 51 state samples, each with its own probability of selection, the statement only applies within state.\nRelevant papers\nRonny Kohavi and Barry Becker. Data Mining and Visualization, Silicon Graphics.\ne-mail: ronnyk ‘@’ live.com for questions.\nDownloaded from openml.org."
+  },
+  {
+    "objectID": "lectures/10/slides.html#encodage-des-données-nominales",
+    "href": "lectures/10/slides.html#encodage-des-données-nominales",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Encodage des données nominales",
+    "text": "Encodage des données nominales\nL’encodage one-hot (one-hot encoding) constitue un choix courant pour les catégories non ordonnées, ou nominales.\n\nAugmentation de la dimension : l’encodage one-hot crée un attribut de sortie pour chaque catégorie conservée.\nAbsence d’ordre artificiel : les codes entiers peuvent introduire des distances et un ordre que les catégories ne possèdent pas.\nExemple de biais : la première méthode, w = 1, 2, 3, etc., laisse croire que ‘Federal-gov’ et ‘Local-gov’ sont semblables, tandis que ‘Federal-gov’ et ‘Without-pay’ ne le sont pas.\nSimilarité trompeuse : la deuxième méthode, w = [0,0,0], [0,0,1], etc., peut induire l’algorithme en erreur en suggérant une similarité fondée sur des motifs numériques."
+  },
+  {
+    "objectID": "lectures/10/slides.html#ingénierie-des-attributs---données-ordinales",
+    "href": "lectures/10/slides.html#ingénierie-des-attributs---données-ordinales",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Ingénierie des attributs - données ordinales",
+    "text": "Ingénierie des attributs - données ordinales\nPour des valeurs comme « faible », « moyen » et « bon », un encodage ordinal peut préserver l’ordre.\n\nCependant!\n\nfrom sklearn.preprocessing import OrdinalEncoder\n\nX =[['Faible'], ['Moyen'], ['Bon'], ['Moyen'], ['Moyen']]\n\nencoder = OrdinalEncoder()\n\nencoder.fit(X)\nencoder.transform(X)\n\narray([[1.],\n       [2.],\n       [0.],\n       [2.],\n       [2.]])"
+  },
+  {
+    "objectID": "lectures/10/slides.html#ingénierie-des-attributs-discrétisation",
+    "href": "lectures/10/slides.html#ingénierie-des-attributs-discrétisation",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Ingénierie des attributs : discrétisation",
+    "text": "Ingénierie des attributs : discrétisation\nExemple : regrouper les âges en catégories comme « nourrisson », « enfant », « adolescent », « adulte » et « personne âgée ».\n\nAvantage possible :\n\nencode des seuils pertinents du domaine et peut réduire la complexité du modèle.\n\nInconvénients :\n\nélimine les différences à l’intérieur de chaque intervalle et introduit des frontières abruptes;\nexige des seuils justifiables. Par exemple, la catégorie « personne âgée » pourrait commencer à 60, 65 ou 70 ans1.\n\n\nDes intervalles prédéfinis peuvent aider un arbre de décision à produire un modèle plus compact, car l’arbre n’a plus à découvrir chaque seuil à partir de l’échantillon disponible.\nCe biais inductif prononcé peut toutefois masquer des variations utiles ou empêcher l’estimateur de découvrir de meilleures frontières. La discrétisation constitue donc un choix de modélisation, et non une étape automatique du prétraitement.\nLa validation croisée permet de comparer des schémas d’encodage. L’ensemble de test doit néanmoins rester à l’écart jusqu’à l’évaluation finale afin de prévenir une fuite de données et de préserver l’impartialité de l’évaluation.\n\n\nVotre professeur s’intéresse à votre choix de seuil"
+  },
+  {
+    "objectID": "lectures/10/slides.html#distances-euclidiennes-sans-mise-à-léchelle",
+    "href": "lectures/10/slides.html#distances-euclidiennes-sans-mise-à-léchelle",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Distances euclidiennes (sans mise à l’échelle)",
+    "text": "Distances euclidiennes (sans mise à l’échelle)\nLorsqu’un attribut possède une échelle beaucoup plus grande, comme la superficie, il peut dominer la somme.\n\nfrom sklearn.metrics import pairwise_distances\n\ndist_unscaled = pd.DataFrame(\n    pairwise_distances(df.values, metric=\"euclidean\"),\n    index=df.index, columns=df.index\n)\ndist_unscaled\n\n\n\nprint(\"Plus proche de 'a' (sans mise à l'échelle) :\", dist_unscaled.loc[\"a\"].drop(\"a\").idxmin())\n\nPlus proche de 'a' (sans mise à l'échelle) : b"
+  },
+  {
+    "objectID": "lectures/10/slides.html#distances-euclidiennes-sans-mise-à-léchelle-output",
+    "href": "lectures/10/slides.html#distances-euclidiennes-sans-mise-à-léchelle-output",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Distances euclidiennes (sans mise à l’échelle)",
+    "text": "Distances euclidiennes (sans mise à l’échelle)\n\n\n\n\n\n\n\n\na\nb\nc\n\n\n\n\na\n0.000000\n20.396078\n200.000000\n\n\nb\n20.396078\n0.000000\n220.036361\n\n\nc\n200.000000\n220.036361\n0.000000"
+  },
+  {
+    "objectID": "lectures/10/slides.html#mise-à-léchelle-appropriée",
+    "href": "lectures/10/slides.html#mise-à-léchelle-appropriée",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Mise à l’échelle appropriée",
+    "text": "Mise à l’échelle appropriée\nPour éviter toute fuite de données, calculons les paramètres de mise à l’échelle à partir des seules données d’entraînement (b et c), puis transformons les données d’entraînement et la requête :\n\nfrom sklearn.preprocessing import StandardScaler\n\ntrain_idx = [\"b\", \"c\"]\nquery_idx = [\"a\"]\n\nscaler = StandardScaler()\n\nscaler.fit(df.loc[train_idx])     # ajuster uniquement sur l'entraînement\n\nZ = pd.DataFrame(\n    scaler.transform(df),\n    columns=df.columns, index=df.index\n)\n\nZ"
+  },
+  {
+    "objectID": "lectures/10/slides.html#mise-à-léchelle-appropriée-output",
+    "href": "lectures/10/slides.html#mise-à-léchelle-appropriée-output",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Mise à l’échelle appropriée",
+    "text": "Mise à l’échelle appropriée\n\n\n\n\n\n\n\n\npièces\npieds_carrés\n\n\n\n\na\n-1.0\n0.818182\n\n\nb\n1.0\n1.000000\n\n\nc\n-1.0\n-1.000000"
+  },
+  {
+    "objectID": "lectures/10/slides.html#mise-à-léchelle-min-max",
+    "href": "lectures/10/slides.html#mise-à-léchelle-min-max",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Mise à l’échelle min-max",
+    "text": "Mise à l’échelle min-max\nLa mise à l’échelle min-max transforme chaque attribut dans un intervalle choisi, habituellement [0,1].\n\n  \\frac{x_i^{(j)} - \\min^{(j)}}{\\max^{(j)} - \\min^{(j)}}\n\nLe minimum et le maximum doivent être appris à partir des données d’entraînement.\n\n\nVoir : sklearn.preprocessing.MinMaxScaler"
+  },
+  {
+    "objectID": "lectures/10/slides.html#choisir-une-méthode-de-mise-à-léchelle",
+    "href": "lectures/10/slides.html#choisir-une-méthode-de-mise-à-léchelle",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Choisir une méthode de mise à l’échelle",
+    "text": "Choisir une méthode de mise à l’échelle\n\nLa standardisation constitue un choix courant pour les méthodes fondées sur les distances, les modèles linéaires régularisés et l’optimisation par gradient.\nLa mise à l’échelle min-max convient lorsqu’une plage d’entrée bornée est exigée.\nLes deux méthodes sont sensibles aux valeurs aberrantes : la mise à l’échelle min-max utilise les extrêmes, tandis que la standardisation utilise la moyenne et l’écart-type.\nPour les attributs très asymétriques ou qui contiennent des valeurs aberrantes, examinez le processus de production des données et envisagez une transformation justifiée, une règle d’écrêtage ou RobustScaler.\nLorsque plusieurs choix sont plausibles et importants, comparez-les au moyen de la validation croisée.\n\n\nLa mise à l’échelle et la transformation d’une distribution résolvent des problèmes différents. Un logarithme peut réduire l’asymétrie à droite de données strictement positives, mais il doit avoir un sens pour l’attribut et faire partie du même flux de travail sans fuite de données. RobustScaler utilise la médiane et l’écart interquartile, ce qui rend ses statistiques ajustées moins sensibles aux valeurs extrêmes."
+  },
+  {
+    "objectID": "lectures/10/slides.html#comparaison-des-méthodes",
+    "href": "lectures/10/slides.html#comparaison-des-méthodes",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Comparaison des méthodes",
+    "text": "Comparaison des méthodes\n\n\n\n\n\n\n\n\nPropriété\nStandardisation\nMise à l’échelle min-max\n\n\n\n\nPlage de sortie\nNon bornée\nHabituellement [0, 1]\n\n\nCentre\nMoyenne à 0\nNon centrée\n\n\nSensibilité aux valeurs aberrantes\nPar la moyenne et l’écart-type\nPar le minimum et le maximum\n\n\nUsage typique\nVariances comparables et attributs centrés à zéro\nPlage bornée prescrite"
+  },
+  {
+    "objectID": "lectures/10/slides.html#éviter-les-fuites-de-données",
+    "href": "lectures/10/slides.html#éviter-les-fuites-de-données",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Éviter les fuites de données!",
+    "text": "Éviter les fuites de données!\nLe flux de travail correct :\n\ndiviser les exemples avant d’apprendre tout paramètre de prétraitement;\najuster l’outil de mise à l’échelle sur les données d’entraînement;\nréutiliser cet outil ajusté pour transformer les données de validation, de test et de production;\npendant la validation croisée, ajuster le prétraitement séparément dans chaque pli d’entraînement, normalement à l’aide d’un Pipeline.\n\n\nLes moyennes, écarts-types, minima, maxima, ensembles de catégories et valeurs d’imputation constituent tous de l’information apprise. Ils doivent provenir uniquement des données d’entraînement.\nL’ensemble de test simule des données jamais observées. S’il influence le prétraitement, la procédure d’entraînement reçoit de l’information qui ne serait pas disponible pour une nouvelle prédiction. Cette fuite de données (data leakage) peut produire une estimation trop optimiste de la capacité de généralisation."
+  },
+  {
+    "objectID": "lectures/10/slides.html#échantillon-normal-avec-valeurs-aberrantes",
+    "href": "lectures/10/slides.html#échantillon-normal-avec-valeurs-aberrantes",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Échantillon normal avec valeurs aberrantes",
+    "text": "Échantillon normal avec valeurs aberrantes\n\nimport numpy as np\nnp.random.seed(7)\n\n# Caractéristiques de l'échantillon\nsample_size = 1000\nmu = 57\nsigma = 7\n\n# Générer les valeurs\nnorm_values = sigma * np.random.randn(sample_size) + mu\n\n# Ajouter trois valeurs aberrantes\nnorm_values = np.append(norm_values, [92, 95, 98])"
+  },
+  {
+    "objectID": "lectures/10/slides.html#distribution-originale",
+    "href": "lectures/10/slides.html#distribution-originale",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Distribution originale",
+    "text": "Distribution originale\n\n\nCode\nimport matplotlib.pyplot as plt\n\n# Tracer l'histogramme\nplt.hist(norm_values, bins=20, edgecolor='black')\n\nplt.title(f'Échantillon de {sample_size} valeurs tirées d\\'une loi normale')\n\nplt.xlabel('Valeur')\nplt.ylabel('Fréquence')\n\nplt.show()"
+  },
+  {
+    "objectID": "lectures/10/slides.html#mise-à-léchelle-min-max-1",
+    "href": "lectures/10/slides.html#mise-à-léchelle-min-max-1",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Mise à l’échelle min-max",
+    "text": "Mise à l’échelle min-max\n\n\nCode\nfrom sklearn.preprocessing import MinMaxScaler\n\nscaler = MinMaxScaler()\n\nminmax_norm_values = scaler.fit_transform(norm_values.reshape(-1, 1))\n\n# Tracer l'histogramme\nplt.hist(minmax_norm_values, bins=20, edgecolor='black')\n\nplt.title('MinMaxScaler')\n\nplt.xlabel('Valeur')\nplt.ylabel('Fréquence')\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLa plus grande valeur observée est ramenée à 1 et la plus petite à 0. Les valeurs aberrantes élevées étirent cet intervalle et compriment la majorité des observations dans sa partie inférieure. Une mise à l’échelle min-max n’implique pas que la moyenne transformée soit égale à 0,5.\n\n\nMise à l’échelle min-max de valeurs provenant d’une loi normale qui contient des valeurs aberrantes élevées."
+  },
+  {
+    "objectID": "lectures/10/slides.html#traiter-les-valeurs-manquantes",
+    "href": "lectures/10/slides.html#traiter-les-valeurs-manquantes",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Traiter les valeurs manquantes",
+    "text": "Traiter les valeurs manquantes\n\nSupprimer des exemples\n\nCe choix est raisonnable seulement s’il reste assez de données et si les lignes incomplètes ne diffèrent pas systématiquement des autres.\n\nSupprimer des attributs\n\nCe choix convient lorsqu’un attribut n’est pas essentiel et qu’il reste trop peu d’information fiable.\n\nEmployer un algorithme qui accepte les valeurs manquantes\n\nCertains estimateurs les modélisent directement; beaucoup d’autres ne les acceptent pas.\n\nEffectuer une imputation\n\nRemplacer les valeurs manquantes à l’aide de statistiques ou d’un modèle appris sur les données d’entraînement."
+  },
+  {
+    "objectID": "lectures/10/slides.html#stratégie-dimputation",
+    "href": "lectures/10/slides.html#stratégie-dimputation",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Stratégie d’imputation",
+    "text": "Stratégie d’imputation\nRemplaçons une valeur numérique manquante par la moyenne ou la médiane d’entraînement de l’attribut.\n\nfrom sklearn.impute import SimpleImputer\n\nX_train_missing = np.array([\n    [1.0, 10.0],\n    [2.0, np.nan],\n    [3.0, 12.0],\n])\nX_new_missing = np.array([[4.0, np.nan]])\n\nimputer = SimpleImputer(strategy=\"median\")\nimputer.fit(X_train_missing)\nimputer.transform(X_new_missing)\n\narray([[ 4., 11.]])\n\n\n\n\nLimite : l’imputation univariée ignore les relations entre les attributs et réduit la variabilité observée.\nAttributs catégoriels : utilisez la catégorie la plus fréquente ou une catégorie explicite \"manquant\" lorsque cette représentation convient.\n\n\nLes données peuvent être manquantes complètement au hasard, en fonction d’autres attributs observés ou en fonction de la valeur manquante elle-même. On décrit souvent ces mécanismes par les sigles MCAR, MAR et MNAR. Un outil d’imputation simple ne détermine pas quel mécanisme a produit les valeurs manquantes.\nL’imputation par la moyenne, la médiane ou la valeur la plus fréquente fournit des points de comparaison utiles, mais elle peut déformer les distributions et les relations. La stratégie d’imputation fait partie du modèle et doit être évaluée sur des données tenues à l’écart.\nComme pour la mise à l’échelle, l’outil d’imputation doit être ajusté uniquement sur la partition d’entraînement. Un pipeline répète correctement cet ajustement dans chaque pli de validation croisée."
+  },
+  {
+    "objectID": "lectures/10/slides.html#préserver-linformation-de-valeurs-manquantes",
+    "href": "lectures/10/slides.html#préserver-linformation-de-valeurs-manquantes",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Préserver l’information de valeurs manquantes",
+    "text": "Préserver l’information de valeurs manquantes\nUne valeur imputée peut être accompagnée d’un attribut binaire qui indique que la valeur originale était manquante.\n\nimputer_with_indicator = SimpleImputer(\n    strategy=\"median\", add_indicator=True\n)\nimputer_with_indicator.fit_transform(X_train_missing)\n\narray([[ 1., 10.,  0.],\n       [ 2., 11.,  1.],\n       [ 3., 12.,  0.]])\n\n\n\nadd_indicator=True permet à un estimateur d’utiliser comme signal distinct le fait qu’une valeur était manquante. Cette information peut aider lorsque le processus d’observation est informatif, par exemple lorsqu’une mesure particulière est demandée seulement pour les personnes qui présentent un risque plus élevé.\nPour certains modèles à base d’arbres, une valeur sentinelle située hors de la plage normale peut jouer un rôle similaire. Elle peut cependant déformer fortement les distances ou les relations linéaires. Un indicateur explicite communique plus clairement l’intention."
+  },
+  {
+    "objectID": "lectures/10/slides.html#prédire-un-attribut-manquant",
+    "href": "lectures/10/slides.html#prédire-un-attribut-manquant",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Prédire un attribut manquant",
+    "text": "Prédire un attribut manquant\n\nChoisir comme cible de prédiction un attribut qui contient des valeurs manquantes.\nUtiliser comme exemples d’entraînement les lignes où cet attribut est observé.\nUtiliser les autres attributs observés comme entrées.\nPrédire les valeurs manquantes au moyen d’un modèle de régression ou de classification."
+  },
+  {
+    "objectID": "lectures/10/slides.html#apprentissage-automatique-et-imputation",
+    "href": "lectures/10/slides.html#apprentissage-automatique-et-imputation",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Apprentissage automatique et imputation",
+    "text": "Apprentissage automatique et imputation\n\nMéthode fondée sur les voisins :\n\nemployer les k plus proches voisins pour repérer les k exemples les plus semblables et imputer à partir des valeurs non manquantes dans ce voisinage.\n\nMéthodes itératives fondées sur des modèles :\n\nprédire chaque attribut incomplet à partir des autres, puis répéter le processus pour les différents attributs.\n\n\n\n\nConsultez le guide d’imputation de scikit-learn ou la documentation de KNNImputer."
+  },
+  {
+    "objectID": "lectures/10/slides.html#de-lévaluation-à-lintervention",
+    "href": "lectures/10/slides.html#de-lévaluation-à-lintervention",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "De l’évaluation à l’intervention",
+    "text": "De l’évaluation à l’intervention\nLa leçon 7 a montré que le déséquilibre des classes peut masquer une mauvaise performance sur une classe peu fréquente et que l’évaluation doit refléter le problème de décision.\nCette leçon pose une question différente :\n\nComment la procédure d’entraînement peut-elle répondre au déséquilibre des classes sans contaminer l’évaluation?\n\n\nLa leçon 7 a déjà présenté la matrice de confusion, l’exactitude, la précision, le rappel, le score F_1, les moyennes micro et macro, les compromis liés au seuil, les courbes ROC et les courbes précision-rappel. Ces définitions et ces formules ne sont pas répétées ici.\nLe passage important consiste à quitter la détection d’un problème durant l’évaluation pour modifier la procédure d’entraînement. Un remède est utile seulement s’il améliore la mesure de validation pertinente pour l’application établie à la leçon 7."
+  },
+  {
+    "objectID": "lectures/10/slides.html#remèdes-durant-lentraînement",
+    "href": "lectures/10/slides.html#remèdes-durant-lentraînement",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Remèdes durant l’entraînement",
+    "text": "Remèdes durant l’entraînement\n\nPoids de classes ou d’exemples : faire contribuer davantage les erreurs commises sur certains exemples à l’objectif d’entraînement.\nSuréchantillonnage aléatoire : répéter des exemples d’entraînement de la classe minoritaire.\nSous-échantillonnage aléatoire : conserver moins d’exemples d’entraînement de la classe majoritaire.\nSMOTE : interpoler des exemples synthétiques de la classe minoritaire à partir d’exemples d’entraînement voisins.\nSeuil de décision : choisir un point de fonctionnement à l’aide des données de validation, comme à la leçon 7.\n\n\n\nLes poids de classes modifient la contribution des exemples d’entraînement sans créer ni supprimer d’observations. Le suréchantillonnage peut surajuster les exemples répétés, tandis que le sous-échantillonnage peut éliminer une variation utile de la classe majoritaire.\nSMOTE construit des points synthétiques entre des voisins de la classe minoritaire (Chawla et al. 2002). Cette interpolation peut ne pas convenir lorsqu’une ligne droite entre deux observations quitte l’ensemble des exemples plausibles. La version ordinaire de SMOTE suppose aussi des attributs numériques. Les données qui combinent des attributs numériques et catégoriels exigent une variante appropriée, comme SMOTENC.\nAucun remède ne convient universellement. Les choix plausibles doivent être comparés avec la procédure de validation et les mesures pertinentes pour l’application établies à la leçon 7.\n\n\nImplémentations : class_weight et imbalanced-learn."
+  },
+  {
+    "objectID": "lectures/10/slides.html#garder-lévaluation-intacte",
+    "href": "lectures/10/slides.html#garder-lévaluation-intacte",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Garder l’évaluation intacte",
+    "text": "Garder l’évaluation intacte\n\nPréserver la distribution naturelle des classes dans les données de validation et de test.\nAppliquer le rééchantillonnage uniquement à une partition d’entraînement.\nDurant la validation croisée, rééchantillonner séparément dans chaque pli d’entraînement.\nPlacer le rééchantillonnage et l’estimateur dans un pipeline d’imbalanced-learn.\nRéserver l’ensemble de test à l’évaluation finale, après avoir choisi le remède et tout seuil de décision.\n\n\nUn rééchantillonnage effectué avant la division en ensembles d’entraînement et de test produit une fuite d’information et une distribution d’évaluation irréaliste. Le rééchantillonnage avant la validation croisée pose le même problème, car un exemple synthétique ou répété peut alors influencer les plis d’entraînement et de validation.\nUn pipeline d’imbalanced-learn appelle l’outil de rééchantillonnage uniquement pendant l’ajustement de chaque pli d’entraînement. Son chemin de prédiction ne rééchantillonne pas les exemples de validation, de test ou de production."
+  },
+  {
+    "objectID": "lectures/10/slides.html#polynôme-appris",
+    "href": "lectures/10/slides.html#polynôme-appris",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Polynôme appris",
+    "text": "Polynôme appris\nLes données ont été produites par l’équation suivante, à laquelle un bruit gaussien a été ajouté.\n\n  y = 0.5 x^2 - 1.0 x + 2.0\n\nVoici le modèle appris.\n\n  \\hat{y} = 0.56 x^2 + (-1.06) x + 1.78\n\n\nlin_reg.coef_, lin_reg.intercept_\n\n(array([[-1.06633107,  0.56456263]]), array([1.78134581]))\n\n\n\nLa linéarité concerne les coefficients ajustés, et pas nécessairement l’entrée originale. Après avoir défini z_1=x et z_2=x^2, la régression linéaire ajuste\n\n\\hat{y}=\\theta_0+\\theta_1z_1+\\theta_2z_2.\n\nCette expression est linéaire en \\theta_0, \\theta_1 et \\theta_2, même si elle trace une courbe lorsque x varie. PolynomialFeatures change la représentation des attributs; il ne transforme pas l’algorithme d’ajustement en un autre type d’estimateur de régression.\nLes coefficients ajustés se rapprochent des coefficients générateurs, car le modèle contient le terme quadratique pertinent et l’échantillon contient un bruit gaussien modéré. Une récupération exacte n’est ni attendue ni nécessaire."
+  },
+  {
+    "objectID": "lectures/10/slides.html#prochaine-leçon",
+    "href": "lectures/10/slides.html#prochaine-leçon",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Prochaine leçon",
+    "text": "Prochaine leçon\n\nProchaine étape : les réseaux de neurones artificiels."
+  },
+  {
+    "objectID": "lectures/10/slides.html#unreasonable-effectiveness-of-data",
+    "href": "lectures/10/slides.html#unreasonable-effectiveness-of-data",
+    "title": "Ingénierie de l’apprentissage automatique",
+    "section": "Unreasonable Effectiveness of Data",
+    "text": "Unreasonable Effectiveness of Data\n\n\n\nLa présentation de Peter Norvig dure un peu plus d’une heure. Elle est fournie pour l’étude autonome plutôt que pour un visionnement en classe. L’article de 2009 qui l’accompagne précède la vague moderne des grands systèmes d’apprentissage profond, mais demeure utile pour examiner la relation entre l’échelle des données et les choix de modélisation.\n\n\nPrésentation complémentaire liée à Halevy et al. (2009) et à des travaux empiriques ultérieurs sur les lois d’échelle, comme Kaplan et al. (2020)."
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#distances-euclidiennes-sans-mise-à-léchelle",
+    "href": "lectures/10/Scaling.html#distances-euclidiennes-sans-mise-à-léchelle",
+    "title": "Mise à l’échelle",
+    "section": "Distances euclidiennes (sans mise à l’échelle)",
+    "text": "Distances euclidiennes (sans mise à l’échelle)\nLa distance euclidienne au carré entre u et v est\n\n\\|u-v\\|_2^2 = \\sum_j (u_j - v_j)^2.\n\nLa distance euclidienne est sa racine carrée, \\|u-v\\|_2; les deux expressions classent les voisins dans le même ordre.\nLorsqu’un attribut possède une échelle beaucoup plus grande, comme la superficie, il peut dominer la somme.\n\nfrom sklearn.metrics import pairwise_distances\n\ndist_unscaled = pd.DataFrame(\n    pairwise_distances(df.values, metric=\"euclidean\"),\n    index=df.index, columns=df.index\n)\ndist_unscaled\n\n\n\n\n\n\n\n\na\nb\nc\n\n\n\n\na\n0.000000\n20.396078\n200.000000\n\n\nb\n20.396078\n0.000000\n220.036361\n\n\nc\n200.000000\n220.036361\n0.000000\n\n\n\n\n\n\n\n\nprint(\"Plus proche de 'a' (sans mise à l'échelle) :\", dist_unscaled.loc[\"a\"].drop(\"a\").idxmin())\n\nPlus proche de 'a' (sans mise à l'échelle) : b\n\n\nRésultat : a est plus proche de b, car la différence de superficie domine la distance."
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#mise-à-léchelle-appropriée-pour-la-modélisation",
+    "href": "lectures/10/Scaling.html#mise-à-léchelle-appropriée-pour-la-modélisation",
+    "title": "Mise à l’échelle",
+    "section": "Mise à l’échelle appropriée pour la modélisation",
+    "text": "Mise à l’échelle appropriée pour la modélisation\nPour éviter toute fuite de données (data leakage), calculons les paramètres de mise à l’échelle à partir des seules données d’entraînement (b et c), puis transformons les données d’entraînement et la requête :\n\nz(x) = \\frac{x-\\mu_{\\text{entraînement}}}{\\sigma_{\\text{entraînement}}}.\n\n\nfrom sklearn.preprocessing import StandardScaler\n\ntrain_idx = [\"b\", \"c\"]\nquery_idx = [\"a\"]\n\nscaler = StandardScaler()\n\nscaler.fit(df.loc[train_idx])     # ajuster uniquement sur l'entraînement\n\nZ = pd.DataFrame(\n    scaler.transform(df),\n    columns=df.columns, index=df.index\n)\n\nZ\n\n\n\n\n\n\n\n\npièces\npieds_carrés\n\n\n\n\na\n-1.0\n0.818182\n\n\nb\n1.0\n1.000000\n\n\nc\n-1.0\n-1.000000"
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#régression-knn-changement-de-prédiction",
+    "href": "lectures/10/Scaling.html#régression-knn-changement-de-prédiction",
+    "title": "Mise à l’échelle",
+    "section": "Régression KNN : changement de prédiction",
+    "text": "Régression KNN : changement de prédiction\nUn régresseur 1-NN prédit le prix de l’exemple d’entraînement le plus proche. Comparons le même estimateur avec et sans mise à l’échelle.\n\nfrom sklearn.neighbors import KNeighborsRegressor\nfrom sklearn.pipeline import Pipeline\n\nX_train = df.loc[train_idx].values          # b, c\ny_train = prices.loc[train_idx].values      # prix de b et c\nX_query = df.loc[query_idx].values          # a\n\n# 1) Sans mise à l'échelle\nknn_plain = KNeighborsRegressor(n_neighbors=1, metric=\"euclidean\")\nknn_plain.fit(X_train, y_train)\npred_plain = knn_plain.predict(X_query)[0]\n\n# 2) Avec mise à l'échelle; le pipeline ajuste le scaler sur l'entraînement\nknn_scaled = Pipeline([\n    (\"scaler\", StandardScaler()),\n    (\"knn\", KNeighborsRegressor(n_neighbors=1, metric=\"euclidean\"))\n])\nknn_scaled.fit(X_train, y_train)\npred_scaled = knn_scaled.predict(X_query)[0]\n\npd.DataFrame(\n    {\n        \"prédiction (sans mise à l'échelle)\": [pred_plain],\n        \"prédiction (avec mise à l'échelle)\": [pred_scaled],\n        \"plus proche voisin (sans mise à l'échelle)\": [\n            train_idx[\n                knn_plain.kneighbors(\n                    X_query, return_distance=False\n                )[0, 0]\n            ]\n        ],\n        \"plus proche voisin (avec mise à l'échelle)\": [\n            train_idx[\n                knn_scaled[\"knn\"].kneighbors(\n                    knn_scaled[\"scaler\"].transform(X_query),\n                    return_distance=False,\n                )[0, 0]\n            ]\n        ],\n    },\n    index=[\"a\"]\n)\n\n\n\n\n\n\n\n\nprédiction (sans mise à l'échelle)\nprédiction (avec mise à l'échelle)\nplus proche voisin (sans mise à l'échelle)\nplus proche voisin (avec mise à l'échelle)\n\n\n\n\na\n520000.0\n390000.0\nb\nc\n\n\n\n\n\n\n\nÀ retenir :\n\nSans mise à l’échelle : a ↔︎ b, donc une prédiction d’environ 520 000 $\nAvec mise à l’échelle : a ↔︎ c, donc une prédiction d’environ 390 000 $\n\nLa cible de la requête est inconnue. Il ne s’agit donc pas d’une comparaison de performance. L’exemple montre que la représentation choisie a modifié le plus proche voisin et, par conséquent, la prédiction."
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#pourquoi-ce-changement",
+    "href": "lectures/10/Scaling.html#pourquoi-ce-changement",
+    "title": "Mise à l’échelle",
+    "section": "Pourquoi ce changement?",
+    "text": "Pourquoi ce changement?\n\nLa distance euclidienne au carré additionne les différences au carré de chaque attribut :\n\n\n  \\|u-v\\|_2^2 = \\sum_j (u_j - v_j)^2.\n\n\nUn attribut à grande échelle, comme la superficie, peut éclipser les attributs à petite échelle, comme le nombre de pièces. KNN « ignore » alors presque les dimensions à petite échelle.\nLa standardisation (scores z) ou la mise à l’échelle min-max place les dimensions sur des échelles comparables.\nRègle pratique : pour une méthode fondée sur les distances, mettez les attributs à l’échelle, sauf si leurs unités actuelles représentent délibérément l’importance relative que la distance doit leur accorder."
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#distances-aux-exemples-dentraînement",
+    "href": "lectures/10/Scaling.html#distances-aux-exemples-dentraînement",
+    "title": "Mise à l’échelle",
+    "section": "Distances aux exemples d’entraînement",
+    "text": "Distances aux exemples d’entraînement\nDistances de a à {b, c} avant et après la mise à l’échelle.\n\ndef show_pair(name_from, names_to, D):\n    return D.loc[name_from, names_to].to_frame(\"distance\")\n\nprint(\"Distances sans mise à l'échelle de a vers {b,c}\")\ndisplay(show_pair(\"a\", [\"b\", \"c\"], dist_unscaled))\n\nprint(\"Distances après mise à l'échelle de a vers {b,c}\")\ndisplay(show_pair(\"a\", [\"b\", \"c\"], dist_scaled))\n\nDistances sans mise à l'échelle de a vers {b,c}\n\n\n\n\n\n\n\n\n\ndistance\n\n\n\n\nb\n20.396078\n\n\nc\n200.000000\n\n\n\n\n\n\n\nDistances après mise à l'échelle de a vers {b,c}\n\n\n\n\n\n\n\n\n\ndistance\n\n\n\n\nb\n2.008247\n\n\nc\n1.818182"
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#et-la-distance-de-manhattan",
+    "href": "lectures/10/Scaling.html#et-la-distance-de-manhattan",
+    "title": "Mise à l’échelle",
+    "section": "Et la distance de Manhattan?",
+    "text": "Et la distance de Manhattan?\nL’échelle importe également avec la distance L_1 :\n\n\\|u-v\\|_1 = \\sum_j |u_j - v_j|.\n\nLes mêmes données d’entraînement peuvent être réutilisées avec metric=\"manhattan\".\n\n# 1) Sans mise à l'échelle\nknn_manhattan_plain = KNeighborsRegressor(\n    n_neighbors=1, metric=\"manhattan\"\n)\nknn_manhattan_plain.fit(X_train, y_train)\npred_manhattan_plain = knn_manhattan_plain.predict(X_query)[0]\n\n# 2) Avec mise à l'échelle\nknn_manhattan_scaled = Pipeline([\n    (\"scaler\", StandardScaler()),\n    (\"knn\", KNeighborsRegressor(n_neighbors=1, metric=\"manhattan\"))\n])\nknn_manhattan_scaled.fit(X_train, y_train)\npred_manhattan_scaled = knn_manhattan_scaled.predict(X_query)[0]\n\npd.DataFrame(\n    {\n        \"prédiction (sans mise à l'échelle)\": [pred_manhattan_plain],\n        \"prédiction (avec mise à l'échelle)\": [pred_manhattan_scaled],\n    },\n    index=[\"a\"]\n)\n\n\n\n\n\n\n\n\nprédiction (sans mise à l'échelle)\nprédiction (avec mise à l'échelle)\n\n\n\n\na\n520000.0\n390000.0"
+  },
+  {
+    "objectID": "lectures/10/Scaling.html#en-résumé",
+    "href": "lectures/10/Scaling.html#en-résumé",
+    "title": "Mise à l’échelle",
+    "section": "En résumé",
+    "text": "En résumé\n\nLes modèles fondés sur les distances sont sensibles aux unités et aux échelles relatives de leurs attributs.\nAjustez un outil de mise à l’échelle uniquement sur les données d’entraînement, puis réutilisez-le pour les données de validation, de test et de production.\nUn pipeline regroupe la mise à l’échelle et la prédiction et prévient les fuites durant la validation croisée.\nLa mise à l’échelle modifie la géométrie du modèle et peut donc changer les plus proches voisins et les prédictions."
   }
 ]

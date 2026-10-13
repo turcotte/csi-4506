@@ -14,19 +14,21 @@ Université d’Ottawa
 
 Date de publication
 
-5 octobre 2025
+13 octobre 2026
+
+Ce carnet exécutable de façon autonome approfondit l’exemple de mise à l’échelle de la leçon 10. Il montre comment l’échelle des attributs modifie la géométrie employée par les méthodes fondées sur les plus proches voisins.
 
 ## Scénario
 
-Nous prétendons prédire le prix d’une maison en utilisant la **régression des k-plus proches voisins (KNN)** avec deux attributs :
+Considérons la prédiction du prix d’une maison par **régression des k plus proches voisins (KNN)** à partir de deux attributs :
 
-- \\x_1\\: nombre de chambres (petite échelle)
-- \\x_2\\: superficie en pieds carrés (grande échelle)
+- x_1 : nombre de pièces (petite échelle)
+- x_2 : superficie en pieds carrés (grande échelle)
 
-Nous créons trois exemples **a**, **b**, **c** choisis de manière à ce que :
+Les trois exemples **a**, **b** et **c** sont choisis de façon à ce que :
 
-- **Sans mise à l’échelle**, **a** soit plus proche de **b** (car la superficie en pieds carrés domine).
-- **Avec mise à l’échelle (score-z)**, **a** devienne plus proche de **c** (la différence de chambres importe après la remise à l’échelle).
+- **sans mise à l’échelle**, **a** soit plus proche de **b**, car la superficie domine;
+- **avec une standardisation (score z)**, **a** devienne plus proche de **c**, car la différence du nombre de pièces compte une fois les attributs remis à l’échelle.
 
 ## Données (trois maisons)
 
@@ -34,7 +36,7 @@ Nous créons trois exemples **a**, **b**, **c** choisis de manière à ce que :
 import numpy as np
 import pandas as pd
 
-# Trois exemples (pièces, sqft); prix uniquement pour b et c (entraînement)
+# Trois exemples (pièces, pieds carrés); prix pour b et c seulement
 point_names = ["a", "b", "c"]
 X = np.array([
     [4, 1500.0],  # a (requête)
@@ -44,16 +46,16 @@ X = np.array([
 
 prices = pd.Series([np.nan, 520_000, 390_000], index=point_names, name="prix")
 
-df = pd.DataFrame(X, columns=["pièces", "sqft"], index=point_names)
+df = pd.DataFrame(X, columns=["pièces", "pieds_carrés"], index=point_names)
 display(df)
 display(prices.to_frame())
 ```
 
-|     | pièces | sqft   |
-|-----|--------|--------|
-| a   | 4.0    | 1500.0 |
-| b   | 8.0    | 1520.0 |
-| c   | 4.0    | 1300.0 |
+|     | pièces | pieds_carrés |
+|-----|--------|--------------|
+| a   | 4.0    | 1500.0       |
+| b   | 8.0    | 1520.0       |
+| c   | 4.0    | 1300.0       |
 
 |     | prix     |
 |-----|----------|
@@ -61,13 +63,17 @@ display(prices.to_frame())
 | b   | 520000.0 |
 | c   | 390000.0 |
 
-**Remarque.** Nous traiterons **b** et **c** comme l’ensemble d’entraînement, et **a** comme la requête dont nous voulons prédire le prix.
+Les exemples **b** et **c** forment l’ensemble d’entraînement. L’exemple **a** constitue la requête dont nous voulons prédire le prix. Ce jeu de données volontairement minuscule illustre la géométrie, et non l’estimation d’un modèle réaliste.
 
-## Distances euclidiennes (non normalisées)
+## Distances euclidiennes (sans mise à l’échelle)
 
-La distance euclidienne (au carré) entre \\u\\ et \\v\\ est \\ \\u-v\\\_2^2 = \sum_j (u_j - v_j)^2. \\
+La distance euclidienne au carré entre u et v est
 
-Lorsqu’un attribut a une échelle beaucoup plus grande (par exemple, la superficie en pieds carrés), elle peut dominer la somme.
+\\u-v\\\_2^2 = \sum_j (u_j - v_j)^2.
+
+La distance euclidienne est sa racine carrée, \\u-v\\\_2; les deux expressions classent les voisins dans le même ordre.
+
+Lorsqu’un attribut possède une échelle beaucoup plus grande, comme la superficie, il peut dominer la somme.
 
 ``` python
 from sklearn.metrics import pairwise_distances
@@ -86,18 +92,18 @@ dist_unscaled
 | c   | 200.000000 | 220.036361 | 0.000000   |
 
 ``` python
-print("Le plus proche de 'a' (non normalisé) :", dist_unscaled.loc["a"].drop("a").idxmin())
+print("Plus proche de 'a' (sans mise à l'échelle) :", dist_unscaled.loc["a"].drop("a").idxmin())
 ```
 
-    Le plus proche de 'a' (non normalisé) : b
+    Plus proche de 'a' (sans mise à l'échelle) : b
 
-*Attente :* **a** est le plus proche de **b** (des pieds carrés similaires l’emportent sur les pièces).
+*Résultat :* **a** est plus proche de **b**, car la différence de superficie domine la distance.
 
-## Mise à l’échelle appropriée pour la modélisation (ajuster le scaler sur l’ensemble **d’entraînement**)
+## Mise à l’échelle appropriée pour la modélisation
 
-Pour un flux de travail ML équitable, calculez les paramètres d’échelle sur les données d’entraînement (**b**, **c**) uniquement, puis transformez à la fois l’entraînement et la requête :
+Pour éviter toute fuite de données (*data leakage*), calculons les paramètres de mise à l’échelle à partir des seules données d’entraînement (**b** et **c**), puis transformons les données d’entraînement et la requête :
 
-\\ z(x) = \frac{x-\mu\_{\text{train}}}{\sigma\_{\text{train}}}. \\
+z(x) = \frac{x-\mu\_{\text{entraînement}}}{\sigma\_{\text{entraînement}}}.
 
 ``` python
 from sklearn.preprocessing import StandardScaler
@@ -107,7 +113,7 @@ query_idx = ["a"]
 
 scaler = StandardScaler()
 
-scaler.fit(df.loc[train_idx])     # ajuster uniquement sur les points d'entraînement
+scaler.fit(df.loc[train_idx])     # ajuster uniquement sur l'entraînement
 
 Z = pd.DataFrame(
     scaler.transform(df),
@@ -117,11 +123,11 @@ Z = pd.DataFrame(
 Z
 ```
 
-|     | pièces | sqft      |
-|-----|--------|-----------|
-| a   | -1.0   | 0.818182  |
-| b   | 1.0    | 1.000000  |
-| c   | -1.0   | -1.000000 |
+|     | pièces | pieds_carrés |
+|-----|--------|--------------|
+| a   | -1.0   | 0.818182     |
+| b   | 1.0    | 1.000000     |
+| c   | -1.0   | -1.000000    |
 
 ## Distances euclidiennes (après mise à l’échelle)
 
@@ -140,23 +146,23 @@ dist_scaled
 | c   | 1.818182 | 2.828427 | 0.000000 |
 
 ``` python
-print("Le plus proche de 'a' (échelle ajustée) :", dist_scaled.loc["a"].drop("a").idxmin())
+print("Plus proche de 'a' (après mise à l'échelle) :", dist_scaled.loc["a"].drop("a").idxmin())
 ```
 
-    Le plus proche de 'a' (échelle ajustée) : c
+    Plus proche de 'a' (après mise à l'échelle) : c
 
-*Maintenant :* **a** est le plus proche de **c** (la différence de pièces est importante lorsque les attributs sont sur des échelles comparables).
+*Nouveau résultat :* **a** est plus proche de **c**, car la différence du nombre de pièces compte une fois les attributs placés sur des échelles comparables.
 
-## Régression KNN : inversion dans la prédiction
+## Régression KNN : changement de prédiction
 
-Nous exécuterons un régressseur 1-NN (donc la prédiction est exactement le prix du voisin le plus proche) **avec et sans** mise à l’échelle.
+Un régresseur 1-NN prédit le prix de l’exemple d’entraînement le plus proche. Comparons le même estimateur **avec et sans** mise à l’échelle.
 
 ``` python
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.pipeline import Pipeline
 
 X_train = df.loc[train_idx].values          # b, c
-y_train = prices.loc[train_idx].values      # prix pour b, c
+y_train = prices.loc[train_idx].values      # prix de b et c
 X_query = df.loc[query_idx].values          # a
 
 # 1) Sans mise à l'échelle
@@ -164,7 +170,7 @@ knn_plain = KNeighborsRegressor(n_neighbors=1, metric="euclidean")
 knn_plain.fit(X_train, y_train)
 pred_plain = knn_plain.predict(X_query)[0]
 
-# 2) Avec mise à l'échelle (pipeline ajuste le scaler uniquement sur l'entrainement, puis KNN sur l'échelle)
+# 2) Avec mise à l'échelle; le pipeline ajuste le scaler sur l'entraînement
 knn_scaled = Pipeline([
     ("scaler", StandardScaler()),
     ("knn", KNeighborsRegressor(n_neighbors=1, metric="euclidean"))
@@ -176,109 +182,116 @@ pd.DataFrame(
     {
         "prédiction (sans mise à l'échelle)": [pred_plain],
         "prédiction (avec mise à l'échelle)": [pred_scaled],
-        "voisin le plus proche (sans mise à l'échelle)": [point_names[1] if pred_plain==prices['b'] else point_names[2]],
-        "voisin le plus proche (avec mise à l'échelle)": [point_names[1] if pred_scaled==prices['b'] else point_names[2]],
+        "plus proche voisin (sans mise à l'échelle)": [
+            train_idx[
+                knn_plain.kneighbors(
+                    X_query, return_distance=False
+                )[0, 0]
+            ]
+        ],
+        "plus proche voisin (avec mise à l'échelle)": [
+            train_idx[
+                knn_scaled["knn"].kneighbors(
+                    knn_scaled["scaler"].transform(X_query),
+                    return_distance=False,
+                )[0, 0]
+            ]
+        ],
     },
     index=["a"]
 )
 ```
 
-|  | prédiction (sans mise à l'échelle) | prédiction (avec mise à l'échelle) | voisin le plus proche (sans mise à l'échelle) | voisin le plus proche (avec mise à l'échelle) |
+|  | prédiction (sans mise à l'échelle) | prédiction (avec mise à l'échelle) | plus proche voisin (sans mise à l'échelle) | plus proche voisin (avec mise à l'échelle) |
 |----|----|----|----|----|
 | a | 520000.0 | 390000.0 | b | c |
 
 **À retenir :**
 
-- **Non échelonné :** a ↔︎ b ⇒ prédiction ≈ **520 000 \$**
-- **Échelonné :** a ↔︎ c ⇒ prédiction ≈ **390 000 \$**
+- **Sans mise à l’échelle :** a ↔︎ b, donc une prédiction d’environ **520 000 \$**
+- **Avec mise à l’échelle :** a ↔︎ c, donc une prédiction d’environ **390 000 \$**
 
-Même modèle et données ; simplement **l’échelle des attributs** a changé le voisin—et la prédiction.
+La cible de la requête est inconnue. Il ne s’agit donc pas d’une comparaison de performance. L’exemple montre que la représentation choisie a modifié le plus proche voisin et, par conséquent, la prédiction.
 
-## Pourquoi cela se produit
+## Pourquoi ce changement?
 
-- La distance euclidienne (au carré) agrège les différences au carré par attribut :
+- La distance euclidienne au carré additionne les différences au carré de chaque attribut :
 
-\\ \|u-v\|\_2^2 = \sum_j (u_j - v_j)^2. \\
+\\u-v\\\_2^2 = \sum_j (u_j - v_j)^2.
 
-- Un attribut à grande échelle (par exemple, **sqft**) peut éclipser des attributs à petite échelle (par exemple, **chambres**), de sorte que KNN “ignore” effectivement les dimensions à plus petite échelle.
-- La **standardisation** (scores \\z\\) ou la **normalisation min-max** met les dimensions sur un pied d’égalité comparable.
-- **Règle empirique :** Pour les méthodes basées sur la distance (KNN, k-means, noyaux RBF, etc.), toujours **normaliser** les attributs.
+- Un attribut à grande échelle, comme la superficie, peut éclipser les attributs à petite échelle, comme le nombre de pièces. KNN « ignore » alors presque les dimensions à petite échelle.
+- La **standardisation** (scores z) ou la **mise à l’échelle min-max** place les dimensions sur des échelles comparables.
+- **Règle pratique :** pour une méthode fondée sur les distances, mettez les attributs à l’échelle, sauf si leurs unités actuelles représentent délibérément l’importance relative que la distance doit leur accorder.
 
-## Montrer uniquement la distance aux voisins
+## Distances aux exemples d’entraînement
 
-Distances de **a** à {**b**, **c**} avant et après normalisation.
+Distances de **a** à {**b**, **c**} avant et après la mise à l’échelle.
 
 ``` python
 def show_pair(name_from, names_to, D):
     return D.loc[name_from, names_to].to_frame("distance")
 
-print("Distances non normalisées de a → {b,c}")
+print("Distances sans mise à l'échelle de a vers {b,c}")
 display(show_pair("a", ["b", "c"], dist_unscaled))
 
-print("Distances normalisées de a → {b,c}")
+print("Distances après mise à l'échelle de a vers {b,c}")
 display(show_pair("a", ["b", "c"], dist_scaled))
 ```
 
-    Distances non normalisées de a → {b,c}
+    Distances sans mise à l'échelle de a vers {b,c}
 
 |     | distance   |
 |-----|------------|
 | b   | 20.396078  |
 | c   | 200.000000 |
 
-    Distances normalisées de a → {b,c}
+    Distances après mise à l'échelle de a vers {b,c}
 
 |     | distance |
 |-----|----------|
 | b   | 2.008247 |
 | c   | 1.818182 |
 
-## Passer à la distance de Manhattan ?
+## Et la distance de Manhattan?
 
-Même avec la distance \\L_1\\, l’échelle reste importante :
+L’échelle importe également avec la distance L_1 :
 
-\\ \|u-v\|\_1 = \sum_j \|u_j - v_j\|. \\
+\\u-v\\\_1 = \sum_j \|u_j - v_j\|.
 
-Essayez de remplacer `metric="euclidean"` par `metric="manhattan"`—vous verrez la même sensibilité à l’échelle des attributs.
+Les mêmes données d’entraînement peuvent être réutilisées avec `metric="manhattan"`.
 
 ``` python
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.pipeline import Pipeline
+# 1) Sans mise à l'échelle
+knn_manhattan_plain = KNeighborsRegressor(
+    n_neighbors=1, metric="manhattan"
+)
+knn_manhattan_plain.fit(X_train, y_train)
+pred_manhattan_plain = knn_manhattan_plain.predict(X_query)[0]
 
-X_train = df.loc[train_idx].values          # b, c
-y_train = prices.loc[train_idx].values      # prix pour b, c
-X_query = df.loc[query_idx].values          # a
-
-# 1) Sans normalisation
-knn_plain = KNeighborsRegressor(n_neighbors=1, metric="manhattan")
-knn_plain.fit(X_train, y_train)
-pred_plain = knn_plain.predict(X_query)[0]
-
-# 2) Avec normalisation (le pipeline ajuste le scaler uniquement sur l'entraînement, puis KNN sur les données normalisées)
-knn_scaled = Pipeline([
+# 2) Avec mise à l'échelle
+knn_manhattan_scaled = Pipeline([
     ("scaler", StandardScaler()),
     ("knn", KNeighborsRegressor(n_neighbors=1, metric="manhattan"))
 ])
-knn_scaled.fit(X_train, y_train)
-pred_scaled = knn_scaled.predict(X_query)[0]
+knn_manhattan_scaled.fit(X_train, y_train)
+pred_manhattan_scaled = knn_manhattan_scaled.predict(X_query)[0]
 
 pd.DataFrame(
     {
-        "prédiction (sans normalisation)": [pred_plain],
-        "prédiction (avec normalisation)": [pred_scaled],
-        "voisin le plus proche (sans normalisation)": [point_names[1] if pred_plain==prices['b'] else point_names[2]],
-        "voisin le plus proche (avec normalisation)": [point_names[1] if pred_scaled==prices['b'] else point_names[2]],
+        "prédiction (sans mise à l'échelle)": [pred_manhattan_plain],
+        "prédiction (avec mise à l'échelle)": [pred_manhattan_scaled],
     },
     index=["a"]
 )
 ```
 
-|  | prédiction (sans normalisation) | prédiction (avec normalisation) | voisin le plus proche (sans normalisation) | voisin le plus proche (avec normalisation) |
-|----|----|----|----|----|
-| a | 520000.0 | 390000.0 | b | c |
+|     | prédiction (sans mise à l'échelle) | prédiction (avec mise à l'échelle) |
+|-----|------------------------------------|------------------------------------|
+| a   | 520000.0                           | 390000.0                           |
 
-## TL;DR
+## En résumé
 
-- Les **modèles basés sur la distance** sont très sensibles aux **échelles des attributs**.
-- **Toujours normaliser** vos entrées (ajuster le scaler uniquement sur l’ensemble **d’entraînement**).
-- La normalisation peut **changer les voisins les plus proches** et donc **changer les prédictions**—comme vu ici avec la régression 1-NN.
+- Les **modèles fondés sur les distances** sont sensibles aux unités et aux échelles relatives de leurs attributs.
+- Ajustez un outil de mise à l’échelle uniquement sur les **données d’entraînement**, puis réutilisez-le pour les données de validation, de test et de production.
+- Un pipeline regroupe la mise à l’échelle et la prédiction et prévient les fuites durant la validation croisée.
+- La mise à l’échelle modifie la géométrie du modèle et peut donc changer les plus proches voisins et les prédictions.

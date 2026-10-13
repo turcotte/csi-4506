@@ -116,8 +116,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -472,14 +486,14 @@ window.Quarto = {
   <ul>
   <li><a href="#scénario" id="toc-scénario" class="nav-link active" data-scroll-target="#scénario">Scénario</a></li>
   <li><a href="#données-trois-maisons" id="toc-données-trois-maisons" class="nav-link" data-scroll-target="#données-trois-maisons">Données (trois maisons)</a></li>
-  <li><a href="#distances-euclidiennes-non-normalisées" id="toc-distances-euclidiennes-non-normalisées" class="nav-link" data-scroll-target="#distances-euclidiennes-non-normalisées">Distances euclidiennes (non normalisées)</a></li>
-  <li><a href="#mise-à-léchelle-appropriée-pour-la-modélisation-ajuster-le-scaler-sur-lensemble-dentraînement" id="toc-mise-à-léchelle-appropriée-pour-la-modélisation-ajuster-le-scaler-sur-lensemble-dentraînement" class="nav-link" data-scroll-target="#mise-à-léchelle-appropriée-pour-la-modélisation-ajuster-le-scaler-sur-lensemble-dentraînement">Mise à l’échelle appropriée pour la modélisation (ajuster le scaler sur l’ensemble <strong>d’entraînement</strong>)</a></li>
+  <li><a href="#distances-euclidiennes-sans-mise-à-léchelle" id="toc-distances-euclidiennes-sans-mise-à-léchelle" class="nav-link" data-scroll-target="#distances-euclidiennes-sans-mise-à-léchelle">Distances euclidiennes (sans mise à l’échelle)</a></li>
+  <li><a href="#mise-à-léchelle-appropriée-pour-la-modélisation" id="toc-mise-à-léchelle-appropriée-pour-la-modélisation" class="nav-link" data-scroll-target="#mise-à-léchelle-appropriée-pour-la-modélisation">Mise à l’échelle appropriée pour la modélisation</a></li>
   <li><a href="#distances-euclidiennes-après-mise-à-léchelle" id="toc-distances-euclidiennes-après-mise-à-léchelle" class="nav-link" data-scroll-target="#distances-euclidiennes-après-mise-à-léchelle">Distances euclidiennes (après mise à l’échelle)</a></li>
-  <li><a href="#régression-knn-inversion-dans-la-prédiction" id="toc-régression-knn-inversion-dans-la-prédiction" class="nav-link" data-scroll-target="#régression-knn-inversion-dans-la-prédiction">Régression KNN : inversion dans la prédiction</a></li>
-  <li><a href="#pourquoi-cela-se-produit" id="toc-pourquoi-cela-se-produit" class="nav-link" data-scroll-target="#pourquoi-cela-se-produit">Pourquoi cela se produit</a></li>
-  <li><a href="#montrer-uniquement-la-distance-aux-voisins" id="toc-montrer-uniquement-la-distance-aux-voisins" class="nav-link" data-scroll-target="#montrer-uniquement-la-distance-aux-voisins">Montrer uniquement la distance aux voisins</a></li>
-  <li><a href="#passer-à-la-distance-de-manhattan" id="toc-passer-à-la-distance-de-manhattan" class="nav-link" data-scroll-target="#passer-à-la-distance-de-manhattan">Passer à la distance de Manhattan ?</a></li>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#régression-knn-changement-de-prédiction" id="toc-régression-knn-changement-de-prédiction" class="nav-link" data-scroll-target="#régression-knn-changement-de-prédiction">Régression KNN : changement de prédiction</a></li>
+  <li><a href="#pourquoi-ce-changement" id="toc-pourquoi-ce-changement" class="nav-link" data-scroll-target="#pourquoi-ce-changement">Pourquoi ce changement?</a></li>
+  <li><a href="#distances-aux-exemples-dentraînement" id="toc-distances-aux-exemples-dentraînement" class="nav-link" data-scroll-target="#distances-aux-exemples-dentraînement">Distances aux exemples d’entraînement</a></li>
+  <li><a href="#et-la-distance-de-manhattan" id="toc-et-la-distance-de-manhattan" class="nav-link" data-scroll-target="#et-la-distance-de-manhattan">Et la distance de Manhattan?</a></li>
+  <li><a href="#en-résumé" id="toc-en-résumé" class="nav-link" data-scroll-target="#en-résumé">En résumé</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Autres formats</h2><ul><li><a href="Scaling.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="Scaling.ipynb" download="Scaling.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -517,7 +531,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 octobre 2025</p>
+      <p class="date">13 octobre 2026</p>
     </div>
   </div>
   
@@ -529,26 +543,27 @@ window.Quarto = {
 </header>
 
 
+<p>Ce carnet exécutable de façon autonome approfondit l’exemple de mise à l’échelle de la leçon 10. Il montre comment l’échelle des attributs modifie la géométrie employée par les méthodes fondées sur les plus proches voisins.</p>
 <section id="scénario" class="level2">
 <h2 class="anchored" data-anchor-id="scénario">Scénario</h2>
-<p>Nous prétendons prédire le prix d’une maison en utilisant la <strong>régression des k-plus proches voisins (KNN)</strong> avec deux attributs :</p>
+<p>Considérons la prédiction du prix d’une maison par <strong>régression des <span class="math inline">k</span> plus proches voisins (KNN)</strong> à partir de deux attributs :</p>
 <ul>
-<li><span class="math inline">\(x_1\)</span>: nombre de chambres (petite échelle)</li>
-<li><span class="math inline">\(x_2\)</span>: superficie en pieds carrés (grande échelle)</li>
+<li><span class="math inline">x_1</span> : nombre de pièces (petite échelle)</li>
+<li><span class="math inline">x_2</span> : superficie en pieds carrés (grande échelle)</li>
 </ul>
-<p>Nous créons trois exemples <strong>a</strong>, <strong>b</strong>, <strong>c</strong> choisis de manière à ce que :</p>
+<p>Les trois exemples <strong>a</strong>, <strong>b</strong> et <strong>c</strong> sont choisis de façon à ce que :</p>
 <ul>
-<li><strong>Sans mise à l’échelle</strong>, <strong>a</strong> soit plus proche de <strong>b</strong> (car la superficie en pieds carrés domine).</li>
-<li><strong>Avec mise à l’échelle (score-z)</strong>, <strong>a</strong> devienne plus proche de <strong>c</strong> (la différence de chambres importe après la remise à l’échelle).</li>
+<li><strong>sans mise à l’échelle</strong>, <strong>a</strong> soit plus proche de <strong>b</strong>, car la superficie domine;</li>
+<li><strong>avec une standardisation (score <span class="math inline">z</span>)</strong>, <strong>a</strong> devienne plus proche de <strong>c</strong>, car la différence du nombre de pièces compte une fois les attributs remis à l’échelle.</li>
 </ul>
 </section>
 <section id="données-trois-maisons" class="level2">
 <h2 class="anchored" data-anchor-id="données-trois-maisons">Données (trois maisons)</h2>
-<div id="4031567d" class="cell" data-execution_count="2">
+<div id="5bb01cec" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Trois exemples (pièces, sqft); prix uniquement pour b et c (entraînement)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Trois exemples (pièces, pieds carrés); prix pour b et c seulement</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>point_names <span class="op">=</span> [<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>]</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>, <span class="fl">1500.0</span>],  <span class="co"># a (requête)</span></span>
@@ -558,7 +573,7 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> pd.Series([np.nan, <span class="dv">520_000</span>, <span class="dv">390_000</span>], index<span class="op">=</span>point_names, name<span class="op">=</span><span class="st">"prix"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(X, columns<span class="op">=</span>[<span class="st">"pièces"</span>, <span class="st">"sqft"</span>], index<span class="op">=</span>point_names)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(X, columns<span class="op">=</span>[<span class="st">"pièces"</span>, <span class="st">"pieds_carrés"</span>], index<span class="op">=</span>point_names)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>display(df)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>display(prices.to_frame())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -570,7 +585,7 @@ window.Quarto = {
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">pièces</th>
-<th data-quarto-table-cell-role="th">sqft</th>
+<th data-quarto-table-cell-role="th">pieds_carrés</th>
 </tr>
 </thead>
 <tbody>
@@ -624,15 +639,17 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><strong>Remarque.</strong> Nous traiterons <strong>b</strong> et <strong>c</strong> comme l’ensemble d’entraînement, et <strong>a</strong> comme la requête dont nous voulons prédire le prix.</p>
+<p>Les exemples <strong>b</strong> et <strong>c</strong> forment l’ensemble d’entraînement. L’exemple <strong>a</strong> constitue la requête dont nous voulons prédire le prix. Ce jeu de données volontairement minuscule illustre la géométrie, et non l’estimation d’un modèle réaliste.</p>
 </section>
-<section id="distances-euclidiennes-non-normalisées" class="level2">
-<h2 class="anchored" data-anchor-id="distances-euclidiennes-non-normalisées">Distances euclidiennes (non normalisées)</h2>
-<p>La distance euclidienne (au carré) entre <span class="math inline">\(u\)</span> et <span class="math inline">\(v\)</span> est <span class="math display">\[
+<section id="distances-euclidiennes-sans-mise-à-léchelle" class="level2">
+<h2 class="anchored" data-anchor-id="distances-euclidiennes-sans-mise-à-léchelle">Distances euclidiennes (sans mise à l’échelle)</h2>
+<p>La distance euclidienne au carré entre <span class="math inline">u</span> et <span class="math inline">v</span> est</p>
+<p><span class="math display">
 \|u-v\|_2^2 = \sum_j (u_j - v_j)^2.
-\]</span></p>
-<p>Lorsqu’un attribut a une échelle beaucoup plus grande (par exemple, la superficie en pieds carrés), elle peut dominer la somme.</p>
-<div id="c527368f" class="cell" data-execution_count="3">
+</span></p>
+<p>La distance euclidienne est sa racine carrée, <span class="math inline">\|u-v\|_2</span>; les deux expressions classent les voisins dans le même ordre.</p>
+<p>Lorsqu’un attribut possède une échelle beaucoup plus grande, comme la superficie, il peut dominer la somme.</p>
+<div id="b3dabab6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> pairwise_distances</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dist_unscaled <span class="op">=</span> pd.DataFrame(</span>
@@ -678,21 +695,21 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="ee7367d0" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Le plus proche de 'a' (non normalisé) :"</span>, dist_unscaled.loc[<span class="st">"a"</span>].drop(<span class="st">"a"</span>).idxmin())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="65838185" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Plus proche de 'a' (sans mise à l'échelle) :"</span>, dist_unscaled.loc[<span class="st">"a"</span>].drop(<span class="st">"a"</span>).idxmin())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Le plus proche de 'a' (non normalisé) : b</code></pre>
+<pre><code>Plus proche de 'a' (sans mise à l'échelle) : b</code></pre>
 </div>
 </div>
-<p><em>Attente :</em> <strong>a</strong> est le plus proche de <strong>b</strong> (des pieds carrés similaires l’emportent sur les pièces).</p>
+<p><em>Résultat :</em> <strong>a</strong> est plus proche de <strong>b</strong>, car la différence de superficie domine la distance.</p>
 </section>
-<section id="mise-à-léchelle-appropriée-pour-la-modélisation-ajuster-le-scaler-sur-lensemble-dentraînement" class="level2">
-<h2 class="anchored" data-anchor-id="mise-à-léchelle-appropriée-pour-la-modélisation-ajuster-le-scaler-sur-lensemble-dentraînement">Mise à l’échelle appropriée pour la modélisation (ajuster le scaler sur l’ensemble <strong>d’entraînement</strong>)</h2>
-<p>Pour un flux de travail ML équitable, calculez les paramètres d’échelle sur les données d’entraînement (<strong>b</strong>, <strong>c</strong>) uniquement, puis transformez à la fois l’entraînement et la requête :</p>
-<p><span class="math display">\[
-z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
-\]</span></p>
-<div id="e3f0926a" class="cell" data-execution_count="5">
+<section id="mise-à-léchelle-appropriée-pour-la-modélisation" class="level2">
+<h2 class="anchored" data-anchor-id="mise-à-léchelle-appropriée-pour-la-modélisation">Mise à l’échelle appropriée pour la modélisation</h2>
+<p>Pour éviter toute fuite de données (<em>data leakage</em>), calculons les paramètres de mise à l’échelle à partir des seules données d’entraînement (<strong>b</strong> et <strong>c</strong>), puis transformons les données d’entraînement et la requête :</p>
+<p><span class="math display">
+z(x) = \frac{x-\mu_{\text{entraînement}}}{\sigma_{\text{entraînement}}}.
+</span></p>
+<div id="acac2791" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train_idx <span class="op">=</span> [<span class="st">"b"</span>, <span class="st">"c"</span>]</span>
@@ -700,7 +717,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>scaler.fit(df.loc[train_idx])     <span class="co"># ajuster uniquement sur les points d'entraînement</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>scaler.fit(df.loc[train_idx])     <span class="co"># ajuster uniquement sur l'entraînement</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    scaler.transform(df),</span>
@@ -717,7 +734,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">pièces</th>
-<th data-quarto-table-cell-role="th">sqft</th>
+<th data-quarto-table-cell-role="th">pieds_carrés</th>
 </tr>
 </thead>
 <tbody>
@@ -745,7 +762,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </section>
 <section id="distances-euclidiennes-après-mise-à-léchelle" class="level2">
 <h2 class="anchored" data-anchor-id="distances-euclidiennes-après-mise-à-léchelle">Distances euclidiennes (après mise à l’échelle)</h2>
-<div id="94f7ff4f" class="cell" data-execution_count="6">
+<div id="7ff83e3c" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dist_scaled <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    pairwise_distances(Z.values, metric<span class="op">=</span><span class="st">"euclidean"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>Z.index, columns<span class="op">=</span>Z.index</span>
@@ -789,23 +806,23 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </div>
 </div>
 </div>
-<div id="d7a97ce5" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Le plus proche de 'a' (échelle ajustée) :"</span>, dist_scaled.loc[<span class="st">"a"</span>].drop(<span class="st">"a"</span>).idxmin())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9917ff8d" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Plus proche de 'a' (après mise à l'échelle) :"</span>, dist_scaled.loc[<span class="st">"a"</span>].drop(<span class="st">"a"</span>).idxmin())</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Le plus proche de 'a' (échelle ajustée) : c</code></pre>
+<pre><code>Plus proche de 'a' (après mise à l'échelle) : c</code></pre>
 </div>
 </div>
-<p><em>Maintenant :</em> <strong>a</strong> est le plus proche de <strong>c</strong> (la différence de pièces est importante lorsque les attributs sont sur des échelles comparables).</p>
+<p><em>Nouveau résultat :</em> <strong>a</strong> est plus proche de <strong>c</strong>, car la différence du nombre de pièces compte une fois les attributs placés sur des échelles comparables.</p>
 </section>
-<section id="régression-knn-inversion-dans-la-prédiction" class="level2">
-<h2 class="anchored" data-anchor-id="régression-knn-inversion-dans-la-prédiction">Régression KNN : inversion dans la prédiction</h2>
-<p>Nous exécuterons un régressseur 1-NN (donc la prédiction est exactement le prix du voisin le plus proche) <strong>avec et sans</strong> mise à l’échelle.</p>
-<div id="61b1fc55" class="cell" data-execution_count="8">
+<section id="régression-knn-changement-de-prédiction" class="level2">
+<h2 class="anchored" data-anchor-id="régression-knn-changement-de-prédiction">Régression KNN : changement de prédiction</h2>
+<p>Un régresseur 1-NN prédit le prix de l’exemple d’entraînement le plus proche. Comparons le même estimateur <strong>avec et sans</strong> mise à l’échelle.</p>
+<div id="43425ae6" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> df.loc[train_idx].values          <span class="co"># b, c</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> prices.loc[train_idx].values      <span class="co"># prix pour b, c</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> prices.loc[train_idx].values      <span class="co"># prix de b et c</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>X_query <span class="op">=</span> df.loc[query_idx].values          <span class="co"># a</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Sans mise à l'échelle</span></span>
@@ -813,7 +830,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>knn_plain.fit(X_train, y_train)</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>pred_plain <span class="op">=</span> knn_plain.predict(X_query)[<span class="dv">0</span>]</span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Avec mise à l'échelle (pipeline ajuste le scaler uniquement sur l'entrainement, puis KNN sur l'échelle)</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Avec mise à l'échelle; le pipeline ajuste le scaler sur l'entraînement</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>knn_scaled <span class="op">=</span> Pipeline([</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"scaler"</span>, StandardScaler()),</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"knn"</span>, KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">1</span>, metric<span class="op">=</span><span class="st">"euclidean"</span>))</span>
@@ -825,11 +842,24 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prédiction (sans mise à l'échelle)"</span>: [pred_plain],</span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prédiction (avec mise à l'échelle)"</span>: [pred_scaled],</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"voisin le plus proche (sans mise à l'échelle)"</span>: [point_names[<span class="dv">1</span>] <span class="cf">if</span> pred_plain<span class="op">==</span>prices[<span class="st">'b'</span>] <span class="cf">else</span> point_names[<span class="dv">2</span>]],</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"voisin le plus proche (avec mise à l'échelle)"</span>: [point_names[<span class="dv">1</span>] <span class="cf">if</span> pred_scaled<span class="op">==</span>prices[<span class="st">'b'</span>] <span class="cf">else</span> point_names[<span class="dv">2</span>]],</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"a"</span>]</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"plus proche voisin (sans mise à l'échelle)"</span>: [</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            train_idx[</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>                knn_plain.kneighbors(</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>                    X_query, return_distance<span class="op">=</span><span class="va">False</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>                )[<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"plus proche voisin (avec mise à l'échelle)"</span>: [</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>            train_idx[</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>                knn_scaled[<span class="st">"knn"</span>].kneighbors(</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                    knn_scaled[<span class="st">"scaler"</span>].transform(X_query),</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                    return_distance<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>                )[<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"a"</span>]</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -840,8 +870,8 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">prédiction (sans mise à l'échelle)</th>
 <th data-quarto-table-cell-role="th">prédiction (avec mise à l'échelle)</th>
-<th data-quarto-table-cell-role="th">voisin le plus proche (sans mise à l'échelle)</th>
-<th data-quarto-table-cell-role="th">voisin le plus proche (avec mise à l'échelle)</th>
+<th data-quarto-table-cell-role="th">plus proche voisin (sans mise à l'échelle)</th>
+<th data-quarto-table-cell-role="th">plus proche voisin (avec mise à l'échelle)</th>
 </tr>
 </thead>
 <tbody>
@@ -860,39 +890,39 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </div>
 <p><strong>À retenir :</strong></p>
 <ul>
-<li><strong>Non échelonné :</strong> a ↔︎ b ⇒ prédiction ≈ <strong>520 000 $</strong></li>
-<li><strong>Échelonné :</strong> a ↔︎ c ⇒ prédiction ≈ <strong>390 000 $</strong></li>
+<li><strong>Sans mise à l’échelle :</strong> a ↔︎ b, donc une prédiction d’environ <strong>520 000 $</strong></li>
+<li><strong>Avec mise à l’échelle :</strong> a ↔︎ c, donc une prédiction d’environ <strong>390 000 $</strong></li>
 </ul>
-<p>Même modèle et données ; simplement <strong>l’échelle des attributs</strong> a changé le voisin—et la prédiction.</p>
+<p>La cible de la requête est inconnue. Il ne s’agit donc pas d’une comparaison de performance. L’exemple montre que la représentation choisie a modifié le plus proche voisin et, par conséquent, la prédiction.</p>
 </section>
-<section id="pourquoi-cela-se-produit" class="level2">
-<h2 class="anchored" data-anchor-id="pourquoi-cela-se-produit">Pourquoi cela se produit</h2>
+<section id="pourquoi-ce-changement" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-ce-changement">Pourquoi ce changement?</h2>
 <ul>
-<li>La distance euclidienne (au carré) agrège les différences au carré par attribut :</li>
+<li>La distance euclidienne au carré additionne les différences au carré de chaque attribut :</li>
 </ul>
-<p><span class="math display">\[
-  |u-v|_2^2 = \sum_j (u_j - v_j)^2.
-\]</span></p>
+<p><span class="math display">
+  \|u-v\|_2^2 = \sum_j (u_j - v_j)^2.
+</span></p>
 <ul>
-<li>Un attribut à grande échelle (par exemple, <strong>sqft</strong>) peut éclipser des attributs à petite échelle (par exemple, <strong>chambres</strong>), de sorte que KNN “ignore” effectivement les dimensions à plus petite échelle.</li>
-<li>La <strong>standardisation</strong> (scores <span class="math inline">\(z\)</span>) ou la <strong>normalisation min-max</strong> met les dimensions sur un pied d’égalité comparable.</li>
-<li><strong>Règle empirique :</strong> Pour les méthodes basées sur la distance (KNN, k-means, noyaux RBF, etc.), toujours <strong>normaliser</strong> les attributs.</li>
+<li>Un attribut à grande échelle, comme la superficie, peut éclipser les attributs à petite échelle, comme le nombre de pièces. KNN « ignore » alors presque les dimensions à petite échelle.</li>
+<li>La <strong>standardisation</strong> (scores <span class="math inline">z</span>) ou la <strong>mise à l’échelle min-max</strong> place les dimensions sur des échelles comparables.</li>
+<li><strong>Règle pratique :</strong> pour une méthode fondée sur les distances, mettez les attributs à l’échelle, sauf si leurs unités actuelles représentent délibérément l’importance relative que la distance doit leur accorder.</li>
 </ul>
 </section>
-<section id="montrer-uniquement-la-distance-aux-voisins" class="level2">
-<h2 class="anchored" data-anchor-id="montrer-uniquement-la-distance-aux-voisins">Montrer uniquement la distance aux voisins</h2>
-<p>Distances de <strong>a</strong> à {<strong>b</strong>, <strong>c</strong>} avant et après normalisation.</p>
-<div id="1586c2a4" class="cell" data-execution_count="9">
+<section id="distances-aux-exemples-dentraînement" class="level2">
+<h2 class="anchored" data-anchor-id="distances-aux-exemples-dentraînement">Distances aux exemples d’entraînement</h2>
+<p>Distances de <strong>a</strong> à {<strong>b</strong>, <strong>c</strong>} avant et après la mise à l’échelle.</p>
+<div id="973deb9c" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_pair(name_from, names_to, D):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> D.loc[name_from, names_to].to_frame(<span class="st">"distance"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Distances non normalisées de a → {b,c}"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Distances sans mise à l'échelle de a vers {b,c}"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>display(show_pair(<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>], dist_unscaled))</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Distances normalisées de a → {b,c}"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Distances après mise à l'échelle de a vers {b,c}"</span>)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>display(show_pair(<span class="st">"a"</span>, [<span class="st">"b"</span>, <span class="st">"c"</span>], dist_scaled))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Distances non normalisées de a → {b,c}</code></pre>
+<pre><code>Distances sans mise à l'échelle de a vers {b,c}</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -920,7 +950,7 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Distances normalisées de a → {b,c}</code></pre>
+<pre><code>Distances après mise à l'échelle de a vers {b,c}</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -949,43 +979,36 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </div>
 </div>
 </section>
-<section id="passer-à-la-distance-de-manhattan" class="level2">
-<h2 class="anchored" data-anchor-id="passer-à-la-distance-de-manhattan">Passer à la distance de Manhattan ?</h2>
-<p>Même avec la distance <span class="math inline">\(L_1\)</span>, l’échelle reste importante :</p>
-<p><span class="math display">\[
-|u-v|_1 = \sum_j |u_j - v_j|.
-\]</span></p>
-<p>Essayez de remplacer <code>metric="euclidean"</code> par <code>metric="manhattan"</code>—vous verrez la même sensibilité à l’échelle des attributs.</p>
-<div id="51f2f6af" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> df.loc[train_idx].values          <span class="co"># b, c</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> prices.loc[train_idx].values      <span class="co"># prix pour b, c</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>X_query <span class="op">=</span> df.loc[query_idx].values          <span class="co"># a</span></span>
+<section id="et-la-distance-de-manhattan" class="level2">
+<h2 class="anchored" data-anchor-id="et-la-distance-de-manhattan">Et la distance de Manhattan?</h2>
+<p>L’échelle importe également avec la distance <span class="math inline">L_1</span> :</p>
+<p><span class="math display">
+\|u-v\|_1 = \sum_j |u_j - v_j|.
+</span></p>
+<p>Les mêmes données d’entraînement peuvent être réutilisées avec <code>metric="manhattan"</code>.</p>
+<div id="1a16ecf6" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Sans mise à l'échelle</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>knn_manhattan_plain <span class="op">=</span> KNeighborsRegressor(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    n_neighbors<span class="op">=</span><span class="dv">1</span>, metric<span class="op">=</span><span class="st">"manhattan"</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>knn_manhattan_plain.fit(X_train, y_train)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>pred_manhattan_plain <span class="op">=</span> knn_manhattan_plain.predict(X_query)[<span class="dv">0</span>]</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Sans normalisation</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>knn_plain <span class="op">=</span> KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">1</span>, metric<span class="op">=</span><span class="st">"manhattan"</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>knn_plain.fit(X_train, y_train)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>pred_plain <span class="op">=</span> knn_plain.predict(X_query)[<span class="dv">0</span>]</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Avec normalisation (le pipeline ajuste le scaler uniquement sur l'entraînement, puis KNN sur les données normalisées)</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>knn_scaled <span class="op">=</span> Pipeline([</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"scaler"</span>, StandardScaler()),</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"knn"</span>, KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">1</span>, metric<span class="op">=</span><span class="st">"manhattan"</span>))</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>knn_scaled.fit(X_train, y_train)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>pred_scaled <span class="op">=</span> knn_scaled.predict(X_query)[<span class="dv">0</span>]</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prédiction (sans normalisation)"</span>: [pred_plain],</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prédiction (avec normalisation)"</span>: [pred_scaled],</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">"voisin le plus proche (sans normalisation)"</span>: [point_names[<span class="dv">1</span>] <span class="cf">if</span> pred_plain<span class="op">==</span>prices[<span class="st">'b'</span>] <span class="cf">else</span> point_names[<span class="dv">2</span>]],</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"voisin le plus proche (avec normalisation)"</span>: [point_names[<span class="dv">1</span>] <span class="cf">if</span> pred_scaled<span class="op">==</span>prices[<span class="st">'b'</span>] <span class="cf">else</span> point_names[<span class="dv">2</span>]],</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    },</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"a"</span>]</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Avec mise à l'échelle</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>knn_manhattan_scaled <span class="op">=</span> Pipeline([</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"scaler"</span>, StandardScaler()),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"knn"</span>, KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">1</span>, metric<span class="op">=</span><span class="st">"manhattan"</span>))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>knn_manhattan_scaled.fit(X_train, y_train)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>pred_manhattan_scaled <span class="op">=</span> knn_manhattan_scaled.predict(X_query)[<span class="dv">0</span>]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prédiction (sans mise à l'échelle)"</span>: [pred_manhattan_plain],</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prédiction (avec mise à l'échelle)"</span>: [pred_manhattan_scaled],</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"a"</span>]</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -994,10 +1017,8 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">prédiction (sans normalisation)</th>
-<th data-quarto-table-cell-role="th">prédiction (avec normalisation)</th>
-<th data-quarto-table-cell-role="th">voisin le plus proche (sans normalisation)</th>
-<th data-quarto-table-cell-role="th">voisin le plus proche (avec normalisation)</th>
+<th data-quarto-table-cell-role="th">prédiction (sans mise à l'échelle)</th>
+<th data-quarto-table-cell-role="th">prédiction (avec mise à l'échelle)</th>
 </tr>
 </thead>
 <tbody>
@@ -1005,8 +1026,6 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 <th data-quarto-table-cell-role="th">a</th>
 <td>520000.0</td>
 <td>390000.0</td>
-<td>b</td>
-<td>c</td>
 </tr>
 </tbody>
 </table>
@@ -1015,12 +1034,13 @@ z(x) = \frac{x-\mu_{\text{train}}}{\sigma_{\text{train}}}.
 </div>
 </div>
 </section>
-<section id="tldr" class="level2">
-<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<section id="en-résumé" class="level2">
+<h2 class="anchored" data-anchor-id="en-résumé">En résumé</h2>
 <ul>
-<li>Les <strong>modèles basés sur la distance</strong> sont très sensibles aux <strong>échelles des attributs</strong>.</li>
-<li><strong>Toujours normaliser</strong> vos entrées (ajuster le scaler uniquement sur l’ensemble <strong>d’entraînement</strong>).</li>
-<li>La normalisation peut <strong>changer les voisins les plus proches</strong> et donc <strong>changer les prédictions</strong>—comme vu ici avec la régression 1-NN.</li>
+<li>Les <strong>modèles fondés sur les distances</strong> sont sensibles aux unités et aux échelles relatives de leurs attributs.</li>
+<li>Ajustez un outil de mise à l’échelle uniquement sur les <strong>données d’entraînement</strong>, puis réutilisez-le pour les données de validation, de test et de production.</li>
+<li>Un pipeline regroupe la mise à l’échelle et la prédiction et prévient les fuites durant la validation croisée.</li>
+<li>La mise à l’échelle modifie la géométrie du modèle et peut donc changer les plus proches voisins et les prédictions.</li>
 </ul>
 
 

@@ -259,7 +259,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: sept. 29, 2026 17h21</p>
+  <p class="date">Version: sept. 29, 2026 18h22</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -341,13 +341,13 @@ Marcel Turcotte
 <tbody>
 <tr class="odd">
 <td><strong>Positif</strong> (<strong>Réel</strong>)</td>
-<td>Vrai positif (VP)</td>
+<td>Vrai positif (TP)</td>
 <td>Faux négatif (FN)</td>
 </tr>
 <tr class="even">
 <td><strong>Négatif</strong> (<strong>Réel</strong>)</td>
 <td>Faux positif (FP)</td>
-<td>Vrai négatif (VN)</td>
+<td>Vrai négatif (TN)</td>
 </tr>
 </tbody>
 </table>
@@ -357,9 +357,10 @@ Marcel Turcotte
 <p><a href="../../assets/images/performance_evaluation_confusion_matrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/performance_evaluation_confusion_matrix.png"></a></p>
 </div>
 <aside class="notes">
+<p>Dans ce cours, nous utilisons les abréviations anglaises : <em>true positive</em> (TP), <em>false negative</em> (FN), <em>false positive</em> (FP) et <em>true negative</em> (TN). Pour les taux correspondants, nous utilisons aussi <em>true positive rate</em> (TPR) et <em>false positive rate</em> (FPR). Ces abréviations correspondent aux étiquettes des figures et facilitent la consultation de la documentation en anglais.</p>
 <ul>
 <li>Dans l’analyse statistique, les <strong>faux positifs (FP)</strong> sont communément appelés <strong>erreurs de type I</strong>, et les <strong>faux négatifs (FN)</strong> sont connus sous le nom d’<strong>erreurs de type II</strong>.</li>
-<li>Les éléments de la diagonale représentent les résultats correctement prédits, à savoir les vrais positifs (VP) et les vrais négatifs (VN).</li>
+<li>Les éléments de la diagonale représentent les résultats correctement prédits, à savoir les vrais positifs (TP) et les vrais négatifs (TN).</li>
 <li>À l’inverse, les éléments hors diagonale correspondent aux prédictions incorrectes, spécifiquement les faux positifs (FP) et les faux négatifs (FN).</li>
 <li>La <strong>matrice de confusion</strong> encapsule toutes les informations essentielles nécessaires pour évaluer la performance d’un modèle de classification.</li>
 <li>Bien que la matrice de confusion fournisse une vue d’ensemble, des <strong>mesures plus concises</strong> telles que l’<strong>exactitude</strong>, la <strong>précision</strong>, le <strong>rappel</strong>, et le <strong>score F<span class="math inline">_1</span></strong> sont souvent plus intuitives et pratiques pour résumer la performance du modèle.</li>
@@ -378,7 +379,7 @@ Marcel Turcotte
 </section>
 <section id="confusionmatrixdisplay" class="slide level2">
 <h2>ConfusionMatrixDisplay</h2>
-<div id="2a5cfd52" class="cell" data-execution_count="2">
+<div id="ff68ae5d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -415,7 +416,7 @@ Marcel Turcotte
 </div>
 </div>
 <aside class="notes">
-<p>Nous utilisons la fonction <code>make_classification</code> pour générer un jeu de données synthétique, qui est ensuite analysé à l’aide d’un modèle de <code>LogisticRegression</code>. Pour les deux fonctions <code>confusion_matrix</code> et <code>ConfusionMatrixDisplay</code>, nous configurons les étiquettes pour nous assurer que la classe ‘Positive’ précède, en accord avec les données tabulaires présentées à l’écran précédent. La matrice de confusion résultante donne les valeurs suivantes : Vrais Positifs (VP) = 37, Faux Négatifs (FN) = 10, Faux Positifs (FP) = 3, et Vrais Négatifs (VN) = 50.</p>
+<p>Nous utilisons la fonction <code>make_classification</code> pour générer un jeu de données synthétique, qui est ensuite analysé à l’aide d’un modèle de <code>LogisticRegression</code>. Pour les deux fonctions <code>confusion_matrix</code> et <code>ConfusionMatrixDisplay</code>, nous configurons les étiquettes pour nous assurer que la classe ‘Positive’ précède, en accord avec les données tabulaires présentées à l’écran précédent. La matrice de confusion résultante donne les valeurs suivantes : vrais positifs (TP) = 37, faux négatifs (FN) = 10, faux positifs (FP) = 3 et vrais négatifs (TN) = 50.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -564,7 +565,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </section>
 <section id="sklearn.metrics.confusion_matrix" class="slide level2">
 <h2>sklearn.metrics.confusion_matrix</h2>
-<div id="c2fe9f4b" class="cell" data-execution_count="3">
+<div id="222276ea" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
 <span id="cb2-2"><a aria-label="2"></a></span>
 <span id="cb2-3"><a aria-label="3"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
@@ -577,7 +578,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </div>
 </div>
 <div class="fragment">
-<div id="d88772a0" class="cell" data-execution_count="4">
+<div id="f75e4d7e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>tn, fp, fn, tp <span class="op">=</span> confusion_matrix(y_actual, y_pred).ravel().tolist()</span>
 <span id="cb4-2"><a aria-label="2"></a>(tn, fp, fn, tp)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -625,7 +626,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </section>
 <section id="prédiction-parfaite" class="slide level2">
 <h2>Prédiction parfaite</h2>
-<div id="52e1fbfd" class="cell" data-execution_count="5">
+<div id="9dda7562" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
 <span id="cb9-2"><a aria-label="2"></a>y_pred   <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
 <span id="cb9-3"><a aria-label="3"></a></span>
@@ -636,7 +637,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </div>
 </div>
 <div class="fragment">
-<div id="7b0084b2" class="cell" data-execution_count="6">
+<div id="fb516081" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>tn, fp, fn, tp <span class="op">=</span> confusion_matrix(y_actual, y_pred).ravel().tolist()  </span>
 <span id="cb11-2"><a aria-label="2"></a>(tn, fp, fn, tp)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -661,7 +662,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </section>
 <section id="matrice-de-confusion-plusieurs-classes" class="slide level2 hide-code-toggle smaller">
 <h2>Matrice de confusion : plusieurs classes</h2>
-<div id="d719f87b" class="cell" data-execution_count="7">
+<div id="df48439d" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_digits</span>
@@ -725,7 +726,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </div></aside></section>
 <section id="visualisation-des-erreurs" class="slide level2">
 <h2>Visualisation des erreurs</h2>
-<div id="b9ae4b3f" class="cell" data-execution_count="8">
+<div id="a1c4cb7e" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>mask <span class="op">=</span> (y_test <span class="op">==</span> <span class="dv">8</span>) <span class="op">&amp;</span> (y_pred <span class="op">==</span> <span class="dv">1</span>)</span>
@@ -757,9 +758,9 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <h2>Exactitude</h2>
 <p>Quelle est l’<strong>exactitude</strong> de ce résultat ?</p>
 <p><span class="math display">
-  \mathrm{exactitude} = \frac{\mathrm{VP}+\mathrm{VN}}{\mathrm{VP}+\mathrm{VN}+\mathrm{FP}+\mathrm{FN}} = \frac{\mathrm{VP}+\mathrm{VN}}{\mathrm{N}}
+  \mathrm{exactitude} = \frac{\mathrm{TP}+\mathrm{TN}}{\mathrm{TP}+\mathrm{TN}+\mathrm{FP}+\mathrm{FN}} = \frac{\mathrm{TP}+\mathrm{TN}}{\mathrm{N}}
 </span></p>
-<div id="c2629bab" class="cell" data-execution_count="9">
+<div id="349269ff" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
 <span id="cb15-2"><a aria-label="2"></a></span>
 <span id="cb15-3"><a aria-label="3"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
@@ -792,7 +793,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </div></aside></section>
 <section id="exactitude-1" class="slide level2">
 <h2>Exactitude</h2>
-<div id="9502d223" class="cell" data-execution_count="10">
+<div id="7d27d884" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
 <span id="cb17-2"><a aria-label="2"></a>y_pred   <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb17-3"><a aria-label="3"></a></span>
@@ -801,7 +802,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <pre><code>0.0</code></pre>
 </div>
 </div>
-<div id="ee72bc40" class="cell" data-execution_count="11">
+<div id="0eebaee0" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
 <span id="cb19-2"><a aria-label="2"></a>y_pred   <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
 <span id="cb19-3"><a aria-label="3"></a></span>
@@ -816,7 +817,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </div></aside></section>
 <section id="lexactitude-peut-être-trompeuse" class="slide level2">
 <h2>L’exactitude peut être trompeuse</h2>
-<div id="ae7fedc5" class="cell" data-execution_count="12">
+<div id="40b668a7" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb21-2"><a aria-label="2"></a>y_pred   <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb21-3"><a aria-label="3"></a></span>
@@ -847,9 +848,9 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <h2>Précision</h2>
 <p>Aussi connu sous le nom de <strong>valeur prédictive positive</strong> (PPV).</p>
 <p><span class="math display">
-  \mathrm{précision} = \frac{\mathrm{VP}}{\mathrm{VP}+\mathrm{FP}}
+  \mathrm{précision} = \frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}}
 </span></p>
-<div id="854191e5" class="cell" data-execution_count="13">
+<div id="a4d997b0" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_score</span>
 <span id="cb23-2"><a aria-label="2"></a></span>
 <span id="cb23-3"><a aria-label="3"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
@@ -873,7 +874,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <li>Une précision élevée signifie qu’une plus grande proportion des composés testés sont réellement actifs :</li>
 </ul>
 <p><span class="math display">
-\text{Précision} = \frac{\text{VP}}{\text{VP} + \text{FP}}
+\text{Précision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
 </span></p>
 <ul>
 <li>Une précision plus élevée réduit le nombre d’expériences consacrées à des composés inactifs.</li>
@@ -900,7 +901,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </div></aside></section>
 <section id="la-précision-seule-ne-suffit-pas" class="slide level2">
 <h2>La précision seule ne suffit pas</h2>
-<div id="4a092822" class="cell" data-execution_count="14">
+<div id="cc227d6a" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
 <span id="cb25-2"><a aria-label="2"></a>y_pred   <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb25-3"><a aria-label="3"></a></span>
@@ -917,9 +918,9 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <h2>Rappel</h2>
 <p>Aussi connu sous le nom de <strong>sensibilité</strong> ou <strong>taux de vrais positifs</strong> (TPR)</p>
 <p><span class="math display">
-  \mathrm{rappel} = \frac{\mathrm{VP}}{\mathrm{VP}+\mathrm{FN}}
+  \mathrm{rappel} = \frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}
 </span></p>
-<div id="1fc6c631" class="cell" data-execution_count="15">
+<div id="f4335846" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> recall_score</span>
 <span id="cb27-2"><a aria-label="2"></a></span>
 <span id="cb27-3"><a aria-label="3"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
@@ -942,7 +943,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <li>Le rappel mesure la proportion de vrais positifs correctement identifiés :</li>
 </ul>
 <p><span class="math display">
-\text{Rappel} = \frac{\text{VP}}{\text{VP} + \text{FN}}
+\text{Rappel} = \frac{\text{TP}}{\text{TP} + \text{FN}}
 </span></p>
 <ul>
 <li>Un rappel élevé signifie que le test détecte presque tous les patients atteints de cancer, même s’il génère également quelques fausses alertes.</li>
@@ -973,10 +974,10 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 <p><span class="math display">
 \begin{align*}
   F_1~\mathrm{score} &amp;= \frac{2}{\frac{1}{\mathrm{précision}}+\frac{1}{\mathrm{rappel}}} = 2 \times \frac{\mathrm{précision}\times\mathrm{rappel}}{\mathrm{précision}+\mathrm{rappel}} \\
-                     &amp;= \frac{\mathrm{VP}}{\mathrm{VP}+\frac{\mathrm{FN}+\mathrm{FP}}{2}}
+                     &amp;= \frac{\mathrm{TP}}{\mathrm{TP}+\frac{\mathrm{FN}+\mathrm{FP}}{2}}
 \end{align*}
 </span></p>
-<div id="e9419c8c" class="cell" data-execution_count="16">
+<div id="9d6ef7d0" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
 <span id="cb29-2"><a aria-label="2"></a></span>
 <span id="cb29-3"><a aria-label="3"></a>y_actual <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
@@ -1092,7 +1093,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </section>
 <section id="micromacro" class="slide level2 smaller">
 <h2>Micro/Macro</h2>
-<div id="b5016014" class="cell" data-execution_count="17">
+<div id="7026716f" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> ConfusionMatrixDisplay</span>
 <span id="cb31-2"><a aria-label="2"></a></span>
 <span id="cb31-3"><a aria-label="3"></a><span class="co"># Données d'exemple</span></span>
@@ -1126,7 +1127,7 @@ C_{\cdot j} = \sum_{i=1}^l C_{i,j}
 </section>
 <section id="précision-micromacro" class="slide level2 scrollable smaller">
 <h2>Précision micro/macro</h2>
-<div id="600d73c3" class="cell" data-execution_count="18">
+<div id="0d5bf7ad" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, precision_score</span>
 <span id="cb32-2"><a aria-label="2"></a></span>
 <span id="cb32-3"><a aria-label="3"></a><span class="bu">print</span>(classification_report(y_true, y_pred), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -1177,7 +1178,7 @@ Précision macro : 0.71</code></pre>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Par conséquent, la précision moyenne macro reste inchangée par le nombre variable d’exemples dans les différentes classes.</p></li></ol></aside></section>
 <section id="rappel-micromacro" class="slide level2 scrollable smaller">
 <h2>Rappel micro/macro</h2>
-<div id="845a622b" class="cell" data-execution_count="19">
+<div id="80df4a67" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, recall_score</span>
 <span id="cb34-2"><a aria-label="2"></a></span>
 <span id="cb34-3"><a aria-label="3"></a><span class="bu">print</span>(classification_report(y_true, y_pred), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -1237,7 +1238,7 @@ Rappel macro : 0.60</code></pre>
 </section>
 <section id="mesures-micromacro-données-médicales" class="slide level2 smaller hide-code-toggle">
 <h2>Mesures micro/macro (données médicales)</h2>
-<div id="1215ab8d" class="cell" data-execution_count="20">
+<div id="1b88de66" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a aria-label="1"></a><span class="co"># Données d'exemple</span></span>
@@ -1261,7 +1262,7 @@ Rappel macro : 0.60</code></pre>
 </div></aside></section>
 <section id="mesures-micromacro-données-médicales-1" class="slide level2 smaller">
 <h2>Mesures micro/macro (données médicales)</h2>
-<div id="9edf7325" class="cell" data-execution_count="21">
+<div id="a38d5460" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, recall_score</span>
 <span id="cb37-2"><a aria-label="2"></a></span>
 <span id="cb37-3"><a aria-label="3"></a><span class="bu">print</span>(classification_report(y_true, y_pred), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -1282,7 +1283,7 @@ Rappel macro : 0.60</code></pre>
 
 <aside><div>
 <p>La précision pour la classe <code>Tumour</code> est faible. Cependant, en raison de la petite taille de l’échantillon, cela n’impacte pas significativement la précision moyennée par micro.</p>
-</div></aside></section><section id="mesures-micromacro-données-médicales-1-output" class="slide level2 smaller output-location-slide"><h2>Mesures micro/macro (données médicales)</h2><div class="cell output-location-slide" data-execution_count="21">
+</div></aside></section><section id="mesures-micromacro-données-médicales-1-output" class="slide level2 smaller output-location-slide"><h2>Mesures micro/macro (données médicales)</h2><div class="cell output-location-slide" data-execution_count="20">
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
@@ -1310,7 +1311,7 @@ Rappel macro : 0.80</code></pre>
 <section id="chiffres-manuscrits-revisités" class="slide level2 smaller hide-code-toggle">
 <h2>Chiffres manuscrits (revisités)</h2>
 <p>Chargement du jeu de données</p>
-<div id="687d53e0" class="cell" data-execution_count="22">
+<div id="cdd41a77" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_openml</span>
@@ -1320,7 +1321,7 @@ Rappel macro : 0.80</code></pre>
 </details>
 </div>
 <p>Tracé des cinq premiers exemples</p>
-<div id="55ae20f5" class="cell" data-execution_count="23">
+<div id="3f53eff8" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">2</span>))</span>
@@ -1343,7 +1344,7 @@ Rappel macro : 0.80</code></pre>
 </section>
 <section id="tâche-de-classification-binaire" class="slide level2">
 <h2>Tâche de classification binaire</h2>
-<div id="d7d4c8d2" class="cell" data-execution_count="24">
+<div id="23e0f55d" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a aria-label="1"></a><span class="co"># Création d'une tâche de classification binaire (un contre tous)</span></span>
 <span id="cb41-2"><a aria-label="2"></a></span>
 <span id="cb41-3"><a aria-label="3"></a>some_digit <span class="op">=</span> X[<span class="dv">0</span>]</span>
@@ -1356,7 +1357,7 @@ Rappel macro : 0.80</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="e0983488" class="cell" data-execution_count="25">
+<div id="2af7ccbc" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a aria-label="1"></a><span class="co"># Création des ensembles d'entraînement et de test</span></span>
 <span id="cb43-2"><a aria-label="2"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
 <span id="cb43-3"><a aria-label="3"></a>    X,</span>
@@ -1370,7 +1371,7 @@ Rappel macro : 0.80</code></pre>
 </section>
 <section id="sgdclassifier" class="slide level2">
 <h2><code>SGDClassifier</code></h2>
-<div id="7995eb25" class="cell" data-execution_count="26">
+<div id="957d856d" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> SGDClassifier</span>
 <span id="cb44-2"><a aria-label="2"></a></span>
 <span id="cb44-3"><a aria-label="3"></a>clf <span class="op">=</span> SGDClassifier(random_state<span class="op">=</span>seed)</span>
@@ -1382,7 +1383,7 @@ Rappel macro : 0.80</code></pre>
 </div></aside></section>
 <section id="performance" class="slide level2">
 <h2>Performance</h2>
-<div id="e23b0ebf" class="cell" data-execution_count="27">
+<div id="200119d9" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
 <span id="cb45-2"><a aria-label="2"></a></span>
 <span id="cb45-3"><a aria-label="3"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
@@ -1401,7 +1402,7 @@ Rappel macro : 0.80</code></pre>
 </section>
 <section id="pas-si-vite" class="slide level2">
 <h2>Pas si vite</h2>
-<div id="54f75874" class="cell" data-execution_count="28">
+<div id="9931f78e" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a aria-label="1"></a><span class="im">from</span> sklearn.dummy <span class="im">import</span> DummyClassifier</span>
 <span id="cb47-2"><a aria-label="2"></a></span>
 <span id="cb47-3"><a aria-label="3"></a>dummy_clf <span class="op">=</span> DummyClassifier(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)</span>
@@ -1409,7 +1410,7 @@ Rappel macro : 0.80</code></pre>
 <span id="cb47-5"><a aria-label="5"></a>dummy_clf.fit(X_train, y_train)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<div id="e62aaa56" class="cell" data-execution_count="29">
+<div id="7f549b99" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a aria-label="1"></a>y_pred <span class="op">=</span> dummy_clf.predict(X_test)</span>
 <span id="cb48-2"><a aria-label="2"></a></span>
 <span id="cb48-3"><a aria-label="3"></a>accuracy_score(y_test, y_pred)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1446,7 +1447,7 @@ Rappel macro : 0.80</code></pre>
 </div></aside></section>
 <section id="compromis-précision-rappel-2" class="slide level2 hide-code-toggle">
 <h2>Compromis précision-rappel</h2>
-<div id="04ab7e1d" class="cell" data-execution_count="30">
+<div id="3be1ec81" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a aria-label="1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_predict</span>
@@ -1518,7 +1519,7 @@ Rappel macro : 0.80</code></pre>
 </div></aside></section>
 <section id="courbe-précision-rappel" class="slide level2 hide-code-toggle">
 <h2>Courbe précision-rappel</h2>
-<div id="8cfe5068" class="cell" data-execution_count="31">
+<div id="f1bafd96" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a aria-label="1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> patches</span>
@@ -1575,12 +1576,12 @@ Rappel macro : 0.80</code></pre>
 <h2>Courbe ROC</h2>
 <p><strong>Courbe caractéristique de fonctionnement du récepteur (ROC)</strong></p>
 <ul>
-<li class="fragment"><strong>Taux de vrais positifs</strong> (TVP) en fonction du <strong>taux de faux positifs</strong> (TFP)</li>
-<li class="fragment">Un classificateur idéal a un <strong>TVP</strong> proche de <strong>1,0</strong> et un <strong>TFP</strong> proche de <strong>0,0</strong></li>
-<li class="fragment"><span class="math inline">\mathrm{TVP} = \frac{\mathrm{VP}}{\mathrm{VP}+\mathrm{FN}}</span> (rappel, sensibilité)</li>
-<li class="fragment">Le <strong>TVP</strong> s’approche de <strong>un</strong> lorsqu’il y a peu de <strong>faux négatifs</strong></li>
-<li class="fragment"><span class="math inline">\mathrm{TFP} = \frac{\mathrm{FP}}{\mathrm{FP}+\mathrm{VN}} = 1-\mathrm{spécificité}</span></li>
-<li class="fragment">Le <strong>TFP</strong> s’approche de <strong>zéro</strong> lorsqu’il y a peu de <strong>faux positifs</strong></li>
+<li class="fragment"><strong>Taux de vrais positifs</strong> (TPR) en fonction du <strong>taux de faux positifs</strong> (FPR)</li>
+<li class="fragment">Un classificateur idéal a un <strong>TPR</strong> proche de <strong>1,0</strong> et un <strong>FPR</strong> proche de <strong>0,0</strong></li>
+<li class="fragment"><span class="math inline">\mathrm{TPR} = \frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}</span> (rappel, sensibilité)</li>
+<li class="fragment">Le <strong>TPR</strong> s’approche de <strong>un</strong> lorsqu’il y a peu de <strong>faux négatifs</strong></li>
+<li class="fragment"><span class="math inline">\mathrm{FPR} = \frac{\mathrm{FP}}{\mathrm{FP}+\mathrm{TN}} = 1-\mathrm{spécificité}</span></li>
+<li class="fragment">Le <strong>FPR</strong> s’approche de <strong>zéro</strong> lorsqu’il y a peu de <strong>faux positifs</strong></li>
 </ul>
 <div class="corner-image">
 <p><a href="../../assets/images/performance_evaluation_roc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="../../assets/images/performance_evaluation_roc.png"></a></p>
@@ -1610,7 +1611,7 @@ Rappel macro : 0.80</code></pre>
 </section>
 <section id="courbe-roc-3" class="slide level2 hide-code-toggle">
 <h2>Courbe ROC</h2>
-<div id="7c91d029" class="cell" data-execution_count="32">
+<div id="9161afc7" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a aria-label="1"></a>idx_for_90_precision <span class="op">=</span> (precisions <span class="op">&gt;=</span> <span class="fl">0.90</span>).argmax()</span>
@@ -1673,7 +1674,7 @@ Rappel macro : 0.80</code></pre>
 </div></aside></section>
 <section id="distribution-des-scores-et-courbe-roc" class="slide level2 hide-code-toggle">
 <h2>Distribution des scores et courbe ROC</h2>
-<div id="da3c4a0a" class="cell" data-execution_count="33">
+<div id="563d9e9a" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score, roc_curve</span>
@@ -1807,7 +1808,7 @@ Rappel macro : 0.80</code></pre>
 <aside><div>
 <p><a href="https://www.interactive-ml.com/roc-curve.html" class="external" data-icon="true">Courbe ROC interactive</a></p>
 </div></aside></section>
-<section id="distribution-des-scores-et-courbe-roc-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Distribution des scores et courbe ROC</h2><div class="cell output-location-slide" data-execution_count="33">
+<section id="distribution-des-scores-et-courbe-roc-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Distribution des scores et courbe ROC</h2><div class="cell output-location-slide" data-execution_count="32">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1847,7 +1848,7 @@ Rappel macro : 0.80</code></pre>
 </section>
 <section id="classificateur-parfait" class="slide level2 hide-code-toggle">
 <h2>Classificateur parfait</h2>
-<div id="4672a7e4" class="cell" data-execution_count="34">
+<div id="11704792" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a aria-label="1"></a>perfect_rng <span class="op">=</span> np.random.default_rng(seed <span class="op">+</span> <span class="dv">1</span>)</span>
@@ -1888,7 +1889,7 @@ Rappel macro : 0.80</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="classificateur-parfait-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Classificateur parfait</h2><div class="cell output-location-slide" data-execution_count="34">
+<section id="classificateur-parfait-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Classificateur parfait</h2><div class="cell output-location-slide" data-execution_count="33">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1898,7 +1899,7 @@ Rappel macro : 0.80</code></pre>
 </div>
 </div></section><section id="classificateur-aléatoire" class="slide level2 hide-code-toggle">
 <h2>Classificateur aléatoire</h2>
-<div id="58b64d06" class="cell" data-execution_count="35">
+<div id="80b039e7" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a aria-label="1"></a>random_rng <span class="op">=</span> np.random.default_rng(seed <span class="op">+</span> <span class="dv">2</span>)</span>
@@ -1932,7 +1933,7 @@ Rappel macro : 0.80</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="classificateur-aléatoire-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Classificateur aléatoire</h2><div class="cell output-location-slide" data-execution_count="35">
+<section id="classificateur-aléatoire-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Classificateur aléatoire</h2><div class="cell output-location-slide" data-execution_count="34">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1942,7 +1943,7 @@ Rappel macro : 0.80</code></pre>
 </div>
 </div></section><section id="auroc-inférieure-à-05" class="slide level2 hide-code-toggle">
 <h2>AUROC inférieure à 0,5</h2>
-<div id="ed776921" class="cell" data-execution_count="36">
+<div id="7deff413" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a aria-label="1"></a>reversed_negative_scores <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> good_negative_scores</span>
@@ -1975,7 +1976,7 @@ Rappel macro : 0.80</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="auroc-inférieure-à-05-output" class="slide level2 hide-code-toggle output-location-slide"><h2>AUROC inférieure à 0,5</h2><div class="cell output-location-slide" data-execution_count="36">
+<section id="auroc-inférieure-à-05-output" class="slide level2 hide-code-toggle output-location-slide"><h2>AUROC inférieure à 0,5</h2><div class="cell output-location-slide" data-execution_count="35">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -2038,22 +2039,22 @@ y_i \log h_\theta(x_i)
 <ul>
 <li>Tous les exemples sont prédits positifs.</li>
 <li>Tous les positifs réels sont vrais positifs et tous les négatifs réels sont faux positifs.</li>
-<li><span class="math inline">\text{TVP}=1</span>, <span class="math inline">\text{TFP}=1</span> et le point ROC est <span class="math inline">(1,1)</span>.</li>
+<li><span class="math inline">\text{TPR}=1</span>, <span class="math inline">\text{FPR}=1</span> et le point ROC est <span class="math inline">(1,1)</span>.</li>
 </ul>
 <p>Lorsque le seuil augmente de 0 à 1</p>
 <ul>
 <li>Moins d’exemples sont prédits positifs.</li>
 <li>Les nombres de vrais positifs et de faux positifs diminuent.</li>
-<li>Le TVP et le TFP diminuent de façon monotone.</li>
+<li>Le TPR et le FPR diminuent de façon monotone.</li>
 <li>La courbe se déplace vers le bas et la gauche dans l’espace ROC.</li>
 </ul>
 <p>Au seuil 1</p>
 <ul>
 <li>Tous les exemples sont prédits négatifs.</li>
-<li>VP = 0, FP = 0.</li>
-<li><span class="math inline">\text{TVP}=0</span>, <span class="math inline">\text{TFP}=0</span> et le point ROC est <span class="math inline">(0,0)</span>.</li>
+<li>TP = 0, FP = 0.</li>
+<li><span class="math inline">\text{TPR}=0</span>, <span class="math inline">\text{FPR}=0</span> et le point ROC est <span class="math inline">(0,0)</span>.</li>
 </ul>
-<p>En résumé, un seuil plus faible produit davantage de prédictions positives; les VP, FP, TVP et TFP augmentent. Un seuil plus élevé produit davantage de prédictions négatives; ces quantités diminuent. La forme de la courbe dépend de la capacité du modèle à séparer les deux classes : un modèle parfait monte immédiatement vers <span class="math inline">(0,1)</span>, un classement aléatoire suit en moyenne la diagonale et un classement systématiquement inversé se situe sous celle-ci.</p>
+<p>En résumé, un seuil plus faible produit davantage de prédictions positives; les TP, FP, TPR et FPR augmentent. Un seuil plus élevé produit davantage de prédictions négatives; ces quantités diminuent. La forme de la courbe dépend de la capacité du modèle à séparer les deux classes : un modèle parfait monte immédiatement vers <span class="math inline">(0,1)</span>, un classement aléatoire suit en moyenne la diagonale et un classement systématiquement inversé se situe sous celle-ci.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2069,7 +2070,7 @@ y_i \log h_\theta(x_i)
 <section id="mise-en-œuvre-régression-logistique" class="slide level2">
 <h2>Mise en œuvre : régression logistique</h2>
 <p>Cette mise en œuvre a été présentée au cours 6. Elle est reprise ici afin que le carnet contienne un modèle fonctionnel permettant de construire la courbe ROC et de calculer l’AUROC.</p>
-<div id="c2016083" class="cell" data-execution_count="37">
+<div id="4919a605" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2248,7 +2249,7 @@ y_i \log h_\theta(x_i)
 </section>
 <section id="mise-en-œuvre-courbe-roc" class="slide level2">
 <h2>Mise en œuvre : courbe ROC</h2>
-<div id="7f60c08a" class="cell" data-execution_count="38">
+<div id="09e7af88" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a aria-label="1"></a><span class="kw">def</span> compute_roc_curve(y_true, y_scores):</span>
 <span id="cb58-2"><a aria-label="2"></a>    y_true <span class="op">=</span> np.asarray(y_true)</span>
 <span id="cb58-3"><a aria-label="3"></a>    y_scores <span class="op">=</span> np.asarray(y_scores, dtype<span class="op">=</span><span class="bu">float</span>)</span>
@@ -2270,7 +2271,7 @@ y_i \log h_\theta(x_i)
 </section>
 <section id="mise-en-œuvre-auroc" class="slide level2">
 <h2>Mise en œuvre : AUROC</h2>
-<div id="d79818d8" class="cell" data-execution_count="39">
+<div id="94adedef" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a aria-label="1"></a><span class="kw">def</span> compute_auroc(fpr, tpr):</span>
 <span id="cb59-2"><a aria-label="2"></a></span>
 <span id="cb59-3"><a aria-label="3"></a>    <span class="cf">return</span> np.trapezoid(tpr, fpr)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2281,7 +2282,7 @@ y_i \log h_\theta(x_i)
 </div></aside></section>
 <section id="exemple-générer-les-données-et-les-prédictions" class="slide level2">
 <h2>Exemple : générer les données et les prédictions</h2>
-<div id="1adf0a1e" class="cell" data-execution_count="40">
+<div id="59eb6986" class="cell" data-execution_count="39">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
@@ -2309,13 +2310,13 @@ y_i \log h_\theta(x_i)
 </section>
 <section id="exemple-tracer" class="slide level2">
 <h2>Exemple : tracer</h2>
-<div id="1fc0c169" class="cell" data-execution_count="41">
+<div id="e8fd5112" class="cell" data-execution_count="40">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a aria-label="1"></a><span class="co"># Calculer les probabilités prédites de la classe positive sur l'ensemble de test</span></span>
 <span id="cb61-2"><a aria-label="2"></a>y_probs <span class="op">=</span> model.predict_proba(X_test)</span>
 <span id="cb61-3"><a aria-label="3"></a></span>
-<span id="cb61-4"><a aria-label="4"></a><span class="co"># Calculer la courbe ROC (TFP et TVP pour chaque seuil)</span></span>
+<span id="cb61-4"><a aria-label="4"></a><span class="co"># Calculer la courbe ROC (FPR et TPR pour chaque seuil)</span></span>
 <span id="cb61-5"><a aria-label="5"></a>fpr, tpr, thresholds <span class="op">=</span> compute_roc_curve(y_test, y_probs)</span>
 <span id="cb61-6"><a aria-label="6"></a>auroc_value <span class="op">=</span> compute_auroc(fpr, tpr)</span>
 <span id="cb61-7"><a aria-label="7"></a></span>
@@ -2351,7 +2352,7 @@ y_i \log h_\theta(x_i)
 </div>
 
 </section>
-<section id="exemple-tracer-output" class="slide level2 output-location-slide"><h2>Exemple : tracer</h2><div class="cell output-location-slide" data-execution_count="41">
+<section id="exemple-tracer-output" class="slide level2 output-location-slide"><h2>Exemple : tracer</h2><div class="cell output-location-slide" data-execution_count="40">
 <div class="cell-output cell-output-stdout">
 <pre><code>AUROC manuelle :      0.938
 AUROC scikit-learn :  0.938</code></pre>
@@ -2476,7 +2477,7 @@ Unceta, Irene, Paula Subı́as-Beltrán, et Oriol Pujol. 2026. <span>«&nbsp;The
 <h2>Exemple complet : 20 Newsgroups</h2>
 <p>Nous utilisons le <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" class="external" data-icon="true">jeu de données textuelles 20 Newsgroups</a> de <a href="https://scikit-learn.org" class="external" data-icon="true">scikit-learn</a>.</p>
 <p>Le jeu complet contient environ 18 000 messages provenant de 20 groupes de discussion. Cet exemple utilise quatre sujets.</p>
-<div id="823f6271" class="cell" data-execution_count="42">
+<div id="8e9e3884" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_20newsgroups</span>
@@ -2529,7 +2530,7 @@ Unceta, Irene, Paula Subı́as-Beltrán, et Oriol Pujol. 2026. <span>«&nbsp;The
 </div>
 
 </section>
-<section id="exemple-complet-20-newsgroups-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Exemple complet : 20 Newsgroups</h2><div class="cell output-location-slide" data-execution_count="42">
+<section id="exemple-complet-20-newsgroups-output" class="slide level2 hide-code-toggle output-location-slide"><h2>Exemple complet : 20 Newsgroups</h2><div class="cell output-location-slide" data-execution_count="41">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -2539,7 +2540,7 @@ Unceta, Irene, Paula Subı́as-Beltrán, et Oriol Pujol. 2026. <span>«&nbsp;The
 </div>
 </div></section><section id="matrice-de-confusion-sous-forme-de-tableau" class="slide level2">
 <h2>Matrice de confusion sous forme de tableau</h2>
-<div id="fc44130d" class="cell" data-execution_count="43">
+<div id="c3ca15c0" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a aria-label="1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
 <span id="cb64-2"><a aria-label="2"></a>cm</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -2552,7 +2553,7 @@ Unceta, Irene, Paula Subı́as-Beltrán, et Oriol Pujol. 2026. <span>«&nbsp;The
 </section>
 <section id="décomptes-un-contre-tous" class="slide level2">
 <h2>Décomptes un-contre-tous</h2>
-<div id="b06af77a" class="cell" data-execution_count="44">
+<div id="368b7901" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a aria-label="1"></a><span class="kw">def</span> true_positive(cm, i):</span>
 <span id="cb66-2"><a aria-label="2"></a>    <span class="cf">return</span> cm[i, i]</span>
 <span id="cb66-3"><a aria-label="3"></a></span>
@@ -2572,7 +2573,7 @@ Unceta, Irene, Paula Subı́as-Beltrán, et Oriol Pujol. 2026. <span>«&nbsp;The
 </section>
 <section id="précision-micro-et-macro" class="slide level2">
 <h2>Précision micro et macro</h2>
-<div id="bc2ef33f" class="cell" data-execution_count="45">
+<div id="501f4a94" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a aria-label="1"></a><span class="kw">def</span> precision_micro(cm):</span>
 <span id="cb67-2"><a aria-label="2"></a>    _, n_classes <span class="op">=</span> cm.shape</span>
 <span id="cb67-3"><a aria-label="3"></a>    tp <span class="op">=</span> fp <span class="op">=</span> <span class="dv">0</span></span>
@@ -2628,7 +2629,7 @@ Précision macro : 0.884</code></pre>
 </div></aside></section>
 <section id="rappel-micro-et-macro" class="slide level2">
 <h2>Rappel micro et macro</h2>
-<div id="875f44c0" class="cell" data-execution_count="46">
+<div id="efcaea10" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a aria-label="1"></a><span class="kw">def</span> recall_micro(cm):</span>
 <span id="cb69-2"><a aria-label="2"></a>    _, n_classes <span class="op">=</span> cm.shape</span>
 <span id="cb69-3"><a aria-label="3"></a>    tp <span class="op">=</span> fn <span class="op">=</span> <span class="dv">0</span></span>
@@ -2672,7 +2673,7 @@ Rappel macro : 0.880</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="1f71d6b2" class="cell" data-execution_count="47">
+<div id="3276a538" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a aria-label="1"></a>diabetes <span class="op">=</span> fetch_openml(name<span class="op">=</span><span class="st">"diabetes"</span>, version<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb71-2"><a aria-label="2"></a><span class="bu">print</span>(diabetes.DESCR)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -2692,7 +2693,7 @@ Rappel macro : 0.880</code></pre>
       }</style></aside>
 </div>
 </section>
-<section id="jeu-de-données-openml-output" class="slide level2 scrollable smaller output-location-slide"><h2>Jeu de données OpenML</h2><div class="cell output-location-slide" data-execution_count="47">
+<section id="jeu-de-données-openml-output" class="slide level2 scrollable smaller output-location-slide"><h2>Jeu de données OpenML</h2><div class="cell output-location-slide" data-execution_count="46">
 <p><strong>Author</strong>: <a href="vgs@aplcen.apl.jhu.edu">Vincent Sigillito</a></p>
 <p><strong>Source</strong>: <a href="https://archive.ics.uci.edu/ml/datasets/pima+indians+diabetes">Obtained from UCI</a></p>
 <p><strong>Please cite</strong>: <a href="https://archive.ics.uci.edu/ml/citation_policy.html">UCI citation policy</a></p>
@@ -2746,7 +2747,7 @@ From: 1 To: tested_positive</p>
 <p>Downloaded from openml.org.</p>
 </div></section><section id="jeu-de-données-sur-le-diabète-des-indiennes-pima" class="slide level2">
 <h2>Jeu de données sur le diabète des Indiennes Pima</h2>
-<div id="3675a7e1" class="cell" data-execution_count="48">
+<div id="cbf7f41f" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a aria-label="1"></a><span class="co"># Charger le jeu de données sur le diabète des Indiennes Pima</span></span>
 <span id="cb80-2"><a aria-label="2"></a>pima <span class="op">=</span> fetch_openml(data_id<span class="op">=</span><span class="dv">37</span>, as_frame<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb80-3"><a aria-label="3"></a></span>
@@ -2772,7 +2773,7 @@ From: 1 To: tested_positive</p>
 </div></aside></section>
 <section id="comparaison-de-plusieurs-classificateurs" class="slide level2">
 <h2>Comparaison de plusieurs classificateurs</h2>
-<div id="d30a5a90" class="cell" data-execution_count="49">
+<div id="5b9a4f50" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a aria-label="1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb81-2"><a aria-label="2"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb81-3"><a aria-label="3"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
@@ -2781,7 +2782,7 @@ From: 1 To: tested_positive</p>
 </section>
 <section id="comparaison-de-plusieurs-classificateurs-1" class="slide level2">
 <h2>Comparaison de plusieurs classificateurs</h2>
-<div id="2235a9ed" class="cell" data-execution_count="50">
+<div id="15d8e5b4" class="cell" data-execution_count="49">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a aria-label="1"></a>scaler <span class="op">=</span> StandardScaler()</span>
@@ -2807,7 +2808,7 @@ From: 1 To: tested_positive</p>
 </div></aside></section>
 <section id="courbes-roc-et-auroc" class="slide level2 hide-code-toggle">
 <h2>Courbes ROC et AUROC</h2>
-<div id="34ec26b6" class="cell" data-execution_count="51">
+<div id="ce96e48b" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a aria-label="1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score</span>
