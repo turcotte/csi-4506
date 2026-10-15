@@ -466,10 +466,13 @@ window.Quarto = {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#regarder-ces-vidéos-de-3blue1brown" id="toc-regarder-ces-vidéos-de-3blue1brown" class="nav-link active" data-scroll-target="#regarder-ces-vidéos-de-3blue1brown">Regarder ces vidéos de 3Blue1Brown</a></li>
+  <li><a href="#se-préparer" id="toc-se-préparer" class="nav-link active" data-scroll-target="#se-préparer">Se préparer</a>
+  <ul class="collapse">
+  <li><a href="#regarder-ces-vidéos-de-3blue1brown" id="toc-regarder-ces-vidéos-de-3blue1brown" class="nav-link" data-scroll-target="#regarder-ces-vidéos-de-3blue1brown">Regarder ces vidéos de 3Blue1Brown</a></li>
   <li><a href="#documentaire-sur-le-développement-de-pytorch" id="toc-documentaire-sur-le-développement-de-pytorch" class="nav-link" data-scroll-target="#documentaire-sur-le-développement-de-pytorch">Documentaire sur le développement de PyTorch</a></li>
+  </ul></li>
   <li><a href="#participer" id="toc-participer" class="nav-link" data-scroll-target="#participer">Participer</a></li>
-  <li><a href="#practiquer" id="toc-practiquer" class="nav-link" data-scroll-target="#practiquer">Practiquer</a></li>
+  <li><a href="#pratiquer" id="toc-pratiquer" class="nav-link" data-scroll-target="#pratiquer">Pratiquer</a></li>
   </ul>
 </nav>
     </div>
@@ -510,8 +513,10 @@ Important
 <p><strong>Échéance</strong> : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.</p>
 </div>
 </div>
+<section id="se-préparer" class="level2">
+<h2 class="anchored" data-anchor-id="se-préparer">Se préparer</h2>
 <ul>
-<li><span class="citation" data-cites="Russell:2020aa">Russell et Norvig (<a href="#ref-Russell:2020aa" role="doc-biblioref">2020</a>)</span>, pages 705–708, 750–788</li>
+<li><span class="citation" data-cites="Russell:2020aa">Russell et Norvig (<a href="#ref-Russell:2020aa" role="doc-biblioref">2020</a>)</span>, pages 750–788</li>
 </ul>
 <section id="regarder-ces-vidéos-de-3blue1brown" class="level3">
 <h3 class="anchored" data-anchor-id="regarder-ces-vidéos-de-3blue1brown">Regarder ces vidéos de 3Blue1Brown</h3>
@@ -528,24 +533,25 @@ Important
 <li><a href="https://www.youtube.com/watch?v=rgP_LBtaUEc" class="external" data-icon="true">PyTorch (2024) Official PyTorch Documentary - Powering the AI Revolution</a> (36 minutes)</li>
 </ul>
 </section>
+</section>
 <section id="participer" class="level2">
 <h2 class="anchored" data-anchor-id="participer">Participer</h2>
 <ul>
-<li><a href="slides.html">présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_lecture-11.ipynb">Jupyter Notebook</a>)</li>
+<li><a href="slides.html">présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_slides-11.ipynb">Jupyter Notebook</a>)</li>
 </ul>
 </section>
-<section id="practiquer" class="level2">
-<h2 class="anchored" data-anchor-id="practiquer">Practiquer</h2>
+<section id="pratiquer" class="level2">
+<h2 class="anchored" data-anchor-id="pratiquer">Pratiquer</h2>
 <ul>
-<li><p><a href="CircularSeparability">Séparabilité Circulaire <i class="fa-brands fa-python" aria-label="python"></i></a> : Pour compléter votre exploration de TensorFlow Playground (ci-dessous), j’ai développé un cahier se concentrant sur l’ingénierie des attributs.</p></li>
+<li><p><a href="../../lectures/11/CircularSeparability.html">Séparabilité de données circulaires <i class="fa-brands fa-python" aria-label="python"></i></a> : Un cahier d’étude autonome sur l’ingénierie des attributs (<em>feature engineering</em>) et les représentations apprises, pour compléter l’exploration de TensorFlow Playground ci-dessous.</p></li>
 <li><p><a href="https://playground.tensorflow.org/" class="external" data-icon="true">TensorFlow Playground</a></p>
 <ul>
 <li><strong>Options de jeu de données</strong> : Les utilisateurs peuvent choisir parmi quatre types de jeux de données : circulaire, XOR, gaussien et spirale.</li>
 <li><strong>Ingénierie des attributs</strong> : Permet la création de nouveaux attributs pour améliorer la performance du modèle.</li>
 <li><strong>Architecture du modèle</strong> : Permet la personnalisation de l’architecture du réseau de neurones, y compris la variation du nombre de couches et de neurones par couche.</li>
 <li><strong>Réglage des hyperparamètres</strong> : Offre des options pour ajuster le taux d’apprentissage, les fonctions d’activation, les techniques de régularisation et les spécifications des tâches pour observer leurs effets sur l’entraînement du modèle.</li>
-<li><strong>Suggestion 1</strong> : Pour le jeu de données gaussien, qui est linéairement séparable, configurez un réseau sans couches cachées et un seul neurone de sortie utilisant la fonction d’activation sigmoïde. Cette configuration construit efficacement un modèle de régression logistique.</li>
-<li><strong>Suggestion 2</strong> : Le jeu de données circulaire n’est pas linéairement séparable en utilisant seulement les attributs originaux <span class="math inline">x_1</span> et <span class="math inline">x_2</span>. Cependant, en créant de neauveaux attributs, <span class="math inline">x_1^2</span> et <span class="math inline">x_2^2</span>, le problème devient linéairement séparable dans l’espace des attributs transformé. Un réseau sans couches cachées et un seul nœud de sortie est suffisant pour cette tâche.</li>
+<li><strong>Suggestion 1</strong> : Pour le jeu de données gaussien, qui est linéairement séparable, configurez un réseau sans couche cachée et avec un seul neurone de sortie utilisant la sigmoïde. Cette configuration correspond à un modèle de régression logistique.</li>
+<li><strong>Suggestion 2</strong> : Le jeu de données circulaire n’est pas linéairement séparable avec les seuls attributs d’origine <span class="math inline">x_1</span> et <span class="math inline">x_2</span>. En ajoutant les attributs <span class="math inline">x_1^2</span> et <span class="math inline">x_2^2</span>, on peut séparer les classes dans l’espace transformé. Un réseau sans couche cachée et avec un seul nœud de sortie suffit pour cette tâche.</li>
 </ul></li>
 </ul>
 

@@ -6,7 +6,7 @@ Marcel Turcotte
 
 Date de publication
 
-29 septembre 2026
+14 octobre 2026
 
 # Comment obtenir de l’aide ?
 
@@ -26,6 +26,12 @@ Nous utilisons Brightspace principalement pour les devoirs et les groupes de dis
 En cliquant sur **Devoirs**, vous devriez voir l’avis suivant en haut de la page :
 
 > Les devoirs seront affichés ici.
+
+# Que signifie la mention « exclu/dropped » dans Brightspace?
+
+Comme indiqué dans le [plan de cours](course-syllabus), la composante « travaux » de votre note finale est calculée à partir des trois meilleures notes obtenues aux quatre travaux. Brightspace est configuré pour [exclure automatiquement la note la plus basse](https://community.d2l.com/brightspace/kb/articles/12464-drop-the-lowest-grade).
+
+Après la date limite de remise d’un travail, Brightspace affiche temporairement une note de 0 jusqu’à ce que votre aide à l’enseignement saisisse votre note. Durant cette période, le travail peut porter la mention « exclu/dropped », puisqu’il présente la note enregistrée la plus basse. Une fois votre note saisie, Brightspace détermine à nouveau quelle note exclure.
 
 # Quel sera le format du Quiz 1 ?
 
@@ -53,6 +59,14 @@ En cliquant sur **Devoirs**, vous devriez voir l’avis suivant en haut de la pa
   - Portez une attention particulière aux mots tels que *toujours*, *nécessairement*, *peut* et *ne peut pas*. Lisez chaque énoncé au complet avant de répondre.
 - **Ce qui n’est pas prioritaire** : Vous n’avez pas à mémoriser des détails mineurs de syntaxe propres aux bibliothèques ni des opérations de programmation accessoires, comme la modification de la forme d’un tableau NumPy. Vous devez toutefois comprendre le rôle des principales opérations et des principaux flux de travail présentés en classe.
 - **Matériel à apporter** : Apportez votre carte étudiante et au moins deux crayons à mine convenant à une feuille Scantron.
+
+# Puis-je consulter mon quiz?
+
+Nous révisons en classe les solutions des quiz 1 et 2, ce qui pourrait suffire à vous aider à comprendre vos erreurs. Vous pouvez également vous présenter à mes heures de bureau pour consulter votre quiz, y compris votre feuille de réponses Scantron.
+
+Si vous comptez demander une [révision de note](https://www.uottawa.ca/about-us/leadership-governance/policies-regulations/a-9-revision-grades-appeal), veuillez noter qu’une date limite s’applique au dépôt de votre demande. Une révision de note porte sur les erreurs de correction; elle ne vise pas à modifier le barème de correction.
+
+Si mes heures de bureau coïncident avec vos cours, veuillez m’envoyer vos disponibilités afin que nous puissions convenir d’un autre moment pour consulter votre évaluation.
 
 # Quel sera le format du Quiz 2 ?
 
