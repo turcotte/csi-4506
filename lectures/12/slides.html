@@ -238,7 +238,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version : 15 oct. 2026 17h31</p>
+  <p class="date">Version : 15 oct. 2026 17h36</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -1542,6 +1542,8 @@ Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</sp
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="../../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1565,6 +1567,7 @@ Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</sp
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
+'multiplex': {"secret":null,"id":"ca6ffea15063eb55a07a8e8b95f42ce27e296fcab4e7ac2cbe6aa062e79aed36","url":"https://multiplex.up.railway.app/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1738,7 +1741,7 @@ Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</sp
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]

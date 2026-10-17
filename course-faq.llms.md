@@ -6,7 +6,7 @@ Marcel Turcotte
 
 Date de publication
 
-14 octobre 2026
+16 octobre 2026
 
 # Comment obtenir de l’aide ?
 
@@ -84,7 +84,7 @@ Si mes heures de bureau coïncident avec vos cours, veuillez m’envoyer vos dis
 
 # Quel sera le format de l’examen final ?
 
-- **Quand** : Horaire des examens affiché dans uoZone le 15 octobre 2026.
+- **Quand** : Horaire des examens affiché dans uoZone à partir du 15 octobre 2026: jeudi 17 décembre 2026 de 19 h à 22 h.
   - L’horaire dans uoZone (sous Applications, sélectionnez Mon horaire d’examens) est le document officiel (et non cette page web).
   - Vérifiez régulièrement votre horaire d’examens, car les horaires et les lieux peuvent changer après leur publication initiale.
 - **Format** : Livre fermé. Questions à choix multiples et questions de type vrai/faux.

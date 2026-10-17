@@ -321,23 +321,23 @@
   {
     "objectID": "lectures/14/index.html",
     "href": "lectures/14/index.html",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "",
     "text": "Important\n\n\n\nÉchéance : Le devoir 3 doit être soumis au plus tard le 16 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace."
   },
   {
     "objectID": "lectures/14/index.html#participer",
     "href": "lectures/14/index.html#participer",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Participer",
     "text": "Participer\n\nprésentation (PDF, Jupyter Notebook)"
   },
   {
     "objectID": "lectures/14/index.html#practiquer",
     "href": "lectures/14/index.html#practiquer",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Practiquer",
-    "text": "Practiquer\n\nkong_and_yu-2018 - un exemple illustrant l’efficacité de la régularisation \\(l_1\\) et \\(l_2\\)."
+    "text": "Practiquer\n\nkong_and_yu-2018 - un exemple illustrant l’efficacité de la régularisation l_1 et l_2."
   },
   {
     "objectID": "lectures/12/index.html",
@@ -2617,219 +2617,219 @@
   {
     "objectID": "lectures/14/slides.html#message-du-jour",
     "href": "lectures/14/slides.html#message-du-jour",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Message du jour",
     "text": "Message du jour\n\n\n\n\n\n\n\nWhy 2025 is the single most pivotal year in our lifetime, Peter Leyden, Big Think, YouTube, 2025-10-20."
   },
   {
     "objectID": "lectures/14/slides.html#objectifs-dapprentissage",
     "href": "lectures/14/slides.html#objectifs-dapprentissage",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Objectifs d’apprentissage",
-    "text": "Objectifs d’apprentissage\n\nCouche Softmax :\n\nDécrire sa fonctionnalité dans la conversion des logits en distributions de probabilités pour les tâches de classification.\n\nPerte d’Entropie Croisée :\n\nExpliquer son rôle dans la mesure de la dissimilarité entre les distributions de probabilités prédites et réelles.\n\nTechniques de Régularisation :\n\nExplorer des méthodes comme la régularisation L1, L2 et le dropout pour améliorer les capacités de généralisation des réseaux neuronaux.\n\n\n\nDans le cours précédent, nous avons examiné l’algorithme de rétropropagation, qui offre une méthode systématique pour calculer les dérivées partielles de la fonction de perte. Ce calcul est essentiel pour appliquer l’algorithme de descente de gradient, permettant ainsi l’ajustement des poids dans un réseau de neurones profond. Aujourd’hui, nous aborderons un programme intensif. Nous nous intéressons aux couches de sortie et aux techniques de régularisation."
+    "text": "Objectifs d’apprentissage\n\nExpliquer comment les fonctions d’activation et l’initialisation influencent la propagation des gradients.\nComparer SimplerMLP à son extension offrant un choix d’activations, la régularisation L2 et la décroissance du taux d’apprentissage.\nExpliquer le rôle de softmax et de l’entropie croisée dans la mesure de la dissimilarité entre les distributions de probabilités prédites et réelles.\nExplorer la régularisation L1, L2 et le dropout pour améliorer la généralisation des réseaux de neurones.\n\n\nLa présentation 13 a implémenté la rétropropagation dans SimplerMLP, avec des unités sigmoïdes, l’entropie croisée binaire et un taux d’apprentissage constant. Nous examinons d’abord la propagation des gradients et l’initialisation, puis nous étendons cette implémentation sous le nom SimpleMLP. Les sections suivantes portent sur les activations de sortie, l’entropie croisée multiclasse et la régularisation."
   },
   {
     "objectID": "lectures/14/slides.html#couche-de-sortie-tâche-de-régression",
     "href": "lectures/14/slides.html#couche-de-sortie-tâche-de-régression",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Couche de sortie : tâche de régression",
-    "text": "Couche de sortie : tâche de régression\n\n# de neurones de sortie :\n\n1 par dimension\n\nFonction d’activation de la couche de sortie :\n\nAucune, ReLU/softplus si positif, sigmoid/tanh si borné\n\nFonction de perte :\n\nMeanSquaredError\n\n\n\n\nCommen choisit-on les fonctions d’activation?\nDans un réseau feed-forward, les fonctions d’activation dans les couches cachées sont choisies principalement pour leur impact sur la performance et la convergence, tandis que la fonction d’activation dans la couche de sortie est sélectionnée selon les exigences de la tâche.\n\nCouches cachées :\nLa fonction d’activation (par exemple, ReLU, GELU, tanh) affecte principalement la dynamique de l’entraînement; comme le flux de gradient, la force de non-linéarité et le taux de convergence. Le choix est généralement empirique, guidé par la performance, la stabilité numérique et le comportement d’optimisation.\nCouche de sortie :\nLa fonction d’activation est déterminée par la nature de la tâche de prédiction :\n\nRégression : linéaire, ReLU, ou softplus (selon les contraintes de plage)\nClassification binaire : sigmoïde\nClassification multi-classes : softmax\nClassification multi-étiquettes : sigmoïde (par unité de sortie)\n\n\nExemples de problèmes de régression à sorties multiples (2–4 sorties) incluent :\n\n2 sorties :\n\nPrédire à la fois la latitude et la longitude d’un emplacement à partir d’une image.\nEstimer la largeur et la hauteur d’une boîte englobante en détection d’objets.\nPrévoir simultanément la température et l’humidité.\n\n3 sorties :\n\nPrédire les coordonnées x, y, z d’un point dans l’espace (par exemple, localisation d’une articulation de main).\nEstimer les valeurs de couleur RGB à partir de mesures spectrales.\n\n4 sorties :\n\nPrédire les coordonnées de la boîte englobante — \\((x_{min}, y_{min}, x_{max}, y_{max})\\) — en détection d’objets.\n\n\n\n\nDans un problème de détection d’objet, la détermination de la boîte englobante est un exemple de tâche de régression où la sortie est multidimensionnelle."
+    "text": "Couche de sortie : tâche de régression\n\n# de neurones de sortie :\n\n1 par dimension\n\nFonction d’activation de la couche de sortie :\n\nAucune, ReLU/softplus si positif, sigmoid/tanh si borné\n\nFonction de perte :\n\nMeanSquaredError\n\n\n\n\nCommen choisit-on les fonctions d’activation?\nDans un réseau feed-forward, les fonctions d’activation dans les couches cachées sont choisies principalement pour leur impact sur la performance et la convergence, tandis que la fonction d’activation dans la couche de sortie est sélectionnée selon les exigences de la tâche.\n\nCouches cachées :\nLa fonction d’activation (par exemple, ReLU, GELU, tanh) affecte principalement la dynamique de l’entraînement; comme le flux de gradient, la force de non-linéarité et le taux de convergence. Le choix est généralement empirique, guidé par la performance, la stabilité numérique et le comportement d’optimisation.\nCouche de sortie :\nLa fonction d’activation est déterminée par la nature de la tâche de prédiction :\n\nRégression : linéaire, ReLU, ou softplus (selon les contraintes de plage)\nClassification binaire : sigmoïde\nClassification multi-classes : softmax\nClassification multi-étiquettes : sigmoïde (par unité de sortie)\n\n\nExemples de problèmes de régression à sorties multiples (2–4 sorties) incluent :\n\n2 sorties :\n\nPrédire à la fois la latitude et la longitude d’un emplacement à partir d’une image.\nEstimer la largeur et la hauteur d’une boîte englobante en détection d’objets.\nPrévoir simultanément la température et l’humidité.\n\n3 sorties :\n\nPrédire les coordonnées x, y, z d’un point dans l’espace (par exemple, localisation d’une articulation de main).\nEstimer les valeurs de couleur RGB à partir de mesures spectrales.\n\n4 sorties :\n\nPrédire les coordonnées de la boîte englobante — (x_{min}, y_{min}, x_{max}, y_{max}) — en détection d’objets.\n\n\n\n\nDans un problème de détection d’objet, la détermination de la boîte englobante est un exemple de tâche de régression où la sortie est multidimensionnelle."
   },
   {
     "objectID": "lectures/14/slides.html#couche-de-sortie-multi-étiquette",
     "href": "lectures/14/slides.html#couche-de-sortie-multi-étiquette",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Couche de sortie : Multi-étiquette",
     "text": "Couche de sortie : Multi-étiquette\n\n\n\n\n\n\n\nCependant, ce réseau n’est pas adapté à la classification. Voyez-vous pourquoi ?\n\n\nAvec la fonction d’activation sigmoïde, ce réseau effectue des prédictions multi-étiquettes."
   },
   {
     "objectID": "lectures/14/slides.html#couche-de-sortie-tâche-de-classification",
     "href": "lectures/14/slides.html#couche-de-sortie-tâche-de-classification",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Couche de sortie : tâche de classification",
     "text": "Couche de sortie : tâche de classification\n\n# de neurones de sortie :\n\n1 si binaire, 1 par classe si multiclasse ou multilabel.\n\nFonction d’activation de la couche de sortie :\n\nsigmoid si binaire ou multilabel, softmax si multiclasses.\n\nFonction de perte :\n\nentropie croisée"
   },
   {
     "objectID": "lectures/14/slides.html#softmax",
     "href": "lectures/14/slides.html#softmax",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Softmax",
-    "text": "Softmax\n\n\n\n\n\n\n\nRemarquez que j’ai révisé la représentation des nœuds de sortie pour indiquer que la fonction softmax est appliquée à l’ensemble de la couche, plutôt qu’à des nœuds individuels. Cette fonction transforme les valeurs brutes de sortie de la couche en probabilités qui totalisent 1, facilitant ainsi la classification multiclasses. Cette caractéristique la distingue des fonctions d’activation comme ReLU ou sigmoid, qui sont généralement appliquées indépendamment à la sortie de chaque nœud.\nLa fonction \\(\\argmax\\) n’est pas appropriée pour l’optimisation par des méthodes basées sur les gradients, car sa dérivée est nulle dans tous les cas, comme pour les fonctions de seuil. En revanche, la fonction softmax offre à la fois une interprétation probabiliste et une dérivée calculable, la rendant plus efficace pour de telles applications.\nLa fonction \\(\\argmax\\) peut être appliquée a posteriori aux réseaux entraînés pour faire des prédictions de classe.\n\n\nSoftmax garantit que toutes les sorties d’activation se situent entre 0 et 1 et que leur somme est égale à 1."
+    "text": "Softmax\n\n\n\n\n\n\n\nRemarquez que j’ai révisé la représentation des nœuds de sortie pour indiquer que la fonction softmax est appliquée à l’ensemble de la couche, plutôt qu’à des nœuds individuels. Cette fonction transforme les valeurs brutes de sortie de la couche en probabilités qui totalisent 1, facilitant ainsi la classification multiclasses. Cette caractéristique la distingue des fonctions d’activation comme ReLU ou sigmoid, qui sont généralement appliquées indépendamment à la sortie de chaque nœud.\nLa fonction \\argmax n’est pas appropriée pour l’optimisation par des méthodes basées sur les gradients, car sa dérivée est nulle dans tous les cas, comme pour les fonctions de seuil. En revanche, la fonction softmax offre à la fois une interprétation probabiliste et une dérivée calculable, la rendant plus efficace pour de telles applications.\nLa fonction \\argmax peut être appliquée a posteriori aux réseaux entraînés pour faire des prédictions de classe.\n\n\nSoftmax garantit que toutes les sorties d’activation se situent entre 0 et 1 et que leur somme est égale à 1."
   },
   {
     "objectID": "lectures/14/slides.html#softmax-1",
     "href": "lectures/14/slides.html#softmax-1",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Softmax",
-    "text": "Softmax\nLa fonction softmax est une fonction d’activation utilisée dans les problèmes de classification multiclasses pour convertir un vecteur de scores bruts en probabilités qui totalisent 1.\nÉtant donné un vecteur \\(\\mathbf{z} = [z_1, z_2, \\ldots, z_n]\\) :\n\\[\n\\sigma(\\mathbf{z})_i = \\frac{e^{z_i}}{\\sum_{j=1}^{n} e^{z_j}}\n\\]\noù \\(\\sigma(\\mathbf{z})_i\\) est la probabilité de la classe \\(i\\), et \\(n\\) est le nombre de classes.\n\nLa fonction softmax met l’accent sur les scores les plus élevés tout en atténuant les scores les plus faibles, permettant une interprétation probabiliste des sorties.\nOn peut clairement voir que cette activation s’applique à l’ensemble de la couche, puisque la dénomination dépend des valeurs de tous les \\(z_j\\), pour \\(j \\in 1 \\ldots n\\).\n\nAssure la positivité :\nLa fonction exponentielle garantit que toutes les sorties sont positives, une propriété nécessaire pour des probabilités valides.\nAmplifie les différences relatives :\nL’exponentiation est une transformation non linéaire monotone qui augmente beaucoup plus les grandes valeurs que les petites. Si un logit est légèrement plus grand, \\(e^{z_i}\\) devient disproportionnellement plus grand, accentuant la distribution (utile pour mettre en valeur la classe la plus probable).\nPréserve l’ordre :\nPuisque \\(e^x\\) est strictement croissante, la classe avec le logit le plus élevé avant softmax reste celle avec la probabilité la plus élevée après.\nFacilite l’apprentissage basé sur le gradient :\nL’exponentielle adoucit la transition entre les classes, fournissant des sorties différentiables et des gradients stables pour l’optimisation avec l’entropie croisée.\n\nUn logit est une valeur de pré-activation (\\(z_i\\)). Chaque neurone dans la couche de sortie (avant activation) produit un logit \\(z_i\\)."
+    "text": "Softmax\nLa fonction softmax est une fonction d’activation utilisée dans les problèmes de classification multiclasses pour convertir un vecteur de scores bruts en probabilités qui totalisent 1.\nÉtant donné un vecteur \\mathbf{z} = [z_1, z_2, \\ldots, z_n] :\n\n\\sigma(\\mathbf{z})_i = \\frac{e^{z_i}}{\\sum_{j=1}^{n} e^{z_j}}\n\noù \\sigma(\\mathbf{z})_i est la probabilité de la classe i, et n est le nombre de classes.\n\nLa fonction softmax met l’accent sur les scores les plus élevés tout en atténuant les scores les plus faibles, permettant une interprétation probabiliste des sorties.\nOn peut clairement voir que cette activation s’applique à l’ensemble de la couche, puisque la dénomination dépend des valeurs de tous les z_j, pour j \\in 1 \\ldots n.\n\nAssure la positivité :\nLa fonction exponentielle garantit que toutes les sorties sont positives, une propriété nécessaire pour des probabilités valides.\nAmplifie les différences relatives :\nL’exponentiation est une transformation non linéaire monotone qui augmente beaucoup plus les grandes valeurs que les petites. Si un logit est légèrement plus grand, e^{z_i} devient disproportionnellement plus grand, accentuant la distribution (utile pour mettre en valeur la classe la plus probable).\nPréserve l’ordre :\nPuisque e^x est strictement croissante, la classe avec le logit le plus élevé avant softmax reste celle avec la probabilité la plus élevée après.\nFacilite l’apprentissage basé sur le gradient :\nL’exponentielle adoucit la transition entre les classes, fournissant des sorties différentiables et des gradients stables pour l’optimisation avec l’entropie croisée.\n\nUn logit est une valeur de pré-activation (z_i). Chaque neurone dans la couche de sortie (avant activation) produit un logit z_i."
   },
   {
     "objectID": "lectures/14/slides.html#softmax-2",
     "href": "lectures/14/slides.html#softmax-2",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Softmax",
-    "text": "Softmax\n\n\n\n\n\n\n\n\n\n\n\n\n\\(z_1\\)\n\\(z_2\\)\n\\(z_3\\)\n\\(\\sigma(z_1)\\)\n\\(\\sigma(z_2)\\)\n\\(\\sigma(z_3)\\)\n\\(\\sum\\)\n\n\n\n\n1.47\n-0.39\n0.22\n0.69\n0.11\n0.20\n1.00\n\n\n5.00\n6.00\n4.00\n0.24\n0.67\n0.09\n1.00\n\n\n0.90\n0.80\n1.10\n0.32\n0.29\n0.39\n1.00\n\n\n-2.00\n2.00\n-3.00\n0.02\n0.98\n0.01\n1.00\n\n\n\n\n\n\nMaintient l’ordre relatif : La fonction softmax préserve l’ordre relatif des valeurs d’entrée. Si une entrée est supérieure à une autre, sa sortie correspondante sera également supérieure.\nInterprétée comme des probabilités : Chaque valeur se situe dans la plage de 0 à 1. Les valeurs de sortie de la fonction softmax sont normalisées pour totaliser un, ce qui permet de les interpréter comme des probabilités.\nDifférences relatives : Lorsque les différences relatives entre les valeurs d’entrée sont petites, les différences dans les probabilités de sortie restent petites, reflétant la distribution des entrées. Lorsque les valeurs d’entrée sont identiques, les sorties seront égales à \\(\\frac{1}{n}\\), où \\(n\\) est le nombre de classes.\nLarge gamme de valeurs : La fonction softmax peut traiter efficacement une large gamme de valeurs d’entrée, grâce à la fonction exponentielle et à la normalisation, qui adaptent les entrées à une plage probabiliste.\n\nCes propriétés rendent la fonction softmax particulièrement utile pour les tâches de classification multiclasses en apprentissage automatique.\n\n\nValeurs de softmax pour un vecteur de longueur 3."
+    "text": "Softmax\n\n\n\n\n\n\n\n\n\n\n\n\nz_1\nz_2\nz_3\n\\sigma(z_1)\n\\sigma(z_2)\n\\sigma(z_3)\n\\sum\n\n\n\n\n1.47\n-0.39\n0.22\n0.69\n0.11\n0.20\n1.00\n\n\n5.00\n6.00\n4.00\n0.24\n0.67\n0.09\n1.00\n\n\n0.90\n0.80\n1.10\n0.32\n0.29\n0.39\n1.00\n\n\n-2.00\n2.00\n-3.00\n0.02\n0.98\n0.01\n1.00\n\n\n\n\n\n\nMaintient l’ordre relatif : La fonction softmax préserve l’ordre relatif des valeurs d’entrée. Si une entrée est supérieure à une autre, sa sortie correspondante sera également supérieure.\nInterprétée comme des probabilités : Chaque valeur se situe dans la plage de 0 à 1. Les valeurs de sortie de la fonction softmax sont normalisées pour totaliser un, ce qui permet de les interpréter comme des probabilités.\nDifférences relatives : Lorsque les différences relatives entre les valeurs d’entrée sont petites, les différences dans les probabilités de sortie restent petites, reflétant la distribution des entrées. Lorsque les valeurs d’entrée sont identiques, les sorties seront égales à \\frac{1}{n}, où n est le nombre de classes.\nLarge gamme de valeurs : La fonction softmax peut traiter efficacement une large gamme de valeurs d’entrée, grâce à la fonction exponentielle et à la normalisation, qui adaptent les entrées à une plage probabiliste.\n\nCes propriétés rendent la fonction softmax particulièrement utile pour les tâches de classification multiclasses en apprentissage automatique.\n\n\nValeurs de softmax pour un vecteur de longueur 3."
   },
   {
     "objectID": "lectures/14/slides.html#softmax-3",
     "href": "lectures/14/slides.html#softmax-3",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Softmax",
     "text": "Softmax"
   },
   {
     "objectID": "lectures/14/slides.html#fonction-de-perte-dentropie-croisée",
     "href": "lectures/14/slides.html#fonction-de-perte-dentropie-croisée",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Fonction de perte d’entropie croisée",
-    "text": "Fonction de perte d’entropie croisée\nL’entropie croisée dans une tâche de classification multiclasses pour un exemple :\n\\[\nJ(W) = -\\sum_{k=1}^{K} y_k \\log(\\hat{y}_k)\n\\]\nOù :\n\n\\(K\\) est le nombre de classes.\n\\(y_k\\) est la distribution réelle pour la classe \\(k\\).\n\\(\\hat{y}_k\\) est la probabilité prédite de la classe \\(k\\) par le modèle.\n\n\n\nLe vecteur cible \\(y\\) est exprimé comme un vecteur encodé one-hot de longueur \\(K\\), où l’élément correspondant à la classe réelle est fixé à 1, et tous les autres éléments sont à 0.\nPar conséquent, dans la somme sur les classes, seul le terme associé à la classe réelle contribue une valeur non nulle.\nAinsi, la perte d’entropie croisée pour un exemple unique est donnée par \\(-\\log(\\hat{y}_k)\\), où \\(\\hat{y}_k\\) est la probabilité prédite pour la classe réelle.\nLa probabilité prédite \\(\\hat{y}_k\\) est dérivée de la fonction softmax appliquée à la couche de sortie du réseau neuronal."
+    "text": "Fonction de perte d’entropie croisée\nL’entropie croisée dans une tâche de classification multiclasses pour un exemple :\n\nJ(W) = -\\sum_{k=1}^{K} y_k \\log(\\hat{y}_k)\n\nOù :\n\nK est le nombre de classes.\ny_k est la distribution réelle pour la classe k.\n\\hat{y}_k est la probabilité prédite de la classe k par le modèle.\n\n\n\nLe vecteur cible y est exprimé comme un vecteur encodé one-hot de longueur K, où l’élément correspondant à la classe réelle est fixé à 1, et tous les autres éléments sont à 0.\nPar conséquent, dans la somme sur les classes, seul le terme associé à la classe réelle contribue une valeur non nulle.\nAinsi, la perte d’entropie croisée pour un exemple unique est donnée par -\\log(\\hat{y}_k), où \\hat{y}_k est la probabilité prédite pour la classe réelle.\nLa probabilité prédite \\hat{y}_k est dérivée de la fonction softmax appliquée à la couche de sortie du réseau neuronal."
   },
   {
     "objectID": "lectures/14/slides.html#fonction-de-perte-dentropie-croisée-1",
     "href": "lectures/14/slides.html#fonction-de-perte-dentropie-croisée-1",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Fonction de perte d’entropie croisée",
-    "text": "Fonction de perte d’entropie croisée\n\nProblème de classification : 3 classes\n\nVersicolour, Setosa, Virginica.\n\nEncodage one-hot :\n\nSetosa = \\([0, 1, 0]\\).\n\nSorties Softmax & Perte :\n\n\\([0.22,\\mathbf{0.7}, 0.08]\\) : Perte = \\(-\\log(0.7) = 0.3567\\).\n\\([0.7, \\mathbf{0.22}, 0.08]\\) : Perte = \\(-\\log(0.22) = 1.5141\\).\n\\([0.7, \\mathbf{0.08}, 0.22]\\) : Perte = \\(-\\log(0.08) = 2.5257\\).\n\n\n\nParmi les sorties softmax, l’entropie croisée n’évalue que la composante correspondant à \\(k=1\\) (Setosa), car les autres entrées dans le vecteur encodé one-hot sont nulles. Cet élément pertinent est mis en évidence en gras. Lorsque la prédiction softmax correspond étroitement à la valeur attendue, la perte résultante est minimale (0.3567). À l’inverse, lorsque la prédiction s’éloigne de la valeur attendue, la perte augmente (1.5141 et 2.5257)."
+    "text": "Fonction de perte d’entropie croisée\n\nProblème de classification : 3 classes\n\nVersicolour, Setosa, Virginica.\n\nEncodage one-hot :\n\nSetosa = [0, 1, 0].\n\nSorties Softmax & Perte :\n\n[0.22,\\mathbf{0.7}, 0.08] : Perte = -\\log(0.7) = 0.3567.\n[0.7, \\mathbf{0.22}, 0.08] : Perte = -\\log(0.22) = 1.5141.\n[0.7, \\mathbf{0.08}, 0.22] : Perte = -\\log(0.08) = 2.5257.\n\n\n\nParmi les sorties softmax, l’entropie croisée n’évalue que la composante correspondant à k=1 (Setosa), car les autres entrées dans le vecteur encodé one-hot sont nulles. Cet élément pertinent est mis en évidence en gras. Lorsque la prédiction softmax correspond étroitement à la valeur attendue, la perte résultante est minimale (0.3567). À l’inverse, lorsque la prédiction s’éloigne de la valeur attendue, la perte augmente (1.5141 et 2.5257)."
   },
   {
     "objectID": "lectures/14/slides.html#cas-un-exemple",
     "href": "lectures/14/slides.html#cas-un-exemple",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Cas : un exemple",
-    "text": "Cas : un exemple\n\n\n\n\n\n\n\n\n\n\n\nDans la somme, seul le terme où \\(y_k = 1\\) contribue une valeur non nulle.\nEn raison du signe négatif précédant la somme, la valeur de la fonction est \\(-\\log(\\hat{y}_k)\\).\nSi la probabilité prédite \\(\\hat{y}_k\\) est proche de 1, la perte approche de zéro, indiquant une pénalité minimale.\nÀ l’inverse, lorsque \\(\\hat{y}_k\\) approche de 0, indiquant une mauvaise prédiction, la perte approche l’infini. Cette pénalité importante permet à la perte d’entropie croisée de converger plus rapidement que l’erreur quadratique moyenne."
+    "text": "Cas : un exemple\n\n\n\n\n\n\n\n\n\n\n\nDans la somme, seul le terme où y_k = 1 contribue une valeur non nulle.\nEn raison du signe négatif précédant la somme, la valeur de la fonction est -\\log(\\hat{y}_k).\nSi la probabilité prédite \\hat{y}_k est proche de 1, la perte approche de zéro, indiquant une pénalité minimale.\nÀ l’inverse, lorsque \\hat{y}_k approche de 0, indiquant une mauvaise prédiction, la perte approche l’infini. Cette pénalité importante permet à la perte d’entropie croisée de converger plus rapidement que l’erreur quadratique moyenne."
   },
   {
     "objectID": "lectures/14/slides.html#cas-ensemble-de-données",
     "href": "lectures/14/slides.html#cas-ensemble-de-données",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Cas : ensemble de données",
-    "text": "Cas : ensemble de données\nPour un ensemble de données avec \\(N\\) exemples, la perte moyenne d’entropie croisée sur tous les exemples est calculée comme suit :\n\\[\nL = -\\frac{1}{N} \\sum_{i=1}^{N} \\sum_{k=1}^{K} y_{i,k} \\log(\\hat{y}_{i,k})\n\\]\nOù :\n\n\\(i\\) est l’index des exemples dans l’ensemble de données.\n\\(y_{i,k}\\) et \\(\\hat{y}_{i,k}\\) sont respectivement les valeurs réelles et les probabilités prédites pour la classe \\(k\\) de l’exemple \\(i\\)."
+    "text": "Cas : ensemble de données\nPour un ensemble de données avec N exemples, la perte moyenne d’entropie croisée sur tous les exemples est calculée comme suit :\n\nL = -\\frac{1}{N} \\sum_{i=1}^{N} \\sum_{k=1}^{K} y_{i,k} \\log(\\hat{y}_{i,k})\n\nOù :\n\ni est l’index des exemples dans l’ensemble de données.\ny_{i,k} et \\hat{y}_{i,k} sont respectivement les valeurs réelles et les probabilités prédites pour la classe k de l’exemple i."
   },
   {
     "objectID": "lectures/14/slides.html#définition",
     "href": "lectures/14/slides.html#définition",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Définition",
     "text": "Définition\nLa régularisation regroupe un ensemble de techniques visant à améliorer la capacité de généralisation d’un modèle en atténuant le surapprentissage. En décourageant une complexité excessive du modèle, ces méthodes améliorent la robustesse et la performance du modèle sur des données non vues."
   },
   {
     "objectID": "lectures/14/slides.html#ajout-de-termes-de-pénalité-à-la-perte",
     "href": "lectures/14/slides.html#ajout-de-termes-de-pénalité-à-la-perte",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Ajout de termes de pénalité à la perte",
     "text": "Ajout de termes de pénalité à la perte\n\nEn optimisation numérique, il est courant d’ajouter des termes supplémentaires à la fonction objectif afin de dissuader certaines caractéristiques indésirables du modèle.\nPour un problème de minimisation, le processus d’optimisation vise à éviter des coûts élevés associés à ces termes de pénalité."
   },
   {
     "objectID": "lectures/14/slides.html#fonction-de-perte",
     "href": "lectures/14/slides.html#fonction-de-perte",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Fonction de perte",
-    "text": "Fonction de perte\nPrenons la fonction de perte de l’erreur absolue moyenne :\n\\[\n  \\mathrm{MAE}(X,W) = \\frac{1}{N} \\sum_{i=1}^{N} | h_W(x_i) - y_i |\n\\]\nOù :\n\n\\(W\\) sont les poids de notre réseau.\n\\(h_W(x_i)\\) est la sortie du réseau pour l’exemple \\(i\\).\n\\(y_i\\) est la vraie étiquette pour l’exemple \\(i\\)."
+    "text": "Fonction de perte\nPrenons la fonction de perte de l’erreur absolue moyenne :\n\n  \\mathrm{MAE}(X,W) = \\frac{1}{N} \\sum_{i=1}^{N} | h_W(x_i) - y_i |\n\nOù :\n\nW sont les poids de notre réseau.\nh_W(x_i) est la sortie du réseau pour l’exemple i.\ny_i est la vraie étiquette pour l’exemple i."
   },
   {
     "objectID": "lectures/14/slides.html#termes-de-pénalité",
     "href": "lectures/14/slides.html#termes-de-pénalité",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Terme(s) de pénalité",
-    "text": "Terme(s) de pénalité\nUn ou plusieurs termes peuvent être ajoutés à la perte :\n\\[\n  \\mathrm{MAE}(X,W) = \\frac{1}{N} \\sum_{i=1}^{N} | h_W(x_i) - y_i | + \\mathrm{pénalité}\n\\]"
+    "text": "Terme(s) de pénalité\nUn ou plusieurs termes peuvent être ajoutés à la perte :\n\n  \\mathrm{MAE}(X,W) = \\frac{1}{N} \\sum_{i=1}^{N} | h_W(x_i) - y_i | + \\mathrm{pénalité}"
   },
   {
     "objectID": "lectures/14/slides.html#norme",
     "href": "lectures/14/slides.html#norme",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Norme",
-    "text": "Norme\nUne norme assigne une longueur non négative à un vecteur.\nLa norme \\(\\ell_p\\) d’un vecteur \\(\\mathbf{z} = [z_1, z_2, \\ldots, z_n]\\) est définie comme suit :\n\\[\n  \\|\\mathbf{z}\\|_p = \\left( \\sum_{i=1}^{n} |z_i|^p \\right)^{1/p}\n\\]\n\n\nUne norme est une fonction qui attribue une longueur ou taille non négative à chaque vecteur dans un espace vectoriel, en respectant certaines propriétés : positivité, multiplication scalaire, inégalité triangulaire, et le fait que la norme est nulle si et seulement si le vecteur est nul.\n\n\nAvec des valeurs de \\(p\\) plus grandes, la norme \\(\\ell_p\\) met de plus en plus l’accent sur les valeurs de \\(z_i\\) les plus grandes à cause de l’exponentiation."
+    "text": "Norme\nUne norme assigne une longueur non négative à un vecteur.\nLa norme \\ell_p d’un vecteur \\mathbf{z} = [z_1, z_2, \\ldots, z_n] est définie comme suit :\n\n  \\|\\mathbf{z}\\|_p = \\left( \\sum_{i=1}^{n} |z_i|^p \\right)^{1/p}\n\n\n\nUne norme est une fonction qui attribue une longueur ou taille non négative à chaque vecteur dans un espace vectoriel, en respectant certaines propriétés : positivité, multiplication scalaire, inégalité triangulaire, et le fait que la norme est nulle si et seulement si le vecteur est nul.\n\n\nAvec des valeurs de p plus grandes, la norme \\ell_p met de plus en plus l’accent sur les valeurs de z_i les plus grandes à cause de l’exponentiation."
   },
   {
     "objectID": "lectures/14/slides.html#normes-ell_1-et-ell_2",
     "href": "lectures/14/slides.html#normes-ell_1-et-ell_2",
-    "title": "Softmax, entropie croisée, régularisation",
-    "section": "Normes \\(\\ell_1\\) et \\(\\ell_2\\)",
-    "text": "Normes \\(\\ell_1\\) et \\(\\ell_2\\)\nLa norme \\(\\ell_1\\) (norme de Manhattan) est :\n\\[\n  \\|\\mathbf{z}\\|_1 = \\sum_{i=1}^{n} |z_i|\n\\]\nLa norme \\(\\ell_2\\) (norme euclidienne) est :\n\\[\n  \\|\\mathbf{z}\\|_2 = \\sqrt{\\sum_{i=1}^{n} z_i^2}\n\\]"
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Normes \\ell_1 et \\ell_2",
+    "text": "Normes \\ell_1 et \\ell_2\nLa norme \\ell_1 (norme de Manhattan) est :\n\n  \\|\\mathbf{z}\\|_1 = \\sum_{i=1}^{n} |z_i|\n\nLa norme \\ell_2 (norme euclidienne) est :\n\n  \\|\\mathbf{z}\\|_2 = \\sqrt{\\sum_{i=1}^{n} z_i^2}"
   },
   {
     "objectID": "lectures/14/slides.html#régularisation-l_1-et-l_2",
     "href": "lectures/14/slides.html#régularisation-l_1-et-l_2",
-    "title": "Softmax, entropie croisée, régularisation",
-    "section": "Régularisation \\(l_1\\) et \\(l_2\\)",
-    "text": "Régularisation \\(l_1\\) et \\(l_2\\)\nCi-dessous, \\(\\alpha\\) et \\(\\beta\\) déterminent le degré de régularisation appliqué ; fixer ces valeurs à zéro désactive effectivement le terme de régularisation.\n\\[\n  \\mathrm{MAE}(X,W) = \\frac{1}{N} \\sum_{i=1}^{N} | h_W(x_i) - y_i | + \\alpha \\ell_1 + \\beta \\ell_2\n\\]"
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Régularisation l_1 et l_2",
+    "text": "Régularisation l_1 et l_2\nCi-dessous, \\alpha et \\beta déterminent le degré de régularisation appliqué ; fixer ces valeurs à zéro désactive effectivement le terme de régularisation.\n\n  \\mathrm{MAE}(X,W) = \\frac{1}{N} \\sum_{i=1}^{N} | h_W(x_i) - y_i | + \\alpha \\ell_1 + \\beta \\ell_2"
   },
   {
     "objectID": "lectures/14/slides.html#recommandations",
     "href": "lectures/14/slides.html#recommandations",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Recommandations",
-    "text": "Recommandations\n\nRégularisation \\(\\ell_1\\) :\n\nEncourage la parcimonie, mettant à zéro beaucoup de poids.\nUtile pour la sélection d’attributs en réduisant la dépendance à certains attributs.\n\nRégularisation \\(\\ell_2\\) :\n\nEncourage des poids petits et répartis pour la stabilité.\nIdéal lorsque toutes les attributs contribuent et que la réduction de la complexité est primordiale.\n\n\n\n\nVoir kong_and_yu-2018 pour un exemple."
+    "text": "Recommandations\n\nRégularisation \\ell_1 :\n\nEncourage la parcimonie, mettant à zéro beaucoup de poids.\nUtile pour la sélection d’attributs en réduisant la dépendance à certains attributs.\n\nRégularisation \\ell_2 :\n\nEncourage des poids petits et répartis pour la stabilité.\nIdéal lorsque toutes les attributs contribuent et que la réduction de la complexité est primordiale.\n\n\n\n\nVoir kong_and_yu-2018 pour un exemple."
   },
   {
     "objectID": "lectures/14/slides.html#exemple-keras",
     "href": "lectures/14/slides.html#exemple-keras",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Exemple Keras",
-    "text": "Exemple Keras\n\nimport tensorflow as tf\nfrom tensorflow.python.keras.layers import Dense\n\nregularizer = tf.keras.regularizers.l2(0.001)\n\ndense = Dense(50, kernel_regularizer=regularizer)\n\n\n\nCette couche utilise spécifiquement la régularisation \\(\\ell_2\\), contrairement à la discussion précédente où la régularisation était appliquée globalement à l’ensemble du modèle."
+    "text": "Exemple Keras\n\nimport tensorflow as tf\nfrom tensorflow.python.keras.layers import Dense\n\nregularizer = tf.keras.regularizers.l2(0.001)\n\ndense = Dense(50, kernel_regularizer=regularizer)\n\n\n\nCette couche utilise spécifiquement la régularisation \\ell_2, contrairement à la discussion précédente où la régularisation était appliquée globalement à l’ensemble du modèle."
   },
   {
     "objectID": "lectures/14/slides.html#dropout",
     "href": "lectures/14/slides.html#dropout",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Dropout",
     "text": "Dropout\nLe dropout est une technique de régularisation dans les réseaux neuronaux où des neurones sélectionnés aléatoirement sont ignorés pendant l’entraînement, réduisant ainsi le surapprentissage en empêchant la co-adaptation des attributs.\n\n\nHinton et al. (2012)"
   },
   {
     "objectID": "lectures/14/slides.html#dropout-1",
     "href": "lectures/14/slides.html#dropout-1",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Dropout",
-    "text": "Dropout\n\nLors de chaque étape d’entraînement, chaque neurone dans une couche de dropout a une probabilité \\(p\\) d’être exclu du calcul, des valeurs typiques de \\(p\\) allant de 10 % à 50 %.\nBien que cela puisse sembler contre-intuitif, cette approche empêche le réseau de dépendre de neurones spécifiques, favorisant ainsi la distribution des représentations apprises sur plusieurs neurones."
+    "text": "Dropout\n\nLors de chaque étape d’entraînement, chaque neurone dans une couche de dropout a une probabilité p d’être exclu du calcul, des valeurs typiques de p allant de 10 % à 50 %.\nBien que cela puisse sembler contre-intuitif, cette approche empêche le réseau de dépendre de neurones spécifiques, favorisant ainsi la distribution des représentations apprises sur plusieurs neurones."
   },
   {
     "objectID": "lectures/14/slides.html#dropout-2",
     "href": "lectures/14/slides.html#dropout-2",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Dropout",
-    "text": "Dropout\n\nLe dropout est l’une des méthodes de régularisation les plus populaires et les plus efficaces pour réduire le surapprentissage.\nL’amélioration typique des performances est modeste, généralement autour de 1 à 2 %.\n\n\nPendant l’entraînement, chaque neurone dans une couche de dropout est aléatoirement exclu (mis à zéro) avec une probabilité \\(p\\) — le taux de dropout.\nLorsque le dropout « met un neurone à zéro », cela signifie que pour l’étape d’entraînement en cours (mini-lot), l’activation de sortie de ce neurone est remplacée par zéro. Le neurone existe toujours dans le réseau, ses poids ne sont ni supprimés ni modifiés, mais sa sortie ne contribue en rien au passage avant ou arrière pour ce lot.\nDans le lot suivant, un nouveau masque aléatoire est échantillonné, donc un sous-ensemble différent de neurones est exclu. Au fil de nombreuses itérations, tous les neurones participent, mais jamais tous en même temps.\nLors de l’inférence, le mécanisme est désactivé, tous les neurones sont actifs."
+    "text": "Dropout\n\nLe dropout est l’une des méthodes de régularisation les plus populaires et les plus efficaces pour réduire le surapprentissage.\nL’amélioration typique des performances est modeste, généralement autour de 1 à 2 %.\n\n\nPendant l’entraînement, chaque neurone dans une couche de dropout est aléatoirement exclu (mis à zéro) avec une probabilité p — le taux de dropout.\nLorsque le dropout « met un neurone à zéro », cela signifie que pour l’étape d’entraînement en cours (mini-lot), l’activation de sortie de ce neurone est remplacée par zéro. Le neurone existe toujours dans le réseau, ses poids ne sont ni supprimés ni modifiés, mais sa sortie ne contribue en rien au passage avant ou arrière pour ce lot.\nDans le lot suivant, un nouveau masque aléatoire est échantillonné, donc un sous-ensemble différent de neurones est exclu. Au fil de nombreuses itérations, tous les neurones participent, mais jamais tous en même temps.\nLors de l’inférence, le mécanisme est désactivé, tous les neurones sont actifs."
   },
   {
     "objectID": "lectures/14/slides.html#keras",
     "href": "lectures/14/slides.html#keras",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Keras",
     "text": "Keras\n\nimport keras\nfrom keras.models import Sequential\nfrom keras.layers import InputLayer, Dropout, Flatten, Dense\n\nmodel = tf.keras.Sequential([\n    InputLayer(shape=[28, 28]),\n    Flatten(),\n    Dropout(rate=0.2),\n    Dense(300, activation=\"relu\"),\n    Dropout(rate=0.2),\n    Dense(100, activation=\"relu\"),\n    Dropout(rate=0.2),\n    Dense(10, activation=\"softmax\")\n])\n\n\n\nLe taux de dropout peut différer entre les couches ; des taux plus élevés peuvent être appliqués aux couches plus larges, tandis que des taux plus petits sont adaptés aux couches plus petites. Il est courant dans de nombreux réseaux d’appliquer le dropout uniquement après la dernière couche cachée.\n\n\nAjout de couches Dropout au modèle Fashion-MNIST de la dernière leçon."
   },
   {
     "objectID": "lectures/14/slides.html#définition-1",
     "href": "lectures/14/slides.html#définition-1",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Définition",
     "text": "Définition\nL’arrêt anticipé (early stopping) est une technique de régularisation qui interrompt l’entraînement dès que la performance du modèle sur un ensemble de validation commence à se dégrader, empêchant ainsi le surapprentissage en s’arrêtant avant que le modèle n’apprenne le bruit.\n\n\nGeoffrey Hinton appelle cela le “beau repas gratuit.”"
   },
   {
     "objectID": "lectures/14/slides.html#early-stopping",
     "href": "lectures/14/slides.html#early-stopping",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Early Stopping",
     "text": "Early Stopping\n\n\n\n\n\n\n\n\n\n\n\nAttribution : Géron (2022), 04_training_linear_models.ipynb."
   },
   {
     "objectID": "lectures/14/slides.html#résumé",
     "href": "lectures/14/slides.html#résumé",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Résumé",
-    "text": "Résumé\n\nFonctions de perte :\n\nTâches de régression : Erreur quadratique moyenne (MSE).\nTâches de classification : Perte d’entropie croisée avec activation softmax pour les sorties multiclasses.\n\nTechniques de régularisation :\n\nRégularisation L1 et L2 : Ajouter des termes de pénalité à la perte pour décourager les poids élevés.\nDropout : Désactiver aléatoirement des neurones pendant l’entraînement pour éviter le surapprentissage.\nEarly Stopping : Interrompre l’entraînement lorsque la performance de validation se dégrade."
+    "text": "Résumé\n\nPropagation des gradients : Les dérivées des activations et l’initialisation influencent l’entraînement. ReLU et une mise à l’échelle appropriée atténuent certaines limites des réseaux sigmoïdes.\nImplémentation : SimpleMLP conserve la structure de SimplerMLP et ajoute un choix d’activations cachées, une régularisation L2 optionnelle et la décroissance du taux d’apprentissage.\nFonctions de perte :\n\nTâches de régression : Erreur quadratique moyenne (MSE).\nTâches de classification : Perte d’entropie croisée avec activation softmax pour les sorties multiclasses.\n\nTechniques de régularisation :\n\nRégularisation L1 et L2 : Ajouter des termes de pénalité à la perte pour décourager les poids élevés.\nDropout : Désactiver aléatoirement des neurones pendant l’entraînement pour éviter le surapprentissage.\nEarly Stopping : Interrompre l’entraînement lorsque la performance de validation se dégrade."
   },
   {
     "objectID": "lectures/14/slides.html#prochain-cours",
     "href": "lectures/14/slides.html#prochain-cours",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Prochain cours",
     "text": "Prochain cours\n\nNous introduirons les réseaux convolutifs."
   },
   {
     "objectID": "lectures/14/slides.html#références",
     "href": "lectures/14/slides.html#références",
-    "title": "Softmax, entropie croisée, régularisation",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Références",
-    "text": "Références\n\n\nGéron, Aurélien. 2022. Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow. 3ᵉ éd. O’Reilly Media, Inc.\n\n\nHinton, Geoffrey E., Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, et Ruslan Salakhutdinov. 2012. « Improving neural networks by preventing co-adaptation of feature detectors ». CoRR abs/1207.0580. http://arxiv.org/abs/1207.0580.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
+    "text": "Références\n\n\nGéron, Aurélien. 2022. Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow. 3ᵉ éd. O’Reilly Media, Inc.\n\n\nGlorot, Xavier, et Yoshua Bengio. 2010. « Understanding the difficulty of training deep feedforward neural networks ». In Proceedings of the Thirteenth International Conference on Artificial Intelligence and Statistics, édité par Yee Whye Teh et Mike Titterington, vol. 9. Proceedings of Machine Learning Research. PMLR. https://proceedings.mlr.press/v9/glorot10a.html.\n\n\nHinton, Geoffrey E., Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, et Ruslan Salakhutdinov. 2012. « Improving neural networks by preventing co-adaptation of feature detectors ». CoRR abs/1207.0580. http://arxiv.org/abs/1207.0580.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
   },
   {
     "objectID": "lectures/12/slides.html#message-du-jour",
@@ -8159,8 +8159,8 @@
     "objectID": "lectures/13/slides.html#message-du-jour",
     "href": "lectures/13/slides.html#message-du-jour",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
-    "section": "",
-    "text": "‘Am I redundant?’: how AI changed my career in bioinformatics, Nature News, 2025-10-13.\n\nBien que relativement peu d’étudiants envisagent une carrière dans la recherche, particulièrement en bioinformatique, l’article communique efficacement plusieurs messages clés. Il est intéressant de noter que même les titulaires d’un doctorat peuvent se sentir menacés par l’avènement de l’intelligence artificielle. L’article illustre en outre comment l’IA ne supprime pas les emplois, mais les transforme. Dans de nombreux domaines, cette transformation redéfinit les rôles vers ceux de supervision."
+    "section": "Message du jour",
+    "text": "Message du jour\n\n\n\n\n\n\n\nL’article décrit l’évolution de Birdbrain, le système d’IA de Duolingo : un modèle de régression logistique mis à jour chaque nuit par traitement en lot a cédé la place à un système en temps réel utilisant un réseau de neurones récurrent à mémoire à long et à court terme (LSTM).\n\n\nComment l’IA de Duolingo apprend ce que vous devez apprendre, Bicknell et al. (2023)."
   },
   {
     "objectID": "lectures/13/slides.html#résultats-dapprentissage",
@@ -8174,7 +8174,7 @@
     "href": "lectures/13/slides.html#rétropropagation-1",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Rétropropagation",
-    "text": "Rétropropagation\nApprentissage de représentations par rétropropagation des erreurs\nDavid E. Rumelhart, Geoffrey E. Hinton & Ronald J. Williams\nNous décrivons une nouvelle procédure d’apprentissage, la rétropropagation, pour les réseaux d’unités semblables à des neurones. La procédure ajuste à plusieurs reprises les poids des connexions dans le réseau afin de minimiser une mesure de la différence entre le vecteur de sortie réel du réseau et le vecteur de sortie souhaité. En conséquence des ajustements de poids, les unités internes ‘cachées’ qui ne font pas partie de l’entrée ou de la sortie en viennent à représenter des attributs importants du domaine de la tâche, et les régularités de la tâche sont capturées par les interactions de ces unités. La capacité à créer de nouveaux attributs utiles distingue la rétropropagation des méthodes antérieures, plus simples, telles que la procédure de convergence du perceptron.\n\n\nRumelhart et al. (1986); Texte traduit de l’anglais ci-dessus par ChatGPT.\n\nJe présente ici le résumé de la publication fondatrice de Nature où Hinton et ses collègues ont introduit l’algorithme de rétropropagation. Ce résumé est à la fois élégant et informatif, capturant efficacement les principes fondamentaux des réseaux de neurones modernes : le concept de fonction de perte, l’ajustement itératif des poids via l’algorithme de descente de gradient, et le rôle crucial des couches cachées dans la génération d’attributs utiles dépendantes des tâches.\nNature est une revue prestigieuse, et elle publie rarement du contenu lié à l’informatique.\nAu moment de cette publication, Hinton était affilié à l’Université Carnegie Mellon. Pour rappel, Hinton a reçu le prix Nobel de physique en 2024 pour ses contributions au développement des méthodes fondamentales de l’apprentissage automatique moderne.\nLe résumé souligne la raison d’être des couches cachées dans les réseaux de neurones. Les couches cachées initiales apprennent des représentations simples directement à partir des données d’entrée, tandis que les couches suivantes identifient des associations parmi ces représentations. Chaque couche s’appuie sur la connaissance des couches précédentes, culminant dans la sortie finale du réseau."
+    "text": "Rétropropagation\nLearning representations by back-propagating errors\nDavid E. Rumelhart, Geoffrey E. Hinton & Ronald J. Williams\nNous décrivons une nouvelle procédure d’apprentissage, la rétropropagation, pour des réseaux d’unités semblables à des neurones. La procédure ajuste les poids de façon répétée dans les connexions du réseau afin de minimiser une mesure de la différence entre le vecteur de sortie réel du réseau et le vecteur de sortie souhaité. Ces ajustements amènent les unités internes « cachées », qui ne font partie ni de l’entrée ni de la sortie, à représenter des caractéristiques importantes du domaine de la tâche. Les interactions entre ces unités capturent les régularités de la tâche. La capacité de créer de nouvelles caractéristiques utiles distingue la rétropropagation des méthodes antérieures plus simples, comme la procédure de convergence du perceptron.\n\n\nCe résumé est traduit de l’article influent publié en 1986 par Rumelhart, Hinton et Williams, qui a contribué à populariser la rétropropagation pour apprendre des représentations internes. Des travaux antérieurs sur la différentiation automatique en mode inverse précèdent cet article (Baydin et al. 2017). Le résumé relie une fonction de perte, les mises à jour des paramètres fondées sur le gradient et les couches cachées qui apprennent des caractéristiques utiles pour la tâche.\nNature est une revue prestigieuse qui publie occasionnellement des travaux liés à l’informatique.\nAu moment de cette publication, Hinton était affilié à l’Université Carnegie Mellon. Rappelons qu’il a reçu le prix Nobel de physique en 2024 pour ses contributions au développement de méthodes fondamentales de l’apprentissage automatique moderne.\nLe résumé souligne l’intérêt des couches cachées dans les réseaux de neurones. Les premières couches cachées apprennent des représentations simples à partir des données d’entrée, tandis que les suivantes identifient des associations entre ces représentations. Chaque couche exploite les représentations des couches précédentes jusqu’à la sortie finale du réseau.\n\n\nRumelhart et al. (1986)"
   },
   {
     "objectID": "lectures/13/slides.html#avant-la-rétropropagation",
@@ -8194,36 +8194,36 @@
     "objectID": "lectures/13/slides.html#idée-conceptuelle",
     "href": "lectures/13/slides.html#idée-conceptuelle",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
-    "section": "Idée Conceptuelle",
-    "text": "Idée Conceptuelle\n\n\n\n\n\n\n\n\\(J(\\theta) = -\\frac{1}{N} \\sum_{i=1}^{N} \\left[ y_i \\log \\hat{y_i} + (1-y_i) \\log (1 - \\hat{y_i}) \\right]\\)\n\nÉtant donné un réseau et des paramètres qui ont été initialisés aléatoirement, nous pouvons générer des prédictions (\\(\\hat{y_i}\\)) ; cependant, pour toute tâche non triviale, ces prédictions initiales sont susceptibles d’être inexactes en raison de la nature aléatoire de l’initialisation des paramètres.\nDans le contexte d’un problème de classification binaire, quel niveau d’exactitude (accuracy) pourrait-on anticiper ?\nCorrectement, on s’attendrait à une exactitude (accuracy) d’environ 50 %, en supposant que le jeu de données est équilibré.\nPour évaluer les performances du modèle, nous utilisons une fonction de perte, ici l’entropie croisée binaire (également connue sous le nom de vraisemblance logarithmique négative). Cette fonction calcule la moyenne des pertes sur les exemples d’entraînement, comme l’entropie croisée binaire moyenne de la présentation 12. Le terme intérieur de la somme calcule la perte d’un exemple.\nDans le calcul de la perte, \\(\\hat{y}_i = h(x_i) = f_L(\\ldots f_2(f_1(x_i))\\ldots)\\), où \\(f_\\ell(A)=\\varphi(AW^{(\\ell)}+b^{(\\ell)})\\) et \\(\\varphi\\) sans indice est la fonction d’activation, sigmoïde, ReLU, etc."
+    "section": "Idée conceptuelle",
+    "text": "Idée conceptuelle\n\n\n\n\n\n\n\nAvec un réseau dont les paramètres ont été initialisés aléatoirement, nous pouvons produire des probabilités (\\(\\hat p_i\\)), mais les paramètres n’ont pas encore été ajustés à la tâche.\nDans un problème de classification binaire, à quel niveau d’exactitude peut-on s’attendre?\nUn classificateur qui devine les étiquettes indépendamment avec des probabilités égales a une exactitude attendue de 50 %. C’est un point de comparaison utile pour une tâche binaire équilibrée, mais un réseau particulier initialisé aléatoirement n’atteint pas nécessairement cette exactitude.\nPour évaluer les prédictions du modèle, nous utilisons ici l’entropie croisée binaire (binary cross-entropy, BCE), aussi appelée log-vraisemblance négative. La fonction de perte calcule la moyenne des pertes sur tous les exemples d’entraînement, comme dans la présentation 12. Le terme à l’intérieur de la somme calcule la perte d’un exemple.\nDans ce réseau binaire, l’unique activation de sortie est \\(\\hat p_i=f_L(\\ldots f_2(f_1(x_i))\\ldots)\\). Ici, \\(x_i\\) désigne l’exemple \\(i\\) du jeu de données. Lorsqu’il est question des caractéristiques d’un exemple, \\(x_j\\) désigne la caractéristique \\(j\\). La transformation complète d’une couche est \\(f_l(a)=\\varphi(aW^{(l)}+b^{(l)})\\), où \\(\\varphi\\) est l’activation choisie pour cette couche.\n\n\n\\(J(\\theta) = -\\frac{1}{N} \\sum_{i=1}^{N} \\left[ y_i \\log \\hat p_i + (1-y_i) \\log (1 - \\hat p_i) \\right]\\)"
   },
   {
     "objectID": "lectures/13/slides.html#idée-conceptuelle-suite",
     "href": "lectures/13/slides.html#idée-conceptuelle-suite",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
-    "section": "Idée Conceptuelle (suite)",
-    "text": "Idée Conceptuelle (suite)\n\n\n\n\n\n\n\n\\(\\frac {\\partial}{\\partial \\theta_k}J(\\theta)\\), pour tout \\(k\\), où les \\(\\theta_k\\) sont W[l][i,j] et b[l][j].\n\nDans cette notation, l’indice l désigne les couches de traitement au sein du modèle. L’indice i se réfère aux unités individuelles au sein de la couche précédente, notée l-1, tandis que l’indice j correspond aux unités au sein de la couche actuelle l.\nCombien de paramètres sont présents dans le modèle ?\nLe modèle se compose de trois matrices de poids. Les dimensions de ces matrices sont \\(2 \\times 4\\), \\(4 \\times 4\\), et \\(4 \\times 1\\), contenant respectivement 8, 16 et 4 poids. Cela donne un total de 28 paramètres de poids.\nDe plus, il y a trois tableaux pour les termes de biais, contenant respectivement 4, 4 et 1 biais, ce qui fait un total de 9 paramètres de biais.\nEn tout, le modèle comprend 37 paramètres, ce qui est relativement petit en comparaison avec des modèles plus complexes. Par exemple, le modèle Fashion-MNIST présenté dans la présentation 11 avait 266,610 paramètres. Dans l’apprentissage automatique contemporain, il n’est pas rare que les modèles contiennent des millions voire des milliards de paramètres."
+    "section": "Idée conceptuelle (suite)",
+    "text": "Idée conceptuelle (suite)\n\n\n\n\n\n\n\nDans cette notation, l’indice l désigne les couches de traitement du modèle. L’indice i désigne une unité de la couche précédente, notée l-1, tandis que j désigne une unité de la couche courante l.\nPrenez un moment pour interpréter ces dérivées partielles. Chacune quantifie le taux de variation local de la perte par rapport à un seul paramètre, tous les autres paramètres restant fixes. Son signe indique si une petite augmentation du paramètre augmente ou diminue la perte. Sa valeur absolue mesure la sensibilité de la perte à ce changement.\nLa descente de gradient soustrait un multiple de chaque dérivée. Une dérivée positive entraîne une diminution du paramètre, et une dérivée négative entraîne une augmentation. Ces indications sont locales : le taux d’apprentissage reste donc important. Chaque dérivée partielle est une composante du vecteur gradient \\(\\nabla_\\theta J\\).\nL’indice mathématique \\(l\\) commence à 1, tandis que l’indice de couche l en Python commence à 0. Ainsi, W[l][i, j] correspond à l’entrée d’indices mathématiques \\(i+1,j+1\\) dans \\(W^{(l+1)}\\).\nCombien de paramètres le modèle contient-il?\nLe modèle contient trois matrices de poids, de dimensions \\(2 \\times 4\\), \\(4 \\times 4\\) et \\(4 \\times 1\\). Elles contiennent respectivement 8, 16 et 4 poids, pour un total de 28 paramètres de poids.\nIl contient aussi trois tableaux de biais, avec respectivement 4, 4 et 1 biais, soit 9 paramètres de biais.\nLe modèle compte donc 37 paramètres, ce qui est relativement peu par rapport à des modèles plus complexes. Par exemple, le modèle Fashion-MNIST de la présentation 11 comptait 266 610 paramètres. En apprentissage automatique contemporain, les modèles peuvent contenir des millions, voire des milliards de paramètres.\n\n\n\\(\\frac {\\partial}{\\partial \\theta_k}J(\\theta)\\), pour tout \\(k\\), où les \\(\\theta_k\\) sont les W[l][i,j] et b[l][j]."
   },
   {
     "objectID": "lectures/13/slides.html#idée-conceptuelle-suite-1",
     "href": "lectures/13/slides.html#idée-conceptuelle-suite-1",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
-    "section": "Idée Conceptuelle (suite)",
-    "text": "Idée Conceptuelle (suite)\n\n\n\n\n\n\n\nPour un nombre fixe d’époques : \\(\\theta = \\theta - \\alpha \\nabla_\\theta J(\\theta)\\)\n\nDes critères d’arrêt alternatifs sont fréquemment utilisés dans les algorithmes d’apprentissage. Par exemple, le processus peut s’arrêter une fois que la perte d’apprentissage atteint un seuil suffisamment bas ou lorsque la perte de validation a augmenté sur un nombre prédéfini d’époques.\nLes paramètres du modèle sont mis à jour simultanément, et ces mises à jour peuvent être calculées efficacement en parallèle.\nCe processus est connu sous le nom de descente de gradient. Comme discuté précédemment, lorsque les mises à jour des paramètres sont effectuées en utilisant l’ensemble du jeu de données, la méthode est appelée descente de gradient par lot. À l’inverse, lorsque les mises à jour sont faites en utilisant un seul exemple d’apprentissage, cela est appelé descente de gradient stochastique. Enfin, lorsqu’un petit sous-ensemble d’exemples, connu sous le nom de lot (mini-batch), est utilisé pour les mises à jour des paramètres, la méthode est appelée descente de gradient par mini-lots.\nNotre tâche actuelle consiste à déterminer les dérivées partielles de la fonction de perte par rapport à chacun des 37 paramètres de notre modèle."
+    "section": "Idée conceptuelle (suite)",
+    "text": "Idée conceptuelle (suite)\n\n\n\n\n\n\n\nLes algorithmes d’entraînement utilisent aussi d’autres critères d’arrêt. Par exemple, l’entraînement peut s’arrêter lorsque la perte de validation ne s’est pas améliorée depuis un nombre prédéfini d’époques.\nLes paramètres du modèle sont mis à jour simultanément, et ces mises à jour peuvent être calculées efficacement en parallèle.\nCe processus s’appelle la descente de gradient. Lorsque chaque mise à jour utilise le jeu de données complet, on parle de descente de gradient par lot. Lorsqu’elle utilise un seul exemple, il s’agit de descente de gradient stochastique. Enfin, lorsqu’elle utilise un petit sous-ensemble d’exemples, appelé mini-lot, on parle de descente de gradient par mini-lots (mini-batch gradient descent).\nIl reste à déterminer les dérivées partielles de la perte par rapport à chacun des 37 paramètres du modèle.\n\n\nPour un nombre fixé d’époques : \\(\\theta = \\theta - \\alpha \\nabla_\\theta J(\\theta)\\)"
   },
   {
     "objectID": "lectures/13/slides.html#rétropropagation-2",
     "href": "lectures/13/slides.html#rétropropagation-2",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Rétropropagation",
-    "text": "Rétropropagation\n\n\nRétropropagation (backprop) est un algorithme pour calculer méthodiquement les dérivées partielles de la fonction de perte d’un réseau de neurones par rapport à chaque paramètre de poids et de biais.\nRétropropagation applique la règle de la chaîne (chain rule) du calcul différentiel récursivement pour calculer \\(\\frac{\\partial J}{\\partial w_{i,j}^{(\\ell)}}\\) pour tous les paramètres du réseau \\(w_{i,j}^{(\\ell)}\\) de manière efficace, en utilisant des quantités intermédiaires du passage avant, où \\(w_{i,j}^{(\\ell)}\\) désigne le paramètre \\(w_{i,j}\\) de la couche \\(\\ell\\)."
+    "text": "Rétropropagation\n\nLa rétropropagation est un algorithme qui calcule méthodiquement les dérivées partielles de la fonction de perte d’un réseau de neurones par rapport à chaque paramètre de poids et de biais.\nLa rétropropagation applique récursivement la règle de la chaîne pour calculer \\(\\frac{\\partial J}{\\partial w_{i,j}^{(l)}}\\) et \\(\\frac{\\partial J}{\\partial b_j^{(l)}}\\) pour chaque couche \\(l\\), en réutilisant efficacement les quantités intermédiaires du passage avant."
   },
   {
     "objectID": "lectures/13/slides.html#règle-de-la-chaîne",
     "href": "lectures/13/slides.html#règle-de-la-chaîne",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Règle de la chaîne",
-    "text": "Règle de la chaîne\nÉtant donné,\n\\[\n  h(x) = f(g(x))\n\\]\nen utilisant la notation de Lagrange, nous avons\n\\[\n  h^\\prime(x) = f^\\prime(g(x)) g^\\prime(x)\n\\]\nou de manière équivalente en utilisant la notation de Leibniz\n\\[\n  \\frac{dz}{dx} = \\frac{dz}{dy} \\cdot \\frac{dy}{dx}\n\\]\n\nLa règle de la chaîne est un concept fondamental en calcul utilisé pour déterminer la dérivée d’une fonction composée. Plus précisément, si une fonction \\(h\\) est définie comme la composition de deux fonctions différentiables, \\(f\\) et \\(g\\), la règle de la chaîne fournit une méthode pour calculer \\(h^\\prime\\).\nConceptuellement, la règle de la chaîne affirme que si vous connaissez le taux de variation instantané de \\(z\\) par rapport à \\(y\\), et le taux de variation de \\(y\\) par rapport à \\(x\\), vous pouvez trouver le taux de variation de \\(z\\) par rapport à \\(x\\). Cela est réalisé en multipliant ces deux taux de variation.\nVous voyez maintenant le lien avec la notation compacte des couches, \\(\\hat{Y} = f_L(\\ldots f_2(f_1(X))\\ldots)\\), où \\(f_\\ell(A)=\\varphi(AW^{(\\ell)}+b^{(\\ell)})\\), introduite au début de cette présentation."
+    "text": "Règle de la chaîne\nSoit\n\\[\n  h(x) = f(g(x))\n\\]\nen notation de Lagrange, nous avons\n\\[\n  h^\\prime(x) = f^\\prime(g(x)) g^\\prime(x)\n\\]\nou, de façon équivalente, en notation de Leibniz\n\\[\n  \\frac{dv}{dx} = \\frac{dv}{du} \\cdot \\frac{du}{dx},\n  \\qquad u=g(x),\\quad v=f(u).\n\\]\n\nLa règle de la chaîne permet de calculer la dérivée d’une fonction composée. Si une fonction \\(h\\) est définie comme la composition de deux fonctions différentiables \\(f\\) et \\(g\\), elle fournit une méthode pour calculer \\(h^\\prime\\).\nSi l’on connaît le taux de variation instantané de \\(v\\) par rapport à \\(u\\) et celui de \\(u\\) par rapport à \\(x\\), on obtient le taux de variation de \\(v\\) par rapport à \\(x\\) en multipliant ces deux taux. Les variables intermédiaires \\(u\\) et \\(v\\) évitent de réutiliser \\(y\\), qui désigne une cible dans nos exemples de classification.\nLa même composition apparaît dans la notation des couches \\(a^{(L)}=f_L(\\ldots f_2(f_1(x))\\ldots)\\). La rétropropagation applique la règle de la chaîne aux opérations de ces couches et au calcul de la perte.\nQuelques vérifications utiles lors du calcul des dérivées :\n\nDistinguez la valeur d’une activation de sa pente. La dérivée locale d’une activation n’est qu’un facteur du gradient d’un paramètre.\nÉvaluez les dérivées locales aux valeurs du passage avant et gardez les paramètres fixes pendant le passage arrière.\nMultipliez le long d’un chemin et additionnez les contributions aux embranchements. Appliquez une seule fois le facteur de moyenne sur les exemples.\nUn gradient nul peut provenir d’une saturation ou d’une annulation. Il ne prouve pas que la perte est faible ni que les paramètres sont optimaux.\nPour vérifier une petite implémentation, une différence finie centrée permet de contrôler certaines dérivées. Il s’agit d’une vérification numérique, pas de l’algorithme d’entraînement. Comparez avec une tolérance : une perturbation trop petite peut entraîner une perte de précision par soustraction de nombres proches en virgule flottante."
   },
   {
     "objectID": "lectures/13/slides.html#application-récursive",
@@ -8251,70 +8251,70 @@
     "href": "lectures/13/slides.html#dérivées",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées",
-    "text": "Dérivées\n\n\n\\[\n\\frac{\\partial J}{\\partial \\hat{y}}\n\\]\n\\[\n  \\frac{\\partial \\hat{y}}{\\partial z_2}\n\\]\n\\[\n  \\frac{\\partial z_2}{\\partial w_2},\n  \\quad\n  \\frac{\\partial z_2}{\\partial b_2},\n  \\quad\n  \\frac{\\partial z_2}{\\partial a_1},\n\\]\n\\[\n  \\frac{\\partial a_1}{\\partial z_1},\n\\]\n\\[\n  \\frac{\\partial z_1}{\\partial w_1},\n  \\quad\n  \\frac{\\partial z_1}{\\partial b_1},\n  \\quad\n  \\frac{\\partial z_1}{\\partial x},\n\\]"
+    "text": "Dérivées\n\n\n\\[\n\\frac{\\partial \\ell}{\\partial \\hat p}\n\\]\n\\[\n  \\frac{\\partial \\hat p}{\\partial z_2}\n\\]\n\\[\n  \\frac{\\partial z_2}{\\partial w_2},\n  \\quad\n  \\frac{\\partial z_2}{\\partial b_2},\n  \\quad\n  \\frac{\\partial z_2}{\\partial a_1},\n\\]\n\\[\n  \\frac{\\partial a_1}{\\partial z_1},\n\\]\n\\[\n  \\frac{\\partial z_1}{\\partial w_1},\n  \\quad\n  \\frac{\\partial z_1}{\\partial b_1},\n  \\quad\n  \\frac{\\partial z_1}{\\partial x},\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-1",
     "href": "lectures/13/slides.html#dérivées-1",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées",
-    "text": "Dérivées\n\n\nDérivée de la perte par rapport à \\(\\hat{y}\\) :\n\\[\n  \\frac{\\partial J}{\\partial \\hat{y}} = -\\left(\\frac{y}{\\hat{y}}-\\frac{1-y}{1-\\hat{y}}\\right)\n\\]"
+    "text": "Dérivées\n\n\nDérivée de la perte par rapport à \\(\\hat p\\) :\n\\[\n  \\frac{\\partial \\ell}{\\partial \\hat p} = -\\left(\\frac{y}{\\hat p}-\\frac{1-y}{1-\\hat p}\\right)\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-2",
     "href": "lectures/13/slides.html#dérivées-2",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées",
-    "text": "Dérivées\n\n\nDérivée de \\(\\hat{y}\\) par rapport à \\(z_2\\):\n\\[\n  \\frac{\\partial \\hat{y}}{\\partial z_2}=\\sigma^{\\prime}\\left(z_2\\right)=\\hat{y}(1-\\hat{y})\n\\]"
+    "text": "Dérivées\n\n\nDérivée de \\(\\hat p\\) par rapport à \\(z_2\\) :\n\\[\n  \\frac{\\partial \\hat p}{\\partial z_2}=\\sigma^{\\prime}\\left(z_2\\right)=\\hat p(1-\\hat p)\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-3",
     "href": "lectures/13/slides.html#dérivées-3",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées",
-    "text": "Dérivées\n\n\nDérivée \\(z_2 = w_2 a_1 + b_2\\):\n\\[\n  \\frac{\\partial z_2}{\\partial w_2}=a_1, \\quad \\frac{\\partial z_2}{\\partial b_2}=1, \\quad \\frac{\\partial z_2}{\\partial a_1}=w_2\n\\]"
+    "text": "Dérivées\n\n\nDérivées de \\(z_2 = w_2 a_1 + b_2\\) :\n\\[\n  \\frac{\\partial z_2}{\\partial w_2}=a_1, \\quad \\frac{\\partial z_2}{\\partial b_2}=1, \\quad \\frac{\\partial z_2}{\\partial a_1}=w_2\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-4",
     "href": "lectures/13/slides.html#dérivées-4",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées",
-    "text": "Dérivées\n\n\nDérivée \\(a_1 = \\sigma(z_1)\\) :\n\\[\n  \\frac{\\partial a_1}{\\partial z_1}=\\sigma^{\\prime}\\left(z_1\\right)=a_1\\left(1-a_1\\right)\n\\]"
+    "text": "Dérivées\n\n\nDérivée de \\(a_1 = \\sigma(z_1)\\) :\n\\[\n  \\frac{\\partial a_1}{\\partial z_1}=\\sigma^{\\prime}\\left(z_1\\right)=a_1\\left(1-a_1\\right)\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-5",
     "href": "lectures/13/slides.html#dérivées-5",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées",
-    "text": "Dérivées\n\n\nDérivée \\(z_1 = w_1 x + b_1\\) :\n\\[\n    \\frac{\\partial z_1}{\\partial w_1}=x, \\quad \\frac{\\partial z_1}{\\partial b_1}=1, \\quad \\frac{\\partial z_1}{\\partial x} = w_1\n\\]"
+    "text": "Dérivées\n\n\nDérivées de \\(z_1 = w_1 x + b_1\\) :\n\\[\n    \\frac{\\partial z_1}{\\partial w_1}=x, \\quad \\frac{\\partial z_1}{\\partial b_1}=1, \\quad \\frac{\\partial z_1}{\\partial x} = w_1\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-combinées",
     "href": "lectures/13/slides.html#dérivées-combinées",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées combinées",
-    "text": "Dérivées combinées\n\n\nPour \\(w_2\\) :\n\\[\n    \\frac{\\partial J}{\\partial w_2}=\\frac{\\partial J}{\\partial \\hat{y}} \\cdot \\frac{\\partial \\hat{y}}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial w_2}=\\left[-\\left(\\frac{y}{\\hat{y}}-\\frac{1-y}{1-\\hat{y}}\\right)\\right] \\cdot(\\hat{y}(1-\\hat{y})) \\cdot a_1\n\\]\nSe simplifie en :\n\\[\n  \\frac{\\partial J}{\\partial w_2}=(\\hat{y}-y) a_1\n\\]"
+    "text": "Dérivées combinées\n\n\nPour \\(w_2\\) :\n\\[\n    \\frac{\\partial \\ell}{\\partial w_2}=\\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial w_2}=\\left[-\\left(\\frac{y}{\\hat p}-\\frac{1-y}{1-\\hat p}\\right)\\right] \\cdot(\\hat p(1-\\hat p)) \\cdot a_1\n\\]\nAprès simplification :\n\\[\n  \\frac{\\partial \\ell}{\\partial w_2}=(\\hat p-y) a_1\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-combinées-1",
     "href": "lectures/13/slides.html#dérivées-combinées-1",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées combinées",
-    "text": "Dérivées combinées\n\n\nPour \\(b_2\\) :\n\\[\n    \\frac{\\partial J}{\\partial b_2}=\\frac{\\partial J}{\\partial \\hat{y}} \\cdot \\frac{\\partial \\hat{y}}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial b_2}=(\\hat{y}-y) \\cdot 1=\\hat{y}-y\n\\]"
+    "text": "Dérivées combinées\n\n\nPour \\(b_2\\) :\n\\[\n    \\frac{\\partial \\ell}{\\partial b_2}=\\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial b_2}=(\\hat p-y) \\cdot 1=\\hat p-y\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-combinées-2",
     "href": "lectures/13/slides.html#dérivées-combinées-2",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées combinées",
-    "text": "Dérivées combinées\n\n\nPour \\(w_1\\) :\n\\[\n    \\frac{\\partial J}{\\partial w_1}=\\frac{\\partial J}{\\partial \\hat{y}} \\cdot \\frac{\\partial \\hat{y}}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1} \\cdot \\frac{\\partial z_1}{\\partial w_1}\n\\]\nSubstituer :\n\\[\n   =\\left[-\\left(\\frac{y}{\\hat{y}}-\\frac{1-y}{1-\\hat{y}}\\right)\\right] \\cdot(\\hat{y}(1-\\hat{y})) \\cdot w_2 \\cdot\\left(a_1\\left(1-a_1\\right)\\right) \\cdot x\n\\]\nSe simplifie à :\n\\[\n  \\frac{\\partial J}{\\partial w_1}=(\\hat{y}-y) w_2\\left(a_1\\left(1-a_1\\right)\\right) x\n\\]"
+    "text": "Dérivées combinées\n\n\nPour \\(w_1\\) :\n\\[\n    \\frac{\\partial \\ell}{\\partial w_1}=\\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1} \\cdot \\frac{\\partial z_1}{\\partial w_1}\n\\]\nEn remplaçant les dérivées locales :\n\\[\n   =\\left[-\\left(\\frac{y}{\\hat p}-\\frac{1-y}{1-\\hat p}\\right)\\right] \\cdot(\\hat p(1-\\hat p)) \\cdot w_2 \\cdot\\left(a_1\\left(1-a_1\\right)\\right) \\cdot x\n\\]\nAprès simplification :\n\\[\n  \\frac{\\partial \\ell}{\\partial w_1}=(\\hat p-y) w_2\\left(a_1\\left(1-a_1\\right)\\right) x\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-combinées-3",
     "href": "lectures/13/slides.html#dérivées-combinées-3",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Dérivées combinées",
-    "text": "Dérivées combinées\n\n\nPour \\(b_1\\) :\n\\[\n  \\frac{\\partial J}{\\partial b_1}=\\frac{\\partial J}{\\partial \\hat{y}} \\cdot \\frac{\\partial \\hat{y}}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1} \\cdot \\frac{\\partial z_1}{\\partial b_1}\n\\]\nSubstituer :\n\\[\n=(\\hat{y}-y) w_2\\left(a_1\\left(1-a_1\\right)\\right) \\cdot 1\n\\]\nSe simplifie à :\n\\[\n  \\frac{\\partial J}{\\partial b_1}=(\\hat{y}-y) w_2\\left(a_1\\left(1-a_1\\right)\\right)\n\\]"
+    "text": "Dérivées combinées\n\n\nPour \\(b_1\\) :\n\\[\n  \\frac{\\partial \\ell}{\\partial b_1}=\\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1} \\cdot \\frac{\\partial z_1}{\\partial b_1}\n\\]\nEn remplaçant les dérivées locales :\n\\[\n=(\\hat p-y) w_2\\left(a_1\\left(1-a_1\\right)\\right) \\cdot 1\n\\]\nAprès simplification :\n\\[\n  \\frac{\\partial \\ell}{\\partial b_1}=(\\hat p-y) w_2\\left(a_1\\left(1-a_1\\right)\\right)\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-clés",
@@ -8328,7 +8328,7 @@
     "href": "lectures/13/slides.html#exploration",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Exploration",
-    "text": "Exploration\n\nimport math\nimport random\n\nrandom.seed(42)\n\ndef sigma(x):\n    return 1 / (1 + math.exp(-x))\n\nalpha = 0.1\n\ndef init():\n\n    global w1, w2, b1, b2\n\n    w1 = random.random()\n    w2 = random.random()\n    b1 = 0\n    b2 = 0\n\n\nNous considérons un modèle de réseau de neurones simple. Il accepte une seule entrée scalaire, notée \\(x\\), et comprend un seul nœud caché caractérisé par un poids \\(w_1\\) et un biais \\(b_1\\). Il inclut également un nœud de sortie avec un poids \\(w_2\\) et un biais \\(b_2\\). Au total, le réseau contient quatre paramètres entraînables."
+    "text": "Exploration\n\nimport math\nimport random\n\nrandom.seed(42)\n\ndef sigma(x):\n    return 1 / (1 + math.exp(-x))\n\nalpha = 0.1\n\ndef init():\n\n    global w1, w2, b1, b2\n\n    w1 = random.random()\n    w2 = random.random()\n    b1 = 0\n    b2 = 0\n\n\nCe programme implémente directement les équations précédentes. Son architecture fixe et ses variables scalaires nommées rendent chaque valeur intermédiaire, dérivée et mise à jour de paramètre facile à examiner. L’implémentation NumPy présentée ensuite organise ces mêmes opérations en boucles et en calculs matriciels pour traiter plusieurs unités et des lots d’exemples.\nLes quatre paramètres appris sont \\(w_1,b_1,w_2,b_2\\), qui correspondent à w1, b1, w2 et b2 dans le code."
   },
   {
     "objectID": "lectures/13/slides.html#forward",
@@ -8349,7 +8349,7 @@
     "href": "lectures/13/slides.html#entraînement",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Entraînement",
-    "text": "Entraînement\n\ninit()\n\nx = 3.14\ny = 1\n\nforward()\nprint(f\"Avant : y_hat = {y_hat:.2}, loss = {J:.2}\")\n\nfor i in range(500):\n    forward()\n    backward()\n\nforward()\nprint(f\"Après : y_hat = {y_hat:.2}, loss = {J:.2}\")\n\nAvant : y_hat = 0.51, loss = 0.68\nAprès : y_hat = 0.99, loss = 0.01\n\n\n\nLe processus d’entraînement que nous avons mis en œuvre est basé sur une seule instance de données. En l’état actuel, notre architecture de réseau de base est limitée au traitement de cet unique exemple, principalement en raison de la nature codée en dur de la fonction de perte, qui est spécifiquement conçue pour un seul input. Cependant, vous pouvez expérimenter avec divers paramètres pour observer leurs effets sur la performance du modèle. Ces paramètres incluent la définition de y=0, l’ajustement de la valeur d’entrée x, la modification du taux d’apprentissage alpha, ou le changement du nombre d’époques d’entraînement."
+    "text": "Entraînement\n\ninit()\n\nx = 3.14\ny = 1\n\nforward()\nprint(f\"Avant : p_hat = {p_hat:.2}, perte = {loss:.2}\")\n\nfor i in range(500):\n    forward()\n    gradients = backward()\n    step(gradients)\n\nforward()\nprint(f\"Après : p_hat = {p_hat:.2}, perte = {loss:.2}\")\n\nAvant : p_hat = 0.51, perte = 0.68\nAprès : p_hat = 0.99, perte = 0.01\n\n\n\nCette démonstration entraîne le réseau plusieurs fois sur un seul exemple pour rendre explicites le calcul de chaque dérivée et la mise à jour correspondante des paramètres. Elle ne mesure pas la généralisation. Ni l’architecture ni l’entropie croisée binaire ne limitent l’entraînement à un seul exemple. Une boucle peut traiter plusieurs exemples, et l’implémentation NumPy présentée ensuite les traite par lots.\nLes variables p_hat et loss correspondent à \\(\\hat p\\) et \\(\\ell\\). Fixer y=0, changer x ou ajuster alpha permet de mener de petites expériences avec ce même modèle à quatre paramètres."
   },
   {
     "objectID": "lectures/13/slides.html#dérivées-clés-1",
@@ -8461,7 +8461,7 @@
     "href": "lectures/13/slides.html#perte",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Perte",
-    "text": "Perte\n\ndef bce_loss(y_true, y_prob, eps=1e-9):\n\n    \"\"\"Entropie croisée binaire moyenne sur les échantillons (avec découpage pour la stabilité).\"\"\"\n\n    y_prob = np.clip(y_prob, eps, 1 - eps)\n\n    return -np.mean(y_true * np.log(y_prob) + (1 - y_true) * np.log(1 - y_prob))"
+    "text": "Perte\ndef bce_loss(y_true, y_prob, eps=1e-9):\n    \"\"\"Entropie croisée binaire moyennée sur les exemples.\"\"\"\n    p = np.clip(y_prob, eps, 1 - eps)\n    return -np.mean(y_true * np.log(p) + (1 - y_true) * np.log(1 - p))\n\nforward et predict_proba renvoient des probabilités. Seule predict leur applique un seuil pour produire des étiquettes de classe. La perte est l’entropie croisée binaire moyenne, sans terme de pénalité. Le bornage évite de prendre le logarithme d’une probabilité en virgule flottante égale à zéro ou à un. Les bibliothèques utilisées en pratique calculent souvent une perte combinée à partir des logits pour améliorer la stabilité numérique."
   },
   {
     "objectID": "lectures/13/slides.html#initialisateurs",
@@ -8482,21 +8482,21 @@
     "href": "lectures/13/slides.html#forward-public",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Forward (public)",
-    "text": "Forward (public)\n\n    def forward(self, X):\n        a = X\n        L = len(self.W)\n        for ell, (W, b) in enumerate(zip(self.W, self.b), start=1):\n            a = self._act(a @ W + b, last=(ell == L))\n        return a.ravel()\n\n. . .\noù _act est défini comme suit :\n\n    def _act(self, z, last=False):\n        if last:\n            return sigmoid(z)  # output layer\n        return relu(z) if self.hidden_activation == \"relu\" else sigmoid(z)\n\n\nLe modèle SimpleMLP intègre deux implémentations distinctes de la méthode forward : l’une adaptée aux tâches de prédiction et l’autre pour l’entraînement du modèle."
+    "text": "Forward (public)\n    def forward(self, X):\n        a = X\n        for W, b in zip(self.W, self.b):\n            a = sigmoid(a @ W + b)\n        return a.ravel()\n\nforward() renvoie des probabilités de forme (N,). predict_proba() donne accès au même calcul, tandis que predict() applique un seuil. Chaque couche utilise la sigmoïde : la boucle n’a donc besoin ni d’un compteur de couches ni d’un cas particulier pour la sortie. SimpleMLP conserve ce calcul couche par couche, mais ajoute la sélection de l’activation dans la présentation 14."
   },
   {
     "objectID": "lectures/13/slides.html#forward-privé",
     "href": "lectures/13/slides.html#forward-privé",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Forward (privé)",
-    "text": "Forward (privé)\n\n    def _forward_full(self, X):\n        a = X\n        activations = [a]\n        zs = []\n        L = len(self.W)\n        for ell, (W, b) in enumerate(zip(self.W, self.b), start=1):\n            z = a @ W + b\n            a = self._act(z, last=(ell == L))\n            zs.append(z)\n            activations.append(a)\n        return activations, zs\n\n\nLa méthode privée forward diffère en ce qu’elle conserve à la fois les valeurs de préactivation (zs) et les valeurs d’activation (activations). Cette conservation est importante, car ces valeurs sont nécessaires lors de la phase de rétropropagation."
+    "text": "Forward (privé)\n    def _forward_full(self, X):\n        a = X\n        activations = [a]\n        zs = []\n        for W, b in zip(self.W, self.b):\n            z = a @ W + b\n            a = sigmoid(z)\n            zs.append(z)\n            activations.append(a)\n        return activations, zs\n\nLa méthode _forward_full conserve les préactivations et les activations pour la rétropropagation. La couche mathématique \\(l\\) correspond à activations[l] et zs[l - 1]. L’entrée activations[0] contient la matrice \\(X\\). Les deux classes conservent ces tableaux dans le même ordre."
   },
   {
     "objectID": "lectures/13/slides.html#entraînement-1",
     "href": "lectures/13/slides.html#entraînement-1",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Entraînement",
-    "text": "Entraînement\n\n    def train(self, X, y, epochs=30, batch_size=None, verbose=True, shuffle=True):\n\n        \"\"\"\n        X: (N, d), y: (N,) dans {0,1}\n        batch_size: None -&gt; plein lot; sinon int\n        \"\"\"\n\n        N = X.shape[0]\n        idx = np.arange(N)\n        B = N if batch_size is None else int(batch_size)\n\n        for ep in range(1, epochs + 1):\n            if shuffle:\n                np.random.shuffle(idx)\n            if self.lr_decay:\n                self.lr = self.base_lr * (self.lr_decay ** (ep - 1))\n\n            base_loss = self.loss(X, y)\n\n            for start in range(0, N, B):\n                sl = idx[start:start+B]\n                Xb = X[sl]\n                yb = y[sl].reshape(-1, 1)  # (B,1)\n\n                # Caches avant\n                activations, zs = self._forward_full(Xb)\n                A_L = activations[-1]          # (B,1)\n                Bsz = Xb.shape[0]\n\n                # Rétropropagation\n                # Couche de sortie : BCE + sigmoïde =&gt; delta_L = (A_L - y)\n\n                delta = (A_L - yb)             # (B,1)\n\n                grads_W = [None] * len(self.W)\n                grads_b = [None] * len(self.b)\n\n                # Gradients de la dernière couche\n\n                grads_W[-1] = activations[-2].T @ delta / Bsz   # (n_{L-1}, 1)\n                grads_b[-1] = delta.mean(axis=0)                # (1,)\n\n                # Couches cachées : l = L-1 jusqu'à 1\n\n                for l in range(2, len(self.sizes)):\n                    z = zs[-l]                                  # (B, n_l)\n                    sp = self._act_prime(z, last=False)         # (B, n_l)\n                    delta = (delta @ self.W[-l+1].T) * sp       # (B, n_l)\n                    grads_W[-l] = activations[-l-1].T @ delta / Bsz  # (n_{l-1}, n_l)\n                    grads_b[-l] = delta.mean(axis=0)                 # (n_l,)\n\n                # Régularisation L2 (ajouter aux gradients)\n\n                if self.l2 &gt; 0:\n                    for k in range(len(self.W)):\n                        grads_W[k] = grads_W[k] + self.l2 * self.W[k]\n\n                # Étape de gradient\n\n                for k in range(len(self.W)):\n                    self.W[k] -= self.lr * grads_W[k]\n                    self.b[k] -= self.lr * grads_b[k]\n\n            new_loss = self.loss(X, y)\n            if verbose:\n                print(f\"Époque {ep:3d} | perte {base_loss:.5f} → {new_loss:.5f} | Δ={base_loss - new_loss:.5f} | lr={self.lr:.4f}\")\n\n\nNotre implémentation réplique avec succès plusieurs caractéristiques clés des cadres contemporains. Elle offre des options pour définir la taille de lot et décider s’il faut mélanger les données.\nEn général, vous devriez mélanger les données avant (et généralement au début de chaque époque pendant) l’entraînement du réseau de neurones.\n\nBrise le biais d’ordre : Si le jeu de données a un ordre sous-jacent (par exemple, trié par classe, temps ou difficulté), l’entraînement séquentiel pourrait amener le modèle à surapprendre les premiers lots et à mal généraliser.\nAméliore la stochasticité : Le mélange garantit que chaque mini-lot fournit un mélange représentatif de la distribution des données, stabilisant les mises à jour de la descente de gradient stochastique (SGD) et améliorant la convergence.\nPrévient les motifs périodiques : Sans mélange, l’optimiseur pourrait voir des échantillons similaires de manière répétée dans le même ordre, conduisant à des oscillations ou à une convergence plus lente.\n\nException :\n\nDonnées temporelles ou séquentielles :\nSi l’ordre a une signification (structure temporelle ou causale), ne pas mélanger au travers du temps.\n\nNotre méthode intègre un programme d’entraînement dynamique qui réduit progressivement le taux d’apprentissage à mesure que le nombre d’époques d’entraînement augmente."
+    "text": "Entraînement\n    def train(self, X, y, epochs=30, batch_size=None, verbose=True):\n        \"\"\"X : (N, d), y : (N,); batch_size=None utilise tout le jeu de données.\"\"\"\n        N = X.shape[0]\n        idx = np.arange(N)\n        B = N if batch_size is None else int(batch_size)\n\n        for ep in range(1, epochs + 1):\n            self.rng.shuffle(idx)\n\n            base_loss = self.loss(X, y)\n\n            for start in range(0, N, B):\n                sl = idx[start:start + B]\n                Xb = X[sl]\n                yb = y[sl].reshape(-1, 1)\n                Bsz = Xb.shape[0]\n\n                activations, zs = self._forward_full(Xb)\n                A_L = activations[-1]\n\n                # Chaque ligne est la sensibilité aux préactivations d'un exemple.\n                delta = A_L - yb\n                grads_W = [None] * len(self.W)\n                grads_b = [None] * len(self.b)\n\n                # Calculer une seule fois la moyenne des gradients sur les exemples.\n                grads_W[-1] = activations[-2].T @ delta / Bsz\n                grads_b[-1] = delta.mean(axis=0)\n\n                for k in range(len(self.W) - 2, -1, -1):\n                    z = zs[k]\n                    d_act = sigmoid_prime(z)\n                    delta = (delta @ self.W[k + 1].T) * d_act\n                    grads_W[k] = activations[k].T @ delta / Bsz\n                    grads_b[k] = delta.mean(axis=0)\n\n                # Tous les gradients utilisent les poids du même passage avant.\n                for k in range(len(self.W)):\n                    self.W[k] -= self.lr * grads_W[k]\n                    self.b[k] -= self.lr * grads_b[k]\n\n            new_loss = self.loss(X, y)\n            if verbose:\n                print(f\"Époque {ep:3d} | perte {base_loss:.5f} -&gt; {new_loss:.5f} | lr={self.lr:.4f}\")\n\nLe signal de sortie A_L - yb est la dérivée sigmoïde/BCE déjà simplifiée. Il ne faut pas le multiplier à nouveau par la dérivée de la sigmoïde. Les signaux cachés exigent une multiplication par les poids en aval et par la dérivée locale de la sigmoïde.\nLa boucle arrière utilise un indice Python k : W[k] appartient à la couche mathématique \\(k+1\\). À cette étape, delta contient les signaux de la couche suivante. Le calcul delta @ W[k + 1].T additionne leurs contributions à la couche courante. Le gradient du biais est la moyenne de ces signaux sur les exemples, tandis que celui des poids inclut aussi les activations précédentes.\nTous les gradients sont calculés avant toute mise à jour des paramètres. Le taux d’apprentissage reste constant pendant l’entraînement.\nCette implémentation suppose des exemples d’entraînement indépendants et mélange leurs indices au début de chaque époque. Les mêmes indices sélectionnent les lignes de X et de y, de sorte que les caractéristiques restent associées à leurs cibles. Le mélange change les exemples réunis dans un mini-lot et évite de présenter toujours la même séquence de lots.\nSi l’entraînement dépend de l’ordre chronologique ou séquentiel, l’implémentation doit être modifiée pour le préserver. Par exemple, un modèle séquentiel avec état peut transmettre de l’information d’un lot au suivant. Les données temporelles n’interdisent pas toujours le mélange : des fenêtres temporelles traitées indépendamment peuvent être mélangées après une séparation chronologique entre entraînement, validation et test, à condition de conserver l’ordre à l’intérieur de chaque fenêtre. Toute autre procédure d’entraînement qui dépend volontairement de l’ordre des exemples exige aussi une autre politique. Le tutoriel TensorFlow sur les séries temporelles illustre le mélange de fenêtres d’entraînement, tandis que les consignes Keras pour les RNN avec état exigent des lots ordonnés."
   },
   {
     "objectID": "lectures/13/slides.html#test",
@@ -8510,7 +8510,7 @@
     "href": "lectures/13/slides.html#différentiation-automatique",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Différentiation automatique",
-    "text": "Différentiation automatique\nLa différentiation automatique (autodiff) applique systématiquement la règle de la chaîne pour calculer des dérivées exactes des fonctions exprimées sous forme de programmes informatiques. Elle propage les dérivées à travers des opérations élémentaires, soit en avant (des entrées vers les sorties) soit en arrière (des sorties vers les entrées), permettant un calcul de gradient efficace et précis essentiel pour les algorithmes d’optimisation et d’apprentissage.\n\n\nBaydin et al. (2017)"
+    "text": "Différentiation automatique\nLa différentiation automatique (autodiff) applique systématiquement la règle de la chaîne pour calculer les dérivées exactes de fonctions exprimées sous forme de programmes. Elle propage les dérivées à travers les opérations élémentaires, soit vers l’avant, des entrées aux sorties, soit vers l’arrière, des sorties aux entrées. Elle permet ainsi de calculer efficacement les gradients utilisés en optimisation et en apprentissage.\n\n\nIci, « exact » distingue l’utilisation des règles de dérivation locales des approximations par différences finies. Les valeurs calculées restent soumises aux erreurs d’arrondi en virgule flottante. La différentiation automatique n’a pas besoin de développer une expression symbolique complète de la perte. SymPy permet d’obtenir ou de vérifier les formules locales, tandis qu’un moteur de différentiation automatique applique ces formules aux valeurs et aux opérations rencontrées pendant l’exécution.\n\n\nBaydin et al. (2017)"
   },
   {
     "objectID": "lectures/13/slides.html#gradients-évanescents",
@@ -8559,14 +8559,14 @@
     "href": "lectures/13/slides.html#résumé",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Résumé",
-    "text": "Résumé\n\n\n\n\n\n\n\nAttribution: Angermueller et al. (2016)"
+    "text": "Résumé\n\n\n\n\n\n\n\nAttribution : Angermueller et al. (2016)"
   },
   {
     "objectID": "lectures/13/slides.html#résumé-1",
     "href": "lectures/13/slides.html#résumé-1",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Résumé",
-    "text": "Résumé\n\n\n\n\n\n\n\nConcept\nRôle\n\n\n\n\nFonctions d’activation\nIntroduisent la non-linéarité (par exemple, Sigmoïde, ReLU).\n\n\nFonction de perte\nMesure l’erreur de prédiction (par exemple, Entropie Croisée Binaire).\n\n\nTaux d’apprentissage (α)\nContrôle la taille des pas dans les mises à jour des paramètres.\n\n\nDescente de gradient\nMéthode d’optimisation pour l’ajustement des poids.\n\n\nRègle de chaîne\nMécanisme pour propager les dérivées en arrière.\n\n\nDifférentiation automatique\nImplémentation logicielle de la rétropropagation (par exemple, TensorFlow, PyTorch)."
+    "text": "Résumé\n\n\n\n\n\n\n\nConcept\nRôle\n\n\n\n\nFonctions d’activation\nIntroduisent la non-linéarité (sigmoïde dans SimplerMLP).\n\n\nFonction de perte\nMesure l’erreur de prédiction, par exemple avec l’entropie croisée binaire.\n\n\nTaux d’apprentissage (α)\nContrôle la taille des mises à jour des paramètres.\n\n\nDescente de gradient\nMéthode d’optimisation pour ajuster les poids.\n\n\nRègle de la chaîne\nMécanisme de propagation des dérivées vers l’arrière.\n\n\nDifférentiation automatique\nAutomatise le calcul des dérivées. La rétropropagation utilise le mode inverse."
   },
   {
     "objectID": "lectures/13/slides.html#résumé-2",
@@ -8580,28 +8580,28 @@
     "href": "lectures/13/slides.html#blue1brown",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "3Blue1Brown",
-    "text": "3Blue1Brown\nUne série de vidéos, avec animations, fournissant l’intuition derrière l’algorithme de rétropropagation.\n\nRéseaux neuronaux (playlist)\n\nQue fait vraiment la rétropropagation ? (12m 47s)\nCalculus de la rétropropagation (10m 18s)\n\n\n\n\nPrérequis : Descente de gradient, comment les réseaux neuronaux apprennent-ils ? (20m 33s)"
+    "text": "3Blue1Brown\nUne série de vidéos animées qui développe l’intuition derrière l’algorithme de rétropropagation.\n\nRéseaux de neurones (liste de lecture)\n\nQue fait réellement la rétropropagation? (12 min 47 s)\nLes calculs de la rétropropagation (10 min 18 s)\n\n\n\n\nPréalable : La descente de gradient : comment les réseaux de neurones apprennent-ils? (20 min 33 s)"
   },
   {
     "objectID": "lectures/13/slides.html#statquest",
     "href": "lectures/13/slides.html#statquest",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "StatQuest",
-    "text": "StatQuest\n\nRéseaux Neuronaux Pt. 2 : Idées principales de la rétropropagation (17m 34s)\nDétails de la rétropropagation Pt. 1 : Optimisation de 3 paramètres simultanément (18m 32s)\nDétails de la rétropropagation Pt. 2 : S’amuser avec la règle de chaîne (13m 9s)\n\n\n\nPrérequis : La règle de chaîne (18m 24s) & Descente de Gradient, étape par étape (23m 54s)"
+    "text": "StatQuest\n\nRéseaux de neurones, partie 2 : les idées principales de la rétropropagation (17 min 34 s)\nDétails de la rétropropagation, partie 1 : optimiser trois paramètres simultanément (18 min 32 s)\nDétails de la rétropropagation, partie 2 : explorer la règle de la chaîne (13 min 9 s)\n\n\n\nPréalables : La règle de la chaîne (18 min 24 s) et La descente de gradient, étape par étape (23 min 54 s)"
   },
   {
     "objectID": "lectures/13/slides.html#herman-kamper",
     "href": "lectures/13/slides.html#herman-kamper",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Herman Kamper",
-    "text": "Herman Kamper\nUne des séries de vidéos les plus complètes sur l’algorithme de rétropropagation.\n\nIntroduction aux réseaux neuronaux (playlist)\n\nRétropropagation (sans fourches) (31m 1s)\nRétropropagation pour un réseau neuronal à propagation avant multicouche (4m 2s)\nGraphes computationnels et différentiation automatique pour les réseaux neuronaux (6m 56s)\nDérivées communes pour les réseaux neuronaux (7m 18s)\nUne notation générale pour les dérivées (dans les réseaux neuronaux) (7m 56s)\nFourches dans les réseaux neuronaux (13m 46s)\nRétropropagation en général (maintenant avec des fourches) (3m 42s)"
+    "text": "Herman Kamper\nUne série de vidéos particulièrement approfondie sur l’algorithme de rétropropagation.\n\nIntroduction aux réseaux de neurones (liste de lecture)\n\nRétropropagation sans embranchements (31 min 1 s)\nRétropropagation pour un réseau à propagation avant multicouche (4 min 2 s)\nGraphes de calcul et différentiation automatique pour les réseaux de neurones (6 min 56 s)\nDérivées courantes pour les réseaux de neurones (7 min 18 s)\nUne notation générale pour les dérivées dans les réseaux de neurones (7 min 56 s)\nEmbranchements dans les réseaux de neurones (13 min 46 s)\nRétropropagation générale avec embranchements (3 min 42 s)"
   },
   {
     "objectID": "lectures/13/slides.html#livre-gratuit-avec-implémentation",
     "href": "lectures/13/slides.html#livre-gratuit-avec-implémentation",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Livre gratuit avec implémentation",
-    "text": "Livre gratuit avec implémentation\nDans son livre, Neural Networks and Deep Learning, Michael Nielsen fournit une implémentation complète d’un réseau neuronal en Python."
+    "text": "Livre gratuit avec implémentation\nDans son livre Neural Networks and Deep Learning, Michael Nielsen fournit une implémentation Python complète d’un réseau de neurones."
   },
   {
     "objectID": "lectures/13/slides.html#prochaine-leçon",
@@ -8615,7 +8615,7 @@
     "href": "lectures/13/slides.html#références",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Références",
-    "text": "Références\n\n\nAngermueller, Christof, Tanel Pärnamaa, Leopold Parts, et Oliver Stegle. 2016. « Deep learning for computational biology ». Mol Syst Biol 12 (7): 878. https://doi.org/10.15252/msb.20156651.\n\n\nBaydin, Atılım Günes, Barak A. Pearlmutter, Alexey Andreyevich Radul, et Jeffrey Mark Siskind. 2017. « Automatic differentiation in machine learning: a survey ». J. Mach. Learn. Res. 18 (1): 5595‑637.\n\n\nGéron, Aurélien. 2022. Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow. 3ᵉ éd. O’Reilly Media, Inc.\n\n\nGlorot, Xavier, et Yoshua Bengio. 2010. « Understanding the difficulty of training deep feedforward neural networks ». In Proceedings of the Thirteenth International Conference on Artificial Intelligence and Statistics, édité par Yee Whye Teh et Mike Titterington, vol. 9. Proceedings of Machine Learning Research. PMLR. https://proceedings.mlr.press/v9/glorot10a.html.\n\n\nRumelhart, David E., Geoffrey E. Hinton, et Ronald J. Williams. 1986. « Learning representations by back-propagating errors ». Nature 323 (6088): 533‑36. https://doi.org/10.1038/323533a0.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/.\n\n\n\nMarcel Turcotte\nMarcel.Turcotte at uOttawa dot ca\nÉcole de science informatique et de génie électrique (SIGE)\nUniversité d’Ottawa"
+    "text": "Références\n\n\nAngermueller, Christof, Tanel Pärnamaa, Leopold Parts, et Oliver Stegle. 2016. « Deep learning for computational biology ». Mol Syst Biol 12 (7): 878. https://doi.org/10.15252/msb.20156651.\n\n\nBaydin, Atılım Günes, Barak A. Pearlmutter, Alexey Andreyevich Radul, et Jeffrey Mark Siskind. 2017. « Automatic differentiation in machine learning: a survey ». J. Mach. Learn. Res. 18 (1): 5595‑637.\n\n\nBicknell, Klinton, Claire Brust, et Burr Settles. 2023. « How Duolingo’s AI Learns what you Need to Learn: The language-learning app tries to emulate a great human tutor ». IEEE Spectrum 60 (3): 28‑33. https://doi.org/10.1109/MSPEC.2023.10061631.\n\n\nRumelhart, David E., Geoffrey E. Hinton, et Ronald J. Williams. 1986. « Learning representations by back-propagating errors ». Nature 323 (6088): 533‑36. https://doi.org/10.1038/323533a0.\n\n\nRussell, Stuart, et Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. 4ᵉ éd. Pearson. http://aima.cs.berkeley.edu/."
   },
   {
     "objectID": "lectures/15/slides.html#message-du-jour",
@@ -11303,7 +11303,7 @@
     "href": "lectures/13/index.html#participer",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Participer",
-    "text": "Participer\n\nprésentation (PDF, Jupyter Notebook)"
+    "text": "Participer\n\nprésentation (PDF, carnet Jupyter)"
   },
   {
     "objectID": "lectures/13/index.html#practiquer",
@@ -14655,28 +14655,28 @@
     "href": "lectures/13/slides.html#unités-couches-et-fonctions-dactivation",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Unités, couches et fonctions d’activation",
-    "text": "Unités, couches et fonctions d’activation\n\n\n\n\n\n\n\nSymbole\nSignification\n\n\n\n\n\\(z^{(\\ell)}\\)\nPréactivations : sommes pondérées et biais de la couche \\(\\ell\\)\n\n\n\\(a^{(\\ell)}\\)\nActivations : sorties de la couche, notées \\(o\\) pour les unités dans la présentation 11\n\n\n\\(\\varphi\\)\nFonction d’activation générale, appliquée élément par élément\n\n\n\\(\\sigma\\)\nFonction d’activation sigmoïde logistique\n\n\n\\(W^{(\\ell)}, b^{(\\ell)}\\)\nPoids et biais de la couche\n\n\n\\(f_\\ell\\)\nTransformation complète d’une couche : calcul affine suivi de l’activation\n\n\n\n\nLe symbole \\(\\varphi\\) désigne toujours une fonction d’activation; \\(f_\\ell\\) désigne une couche entière, y compris ses poids et ses biais. La sigmoïde est notée \\(\\sigma\\). Ces rôles distincts évitent d’utiliser le même symbole pour une activation scalaire et pour la transformation complète d’une couche.\nL’implémentation utilise a pour les activations. Ces quantités correspondent aux sorties des unités notées \\(o\\) dans la présentation 11. Les minuscules \\(a\\) et \\(z\\) décrivent un exemple, tandis que les majuscules \\(A\\) et \\(Z\\) décrivent un lot d’exemples stockés en lignes. Les activations d’entrée sont \\(A^{(0)}=X\\)."
+    "text": "Unités, couches et fonctions d’activation\n\n\n\n\n\n\n\nSymbole\nSignification\n\n\n\n\n\\(z^{(l)}\\)\nPréactivations : sommes pondérées et biais de la couche \\(l\\)\n\n\n\\(a^{(l)}\\)\nActivations : sorties de la couche, notées \\(o\\) pour les unités dans la présentation 11\n\n\n\\(\\varphi\\)\nFonction d’activation générale, appliquée élément par élément\n\n\n\\(\\sigma\\)\nFonction d’activation sigmoïde logistique\n\n\n\\(W^{(l)}, b^{(l)}\\)\nPoids et biais de la couche\n\n\n\\(f_l\\)\nTransformation complète d’une couche : calcul affine suivi de l’activation\n\n\n\n\nLe symbole \\(\\varphi\\) désigne toujours une fonction d’activation, tandis que \\(f_l\\) désigne une couche entière, y compris ses poids et ses biais. La sigmoïde est notée \\(\\sigma\\). Les schémas révisés utilisent \\(f_l\\) plutôt que \\(\\phi_l\\) pour les transformations complètes des couches. La distinction entre une activation scalaire et une couche complète ne dépend donc pas de la reconnaissance des deux variantes visuellement proches \\(\\phi\\) et \\(\\varphi\\).\nLes caractéristiques d’entrée des schémas sont notées \\(x_i\\) plutôt que \\(x^{(i)}\\). L’indice inférieur \\(i\\) désigne une caractéristique, tandis que les indices supérieurs entre parenthèses, comme dans \\(a^{(l)}\\), \\(z^{(l)}\\) et \\(W^{(l)}\\), désignent une couche. Cette convention distingue les indices des caractéristiques de ceux des couches et assure la cohérence entre les schémas et les équations.\nL’implémentation utilise a pour les activations. Ces quantités correspondent aux sorties des unités notées \\(o\\) dans la présentation 11. Les minuscules \\(a\\) et \\(z\\) décrivent un exemple, tandis que les majuscules \\(A\\) et \\(Z\\) décrivent un lot d’exemples stockés en lignes. Les activations d’entrée sont \\(a^{(0)}=x\\) pour un exemple et \\(A^{(0)}=X\\) pour un lot. L’indice de couche s’écrit \\(l\\), tandis que la perte d’un exemple s’écrit \\(\\ell\\).\nLes couches mathématiques sont numérotées à partir de 1, tandis que les listes Python sont indexées à partir de 0 : self.W[0] et self.b[0] correspondent à \\(W^{(1)}\\) et \\(b^{(1)}\\). Dans un poids \\(w_{i,j}^{(l)}\\), \\(i\\) désigne une unité de la couche précédente et \\(j\\) une unité de la couche courante."
   },
   {
     "objectID": "lectures/13/slides.html#notation-réseau-à-deux-couches",
     "href": "lectures/13/slides.html#notation-réseau-à-deux-couches",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Notation : réseau à deux couches",
-    "text": "Notation : réseau à deux couches\n\n\nUne couche cachée et une couche de sortie :\n\\[\n\\hat{Y}=f_2(f_1(X))\n\\]\nChaque couche calcule\n\\[\nf_\\ell(A)=\\varphi(AW^{(\\ell)}+b^{(\\ell)}).\n\\]\n\n\n\n\n\n\n\n\n\nCette écriture suit la convention NumPy de la présentation 12 : a @ W + b. La matrice de poids a pour dimensions (units_in, units_out), et le vecteur de biais est ajouté à chaque exemple par diffusion. Les nœuds d’entrée transmettent les attributs inchangés et ne sont pas comptés comme des couches paramétrées.\nLa notation \\(\\hat{Y}\\) regroupe les sorties du réseau pour un lot. Dans les exemples de classification binaire, l’unique colonne de sortie contient des probabilités prédites, et non des étiquettes obtenues par seuillage. Les couches peuvent utiliser des fonctions d’activation différentes; \\(\\varphi\\) représente l’activation choisie pour la couche étudiée."
+    "text": "Notation : réseau à deux couches\n\n\nUne couche cachée et une couche de sortie :\n\\[\na^{(2)}=f_2(f_1(x))\n\\]\nChaque couche calcule\n\\[\nf_l(a)=\\varphi(aW^{(l)}+b^{(l)}).\n\\]\n\n\n\n\n\n\n\n\nCette écriture suit la convention NumPy de la présentation 12 : a @ W + b. Ici, \\(x\\) et chaque vecteur d’activations sont des vecteurs lignes. La matrice des poids a la forme (units_in, units_out). Les nœuds d’entrée transmettent les caractéristiques sans les modifier et ne comptent pas parmi les couches paramétrées.\nLe schéma permet plusieurs unités de sortie : \\(a^{(2)}\\) désigne donc le vecteur de sortie complet. Nos exemples de classification binaire utilisent une seule unité de sortie sigmoïde, dont l’activation est la probabilité prédite \\(\\hat p\\). Des couches différentes peuvent utiliser des fonctions d’activation différentes. Le symbole \\(\\varphi\\) représente l’activation choisie pour la couche considérée."
   },
   {
     "objectID": "lectures/13/slides.html#notation-réseau-à-trois-couches",
     "href": "lectures/13/slides.html#notation-réseau-à-trois-couches",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Notation : réseau à trois couches",
-    "text": "Notation : réseau à trois couches\n\n\nDeux couches cachées et une couche de sortie :\n\\[\n\\hat{Y}=f_3(f_2(f_1(X)))\n\\]\noù\n\\[\nf_\\ell(A)=\\varphi(AW^{(\\ell)}+b^{(\\ell)}).\n\\]"
+    "text": "Notation : réseau à trois couches\n\n\nDeux couches cachées et une couche de sortie :\n\\[\na^{(3)}=f_3(f_2(f_1(x)))\n\\]\noù\n\\[\nf_l(a)=\\varphi(aW^{(l)}+b^{(l)}).\n\\]"
   },
   {
     "objectID": "lectures/13/slides.html#notation-réseau-à-l-couches",
     "href": "lectures/13/slides.html#notation-réseau-à-l-couches",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Notation : réseau à \\(L\\) couches",
-    "text": "Notation : réseau à \\(L\\) couches\n\\[\n\\hat{Y}=f_L(\\ldots f_2(f_1(X))\\ldots).\n\\]\nPour \\(\\ell=1,\\ldots,L\\) :\n\\[\nZ^{(\\ell)}=A^{(\\ell-1)}W^{(\\ell)}+b^{(\\ell)},\n\\qquad A^{(\\ell)}=\\varphi(Z^{(\\ell)}).\n\\]\nLa sortie d’une couche devient l’entrée de la suivante.\n\nSeule la première couche paramétrée reçoit les attributs d’entrée d’origine. Les couches suivantes traitent les activations de la couche précédente. Chaque couche répète le même schéma de calcul avec ses propres paramètres.\nAjouter des couches ajoute des calculs et des valeurs intermédiaires à conserver. La structure régulière permet d’étendre les mêmes procédures de propagation avant et arrière aux réseaux plus profonds; elle ne rend pas le coût indépendant de la profondeur."
+    "text": "Notation : réseau à \\(L\\) couches\n\\[\na^{(L)}=f_L(\\ldots f_2(f_1(x))\\ldots).\n\\]\nPour \\(l=1,\\ldots,L\\) :\n\\[\nz^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},\n\\qquad a^{(l)}=\\varphi(z^{(l)}).\n\\]\nLa sortie d’une couche devient l’entrée de la suivante.\n\nSeule la première couche paramétrée reçoit les caractéristiques d’entrée originales. Les couches suivantes traitent les activations de la couche précédente. Chaque couche répète le même schéma de calcul avec ses propres paramètres.\nPour un lot, remplacez \\(x\\), \\(a\\) et \\(z\\) par \\(X\\), \\(A\\) et \\(Z\\). Chaque ligne décrit alors un exemple, et NumPy diffuse le vecteur de biais sur les lignes. La sortie est \\(A^{(L)}=f_L(\\ldots f_1(X)\\ldots)\\).\nAjouter des couches augmente les calculs et le nombre de valeurs intermédiaires à conserver. La structure régulière permet d’étendre les mêmes procédures de propagation avant et arrière à des réseaux plus profonds, mais le coût reste dépendant de la profondeur."
   },
   {
     "objectID": "lectures/13/slides.html#fonctions-dactivation-et-dérivées",
@@ -14704,7 +14704,7 @@
     "href": "lectures/13/slides.html#prochaine-présentation",
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Prochaine présentation",
-    "text": "Prochaine présentation\n\nNous introduirons différentes architectures de réseaux neuronaux artificiels."
+    "text": "Prochaine présentation\n\nPropagation des gradients, fonctions d’activation et initialisation.\nExtension de SimplerMLP en SimpleMLP avec choix d’activations, régularisation L2 et décroissance du taux d’apprentissage.\nSoftmax, entropie croisée et régularisation."
   },
   {
     "objectID": "lectures/13/slides.html#footnotes",
@@ -14712,5 +14712,327 @@
     "title": "Entraîner un réseau de neurones artificiels (partie 2)",
     "section": "Notes de bas de page",
     "text": "Notes de bas de page\n\n\nUne bonne initialisation des poids, comme l’utilisation de l’initialisation Xavier/Glorot ou He, est essentielle et doit être alignée avec le choix de la fonction d’activation pour assurer des performances optimales du réseau.↩︎"
+  },
+  {
+    "objectID": "lectures/13/slides.html#objectifs-dapprentissage",
+    "href": "lectures/13/slides.html#objectifs-dapprentissage",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Objectifs d’apprentissage",
+    "text": "Objectifs d’apprentissage\n\nAlgorithme de rétropropagation :\n\nExpliquer les signaux d’erreur et la règle de la chaîne le long d’un chemin et aux embranchements.\nRelier les dérivées scalaires aux implémentations Python et NumPy.\nDistinguer le calcul des gradients de la mise à jour des paramètres.\n\nImplémentation :\n\nExpliquer un perceptron multicouche à unités sigmoïdes qui conserve les valeurs du passage avant et utilise la rétropropagation par mini-lots.\n\n\n\nLa présentation précédente a développé un réseau de neurones à propagation avant pour en illustrer le fonctionnement. Un algorithme d’entraînement naïf, sans dérivées, a permis de distinguer le calcul effectué par le réseau de la méthode utilisée pour apprendre ses paramètres. Cette présentation porte sur la rétropropagation (backpropagation), un algorithme central de l’apprentissage profond."
+  },
+  {
+    "objectID": "lectures/13/slides.html#probabilités-étiquettes-et-perte",
+    "href": "lectures/13/slides.html#probabilités-étiquettes-et-perte",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Probabilités, étiquettes et perte",
+    "text": "Probabilités, étiquettes et perte\nPour la classification binaire, comme dans les présentations 6 et 12 :\n\n\\(\\hat p\\) est la probabilité prédite de la classe 1.\n\\(\\hat y=\\mathbf{1}[\\hat p\\geq 0.5]\\) est l’étiquette de classe prédite.\n\\(\\ell\\) est la perte d’un exemple et \\(J\\) est la perte moyenne.\n\n\\[\n\\ell(y,\\hat p)=-\\left[y\\log\\hat p+(1-y)\\log(1-\\hat p)\\right]\n\\]\n\\[\n\\qquad J(\\theta)=\\frac{1}{N}\\sum_{i=1}^{N}\\ell(y_i,\\hat p_i).\n\\]\n\nLa sortie sigmoïde du réseau est une probabilité. L’application d’un seuil produit une étiquette de classe, utile pour calculer l’exactitude, mais élimine de l’information nécessaire au calcul de la perte. C’est pourquoi la présentation 12 utilisait bce_loss(y, self.forward(X)) plutôt que bce_loss(y, self.predict(X)).\nLa rétropropagation différencie la perte à travers les opérations qui produisent la probabilité. L’application du seuil reste en dehors de ce calcul. Dans l’exemple scalaire, \\(\\ell\\) désigne la perte de l’unique exemple traité. La moyenne sur les exemples sera introduite lors du retour aux lots."
+  },
+  {
+    "objectID": "lectures/13/slides.html#représentation-et-apprentissage",
+    "href": "lectures/13/slides.html#représentation-et-apprentissage",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Représentation et apprentissage",
+    "text": "Représentation et apprentissage\n\nUn perceptron à une seule couche ne peut séparer que des classes linéairement séparables.\nUn réseau multicouche peut représenter XOR, comme l’a montré la présentation 11.\nApprendre les paramètres de ses couches cachées exige de résoudre le problème d’attribution du crédit (credit assignment problem) : comment chaque paramètre influence-t-il la perte finale?\n\n\nReprésenter une fonction et apprendre des paramètres convenables sont deux questions différentes. Dans l’exemple XOR de la présentation 11, les poids étaient fournis manuellement. Pour une nouvelle tâche, l’entraînement doit déterminer comment chaque paramètre d’une couche cachée influence la perte, même si aucune valeur cible n’est fournie pour les unités cachées. La rétropropagation calcule efficacement ces sensibilités. Les limites de modèles de perceptrons restreints ne doivent pas être interprétées comme des limites de tous les réseaux multicouches."
+  },
+  {
+    "objectID": "lectures/13/slides.html#la-rétropropagation-dans-larticle-de-1986",
+    "href": "lectures/13/slides.html#la-rétropropagation-dans-larticle-de-1986",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "La rétropropagation dans l’article de 1986",
+    "text": "La rétropropagation dans l’article de 1986\n\nL’article utilisait un objectif d’erreur quadratique et des unités sigmoïdes.\nUne propagation avant calcule les activations, puis une propagation arrière calcule les gradients des paramètres.\nLa descente de gradient utilise ces gradients pour mettre les paramètres à jour.\nLes unités cachées peuvent apprendre des représentations internes utiles.\n\n\nCes points décrivent l’article historique (Rumelhart et al. 1986). La rétropropagation n’est liée ni à l’erreur quadratique ni aux unités cachées sigmoïdes. Notre exemple de classification binaire utilise des unités sigmoïdes et l’entropie croisée binaire, dans la continuité des présentations 6 et 12. Les choix de perte et d’activation déterminent les dérivées locales, tandis que le calcul arrière suit les mêmes principes de la règle de la chaîne."
+  },
+  {
+    "objectID": "lectures/13/slides.html#la-sigmoïde-et-sa-dérivée",
+    "href": "lectures/13/slides.html#la-sigmoïde-et-sa-dérivée",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "La sigmoïde et sa dérivée",
+    "text": "La sigmoïde et sa dérivée\n\\[\n\\sigma(z)=\\frac{1}{1+e^{-z}},\\qquad\n\\sigma'(z)=\\sigma(z)(1-\\sigma(z)).\n\\]\n\n\nAfficher le code\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.special import expit\n\nz_values = np.linspace(-6, 6, 300)\na_values = expit(z_values)\nfig, axes = plt.subplots(1, 2, figsize=(10, 3))\naxes[0].plot(z_values, a_values)\naxes[0].set(title=\"Sigmoïde\", xlabel=\"z\", ylabel=\"activation\")\naxes[1].plot(z_values, a_values * (1 - a_values))\naxes[1].set(title=\"Dérivée de la sigmoïde\", xlabel=\"z\", ylabel=\"pente locale\")\nfor ax in axes:\n    ax.grid(True)\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\nVous n’avez pas à calculer manuellement chaque dérivée locale. Une bibliothèque de calcul symbolique comme SymPy peut calculer ou vérifier ces expressions. Vous devez comprendre le rôle de la règle de la chaîne : combiner chaque dérivée locale avec la sensibilité de la perte reçue des opérations en aval.\nPar exemple, ce calcul SymPy vérifie que la dérivée de la sigmoïde est \\(\\sigma(z)(1-\\sigma(z))\\) :\nimport sympy as sp\nz = sp.symbols(\"z\", real=True)\ns = 1 / (1 + sp.exp(-z))\nsp.simplify(sp.diff(s, z) - s * (1 - s))  # 0\nConsultez le tutoriel de différentiation de SymPy pour la fonction diff. SymPy manipule des expressions symboliques. La différentiation automatique propage plutôt les valeurs des dérivées à travers les opérations exécutées par un programme.\nLa dérivée de la sigmoïde atteint son maximum de \\(0.25\\) à \\(z=0\\) et tend vers zéro lorsque \\(z\\) tend vers l’un ou l’autre infini. La dérivée est évaluée à la préactivation \\(z\\). Si l’activation \\(a=\\sigma(z)\\) est déjà connue, sa dérivée locale se calcule par \\(a(1-a)\\). La présentation 14 examine l’effet de la multiplication répétée de petits facteurs sur la propagation des gradients dans les réseaux plus profonds."
+  },
+  {
+    "objectID": "lectures/13/slides.html#application-récursive-de-la-règle-de-la-chaîne",
+    "href": "lectures/13/slides.html#application-récursive-de-la-règle-de-la-chaîne",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Application récursive de la règle de la chaîne",
+    "text": "Application récursive de la règle de la chaîne\n\n\n\n\n\n\n\nLa rétropropagation décompose le calcul en étapes élémentaires et applique la règle de la chaîne à chacune d’elles.\nLe bloc rose calcule une sortie \\(z\\) à partir d’entrées comprenant \\(u\\) et \\(v\\). L’entrée \\(u\\) peut être un poids, un biais ou une activation intermédiaire. La perte d’un exemple est ici notée \\(\\ell\\).\nLa dérivée \\(\\partial\\ell/\\partial u\\) mesure la sensibilité locale de la perte à \\(u\\). Son signe indique l’effet d’une petite augmentation de \\(u\\) et sa valeur absolue mesure la sensibilité. Elle ne détermine pas directement une taille de mise à jour appropriée pour le paramètre.\nSi \\(\\partial\\ell/\\partial z\\) est déjà connue, sa multiplication par la dérivée locale \\(\\partial z/\\partial u\\) donne la contribution passant par \\(z\\). Le produit affiché donne la dérivée totale par rapport à \\(u\\) uniquement si toute l’influence de \\(u\\) sur la perte passe par \\(z\\). Si \\(u\\) alimente aussi d’autres opérations, leurs contributions doivent être ajoutées. Un exemple avec embranchement suivra l’exemple à un seul chemin.\n\n\nPour un chemin en aval : \\(\\displaystyle\\frac{\\partial\\ell}{\\partial u}=\\frac{\\partial z}{\\partial u}\\frac{\\partial\\ell}{\\partial z}\\)."
+  },
+  {
+    "objectID": "lectures/13/slides.html#graphe-de-calcul",
+    "href": "lectures/13/slides.html#graphe-de-calcul",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Graphe de calcul",
+    "text": "Graphe de calcul\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe schéma de gauche montre un réseau particulier, tandis que celui de droite regroupe les opérations par couche. À droite, \\(x\\) est un vecteur ligne : le même schéma de calcul convient donc à différents nombres d’unités dans chaque couche.\n\\(W^{(l)}\\) désigne les matrices de poids, \\(b^{(l)}\\) les vecteurs de biais, \\(z^{(l)}\\) les vecteurs de préactivations et \\(a^{(l)}\\) les vecteurs d’activations associés à la couche \\(l\\).\nLe graphe représente la perte \\(\\ell\\) d’un exemple. Sa sortie sigmoïde est la probabilité prédite \\(\\hat p\\). La moyenne des pertes individuelles sur les exemples d’entraînement donne \\(J\\). Les mêmes calculs s’appliquent à un lot, chaque exemple occupant une ligne.\n\n\nUn perceptron à deux couches et son graphe de calcul (computational graph)."
+  },
+  {
+    "objectID": "lectures/13/slides.html#entrée-scalaire-et-une-unité-cachée",
+    "href": "lectures/13/slides.html#entrée-scalaire-et-une-unité-cachée",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Entrée scalaire et une unité cachée",
+    "text": "Entrée scalaire et une unité cachée\n\n\n\n\n\n\n\nSoit\n\\[\n\\ell = -\\Bigl[y \\,\\log(\\hat p) + (1-y)\\,\\log(1-\\hat p)\\Bigr]\n\\]\n\\[\n  \\hat p = a_2 = \\sigma(z_2),\n  \\quad\n  z_2 = w_2 \\cdot a_1 + b_2\n\\]\n\\[\n  a_1 = \\sigma(z_1),\n  \\quad\n  z_1 = w_1 \\cdot x + b_1\n\\]\n\n\n\n\n\n\n\n\nNous commençons par une entrée scalaire et une unité par couche pour rendre chaque étape de la règle de la chaîne visible, sans introduire l’algèbre matricielle ni plusieurs indices d’unités. La couche cachée exige tout de même de propager la sensibilité de la perte à travers un calcul supplémentaire. Les réseaux plus grands suivent ces mêmes principes et additionnent les contributions lorsqu’une activation alimente plusieurs unités.\nLe réseau comporte une entrée scalaire, une unité cachée et une unité de sortie. Chaque couche de traitement possède donc un poids, un biais, une préactivation et une activation. Nous notons ces valeurs uniques \\(w_l,b_l,z_l,a_l\\). Ainsi, \\(a_1\\) est l’unique composante de \\(a^{(1)}\\) et \\(z_1\\) celle de \\(z^{(1)}\\). L’indice inférieur désigne ici la couche puisqu’il n’y a qu’une unité par couche.\nLes deux schémas représentent le même réseau scalaire. Le graphe de calcul de droite sépare le calcul affine de chaque unité de son activation sigmoïde et inclut la perte. Dans le schéma du réseau, les entrées constantes de valeur 1 apportent \\(b_1\\) et \\(b_2\\) par leurs connexions respectives. L’activation cachée est \\(a_1\\) et celle de sortie est \\(a_2=\\hat p\\).\nLe lien avec les transformations complètes des couches est \\(a_1=f_1(x)\\) et \\(\\hat p=a_2=f_2(a_1)\\). Pour un exemple, \\(a^{(l)}\\) et \\(z^{(l)}\\) décrivent les quantités de la couche. Les matrices \\(A^{(l)}\\) et \\(Z^{(l)}\\) regroupent ces quantités pour plusieurs exemples stockés en lignes."
+  },
+  {
+    "objectID": "lectures/13/slides.html#dérivées-principales",
+    "href": "lectures/13/slides.html#dérivées-principales",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Dérivées principales",
+    "text": "Dérivées principales\n\n\n\\[\n\\begin{align}\n  \\frac{\\partial \\ell}{\\partial w_2} & = (\\hat p-y) a_1 \\\\\n  \\frac{\\partial \\ell}{\\partial b_2} & = \\hat p-y \\\\\n  \\frac{\\partial \\ell}{\\partial w_1} & = (\\hat p-y) w_2\\left(a_1\\left(1-a_1\\right)\\right) x \\\\\n  \\frac{\\partial \\ell}{\\partial b_1} & = (\\hat p-y) w_2\\left(a_1\\left(1-a_1\\right)\\right) \\\\\n\\end{align}\n\\]\n\n\n\n\n\n\n\n\n\nObservation 1 : Le calcul des gradients utilise les activations des couches, en particulier \\(a_1\\) et \\(\\hat p = a_2\\)."
+  },
+  {
+    "objectID": "lectures/13/slides.html#propagation-avant",
+    "href": "lectures/13/slides.html#propagation-avant",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Propagation avant",
+    "text": "Propagation avant\n\ndef forward():\n\n    global z1, a1, z2, a2, loss, p_hat\n\n    z1 = w1 * x + b1\n    a1 = sigma(z1)\n\n    z2 = w2 * a1 + b2\n    a2 = sigma(z2)\n\n    p_hat = a2\n\n    loss = -(y * math.log(p_hat) + (1-y) * math.log(1 - p_hat))\n\n\nLe passage avant calcule et conserve z1, a1, z2 et a2. La variable p_hat = a2 est la probabilité de sortie, et loss est la perte \\(\\ell\\) d’un exemple. La déclaration global permet à la fonction de conserver ces valeurs pour le calcul arrière. Ce programme volontairement petit utilise des variables partagées pour que chaque ligne puisse être comparée directement aux équations scalaires."
+  },
+  {
+    "objectID": "lectures/13/slides.html#propagation-arrière",
+    "href": "lectures/13/slides.html#propagation-arrière",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Propagation arrière",
+    "text": "Propagation arrière\n\ndef backward():\n\n    grad_loss_w2 = (p_hat - y) * a1\n    grad_loss_b2 = p_hat - y\n\n    grad_loss_w1 = (p_hat - y) * w2 * (a1 * (1-a1)) * x\n    grad_loss_b1 = (p_hat - y) * w2 * (a1 * (1-a1))\n\n    return grad_loss_w1, grad_loss_b1, grad_loss_w2, grad_loss_b2\n\n\nLe passage arrière calcule les quatre dérivées des paramètres à partir des valeurs du passage avant. Il ne modifie aucun paramètre. Toutes les dérivées doivent être évaluées aux mêmes valeurs des paramètres. En particulier, les dérivées de la couche cachée utilisent le poids de sortie w2 qui a produit la prédiction courante."
+  },
+  {
+    "objectID": "lectures/13/slides.html#mise-à-jour-par-gradient",
+    "href": "lectures/13/slides.html#mise-à-jour-par-gradient",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Mise à jour par gradient",
+    "text": "Mise à jour par gradient\n\ndef step(gradients):\n\n    global w1, b1, w2, b2\n\n    grad_loss_w1, grad_loss_b1, grad_loss_w2, grad_loss_b2 = gradients\n\n    w1 = w1 - alpha * grad_loss_w1\n    b1 = b1 - alpha * grad_loss_b1\n    w2 = w2 - alpha * grad_loss_w2\n    b2 = b2 - alpha * grad_loss_b2\n\n\nLa rétropropagation calcule les dérivées et la descente de gradient les utilise pour mettre les paramètres à jour. La fonction step implémente la mise à jour de la troisième diapositive « Idée conceptuelle ». Bien que les affectations occupent des lignes successives, chaque mise à jour utilise un gradient calculé avant toute modification des paramètres."
+  },
+  {
+    "objectID": "lectures/13/slides.html#dérivées-principales-1",
+    "href": "lectures/13/slides.html#dérivées-principales-1",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Dérivées principales",
+    "text": "Dérivées principales\n\n\n\\[\n\\begin{align}\n  \\frac{\\partial \\ell}{\\partial w_2} & =  \\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial w_2}\\\\\n  \\frac{\\partial \\ell}{\\partial b_2} & =  \\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial b_2}\\\\\n  \\frac{\\partial \\ell}{\\partial w_1} & =  \\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1} \\cdot \\frac{\\partial z_1}{\\partial w_1}\\\\\n  \\frac{\\partial \\ell}{\\partial b_1} & =  \\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1} \\cdot \\frac{\\partial z_1}{\\partial b_1}\\\\\n\\end{align}\n\\]\n\n\n\n\n\n\n\n\n\nCes répétitions s’expliquent par le fait que les chaînes de dérivées suivent le même chemin dans le graphe de calcul.\n\n\nObservation 2 : Certaines dérivées, comme \\(\\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2}\\), sont calculées plusieurs fois."
+  },
+  {
+    "objectID": "lectures/13/slides.html#signaux-derreur",
+    "href": "lectures/13/slides.html#signaux-derreur",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Signaux d’erreur",
+    "text": "Signaux d’erreur\n\n\nSoit\n\\[\n\\begin{align}\n\\delta_2 & = \\frac{\\partial \\ell}{\\partial \\hat p} \\cdot \\frac{\\partial \\hat p}{\\partial z_2} \\\\\n\\delta_1 & = \\delta_2 \\cdot \\frac{\\partial z_2}{\\partial a_1} \\cdot \\frac{\\partial a_1}{\\partial z_1}\n\\end{align}\n\\]\n\nRéécrivons\n\\[\n\\begin{align}\n  \\frac{\\partial \\ell}{\\partial w_2} & =  \\delta_2 \\cdot \\frac{\\partial z_2}{\\partial w_2}\\\\\n  \\frac{\\partial \\ell}{\\partial b_2} & =  \\delta_2 \\cdot \\frac{\\partial z_2}{\\partial b_2}\\\\\n  \\frac{\\partial \\ell}{\\partial w_1} & =  \\delta_1 \\cdot \\frac{\\partial z_1}{\\partial w_1}\\\\\n  \\frac{\\partial \\ell}{\\partial b_1} & =  \\delta_1 \\cdot \\frac{\\partial z_1}{\\partial b_1}\\\\\n\\end{align}\n\\]\n\n\n\n\n\n\n\n\n\nLes produits répétés ont une interprétation utile : \\(\\delta_2\\) mesure la sensibilité de la perte à \\(z_2\\) et \\(\\delta_1\\) celle à \\(z_1\\). Ce sont les signaux d’erreur. Une unité cachée n’a pas besoin de sa propre valeur cible : son signal d’erreur décrit comment une petite variation de sa préactivation modifierait la perte finale.\nPour une sortie sigmoïde et l’entropie croisée binaire, \\(\\delta_2=\\hat p-y\\). Cette différence simple résulte de la simplification des dérivées déjà calculées. Elle est propre à cette combinaison activation–perte : un signal d’erreur n’est pas toujours la différence entre une prédiction et une cible. Le signal d’erreur caché est \\(\\delta_1=\\delta_2w_2a_1(1-a_1)\\).\nLes dérivées des paramètres découlent des mêmes signaux : \\(\\partial\\ell/\\partial w_l=\\delta_l a_{l-1}\\) et \\(\\partial\\ell/\\partial b_l=\\delta_l\\), avec \\(a_0=x\\). Réutiliser ces quantités évite de recalculer les mêmes produits de dérivées pour différents paramètres.\n\n\nLe signal d’erreur (error signal) \\(\\delta_l=\\partial\\ell/\\partial z_l\\) mesure la sensibilité de la perte à la préactivation d’une unité. Son indice désigne la couche."
+  },
+  {
+    "objectID": "lectures/13/slides.html#propagation-arrière-avec-signaux-derreur",
+    "href": "lectures/13/slides.html#propagation-arrière-avec-signaux-derreur",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Propagation arrière avec signaux d’erreur",
+    "text": "Propagation arrière avec signaux d’erreur\n\ndef backward_with_signals():\n\n    delta2 = p_hat - y\n    delta1 = delta2 * w2 * a1 * (1 - a1)\n\n    grad_loss_w2 = delta2 * a1\n    grad_loss_b2 = delta2\n    grad_loss_w1 = delta1 * x\n    grad_loss_b1 = delta1\n\n    return grad_loss_w1, grad_loss_b1, grad_loss_w2, grad_loss_b2\n\n\nCette fonction renvoie les quatre mêmes dérivées que backward(). Le calcul est organisé autrement : on calcule le signal d’erreur de sortie, on le propage vers l’unité cachée, puis on réutilise chaque signal pour le poids et le biais de son unité. La même fonction step peut utiliser l’un ou l’autre ensemble de dérivées.\nLe passage avant conserve les activations et les préactivations. Le passage arrière les réutilise et calcule les signaux d’erreur de la sortie vers l’entrée. L’ajout de couches répète ce schéma de calcul plutôt que d’exiger une nouvelle dérivation de chaque chemin complet."
+  },
+  {
+    "objectID": "lectures/13/slides.html#quand-une-activation-alimente-deux-unités",
+    "href": "lectures/13/slides.html#quand-une-activation-alimente-deux-unités",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Quand une activation alimente deux unités",
+    "text": "Quand une activation alimente deux unités\n\n\n\n\n\n\n\n\n\\[\nz_u=ra+b_u,\\qquad u=\\sigma(z_u)\n\\]\n\\[\nz_v=sa+b_v,\\qquad v=\\sigma(z_v)\n\\]\n\\[\n\\hat p=\\sigma(tu+qv+b_{\\mathrm{out}})\n\\]\n\nAvec \\(\\delta_u=\\partial\\ell/\\partial z_u\\) et \\(\\delta_v=\\partial\\ell/\\partial z_v\\) :\n\\[\n\\frac{\\partial\\ell}{\\partial a}\n=\\underbrace{r\\delta_u}_{\\text{par }u}\n+\\underbrace{s\\delta_v}_{\\text{par }v}.\n\\]\n\n\nL’activation cachée partagée \\(a\\) influence maintenant la perte par deux unités suivantes, \\(u\\) et \\(v\\), qui influencent toutes deux la même probabilité de sortie. Modifier \\(a\\) change à la fois \\(z_u\\) et \\(z_v\\) : la règle de la chaîne inclut donc les deux effets. Les signaux en aval \\(\\delta_u\\) et \\(\\delta_v\\) ont déjà été calculés à partir de la perte de sortie. Leur multiplication par \\(r\\) et \\(s\\) donne les contributions respectives à \\(\\partial\\ell/\\partial a\\).\nSi \\(a=\\sigma(z_a)\\), son propre signal d’erreur est\n\\[\n\\delta_a=\\frac{\\partial\\ell}{\\partial z_a}\n=(r\\delta_u+s\\delta_v)\\,a(1-a).\n\\]\nRassemblez toutes les contributions avant de poursuivre vers l’amont. Elles peuvent se renforcer ou s’opposer. On les additionne sans calculer de moyenne sur les unités en aval. La moyenne sur les exemples d’entraînement est une opération distincte. Cette accumulation est une propriété générale de la différentiation en mode inverse (Baydin et al. 2017).\n\n\nMultiplier le long d’un chemin et additionner les contributions des différents chemins en aval."
+  },
+  {
+    "objectID": "lectures/13/slides.html#embranchement-python",
+    "href": "lectures/13/slides.html#embranchement-python",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Embranchement : Python",
+    "text": "Embranchement : Python\n\na = sigma(0.0)\nr, s = 2.0, -1.0\nt, q = 1.0, 1.0\nu = sigma(r * a - 1.0)\nv = sigma(s * a + 0.5)\np_hat = sigma(t * u + q * v - 1.0)\ny = 1\n\ndelta_out = p_hat - y\ndelta_u = delta_out * t * u * (1 - u)\ndelta_v = delta_out * q * v * (1 - v)\n\nthrough_u = r * delta_u\nthrough_v = s * delta_v\ndelta_a = (through_u + through_v) * a * (1 - a)\n\nprint(f\"Contributions : {through_u:.3f} + {through_v:.3f}\")\nprint(f\"d_loss/da: {through_u + through_v:.3f}\")\nprint(f\"delta_a: {delta_a:.5f}\")\n\nContributions : -0.250 + 0.125\nd_loss/da: -0.125\ndelta_a: -0.03125\n\n\n\nLes biais sont \\(b_u=-1\\), \\(b_v=0.5\\) et \\(b_{\\mathrm{out}}=-1\\). Ces choix donnent \\(a=u=v=\\hat p=0.5\\), ce qui simplifie l’arithmétique. Comme \\(y=1\\), le signal de sortie est \\(\\delta_{\\mathrm{out}}=-0.5\\) et les deux signaux cachés en aval valent \\(-0.125\\).\nLa contribution passant par \\(u\\) vaut \\(2(-0.125)=-0.25\\). Celle passant par \\(v\\) vaut \\((-1)(-0.125)=+0.125\\). Leur somme vaut \\(-0.125\\) : les deux effets s’annulent partiellement. La multiplication par \\(a(1-a)=0.25\\) donne \\(\\delta_a=-0.03125\\).\nCet exemple étend le calcul arrière d’un chemin unique au cas d’une activation partagée, sans introduire une nouvelle méthode d’optimisation. Dans le réseau général, delta @ W_next.T calcule ces sommes pondérées pour toutes les unités à la fois. La multiplication par la dérivée de l’activation produit ensuite les signaux d’erreur de la couche précédente."
+  },
+  {
+    "objectID": "lectures/13/slides.html#entraînement-avec-rétropropagation",
+    "href": "lectures/13/slides.html#entraînement-avec-rétropropagation",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Entraînement avec rétropropagation",
+    "text": "Entraînement avec rétropropagation\n\nInitialiser les poids et les biais.\nPropagation avant : calculer les activations et conserver les valeurs intermédiaires.\nCalculer la perte du lot courant.\nPropagation arrière : calculer les gradients de tous les paramètres.\nMise à jour par gradient : modifier les paramètres à l’aide de ces gradients.\nRépéter pour les lots et les époques restants.\n\n\nLa rétropropagation correspond à l’étape 4, le calcul efficace des gradients. L’optimiseur effectue l’étape 5. Notre optimiseur utilise la descente de gradient, tandis que d’autres méthodes, comme Adam, exploitent les gradients autrement. La boucle d’entraînement s’arrête après un nombre choisi d’époques ou selon un critère d’arrêt, comme l’absence d’amélioration de la perte de validation.\nLe programme scalaire traite un exemple à la fois. L’implémentation suivante traite un mini-lot à la fois et calcule la moyenne des gradients des exemples avant de mettre les paramètres à jour. Un lot contenant tout l’ensemble d’entraînement donne la descente de gradient par lot. Un lot d’un seul exemple donne la descente de gradient stochastique."
+  },
+  {
+    "objectID": "lectures/13/slides.html#rétropropagation-sur-un-graphe-de-calcul",
+    "href": "lectures/13/slides.html#rétropropagation-sur-un-graphe-de-calcul",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Rétropropagation sur un graphe de calcul",
+    "text": "Rétropropagation sur un graphe de calcul\n\nCommencer à la perte : sa dérivée par rapport à elle-même est \\(\\frac{\\partial\\ell}{\\partial\\ell}=1\\).\nVisiter les opérations dans l’ordre inverse du calcul.\nPour chaque entrée \\(u\\), additionner les contributions de toutes ses utilisations en aval:\n\n\\[\n\\frac{\\partial\\ell}{\\partial u}\n=\\sum_{z\\text{ utilise directement }u}\n\\frac{\\partial z}{\\partial u}\\frac{\\partial\\ell}{\\partial z}.\n\\]\n\n\nLe passage arrière propage les sensibilités de la perte scalaire finale. Au nœud de perte lui-même, la sensibilité vaut un : une petite variation de la perte modifie cette même quantité d’exactement la même valeur. Il s’agit de la dérivée de la fonction identité. Elle initialise la règle de la chaîne, car multiplier la première dérivée locale par un la laisse inchangée. Cela ne signifie pas que la valeur de la perte est un.\nCette sensibilité initiale diffère du signal d’erreur de l’unité de sortie, \\(\\partial\\ell/\\partial z_{\\mathrm{out}}\\). Pour une sortie sigmoïde et l’entropie croisée binaire, ce signal est \\(\\hat p-y\\), comme établi précédemment. Notre implémentation manuelle le calcule directement. Un moteur général de graphe commence avec une sensibilité de un à la perte, puis remonte les opérations de perte et d’activation de sortie pour l’obtenir.\nPour un graphe d’opérations scalaires, la somme porte sur les sorties des opérations qui utilisent directement \\(u\\). Chaque terme est une dérivée locale multipliée par une sensibilité en aval déjà calculée. Un seul chemin donne le produit de l’exemple scalaire. Plusieurs chemins donnent la somme de l’exemple avec embranchement.\nUne implémentation peut initialiser les accumulateurs de dérivées à zéro, fixer celui de la perte à un et ajouter chaque contribution au lieu d’écraser une contribution précédente. L’ordre inverse du calcul garantit que les contributions en aval sont disponibles avant de poursuivre vers l’amont. Les valeurs qui n’influencent pas la perte ont une dérivée nulle.\nLe symbole \\(\\delta\\) est réservé ici à la sensibilité de la perte à la préactivation d’une unité, \\(\\partial\\ell/\\partial z\\). Pour une entrée quelconque \\(u\\) du graphe, la dérivée s’écrit explicitement \\(\\partial\\ell/\\partial u\\).\nLes bibliothèques modernes enregistrent les opérations pour automatiser ce processus. Notre implémentation NumPy utilise plutôt une séquence d’opérations de couches spécifiée manuellement et une boucle arrière, sans construire un moteur général de graphe (Baydin et al. 2017).\n\n\nRassembler chaque contribution avant de propager le résultat plus loin vers l’amont."
+  },
+  {
+    "objectID": "lectures/13/slides.html#initialisation",
+    "href": "lectures/13/slides.html#initialisation",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Initialisation",
+    "text": "Initialisation\n\nInitialiser les poids aléatoirement pour briser la symétrie entre les unités.\nLes biais nuls sont un choix courant.\nAdapter l’échelle des poids à la couche et à la fonction d’activation.\n\n\nDes unités d’une même couche ayant les mêmes poids entrants et les mêmes biais calculent les mêmes activations. Si elles reçoivent aussi les mêmes signaux en aval, leurs gradients restent identiques et elles ne peuvent pas apprendre des caractéristiques distinctes. L’initialisation aléatoire des poids brise cette symétrie. Les biais peuvent commencer à zéro, car les poids aléatoires distinguent les unités.\nL’initialisation à zéro est valide pour la régression logistique, qui ne possède pas de couche d’unités cachées dont il faut briser la symétrie. Elle n’exige pas que les classes soient linéairement séparables. Dans un réseau multicouche, fixer tous les poids à zéro peut aussi empêcher des signaux utiles d’atteindre les premières couches. La discussion ultérieure des initialisations Xavier/Glorot et He expliquera l’effet de l’échelle des poids sur l’entraînement."
+  },
+  {
+    "objectID": "lectures/13/slides.html#propagation-avant-et-perte",
+    "href": "lectures/13/slides.html#propagation-avant-et-perte",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Propagation avant et perte",
+    "text": "Propagation avant et perte\n\nAppliquer la transformation affine et l’activation de chaque couche.\nConserver les préactivations et activations nécessaires au passage arrière.\nPour la classification binaire, la sortie sigmoïde est la probabilité \\(\\hat p\\).\nCalculer l’entropie croisée binaire moyenne sur le lot courant.\n\n\nLe calcul qui produit les probabilités correspond à forward() ou predict_proba() dans la présentation 12. Notre méthode d’entraînement conserve aussi les valeurs intermédiaires. La méthode predict() applique un seuil aux probabilités pour produire des étiquettes. Cette opération ne fait partie ni du calcul de la perte ni de son passage arrière.\nPour un exemple, on calcule \\(\\ell(y,\\hat p)\\). Pour un lot de \\(B\\) exemples, on calcule \\(J_B=B^{-1}\\sum_i\\ell(y_i,\\hat p_i)\\). D’autres tâches exigent d’autres activations de sortie et d’autres pertes. Par exemple, une régression peut utiliser une sortie linéaire et l’erreur quadratique moyenne."
+  },
+  {
+    "objectID": "lectures/13/slides.html#propagation-arrière-et-mise-à-jour-des-paramètres",
+    "href": "lectures/13/slides.html#propagation-arrière-et-mise-à-jour-des-paramètres",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Propagation arrière et mise à jour des paramètres",
+    "text": "Propagation arrière et mise à jour des paramètres\n\nCalculer le signal d’erreur de la couche de sortie.\nRemonter les couches cachées : somme pondérée des signaux en aval, puis dérivée de l’activation.\nUtiliser les activations et signaux d’erreur de chaque couche pour calculer les gradients de ses paramètres.\nUne fois tous les gradients disponibles, mettre les paramètres à jour :\n\n\\[\n\\theta\\leftarrow\\theta-\\alpha\\nabla_\\theta J_B.\n\\]\n\nLe passage arrière réutilise les valeurs et paramètres du passage avant qui ont produit la perte courante. Modifier une couche ultérieure avant de calculer les gradients des couches précédentes mélangerait les paramètres de réseaux différents. Notre implémentation conserve donc tous les gradients des paramètres avant d’appliquer les mises à jour.\nDans l’exemple à un seul chemin, le signal d’erreur est multiplié par un poids en aval. Dans l’exemple avec embranchement, il reçoit deux contributions pondérées. Le réseau général effectue la même opération par multiplication matricielle. La rétropropagation calcule les dérivées des opérations élémentaires plutôt que de perturber chaque paramètre pour estimer son effet sur la perte."
+  },
+  {
+    "objectID": "lectures/13/slides.html#rétropropagation-passage-avant",
+    "href": "lectures/13/slides.html#rétropropagation-passage-avant",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Rétropropagation : passage avant",
+    "text": "Rétropropagation : passage avant\n\nCalculer les activations couche par couche :\n\\(z^{(l)} = a^{(l-1)} W^{(l)} + b^{(l)}\\),\n\\(a^{(l)} = \\varphi(z^{(l)})\\).\nPour la classification binaire, la sortie est une probabilité \\(\\hat p\\). Calculer la perte d’un exemple \\(\\ell(y,\\hat p)\\)."
+  },
+  {
+    "objectID": "lectures/13/slides.html#rétropropagation-passage-arrière",
+    "href": "lectures/13/slides.html#rétropropagation-passage-arrière",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Rétropropagation : passage arrière",
+    "text": "Rétropropagation : passage arrière\n\nCouche de sortie, pour un exemple avec sortie sigmoïde et entropie croisée binaire :\n\n\\[\n\\delta^{(L)}=\\hat p-y.\n\\]\n\nCouches cachées, dans l’ordre inverse \\(l=L-1,\\ldots,1\\) :\n\n\\[\n     \\delta^{(l)} = (\\delta^{(l+1)}(W^{(l+1)})^\\top) \\odot \\varphi'(z^{(l)})\n\\]\n\n\nL’équation de sortie reprend \\(\\delta_2=\\hat p-y\\) de l’exemple scalaire en utilisant maintenant \\(L\\) pour la couche finale. Elle s’applique à notre classificateur binaire avec une seule sortie sigmoïde et l’entropie croisée binaire. On commence par ce signal, puis on applique la récurrence des couches cachées de \\(L-1\\) jusqu’à 1. Pour un lot, les signaux de sortie correspondants sont A_L - yb. On calcule la moyenne sur les exemples lors de la formation des gradients des paramètres.\n\n\\(\\delta^{(l)}\\) est la ligne de signaux d’erreur de la couche \\(l\\) pour un exemple, définie par \\(\\displaystyle \\delta^{(l)} = \\frac{\\partial\\ell}{\\partial z^{(l)}}\\), soit la sensibilité de la perte de cet exemple aux préactivations de la couche.\n\\(\\delta^{(l+1)}\\) contient les signaux d’erreur de la couche suivante, plus proche de la sortie. Ils sont déjà connus grâce à l’étape précédente de rétropropagation.\n\\(\\delta^{(l+1)}(W^{(l+1)})^\\top\\) propage les signaux de la couche suivante vers l’arrière à travers les poids de la couche \\(l+1\\). Chaque neurone de la couche \\(l\\) reçoit une somme pondérée des signaux en aval, comme \\(a\\) recevait \\(r\\delta_u+s\\delta_v\\) dans l’exemple avec embranchement. La transposition correspond à notre convention de vecteurs lignes et aux matrices de poids de forme (units_in, units_out).\n\\(\\varphi'(z^{(l)})\\) est la dérivée de la fonction d’activation à la couche \\(l\\). Elle module le signal selon la sensibilité de l’activation du neurone aux variations de son entrée.\n\n\n\nLe symbole \\(\\odot\\) désigne le produit élément par élément, ou produit de Hadamard."
+  },
+  {
+    "objectID": "lectures/13/slides.html#dun-exemple-à-un-lot",
+    "href": "lectures/13/slides.html#dun-exemple-à-un-lot",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "D’un exemple à un lot",
+    "text": "D’un exemple à un lot\nEmpiler les activations et signaux d’erreur de chaque exemple comme lignes de \\(A^{(l)}\\) et \\(\\Delta^{(l)}\\).\nPour un lot de \\(B\\) exemples :\n\\[\n\\frac{\\partial J_B}{\\partial W^{(l)}}\n=\\frac{1}{B}(A^{(l-1)})^\\top\\Delta^{(l)},\n\\qquad\n\\frac{\\partial J_B}{\\partial b^{(l)}}\n=\\frac{1}{B}\\sum_{i=1}^{B}\\delta_i^{(l)}.\n\\]\ngrad_W = activations_prev.T @ delta / batch_size\ngrad_b = delta.mean(axis=0)\n\nDans la somme, \\(i\\) indexe les exemples : \\(\\delta_i^{(l)}\\) est donc la ligne de signaux de l’exemple \\(i\\). Ici, \\(\\Delta^{(l)}\\) empile les dérivées de la perte propre à chaque exemple, \\(\\ell_i\\), par rapport à ses préactivations. Ce n’est pas encore la dérivée de la perte moyenne \\(J_B\\) par rapport à toute la matrice \\(Z^{(l)}\\) du lot, qui inclurait déjà le facteur \\(1/B\\). Le tableau delta du code suit cette convention par exemple. La moyenne intervient une seule fois lors du calcul des gradients des paramètres.\nPour une sortie sigmoïde et l’entropie croisée binaire, les signaux de sortie sont delta = A_L - yb, les deux tableaux ayant la forme (B, 1). Chaque couche cachée applique delta = (delta @ W_next.T) * activation_derivative. Ce calcul additionne les contributions pondérées en aval séparément pour chaque exemple. Il ne calcule pas de moyenne sur les unités.\nSi une couche possède \\(n_{l-1}\\) entrées et \\(n_l\\) unités, ses activations ont la forme (B, n_l), ses poids (n_prev, n_l) et ses signaux d’erreur (B, n_l). Ainsi, activations_prev.T @ delta a exactement la forme de la matrice de poids. La somme des contributions aux biais sur les exemples donne un vecteur de forme (n_l,), comme le vecteur de biais."
+  },
+  {
+    "objectID": "lectures/13/slides.html#simplermlp",
+    "href": "lectures/13/slides.html#simplermlp",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "SimplerMLP",
+    "text": "SimplerMLP\nUnités sigmoïdes, entropie croisée binaire et taux d’apprentissage constant.\n\n\nAfficher le code\nimport numpy as np\n\ndef sigmoid(z):\n    return 1.0 / (1.0 + np.exp(-z))\n\ndef sigmoid_prime(z):\n    a = sigmoid(z)\n    return a * (1.0 - a)\n\ndef bce_loss(y_true, y_prob, eps=1e-9):\n    \"\"\"Entropie croisée binaire moyennée sur les exemples.\"\"\"\n    p = np.clip(y_prob, eps, 1 - eps)\n    return -np.mean(y_true * np.log(p) + (1 - y_true) * np.log(1 - p))\n\ndef xavier_init(rng, fan_in, fan_out):\n    std = np.sqrt(2.0 / (fan_in + fan_out))\n    return rng.normal(0.0, std, size=(fan_in, fan_out))\n\nclass SimplerMLP:\n    \"\"\"MLP sigmoïde pour la classification binaire; taux constant.\"\"\"\n\n    def __init__(self, layer_sizes, lr=0.1, seed=None):\n        self.sizes = list(layer_sizes)\n        self.lr = float(lr)\n        self.rng = np.random.default_rng(seed)\n\n        self.W = []\n        for din, dout in zip(self.sizes[:-1], self.sizes[1:]):\n            Wk = xavier_init(self.rng, din, dout)\n            self.W.append(Wk)\n        self.b = [np.zeros(dout) for dout in self.sizes[1:]]\n\n    def forward(self, X):\n        a = X\n        for W, b in zip(self.W, self.b):\n            a = sigmoid(a @ W + b)\n        return a.ravel()\n\n    def predict_proba(self, X):\n        return self.forward(X)\n\n    def predict(self, X, threshold=0.5):\n        return (self.predict_proba(X) &gt;= threshold).astype(int)\n\n    def loss(self, X, y):\n        p = self.predict_proba(X)\n        return bce_loss(y, p)\n\n    def _forward_full(self, X):\n        a = X\n        activations = [a]\n        zs = []\n        for W, b in zip(self.W, self.b):\n            z = a @ W + b\n            a = sigmoid(z)\n            zs.append(z)\n            activations.append(a)\n        return activations, zs\n\n    def train(self, X, y, epochs=30, batch_size=None, verbose=True):\n        \"\"\"X : (N, d), y : (N,); batch_size=None utilise tout le jeu de données.\"\"\"\n        N = X.shape[0]\n        idx = np.arange(N)\n        B = N if batch_size is None else int(batch_size)\n\n        for ep in range(1, epochs + 1):\n            self.rng.shuffle(idx)\n\n            base_loss = self.loss(X, y)\n\n            for start in range(0, N, B):\n                sl = idx[start:start + B]\n                Xb = X[sl]\n                yb = y[sl].reshape(-1, 1)\n                Bsz = Xb.shape[0]\n\n                activations, zs = self._forward_full(Xb)\n                A_L = activations[-1]\n\n                # Chaque ligne est la sensibilité aux préactivations d'un exemple.\n                delta = A_L - yb\n                grads_W = [None] * len(self.W)\n                grads_b = [None] * len(self.b)\n\n                # Calculer une seule fois la moyenne des gradients sur les exemples.\n                grads_W[-1] = activations[-2].T @ delta / Bsz\n                grads_b[-1] = delta.mean(axis=0)\n\n                for k in range(len(self.W) - 2, -1, -1):\n                    z = zs[k]\n                    d_act = sigmoid_prime(z)\n                    delta = (delta @ self.W[k + 1].T) * d_act\n                    grads_W[k] = activations[k].T @ delta / Bsz\n                    grads_b[k] = delta.mean(axis=0)\n\n                # Tous les gradients utilisent les poids du même passage avant.\n                for k in range(len(self.W)):\n                    self.W[k] -= self.lr * grads_W[k]\n                    self.b[k] -= self.lr * grads_b[k]\n\n            new_loss = self.loss(X, y)\n            if verbose:\n                print(f\"Époque {ep:3d} | perte {base_loss:.5f} -&gt; {new_loss:.5f} | lr={self.lr:.4f}\")\n\n\n\nL’implémentation complète reprend la structure de NaiveMLP de la présentation 12, mais remplace les essais de modification des paramètres par les gradients calculés par rétropropagation. Toutes les unités cachées et de sortie utilisent la sigmoïde. La sortie fournit une probabilité par exemple.\nLa classe ne comporte ni régularisation ni calendrier de taux d’apprentissage. La présentation 14 étend cette même structure sous le nom SimpleMLP. Les deux classes utilisent les mêmes méthodes de base, la même organisation des paramètres et des listes de valeurs conservées, ainsi que le même calcul arrière. SimpleMLP ajoute des options de configuration. Les carnets sont autonomes : aucun héritage ni importation d’un carnet dans l’autre n’est nécessaire."
+  },
+  {
+    "objectID": "lectures/13/slides.html#activation-et-dérivée",
+    "href": "lectures/13/slides.html#activation-et-dérivée",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Activation et dérivée",
+    "text": "Activation et dérivée\ndef sigmoid(z):\n    return 1.0 / (1.0 + np.exp(-z))\n\ndef sigmoid_prime(z):\n    a = sigmoid(z)\n    return a * (1.0 - a)\n\nsigmoid_prime reçoit la préactivation \\(z\\), et non l’activation \\(a\\). Elle calcule \\(a=\\sigma(z)\\) et renvoie \\(a(1-a)\\). Il s’agit d’une dérivée locale, pas du gradient complet d’un paramètre.\nSimplerMLP appelle directement sigmoid et sigmoid_prime, puisque chaque unité utilise la même activation. La présentation 14 introduit des méthodes de sélection de l’activation lorsque SimpleMLP ajoute un choix pour les unités cachées."
+  },
+  {
+    "objectID": "lectures/13/slides.html#initialisation-des-paramètres",
+    "href": "lectures/13/slides.html#initialisation-des-paramètres",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Initialisation des paramètres",
+    "text": "Initialisation des paramètres\ndef xavier_init(rng, fan_in, fan_out):\n    std = np.sqrt(2.0 / (fan_in + fan_out))\n    return rng.normal(0.0, std, size=(fan_in, fan_out))\n\nLes poids sont tirés aléatoirement et leur échelle dépend des largeurs des couches. Les biais commencent à zéro. Il s’agit de l’initialisation Xavier/Glorot utilisée pour les unités sigmoïdes. La motivation mathématique et les autres choix d’initialisation sont développés dans la présentation 14. Le générateur créé à partir de seed contrôle l’initialisation et l’ordre des exemples pendant l’entraînement."
+  },
+  {
+    "objectID": "lectures/13/slides.html#définition-de-la-classe-et-constructeur",
+    "href": "lectures/13/slides.html#définition-de-la-classe-et-constructeur",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Définition de la classe et constructeur",
+    "text": "Définition de la classe et constructeur\nclass SimplerMLP:\n\n    def __init__(self, layer_sizes, lr=0.1, seed=None):\n        self.sizes = list(layer_sizes)\n        self.lr = float(lr)\n        self.rng = np.random.default_rng(seed)\n\n        self.W = []\n        for din, dout in zip(self.sizes[:-1], self.sizes[1:]):\n            Wk = xavier_init(self.rng, din, dout)\n            self.W.append(Wk)\n        self.b = [np.zeros(dout) for dout in self.sizes[1:]]\n\nLe constructeur accepte uniquement l’architecture, le taux d’apprentissage et la graine aléatoire. Les matrices de poids ont la forme (units_in, units_out) et les biais (units_out,), conformément au calcul a @ W + b."
+  },
+  {
+    "objectID": "lectures/13/slides.html#évaluation",
+    "href": "lectures/13/slides.html#évaluation",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Évaluation",
+    "text": "Évaluation\n\nfrom sklearn.datasets import make_circles\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import accuracy_score\n\nX, y = make_circles(n_samples=200, factor=0.5, noise=0.08, random_state=1)\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.3, random_state=0, stratify=y)\n\nscaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\nmodel = SimplerMLP([2, 4, 4, 1], lr=0.3, seed=42)\nmodel.train(X_train, y_train, epochs=2000, batch_size=32, verbose=False)\n\nprint(\"Exactitude (entraînement) :\", accuracy_score(y_train, model.predict(X_train)))\nprint(\"Exactitude (test) :\", accuracy_score(y_test, model.predict(X_test)))\n\nExactitude (entraînement) : 1.0\nExactitude (test) : 1.0\n\n\n\nLe jeu de données circulaire et sa séparation entraînement/test sont les mêmes que dans l’exemple ultérieur avec SimpleMLP. La standardisation est ajustée uniquement sur les données d’entraînement. Ce réseau sigmoïde peu profond utilise un taux d’apprentissage constant et davantage d’époques. Les réglages illustrent un exemple complet qui fonctionne, plutôt qu’une comparaison de modèles optimisés. L’exactitude de test est rapportée après l’entraînement et ne sert pas à choisir les réglages."
+  },
+  {
+    "objectID": "lectures/13/slides.html#de-la-rétropropagation-à-limplémentation",
+    "href": "lectures/13/slides.html#de-la-rétropropagation-à-limplémentation",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "De la rétropropagation à l’implémentation",
+    "text": "De la rétropropagation à l’implémentation\n\nConserver les activations et préactivations du passage avant.\nCalculer les signaux d’erreur vers l’arrière et additionner les contributions aux embranchements.\nCalculer la moyenne des gradients des paramètres sur les exemples, puis mettre tous les paramètres à jour.\nSimplerMLP implémente ce processus avec des unités sigmoïdes et un taux d’apprentissage constant."
+  },
+  {
+    "objectID": "lectures/13/slides.html#une-activation-alimente-deux-unités",
+    "href": "lectures/13/slides.html#une-activation-alimente-deux-unités",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Une activation alimente deux unités",
+    "text": "Une activation alimente deux unités\n\n\n\n\n\n\n\n\n\\[\nz_u=ra+b_u,\\qquad u=\\sigma(z_u)\n\\]\n\\[\nz_v=sa+b_v,\\qquad v=\\sigma(z_v)\n\\]\n\\[\n\\hat p=\\sigma(tu+qv+b_{\\mathrm{out}})\n\\]\n\nAvec \\(\\delta_u=\\partial\\ell/\\partial z_u\\) et \\(\\delta_v=\\partial\\ell/\\partial z_v\\) :\n\\[\n\\frac{\\partial\\ell}{\\partial a}\n=\\underbrace{r\\delta_u}_{\\text{par }u}\n+\\underbrace{s\\delta_v}_{\\text{par }v}.\n\\]\n\n\nL’activation cachée partagée \\(a\\) influence maintenant la perte par deux unités suivantes, \\(u\\) et \\(v\\), qui influencent toutes deux la même probabilité de sortie. Modifier \\(a\\) change à la fois \\(z_u\\) et \\(z_v\\) : la règle de la chaîne inclut donc les deux effets. Les signaux en aval \\(\\delta_u\\) et \\(\\delta_v\\) ont déjà été calculés à partir de la perte de sortie. Leur multiplication par \\(r\\) et \\(s\\) donne les contributions respectives à \\(\\partial\\ell/\\partial a\\).\nSi \\(a=\\sigma(z_a)\\), son propre signal d’erreur est\n\\[\n\\delta_a=\\frac{\\partial\\ell}{\\partial z_a}\n=(r\\delta_u+s\\delta_v)\\,a(1-a).\n\\]\nRassemblez toutes les contributions avant de poursuivre vers l’amont. Elles peuvent se renforcer ou s’opposer. On les additionne sans calculer de moyenne sur les unités en aval. La moyenne sur les exemples d’entraînement est une opération distincte. Cette accumulation est une propriété générale de la différentiation en mode inverse (Baydin et al. 2017).\n\n\nMultiplier le long d’un chemin et additionner les contributions des différents chemins en aval."
+  },
+  {
+    "objectID": "lectures/13/index.html#pratiquer",
+    "href": "lectures/13/index.html#pratiquer",
+    "title": "Entraîner un réseau de neurones artificiels (partie 2)",
+    "section": "Pratiquer",
+    "text": "Pratiquer\n\nExplorer un réseau de neurones dans votre navigateur"
+  },
+  {
+    "objectID": "lectures/14/slides.html#gradients-évanescents",
+    "href": "lectures/14/slides.html#gradients-évanescents",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Gradients évanescents",
+    "text": "Gradients évanescents\n\nLa rétropropagation multiplie de façon répétée des poids et des dérivées locales d’activation.\nDe petits facteurs peuvent rendre les gradients des premières couches trop faibles pour un apprentissage efficace.\nLes unités sigmoïdes saturées ont des dérivées proches de zéro.\n\n\n\nL’exemple scalaire de la présentation 13 comportait une seule dérivée d’activation cachée. Un réseau plus profond introduit davantage de ces facteurs le long de chaque chemin. La dérivée de la sigmoïde tend vers zéro lorsque les préactivations prennent de grandes valeurs positives ou négatives. Les unités saturées peuvent donc atténuer fortement le signal propagé vers l’amont.\nLes poids interviennent aussi dans ces produits, et les différents chemins contribuent par des sommes. La borne de 0.25 sur la dérivée locale de la sigmoïde n’est donc pas une borne sur tous les gradients complets des paramètres. Les gradients peuvent diminuer ou augmenter selon l’effet combiné des transformations. Les gradients évanescents (vanishing gradients) et les gradients explosifs (exploding gradients) peuvent apparaître dans les réseaux à propagation avant comme dans les réseaux récurrents.\nPour une sortie sigmoïde avec entropie croisée binaire, le signal d’erreur de sortie se simplifie en \\hat p-y. Le facteur sigmoïde explicite s’annule à cet endroit, mais les unités sigmoïdes cachées introduisent toujours leurs dérivées d’activation. La formule simplifiée de sortie ne supprime donc pas le problème des couches cachées.\n\n\nRappel : \\sigma'(z)=\\sigma(z)(1-\\sigma(z))\\leq 0.25."
+  },
+  {
+    "objectID": "lectures/14/slides.html#fonctions-dactivation-et-leurs-dérivées",
+    "href": "lectures/14/slides.html#fonctions-dactivation-et-leurs-dérivées",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Fonctions d’activation et leurs dérivées",
+    "text": "Fonctions d’activation et leurs dérivées\n\n\nAfficher le code\n# Attribution : https://github.com/ageron/handson-ml3/blob/main/10_neural_nets_with_keras.ipynb\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nfrom scipy.special import expit as sigmoid\n\ndef relu(z):\n    return np.maximum(0, z)\n\ndef derivative(f, z, eps=0.000001):\n    return (f(z + eps) - f(z - eps))/(2 * eps)\n\nmax_z = 4.5\nz = np.linspace(-max_z, max_z, 200)\n\nplt.figure(figsize=(11, 3.1))\n\nplt.subplot(121)\nplt.plot(z, relu(z), \"m-.\", linewidth=2, label=\"ReLU\")\nplt.plot(z, sigmoid(z), \"g--\", linewidth=2, label=\"Sigmoïde\")\nplt.plot(z, np.tanh(z), \"b-\", linewidth=1, label=\"Tanh\")\nplt.grid(True)\nplt.title(\"Fonctions d'activation\")\nplt.axis([-max_z, max_z, -1.65, 2.4])\nplt.gca().set_yticks([-1, 0, 1, 2])\nplt.legend(loc=\"lower right\", fontsize=13)\n\nplt.subplot(122)\nplt.plot(z, derivative(sigmoid, z), \"g--\", linewidth=2, label=\"Sigmoïde\")\nplt.plot(z, derivative(np.tanh, z), \"b-\", linewidth=1, label=\"Tanh\")\nplt.plot([-max_z, 0], [0, 0], \"m-.\", linewidth=2)\nplt.plot([0, max_z], [1, 1], \"m-.\", linewidth=2)\nplt.plot([0, 0], [0, 1], \"mo\", markersize=6, markerfacecolor=\"white\")\nplt.grid(True)\nplt.title(\"Dérivées\")\nplt.axis([-max_z, max_z, -0.2, 1.2])\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLe choix de l’activation influence la propagation des gradients et donc l’entraînement. Il faut interpréter ces pentes et comprendre leur rôle dans la règle de la chaîne, plutôt que calculer manuellement chaque expression.\nLa dérivée maximale de la sigmoïde est 0.25 et sa dérivée tend vers zéro aux deux extrêmes. La dérivée de \\tanh atteint un à zéro et tend aussi vers zéro dans ses régions saturées.\nPour ReLU, la dérivée vaut zéro lorsque la préactivation est négative et un lorsqu’elle est positive. À zéro, la dérivée ordinaire n’est pas définie. Les implémentations choisissent une valeur par convention, généralement zéro. Les cercles ouverts indiquent cette absence de dérivée ordinaire. L’activation elle-même peut prendre toute valeur non négative : c’est sa dérivée, hors de zéro, qui ne prend que les valeurs zéro et un.\nReLU produit des activations éparses, car sa sortie est nulle pour les entrées non positives. Une activation nulle pour un exemple est normale. Une unité qui reste dans cette région pour les entrées d’entraînement considérées ne reçoit aucun gradient de la perte des données à travers son activation et peut rester inactive : c’est le problème des neurones ReLU inactifs (dying ReLU). Il s’agit d’une inactivité persistante, pas simplement d’une sortie nulle. Des modifications des représentations en amont peuvent parfois réactiver une unité. L’inactivité n’est donc pas toujours irréversible. Voir Lu et al. (2019).\nLa dérivée de ReLU du côté positif évite une source d’atténuation, mais ne rend pas le gradient complet égal à un. Les activations entrantes, les poids en aval, les autres dérivées d’activation et les sommes de chemins interviennent toujours. Leaky ReLU conserve une petite pente du côté négatif, ce qui réduit ce risque particulier.\n\n\nGéron (2022) – 10_neural_nets_with_keras.ipynb"
+  },
+  {
+    "objectID": "lectures/14/slides.html#gradients-évanescents-solutions",
+    "href": "lectures/14/slides.html#gradients-évanescents-solutions",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Gradients évanescents : solutions",
+    "text": "Gradients évanescents : solutions\n\nAutres fonctions d’activation : unité linéaire rectifiée (ReLU) et ses variantes, comme Leaky ReLU, Parametric ReLU et Exponential Linear Unit.\nInitialisation des poids : initialisation Xavier (Glorot) ou He.\n\n\nLes fonctions d’activation et l’initialisation influencent la propagation des signaux dans les deux sens. ReLU évite la saturation pour les préactivations positives, mais sa dérivée nulle du côté négatif crée une autre limite, examinée ensuite. Choisir ReLU ne garantit pas la stabilité des gradients dans un réseau arbitrairement profond. Les couches de normalisation et les connexions résiduelles offrent d’autres approches, au-delà de cette implémentation."
+  },
+  {
+    "objectID": "lectures/14/slides.html#glorot-et-bengio",
+    "href": "lectures/14/slides.html#glorot-et-bengio",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Glorot et Bengio",
+    "text": "Glorot et Bengio\n\n\nFigure 6\n\n\n\n\n\n\nFigure 7\n\n\n\n\n\n\n\n\nCes figures comparent l’initialisation standard, en haut, à l’initialisation normalisée proposée par Glorot et Bengio, en bas, pour un réseau à unités \\tanh (Glorot et Bengio 2010, 254). La figure 6 montre les histogrammes des activations, et la figure 7 ceux des gradients rétropropagés. Avec l’initialisation standard, les activations se concentrent davantage près de zéro dans les couches ultérieures, tandis que les gradients rétropropagés se concentrent davantage près de zéro à proximité de l’entrée. L’initialisation normalisée réduit les écarts entre les couches dans ces expériences.\nCes distributions correspondent au cadre expérimental rapporté. Elles n’établissent pas une règle universelle selon laquelle les gradients évanescents impliquent toujours de petites activations avant. Une sigmoïde saturée peut avoir une activation proche de un et une dérivée proche de zéro. L’article distingue aussi les signaux rétropropagés des gradients des poids. Leurs distributions par couche ne se comportent pas nécessairement de la même façon.\nL’initialisation normale Xavier/Glorot équilibre les largeurs d’entrée et de sortie par \\operatorname{Var}(W)=2/(n_{\\mathrm{in}}+n_{\\mathrm{out}}). Il s’agit de l’initialisation aléatoire avec mise à l’échelle déjà utilisée par SimplerMLP.\n\n\nGlorot et Bengio (2010), page 254."
+  },
+  {
+    "objectID": "lectures/14/slides.html#initialisation-he",
+    "href": "lectures/14/slides.html#initialisation-he",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Initialisation He",
+    "text": "Initialisation He\nPour les couches cachées ReLU, l’initialisation normale He utilise\n\n\\operatorname{Var}(W)=\\frac{2}{n_{\\mathrm{in}}}.\n\ndef he_init(rng, fan_in, fan_out):\n    std = np.sqrt(2.0 / fan_in)\n    return rng.normal(0.0, std, size=(fan_in, fan_out))\n\n\nLa mise à l’échelle tient compte de l’effet de la rectification sur la variance des signaux. SimpleMLP utilisera l’initialisation He pour les couches cachées ReLU et Xavier/Glorot pour les couches sigmoïdes, y compris la sortie. Ces règles d’initialisation ne garantissent pas le comportement de toute la trajectoire d’entraînement. Voir He et al. (2015) pour l’analyse des unités rectifiées.\n\n\nAussi appelée initialisation Kaiming."
+  },
+  {
+    "objectID": "lectures/14/slides.html#remarque",
+    "href": "lectures/14/slides.html#remarque",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Remarque",
+    "text": "Remarque\nL’initialisation aléatoire des poids1 suffit à briser la symétrie d’un réseau de neurones. Les biais peuvent donc commencer à zéro sans empêcher les unités d’apprendre des caractéristiques distinctes.\nL’initialisation des poids, par exemple Xavier/Glorot ou He, doit être adaptée à la fonction d’activation pour favoriser un apprentissage efficace."
+  },
+  {
+    "objectID": "lectures/14/slides.html#fonction-dactivation-leaky-relu",
+    "href": "lectures/14/slides.html#fonction-dactivation-leaky-relu",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Fonction d’activation : Leaky ReLU",
+    "text": "Fonction d’activation : Leaky ReLU\n\n\nAfficher le code\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Définir la fonction Leaky ReLU\ndef leaky_relu(x, alpha=0.2):\n    return np.where(x &gt; 0, x, alpha * x)\n\n# Définir la dérivée de Leaky ReLU\ndef leaky_relu_derivative(x, alpha=0.2):\n    return np.where(x &gt; 0, 1, alpha)\n\n# Générer une plage de valeurs d'entrée\nx_values = np.linspace(-4, 4, 400)\n\n# Calculer Leaky ReLU et sa dérivée\nleaky_relu_values = leaky_relu(x_values)\nleaky_relu_derivative_values = leaky_relu_derivative(x_values)\n\n# Créer le graphique\nplt.figure(figsize=(5, 3))\n\n# Tracer Leaky ReLU\nplt.subplot(1, 2, 1)\nplt.plot(x_values, leaky_relu_values, label='Leaky ReLU', color='blue')\nplt.title(\"Fonction d'activation Leaky ReLU\")\nplt.xlabel('x')\nplt.ylabel('f(x)')\nplt.grid(True)\nplt.axhline(0, color='black',linewidth=0.5)\nplt.axvline(0, color='black',linewidth=0.5)\nplt.legend()\n\n# Tracer la dérivée de Leaky ReLU\nplt.subplot(1, 2, 2)\nplt.plot(x_values, leaky_relu_derivative_values, label='Dérivée de Leaky ReLU', color='red')\nplt.title('Dérivée de Leaky ReLU')\nplt.xlabel('x')\nplt.ylabel(\"f'(x)\")\nplt.grid(True)\nplt.axhline(0, color='black',linewidth=0.5)\nplt.axvline(0, color='black',linewidth=0.5)\nplt.legend()\n\n# Afficher les graphiques\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nLorsque l’entrée de ReLU, soit la somme pondérée plus le biais, est négative pour tous les exemples d’entraînement, sa sortie est nulle. Sa dérivée est aussi nulle, ce qui désactive le neurone. Leaky ReLU et d’autres variantes atténuent ce problème.\nimport tensorflow as tf\nfrom tensorflow.keras.layers import Dense\n\nleaky_relu = tf.keras.layers.LeakyReLU(negative_slope=0.2)\ndense = tf.keras.layers.Dense(50, activation=leaky_relu, kernel_initializer=\"he_normal\")\nConsultez les fonctions d’activation Keras pour d’autres choix.\n\n\nLeaky ReLU, une variante de ReLU, atténue le problème des neurones ReLU qui restent inactifs. Pour les entrées négatives, elle introduit une composante linéaire dont la pente est contrôlée par le paramètre negative_slope."
+  },
+  {
+    "objectID": "lectures/14/slides.html#de-simplermlp-à-simplemlp",
+    "href": "lectures/14/slides.html#de-simplermlp-à-simplemlp",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "De SimplerMLP à SimpleMLP",
+    "text": "De SimplerMLP à SimpleMLP\n\n\n\n\n\n\n\n\nComposante\nSimplerMLP (présentation 13)\nSimpleMLP\n\n\n\n\nActivation cachée\nSigmoïde\nSigmoïde ou ReLU\n\n\nSortie\nProbabilité sigmoïde\nProbabilité sigmoïde\n\n\nTaux d’apprentissage\nConstant\nConstant ou décroissance exponentielle\n\n\nPerte\nBCE moyenne\nBCE moyenne et pénalité L2 optionnelle\n\n\nOrdre des exemples\nMélange à chaque époque\nMélange optionnel, activé par défaut\n\n\nValeurs conservées et boucle arrière\nMême structure\nMême structure\n\n\nAPI de prédiction et d’entraînement\nMêmes méthodes\nMêmes méthodes\n\n\n\n\nLa nouvelle classe étend l’implémentation précédente en conservant sa structure de calcul. Les deux sont des classificateurs binaires avec une sortie sigmoïde. Changer l’activation cachée exige une dérivée locale correspondante et une initialisation appropriée, mais la règle de la chaîne et la boucle arrière restent les mêmes.\nLes réglages hidden_activation=\"sigmoid\", l2=0.0 et lr_decay=None retrouvent le calcul de SimplerMLP. Avec la même graine et la valeur par défaut shuffle=True, les deux classes effectuent la même initialisation et le même mélange. SimpleMLP ajoute une option shuffle à train : shuffle=False conserve l’ordre fourni des exemples d’une époque à l’autre. Cette option est utile lorsque l’entraînement dépend de cet ordre, comme discuté dans la présentation 13. Elle ne transforme pas à elle seule ce classificateur à propagation avant en modèle séquentiel. La définition complète ci-dessous permet une exécution autonome du carnet. Les extraits suivants mettent l’accent sur les ajouts."
+  },
+  {
+    "objectID": "lectures/14/slides.html#simplemlp",
+    "href": "lectures/14/slides.html#simplemlp",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "SimpleMLP",
+    "text": "SimpleMLP\n\n\nAfficher le code\nimport numpy as np\n\ndef sigmoid(z):\n    return 1.0 / (1.0 + np.exp(-z))\n\ndef sigmoid_prime(z):\n    a = sigmoid(z)\n    return a * (1.0 - a)\n\ndef bce_loss(y_true, y_prob, eps=1e-9):\n    \"\"\"Entropie croisée binaire moyennée sur les exemples.\"\"\"\n    p = np.clip(y_prob, eps, 1 - eps)\n    return -np.mean(y_true * np.log(p) + (1 - y_true) * np.log(1 - p))\n\ndef xavier_init(rng, fan_in, fan_out):\n    std = np.sqrt(2.0 / (fan_in + fan_out))\n    return rng.normal(0.0, std, size=(fan_in, fan_out))\n\ndef relu(z):\n    return np.maximum(0.0, z)\n\ndef relu_prime(z):\n    return (z &gt; 0).astype(float)\n\ndef he_init(rng, fan_in, fan_out):\n    std = np.sqrt(2.0 / fan_in)\n    return rng.normal(0.0, std, size=(fan_in, fan_out))\n\nclass SimpleMLP:\n    \"\"\"MLP binaire avec options ReLU, L2 et décroissance du taux.\"\"\"\n\n    def __init__(self, layer_sizes, lr=0.1, seed=None, l2=0.0,\n                 hidden_activation=\"relu\", lr_decay=None):\n        self.sizes = list(layer_sizes)\n        self.lr = float(lr)\n        self.base_lr = float(lr)\n        self.l2 = float(l2)\n        self.hidden_activation = hidden_activation\n        self.lr_decay = lr_decay\n        self.rng = np.random.default_rng(seed)\n\n        self.W = []\n        L = len(self.sizes) - 1\n        for l, (din, dout) in enumerate(zip(self.sizes[:-1], self.sizes[1:]), start=1):\n            if l &lt; L and self.hidden_activation == \"relu\":\n                Wk = he_init(self.rng, din, dout)\n            else:\n                Wk = xavier_init(self.rng, din, dout)\n            self.W.append(Wk)\n        self.b = [np.zeros(dout) for dout in self.sizes[1:]]\n\n    def _act(self, z, last=False):\n        if last:\n            return sigmoid(z)\n        return relu(z) if self.hidden_activation == \"relu\" else sigmoid(z)\n\n    def _act_prime(self, z, last=False):\n        if last:\n            return sigmoid_prime(z)\n        return relu_prime(z) if self.hidden_activation == \"relu\" else sigmoid_prime(z)\n\n    def forward(self, X):\n        a = X\n        L = len(self.W)\n        for l, (W, b) in enumerate(zip(self.W, self.b), start=1):\n            a = self._act(a @ W + b, last=(l == L))\n        return a.ravel()\n\n    def predict_proba(self, X):\n        return self.forward(X)\n\n    def predict(self, X, threshold=0.5):\n        return (self.predict_proba(X) &gt;= threshold).astype(int)\n\n    def loss(self, X, y):\n        p = self.predict_proba(X)\n        base = bce_loss(y, p)\n        if self.l2 &gt; 0:\n            base += 0.5 * self.l2 * sum((W ** 2).sum() for W in self.W)\n        return base\n\n    def _forward_full(self, X):\n        a = X\n        activations = [a]\n        zs = []\n        L = len(self.W)\n        for l, (W, b) in enumerate(zip(self.W, self.b), start=1):\n            z = a @ W + b\n            a = self._act(z, last=(l == L))\n            zs.append(z)\n            activations.append(a)\n        return activations, zs\n\n    def train(self, X, y, epochs=30, batch_size=None, verbose=True, shuffle=True):\n        \"\"\"X : (N, d), y : (N,); batch_size=None utilise tout le jeu de données.\"\"\"\n        N = X.shape[0]\n        idx = np.arange(N)\n        B = N if batch_size is None else int(batch_size)\n\n        for ep in range(1, epochs + 1):\n            if shuffle:\n                self.rng.shuffle(idx)\n            if self.lr_decay is not None:\n                self.lr = self.base_lr * self.lr_decay ** (ep - 1)\n\n            base_loss = self.loss(X, y)\n\n            for start in range(0, N, B):\n                sl = idx[start:start + B]\n                Xb = X[sl]\n                yb = y[sl].reshape(-1, 1)\n                Bsz = Xb.shape[0]\n\n                activations, zs = self._forward_full(Xb)\n                A_L = activations[-1]\n\n                # Chaque ligne est la sensibilité aux préactivations d'un exemple.\n                delta = A_L - yb\n                grads_W = [None] * len(self.W)\n                grads_b = [None] * len(self.b)\n\n                # Calculer une seule fois la moyenne des gradients sur les exemples.\n                grads_W[-1] = activations[-2].T @ delta / Bsz\n                grads_b[-1] = delta.mean(axis=0)\n\n                for k in range(len(self.W) - 2, -1, -1):\n                    z = zs[k]\n                    d_act = self._act_prime(z, last=False)\n                    delta = (delta @ self.W[k + 1].T) * d_act\n                    grads_W[k] = activations[k].T @ delta / Bsz\n                    grads_b[k] = delta.mean(axis=0)\n\n                if self.l2 &gt; 0:\n                    for k in range(len(self.W)):\n                        grads_W[k] += self.l2 * self.W[k]\n\n                # Tous les gradients utilisent les poids du même passage avant.\n                for k in range(len(self.W)):\n                    self.W[k] -= self.lr * grads_W[k]\n                    self.b[k] -= self.lr * grads_b[k]\n\n            new_loss = self.loss(X, y)\n            if verbose:\n                print(f\"Époque {ep:3d} | perte {base_loss:.5f} -&gt; {new_loss:.5f} | lr={self.lr:.4f}\")"
+  },
+  {
+    "objectID": "lectures/14/slides.html#choix-des-activations-cachées",
+    "href": "lectures/14/slides.html#choix-des-activations-cachées",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Choix des activations cachées",
+    "text": "Choix des activations cachées\n    def _act(self, z, last=False):\n        if last:\n            return sigmoid(z)\n        return relu(z) if self.hidden_activation == \"relu\" else sigmoid(z)\n\n    def _act_prime(self, z, last=False):\n        if last:\n            return sigmoid_prime(z)\n        return relu_prime(z) if self.hidden_activation == \"relu\" else sigmoid_prime(z)\n\nLa sortie reste sigmoïde pour la classification binaire. L’option ReLU concerne uniquement les unités cachées. La présentation 13 appelait directement sigmoid et sigmoid_prime. Ici, les méthodes _act et _act_prime sélectionnent l’activation et sa dérivée. L’indicateur last identifie la couche de sortie. Les méthodes de passage avant, avec ou sans conservation des valeurs, appellent maintenant _act. La boucle arrière appelle _act_prime. La multiplication par W_next.T et la moyenne sur les exemples restent inchangées."
+  },
+  {
+    "objectID": "lectures/14/slides.html#décroissance-du-taux-dapprentissage",
+    "href": "lectures/14/slides.html#décroissance-du-taux-dapprentissage",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Décroissance du taux d’apprentissage",
+    "text": "Décroissance du taux d’apprentissage\nÀ l’époque t=1,2,\\ldots, avec un facteur de décroissance 0&lt;\\gamma&lt;1 :\n\n\\alpha_t=\\alpha_1\\gamma^{t-1}.\n\nif self.lr_decay is not None:\n    self.lr = self.base_lr * self.lr_decay ** (ep - 1)\n\nLa première époque utilise le taux d’apprentissage initial. Les époques suivantes utilisent des pas progressivement plus petits. Avec lr_decay=None, le taux reste constant. La décroissance modifie la taille du pas de l’optimiseur, pas les formules des dérivées ni l’objectif. Elle diffère de la régularisation L2 et de la décroissance des poids (weight decay). Réduire le taux trop rapidement peut empêcher des progrès utiles. Cela ne corrige pas les gradients évanescents."
+  },
+  {
+    "objectID": "lectures/14/slides.html#l2-dans-lobjectif-et-le-gradient",
+    "href": "lectures/14/slides.html#l2-dans-lobjectif-et-le-gradient",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "L2 dans l’objectif et le gradient",
+    "text": "L2 dans l’objectif et le gradient\n\nJ_{\\mathrm{reg}}=J_{\\mathrm{BCE}}+\n\\frac{\\lambda}{2}\\sum_{l=1}^{L}\\|W^{(l)}\\|_F^2.\n\nbase += 0.5 * self.l2 * sum((W ** 2).sum() for W in self.W)\n\n# Après le calcul des gradients moyens de la perte des données :\ngrads_W[k] += self.l2 * self.W[k]\n\nLe coefficient l2 correspond à \\lambda. La perte des données est moyennée sur les exemples. La pénalité est ajoutée séparément, sans division supplémentaire par la taille du jeu de données ou du mini-lot. Sa dérivée est donc \\lambda W dans chaque lot. L’objectif rapporté et le gradient de mise à jour restent ainsi cohérents. Les biais ne sont pas pénalisés dans cette implémentation.\nLe carré de la norme de Frobenius est simplement la somme des carrés des éléments d’une matrice de poids. L2 décourage les grands poids, mais ne change pas les dérivées locales d’activation et ne corrige pas directement la propagation des gradients. La section ultérieure sur la régularisation développera la motivation liée à la généralisation et les autres méthodes."
+  },
+  {
+    "objectID": "lectures/14/slides.html#même-api-modèle-étendu",
+    "href": "lectures/14/slides.html#même-api-modèle-étendu",
+    "title": "Entraînement des réseaux profonds, softmax et régularisation",
+    "section": "Même API, modèle étendu",
+    "text": "Même API, modèle étendu\n\nfrom sklearn.datasets import make_circles\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import accuracy_score\n\nX, y = make_circles(n_samples=200, factor=0.5, noise=0.08, random_state=1)\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.3, random_state=0, stratify=y)\n\nscaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\nmodel = SimpleMLP([2, 4, 4, 1], lr=0.3, seed=42,\n                  hidden_activation=\"relu\", l2=0.001, lr_decay=0.995)\nmodel.train(X_train, y_train, epochs=500, batch_size=32, verbose=False)\n\nprint(\"Exactitude (entraînement) :\", accuracy_score(y_train, model.predict(X_train)))\nprint(\"Exactitude (test) :\", accuracy_score(y_test, model.predict(X_test)))\n\nExactitude (entraînement) : 1.0\nExactitude (test) : 1.0\n\n\n\nCet exemple utilise les mêmes données, séparation, prétraitement et architecture que l’exemple SimplerMLP. Il montre comment activer les options supplémentaires. Comme l’activation, la durée d’entraînement, la pénalité et le calendrier du taux d’apprentissage diffèrent, ces deux exécutions illustrent des processus complets plutôt qu’une comparaison contrôlée qui établirait la supériorité universelle d’un réglage. Les graines des deux constructeurs contrôlent les poids et le mélange. Tous les gradients sont toujours calculés avant les mises à jour."
   }
 ]

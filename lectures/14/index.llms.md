@@ -1,4 +1,4 @@
-# Softmax, entropie croisée, régularisation
+# Entraînement des réseaux profonds, softmax et régularisation
 
 CSI4506 Introduction à l’intelligence artificielle
 
@@ -12,4 +12,4 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Practiquer
 
-- [kong_and_yu-2018](kong_and_yu-2018) - un exemple illustrant l’efficacité de la régularisation \\l_1\\ et \\l_2\\.
+- [kong_and_yu-2018](kong_and_yu-2018) - un exemple illustrant l’efficacité de la régularisation l_1 et l_2.
