@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/12/index.html</loc>
-    <lastmod>2026-10-15T21:23:10.203Z</lastmod>
+    <lastmod>2026-10-18T20:13:02.852Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/10/index.html</loc>
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/12/slides.html</loc>
-    <lastmod>2026-10-15T21:36:09.929Z</lastmod>
+    <lastmod>2026-10-18T20:13:18.668Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/10/slides.html</loc>
@@ -190,7 +190,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/11/slides.html</loc>
-    <lastmod>2026-10-15T18:32:49.775Z</lastmod>
+    <lastmod>2026-10-18T20:56:54.499Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/13/slides.html</loc>
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/11/index.html</loc>
-    <lastmod>2026-10-15T17:52:07.011Z</lastmod>
+    <lastmod>2026-10-18T20:52:32.737Z</lastmod>
   </url>
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/13/index.html</loc>
@@ -327,5 +327,9 @@
   <url>
     <loc>https://turcotte.xyz/teaching/csi-4506/lectures/03/randomness_in_ml.html</loc>
     <lastmod>2026-09-20T20:56:18.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://turcotte.xyz/teaching/csi-4506/lectures/11/ReLUBuildingBlocks.html</loc>
+    <lastmod>2026-10-18T20:52:32.687Z</lastmod>
   </url>
 </urlset>

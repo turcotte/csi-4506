@@ -14312,7 +14312,7 @@
     "href": "lectures/11/slides.html#effet-de-b-relu",
     "title": "Introduction aux réseaux de neurones artificiels",
     "section": "Effet de b : ReLU",
-    "text": "Effet de b : ReLU\n\n\nCode\nplot_parameter_effect(relu, \"ReLU\", weights=[1], biases=[-5, -2, 0, 2, 5],\n                      title=\"Variation de b, avec w = 1\")\n\n\n\n\n\n\n\n\n\n\n\nPour w\\ne0 fixé, le biais déplace le changement de pente en x=-b/w."
+    "text": "Effet de b : ReLU\n\n\nCode\nplot_parameter_effect(relu, \"ReLU\", weights=[1], biases=[-5, -2, 0, 2, 5],\n                      title=\"Variation de b, avec w = 1\")\n\n\n\n\n\n\n\n\n\n\n\nPour w\\ne0 fixé, le biais déplace le changement de pente en x=-b/w.\nComplément interactif : Construire une fonction avec deux unités ReLU."
   },
   {
     "objectID": "lectures/11/slides.html#comparaison-des-courbes-ajustées",
@@ -14424,7 +14424,7 @@
     "href": "lectures/11/index.html#pratiquer",
     "title": "Introduction aux réseaux de neurones artificiels",
     "section": "Pratiquer",
-    "text": "Pratiquer\n\nSéparabilité de données circulaires  : Un cahier d’étude autonome sur l’ingénierie des attributs (feature engineering) et les représentations apprises, pour compléter l’exploration de TensorFlow Playground ci-dessous.\nTensorFlow Playground\n\nOptions de jeu de données : Les utilisateurs peuvent choisir parmi quatre types de jeux de données : circulaire, XOR, gaussien et spirale.\nIngénierie des attributs : Permet la création de nouveaux attributs pour améliorer la performance du modèle.\nArchitecture du modèle : Permet la personnalisation de l’architecture du réseau de neurones, y compris la variation du nombre de couches et de neurones par couche.\nRéglage des hyperparamètres : Offre des options pour ajuster le taux d’apprentissage, les fonctions d’activation, les techniques de régularisation et les spécifications des tâches pour observer leurs effets sur l’entraînement du modèle.\nSuggestion 1 : Pour le jeu de données gaussien, qui est linéairement séparable, configurez un réseau sans couche cachée et avec un seul neurone de sortie utilisant la sigmoïde. Cette configuration correspond à un modèle de régression logistique.\nSuggestion 2 : Le jeu de données circulaire n’est pas linéairement séparable avec les seuls attributs d’origine x_1 et x_2. En ajoutant les attributs x_1^2 et x_2^2, on peut séparer les classes dans l’espace transformé. Un réseau sans couche cachée et avec un seul nœud de sortie suffit pour cette tâche."
+    "text": "Pratiquer\n\nConstruire des fonctions avec ReLU (page HTML interactive) : Ajustez les sept paramètres d’un réseau pour explorer comment deux unités cachées se combinent pour former une courbe de régression.\nSéparabilité de données circulaires  : Un cahier d’étude autonome sur l’ingénierie des attributs (feature engineering) et les représentations apprises, pour compléter l’exploration de TensorFlow Playground ci-dessous.\nTensorFlow Playground\n\nOptions de jeu de données : Les utilisateurs peuvent choisir parmi quatre types de jeux de données : circulaire, XOR, gaussien et spirale.\nIngénierie des attributs : Permet la création de nouveaux attributs pour améliorer la performance du modèle.\nArchitecture du modèle : Permet la personnalisation de l’architecture du réseau de neurones, y compris la variation du nombre de couches et de neurones par couche.\nRéglage des hyperparamètres : Offre des options pour ajuster le taux d’apprentissage, les fonctions d’activation, les techniques de régularisation et les spécifications des tâches pour observer leurs effets sur l’entraînement du modèle.\nSuggestion 1 : Pour le jeu de données gaussien, qui est linéairement séparable, configurez un réseau sans couche cachée et avec un seul neurone de sortie utilisant la sigmoïde. Cette configuration correspond à un modèle de régression logistique.\nSuggestion 2 : Le jeu de données circulaire n’est pas linéairement séparable avec les seuls attributs d’origine x_1 et x_2. En ajoutant les attributs x_1^2 et x_2^2, on peut séparer les classes dans l’espace transformé. Un réseau sans couche cachée et avec un seul nœud de sortie suffit pour cette tâche."
   },
   {
     "objectID": "lectures/11/slides.html#prochaine-présentation",
@@ -14487,14 +14487,14 @@
     "href": "lectures/12/slides.html#détour-python-tableaux-de-poids",
     "title": "Entraîner un réseau de neurones artificiels (partie 1)",
     "section": "Détour Python : tableaux de poids",
-    "text": "Détour Python : tableaux de poids\n\nseed = 0\n\nrng = np.random.default_rng(seed)\n\nlayer_sizes = [2, 4, 4, 1]\n\n[(in_d, out_d) for in_d, out_d in zip(layer_sizes[:-1], layer_sizes[1:])]\n\n[(2, 4), (4, 4), (4, 1)]\n\n\n\n\n[rng.standard_normal(size=(in_d, out_d)) * 0.5 for in_d, out_d in zip(layer_sizes[:-1], layer_sizes[1:])]\n\n[array([[ 0.06286511, -0.06605243,  0.32021133,  0.05245006],\n        [-0.26783469,  0.18079753,  0.65200002,  0.47354048]]),\n array([[-0.35186762, -0.63271074, -0.31163723,  0.02066299],\n        [-1.16251539, -0.10939583, -0.62295547, -0.36613368],\n        [-0.27212949, -0.15815008,  0.20581527,  0.52125668],\n        [-0.06426733,  0.68323174, -0.33259734,  0.17575504]]),\n array([[ 0.45173509],\n        [ 0.04700615],\n        [-0.37174962],\n        [-0.46086269]])]\n\n\n\nCombien de poids ce réseau possède-t-il?"
+    "text": "Détour Python : tableaux de poids\n\nseed = 0\n\nrng = np.random.default_rng(seed)\n\nlayer_sizes = [2, 4, 4, 1]\n\n[(in_d, out_d) for in_d, out_d in zip(layer_sizes[:-1], layer_sizes[1:])]\n\n[(2, 4), (4, 4), (4, 1)]\n\n\n\n\n[rng.standard_normal(size=(in_d, out_d)) * 0.5 for in_d, out_d in zip(layer_sizes[:-1], layer_sizes[1:])]\n\n[array([[ 0.06286511, -0.06605243,  0.32021133,  0.05245006],\n        [-0.26783469,  0.18079753,  0.65200002,  0.47354048]]),\n array([[-0.35186762, -0.63271074, -0.31163723,  0.02066299],\n        [-1.16251539, -0.10939583, -0.62295547, -0.36613368],\n        [-0.27212949, -0.15815008,  0.20581527,  0.52125668],\n        [-0.06426733,  0.68323174, -0.33259734,  0.17575504]]),\n array([[ 0.45173509],\n        [ 0.04700615],\n        [-0.37174962],\n        [-0.46086269]])]\n\n\n\n\n\n\nCombien de poids ce réseau possède-t-il?"
   },
   {
     "objectID": "lectures/12/slides.html#détour-python-tableaux-de-biais",
     "href": "lectures/12/slides.html#détour-python-tableaux-de-biais",
     "title": "Entraîner un réseau de neurones artificiels (partie 1)",
     "section": "Détour Python : tableaux de biais",
-    "text": "Détour Python : tableaux de biais\n\n[out_d for out_d in layer_sizes[1:]]\n\n[4, 4, 1]\n\n\n\n\n[np.zeros(out_d) for out_d in layer_sizes[1:]]\n\n[array([0., 0., 0., 0.]), array([0., 0., 0., 0.]), array([0.])]\n\n\n\nCombien de termes de biais ce réseau possède-t-il?\nLe réseau possède 37 paramètres au total : 28 poids et 9 termes de biais."
+    "text": "Détour Python : tableaux de biais\n\n[out_d for out_d in layer_sizes[1:]]\n\n[4, 4, 1]\n\n\n\n\n[np.zeros(out_d) for out_d in layer_sizes[1:]]\n\n[array([0., 0., 0., 0.]), array([0., 0., 0., 0.]), array([0.])]\n\n\n\n\n\n\nCombien de termes de biais ce réseau possède-t-il?\nLe réseau possède 37 paramètres au total : 28 poids et 9 termes de biais."
   },
   {
     "objectID": "lectures/12/slides.html#propagation-avant",
@@ -14641,7 +14641,7 @@
     "href": "lectures/12/index.html#pratiquer",
     "title": "Entraîner un réseau de neurones artificiels (partie 1)",
     "section": "Pratiquer",
-    "text": "Pratiquer\n\nSéparabilité de données circulaires  : Un cahier d’étude autonome comparant les attributs conçus à la main et les représentations apprises par un réseau de neurones, pour compléter l’exploration de TensorFlow Playground ci-dessous.\nExplorer un réseau de neurones dans le navigateur"
+    "text": "Pratiquer\n\nSéparabilité de données circulaires  : Un cahier d’étude autonome comparant les attributs conçus à la main et les représentations apprises par un réseau de neurones, pour compléter l’exploration de TensorFlow Playground ci-dessous.\n2D Regression with MSE Residuals: Prend en charge la régression unidimensionnelle, des neurones cachés configurables et des curseurs pour chaque poids et chaque biais, ce qui peut vous aider à approfondir votre compréhension intuitive du théorème d’approximation universelle.\nExplorer un réseau de neurones dans le navigateur"
   },
   {
     "objectID": "lectures/13/slides.html",
@@ -15034,5 +15034,26 @@
     "title": "Entraînement des réseaux profonds, softmax et régularisation",
     "section": "Même API, modèle étendu",
     "text": "Même API, modèle étendu\n\nfrom sklearn.datasets import make_circles\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import accuracy_score\n\nX, y = make_circles(n_samples=200, factor=0.5, noise=0.08, random_state=1)\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.3, random_state=0, stratify=y)\n\nscaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\nmodel = SimpleMLP([2, 4, 4, 1], lr=0.3, seed=42,\n                  hidden_activation=\"relu\", l2=0.001, lr_decay=0.995)\nmodel.train(X_train, y_train, epochs=500, batch_size=32, verbose=False)\n\nprint(\"Exactitude (entraînement) :\", accuracy_score(y_train, model.predict(X_train)))\nprint(\"Exactitude (test) :\", accuracy_score(y_test, model.predict(X_test)))\n\nExactitude (entraînement) : 1.0\nExactitude (test) : 1.0\n\n\n\nCet exemple utilise les mêmes données, séparation, prétraitement et architecture que l’exemple SimplerMLP. Il montre comment activer les options supplémentaires. Comme l’activation, la durée d’entraînement, la pénalité et le calendrier du taux d’apprentissage diffèrent, ces deux exécutions illustrent des processus complets plutôt qu’une comparaison contrôlée qui établirait la supériorité universelle d’un réglage. Les graines des deux constructeurs contrôlent les poids et le mélange. Tous les gradients sont toujours calculés avant les mises à jour."
+  },
+  {
+    "objectID": "lectures/11/ReLUBuildingBlocks.html",
+    "href": "lectures/11/ReLUBuildingBlocks.html",
+    "title": "Construire des fonctions avec ReLU",
+    "section": "",
+    "text": "Modifiez les sept paramètres d’un réseau comportant une entrée, deux unités cachées ReLU et une sortie linéaire. Commencez par modifier un seul paramètre à la fois.\nf(x)=w3φ(w1x+b1)+w4φ(w2x+b2)+b3.\nf(x)=w_3\\varphi(w_1x+b_1)+w_4\\varphi(w_2x+b_2)+b_3.\nIci, φ(z)=max⁡(0,z)\\varphi(z)=\\max(0,z) est la fonction ReLU. Les courbes de couleur montrent les deux contributions pondérées. La courbe plus épaisse représente leur somme à laquelle s’ajoute le biais de sortie b3b_3."
+  },
+  {
+    "objectID": "lectures/11/ReLUBuildingBlocks.html#au-delà-de-deux-unités",
+    "href": "lectures/11/ReLUBuildingBlocks.html#au-delà-de-deux-unités",
+    "title": "Construire des fonctions avec ReLU",
+    "section": "Au-delà de deux unités",
+    "text": "Au-delà de deux unités\nChaque unité cachée apporte une courbe ReLU décalée et mise à l’échelle. Leur somme peut changer de pente partout où l’une des unités change de pente. Les poids de sortie peuvent renforcer les contributions ou les faire s’opposer, tandis que b3b_3 déplace l’ensemble du résultat verticalement.\nImaginez l’ajout d’autres unités cachées. Où pourriez-vous placer de nouveaux changements de pente, et comment choisiriez-vous les poids de sortie pour façonner les segments entre ces points? Avec davantage d’unités, nous disposons de plus de composantes pour construire des fonctions complexes. Cette exploration rejoint la discussion de la présentation sur l’approximation avec des couches cachées plus larges.\nEssayez de fixer w3=0w_3=0 pour supprimer la contribution de la première unité, ou changez le signe de w4w_4 pour inverser la contribution de la seconde. Utilisez Réinitialiser les paramètres pour rétablir le réseau de départ.\nPour expérimenter avec davantage d’unités cachées, explorez le Neural Network Visualizer. Ajoutez des unités et observez l’évolution de la courbe de régression du réseau. Ses unités cachées utilisent la fonction d’activation tanh\\tanh.\nRetour à la présentation 11."
+  },
+  {
+    "objectID": "lectures/11/ReLUBuildingBlocks.html#comment-les-courbes-sont-calculées",
+    "href": "lectures/11/ReLUBuildingBlocks.html#comment-les-courbes-sont-calculées",
+    "title": "Construire des fonctions avec ReLU",
+    "section": "Comment les courbes sont calculées",
+    "text": "Comment les courbes sont calculées\nLe navigateur évalue le réseau en différents points de l’intervalle [−3,3][-3,3]. Les positions des changements de pente situées dans cet intervalle sont incluses explicitement pour que la courbe tracée passe par chaque point de changement de pente.\n\n\nAfficher le code Observable\nrelu = z =&gt; Math.max(0, z)\n\nbreakpoints = [\n  {w: parameters.w1, b: parameters.b1, series: \"Contribution de l'unité 1\"},\n  {w: parameters.w2, b: parameters.b2, series: \"Contribution de l'unité 2\"}\n].filter(d =&gt; d.w !== 0)\n  .map(d =&gt; ({x: -d.b / d.w, series: d.series}))\n  .filter(d =&gt; d.x &gt;= -3 && d.x &lt;= 3)\n\nsamples = {\n  const xs = Array.from({length: 601}, (_, i) =&gt; -3 + i / 100);\n  xs.push(...breakpoints.map(d =&gt; d.x));\n  return [...new Set(xs)].sort((a, b) =&gt; a - b).map(x =&gt; {\n    const unit1 = parameters.w3 * relu(parameters.w1 * x + parameters.b1);\n    const unit2 = parameters.w4 * relu(parameters.w2 * x + parameters.b2);\n    return {x, unit1, unit2, output: unit1 + unit2 + parameters.b3};\n  });\n}\n\ndescribeBreakpoint = (w, b) =&gt; {\n  if (w === 0) return \"Activation constante : aucun changement de pente.\";\n  const x = -b / w;\n  return `x = ${x.toFixed(2).replace(\".\", \",\")}${x &lt; -3 || x &gt; 3 ? \" (hors de l'intervalle représenté)\" : \"\"}`;\n}"
   }
 ]

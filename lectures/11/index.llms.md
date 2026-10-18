@@ -27,6 +27,8 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
+- [Construire des fonctions avec ReLU](../../lectures/11/ReLUBuildingBlocks.llms.md) (page HTML interactive) : Ajustez les sept paramètres d’un réseau pour explorer comment deux unités cachées se combinent pour former une courbe de régression.
+
 - [Séparabilité de données circulaires ](../../lectures/11/CircularSeparability.llms.md) : Un cahier d’étude autonome sur l’ingénierie des attributs (*feature engineering*) et les représentations apprises, pour compléter l’exploration de TensorFlow Playground ci-dessous.
 
 - [TensorFlow Playground](https://playground.tensorflow.org/)

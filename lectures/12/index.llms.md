@@ -30,6 +30,7 @@ Les deux premières vidéos accompagnent cette présentation; les vidéos sur la
 ## Pratiquer
 
 - [Séparabilité de données circulaires ](../../lectures/11/CircularSeparability.llms.md) : Un cahier d’étude autonome comparant les attributs conçus à la main et les représentations apprises par un réseau de neurones, pour compléter l’exploration de TensorFlow Playground ci-dessous.
+- [2D Regression with MSE Residuals](https://kickereb.github.io/nn-visualizer/experiment-2d.html): Prend en charge la régression unidimensionnelle, des neurones cachés configurables et des curseurs pour chaque poids et chaque biais, ce qui peut vous aider à approfondir votre compréhension intuitive du théorème d’approximation universelle.
 - [Explorer un réseau de neurones dans le navigateur](https://playground.tensorflow.org)
 
 ## Les références
