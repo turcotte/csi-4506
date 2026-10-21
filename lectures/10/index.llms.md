@@ -4,7 +4,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 > **IMPORTANT:**
 >
-> **Échéance** : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.
+> **Échéance** : Le devoir 2 doit être soumis au plus tard le ~~26 octobre~~ 2 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.
 
 ## Participer
 

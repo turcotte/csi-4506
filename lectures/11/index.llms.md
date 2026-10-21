@@ -4,7 +4,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 > **IMPORTANT:**
 >
-> **Échéance** : Le devoir 2 doit être soumis au plus tard le 26 octobre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.
+> **Échéance** : Le devoir 2 doit être soumis au plus tard le ~~26 octobre~~ 2 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.
 
 ## Se préparer
 
@@ -27,7 +27,7 @@ CSI4506 Introduction à l’intelligence artificielle
 
 ## Pratiquer
 
-- [Construire des fonctions avec ReLU](../../lectures/11/ReLUBuildingBlocks.llms.md) (page HTML interactive) : Ajustez les sept paramètres d’un réseau pour explorer comment deux unités cachées se combinent pour former une courbe de régression.
+- [Construire des fonctions avec ReLU ](../../lectures/11/ReLUBuildingBlocks.llms.md) (page HTML interactive) : Ajustez les sept paramètres d’un réseau pour explorer comment deux unités cachées se combinent pour former une courbe de régression.
 
 - [Séparabilité de données circulaires ](../../lectures/11/CircularSeparability.llms.md) : Un cahier d’étude autonome sur l’ingénierie des attributs (*feature engineering*) et les représentations apprises, pour compléter l’exploration de TensorFlow Playground ci-dessous.
 

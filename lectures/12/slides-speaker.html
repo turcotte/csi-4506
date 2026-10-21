@@ -238,7 +238,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version : 18 oct. 2026 16h13</p>
+  <p class="date">Version : 20 oct. 2026 16h46</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -638,7 +638,7 @@ Marcel Turcotte
       }</style></aside>
 </div>
 </section>
-<section id="propagation-avant" class="slide level2">
+<section id="propagation-avant" class="slide level2 smaller">
 <h2>Propagation avant</h2>
 <p>Retour au réseau : calculer les sorties de chaque couche à partir de la couche précédente.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X):</span>
@@ -654,8 +654,11 @@ Marcel Turcotte
 <span id="cb14-11"><a aria-label="11"></a>            a <span class="op">=</span> sigmoid(a <span class="op">@</span> W <span class="op">+</span> b)</span>
 <span id="cb14-12"><a aria-label="12"></a></span>
 <span id="cb14-13"><a aria-label="13"></a>        <span class="cf">return</span> a.ravel()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-
+<div class="corner-image">
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+</div>
 <aside class="notes">
+<p>Calculer les activations de sortie, c’est-à-dire la probabilité que chaque exemple du jeu de données <span class="math inline">\(X\)</span> appartienne à la classe 1.</p>
 <p>La méthode procède séquentiellement, couche par couche. Notre exemple comporte trois couches de calcul distinctes.</p>
 <p><strong>Que sont <code>W</code> et <code>b</code>?</strong></p>
 <p><code>W</code> et <code>b</code> sont des listes de trois éléments chacune. La liste <code>W</code> contient des matrices de poids de dimensions <span class="math inline">\(2\times 4\)</span>, <span class="math inline">\(4\times 4\)</span> et <span class="math inline">\(4\times 1\)</span>, tandis que <code>b</code> contient des tableaux de biais de tailles 4, 4 et 1, respectivement.</p>
@@ -675,9 +678,7 @@ Marcel Turcotte
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p>Calculer les activations de sortie, c’est-à-dire la probabilité que chaque exemple du jeu de données <span class="math inline">\(X\)</span> appartienne à la classe 1.</p>
-</div></aside></section>
+</section>
 <section id="suivre-les-dimensions-des-tableaux" class="slide level2 smaller">
 <h2>Suivre les dimensions des tableaux</h2>
 <p>Pour <code>layer_sizes = [2, 4, 4, 1]</code>, chaque ligne reste un exemple :</p>
@@ -722,7 +723,7 @@ Marcel Turcotte
 <li><code>ravel()</code> change les dimensions finales de <code>(N, 1)</code> à <code>(N,)</code>.</li>
 </ul>
 <div class="corner-image">
-<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
 </div>
 <aside class="notes">
 <p>La multiplication matricielle exige que le nombre de colonnes des activations entrantes corresponde au nombre de lignes de la matrice de poids. Le nombre de colonnes du résultat est le nombre d’unités de la couche courante. L’application de la sigmoïde élément par élément conserve ces dimensions.</p>
@@ -1323,7 +1324,7 @@ Exactitude (test) :  1.0</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/cell-16-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/cell-16-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
 </figure>
 </div>
 </div>
@@ -1364,7 +1365,7 @@ Exactitude (test) :  1.0</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-17-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="423" height="422"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-17-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="423" height="422"></a></p>
 </figure>
 </div>
 </div>
@@ -1416,7 +1417,7 @@ Exactitude (test) :  0.98</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-19-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/cell-19-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-19-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/cell-19-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
 </figure>
 </div>
 </div>

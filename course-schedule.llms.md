@@ -2,7 +2,7 @@
 
 Date de publication
 
-14 septembre 2026
+21 octobre 2026
 
 Cette page présente un calendrier des sujets, des contenus et des devoirs pour le trimestre.
 
@@ -24,9 +24,10 @@ Veuillez noter que cette page sera mis à jour au fur et à mesure que le trimes
 | 14 oct. | [Ingénierie de l’apprentissage automatique](lectures/10/index.llms.md) | [](lectures/10/slides.llms.md) [](lectures/10/slides.pdf) | \- | \- |
 | 19 oct. | [Introduction aux réseaux de neurones artificiels](lectures/11/index.llms.md) | [](lectures/11/slides.llms.md) [](lectures/11/slides.pdf) | \- | \- |
 | 21 oct. | [Entraîner un réseau de neurones artificiels (1/2](lectures/12/index.llms.md)) | [](lectures/12/slides.llms.md) [](lectures/12/slides.pdf) | \- | \- |
-| 26 oct. |  |  | D2: ML | \- |
+| 26 oct. |  |  | ~~D2: ML~~ | \- |
 | 26 oct. | Semaine de lecture - pas de cours | \- | \- | \- |
 | 28 oct. | Semaine de lecture - pas de cours | \- | \- | \- |
+| 2 nov. |  |  | D2: ML | \- |
 | 2 nov. | [Entraîner un réseau de neurones artificiels (2/2](lectures/13/index.llms.md)) | [](lectures/13/slides.llms.md) [](lectures/13/slides.pdf) | \- | \- |
 | 4 nov. | [Softmax, entropie croisée et régularisation](lectures/14/index.llms.md) | [](lectures/14/slides.llms.md) [](lectures/14/slides.pdf) | \- | \- |
 | 9 nov | [Architectures des réseaux de neurones artificiels](lectures/15/index.llms.md) | [](lectures/15/slides.llms.md) [](lectures/15/slides.pdf) | \- | \- |
