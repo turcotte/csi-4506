@@ -149,7 +149,7 @@
     "href": "course-team.html",
     "title": "Équipe pédagogique",
     "section": "",
-    "text": "Instructeur\nMarcel Turcotte est professeur d’informatique à l’École de science informatique et de génie électrique de l’Université d’Ottawa. Son groupe applique l’apprentissage automatique, la conception d’algorithmes et des structures de données efficaces pour résoudre des problèmes bioinformatiques complexes tels que l’identification de signatures d’ADN spécifiques au type cellulaire de la liaison des facteurs de transcription, la classification des séquences d’ARN non codant et la détermination de la susceptibilité hôte-virus de l’ARN. Pou en savoir plus, consultez mon parcours académique\n\n\n\nDisponibilité\nHeure\nPièce\n\n\n\n\nLundi\n15h – 16h20\nSTE 5106\n\n\n\n\n\nAide à l’enseignement\n\n\n\n\n\n\n\n\n\nAssistant.e. d’enseignement\nDisponibilité\nHeure\nPièce\n\n\n\n\nJean-Damien Marcelin\nMercredi\n13h - 14h20\nSTE 5112 (5000J)\n\n\nAbderrahman Bouayad\nMercredi\n15h – 16h20\nSTE 5112 (5000J)\n\n\n\nLeurs coordonnées sont accessibles sur Brightspace, dans les sections « Aperçu » ou « Informations sur le cours ».",
+    "text": "Marcel Turcotte est professeur d’informatique à l’École de science informatique et de génie électrique de l’Université d’Ottawa. Son groupe applique l’apprentissage automatique, la conception d’algorithmes et des structures de données efficaces pour résoudre des problèmes bioinformatiques complexes tels que l’identification de signatures d’ADN spécifiques au type cellulaire de la liaison des facteurs de transcription, la classification des séquences d’ARN non codant et la détermination de la susceptibilité hôte-virus de l’ARN. Pou en savoir plus, consultez mon parcours académique\n\n\n\nDisponibilité\nHeure\nPièce\n\n\n\n\nLundi 1\n15h – 16h20\nSTE 5106",
     "crumbs": [
       "**Information du cours**",
       "Équipe pédagogique"
@@ -15055,5 +15055,16 @@
     "title": "Construire des fonctions avec ReLU",
     "section": "Comment les courbes sont calculées",
     "text": "Comment les courbes sont calculées\nLe navigateur évalue le réseau en différents points de l’intervalle [−3,3][-3,3]. Les positions des changements de pente situées dans cet intervalle sont incluses explicitement pour que la courbe tracée passe par chaque point de changement de pente.\n\n\nAfficher le code Observable\nrelu = z =&gt; Math.max(0, z)\n\nbreakpoints = [\n  {w: parameters.w1, b: parameters.b1, series: \"Activation de l'unité 1\"},\n  {w: parameters.w2, b: parameters.b2, series: \"Activation de l'unité 2\"}\n].filter(d =&gt; d.w !== 0)\n  .map(d =&gt; ({x: -d.b / d.w, series: d.series}))\n  .filter(d =&gt; d.x &gt;= -3 && d.x &lt;= 3)\n\nsamples = {\n  const xs = Array.from({length: 601}, (_, i) =&gt; -3 + i / 100);\n  xs.push(...breakpoints.map(d =&gt; d.x));\n  return [...new Set(xs)].sort((a, b) =&gt; a - b).map(x =&gt; {\n    const activation1 = relu(parameters.w1 * x + parameters.b1);\n    const activation2 = relu(parameters.w2 * x + parameters.b2);\n    const output = parameters.w3 * activation1 + parameters.w4 * activation2 + parameters.b3;\n    return {x, activation1, activation2, output};\n  });\n}\n\ndescribeBreakpoint = (w, b) =&gt; {\n  if (w === 0) return \"Activation constante : aucun changement de pente.\";\n  const x = -b / w;\n  return `x = ${x.toFixed(2).replace(\".\", \",\")}${x &lt; -3 || x &gt; 3 ? \" (hors de l'intervalle représenté)\" : \"\"}`;\n}"
+  },
+  {
+    "objectID": "course-team.html#footnotes",
+    "href": "course-team.html#footnotes",
+    "title": "Équipe pédagogique",
+    "section": "Notes de bas de page",
+    "text": "Notes de bas de page\n\n\nExceptionnellement le mardi, pendant la semaine de lecture.↩︎",
+    "crumbs": [
+      "**Information du cours**",
+      "Équipe pédagogique"
+    ]
   }
 ]

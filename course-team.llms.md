@@ -2,7 +2,7 @@
 
 Date de publication
 
-22 septembre 2026
+26 octobre 2026
 
 # Instructeur
 
@@ -10,7 +10,7 @@ Date de publication
 
 | Disponibilité | Heure       | Pièce    |
 |---------------|-------------|----------|
-| Lundi         | 15h – 16h20 | STE 5106 |
+| Lundi [^1]    | 15h – 16h20 | STE 5106 |
 
 # Aide à l’enseignement
 
@@ -20,3 +20,7 @@ Date de publication
 | Abderrahman Bouayad         | Mercredi      | 15h – 16h20 | STE 5112 (5000J) |
 
 Leurs coordonnées sont accessibles sur Brightspace, dans les sections « Aperçu » ou « Informations sur le cours ».
+
+## Notes de bas de page
+
+[^1]: Exceptionnellement le mardi, pendant la semaine de lecture.
