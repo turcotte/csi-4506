@@ -238,7 +238,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version : 20 oct. 2026 16h46</p>
+  <p class="date">Version : 27 oct. 2026 10h55</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -556,6 +556,30 @@ Marcel Turcotte
 <aside><div>
 <p>Conserver le nombre de couches, le nombre d’unités par couche et la taille du pas de l’algorithme d’apprentissage. Initialiser les poids (<span class="math inline">\(W\)</span>) et les biais (<span class="math inline">\(b\)</span>).</p>
 </div></aside></section>
+<section id="paramètres" class="slide level2">
+<h2>Paramètres</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s00.png" class="nostretch quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+<div class="corner-image">
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+</div>
+<aside class="notes">
+<p>Dans notre exemple fil conducteur, le modèle comporte trois couches : <span class="math inline">\(\ell^{(1)}\)</span>, <span class="math inline">\(\ell^{(2)}\)</span> et <span class="math inline">\(\ell^{(\textrm{out})}\)</span>. Chaque couche <span class="math inline">\(\ell\)</span> est paramétrée par une matrice de poids <span class="math inline">\(W^{(\ell)}\)</span> et un vecteur de biais <span class="math inline">\(b^{(\ell)}\)</span>. Le jeu de données <span class="math inline">\(X\)</span> contient 10 exemples, chacun comportant deux attributs. Assurez-vous de comprendre comment les dimensions d’entrée et de sortie de chaque couche déterminent les dimensions de sa matrice de poids et de son vecteur de biais.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="détour-python-tableaux-de-poids" class="slide level2">
 <h2>Détour Python : tableaux de poids</h2>
 <div id="7937dba3" class="cell" data-execution_count="5">
@@ -587,7 +611,7 @@ Marcel Turcotte
 </div>
 </div>
 <div class="corner-image">
-<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
 </div>
 <aside class="notes">
 <p>Combien de poids ce réseau possède-t-il?</p>
@@ -620,7 +644,7 @@ Marcel Turcotte
 </div>
 </div>
 <div class="corner-image">
-<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
 </div>
 <aside class="notes">
 <p>Combien de termes de biais ce réseau possède-t-il?</p>
@@ -655,7 +679,7 @@ Marcel Turcotte
 <span id="cb14-12"><a aria-label="12"></a></span>
 <span id="cb14-13"><a aria-label="13"></a>        <span class="cf">return</span> a.ravel()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="corner-image">
-<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
 </div>
 <aside class="notes">
 <p>Calculer les activations de sortie, c’est-à-dire la probabilité que chaque exemple du jeu de données <span class="math inline">\(X\)</span> appartienne à la classe 1.</p>
@@ -723,7 +747,7 @@ Marcel Turcotte
 <li><code>ravel()</code> change les dimensions finales de <code>(N, 1)</code> à <code>(N,)</code>.</li>
 </ul>
 <div class="corner-image">
-<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
+<p><a href="../../assets/images/ann_mlp-2-4-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/images/ann_mlp-2-4-4-1.png"></a></p>
 </div>
 <aside class="notes">
 <p>La multiplication matricielle exige que le nombre de colonnes des activations entrantes corresponde au nombre de lignes de la matrice de poids. Le nombre de colonnes du résultat est le nombre d’unités de la couche courante. L’application de la sigmoïde élément par élément conserve ces dimensions.</p>
@@ -739,6 +763,113 @@ Marcel Turcotte
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="suivre-les-dimensions-suite" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params_model-2-4-4-1-s00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="../../assets/images/ann_mlp_params_model-2-4-4-1-s00.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+<aside class="notes">
+<p>La figure représente le modèle, y compris le vecteur d’entrée <span class="math inline">\(X\)</span>, les matrices de poids et les vecteurs de biais. Pour le neurone 1 de la couche <span class="math inline">\(\ell_1\)</span>, la valeur de préactivation est calculée comme suit :</p>
+<p><span class="math display">\[
+z_1^{(\ell_1)} = x_1 W_{1,1}^{(\ell_1)} + x_2 W_{1,2}^{(\ell_1)} + b_1^{(\ell_1)}.
+\]</span></p>
+<p>L’indexation commence à 1 dans l’ensemble du document pour faciliter la lecture.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="suivre-les-dimensions-suite-1" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s01.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+<aside class="notes">
+<p>La figure illustre les dimensions de la matrice obtenue par le calcul intermédiaire <span class="math inline">\(A = X W^{(\ell_1)}\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="suivre-les-dimensions-suite-2" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s01-broadcast.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s01-broadcast.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+<aside class="notes">
+<p>La figure illustre comment la diffusion (<em>broadcasting</em>) de NumPy ajoute le vecteur de biais <span class="math inline">\(b^{(\ell_1)}\)</span> à chaque ligne du produit matriciel <span class="math inline">\(X W^{(\ell_1)}\)</span>. Les diapositives suivantes présentent les autres calculs intermédiaires. Suivez les dimensions d’entrée et de sortie à chaque étape pour comprendre comment chaque opération transforme les dimensions des matrices.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="suivre-les-dimensions-suite-3" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s02.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+</section>
+<section id="suivre-les-dimensions-suite-4" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s03.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+</section>
+<section id="suivre-les-dimensions-suite-5" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s04.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s04.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+</section>
+<section id="suivre-les-dimensions-suite-6" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s05.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s05.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
+</section>
+<section id="suivre-les-dimensions-suite-7" class="slide level2 smaller">
+<h2>Suivre les dimensions (suite)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/ann_mlp_params-2-4-4-1-s06.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="../../assets/images/ann_mlp_params-2-4-4-1-s06.png" class="quarto-figure quarto-figure-center" height="475"></a></p>
+</figure>
+</div>
 </section>
 <section id="faire-des-prédictions" class="slide level2">
 <h2>Faire des prédictions</h2>
@@ -1324,7 +1455,7 @@ Exactitude (test) :  1.0</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/cell-16-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/cell-16-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
 </figure>
 </div>
 </div>
@@ -1365,7 +1496,7 @@ Exactitude (test) :  1.0</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-17-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="slides_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="423" height="422"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-17-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/cell-17-output-1.png" class="quarto-figure quarto-figure-center" width="423" height="422"></a></p>
 </figure>
 </div>
 </div>
@@ -1417,7 +1548,7 @@ Exactitude (test) :  0.98</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-19-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="slides_files/figure-revealjs/cell-19-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-19-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="slides_files/figure-revealjs/cell-19-output-1.png" class="quarto-figure quarto-figure-center" width="512" height="512"></a></p>
 </figure>
 </div>
 </div>

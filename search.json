@@ -15066,5 +15066,131 @@
       "**Information du cours**",
       "Équipe pédagogique"
     ]
+  },
+  {
+    "objectID": "lectures/12/slides.html#paramètres",
+    "href": "lectures/12/slides.html#paramètres",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Paramètres",
+    "text": "Paramètres\n\n\n\n\n\n\n\n\n\nDans notre exemple fil conducteur, le modèle comporte trois couches : \\(\\ell^{(1)}\\), \\(\\ell^{(2)}\\) et \\(\\ell^{(\\textrm{out})}\\). Chaque couche \\(\\ell\\) est paramétrée par une matrice de poids \\(W^{(\\ell)}\\) et un vecteur de biais \\(b^{(\\ell)}\\). Le jeu de données \\(X\\) contient 10 exemples, chacun comportant deux attributs. Assurez-vous de comprendre comment les dimensions d’entrée et de sortie de chaque couche déterminent les dimensions de sa matrice de poids et de son vecteur de biais."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)\n\n\n\n\n\n\nLa figure illustre les dimensions de la matrice obtenue par le calcul intermédiaire \\(A = X W^{(\\ell_1)}\\)."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-1",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-1",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)\n\n\n\n\n\n\nLa figure illustre comment la diffusion (broadcasting) de NumPy ajoute le vecteur de biais \\(b^{(\\ell_1)}\\) à chaque ligne du produit matriciel \\(X W^{(\\ell_1)}\\). Les diapositives suivantes présentent les autres calculs intermédiaires. Suivez les dimensions d’entrée et de sortie à chaque étape pour comprendre comment chaque opération transforme les dimensions des matrices."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-2",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-2",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-3",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-3",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-4",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-4",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-5",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-5",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-6",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-6",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-7",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-des-tableaux-suite-7",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions des tableaux (suite)",
+    "text": "Suivre les dimensions des tableaux (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivi-des-dimensions-des-tableaux-suite",
+    "href": "lectures/12/slides.html#suivi-des-dimensions-des-tableaux-suite",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivi des dimensions des tableaux (suite)",
+    "text": "Suivi des dimensions des tableaux (suite)\n\n\n\n\n\n\nLa figure représente le modèle, y compris le vecteur d’entrée \\(X\\), les matrices de poids et les vecteurs de biais. Pour le neurone 1 de la couche \\(\\ell_1\\), la valeur de préactivation est calculée comme suit :\n\\[\nz_1^{(\\ell_1)} = x_1 W_{1,1}^{(\\ell_1)} + x_2 W_{1,2}^{(\\ell_1)} + b_1^{(\\ell_1)}.\n\\]\nL’indexation commence à 1 dans l’ensemble du document pour faciliter la lecture."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)\n\n\n\n\n\n\nLa figure représente le modèle, y compris le vecteur d’entrée \\(X\\), les matrices de poids et les vecteurs de biais. Pour le neurone 1 de la couche \\(\\ell_1\\), la valeur de préactivation est calculée comme suit :\n\\[\nz_1^{(\\ell_1)} = x_1 W_{1,1}^{(\\ell_1)} + x_2 W_{1,2}^{(\\ell_1)} + b_1^{(\\ell_1)}.\n\\]\nL’indexation commence à 1 dans l’ensemble du document pour faciliter la lecture."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-1",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-1",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)\n\n\n\n\n\n\nLa figure illustre les dimensions de la matrice obtenue par le calcul intermédiaire \\(A = X W^{(\\ell_1)}\\)."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-2",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-2",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)\n\n\n\n\n\n\nLa figure illustre comment la diffusion (broadcasting) de NumPy ajoute le vecteur de biais \\(b^{(\\ell_1)}\\) à chaque ligne du produit matriciel \\(X W^{(\\ell_1)}\\). Les diapositives suivantes présentent les autres calculs intermédiaires. Suivez les dimensions d’entrée et de sortie à chaque étape pour comprendre comment chaque opération transforme les dimensions des matrices."
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-3",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-3",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-4",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-4",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-5",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-5",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-6",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-6",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)"
+  },
+  {
+    "objectID": "lectures/12/slides.html#suivre-les-dimensions-suite-7",
+    "href": "lectures/12/slides.html#suivre-les-dimensions-suite-7",
+    "title": "Entraîner un réseau de neurones artificiels (partie 1)",
+    "section": "Suivre les dimensions (suite)",
+    "text": "Suivre les dimensions (suite)"
   }
 ]
