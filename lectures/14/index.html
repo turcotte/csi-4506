@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Entraînement des réseaux profonds, softmax et régularisation – CSI 4506 - Automne 2026</title>
+<title>Entraînement des réseaux de neurones : difficultés et choix pratiques – CSI 4506 - Automne 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -49,6 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-98c7db931a85d9ab1fb3feaac0faa502.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-0455937d2cbe398515a871030189d4b5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-98c7db931a85d9ab1fb3feaac0faa502.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,51 +79,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Entraînement des réseaux profonds, softmax et régularisation – CSI 4506 - Automne 2026">
+<meta property="og:title" content="Entraînement des réseaux de neurones : difficultés et choix pratiques – CSI 4506 - Automne 2026">
 <meta property="og:description" content="CSI4506 Introduction à l’intelligence artificielle">
 <meta property="og:site_name" content="CSI 4506 - Automne 2026">
 </head>
@@ -446,7 +405,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#participer" id="toc-participer" class="nav-link active" data-scroll-target="#participer">Participer</a></li>
-  <li><a href="#practiquer" id="toc-practiquer" class="nav-link" data-scroll-target="#practiquer">Practiquer</a></li>
+  <li><a href="#sexercer" id="toc-sexercer" class="nav-link" data-scroll-target="#sexercer">S’exercer</a></li>
   </ul>
 </nav>
     </div>
@@ -456,7 +415,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Entraînement des réseaux profonds, softmax et régularisation</h1>
+<h1 class="title">Entraînement des réseaux de neurones : difficultés et choix pratiques</h1>
 <p class="subtitle lead">CSI4506 Introduction à l’intelligence artificielle</p>
 </div>
 
@@ -490,13 +449,16 @@ Important
 <section id="participer" class="level2">
 <h2 class="anchored" data-anchor-id="participer">Participer</h2>
 <ul>
-<li><a href="slides.html">présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_lecture-14.ipynb">Jupyter Notebook</a>)</li>
+<li><a href="slides.html">présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_slides-14.ipynb">Jupyter Notebook</a>)</li>
 </ul>
 </section>
-<section id="practiquer" class="level2">
-<h2 class="anchored" data-anchor-id="practiquer">Practiquer</h2>
+<section id="sexercer" class="level2">
+<h2 class="anchored" data-anchor-id="sexercer">S’exercer</h2>
 <ul>
-<li><a href="kong_and_yu-2018">kong_and_yu-2018</a> - un exemple illustrant l’efficacité de la régularisation <span class="math inline">l_1</span> et <span class="math inline">l_2</span>.</li>
+<li><a href="../../lectures/14/loss_functions.html">Paysages de perte et descente de gradient <i class="fa-brands fa-python" aria-label="python"></i></a> : explorer les points initiaux, les régions plates, les minima locaux et l’écrêtage des gradients.</li>
+<li><a href="../../lectures/14/regularization.html">Régularisation : réduction des coefficients et parcimonie <i class="fa-brands fa-python" aria-label="python"></i></a> : comparer les vrais coefficients, les moindres carrés ordinaires, Ridge et Lasso.</li>
+<li><a href="../../lectures/14/catastrophic_forgetting.html">Oubli catastrophique sur MNIST <i class="fa-brands fa-python" aria-label="python"></i></a> : entraîner sur deux groupes disjoints de chiffres, mesurer la rétention et comparer une stratégie de rejeu d’exemples.</li>
+<li><a href="../../lectures/14/kong_and_yu-2018.html">Régularisation avec attributs corrélés <i class="fa-brands fa-python" aria-label="python"></i></a> : exemple avancé complémentaire, <strong>en anglais</strong>, avec de nombreux prédicteurs corrélés.</li>
 </ul>
 
 
