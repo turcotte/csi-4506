@@ -238,7 +238,10 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: oct. 31, 2026 11h17</p>
+  <p class="date">Version: nov. 1, 2026 17h45</p>
+</section>
+<section id="section" class="slide level2" data-background-image="../../assets/images/grad_open_house-fr.jpg" data-background-size="100% auto">
+<h2></h2>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -652,7 +655,7 @@ z^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},
 \sigma(z)=\frac{1}{1+e^{-z}},\qquad
 \sigma'(z)=\sigma(z)(1-\sigma(z)).
 \]</span></p>
-<div id="0fd2b9ec" class="cell" data-execution_count="1">
+<div id="0fd2b9ec" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Afficher le code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1072,7 +1075,7 @@ z^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},
 </div></aside></section>
 <section id="exploration" class="slide level2 smaller">
 <h2>Exploration</h2>
-<div id="63cd75c4" class="cell" data-execution_count="2">
+<div id="63cd75c4" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">import</span> math</span>
 <span id="cb3-2"><a aria-label="2"></a><span class="im">import</span> random</span>
 <span id="cb3-3"><a aria-label="3"></a></span>
@@ -1109,7 +1112,7 @@ z^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},
 </section>
 <section id="propagation-avant" class="slide level2">
 <h2>Propagation avant</h2>
-<div id="f3de310e" class="cell" data-execution_count="3">
+<div id="f3de310e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a><span class="kw">def</span> forward():</span>
 <span id="cb4-2"><a aria-label="2"></a></span>
 <span id="cb4-3"><a aria-label="3"></a>    <span class="kw">global</span> z1, a1, z2, a2, loss, p_hat</span>
@@ -1140,7 +1143,7 @@ z^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},
 </section>
 <section id="propagation-arrière" class="slide level2">
 <h2>Propagation arrière</h2>
-<div id="8b35f55c" class="cell" data-execution_count="4">
+<div id="8b35f55c" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="kw">def</span> backward():</span>
 <span id="cb5-2"><a aria-label="2"></a></span>
 <span id="cb5-3"><a aria-label="3"></a>    grad_loss_w2 <span class="op">=</span> (p_hat <span class="op">-</span> y) <span class="op">*</span> a1</span>
@@ -1167,7 +1170,7 @@ z^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},
 </section>
 <section id="mise-à-jour-par-gradient" class="slide level2">
 <h2>Mise à jour par gradient</h2>
-<div id="cd08f7e1" class="cell" data-execution_count="5">
+<div id="cd08f7e1" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="kw">def</span> step(gradients):</span>
 <span id="cb6-2"><a aria-label="2"></a></span>
 <span id="cb6-3"><a aria-label="3"></a>    <span class="kw">global</span> w1, b1, w2, b2</span>
@@ -1195,7 +1198,7 @@ z^{(l)}=a^{(l-1)}W^{(l)}+b^{(l)},
 </section>
 <section id="entraînement" class="slide level2">
 <h2>Entraînement</h2>
-<div id="0e6b9651" class="cell" data-execution_count="6">
+<div id="0e6b9651" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>init()</span>
 <span id="cb7-2"><a aria-label="2"></a></span>
 <span id="cb7-3"><a aria-label="3"></a>x <span class="op">=</span> <span class="fl">3.14</span></span>
@@ -1316,7 +1319,7 @@ Après : p_hat = 0.99, perte = 0.01</code></pre>
 </div></aside></section>
 <section id="propagation-arrière-avec-signaux-derreur" class="slide level2">
 <h2>Propagation arrière avec signaux d’erreur</h2>
-<div id="3404f71c" class="cell" data-execution_count="7">
+<div id="3404f71c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="kw">def</span> backward_with_signals():</span>
 <span id="cb9-2"><a aria-label="2"></a></span>
 <span id="cb9-3"><a aria-label="3"></a>    delta2 <span class="op">=</span> p_hat <span class="op">-</span> y</span>
@@ -1395,7 +1398,7 @@ z_v=sa+b_v,\qquad v=\sigma(z_v)
 </div></aside></section>
 <section id="embranchement-python" class="slide level2 smaller">
 <h2>Embranchement : Python</h2>
-<div id="90bf45c5" class="cell" data-execution_count="8">
+<div id="90bf45c5" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>a <span class="op">=</span> sigma(<span class="fl">0.0</span>)</span>
 <span id="cb10-2"><a aria-label="2"></a>r, s <span class="op">=</span> <span class="fl">2.0</span>, <span class="op">-</span><span class="fl">1.0</span></span>
 <span id="cb10-3"><a aria-label="3"></a>t, q <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">1.0</span></span>
@@ -1650,7 +1653,7 @@ delta_a: -0.03125</code></pre>
 <section id="simplermlp" class="slide level2">
 <h2>SimplerMLP</h2>
 <p>Unités sigmoïdes, entropie croisée binaire et taux d’apprentissage constant.</p>
-<div id="232f4738" class="cell" data-execution_count="9">
+<div id="232f4738" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Afficher le code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1976,7 +1979,7 @@ delta_a: -0.03125</code></pre>
 </section>
 <section id="évaluation" class="slide level2 scrollable smaller">
 <h2>Évaluation</h2>
-<div id="9c6eb2fc" class="cell" data-execution_count="10">
+<div id="9c6eb2fc" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_circles</span>
 <span id="cb21-2"><a aria-label="2"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb21-3"><a aria-label="3"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
@@ -2180,7 +2183,7 @@ Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</sp
 </section>
 <section id="dérivées-principales-avec-sympy" class="slide level2 scrollable">
 <h2>Dérivées principales avec SymPy</h2>
-<div id="7c9f533e" class="cell" data-execution_count="11">
+<div id="7c9f533e" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a aria-label="1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
