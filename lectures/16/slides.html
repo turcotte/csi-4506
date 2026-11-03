@@ -126,6 +126,23 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="../../assets/css/reveal-common.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -220,7 +237,7 @@
     }
   </style>
 <meta property="og:title" content="Introduction aux algorithmes de recherche – CSI 4506 - Automne 2026">
-<meta property="og:description" content="CSI 4106 - automne 2026">
+<meta property="og:description" content="CSI 4506">
 <meta property="og:site_name" content="CSI 4506 - Automne 2026">
 </head>
 <body class="quarto-light">
@@ -229,7 +246,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Introduction aux algorithmes de recherche</h1>
-  <p class="subtitle">CSI 4106 - automne 2026</p>
+  <p class="subtitle">CSI 4506</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -239,44 +256,53 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: août 9, 2026 12h46</p>
+  <p class="date">Version: nov. 3, 2026 14h19</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
 <h1>Préambule</h1>
 
 </section>
-<section id="message-du-jour" class="slide level2">
+<section id="message-du-jour" class="slide level2 scrollable">
 <h2>Message du jour</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://media.nature.com/lw767/magazine-assets/d41586-025-03542-2/d41586-025-03542-2_51628248.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://media.nature.com/lw767/magazine-assets/d41586-025-03542-2/d41586-025-03542-2_51628248.jpg" class="quarto-figure quarto-figure-center" height="475"></a></p>
-</figure>
-</div>
+<p></p><div id="tweet-39261"></div><script>tweet={"url":"https:\/\/x.com\/sonyatweetybird\/status\/2110045408512836031","author_name":"Sonya Huang \uD83D\uDC25","author_url":"https:\/\/x.com\/sonyatweetybird","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDavid Silver is one of the all-time greats. He was the creator of AlphaGo, which changed the course of history by showing that neural nets could achieve superhuman performance for the first time.\u003Cbr\u003E\u003Cbr\u003EHe also has a unique intuition and knack for forecasting when things will happen in… \u003Ca href=\"https:\/\/t.co\/TdAn2NGhBE\"\u003Epic.twitter.com\/TdAn2NGhBE\u003C\/a\u003E\u003C\/p\u003E&mdash; Sonya Huang \uD83D\uDC25 (@sonyatweetybird) \u003Ca href=\"https:\/\/x.com\/sonyatweetybird\/status\/2110045408512836031?ref_src=twsrc%5Etfw\"\u003EOctober 13, 2026\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-39261").innerHTML = tweet["html"];</script><p></p>
 
+<aside class="notes">
+<p>David Silver a dirigé les recherches de DeepMind à l’origine d’AlphaGo, le premier système d’IA à vaincre un joueur professionnel de Go, et de ses successeurs, AlphaZero et MuZero. Il est aussi professeur d’informatique à l’University College London et membre de la Royal Society. Ses travaux relient les méthodes fondées sur les réseaux neuronaux présentées plus tôt dans le cours aux méthodes de recherche introduites ici. Son <a href="https://www.davidsilver.uk/" class="external" data-icon="true">site personnel</a> présente sa biographie actuelle.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <aside><div>
-<p><a href="https://www.nature.com/articles/d41586-025-03542-2">Too much social media gives AI chatbots ‘brain rot’</a>, Nature News, 2025-10-31.</p>
+<p><a href="https://www.youtube.com/watch?v=L4SWQebqhek">David Silver and Lasse Espeholt of Ineffable Intelligence: A Superlearner for the Age of Experience</a>, publié sur la chaîne YouTube de Sequoia Capital le 2026-10-13.</p>
 </div></aside></section>
 <section id="objectifs-dapprentissage" class="slide level2 smaller">
 <h2>Objectifs d’apprentissage</h2>
 <ul>
 <li><strong>Décrire</strong> le rôle des algorithmes de recherche en IA, essentiel pour la planification, le raisonnement, et des applications telles qu’AlphaGo.</li>
-<li><strong>Rappeler</strong> les concepts clés de la recherche : espace d’états, état initial/final, actions, modèles de transition, fonctions de coût.</li>
-<li><strong>Identifier</strong> les différences entre les algorithmes de recherche non-informés (BFS et DFS).</li>
+<li><strong>Formuler</strong> un problème de recherche à l’aide d’états, d’un état initial, d’états objectifs, d’actions, d’un modèle de transition et de coûts d’action.</li>
+<li><strong>Distinguer</strong> les états des nœuds de recherche, et les états atteints des nœuds de la frontière et des nœuds développés.</li>
 <li><strong>Implémenter</strong> BFS et DFS, les <strong>comparer</strong> en utilisant le problème du puzzle à 8 tuiles.</li>
-<li><strong>Analyser</strong> la performance et l’optimalité de divers algorithmes de recherche.</li>
+<li><strong>Expliquer</strong> la complétude, l’optimalité en coût et les besoins en mémoire de BFS et DFS selon des hypothèses explicites.</li>
 </ul>
 <aside class="notes">
-<p>L’objectif principal de cette présentation est de justifier le rôle des méthodes de recherche en intelligence artificielle, mais aussi d’introduire la terminologie pour les prochains cours. Vous possédez déjà une connaissance des algorithmes de recherche en largeur et en profondeur. Nous tirerons parti de cette expertise pour établir le vocabulaire nécessaire pour les cours à venir et pour démontrer la nécessité de développer des algorithmes plus «&nbsp;intelligents&nbsp;». Nous aborderons donc les thèmes suivants:</p>
-<ol type="1">
-<li>Recherche non-informée</li>
+<p>Cette présentation motive l’étude des méthodes de recherche en intelligence artificielle et établit le vocabulaire de cette partie du cours. La recherche en largeur et la recherche en profondeur fournissent des points de comparaison familiers pour étudier la représentation d’un problème, la sélection des nœuds et l’intérêt de méthodes plus sélectives. Cette partie du cours couvre les thèmes suivants :</p>
+<ul>
+<li>Recherche non informée</li>
 <li>Recherche informée</li>
 <li>Recherche locale</li>
 <li>Métaheuristiques à population</li>
 <li>Recherche adversariale</li>
-<li>Recherche Arborescente de Monte-Carlo</li>
-</ol>
-<p>Cela nous fournira une base solide pour aborder notre segment final consacré aux raisonnements formels.</p>
+<li>Recherche arborescente de Monte-Carlo</li>
+</ul>
+<p>Ces méthodes fournissent aussi une base pour le raisonnement formel, où la recherche peut explorer des déductions possibles ou des solutions candidates.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -294,56 +320,74 @@ Marcel Turcotte
 <h1>Justification</h1>
 
 </section>
-<section id="pourquoi-étudier-ces-algorithmes" class="slide level2">
-<h2>Pourquoi étudier ces algorithmes?</h2>
+<section id="justification-1" class="slide level2">
+<h2>Justification</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/AlphaGo-Nature-2016.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../assets/images/AlphaGo-Nature-2016.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
+<p><a href="../../assets/images/AlphaGo-Nature-2016.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="../../assets/images/AlphaGo-Nature-2016.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
 </figure>
 </div>
 
 <aside><div>
 <p><span class="citation" data-cites="Silver:2016aa">Silver et al. (<a href="#/références" role="doc-biblioref" onclick="">2016</a>)</span></p>
 </div></aside></section>
-<section id="justification-1" class="slide level2">
-<h2>Justification</h2>
-<p>Nous avons perfectionné notre expertise en <strong>apprentissage automatique</strong> au point de bien comprendre les <strong>réseaux neuronaux</strong> et le <strong>deep learning</strong>, ce qui nous permet de développer des modèles simples avec <strong>Keras</strong>.</p>
-<div class="fragment">
-<p>En revanche, les récentes avancées sur les <strong>recherche arborescente de Monte-Carlo (MCTS)</strong> ont joué un rôle central dans la recherche en <strong>intelligence artificielle</strong>. Nous passons donc de la concentration sur le deep learning vers l’<strong>exploration de la recherche</strong>.</p>
-</div>
-</section>
 <section id="justification-2" class="slide level2">
 <h2>Justification</h2>
-<p>L’intégration du <strong>deep learning</strong> et de <strong>MCTS</strong> sous-tend des applications modernes comme <strong><a href="https://deepmind.google/research/breakthroughs/alphago/">AlphaGo</a></strong>, <strong><a href="https://deepmind.google/discover/blog/alphazero-shedding-new-light-on-chess-shogi-and-go/">AlphaZero</a></strong>, et <strong><a href="https://deepmind.google/discover/blog/muzero-mastering-go-chess-shogi-and-atari-without-rules/">MuZero</a></strong>.</p>
+<p>Nous avons perfectionné notre expertise en <strong>apprentissage automatique</strong> au point de bien comprendre les <strong>réseaux neuronaux</strong> et l’<strong>apprentissage profond</strong>, ce qui nous permet de développer des modèles simples avec <strong>Keras</strong>.</p>
+<div class="fragment">
+<p>Ces dernières années, la <strong>recherche arborescente de Monte-Carlo (MCTS)</strong> a joué un rôle central dans les avancées de la recherche en <strong>intelligence artificielle</strong>. Après nous être concentrés sur l’apprentissage profond, <strong>nous nous tournons maintenant vers la recherche</strong>.</p>
+</div>
+</section>
+<section id="justification-3" class="slide level2">
+<h2>Justification</h2>
+<p>L’intégration de l’<strong>apprentissage profond</strong> et de <strong>MCTS</strong> sous-tend des applications modernes comme <strong><a href="https://deepmind.google/research/breakthroughs/alphago/">AlphaGo</a></strong>, <strong><a href="https://deepmind.google/discover/blog/alphazero-shedding-new-light-on-chess-shogi-and-go/">AlphaZero</a></strong>, et <strong><a href="https://deepmind.google/discover/blog/muzero-mastering-go-chess-shogi-and-atari-without-rules/">MuZero</a></strong>.</p>
 <div class="fragment">
 <p>Les algorithmes de recherche sont donc cruciaux pour la <strong>planification</strong> et le <strong>raisonnement</strong> et leur importance devrait croître avec les avancées technologiques.</p>
 </div>
 </section>
-<section id="recherche-un-historique-biaisé" class="slide level2 smaller">
+<section id="recherche-un-historique-biaisé" class="slide level2 smaller" style="font-size: 0.55em;">
 <h2>Recherche (un historique biaisé)</h2>
 <ul>
-<li><strong>1968 – A*</strong> : Recherche heuristique pour la planification en IA.</li>
-<li><strong>1970s-1980s – Algorithmes à population</strong> (ex : algorithmes génétiques) : Optimisation stochastique pour grands espaces.</li>
-<li><strong>1980s – CSP (Problèmes de satisfaction de contraintes)</strong> : Recherche dans des espaces structurés avec contraintes explicites.</li>
-<li><strong>2013 – DQN</strong> : Apprentissage par renforcement (Q-learning) sur données brutes.</li>
-<li><strong>2015 – AlphaGo</strong> : Recherche d’arbres de jeu avec MCTS combiné au deep learning.</li>
-<li><strong>2017 – AlphaZero</strong> : MCTS pour auto-apprentissage dans plusieurs domaines.</li>
-<li><strong>2019 – MuZero</strong> : Recherche dans environnements inconnus sans modèles préexistants.</li>
-<li><strong>2020 – Agent57</strong> : Recherche généralisée à travers divers environnements (jeux Atari).</li>
-<li><strong>2021 – FunSearch</strong> : Généralisation possible des techniques de recherche.</li>
+<li><strong>1968 – A*</strong> : Recherche heuristique de chemins de coût minimal.</li>
+<li><strong>Années 1970–1980 – Algorithmes à population</strong> (p.&nbsp;ex., algorithmes génétiques) : Recherche stochastique à population pour l’optimisation.</li>
+<li><strong>Années 1980 – Problèmes de satisfaction de contraintes (CSP)</strong> : Progrès dans la combinaison de la propagation de contraintes et de la recherche avec retour en arrière.</li>
+<li><strong>2013 – DQN</strong> : Apprentissage des valeurs d’action directement à partir des pixels par Q-learning profond.</li>
+<li><strong>2015 – AlphaGo</strong> : Des réseaux neuronaux profonds guident MCTS ; première victoire en match contre un joueur professionnel de Go.</li>
+<li><strong>2017 – AlphaZero</strong> : Apprentissage par autojeu avec MCTS guidée par des réseaux neuronaux pour les échecs, le shogi et le Go.</li>
+<li><strong>2019 – MuZero</strong> : Planification avec un modèle appris, sans fournir au système la dynamique de l’environnement.</li>
+<li><strong>2020 – Agent57</strong> : Apprentissage profond par renforcement avec exploration dirigée et sélection adaptative de politiques dans 57 jeux Atari.</li>
+<li><strong>2023 – FunSearch</strong> : Recherche évolutionnaire sur des programmes proposés par un grand modèle de langage et évalués automatiquement.</li>
+<li><strong>2024 – AlphaGeometry</strong> : Démonstration de théorèmes de géométrie combinant un modèle de langage neuronal et la déduction symbolique.</li>
 </ul>
+<aside class="notes">
+<p>Cet historique présente une sélection de jalons de la recherche et de méthodes d’apprentissage connexes. DQN et Agent57 apprennent à agir par renforcement ; ils n’effectuent pas la recherche arborescente explicite sur des actions futures utilisée par AlphaGo, AlphaZero et MuZero. L’exploration pendant l’apprentissage et la recherche parmi des séquences d’actions futures sont deux idées distinctes.</p>
+<p>Les dates correspondent à des jalons choisis, pas nécessairement aux dates de publication dans des revues. AlphaGo a battu Fan Hui en octobre 2015, avant sa publication dans Nature en janvier 2016. AlphaZero et MuZero sont apparus sous forme de prépublications en 2017 et 2019, respectivement. Les entrées sur les méthodes à population et les CSP désignent des périodes de développement plutôt que les origines de ces domaines.</p>
+<p>Sources : <span class="citation" data-cites="Hart:1968aa">Hart et al. (<a href="#/références" role="doc-biblioref" onclick="">1968</a>)</span> ; <a href="https://doi.org/10.7551/MITPRESS/1090.001.0001" class="external" data-icon="true">livre de Holland, 1975</a> ; <a href="https://www.cs.ubc.ca/~mack/Publications/AI85.pdf" class="external" data-icon="true">algorithmes de cohérence des contraintes, 1985</a> ; <a href="https://arxiv.org/abs/1312.5602" class="external" data-icon="true">DQN, 2013</a> ; <a href="https://arxiv.org/abs/1712.01815" class="external" data-icon="true">AlphaZero, 2017</a> ; <a href="https://arxiv.org/abs/1911.08265" class="external" data-icon="true">MuZero, 2019</a> ; <a href="https://arxiv.org/abs/2003.13350" class="external" data-icon="true">Agent57, 2020</a> ; <a href="https://deepmind.google/blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/" class="external" data-icon="true">FunSearch, 2023</a> ; <a href="https://deepmind.google/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/" class="external" data-icon="true">AlphaGeometry, 2024</a>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="recherche" class="slide level2">
 <h2>Recherche</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://youtu.be/g-dKXOlsf98"><img data-src="../../assets/images/youtube_g-dKXOlsf98.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
+<p><a href="https://youtu.be/g-dKXOlsf98"><img data-src="../../assets/images/youtube_g-dKXOlsf98.png" class="quarto-figure quarto-figure-center" height="450"></a></p>
 </figure>
 </div>
 
 <aside class="notes">
-<p>En 1997, le Deep Blue d’IBM a vaincu le champion du monde d’échecs en titre, Garry Kasparov. Cependant, la communauté de l’IA n’a pas été particulièrement impressionnée, car le principal accomplissement du système résidait dans sa capacité à évaluer 200 millions de positions d’échecs par seconde. Après le match, Kasparov a remarqué que Deep Blue était “aussi intelligent que votre réveil.”</p>
-<p>Depuis lors, des avancées significatives ont été réalisées. Contrairement à Deep Blue, AlphaZero s’appuie sur “des approches plus intéressantes que la recherche par force brute, qui sont peut-être plus humaines dans la façon dont elles traitent la position.” Cela a incité Kasparov à exprimer son approbation, déclarant : “Je ne peux pas cacher ma satisfaction que [AlphaZero] joue avec un style dynamique qui rappelle le mien&nbsp;!”</p>
+<p><strong>Question de visionnement :</strong> Comment les connaissances apprises peuvent-elles aider à choisir les coups à explorer et à évaluer une position ?</p>
+<p>En 1997, le Deep Blue d’IBM a vaincu le champion du monde d’échecs en titre, Garry Kasparov. Il pouvait évaluer 200 millions de positions par seconde, en combinant calcul rapide, recherche sélective, ordonnancement des coups et évaluation soigneusement conçue. Dans une <a href="https://www.kasparov.com/i-was-there-when-ai-mastered-chess-mit-technology-review-october-6-2022/" class="external" data-icon="true">réflexion ultérieure</a>, Kasparov l’a décrit comme étant « aussi intelligent que votre réveil » [traduction]. Ce commentaire oppose la performance dans une tâche particulière à l’intelligence générale ; il ne signifie pas que Deep Blue était dépourvu d’algorithmes de recherche sophistiqués. Voir <a href="https://www.ibm.com/history/deep-blue" class="external" data-icon="true">l’historique d’IBM</a> et <a href="https://cdn.aaai.org/Symposia/Spring/1999/SS-99-07/SS99-07-004.pdf" class="external" data-icon="true">la présentation technique de ses concepteurs</a>.</p>
+<p>La vidéo de Nature explique comment les connaissances apprises rendent la recherche au Go sélective : un réseau de politique suggère des coups prometteurs et un réseau de valeur estime la qualité des positions. La recherche combine ces estimations avec l’exploration de suites possibles. Plus tard, AlphaZero a appris par autojeu et a combiné une évaluation apprise avec MCTS. Kasparov a déclaré : « Je ne peux dissimuler ma satisfaction de le voir jouer dans un style très dynamique, semblable au mien ! » [traduction]. Voir <a href="https://deepmind.google/blog/alphazero-shedding-new-light-on-chess-shogi-and-go/" class="external" data-icon="true">l’article de Google DeepMind sur AlphaZero</a>.</p>
+<p>Le lien essentiel est que l’apprentissage et la recherche se complètent. Cette présentation établit le vocabulaire et les méthodes de recherche de référence ; la présentation 22 examine MCTS en détail.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -356,18 +400,19 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p><a href="https://youtu.be/g-dKXOlsf98">L’ordinateur qui a maîtrisé le jeu de Go</a>. <a href="https://www.youtube.com/@NatureVideoChannel">Nature Video</a> YouTube le 27-01-2016. (7<strong>m</strong> 52<strong>s</strong>)</p>
+<p><a href="https://youtu.be/g-dKXOlsf98">L’ordinateur qui a maîtrisé le jeu de Go</a>. <a href="https://www.youtube.com/@NatureVideoChannel">Nature Video</a> YouTube le 27-01-2016. <strong>Vidéo présentée en classe</strong> (7<strong>m</strong> 52<strong>s</strong>).</p>
 </div></aside></section>
 <section id="alphago---le-film" class="slide level2">
 <h2>AlphaGo - Le Film</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://youtu.be/WXuK6gekU1Y"><img data-src="../../assets/images/alphago.png" class="quarto-figure quarto-figure-center" height="500"></a></p>
+<p><a href="https://youtu.be/WXuK6gekU1Y"><img data-src="../../assets/images/alphago.png" class="quarto-figure quarto-figure-center" height="450"></a></p>
 </figure>
 </div>
 
 <aside class="notes">
 <p><a href="https://youtu.be/WXuK6gekU1Y">AlphaGo - The Movie | Full award-winning documentary</a>, Google DeepMind, 2020-03-13.</p>
+<p>La vidéo de Nature précède le match contre Lee Sedol : elle présente la victoire d’AlphaGo, 5–0 contre le joueur professionnel Fan Hui en octobre 2015. Le documentaire est une ressource complémentaire sur le match ultérieur. Voir <a href="https://deepmind.google/research/alphago/" class="external" data-icon="true">l’historique d’AlphaGo de Google DeepMind</a>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -380,18 +425,18 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Oui, <strong>AlphaGo</strong> a réussi à battre le <strong>champion du monde</strong>, Lee <strong>Sedol</strong>. (1<strong>h</strong> 30<strong>m</strong>)</p>
+<p>Oui, <strong>AlphaGo</strong> a battu le champion de Go Lee <strong>Sedol</strong>, 4–1 en mars 2016. Le documentaire complet suit ce match. (1<strong>h</strong> 30<strong>m</strong>)</p>
 </div></aside></section>
 <section id="alphago2muzero" class="slide level2">
 <h2>AlphaGo2MuZero</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/AlphaGo2MuZero.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/AlphaGo2MuZero.png" class="quarto-figure quarto-figure-center" height="500"></a></p>
+<p><a href="../../assets/images/AlphaGo2MuZero.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="../../assets/images/AlphaGo2MuZero.png" class="quarto-figure quarto-figure-center" height="500"></a></p>
 </figure>
 </div>
 
 <aside class="notes">
-<p><a href="https://www.davidsilver.uk">David Silver</a>, chercheur principal chez DeepMind et professeur à l’University College London, est l’un des principaux chercheurs sur ces projets. Il a obtenu son doctorat à l’Université de l’Alberta, où il a été supervisé par <a href="https://apps.ualberta.ca/directory/person/rsutton">Richard Sutton</a>.</p>
+<p><a href="https://www.davidsilver.uk" class="external" data-icon="true">David Silver</a> a dirigé les recherches de DeepMind à l’origine de ces projets et est professeur à l’University College London. Il a obtenu son doctorat à l’Université de l’Alberta sous la direction de <a href="https://apps.ualberta.ca/directory/person/rsutton" class="external" data-icon="true">Richard Sutton</a>.</p>
 <p>Vous pourriez également vouloir regarder la vidéo suivante : <a href="https://youtu.be/WXHFqTvfFSw?si=oXsOtb2uxvU1CyKb">AlphaGo Zero : Découvrir de nouvelles connaissances</a>. Publiée sur YouTube le 18-10-2017.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -418,22 +463,22 @@ Marcel Turcotte
 <li class="fragment"><p><strong>Cheminement et navigation</strong> : Utilisé en robotique et dans les jeux vidéo pour trouver un <strong>chemin</strong> d’un <strong>point de départ</strong> à une <strong>destination</strong>.</p></li>
 <li class="fragment"><p><strong>Résolution de puzzles</strong> : Résolution de problèmes comme le <strong>puzzle à 8 tuiles</strong>, <strong>labyrinthes</strong>, ou <strong>Sudoku</strong>.</p></li>
 <li class="fragment"><p><strong>Analyse de réseaux</strong> : Analyse de connectivité et des chemins les plus courts dans les <strong>réseaux sociaux</strong> ou les <strong>cartes de transport</strong>.</p></li>
-<li class="fragment"><p><strong>Jeux</strong> : Évaluation des coups dans les jeux comme <strong>les échecs</strong> ou le <strong>Go</strong>.</p></li>
+<li class="fragment"><p><strong>Jeux</strong> : Évaluation des coups dans les jeux comme <strong>les échecs</strong> ou le <strong>Go</strong>, en particulier en combinaison avec d’autres stratégies.</p></li>
 </ul>
 </section>
 <section id="applications-1" class="slide level2">
 <h2>Applications</h2>
 <ul>
-<li class="fragment"><p><strong>Planification et ordonnancement</strong> : Planification des tâches dans la <strong>gestion de projet</strong> ou l’<strong>ordonnancement de vols</strong>.</p></li>
-<li class="fragment"><p><strong>Allocation de ressources</strong> : Allocation de ressources dans un réseau ou organisation.</p></li>
-<li class="fragment"><p><strong>Problèmes de configuration</strong> : Assemblage de composants pour satisfaire des exigences, comme la configuration d’un système informatique.</p></li>
+<li class="fragment"><p><strong>Ordonnancement</strong> : Planification et ordonnancement des tâches dans la <strong>fabrication</strong>, la <strong>gestion de projet</strong> ou l’<strong>ordonnancement de vols</strong>.</p></li>
+<li class="fragment"><p><strong>Allocation de ressources</strong> : Allocation de ressources dans un réseau ou une organisation où des <strong>contraintes</strong> doivent être satisfaites.</p></li>
+<li class="fragment"><p><strong>Problèmes de configuration</strong> : Assemblage de composants pour satisfaire des exigences précises, comme la configuration d’un système informatique ou la <strong>conception d’un circuit</strong>.</p></li>
 </ul>
 </section>
 <section id="applications-2" class="slide level2">
 <h2>Applications</h2>
 <ul>
-<li><p><strong>Décisions sous incertitude</strong> : Décisions en <strong>jeux de stratégie en temps réel</strong> ou <strong>simulations</strong>.</p></li>
-<li><p><strong>Narration</strong> : Les modèles de langage peuvent générer des récits lorsqu’ils sont guidés par un plan valide provenant d’un <strong>planificateur automatisé</strong>. <span class="citation" data-cites="Simon:2024aa">(<a href="#/références" role="doc-biblioref" onclick="">Simon et Muise 2024</a>)</span></p></li>
+<li class="fragment"><p><strong>Prise de décision sous incertitude</strong> : Évaluation de décisions dans des <strong>jeux de stratégie en temps réel</strong> et des <strong>simulations</strong>, dans des conditions incertaines.</p></li>
+<li class="fragment"><p><strong>Narration</strong> : Les modèles de langage peuvent générer des récits lorsqu’ils sont guidés par un plan valide provenant d’un <strong>planificateur automatisé</strong>. <span class="citation" data-cites="Simon:2024aa">(<a href="#/références" role="doc-biblioref" onclick="">Simon et Muise 2024</a>)</span></p></li>
 </ul>
 <aside class="notes">
 <p>Les applications des algorithmes de recherche sont à la fois <strong>nombreuses</strong> et <strong>diverses</strong>.</p>
@@ -454,7 +499,7 @@ Marcel Turcotte
 <h2>Plan</h2>
 <ol type="1">
 <li class="fragment"><p><strong>Recherche déterministe et heuristique</strong> : BFS, DFS, A* pour la recherche de chemins et l’optimisation en IA classique.</p></li>
-<li class="fragment"><p><strong>Algorithmes basés sur la population</strong> : Focus sur les problèmes structurés et la recherche stochastique.</p></li>
+<li class="fragment"><p><strong>Algorithmes basés sur la population</strong> : Accent sur les problèmes structurés et la recherche stochastique.</p></li>
 <li class="fragment"><p><strong>Algorithmes de jeux adversariaux</strong> : Minimax, élagage alpha-bêta, MCTS pour la prise de décision dans des environnements compétitifs.</p></li>
 </ol>
 
@@ -491,7 +536,7 @@ Marcel Turcotte
 <h2>Terminologie</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/agent-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="../../assets/images/agent-01.png" class="quarto-figure quarto-figure-center" height="400"></a></p>
+<p><a href="../../assets/images/agent-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="../../assets/images/agent-01.png" class="quarto-figure quarto-figure-center" height="400"></a></p>
 </figure>
 </div>
 
@@ -511,7 +556,7 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Un <strong>agent</strong> est une entité qui effectue des <strong>actions</strong>. Un <strong>agent rationnel</strong> est celui qui agit pour atteindre le <strong>“meilleur” résultat</strong>. Conceptuellement, un <strong>agent</strong> perçoit son environnement par le biais de <strong>capteurs</strong> et interagit avec celui-ci à l’aide d’<strong>actionneurs</strong>.</p>
+<p>Un <strong>agent</strong> est une entité qui effectue des <strong>actions</strong>. Un <strong>agent rationnel</strong> sélectionne les actions susceptibles d’obtenir le <strong>meilleur résultat attendu</strong>, compte tenu de ses informations et de sa mesure de performance. Conceptuellement, un <strong>agent</strong> perçoit son environnement par le biais de <strong>capteurs</strong> et interagit avec celui-ci à l’aide d’<strong>actionneurs</strong>.</p>
 </div></aside></section>
 <section id="caractéristiques-de-lenvironnement" class="slide level2">
 <h2>Caractéristiques de l’environnement</h2>
@@ -519,7 +564,7 @@ Marcel Turcotte
 <li><p><strong>Observabilité</strong> : Partiellement observable ou <em>totalement observable</em></p></li>
 <li><p><strong>Composition de l’agent</strong> : <em>Agent unique</em> ou multiple</p></li>
 <li><p><strong>Prédictibilité</strong> : <em>Déterministe</em> ou non déterministe</p></li>
-<li><p><strong>Dépendance d’état</strong> : <em>Sans état</em> ou avec état</p></li>
+<li><p><strong>Dépendance des décisions</strong> : Épisodique ou <em>séquentielle</em></p></li>
 <li><p><strong>Dynamique temporelle</strong> : <em>Statique</em> ou dynamique</p></li>
 <li><p><strong>Représentation de l’état</strong> : <em>Discrète</em> ou continue</p></li>
 </ul>
@@ -529,10 +574,10 @@ Marcel Turcotte
 <ul>
 <li><p>Un <strong>environnement totalement observable</strong> permet à l’agent de détecter tous les aspects pertinents pour la prise de décision.</p></li>
 <li><p>Dans un <strong>environnement déterministe</strong>, l’agent peut prédire l’état suivant en fonction de l’état actuel et de son action subséquente.</p></li>
-<li><p>Les <strong>environnements sans état (épisodiques)</strong> impliquent des décisions ou actions indépendantes des actions antérieures, avec des expériences divisées en épisodes non reliés. Un exemple est un problème de classification.</p></li>
-<li><p>Les <strong>environnements avec état (séquentiels)</strong> nécessitent que le résultat de chaque action puisse affecter les décisions futures, car la séquence des actions impacte l’état et les choix ultérieurs. Un exemple est un jeu d’échecs.</p></li>
-<li><p>Un <strong>environnement dynamique</strong> est caractérisé par des changements de contexte pendant que l’agent délibère.</p></li>
-<li><p>Les échecs servent d’exemple d’environnement <strong>discret</strong>, avec un nombre fini, bien que grand, d’états. En revanche, un véhicule autonome fonctionne dans un environnement à <strong>état continu</strong> et <strong>temps continu</strong>.</p></li>
+<li><p>Les <strong>environnements épisodiques</strong> impliquent des décisions indépendantes : une action dans un épisode n’affecte pas les épisodes suivants. La classification d’images indépendantes en est un exemple.</p></li>
+<li><p>Les <strong>environnements séquentiels</strong> exigent de considérer l’effet d’une action sur les décisions futures. Le 8-Puzzle et les échecs en sont des exemples. Un état peut résumer tout l’historique pertinent sans rendre la tâche épisodique.</p></li>
+<li><p>Un <strong>environnement dynamique</strong> peut changer indépendamment pendant que l’agent délibère. Un <strong>environnement statique</strong> ne change pas pendant la délibération, mais les actions de l’agent peuvent tout de même en modifier l’état.</p></li>
+<li><p>Les échecs servent d’exemple d’environnement <strong>discret</strong>, avec des états et des actions distincts. Les espaces discrets peuvent être finis ou dénombrablement infinis. En revanche, un véhicule autonome fonctionne dans un environnement à <strong>état continu</strong> et <strong>temps continu</strong>.</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -546,23 +591,23 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Dans cette présentation, les environnements sont supposés être : <em>totalement observables</em>, <em>agent unique</em>, <em>sans état</em>, <em>déterministes</em>, <em>statiques</em> et <em>discrets</em>.</p>
+<p>Dans cette présentation, les environnements sont supposés être : <em>totalement observables</em>, à <em>agent unique</em>, <em>séquentiels</em>, <em>déterministes</em>, <em>statiques</em> et <em>discrets</em>.</p>
 </div></aside></section>
 <section id="processus-de-résolution-de-problèmes" class="slide level2">
 <h2>Processus de résolution de problèmes</h2>
-<p><strong>Recherche</strong> : Le processus implique de simuler des séquences d’actions jusqu’à ce que l’agent atteigne son objectif. Une séquence réussie est appelée une <strong>solution</strong>.</p>
+<p><strong>Recherche</strong> : L’agent simule des séquences d’actions possibles dans un modèle pour trouver un chemin vers un état objectif. Une séquence réussie est une <strong>solution</strong>, que l’agent peut ensuite exécuter.</p>
 <aside class="notes">
 <p>Une formulation précise facilite le développement de code réutilisable.</p>
-<p>Un environnement caractérisé comme sans état, agent unique, totalement observable, déterministe, statique et discret implique que la solution à tout problème dans ce contexte est une séquence fixe d’actions.</p>
+<p>Sous ces hypothèses, une solution, lorsqu’elle existe, peut être exprimée comme une séquence fixe d’actions plutôt que comme une politique qui se ramifie selon des résultats incertains.</p>
 <ul>
-<li><p><strong>Sans état</strong> : Chaque décision est indépendante des actions précédentes, ce qui signifie que la solution ne dépend pas de l’historique.</p></li>
+<li><p><strong>Séquentiel</strong> : Chaque action modifie l’état et peut affecter les actions ultérieures qui mènent à l’objectif. La représentation de l’état conserve les informations nécessaires pour prédire les transitions futures.</p></li>
 <li><p><strong>Agent unique</strong> : Il n’y a pas d’interaction avec d’autres agents qui pourrait introduire de la variabilité.</p></li>
 <li><p><strong>Totalement observable</strong> : L’agent dispose d’informations complètes sur l’environnement, permettant une prise de décision précise.</p></li>
 <li><p><strong>Déterministe</strong> : Le résultat des actions est prévisible, sans aléatoire affectant le résultat.</p></li>
-<li><p><strong>Statique</strong> : L’environnement ne change pas au fil du temps, les conditions restent donc constantes.</p></li>
-<li><p><strong>Discret</strong> : L’environnement a un nombre fini d’états et d’actions, permettant une séquence claire d’étapes.</p></li>
+<li><p><strong>Statique</strong> : L’environnement ne change pas indépendamment pendant que l’agent planifie ; l’exécution d’une action modifie tout de même l’état.</p></li>
+<li><p><strong>Discret</strong> : Les états et les actions sont des possibilités distinctes pouvant être considérées séparément ; l’espace n’est pas nécessairement fini.</p></li>
 </ul>
-<p>Je suppose que vous êtes déjà familier avec ces concepts, et donc, ce cours initial sert principalement de révision.</p>
+<p>Cette formulation relie les algorithmes familiers de parcours de graphes à la planification : la recherche sélectionne une séquence dans le modèle avant que l’agent l’exécute dans l’environnement.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -580,16 +625,16 @@ Marcel Turcotte
 <ul>
 <li class="fragment"><p>Un ensemble d’<strong>états</strong>, appelé <strong>espace d’états</strong>.</p></li>
 <li class="fragment"><p>Un <strong>état initial</strong> où l’agent commence.</p></li>
-<li class="fragment"><p>Un ou plusieurs <strong>états objectifs</strong> qui définissent des résultats réussis.</p></li>
-<li class="fragment"><p>Un ensemble d’<strong>actions</strong> disponibles dans un état donné <span class="math inline">\(s\)</span>.</p></li>
+<li class="fragment"><p>Un ou plusieurs <strong>états objectifs</strong> qui définissent des résultats réussis, reconnus par un <strong>test d’objectif</strong>.</p></li>
+<li class="fragment"><p>Un ensemble d’<strong>actions</strong> disponibles dans un état donné <span class="math inline">s</span>.</p></li>
 <li class="fragment"><p>Un <strong>modèle de transition</strong> qui détermine l’état suivant en fonction de l’état actuel et de l’action sélectionnée.</p></li>
-<li class="fragment"><p>Une <strong>fonction de coût d’action</strong> qui spécifie le coût de l’exécution de l’action <span class="math inline">\(a\)</span> dans l’état <span class="math inline">\(s\)</span> pour atteindre l’état <span class="math inline">\(s'\)</span>.</p></li>
+<li class="fragment"><p>Une <strong>fonction de coût d’action</strong> qui spécifie le coût de l’exécution de l’action <span class="math inline">a</span> dans l’état <span class="math inline">s</span> pour atteindre l’état <span class="math inline">s'</span>.</p></li>
 </ul>
 </section>
 <section id="définitions" class="slide level2">
 <h2>Définitions</h2>
 <ul>
-<li class="fragment"><p>Un <strong>chemin</strong> est défini comme une séquence d’actions.</p></li>
+<li class="fragment"><p>Un <strong>chemin</strong> est une séquence d’états reliés par des actions ; il peut être représenté par la séquence d’actions ou par la séquence d’états qui en résulte.</p></li>
 <li class="fragment"><p>Une <strong>solution</strong> est un chemin qui relie l’état initial à l’état objectif.</p></li>
 <li class="fragment"><p>Une <strong>solution optimale</strong> est le chemin avec le coût le plus bas parmi toutes les solutions possibles.</p></li>
 </ul>
@@ -612,7 +657,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="exemple-8-puzzle" class="slide level2">
 <h2>Exemple : 8-Puzzle</h2>
-<div id="c880ec13" class="cell" data-execution_count="2">
+<div id="69e7a5f2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> random</span>
@@ -623,53 +668,54 @@ Marcel Turcotte
 <span id="cb1-6"><a aria-label="6"></a></span>
 <span id="cb1-7"><a aria-label="7"></a><span class="kw">def</span> is_solvable(tiles):</span>
 <span id="cb1-8"><a aria-label="8"></a>    <span class="co"># Compter les inversions dans la liste à plat des tuiles (en excluant l'espace vide)</span></span>
-<span id="cb1-9"><a aria-label="9"></a>    inversions <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-10"><a aria-label="10"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tiles)):</span>
-<span id="cb1-11"><a aria-label="11"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(tiles)):</span>
-<span id="cb1-12"><a aria-label="12"></a>            <span class="cf">if</span> tiles[i] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> tiles[j] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> tiles[i] <span class="op">&gt;</span> tiles[j]:</span>
-<span id="cb1-13"><a aria-label="13"></a>                inversions <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-14"><a aria-label="14"></a>    <span class="cf">return</span> inversions <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb1-15"><a aria-label="15"></a></span>
-<span id="cb1-16"><a aria-label="16"></a><span class="kw">def</span> generate_solvable_board():</span>
-<span id="cb1-17"><a aria-label="17"></a>    <span class="co"># Générer une configuration de plateau aléatoire qui est garantie d'être résoluble</span></span>
-<span id="cb1-18"><a aria-label="18"></a>    tiles <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">9</span>))</span>
-<span id="cb1-19"><a aria-label="19"></a>    random.shuffle(tiles)</span>
-<span id="cb1-20"><a aria-label="20"></a>    <span class="cf">while</span> <span class="kw">not</span> is_solvable(tiles):</span>
-<span id="cb1-21"><a aria-label="21"></a>        random.shuffle(tiles)</span>
-<span id="cb1-22"><a aria-label="22"></a></span>
-<span id="cb1-23"><a aria-label="23"></a>    <span class="cf">return</span> tiles</span>
-<span id="cb1-24"><a aria-label="24"></a></span>
-<span id="cb1-25"><a aria-label="25"></a><span class="kw">def</span> plot_board(board, title, num_pos, position):</span>
-<span id="cb1-26"><a aria-label="26"></a>    ax <span class="op">=</span> plt.subplot(<span class="dv">1</span>, num_pos, position)</span>
-<span id="cb1-27"><a aria-label="27"></a>    ax.set_title(title)</span>
-<span id="cb1-28"><a aria-label="28"></a>    ax.set_xticks([])</span>
-<span id="cb1-29"><a aria-label="29"></a>    ax.set_yticks([])</span>
-<span id="cb1-30"><a aria-label="30"></a></span>
-<span id="cb1-31"><a aria-label="31"></a>    board <span class="op">=</span> np.array(board).reshape(<span class="dv">3</span>, <span class="dv">3</span>).tolist() <span class="co"># Reconfigurer en une grille 3x3</span></span>
-<span id="cb1-32"><a aria-label="32"></a></span>
-<span id="cb1-33"><a aria-label="33"></a>    <span class="co"># Utiliser une carte de couleurs pour afficher les numéros</span></span>
-<span id="cb1-34"><a aria-label="34"></a>    cmap <span class="op">=</span> plt.cm.plasma</span>
-<span id="cb1-35"><a aria-label="35"></a>    norm <span class="op">=</span> plt.Normalize(vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb1-36"><a aria-label="36"></a></span>
-<span id="cb1-37"><a aria-label="37"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb1-38"><a aria-label="38"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb1-39"><a aria-label="39"></a>            tile_value <span class="op">=</span> board[i][j]</span>
-<span id="cb1-40"><a aria-label="40"></a>            color <span class="op">=</span> cmap(norm(tile_value))</span>
-<span id="cb1-41"><a aria-label="41"></a>            ax.add_patch(plt.Rectangle((j, <span class="dv">2</span> <span class="op">-</span> i), <span class="dv">1</span>, <span class="dv">1</span>, facecolor<span class="op">=</span>color, edgecolor<span class="op">=</span><span class="st">'black'</span>))</span>
-<span id="cb1-42"><a aria-label="42"></a>            <span class="cf">if</span> tile_value <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-43"><a aria-label="43"></a>                ax.add_patch(plt.Rectangle((j, <span class="dv">2</span> <span class="op">-</span> i), <span class="dv">1</span>, <span class="dv">1</span>, facecolor<span class="op">=</span><span class="st">'white'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>))</span>
-<span id="cb1-44"><a aria-label="44"></a>            <span class="cf">else</span>:</span>
-<span id="cb1-45"><a aria-label="45"></a>                ax.text(j <span class="op">+</span> <span class="fl">0.5</span>, <span class="dv">2</span> <span class="op">-</span> i <span class="op">+</span> <span class="fl">0.5</span>, <span class="bu">str</span>(tile_value),</span>
-<span id="cb1-46"><a aria-label="46"></a>                        fontsize<span class="op">=</span><span class="dv">16</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb1-47"><a aria-label="47"></a></span>
-<span id="cb1-48"><a aria-label="48"></a>    ax.set_xlim(<span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb1-49"><a aria-label="49"></a>    ax.set_ylim(<span class="dv">0</span>, <span class="dv">3</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a aria-label="9"></a>    <span class="co"># Hypothèse : le plateau est carré et sa largeur est impaire.</span></span>
+<span id="cb1-10"><a aria-label="10"></a>    inversions <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-11"><a aria-label="11"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tiles)):</span>
+<span id="cb1-12"><a aria-label="12"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(tiles)):</span>
+<span id="cb1-13"><a aria-label="13"></a>            <span class="cf">if</span> tiles[i] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> tiles[j] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> tiles[i] <span class="op">&gt;</span> tiles[j]:</span>
+<span id="cb1-14"><a aria-label="14"></a>                inversions <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-15"><a aria-label="15"></a>    <span class="cf">return</span> inversions <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb1-16"><a aria-label="16"></a></span>
+<span id="cb1-17"><a aria-label="17"></a><span class="kw">def</span> generate_solvable_board():</span>
+<span id="cb1-18"><a aria-label="18"></a>    <span class="co"># Générer une configuration de plateau aléatoire qui est garantie d'être résoluble</span></span>
+<span id="cb1-19"><a aria-label="19"></a>    tiles <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">9</span>))</span>
+<span id="cb1-20"><a aria-label="20"></a>    random.shuffle(tiles)</span>
+<span id="cb1-21"><a aria-label="21"></a>    <span class="cf">while</span> <span class="kw">not</span> is_solvable(tiles):</span>
+<span id="cb1-22"><a aria-label="22"></a>        random.shuffle(tiles)</span>
+<span id="cb1-23"><a aria-label="23"></a></span>
+<span id="cb1-24"><a aria-label="24"></a>    <span class="cf">return</span> tiles</span>
+<span id="cb1-25"><a aria-label="25"></a></span>
+<span id="cb1-26"><a aria-label="26"></a><span class="kw">def</span> plot_board(board, title, num_pos, position):</span>
+<span id="cb1-27"><a aria-label="27"></a>    ax <span class="op">=</span> plt.subplot(<span class="dv">1</span>, num_pos, position)</span>
+<span id="cb1-28"><a aria-label="28"></a>    ax.set_title(title)</span>
+<span id="cb1-29"><a aria-label="29"></a>    ax.set_xticks([])</span>
+<span id="cb1-30"><a aria-label="30"></a>    ax.set_yticks([])</span>
+<span id="cb1-31"><a aria-label="31"></a></span>
+<span id="cb1-32"><a aria-label="32"></a>    board <span class="op">=</span> np.array(board).reshape(<span class="dv">3</span>, <span class="dv">3</span>).tolist() <span class="co"># Reconfigurer en une grille 3x3</span></span>
+<span id="cb1-33"><a aria-label="33"></a></span>
+<span id="cb1-34"><a aria-label="34"></a>    <span class="co"># Utiliser une carte de couleurs pour afficher les numéros</span></span>
+<span id="cb1-35"><a aria-label="35"></a>    cmap <span class="op">=</span> plt.cm.plasma</span>
+<span id="cb1-36"><a aria-label="36"></a>    norm <span class="op">=</span> plt.Normalize(vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb1-37"><a aria-label="37"></a></span>
+<span id="cb1-38"><a aria-label="38"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb1-39"><a aria-label="39"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb1-40"><a aria-label="40"></a>            tile_value <span class="op">=</span> board[i][j]</span>
+<span id="cb1-41"><a aria-label="41"></a>            color <span class="op">=</span> cmap(norm(tile_value))</span>
+<span id="cb1-42"><a aria-label="42"></a>            ax.add_patch(plt.Rectangle((j, <span class="dv">2</span> <span class="op">-</span> i), <span class="dv">1</span>, <span class="dv">1</span>, facecolor<span class="op">=</span>color, edgecolor<span class="op">=</span><span class="st">'black'</span>))</span>
+<span id="cb1-43"><a aria-label="43"></a>            <span class="cf">if</span> tile_value <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-44"><a aria-label="44"></a>                ax.add_patch(plt.Rectangle((j, <span class="dv">2</span> <span class="op">-</span> i), <span class="dv">1</span>, <span class="dv">1</span>, facecolor<span class="op">=</span><span class="st">'white'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>))</span>
+<span id="cb1-45"><a aria-label="45"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-46"><a aria-label="46"></a>                ax.text(j <span class="op">+</span> <span class="fl">0.5</span>, <span class="dv">2</span> <span class="op">-</span> i <span class="op">+</span> <span class="fl">0.5</span>, <span class="bu">str</span>(tile_value),</span>
+<span id="cb1-47"><a aria-label="47"></a>                        fontsize<span class="op">=</span><span class="dv">16</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb1-48"><a aria-label="48"></a></span>
+<span id="cb1-49"><a aria-label="49"></a>    ax.set_xlim(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb1-50"><a aria-label="50"></a>    ax.set_ylim(<span class="dv">0</span>, <span class="dv">3</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="exemple-8-puzzle-1" class="slide level2">
 <h2>Exemple : 8-Puzzle</h2>
-<div id="2a9fa876" class="cell" data-execution_count="3">
+<div id="f4709bcb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Générer un plateau initial résoluble</span></span>
@@ -692,16 +738,14 @@ Marcel Turcotte
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="374"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="374"></a></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="puzzle" class="slide level2 smaller">
+<section id="puzzle" class="slide level2 smaller hide-code-toggle">
 <h2>8-Puzzle</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
 <ul>
 <li class="fragment"><p>Comment les <strong>états</strong> peuvent-ils être représentés ?</p></li>
 <li class="fragment"><p>Qu’est-ce qui constitue l’<strong>état initial</strong> ?</p></li>
@@ -711,32 +755,37 @@ Marcel Turcotte
 <li class="fragment"><p>Qu’est-ce qui constituerait une <strong>solution</strong> ?</p></li>
 <li class="fragment"><p>Quel devrait être le <strong>coût d’une action</strong> ?</p></li>
 </ul>
-</div><div class="column" style="width:30%;">
-<div id="f20de35f" class="cell" data-execution_count="4">
+<div id="a368403f" class="cell corner-image" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb3-2"><a aria-label="2"></a>plot_board(initial_board, <span class="st">"Plateau Initial"</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb3-3"><a aria-label="3"></a>plt.tight_layout()</span>
+<span id="cb3-4"><a aria-label="4"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/cell-4-output-1.png" width="182" height="182"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/cell-4-output-1.png" width="182" height="182"></a></p>
 </figure>
 </div>
 </div>
 </div>
-</div></div>
 <aside class="notes">
 <ul>
 <li><p>Chaque état peut être représenté comme une liste contenant les chiffres de 0 à 8. Chaque chiffre correspond à une tuile, et sa position dans la liste reflète sa localisation dans la grille, avec 0 désignant l’espace vide.</p></li>
 <li><p>L’état initial est une permutation des chiffres de 0 à 8.</p></li>
-<li><p>Les actions incluent <strong>gauche</strong>, <strong>droite</strong>, <strong>haut</strong> et <strong>bas</strong>, qui impliquent de faire glisser une tuile adjacente dans l’espace vide.</p></li>
+<li><p>Les actions déplacent la <strong>case vide</strong> vers la <strong>gauche</strong>, la <strong>droite</strong>, le <strong>haut</strong> ou le <strong>bas</strong> en l’échangeant avec une tuile adjacente. Ces directions décrivent le déplacement de la case vide, pas celui de la tuile numérotée.</p></li>
 <li><p>Un chemin serait une séquence d’actions, par exemple <strong>gauche</strong>, <strong>gauche</strong>, <strong>haut</strong>.</p></li>
 <li><p>Le modèle de transition associe un état donné et une action à un nouvel état. Toutes les actions ne sont pas réalisables à partir de chaque état ; par exemple, si l’espace vide est au bord de la grille, seules certaines actions sont possibles, comme bas, haut ou gauche.</p></li>
-<li><p>L’état objectif est atteint lorsque la liste est ordonnée de 1 à 8, suivi de 0, indiquant que les tuiles sont correctement disposées. Combien y a-t-il d’états objectifs ?</p></li>
+<li><p>L’état objectif est atteint lorsque la liste est ordonnée de 1 à 8, suivi de 0, indiquant que les tuiles sont correctement disposées. Combien y a-t-il d’états objectifs ? Cette formulation précise un seul état objectif, bien qu’un autre problème puisse en permettre plusieurs.</p></li>
 <li><p>Une solution serait un chemin valide transformant un état initial en un état objectif.</p></li>
 <li><p>Chaque action entraîne un coût de 1.</p></li>
 </ul>
 <p>Combien d’états possibles y a-t-il ?</p>
-<p>Il y a 9! = 362 880 états. La force brute est envisageable.</p>
+<p>Il y a <span class="math inline">9! = 362\,880</span> arrangements des huit tuiles et de la case vide. Seule la moitié, <span class="math inline">9!/2 = 181\,440</span>, est accessible depuis un état initial fixé. La recherche exhaustive sur graphe est envisageable à cette échelle.</p>
 <p>Combien y a-t-il d’états pour le 15-Puzzle ?</p>
-<p>15! = 1 307 674 368 000 (1,3 trillion) !</p>
+<p>Il y a <span class="math inline">16! = 20\,922\,789\,888\,000</span> arrangements des quinze tuiles et de la case vide, dont <span class="math inline">16!/2 = 10\,461\,394\,944\,000</span> sont accessibles depuis un état initial fixé : environ 10 461 milliards. Cet espace beaucoup plus grand motive une recherche plus sélective. Voir <a href="https://kociemba.org/themen/fifteen/fifteensolver.html" class="external" data-icon="true">le dénombrement des états du 15-Puzzle</a>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -749,13 +798,26 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 </section>
-<section id="résolvables" class="slide level2">
+<section id="résolvables" class="slide level2 hide-code-toggle">
 <h2>Résolvables ?</h2>
-<div id="b9567eb9" class="cell" data-execution_count="5">
+<div id="fbcff2dc" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>some_board <span class="op">=</span> [</span>
+<span id="cb4-2"><a aria-label="2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-3"><a aria-label="3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb4-4"><a aria-label="4"></a>    [<span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">0</span>]</span>
+<span id="cb4-5"><a aria-label="5"></a>]</span>
+<span id="cb4-6"><a aria-label="6"></a></span>
+<span id="cb4-7"><a aria-label="7"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb4-8"><a aria-label="8"></a>plot_board(some_board, <span class="st">""</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb4-9"><a aria-label="9"></a>plt.tight_layout()</span>
+<span id="cb4-10"><a aria-label="10"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="slides_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="182" height="182"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="slides_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="182" height="182"></a></p>
 </figure>
 </div>
 </div>
@@ -764,46 +826,58 @@ Marcel Turcotte
 <section id="résolvables-1" class="slide level2">
 <h2>Résolvables ?</h2>
 <ul>
-<li class="fragment"><p>Tous les tableaux sont-ils résolvables ?</p></li>
-<li class="fragment"><p>Un tableau est résolvable s’il a la même <strong>parité d’inversion</strong> que l’état final.</p></li>
+<li class="fragment"><p>Un tableau du <strong>8-Puzzle</strong> est résolvable s’il a la même <strong>parité d’inversion</strong> que l’état objectif.</p></li>
 <li class="fragment"><p>Une <strong>inversion</strong> est une paire de tuiles (à l’exclusion du vide) qui sont dans le mauvais ordre l’une par rapport à l’autre, lorsqu’on lit le tableau comme une liste unidimensionnelle (de gauche à droite, de haut en bas).</p></li>
 <li class="fragment"><p>Lorsque le but est la séquence ordonnée de 1 à 8, il n’y a pas d’inversion, et donc la parité est paire.</p></li>
-<li class="fragment"><p>Voir <span class="citation" data-cites="Archer:1999aa">Archer (<a href="#/références" role="doc-biblioref" onclick="">1999</a>)</span> ou <a href="https://www.cs.princeton.edu/courses/archive/spring21/cos226/assignments/8puzzle/specification.php">Slider Puzzle, Princeton</a></p></li>
+<li class="fragment"><p>Voir <span class="citation" data-cites="Archer:1999aa">Archer (<a href="#/références" role="doc-biblioref" onclick="">1999</a>)</span> ou <a href="https://www.cs.princeton.edu/courses/archive/spring21/cos226/assignments/8puzzle/specification.php" class="external" data-icon="true">Slider Puzzle, Princeton</a></p></li>
 </ul>
+<aside class="notes">
+<p>Pour un plateau de largeur impaire comme le puzzle 3×3, deux arrangements sont reliés par des déplacements permis exactement lorsque leurs parités d’inversion concordent. Cette règle fondée uniquement sur les inversions ne s’étend pas aux plateaux de largeur paire : pour le puzzle 4×4, le test de résolubilité doit aussi tenir compte de la rangée de la case vide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="count_even_odd_parity" class="slide level2">
 <h2><code>count_even_odd_parity</code></h2>
-<div id="7145aa4f" class="cell" data-execution_count="6">
+<div id="4ccaa0e5" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
-<span id="cb3-2"><a aria-label="2"></a></span>
-<span id="cb3-3"><a aria-label="3"></a><span class="kw">def</span> count_even_odd_parity():</span>
-<span id="cb3-4"><a aria-label="4"></a>    even_count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-5"><a aria-label="5"></a>    odd_count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-6"><a aria-label="6"></a></span>
-<span id="cb3-7"><a aria-label="7"></a>    <span class="cf">for</span> perm <span class="kw">in</span> permutations(<span class="bu">range</span>(<span class="dv">9</span>)):  <span class="co"># 0 représente la tuile vide</span></span>
-<span id="cb3-8"><a aria-label="8"></a>        inversions <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-9"><a aria-label="9"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
-<span id="cb3-10"><a aria-label="10"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="dv">9</span>):</span>
-<span id="cb3-11"><a aria-label="11"></a>                <span class="cf">if</span> perm[i] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> perm[j] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> perm[i] <span class="op">&gt;</span> perm[j]:</span>
-<span id="cb3-12"><a aria-label="12"></a>                    inversions <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-13"><a aria-label="13"></a>        <span class="cf">if</span> inversions <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb3-14"><a aria-label="14"></a>            even_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-15"><a aria-label="15"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-16"><a aria-label="16"></a>            odd_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-17"><a aria-label="17"></a></span>
-<span id="cb3-18"><a aria-label="18"></a>    <span class="cf">return</span> even_count, odd_count</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
+<span id="cb5-2"><a aria-label="2"></a></span>
+<span id="cb5-3"><a aria-label="3"></a><span class="kw">def</span> count_even_odd_parity():</span>
+<span id="cb5-4"><a aria-label="4"></a>    even_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-5"><a aria-label="5"></a>    odd_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-6"><a aria-label="6"></a></span>
+<span id="cb5-7"><a aria-label="7"></a>    <span class="cf">for</span> perm <span class="kw">in</span> permutations(<span class="bu">range</span>(<span class="dv">9</span>)):  <span class="co"># 0 représente la tuile vide</span></span>
+<span id="cb5-8"><a aria-label="8"></a>        inversions <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a aria-label="9"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb5-10"><a aria-label="10"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="dv">9</span>):</span>
+<span id="cb5-11"><a aria-label="11"></a>                <span class="cf">if</span> perm[i] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> perm[j] <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> perm[i] <span class="op">&gt;</span> perm[j]:</span>
+<span id="cb5-12"><a aria-label="12"></a>                    inversions <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-13"><a aria-label="13"></a>        <span class="cf">if</span> inversions <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-14"><a aria-label="14"></a>            even_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-15"><a aria-label="15"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-16"><a aria-label="16"></a>            odd_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-17"><a aria-label="17"></a></span>
+<span id="cb5-18"><a aria-label="18"></a>    <span class="cf">return</span> even_count, odd_count</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="11eccd37" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>even, odd <span class="op">=</span> count_even_odd_parity()</span>
-<span id="cb4-2"><a aria-label="2"></a></span>
-<span id="cb4-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="ss">f"Even parity: </span><span class="sc">{</span>even<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="ss">f"Odd parity: </span><span class="sc">{</span>odd<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b6d2203e" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>even, odd <span class="op">=</span> count_even_odd_parity()</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="ss">f"Parité paire : </span><span class="sc">{</span>even<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-4"><a aria-label="4"></a><span class="bu">print</span>(<span class="ss">f"Parité impaire : </span><span class="sc">{</span>odd<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Even parity: 181440
-Odd parity: 181440</code></pre>
+<pre><code>Parité paire : 181440
+Parité impaire : 181440</code></pre>
 </div>
 </div>
 </section>
@@ -811,13 +885,13 @@ Odd parity: 181440</code></pre>
 <h2>Arbre de recherche</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_tree-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/images/search_tree-00.png" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_tree-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../assets/images/search_tree-00.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 
 <aside class="notes">
-<p>Les algorithmes de recherche que nous examinons aujourd’hui construisent un arbre de recherche, où chaque nœud représente un état au sein de l’espace d’états et chaque arête représente une action.</p>
-<p>Il est important de distinguer entre l’arbre de recherche et l’espace d’états, qui peut être représenté comme un graphe. La structure de l’arbre de recherche varie en fonction de l’algorithme utilisé pour aborder le problème de recherche.</p>
+<p>Les algorithmes construisent des nœuds représentant des états atteints par des chemins particuliers. Un nœud peut conserver son parent, l’action utilisée pour l’atteindre et le coût du chemin. Dans les implémentations ci-dessous, une paire <code>(state, path)</code> conserve l’état et la séquence des états précédents.</p>
+<p>Le <strong>graphe de l’espace d’états</strong> décrit le problème : ses sommets sont des états et ses arêtes sont des actions. L’<strong>arbre de recherche</strong> décrit les chemins considérés pendant la recherche. Plusieurs chemins peuvent atteindre le même état, qui peut donc apparaître à plusieurs nœuds de l’arbre. Les algorithmes ci-dessous détectent les états répétés : ce sont des implémentations de <strong>recherche sur graphe</strong>, qui ne conservent pas chaque occurrence répétée de l’arbre conceptuel.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -830,41 +904,28 @@ Odd parity: 181440</code></pre>
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Un <strong>arbre de recherche</strong> est une <em>structure d’arbre conceptuelle</em> où les <strong>nœuds</strong> représentent des <em>états</em> dans un <strong>espace d’états</strong>, et les <strong>arêtes</strong> représentent les <strong>actions</strong> possibles, facilitant l’exploration systématique pour trouver un <strong>chemin</strong> d’un <strong>état initial</strong> à un <strong>état objectif</strong>.</p>
+<p>Un <strong>arbre de recherche</strong> représente des <strong>chemins</strong> possibles depuis l’<strong>état initial</strong>. Chaque <strong>nœud</strong> représente un état atteint par un chemin particulier, et chaque <strong>arête</strong> représente une action. Différents nœuds peuvent représenter le même état.</p>
 </div></aside></section>
 <section id="arbre-de-recherche-1" class="slide level2">
 <h2>Arbre de recherche</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_bfs-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="../../assets/images/search_bfs-00.png" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_bfs-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/images/search_bfs-00.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 
 <aside><div>
 <p>Un exemple d’<strong>arbre de recherche</strong> pour le <strong>8-Puzzle</strong>. La solution ici est incomplète.</p>
 </div></aside></section>
-<section id="arbre-de-recherche-2" class="slide level2">
+<section id="arbre-de-recherche-2" class="slide level2 smaller">
 <h2>Arbre de recherche</h2>
 <ul>
 <li><p>La <strong>racine</strong> de l’arbre de recherche représente l’<strong>état initial</strong> du problème.</p></li>
-<li><p><strong>Développer</strong> un nœud implique d’évaluer <strong>toutes les actions possibles</strong> disponibles à partir de cet état.</p></li>
+<li><p><strong>Développer</strong> un nœud génère les états successeurs en appliquant les <strong>actions disponibles</strong> à son état.</p></li>
 <li><p>Le <strong>résultat</strong> d’une action est le nouvel état atteint après avoir <strong>appliqué cette action</strong> à l’<strong>état actuel</strong>.</p></li>
-<li><p>À l’instar d’autres structures d’arbres, chaque nœud a un <strong>parent</strong> et peut avoir des <strong>enfants</strong>.</p></li>
+<li><p>Chaque nœud sauf la <strong>racine</strong> a un <strong>parent</strong>, y compris les nœuds <strong>feuilles</strong>. Le développement d’un nœud peut générer des <strong>enfants</strong>.</p></li>
 </ul>
 
-<aside class="notes">
-<p>Les nœuds <strong>racine</strong> et <strong>feuille</strong> sont des exceptions.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <aside><div>
 <p>Une caractéristique distinctive d’un algorithme de recherche est sa méthode pour <strong>sélectionner le prochain nœud à développer</strong>.</p>
 </div></aside></section>
@@ -872,7 +933,7 @@ Odd parity: 181440</code></pre>
 <h2>Frontière</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_bfs-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="../../assets/images/search_bfs-01.png" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_bfs-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="../../assets/images/search_bfs-01.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 
@@ -885,25 +946,25 @@ Odd parity: 181440</code></pre>
 <div class="column" style="width:33%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_frontier-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="../../assets/images/search_frontier-01.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_frontier-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="../../assets/images/search_frontier-01.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width:33%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_frontier-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="../../assets/images/search_frontier-02.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_frontier-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="../../assets/images/search_frontier-02.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width:33%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_frontier-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="../../assets/images/search_frontier-03.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_frontier-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="../../assets/images/search_frontier-03.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div></div>
 
 <aside class="notes">
-<p>Les diagrammes correspondent à l’arbre de recherche présenté sur la page précédente. Par exemple, l’état initial peut être développé en utilisant trois actions : glisser à gauche, à droite et vers le haut. Le nœud (2, 3) ne peut être développé qu’en glissant vers le bas, tandis que le nœud (3, 3) peut être développé en glissant à gauche et vers le bas.</p>
+<p>Ces graphes schématiques illustrent l’évolution d’une frontière lorsque des nœuds sont développés. Développer un nœud vert génère ses successeurs : les états nouvellement atteints entrent dans la frontière, tandis que les états déjà atteints ne sont pas ajoutés à nouveau dans les implémentations de recherche sur graphe ci-dessous. Les nœuds violets ont déjà été développés. Les positions dessinées sur la grille ne représentent pas les tuiles du 8-Puzzle et ne déterminent pas les déplacements permis dans le puzzle.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -916,7 +977,7 @@ Odd parity: 181440</code></pre>
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Dans le 8-Puzzle, quatre actions sont possibles : glisser à <strong>gauche</strong>, à <strong>droite</strong>, vers le <strong>haut</strong> ou vers le <strong>bas</strong>. La recherche peut être visualisée sur une grille : <strong>nœuds violets</strong> : états développés, <strong>nœuds verts</strong> : états de la frontière (atteints mais non développés).</p>
+<p>Dans le 8-Puzzle, la case vide peut se déplacer vers la <strong>gauche</strong>, la <strong>droite</strong>, le <strong>haut</strong> ou le <strong>bas</strong> lorsque les limites du plateau le permettent. Les diagrammes représentent schématiquement la frontière de recherche : les <strong>nœuds violets</strong> sont développés ; les <strong>nœuds verts</strong> sont atteints mais non développés. Ils ne représentent pas le plateau physique du puzzle.</p>
 </div></aside></section>
 <section id="frontière-2" class="slide level2">
 <h2>Frontière</h2>
@@ -924,13 +985,13 @@ Odd parity: 181440</code></pre>
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_frontier-04.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="../../assets/images/search_frontier-04.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_frontier-04.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="../../assets/images/search_frontier-04.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_frontier-05.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="../../assets/images/search_frontier-05.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_frontier-05.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="../../assets/images/search_frontier-05.png" class="nostretch quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div></div>
@@ -942,44 +1003,44 @@ Odd parity: 181440</code></pre>
 </section>
 <section id="définition-1" class="slide level2">
 <h2>Définition</h2>
-<p>Une <strong>recherche non informée</strong> (ou recherche aveugle) est une stratégie de recherche qui explore l’espace de recherche en utilisant uniquement les informations disponibles dans la définition du problème, sans aucune connaissance spécifique au domaine, en évaluant les nœuds uniquement sur la base de leurs propriétés intrinsèques plutôt que sur des coûts estimés ou des heuristiques.</p>
+<p>Une <strong>recherche non informée</strong> (ou recherche aveugle) utilise les informations de la définition du problème sans <strong>estimation heuristique supplémentaire du coût restant jusqu’à un objectif</strong>. Les actions, les règles de transition, les tests d’objectif et les coûts d’action propres au problème restent disponibles.</p>
 </section>
 <section id="représentation-de-létat" class="slide level2 scrollable">
 <h2>Représentation de l’état</h2>
-<div id="d610dfc0" class="cell" data-execution_count="8">
+<div id="ac3d53de" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a><span class="co"># Tracer les deux plateaux</span></span>
-<span id="cb6-2"><a aria-label="2"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
-<span id="cb6-3"><a aria-label="3"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb6-4"><a aria-label="4"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
-<span id="cb6-5"><a aria-label="5"></a></span>
-<span id="cb6-6"><a aria-label="6"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb6-7"><a aria-label="7"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb6-8"><a aria-label="8"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb6-9"><a aria-label="9"></a></span>
-<span id="cb6-10"><a aria-label="10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">2</span>))</span>
-<span id="cb6-11"><a aria-label="11"></a>plot_board(initial_state_8, <span class="st">"Plateau Initial"</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb6-12"><a aria-label="12"></a>plot_board(goal_state_8, <span class="st">"État Objectif"</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb6-13"><a aria-label="13"></a>plt.tight_layout()</span>
-<span id="cb6-14"><a aria-label="14"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="co"># Tracer les deux plateaux</span></span>
+<span id="cb8-2"><a aria-label="2"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<span id="cb8-3"><a aria-label="3"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
+<span id="cb8-4"><a aria-label="4"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb8-5"><a aria-label="5"></a></span>
+<span id="cb8-6"><a aria-label="6"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb8-7"><a aria-label="7"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb8-8"><a aria-label="8"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb8-9"><a aria-label="9"></a></span>
+<span id="cb8-10"><a aria-label="10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">2</span>))</span>
+<span id="cb8-11"><a aria-label="11"></a>plot_board(initial_state_8, <span class="st">"Plateau Initial"</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb8-12"><a aria-label="12"></a>plot_board(goal_state_8, <span class="st">"État Objectif"</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb8-13"><a aria-label="13"></a>plt.tight_layout()</span>
+<span id="cb8-14"><a aria-label="14"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="374" height="182"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/cell-8-output-1.png" class="quarto-figure quarto-figure-center" width="374" height="182"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="da818ea3" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
-<span id="cb7-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb7-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
-<span id="cb7-4"><a aria-label="4"></a></span>
-<span id="cb7-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb7-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb7-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9b3f7659" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<span id="cb9-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
+<span id="cb9-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb9-4"><a aria-label="4"></a></span>
+<span id="cb9-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb9-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb9-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside><div>
@@ -987,66 +1048,66 @@ Odd parity: 181440</code></pre>
 </div></aside></section>
 <section id="is_goal" class="slide level2">
 <h2><code>is_goal</code></h2>
-<div id="e357796f" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="kw">def</span> is_goal(state, goal_state):</span>
-<span id="cb8-2"><a aria-label="2"></a>    <span class="co">"""Détermine si un état donné correspond à l'état objectif."""</span></span>
-<span id="cb8-3"><a aria-label="3"></a>    <span class="cf">return</span> state <span class="op">==</span> goal_state</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0ec5155e" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="kw">def</span> is_goal(state, goal_state):</span>
+<span id="cb10-2"><a aria-label="2"></a>    <span class="co">"""Détermine si un état donné correspond à l'état objectif."""</span></span>
+<span id="cb10-3"><a aria-label="3"></a>    <span class="cf">return</span> state <span class="op">==</span> goal_state</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside><div>
-<p>Méthode auxiliaire.</p>
+<p>Fonction auxiliaire qui implémente le test d’objectif.</p>
 </div></aside></section>
-<section id="expand" class="slide level2">
+<section id="expand" class="slide level2 smaller">
 <h2><code>expand</code></h2>
-<div id="97e292d3" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a><span class="kw">def</span> expand(state):</span>
-<span id="cb9-2"><a aria-label="2"></a>    <span class="co">"""Génère les états successeurs en déplaçant la tuile vide dans toutes les directions possibles."""</span></span>
-<span id="cb9-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(state) <span class="op">**</span> <span class="fl">0.5</span>) <span class="co"># Déterminer la taille du puzzle (3 pour le 8-Puzzle, 4 pour le 15-Puzzle)</span></span>
-<span id="cb9-4"><a aria-label="4"></a>    idx <span class="op">=</span> state.index(<span class="dv">0</span>) <span class="co"># Trouver l'index de la tuile vide représentée par 0</span></span>
-<span id="cb9-5"><a aria-label="5"></a>    x, y <span class="op">=</span> idx <span class="op">%</span> size, idx <span class="op">//</span> size <span class="co"># Convertir l'index en coordonnées (x, y)</span></span>
-<span id="cb9-6"><a aria-label="6"></a>    neighbors <span class="op">=</span> []</span>
-<span id="cb9-7"><a aria-label="7"></a></span>
-<span id="cb9-8"><a aria-label="8"></a>    <span class="co"># Définir les mouvements possibles : Gauche, Droite, Haut, Bas</span></span>
-<span id="cb9-9"><a aria-label="9"></a>    moves <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
-<span id="cb9-10"><a aria-label="10"></a>    <span class="cf">for</span> dx, dy <span class="kw">in</span> moves:</span>
-<span id="cb9-11"><a aria-label="11"></a>        nx, ny <span class="op">=</span> x <span class="op">+</span> dx, y <span class="op">+</span> dy</span>
-<span id="cb9-12"><a aria-label="12"></a>        <span class="co"># Vérifier si la nouvelle position est dans les limites du puzzle</span></span>
-<span id="cb9-13"><a aria-label="13"></a>        <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> nx <span class="op">&lt;</span> size <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> ny <span class="op">&lt;</span> size:</span>
-<span id="cb9-14"><a aria-label="14"></a>            n_idx <span class="op">=</span> ny <span class="op">*</span> size <span class="op">+</span> nx</span>
-<span id="cb9-15"><a aria-label="15"></a>            new_state <span class="op">=</span> state.copy()</span>
-<span id="cb9-16"><a aria-label="16"></a>            <span class="co"># Échanger la tuile vide avec la tuile adjacente</span></span>
-<span id="cb9-17"><a aria-label="17"></a>            new_state[idx], new_state[n_idx] <span class="op">=</span> new_state[n_idx], new_state[idx]</span>
-<span id="cb9-18"><a aria-label="18"></a>            neighbors.append(new_state)</span>
-<span id="cb9-19"><a aria-label="19"></a>    <span class="cf">return</span> neighbors</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4f5b1270" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="kw">def</span> expand(state):</span>
+<span id="cb11-2"><a aria-label="2"></a>    <span class="co">"""Génère les états successeurs en déplaçant la tuile vide dans toutes les directions possibles."""</span></span>
+<span id="cb11-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(state) <span class="op">**</span> <span class="fl">0.5</span>) <span class="co"># Déterminer la taille du puzzle (3 pour le 8-Puzzle, 4 pour le 15-Puzzle)</span></span>
+<span id="cb11-4"><a aria-label="4"></a>    idx <span class="op">=</span> state.index(<span class="dv">0</span>) <span class="co"># Trouver l'index de la tuile vide représentée par 0</span></span>
+<span id="cb11-5"><a aria-label="5"></a>    x, y <span class="op">=</span> idx <span class="op">%</span> size, idx <span class="op">//</span> size <span class="co"># Convertir l'index en coordonnées (x, y)</span></span>
+<span id="cb11-6"><a aria-label="6"></a>    neighbors <span class="op">=</span> []</span>
+<span id="cb11-7"><a aria-label="7"></a></span>
+<span id="cb11-8"><a aria-label="8"></a>    <span class="co"># Définir les mouvements possibles : Gauche, Droite, Haut, Bas</span></span>
+<span id="cb11-9"><a aria-label="9"></a>    moves <span class="op">=</span> [(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), (<span class="dv">0</span>, <span class="dv">1</span>)]</span>
+<span id="cb11-10"><a aria-label="10"></a>    <span class="cf">for</span> dx, dy <span class="kw">in</span> moves:</span>
+<span id="cb11-11"><a aria-label="11"></a>        nx, ny <span class="op">=</span> x <span class="op">+</span> dx, y <span class="op">+</span> dy</span>
+<span id="cb11-12"><a aria-label="12"></a>        <span class="co"># Vérifier si la nouvelle position est dans les limites du puzzle</span></span>
+<span id="cb11-13"><a aria-label="13"></a>        <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> nx <span class="op">&lt;</span> size <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> ny <span class="op">&lt;</span> size:</span>
+<span id="cb11-14"><a aria-label="14"></a>            n_idx <span class="op">=</span> ny <span class="op">*</span> size <span class="op">+</span> nx</span>
+<span id="cb11-15"><a aria-label="15"></a>            new_state <span class="op">=</span> state.copy()</span>
+<span id="cb11-16"><a aria-label="16"></a>            <span class="co"># Échanger la tuile vide avec la tuile adjacente</span></span>
+<span id="cb11-17"><a aria-label="17"></a>            new_state[idx], new_state[n_idx] <span class="op">=</span> new_state[n_idx], new_state[idx]</span>
+<span id="cb11-18"><a aria-label="18"></a>            neighbors.append(new_state)</span>
+<span id="cb11-19"><a aria-label="19"></a>    <span class="cf">return</span> neighbors</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="expand-1" class="slide level2">
 <h2><code>expand</code></h2>
-<div id="94b838f6" class="cell" data-execution_count="12">
+<div id="adc2d212" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
-<span id="cb10-2"><a aria-label="2"></a></span>
-<span id="cb10-3"><a aria-label="3"></a>solutions <span class="op">=</span> expand(initial_state_8)</span>
-<span id="cb10-4"><a aria-label="4"></a></span>
-<span id="cb10-5"><a aria-label="5"></a>plot_board(initial_state_8, <span class="st">"État Initial"</span>, <span class="dv">4</span>, <span class="dv">1</span>)</span>
-<span id="cb10-6"><a aria-label="6"></a></span>
-<span id="cb10-7"><a aria-label="7"></a><span class="cf">for</span> i, solution <span class="kw">in</span> <span class="bu">enumerate</span>(solutions):</span>
-<span id="cb10-8"><a aria-label="8"></a>    plot_board(solution, <span class="ss">f"État : </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="dv">4</span>, i<span class="op">+</span><span class="dv">2</span>)</span>
-<span id="cb10-9"><a aria-label="9"></a></span>
-<span id="cb10-10"><a aria-label="10"></a>plt.tight_layout()</span>
-<span id="cb10-11"><a aria-label="11"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
+<span id="cb12-2"><a aria-label="2"></a></span>
+<span id="cb12-3"><a aria-label="3"></a>successors <span class="op">=</span> expand(initial_state_8)</span>
+<span id="cb12-4"><a aria-label="4"></a></span>
+<span id="cb12-5"><a aria-label="5"></a>plot_board(initial_state_8, <span class="st">"État Initial"</span>, <span class="dv">4</span>, <span class="dv">1</span>)</span>
+<span id="cb12-6"><a aria-label="6"></a></span>
+<span id="cb12-7"><a aria-label="7"></a><span class="cf">for</span> i, successor <span class="kw">in</span> <span class="bu">enumerate</span>(successors):</span>
+<span id="cb12-8"><a aria-label="8"></a>    plot_board(successor, <span class="ss">f"Successeur : </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="dv">4</span>, i<span class="op">+</span><span class="dv">2</span>)</span>
+<span id="cb12-9"><a aria-label="9"></a></span>
+<span id="cb12-10"><a aria-label="10"></a>plt.tight_layout()</span>
+<span id="cb12-11"><a aria-label="11"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="182"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/cell-12-output-1.png" class="quarto-figure quarto-figure-center" width="758" height="182"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="6629ef58" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a>expand(initial_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6acde1d3" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>expand(initial_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>[[6, 4, 5, 8, 2, 7, 0, 1, 3],
  [6, 4, 5, 8, 2, 7, 1, 3, 0],
@@ -1056,10 +1117,10 @@ Odd parity: 181440</code></pre>
 </section>
 <section id="is_empty" class="slide level2">
 <h2><code>is_empty</code></h2>
-<div id="c08ede45" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a><span class="kw">def</span> is_empty(frontier):</span>
-<span id="cb13-2"><a aria-label="2"></a>    <span class="co">"""Vérifie si la frontière est vide."""</span></span>
-<span id="cb13-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">len</span>(frontier) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="86a3a171" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">def</span> is_empty(frontier):</span>
+<span id="cb15-2"><a aria-label="2"></a>    <span class="co">"""Vérifie si la frontière est vide."""</span></span>
+<span id="cb15-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">len</span>(frontier) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
@@ -1082,23 +1143,25 @@ Odd parity: 181440</code></pre>
 </div></aside></section>
 <section id="print_solution" class="slide level2">
 <h2><code>print_solution</code></h2>
-<div id="fef6ac9d" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-label="1"></a><span class="kw">def</span> print_solution(solution):</span>
-<span id="cb14-2"><a aria-label="2"></a>    <span class="co">"""Affiche la séquence d'étapes de l'état initial à l'état objectif."""</span></span>
-<span id="cb14-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(solution[<span class="dv">0</span>]) <span class="op">**</span> <span class="fl">0.5</span>)</span>
-<span id="cb14-4"><a aria-label="4"></a>    <span class="cf">for</span> step, state <span class="kw">in</span> <span class="bu">enumerate</span>(solution):</span>
-<span id="cb14-5"><a aria-label="5"></a>        <span class="bu">print</span>(<span class="ss">f"Étape </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss"> :"</span>)</span>
-<span id="cb14-6"><a aria-label="6"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
-<span id="cb14-7"><a aria-label="7"></a>            row <span class="op">=</span> state[i<span class="op">*</span>size:(i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>size]</span>
-<span id="cb14-8"><a aria-label="8"></a>            <span class="bu">print</span>(<span class="st">' '</span>.join(<span class="bu">str</span>(n) <span class="cf">if</span> n <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">' '</span> <span class="cf">for</span> n <span class="kw">in</span> row))</span>
-<span id="cb14-9"><a aria-label="9"></a>        <span class="bu">print</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0cd6d645" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">def</span> print_solution(solution):</span>
+<span id="cb16-2"><a aria-label="2"></a>    <span class="co">"""Affiche la séquence d'étapes de l'état initial à l'état objectif."""</span></span>
+<span id="cb16-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(solution[<span class="dv">0</span>]) <span class="op">**</span> <span class="fl">0.5</span>)</span>
+<span id="cb16-4"><a aria-label="4"></a>    <span class="cf">for</span> step, state <span class="kw">in</span> <span class="bu">enumerate</span>(solution):</span>
+<span id="cb16-5"><a aria-label="5"></a>        <span class="bu">print</span>(<span class="ss">f"Étape </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss"> :"</span>)</span>
+<span id="cb16-6"><a aria-label="6"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(size):</span>
+<span id="cb16-7"><a aria-label="7"></a>            row <span class="op">=</span> state[i<span class="op">*</span>size:(i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>size]</span>
+<span id="cb16-8"><a aria-label="8"></a>            <span class="bu">print</span>(<span class="st">' '</span>.join(<span class="bu">str</span>(n) <span class="cf">if</span> n <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">' '</span> <span class="cf">for</span> n <span class="kw">in</span> row))</span>
+<span id="cb16-9"><a aria-label="9"></a>        <span class="bu">print</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="cycles" class="slide level2">
 <h2>Cycles</h2>
+<div class="fragment">
 <p>Un chemin qui revisite les mêmes états forme un <strong>cycle</strong>.</p>
 <p>Permettre des cycles rendrait l’<strong>arbre de recherche</strong> résultant <strong>infini</strong>.</p>
 <p>Pour éviter cela, nous surveillons les états qui ont été atteints, bien que cela entraîne un <strong>coût en mémoire</strong>.</p>
+</div>
 </section></section>
 <section>
 <section id="recherche-en-largeur" class="title-slide slide level1 center">
@@ -1107,90 +1170,104 @@ Odd parity: 181440</code></pre>
 </section>
 <section id="recherche-en-largeur-1" class="slide level2">
 <h2>Recherche en largeur</h2>
-<div id="a60c02c7" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="520b452e" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La <strong>recherche en largeur (BFS)</strong> utilise une <strong>file d’attente</strong> pour gérer les nœuds de la frontière, également connus sous le nom de liste ouverte.</p>
 </section>
-<section id="recherche-en-largeur-2" class="slide level2 scrollable">
+<section id="recherche-en-largeur-2" class="slide level2 scrollable smaller">
 <h2>Recherche en largeur</h2>
-<div id="d4ba966a" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">def</span> bfs(initial_state, goal_state):</span>
-<span id="cb16-2"><a aria-label="2"></a>    frontier <span class="op">=</span> deque() <span class="co"># Initialiser la file d'attente pour BFS</span></span>
-<span id="cb16-3"><a aria-label="3"></a>    frontier.append((initial_state, [])) <span class="co"># Chaque élément est un tuple : (état, chemin)</span></span>
-<span id="cb16-4"><a aria-label="4"></a></span>
-<span id="cb16-5"><a aria-label="5"></a>    explored <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb16-6"><a aria-label="6"></a>    explored.add(<span class="bu">tuple</span>(initial_state))</span>
-<span id="cb16-7"><a aria-label="7"></a></span>
-<span id="cb16-8"><a aria-label="8"></a>    iterations <span class="op">=</span> <span class="dv">0</span> <span class="co"># utilisé simplement pour comparer les algorithmes</span></span>
-<span id="cb16-9"><a aria-label="9"></a></span>
-<span id="cb16-10"><a aria-label="10"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
-<span id="cb16-11"><a aria-label="11"></a>        current_state, path <span class="op">=</span> frontier.popleft()</span>
-<span id="cb16-12"><a aria-label="12"></a></span>
-<span id="cb16-13"><a aria-label="13"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
-<span id="cb16-14"><a aria-label="14"></a>            <span class="bu">print</span>(<span class="ss">f"Nombre d'itérations : </span><span class="sc">{</span>iterations<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-15"><a aria-label="15"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
-<span id="cb16-16"><a aria-label="16"></a></span>
-<span id="cb16-17"><a aria-label="17"></a>        iterations <span class="op">=</span> iterations <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb16-18"><a aria-label="18"></a></span>
-<span id="cb16-19"><a aria-label="19"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
-<span id="cb16-20"><a aria-label="20"></a>            neighbor_tuple <span class="op">=</span> <span class="bu">tuple</span>(neighbor)</span>
-<span id="cb16-21"><a aria-label="21"></a>            <span class="cf">if</span> neighbor_tuple <span class="kw">not</span> <span class="kw">in</span> explored:</span>
-<span id="cb16-22"><a aria-label="22"></a>                explored.add(neighbor_tuple)</span>
-<span id="cb16-23"><a aria-label="23"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
-<span id="cb16-24"><a aria-label="24"></a></span>
-<span id="cb16-25"><a aria-label="25"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4f748c47" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="kw">def</span> bfs(initial_state, goal_state):</span>
+<span id="cb18-2"><a aria-label="2"></a>    frontier <span class="op">=</span> deque() <span class="co"># Initialiser la file d'attente pour BFS</span></span>
+<span id="cb18-3"><a aria-label="3"></a>    frontier.append((initial_state, [])) <span class="co"># Un nœud : (état, états précédents)</span></span>
+<span id="cb18-4"><a aria-label="4"></a></span>
+<span id="cb18-5"><a aria-label="5"></a>    reached <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb18-6"><a aria-label="6"></a>    reached.add(<span class="bu">tuple</span>(initial_state))</span>
+<span id="cb18-7"><a aria-label="7"></a></span>
+<span id="cb18-8"><a aria-label="8"></a>    expanded <span class="op">=</span> <span class="dv">0</span> <span class="co"># Nombre de nœuds non objectifs dont les successeurs sont générés</span></span>
+<span id="cb18-9"><a aria-label="9"></a></span>
+<span id="cb18-10"><a aria-label="10"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
+<span id="cb18-11"><a aria-label="11"></a>        current_state, path <span class="op">=</span> frontier.popleft()</span>
+<span id="cb18-12"><a aria-label="12"></a></span>
+<span id="cb18-13"><a aria-label="13"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
+<span id="cb18-14"><a aria-label="14"></a>            <span class="bu">print</span>(<span class="ss">f"Nœuds développés : </span><span class="sc">{</span>expanded<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-15"><a aria-label="15"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
+<span id="cb18-16"><a aria-label="16"></a></span>
+<span id="cb18-17"><a aria-label="17"></a>        expanded <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-18"><a aria-label="18"></a></span>
+<span id="cb18-19"><a aria-label="19"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
+<span id="cb18-20"><a aria-label="20"></a>            neighbor_tuple <span class="op">=</span> <span class="bu">tuple</span>(neighbor)</span>
+<span id="cb18-21"><a aria-label="21"></a>            <span class="cf">if</span> neighbor_tuple <span class="kw">not</span> <span class="kw">in</span> reached:</span>
+<span id="cb18-22"><a aria-label="22"></a>                reached.add(neighbor_tuple)</span>
+<span id="cb18-23"><a aria-label="23"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
+<span id="cb18-24"><a aria-label="24"></a></span>
+<span id="cb18-25"><a aria-label="25"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
+<aside class="notes">
+<p>BFS sélectionne les nœuds par profondeur non décroissante, car la frontière est une file d’attente « premier entré, premier sorti ». Lorsque les coûts d’action sont égaux, le premier chemin qui atteint un état est un chemin de coût minimal vers cet état ; les occurrences ultérieures peuvent donc être écartées. Des coûts d’action différents rompent l’équivalence entre le moins d’actions et le coût minimal.</p>
+<p>L’ensemble <code>reached</code> contient les états de la frontière ainsi que les états développés. Le compteur <code>expanded</code> augmente uniquement lorsque les successeurs d’un nœud non objectif sont générés ; la sélection d’un objectif ne l’augmente pas. La solution retournée est une séquence d’états incluant les deux extrémités ; son nombre de déplacements est donc <code>len(solution) - 1</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <aside><div>
-<p>Trouver le <strong>chemin le plus court</strong> de l’état initial à l’état objectif.</p>
+<p>Trouver un chemin comportant le <strong>moins d’actions</strong>. C’est une <strong>solution de coût minimal lorsque les coûts d’action sont égaux</strong>, comme dans le 8-Puzzle.</p>
 </div></aside></section>
-<section id="cas-simple" class="slide level2 scrollable">
+<section id="cas-simple" class="slide level2 scrollable smaller">
 <h2>Cas simple</h2>
-<div id="cb595924" class="cell" data-execution_count="18">
+<div id="0816ae29" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
-<span id="cb17-2"><a aria-label="2"></a></span>
-<span id="cb17-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb17-4"><a aria-label="4"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb17-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
-<span id="cb17-6"><a aria-label="6"></a></span>
-<span id="cb17-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb17-8"><a aria-label="8"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb17-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb17-10"><a aria-label="10"></a></span>
-<span id="cb17-11"><a aria-label="11"></a>solutions <span class="op">=</span> bfs(initial_state_8, goal_state_8)</span>
-<span id="cb17-12"><a aria-label="12"></a></span>
-<span id="cb17-13"><a aria-label="13"></a><span class="cf">for</span> i, solution <span class="kw">in</span> <span class="bu">enumerate</span>(solutions):</span>
-<span id="cb17-14"><a aria-label="14"></a>    plot_board(solution, <span class="ss">f"Étape : </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="dv">3</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb17-15"><a aria-label="15"></a></span>
-<span id="cb17-16"><a aria-label="16"></a>plt.tight_layout()</span>
-<span id="cb17-17"><a aria-label="17"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
+<span id="cb19-2"><a aria-label="2"></a></span>
+<span id="cb19-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb19-4"><a aria-label="4"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
+<span id="cb19-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb19-6"><a aria-label="6"></a></span>
+<span id="cb19-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb19-8"><a aria-label="8"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb19-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb19-10"><a aria-label="10"></a></span>
+<span id="cb19-11"><a aria-label="11"></a>solutions <span class="op">=</span> bfs(initial_state_8, goal_state_8)</span>
+<span id="cb19-12"><a aria-label="12"></a></span>
+<span id="cb19-13"><a aria-label="13"></a><span class="cf">for</span> i, solution <span class="kw">in</span> <span class="bu">enumerate</span>(solutions):</span>
+<span id="cb19-14"><a aria-label="14"></a>    plot_board(solution, <span class="ss">f"Étape : </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="dv">3</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb19-15"><a aria-label="15"></a></span>
+<span id="cb19-16"><a aria-label="16"></a>plt.tight_layout()</span>
+<span id="cb19-17"><a aria-label="17"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nombre d'itérations : 12</code></pre>
+<pre><code>Nœuds développés : 12</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-18-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/cell-18-output-2.png" class="quarto-figure quarto-figure-center" width="758" height="182"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-18-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="slides_files/figure-revealjs/cell-18-output-2.png" class="quarto-figure quarto-figure-center" width="758" height="182"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="34eab86a" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb19-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb19-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
-<span id="cb19-4"><a aria-label="4"></a></span>
-<span id="cb19-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb19-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb19-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb19-8"><a aria-label="8"></a></span>
-<span id="cb19-9"><a aria-label="9"></a>bfs(initial_state_8, goal_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0af55455" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb21-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
+<span id="cb21-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb21-4"><a aria-label="4"></a></span>
+<span id="cb21-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb21-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb21-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb21-8"><a aria-label="8"></a></span>
+<span id="cb21-9"><a aria-label="9"></a>bfs(initial_state_8, goal_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nombre d'itérations : 12</code></pre>
+<pre><code>Nœuds développés : 12</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>[[1, 2, 3, 4, 0, 6, 7, 5, 8],
@@ -1199,29 +1276,29 @@ Odd parity: 181440</code></pre>
 </div>
 </div>
 </section>
-<section id="cas-difficile" class="slide level2 scrollable">
+<section id="cas-difficile" class="slide level2 scrollable smaller">
 <h2>Cas difficile</h2>
-<div id="a9b96aec" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
-<span id="cb22-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb22-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
-<span id="cb22-4"><a aria-label="4"></a></span>
-<span id="cb22-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb22-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb22-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb22-8"><a aria-label="8"></a></span>
-<span id="cb22-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">"Résolution du 8-Puzzle avec la recherche en largeur (BFS)..."</span>)</span>
-<span id="cb22-10"><a aria-label="10"></a></span>
-<span id="cb22-11"><a aria-label="11"></a>solution_8_bfs <span class="op">=</span> bfs(initial_state_8, goal_state_8)</span>
-<span id="cb22-12"><a aria-label="12"></a></span>
-<span id="cb22-13"><a aria-label="13"></a><span class="cf">if</span> solution_8_bfs:</span>
-<span id="cb22-14"><a aria-label="14"></a>    <span class="bu">print</span>(<span class="ss">f"Solution BFS trouvée en </span><span class="sc">{</span><span class="bu">len</span>(solution_8_bfs) <span class="op">-</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> mouvements :"</span>)</span>
-<span id="cb22-15"><a aria-label="15"></a>    print_solution(solution_8_bfs)</span>
-<span id="cb22-16"><a aria-label="16"></a><span class="cf">else</span>:</span>
-<span id="cb22-17"><a aria-label="17"></a>    <span class="bu">print</span>(<span class="st">"Aucune solution trouvée pour le 8-Puzzle en utilisant BFS."</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fe678f47" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<span id="cb24-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
+<span id="cb24-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb24-4"><a aria-label="4"></a></span>
+<span id="cb24-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb24-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb24-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb24-8"><a aria-label="8"></a></span>
+<span id="cb24-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">"Résolution du 8-Puzzle avec la recherche en largeur (BFS)..."</span>)</span>
+<span id="cb24-10"><a aria-label="10"></a></span>
+<span id="cb24-11"><a aria-label="11"></a>solution_8_bfs <span class="op">=</span> bfs(initial_state_8, goal_state_8)</span>
+<span id="cb24-12"><a aria-label="12"></a></span>
+<span id="cb24-13"><a aria-label="13"></a><span class="cf">if</span> solution_8_bfs:</span>
+<span id="cb24-14"><a aria-label="14"></a>    <span class="bu">print</span>(<span class="ss">f"Solution BFS trouvée en </span><span class="sc">{</span><span class="bu">len</span>(solution_8_bfs) <span class="op">-</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> mouvements :"</span>)</span>
+<span id="cb24-15"><a aria-label="15"></a>    print_solution(solution_8_bfs)</span>
+<span id="cb24-16"><a aria-label="16"></a><span class="cf">else</span>:</span>
+<span id="cb24-17"><a aria-label="17"></a>    <span class="bu">print</span>(<span class="st">"Aucune solution trouvée pour le 8-Puzzle en utilisant BFS."</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Résolution du 8-Puzzle avec la recherche en largeur (BFS)...
-Nombre d'itérations : 145605
+Nœuds développés : 145605
 Solution BFS trouvée en 25 mouvements :
 Étape 0 :
 6 4 5
@@ -1360,54 +1437,54 @@ Solution BFS trouvée en 25 mouvements :
 <h2>Arbre de recherche BFS</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_bfs-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="../../assets/images/search_bfs-00.png" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="../../assets/images/search_bfs-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="../../assets/images/search_bfs-00.png" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 
 <aside><div>
-<p>L’arbre de recherche ci-dessus illustre les 20 premières itérations de la recherche en largeur (BFS) pour l’objectif initial spécifié.</p>
+<p>L’arbre de recherche ci-dessus illustre les 20 premiers développements de nœuds de la recherche en largeur (BFS) pour l’état initial spécifié.</p>
 </div></aside></section></section>
 <section>
 <section id="recherche-en-profondeur" class="title-slide slide level1 center">
 <h1>Recherche en profondeur</h1>
 
 </section>
-<section id="recherche-en-profondeur-1" class="slide level2 scrollable">
+<section id="recherche-en-profondeur-1" class="slide level2 scrollable smaller">
 <h2>Recherche en profondeur</h2>
-<div id="826e618e" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a><span class="kw">def</span> dfs(initial_state, goal_state):</span>
-<span id="cb24-2"><a aria-label="2"></a>    frontier <span class="op">=</span> [(initial_state, [])] <span class="co"># Chaque élément est un tuple : (état, chemin)</span></span>
-<span id="cb24-3"><a aria-label="3"></a></span>
-<span id="cb24-4"><a aria-label="4"></a>    explored <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb24-5"><a aria-label="5"></a>    explored.add(<span class="bu">tuple</span>(initial_state))</span>
-<span id="cb24-6"><a aria-label="6"></a></span>
-<span id="cb24-7"><a aria-label="7"></a>    iterations <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb24-8"><a aria-label="8"></a></span>
-<span id="cb24-9"><a aria-label="9"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
-<span id="cb24-10"><a aria-label="10"></a>        current_state, path <span class="op">=</span> frontier.pop()</span>
-<span id="cb24-11"><a aria-label="11"></a></span>
-<span id="cb24-12"><a aria-label="12"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
-<span id="cb24-13"><a aria-label="13"></a>            <span class="bu">print</span>(<span class="ss">f"Nombre d'itérations : </span><span class="sc">{</span>iterations<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb24-14"><a aria-label="14"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
-<span id="cb24-15"><a aria-label="15"></a></span>
-<span id="cb24-16"><a aria-label="16"></a>        iterations <span class="op">=</span> iterations <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb24-17"><a aria-label="17"></a></span>
-<span id="cb24-18"><a aria-label="18"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
-<span id="cb24-19"><a aria-label="19"></a>            neighbor_tuple <span class="op">=</span> <span class="bu">tuple</span>(neighbor)</span>
-<span id="cb24-20"><a aria-label="20"></a>            <span class="cf">if</span> neighbor_tuple <span class="kw">not</span> <span class="kw">in</span> explored:</span>
-<span id="cb24-21"><a aria-label="21"></a>                explored.add(neighbor_tuple)</span>
-<span id="cb24-22"><a aria-label="22"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
-<span id="cb24-23"><a aria-label="23"></a></span>
-<span id="cb24-24"><a aria-label="24"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="13c8ae55" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="kw">def</span> dfs(initial_state, goal_state):</span>
+<span id="cb26-2"><a aria-label="2"></a>    frontier <span class="op">=</span> [(initial_state, [])] <span class="co"># Un nœud : (état, états précédents)</span></span>
+<span id="cb26-3"><a aria-label="3"></a></span>
+<span id="cb26-4"><a aria-label="4"></a>    reached <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb26-5"><a aria-label="5"></a>    reached.add(<span class="bu">tuple</span>(initial_state))</span>
+<span id="cb26-6"><a aria-label="6"></a></span>
+<span id="cb26-7"><a aria-label="7"></a>    expanded <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb26-8"><a aria-label="8"></a></span>
+<span id="cb26-9"><a aria-label="9"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
+<span id="cb26-10"><a aria-label="10"></a>        current_state, path <span class="op">=</span> frontier.pop()</span>
+<span id="cb26-11"><a aria-label="11"></a></span>
+<span id="cb26-12"><a aria-label="12"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
+<span id="cb26-13"><a aria-label="13"></a>            <span class="bu">print</span>(<span class="ss">f"Nœuds développés : </span><span class="sc">{</span>expanded<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-14"><a aria-label="14"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
+<span id="cb26-15"><a aria-label="15"></a></span>
+<span id="cb26-16"><a aria-label="16"></a>        expanded <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb26-17"><a aria-label="17"></a></span>
+<span id="cb26-18"><a aria-label="18"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
+<span id="cb26-19"><a aria-label="19"></a>            neighbor_tuple <span class="op">=</span> <span class="bu">tuple</span>(neighbor)</span>
+<span id="cb26-20"><a aria-label="20"></a>            <span class="cf">if</span> neighbor_tuple <span class="kw">not</span> <span class="kw">in</span> reached:</span>
+<span id="cb26-21"><a aria-label="21"></a>                reached.add(neighbor_tuple)</span>
+<span id="cb26-22"><a aria-label="22"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
+<span id="cb26-23"><a aria-label="23"></a></span>
+<span id="cb26-24"><a aria-label="24"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
-<p>La <strong>recherche en profondeur (DFS)</strong> développe constamment le nœud le plus profond.</p>
+<p>La <strong>recherche en profondeur (DFS)</strong> utilise une <strong>pile</strong>, selon le principe « dernier entré, premier sorti ». Les nouveaux nœuds sont sélectionnés avant les autres possibilités plus anciennes ; la recherche suit donc une branche en profondeur avant de revenir aux autres nœuds de la frontière. L’ordre des successeurs compte : comme <code>expand</code> les énumère dans l’ordre gauche, droite, haut, bas et que la pile retire sa dernière entrée, DFS essaie d’abord le dernier successeur ajouté.</p>
 <p>Quand le processus d’approfondissement s’arrête-t-il ?</p>
-<p>Il cesse lorsque tous les nœuds enfants correspondent à des états déjà visités.</p>
+<p>Il cesse de suivre une branche lorsqu’un objectif est trouvé ou qu’aucun nouveau successeur ne peut être ajouté : aucune action n’est disponible ou tous les successeurs ont déjà été atteints.</p>
 <p>Que se passe-t-il ensuite ?</p>
-<p>L’algorithme revient en arrière jusqu’au nœud le plus récent de la frontière.</p>
-<p>Si tous les enfants de ce nœud correspondent également à des états déjà visités, l’algorithme continue de revenir en arrière.</p>
+<p>L’algorithme retire le dernier nœud ajouté qui reste dans la frontière. Le chemin conservé indique comment cette autre possibilité a été atteinte ; le code n’annule pas des déplacements sur un plateau partagé.</p>
+<p>Si ce nœud n’a pas non plus de nouveaux successeurs, l’algorithme passe à l’entrée suivante de la pile. La détection des états répétés empêche les cycles d’ajouter continuellement les mêmes états.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1426,7 +1503,7 @@ Solution BFS trouvée en 25 mouvements :
 <h2>Arbre de recherche DFS</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_dfs-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="../../assets/images/search_dfs-01.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
+<p><a href="../../assets/images/search_dfs-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="../../assets/images/search_dfs-01.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
 </figure>
 </div>
 </section>
@@ -1434,56 +1511,56 @@ Solution BFS trouvée en 25 mouvements :
 <h2>Arbre de recherche DFS</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/search_dfs-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="../../assets/images/search_dfs-00.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
+<p><a href="../../assets/images/search_dfs-00.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="../../assets/images/search_dfs-00.png" class="quarto-figure quarto-figure-center" height="525"></a></p>
 </figure>
 </div>
 </section>
-<section id="cas-simple-1" class="slide level2 scrollable">
+<section id="cas-simple-1" class="slide level2 scrollable smaller">
 <h2>Cas Simple</h2>
-<div id="094816bd" class="cell" data-execution_count="22">
+<div id="7eec0880" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
-<span id="cb25-2"><a aria-label="2"></a></span>
-<span id="cb25-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb25-4"><a aria-label="4"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb25-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
-<span id="cb25-6"><a aria-label="6"></a></span>
-<span id="cb25-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb25-8"><a aria-label="8"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb25-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb25-10"><a aria-label="10"></a></span>
-<span id="cb25-11"><a aria-label="11"></a>solutions <span class="op">=</span> dfs(initial_state_8, goal_state_8)</span>
-<span id="cb25-12"><a aria-label="12"></a></span>
-<span id="cb25-13"><a aria-label="13"></a><span class="cf">for</span> i, solution <span class="kw">in</span> <span class="bu">enumerate</span>(solutions):</span>
-<span id="cb25-14"><a aria-label="14"></a>    plot_board(solution, <span class="ss">f"Étape : </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="dv">3</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb25-15"><a aria-label="15"></a></span>
-<span id="cb25-16"><a aria-label="16"></a>plt.tight_layout()</span>
-<span id="cb25-17"><a aria-label="17"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
+<span id="cb27-2"><a aria-label="2"></a></span>
+<span id="cb27-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb27-4"><a aria-label="4"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
+<span id="cb27-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb27-6"><a aria-label="6"></a></span>
+<span id="cb27-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb27-8"><a aria-label="8"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb27-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb27-10"><a aria-label="10"></a></span>
+<span id="cb27-11"><a aria-label="11"></a>solutions <span class="op">=</span> dfs(initial_state_8, goal_state_8)</span>
+<span id="cb27-12"><a aria-label="12"></a></span>
+<span id="cb27-13"><a aria-label="13"></a><span class="cf">for</span> i, solution <span class="kw">in</span> <span class="bu">enumerate</span>(solutions):</span>
+<span id="cb27-14"><a aria-label="14"></a>    plot_board(solution, <span class="ss">f"Étape : </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="dv">3</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb27-15"><a aria-label="15"></a></span>
+<span id="cb27-16"><a aria-label="16"></a>plt.tight_layout()</span>
+<span id="cb27-17"><a aria-label="17"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nombre d'itérations : 2</code></pre>
+<pre><code>Nœuds développés : 2</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/cell-22-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="slides_files/figure-revealjs/cell-22-output-2.png" class="quarto-figure quarto-figure-center" width="758" height="182"></a></p>
+<p><a href="slides_files/figure-revealjs/cell-22-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="slides_files/figure-revealjs/cell-22-output-2.png" class="quarto-figure quarto-figure-center" width="758" height="182"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="b9e82c6f" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb27-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb27-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
-<span id="cb27-4"><a aria-label="4"></a></span>
-<span id="cb27-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb27-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb27-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb27-8"><a aria-label="8"></a></span>
-<span id="cb27-9"><a aria-label="9"></a>bfs(initial_state_8, goal_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a93df8a0" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb29-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
+<span id="cb29-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb29-4"><a aria-label="4"></a></span>
+<span id="cb29-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb29-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb29-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb29-8"><a aria-label="8"></a></span>
+<span id="cb29-9"><a aria-label="9"></a>dfs(initial_state_8, goal_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nombre d'itérations : 12</code></pre>
+<pre><code>Nœuds développés : 2</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>[[1, 2, 3, 4, 0, 6, 7, 5, 8],
@@ -1492,53 +1569,91 @@ Solution BFS trouvée en 25 mouvements :
 </div>
 </div>
 </section>
-<section id="cas-difficile-1" class="slide level2 scrollable">
+<section id="cas-difficile-1" class="slide level2 scrollable smaller">
 <h2>Cas Difficile</h2>
-<div id="03820cff" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
-<span id="cb30-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb30-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
-<span id="cb30-4"><a aria-label="4"></a></span>
-<span id="cb30-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
-<span id="cb30-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb30-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb30-8"><a aria-label="8"></a></span>
-<span id="cb30-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">"Résolution du 8-Puzzle avec DFS..."</span>)</span>
-<span id="cb30-10"><a aria-label="10"></a></span>
-<span id="cb30-11"><a aria-label="11"></a>solution_8_bfs <span class="op">=</span> dfs(initial_state_8, goal_state_8)</span>
-<span id="cb30-12"><a aria-label="12"></a></span>
-<span id="cb30-13"><a aria-label="13"></a><span class="cf">if</span> solution_8_bfs:</span>
-<span id="cb30-14"><a aria-label="14"></a>    <span class="bu">print</span>(<span class="ss">f"Solution DFS trouvée: </span><span class="sc">{</span><span class="bu">len</span>(solution_8_bfs) <span class="op">-</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> mouvements"</span>)</span>
-<span id="cb30-15"><a aria-label="15"></a>    <span class="co"># print_solution(solution_8_bfs)</span></span>
-<span id="cb30-16"><a aria-label="16"></a><span class="cf">else</span>:</span>
-<span id="cb30-17"><a aria-label="17"></a>    <span class="bu">print</span>(<span class="st">"Aucune solution trouvée pour le 8-Puzzle en utilisant DFS."</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fe9c89b5" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<span id="cb32-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
+<span id="cb32-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb32-4"><a aria-label="4"></a></span>
+<span id="cb32-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb32-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb32-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb32-8"><a aria-label="8"></a></span>
+<span id="cb32-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">"Résolution du 8-Puzzle avec DFS..."</span>)</span>
+<span id="cb32-10"><a aria-label="10"></a></span>
+<span id="cb32-11"><a aria-label="11"></a>solution_8_dfs <span class="op">=</span> dfs(initial_state_8, goal_state_8)</span>
+<span id="cb32-12"><a aria-label="12"></a></span>
+<span id="cb32-13"><a aria-label="13"></a><span class="cf">if</span> solution_8_dfs:</span>
+<span id="cb32-14"><a aria-label="14"></a>    <span class="bu">print</span>(<span class="ss">f"Solution DFS trouvée en </span><span class="sc">{</span><span class="bu">len</span>(solution_8_dfs) <span class="op">-</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> mouvements :"</span>)</span>
+<span id="cb32-15"><a aria-label="15"></a>    <span class="co"># print_solution(solution_8_dfs)</span></span>
+<span id="cb32-16"><a aria-label="16"></a><span class="cf">else</span>:</span>
+<span id="cb32-17"><a aria-label="17"></a>    <span class="bu">print</span>(<span class="st">"Aucune solution trouvée pour le 8-Puzzle en utilisant DFS."</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Résolution du 8-Puzzle avec DFS...
-Nombre d'itérations : 1187
-Solution DFS trouvée: 1157 mouvements</code></pre>
+Nœuds développés : 1187
+Solution DFS trouvée en 1157 mouvements :</code></pre>
 </div>
 </div>
 </section>
-<section id="remarques" class="slide level2">
+<section id="remarques" class="slide level2 smaller">
 <h2>Remarques</h2>
 <ul>
-<li><p>La <strong>recherche en largeur (BFS)</strong> identifie la solution optimale, 25 mouvements, en 145 605 itérations.</p></li>
-<li><p>La <strong>recherche en profondeur (DFS)</strong> découvre une solution impliquant 1 157 mouvements en 1 187 itérations.</p></li>
+<li><p><strong>BFS :</strong> 25 déplacements (optimal) ; 145 605 nœuds non objectifs développés.</p></li>
+<li><p><strong>DFS :</strong> 1 157 déplacements ; 1 187 nœuds non objectifs développés.</p></li>
 </ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propriété</th>
+<th>BFS</th>
+<th>DFS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frontière</td>
+<td>File FIFO</td>
+<td>Pile LIFO</td>
+</tr>
+<tr class="even">
+<td>Complète sur un graphe accessible fini</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr class="odd">
+<td>Moins d’actions / coût minimal (coûts d’action égaux)</td>
+<td>Garanti</td>
+<td>Non garanti</td>
+</tr>
+<tr class="even">
+<td>Mémoire conservée</td>
+<td>Frontière, états atteints, chemins copiés</td>
+<td>Frontière, états atteints, chemins copiés</td>
+</tr>
+</tbody>
+</table>
 
 <aside class="notes">
 <p>La <strong>recherche en profondeur (DFS)</strong> produira-t-elle toujours des solutions sous-optimales ?</p>
-<p>Non, si la solution optimale se trouve le long du chemin parcouru par la recherche en profondeur (DFS) dans l’arbre de recherche, alors DFS identifiera effectivement la solution optimale.</p>
+<p>Non. DFS peut retourner une solution optimale si elle en rencontre une en premier, mais elle ne garantit pas que la première solution comporte le moins d’actions ou le coût le plus bas.</p>
 <p>Est-il possible que DFS découvre des solutions supérieures à la solution optimale ?</p>
 <p>Certainement pas ; de telles solutions seraient soit invalides (impliquant des mouvements impossibles), soit indiqueraient une erreur dans votre estimation.</p>
 <p>Cela signifie-t-il que la recherche en profondeur (DFS) n’a pas d’applications pratiques ?</p>
 <p>Quand est-il approprié d’utiliser DFS ?</p>
 <p>La recherche en largeur (BFS) étend sa frontière systématiquement dans toutes les directions, ce qui entraîne une croissance rapide des besoins en mémoire.</p>
-<p>En revanche, l’utilisation de la mémoire de DFS est limitée par le nombre de mouvements nécessaires pour atteindre ses points de retour en arrière ou par la longueur du chemin de la première solution trouvée. Dans tous les scénarios, DFS continue d’étendre la frontière dans une direction.</p>
-<p>Dans certaines applications où toutes les solutions possibles doivent être explorées, tout l’espace de recherche doit être parcouru. Utiliser BFS dans ces cas serait prohibitif en termes de mémoire. Cependant, DFS peut explorer l’ensemble de l’espace avec une utilisation minimale de la mémoire.</p>
-<p>Le langage de programmation Prolog inclut un algorithme de retour en arrière intégré qui énumère toutes les solutions possibles. Le retour en arrière est une variante de DFS efficace en mémoire.</p>
+<p>DFS a souvent une frontière plus petite parce qu’elle suit une branche avant d’essayer d’autres possibilités. Cependant, le code présenté conserve tous les états atteints et copie les chemins dans les entrées de la frontière. Sa mémoire totale n’est donc pas limitée à la branche active, et une petite frontière ne suffit pas à établir une faible utilisation totale de mémoire.</p>
+<p>La description habituelle de DFS comme méthode peu gourmande en mémoire s’applique aux implémentations qui conservent le chemin actif et les autres possibilités en attente, sans garder un registre global de tous les états atteints. Ces implémentations avec retour en arrière peuvent être utiles pour explorer systématiquement des solutions possibles. Leurs propriétés de gestion des répétitions et de terminaison diffèrent de celles du code de recherche sur graphe ci-dessus.</p>
+<p>Le langage Prolog utilise un retour en arrière en profondeur pour chercher des réponses. Il peut énumérer des réponses, mais une branche infinie peut l’empêcher d’en atteindre d’autres.</p>
+<p>La <strong>complétude</strong> signifie trouver une solution lorsqu’il en existe une. Les deux implémentations de recherche sur graphe présentées sont complètes sur un espace d’états accessibles fini, car chaque état est ajouté au plus une fois. BFS trouve aussi une solution de profondeur finie dans un espace infini à branchement fini ; DFS peut plutôt suivre indéfiniment une branche infinie.</p>
+<p>Ces résultats numériques concernent le plateau initial et l’ordre des successeurs précisés. Les nombres de développements décrivent l’effort de recherche, pas le temps écoulé ni la mémoire maximale ; d’autres plateaux ou ordres de déplacement peuvent modifier considérablement la comparaison.</p>
 <p>La recherche limitée en profondeur et la recherche en approfondissement itératif seraient des algorithmes de recherche non informée alternatifs.</p>
-<p>Trouver des solutions plus efficacement nécessite une connaissance du domaine.</p>
+<p>Les fonctions heuristiques utilisent des connaissances supplémentaires pour estimer le coût restant jusqu’à un objectif et guider la recherche. Elles sont le sujet de la prochaine présentation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1554,8 +1669,8 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 <p>Comment découvrir des solutions <strong>plus efficacement</strong> ?</p>
 </div></aside></section></section>
 <section>
-<section id="prologue" class="title-slide slide level1 center">
-<h1>Prologue</h1>
+<section id="épilogue" class="title-slide slide level1 center">
+<h1>Épilogue</h1>
 
 </section>
 <section id="résumé" class="slide level2">
@@ -1563,10 +1678,12 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 <ul>
 <li>Justification pour l’étude de la recherche</li>
 <li>Terminologie et concepts clés</li>
-<li>Algorithmes de recherche non informée</li>
+<li>Algorithmes de recherche non informée
+<ul>
 <li>Recherche en largeur (BFS)</li>
 <li>Recherche en profondeur (DFS)</li>
-<li>Implémentations</li>
+</ul></li>
+<li>Implémentations : complétude, optimalité en coût et mémoire</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -1578,8 +1695,8 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 </ul></li>
 <li><strong>Chronologie historique des algorithmes de recherche :</strong>
 <ul>
-<li>Présenté une chronologie biaisée de l’algorithme A* de 1968 aux développements récents comme MuZero et Agent57.</li>
-<li>Montre l’évolution de la recherche basée sur des heuristiques à l’intégration de l’apprentissage profond avec les méthodes de recherche.</li>
+<li>Les jalons choisis vont de l’algorithme A* en 1968 à FunSearch en 2023 et AlphaGeometry en 2024.</li>
+<li>L’historique inclut des méthodes de recherche explicite, des avancées en apprentissage par renforcement et des systèmes combinant apprentissage et recherche.</li>
 </ul></li>
 <li><strong>Applications de la recherche :</strong>
 <ul>
@@ -1590,12 +1707,12 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 <li><strong>Planification et allocation des ressources :</strong> Planifier des tâches et allouer efficacement des ressources.</li>
 <li><strong>Problèmes de configuration :</strong> Assembler des composants pour répondre à des exigences spécifiques.</li>
 <li><strong>Prise de décision sous incertitude :</strong> Prendre des décisions dans des environnements dynamiques et incertains.</li>
-<li><strong>Narration :</strong> Guider les modèles de langage avec des plans d’automates planificateurs.</li>
+<li><strong>Narration :</strong> Guider les modèles de langage avec des plans de planificateurs automatisés.</li>
 </ul></li>
 <li><strong>Terminologie et concepts clés :</strong>
 <ul>
 <li><strong>Agent :</strong> Une entité qui effectue des actions pour atteindre des objectifs.</li>
-<li><strong>Caractéristiques de l’environnement :</strong> Environnements entièrement observables, mono-agents, déterministes, statiques et discrets.</li>
+<li><strong>Caractéristiques de l’environnement :</strong> Environnements entièrement observables, mono-agents, séquentiels, déterministes, statiques et discrets.</li>
 <li><strong>Définition du problème de recherche :</strong>
 <ul>
 <li><strong>Espace d’états :</strong> Tous les états possibles.</li>
@@ -1611,13 +1728,13 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 <li><strong>Recherche en largeur (BFS) :</strong>
 <ul>
 <li>Explore l’espace de recherche niveau par niveau.</li>
-<li>Garantie le chemin le plus court mais peut être gourmand en mémoire.</li>
+<li>Garantit le moins d’actions, ainsi que le coût minimal lorsque les coûts d’action sont égaux, mais peut être gourmande en mémoire.</li>
 <li>Implémenté en utilisant une file d’attente.</li>
 </ul></li>
 <li><strong>Recherche en profondeur (DFS) :</strong>
 <ul>
 <li>Explore aussi profondément que possible le long de chaque branche avant de revenir en arrière.</li>
-<li>Moins gourmand en mémoire mais peut ne pas trouver le chemin le plus court.</li>
+<li>Ne garantit ni le moins d’actions ni le coût minimal. Une frontière plus petite ne supprime pas le coût en mémoire de l’ensemble global des états atteints et des copies de chemins dans cette implémentation.</li>
 <li>Implémenté en utilisant une pile.</li>
 </ul></li>
 </ul></li>
@@ -1626,12 +1743,17 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 <li>Utilisé le <strong>8-Puzzle</strong> comme problème d’exemple.</li>
 <li>Représenté les états comme des listes de chiffres, avec <code>0</code> comme tuile vide.</li>
 <li>Démontré les implémentations de BFS et DFS en Python.</li>
-<li>Montré que BFS a trouvé la solution optimale en plus d’itérations, tandis que DFS a trouvé une solution sous-optimale plus rapidement.</li>
+<li>Pour le plateau et l’ordre des déplacements précisés, BFS a trouvé la solution optimale après davantage de développements, tandis que DFS a trouvé une solution plus longue après moins de développements.</li>
+</ul></li>
+<li><strong>Complétude et états répétés :</strong>
+<ul>
+<li>Les deux implémentations trouvent une solution lorsqu’il en existe une dans un espace d’états accessibles fini.</li>
+<li><code>reached</code> inclut les états de la frontière et les états développés ; <code>expanded</code> compte les nœuds non objectifs dont les successeurs sont générés.</li>
 </ul></li>
 <li><strong>Limites de la recherche non informée :</strong>
 <ul>
 <li>Inefficace pour les problèmes grands ou complexes en raison de sa nature exhaustive.</li>
-<li>Manque de connaissance du domaine conduit à une exploration inutile.</li>
+<li>Sans estimation du coût restant jusqu’à l’objectif, elles peuvent explorer de nombreux états qui n’aident pas à atteindre l’objectif.</li>
 </ul></li>
 </ul>
 <style type="text/css">
@@ -1646,8 +1768,8 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="prochaine-conférence" class="slide level2">
-<h2>Prochaine conférence</h2>
+<section id="prochaine-présentation" class="slide level2">
+<h2>Prochaine présentation</h2>
 <ul>
 <li>Nous explorerons plus en détail les fonctions heuristiques et examinerons d’autres algorithmes de recherche.</li>
 </ul>
@@ -1657,6 +1779,9 @@ Solution DFS trouvée: 1157 mouvements</code></pre>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Archer:1999aa" class="csl-entry" role="listitem">
 Archer, Aaron F. 1999. <span>«&nbsp;A Modern Treatment of the 15 Puzzle&nbsp;»</span>. <em>The American Mathematical Monthly</em> 106 (9): 793‑99. <a href="https://doi.org/10.1080/00029890.1999.12005124">https://doi.org/10.1080/00029890.1999.12005124</a>.
+</div>
+<div id="ref-Hart:1968aa" class="csl-entry" role="listitem">
+Hart, Peter E., Nils J. Nilsson, et Bertram Raphael. 1968. <span>«&nbsp;<span>A Formal Basis for the Heuristic Determination of Minimum Cost Paths</span>&nbsp;»</span>. <em>IEEE Transactions on Systems Science and Cybernetics</em> 4 (2): 100‑107. <a href="https://doi.org/10.1109/tssc.1968.300136">https://doi.org/10.1109/tssc.1968.300136</a>.
 </div>
 <div id="ref-Russell:2020aa" class="csl-entry" role="listitem">
 Russell, Stuart, et Peter Norvig. 2020. <em>Artificial Intelligence: <span>A</span> Modern Approach</em>. 4ᵉ éd. Pearson. <a href="http://aima.cs.berkeley.edu/">http://aima.cs.berkeley.edu/</a>.
@@ -1697,13 +1822,14 @@ Simon, Nisha, et Christian Muise. 2024. <span>«&nbsp;Want <span>To</span> <span
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="../../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1720,6 +1846,7 @@ Simon, Nisha, et Christian Muise. 2024. <span>«&nbsp;Want <span>To</span> <span
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
+'multiplex': {"secret":null,"id":"abcd2c0d1d00aa5fd440c0acfb65b497e63515cd2bfd11cb23785feb3cc6dfcc","url":"https://multiplex.up.railway.app/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1872,28 +1999,10 @@ Simon, Nisha, et Christian Muise. 2024. <span>«&nbsp;Want <span>To</span> <span
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
@@ -2101,4 +2210,5 @@ Simon, Nisha, et Christian Muise. 2024. <span>«&nbsp;Want <span>To</span> <span
               </script>
     
 
+<script src="https://platform.twitter.com/widgets.js"></script>
 </body></html>
