@@ -96,6 +96,49 @@ div.csl-indent {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Recherche informée – CSI 4506 - Automne 2026">
 <meta property="og:description" content="CSI4506 Introduction à l’intelligence artificielle">
@@ -421,7 +464,9 @@ div.csl-indent {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#participer" id="toc-participer" class="nav-link active" data-scroll-target="#participer">Participer</a></li>
+  <li><a href="#se-préparer" id="toc-se-préparer" class="nav-link active" data-scroll-target="#se-préparer">Se préparer</a></li>
+  <li><a href="#participer" id="toc-participer" class="nav-link" data-scroll-target="#participer">Participer</a></li>
+  <li><a href="#sexercer" id="toc-sexercer" class="nav-link" data-scroll-target="#sexercer">S’exercer</a></li>
   </ul>
 </nav>
     </div>
@@ -460,15 +505,29 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Échéance</strong> : Le devoir 3 doit être soumis au plus tard le 16 novembre 2026 à 23 heures. Veuillez consulter l’énoncé du devoir disponible sur Brightspace.</p>
-<p><strong>Échéance</strong> : Le Quiz 2 est prévu pour mercredi 18 novembre 2026, pendant le cours. Des détails supplémentaires sont disponibles dans la <a href="../../course-faq">FAQ</a>.</p>
+<p><strong>Échéance</strong> : Le Quiz 2 est prévu pour le mercredi 18 novembre 2026, pendant le cours. Des détails supplémentaires sont disponibles dans la <a href="../../course-faq">FAQ</a>.</p>
 </div>
 </div>
+<section id="se-préparer" class="level2">
+<h2 class="anchored" data-anchor-id="se-préparer">Se préparer</h2>
 <ul>
-<li><span class="citation" data-cites="Russell:2020aa">Russell et Norvig (<a href="#ref-Russell:2020aa" role="doc-biblioref">2020</a>)</span>, pages 85–92 (informée)</li>
+<li><span class="citation" data-cites="Russell:2020aa">Russell et Norvig (<a href="#ref-Russell:2020aa" role="doc-biblioref">2020</a>)</span>, pages 85–92</li>
+<li>Révisez la <a href="../../lectures/16/index.html">présentation 16</a>, notamment la représentation des états, la génération des successeurs, la frontière et la recherche en largeur.</li>
 </ul>
+</section>
 <section id="participer" class="level2">
 <h2 class="anchored" data-anchor-id="participer">Participer</h2>
-<p>– <a href="slides.html">présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_lecture-17.ipynb">Jupyter Notebook</a>)</p>
+<ul>
+<li><a href="slides.html">présentation</a> (<a href="slides.pdf">PDF</a>, <a href="slides.ipynb" download="csi4506_slides-17.ipynb">Jupyter Notebook</a>)</li>
+</ul>
+</section>
+<section id="sexercer" class="level2">
+<h2 class="anchored" data-anchor-id="sexercer">S’exercer</h2>
+<p>Utilisez le carnet Jupyter de la présentation pour :</p>
+<ul>
+<li>Comparer les heuristiques du nombre de tuiles mal placées et de la distance de Manhattan sur les mêmes plateaux. Comparez les développements de nœuds et validez les chemins et les longueurs de solution par rapport à BFS sur un petit échantillon.</li>
+<li>Poser <span class="math inline">h(s)=0</span> et expliquer la relation entre A*, la recherche à coût uniforme et BFS, y compris l’effet du départage.</li>
+</ul>
 
 
 

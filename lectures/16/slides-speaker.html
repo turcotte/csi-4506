@@ -256,7 +256,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: nov. 3, 2026 14h19</p>
+  <p class="date">Version: nov. 3, 2026 18h48</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -265,7 +265,7 @@ Marcel Turcotte
 </section>
 <section id="message-du-jour" class="slide level2 scrollable">
 <h2>Message du jour</h2>
-<p></p><div id="tweet-39261"></div><script>tweet={"url":"https:\/\/x.com\/sonyatweetybird\/status\/2110045408512836031","author_name":"Sonya Huang \uD83D\uDC25","author_url":"https:\/\/x.com\/sonyatweetybird","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDavid Silver is one of the all-time greats. He was the creator of AlphaGo, which changed the course of history by showing that neural nets could achieve superhuman performance for the first time.\u003Cbr\u003E\u003Cbr\u003EHe also has a unique intuition and knack for forecasting when things will happen in… \u003Ca href=\"https:\/\/t.co\/TdAn2NGhBE\"\u003Epic.twitter.com\/TdAn2NGhBE\u003C\/a\u003E\u003C\/p\u003E&mdash; Sonya Huang \uD83D\uDC25 (@sonyatweetybird) \u003Ca href=\"https:\/\/x.com\/sonyatweetybird\/status\/2110045408512836031?ref_src=twsrc%5Etfw\"\u003EOctober 13, 2026\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-39261").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-91650"></div><script>tweet={"url":"https:\/\/x.com\/sonyatweetybird\/status\/2110045408512836031","author_name":"Sonya Huang \uD83D\uDC25","author_url":"https:\/\/x.com\/sonyatweetybird","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDavid Silver is one of the all-time greats. He was the creator of AlphaGo, which changed the course of history by showing that neural nets could achieve superhuman performance for the first time.\u003Cbr\u003E\u003Cbr\u003EHe also has a unique intuition and knack for forecasting when things will happen in… \u003Ca href=\"https:\/\/t.co\/TdAn2NGhBE\"\u003Epic.twitter.com\/TdAn2NGhBE\u003C\/a\u003E\u003C\/p\u003E&mdash; Sonya Huang \uD83D\uDC25 (@sonyatweetybird) \u003Ca href=\"https:\/\/x.com\/sonyatweetybird\/status\/2110045408512836031?ref_src=twsrc%5Etfw\"\u003EOctober 13, 2026\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-91650").innerHTML = tweet["html"];</script><p></p>
 
 <aside class="notes">
 <p>David Silver a dirigé les recherches de DeepMind à l’origine d’AlphaGo, le premier système d’IA à vaincre un joueur professionnel de Go, et de ses successeurs, AlphaZero et MuZero. Il est aussi professeur d’informatique à l’University College London et membre de la Royal Society. Ses travaux relient les méthodes fondées sur les réseaux neuronaux présentées plus tôt dans le cours aux méthodes de recherche introduites ici. Son <a href="https://www.davidsilver.uk/" class="external" data-icon="true">site personnel</a> présente sa biographie actuelle.</p>
@@ -657,7 +657,7 @@ Marcel Turcotte
 </div></aside></section>
 <section id="exemple-8-puzzle" class="slide level2">
 <h2>Exemple : 8-Puzzle</h2>
-<div id="69e7a5f2" class="cell" data-execution_count="2">
+<div id="ffe0a9af" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="im">import</span> random</span>
@@ -683,7 +683,7 @@ Marcel Turcotte
 <span id="cb1-21"><a aria-label="21"></a>    <span class="cf">while</span> <span class="kw">not</span> is_solvable(tiles):</span>
 <span id="cb1-22"><a aria-label="22"></a>        random.shuffle(tiles)</span>
 <span id="cb1-23"><a aria-label="23"></a></span>
-<span id="cb1-24"><a aria-label="24"></a>    <span class="cf">return</span> tiles</span>
+<span id="cb1-24"><a aria-label="24"></a>    <span class="cf">return</span> <span class="bu">tuple</span>(tiles)</span>
 <span id="cb1-25"><a aria-label="25"></a></span>
 <span id="cb1-26"><a aria-label="26"></a><span class="kw">def</span> plot_board(board, title, num_pos, position):</span>
 <span id="cb1-27"><a aria-label="27"></a>    ax <span class="op">=</span> plt.subplot(<span class="dv">1</span>, num_pos, position)</span>
@@ -715,25 +715,23 @@ Marcel Turcotte
 </section>
 <section id="exemple-8-puzzle-1" class="slide level2">
 <h2>Exemple : 8-Puzzle</h2>
-<div id="f4709bcb" class="cell" data-execution_count="3">
+<div id="d8a292f0" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Générer un plateau initial résoluble</span></span>
 <span id="cb2-2"><a aria-label="2"></a>initial_board <span class="op">=</span> generate_solvable_board()</span>
 <span id="cb2-3"><a aria-label="3"></a></span>
 <span id="cb2-4"><a aria-label="4"></a><span class="co"># Définir l'état objectif</span></span>
-<span id="cb2-5"><a aria-label="5"></a>goal_board <span class="op">=</span> [</span>
-<span id="cb2-6"><a aria-label="6"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb2-7"><a aria-label="7"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb2-8"><a aria-label="8"></a>    [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
-<span id="cb2-9"><a aria-label="9"></a>]</span>
-<span id="cb2-10"><a aria-label="10"></a></span>
-<span id="cb2-11"><a aria-label="11"></a><span class="co"># Tracer les deux plateaux</span></span>
-<span id="cb2-12"><a aria-label="12"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb2-13"><a aria-label="13"></a>plot_board(initial_board, <span class="st">"Plateau Initial"</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb2-14"><a aria-label="14"></a>plot_board(goal_board, <span class="st">"État Objectif"</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb2-15"><a aria-label="15"></a>plt.tight_layout()</span>
-<span id="cb2-16"><a aria-label="16"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a aria-label="5"></a>goal_board <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb2-6"><a aria-label="6"></a>              <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb2-7"><a aria-label="7"></a>              <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
+<span id="cb2-8"><a aria-label="8"></a></span>
+<span id="cb2-9"><a aria-label="9"></a><span class="co"># Tracer les deux plateaux</span></span>
+<span id="cb2-10"><a aria-label="10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-11"><a aria-label="11"></a>plot_board(initial_board, <span class="st">"Plateau Initial"</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb2-12"><a aria-label="12"></a>plot_board(goal_board, <span class="st">"État Objectif"</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb2-13"><a aria-label="13"></a>plt.tight_layout()</span>
+<span id="cb2-14"><a aria-label="14"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -755,7 +753,7 @@ Marcel Turcotte
 <li class="fragment"><p>Qu’est-ce qui constituerait une <strong>solution</strong> ?</p></li>
 <li class="fragment"><p>Quel devrait être le <strong>coût d’une action</strong> ?</p></li>
 </ul>
-<div id="a368403f" class="cell corner-image" data-execution_count="4">
+<div id="88cbbb67" class="cell corner-image" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
@@ -773,12 +771,12 @@ Marcel Turcotte
 </div>
 <aside class="notes">
 <ul>
-<li><p>Chaque état peut être représenté comme une liste contenant les chiffres de 0 à 8. Chaque chiffre correspond à une tuile, et sa position dans la liste reflète sa localisation dans la grille, avec 0 désignant l’espace vide.</p></li>
+<li><p>Chaque état est représenté par un tuple à une dimension contenant les entiers de 0 à 8. Chaque nombre correspond à une tuile, et sa position dans le tuple reflète sa localisation dans la grille, avec 0 désignant l’espace vide.</p></li>
 <li><p>L’état initial est une permutation des chiffres de 0 à 8.</p></li>
 <li><p>Les actions déplacent la <strong>case vide</strong> vers la <strong>gauche</strong>, la <strong>droite</strong>, le <strong>haut</strong> ou le <strong>bas</strong> en l’échangeant avec une tuile adjacente. Ces directions décrivent le déplacement de la case vide, pas celui de la tuile numérotée.</p></li>
 <li><p>Un chemin serait une séquence d’actions, par exemple <strong>gauche</strong>, <strong>gauche</strong>, <strong>haut</strong>.</p></li>
 <li><p>Le modèle de transition associe un état donné et une action à un nouvel état. Toutes les actions ne sont pas réalisables à partir de chaque état ; par exemple, si l’espace vide est au bord de la grille, seules certaines actions sont possibles, comme bas, haut ou gauche.</p></li>
-<li><p>L’état objectif est atteint lorsque la liste est ordonnée de 1 à 8, suivi de 0, indiquant que les tuiles sont correctement disposées. Combien y a-t-il d’états objectifs ? Cette formulation précise un seul état objectif, bien qu’un autre problème puisse en permettre plusieurs.</p></li>
+<li><p>L’état objectif est atteint lorsque le tuple contient les entiers de 1 à 8 dans l’ordre, suivis de 0, indiquant que les tuiles sont correctement disposées. Combien y a-t-il d’états objectifs ? Cette formulation précise un seul état objectif, bien qu’un autre problème puisse en permettre plusieurs.</p></li>
 <li><p>Une solution serait un chemin valide transformant un état initial en un état objectif.</p></li>
 <li><p>Chaque action entraîne un coût de 1.</p></li>
 </ul>
@@ -800,19 +798,17 @@ Marcel Turcotte
 </section>
 <section id="résolvables" class="slide level2 hide-code-toggle">
 <h2>Résolvables ?</h2>
-<div id="fbcff2dc" class="cell" data-execution_count="5">
+<div id="89a9cb85" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>some_board <span class="op">=</span> [</span>
-<span id="cb4-2"><a aria-label="2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb4-3"><a aria-label="3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb4-4"><a aria-label="4"></a>    [<span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">0</span>]</span>
-<span id="cb4-5"><a aria-label="5"></a>]</span>
-<span id="cb4-6"><a aria-label="6"></a></span>
-<span id="cb4-7"><a aria-label="7"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb4-8"><a aria-label="8"></a>plot_board(some_board, <span class="st">""</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb4-9"><a aria-label="9"></a>plt.tight_layout()</span>
-<span id="cb4-10"><a aria-label="10"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-label="1"></a>some_board <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb4-2"><a aria-label="2"></a>              <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
+<span id="cb4-3"><a aria-label="3"></a>              <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">0</span>)</span>
+<span id="cb4-4"><a aria-label="4"></a></span>
+<span id="cb4-5"><a aria-label="5"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb4-6"><a aria-label="6"></a>plot_board(some_board, <span class="st">""</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb4-7"><a aria-label="7"></a>plt.tight_layout()</span>
+<span id="cb4-8"><a aria-label="8"></a>plt.show()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -827,7 +823,7 @@ Marcel Turcotte
 <h2>Résolvables ?</h2>
 <ul>
 <li class="fragment"><p>Un tableau du <strong>8-Puzzle</strong> est résolvable s’il a la même <strong>parité d’inversion</strong> que l’état objectif.</p></li>
-<li class="fragment"><p>Une <strong>inversion</strong> est une paire de tuiles (à l’exclusion du vide) qui sont dans le mauvais ordre l’une par rapport à l’autre, lorsqu’on lit le tableau comme une liste unidimensionnelle (de gauche à droite, de haut en bas).</p></li>
+<li class="fragment"><p>Une <strong>inversion</strong> est une paire de tuiles (à l’exclusion du vide) qui sont dans le mauvais ordre l’une par rapport à l’autre, lorsqu’on lit le tableau comme une séquence unidimensionnelle (de gauche à droite, de haut en bas).</p></li>
 <li class="fragment"><p>Lorsque le but est la séquence ordonnée de 1 à 8, il n’y a pas d’inversion, et donc la parité est paire.</p></li>
 <li class="fragment"><p>Voir <span class="citation" data-cites="Archer:1999aa">Archer (<a href="#/références" role="doc-biblioref" onclick="">1999</a>)</span> ou <a href="https://www.cs.princeton.edu/courses/archive/spring21/cos226/assignments/8puzzle/specification.php" class="external" data-icon="true">Slider Puzzle, Princeton</a></p></li>
 </ul>
@@ -847,7 +843,7 @@ Marcel Turcotte
 </section>
 <section id="count_even_odd_parity" class="slide level2">
 <h2><code>count_even_odd_parity</code></h2>
-<div id="4ccaa0e5" class="cell" data-execution_count="6">
+<div id="50149c5b" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a aria-label="1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
@@ -870,7 +866,7 @@ Marcel Turcotte
 <span id="cb5-18"><a aria-label="18"></a>    <span class="cf">return</span> even_count, odd_count</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="b6d2203e" class="cell" data-execution_count="7">
+<div id="773aa9c8" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a aria-label="1"></a>even, odd <span class="op">=</span> count_even_odd_parity()</span>
 <span id="cb6-2"><a aria-label="2"></a></span>
 <span id="cb6-3"><a aria-label="3"></a><span class="bu">print</span>(<span class="ss">f"Parité paire : </span><span class="sc">{</span>even<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1007,17 +1003,17 @@ Parité impaire : 181440</code></pre>
 </section>
 <section id="représentation-de-létat" class="slide level2 scrollable">
 <h2>Représentation de l’état</h2>
-<div id="ac3d53de" class="cell" data-execution_count="8">
+<div id="41a622d4" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a aria-label="1"></a><span class="co"># Tracer les deux plateaux</span></span>
-<span id="cb8-2"><a aria-label="2"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<span id="cb8-2"><a aria-label="2"></a>initial_state_8 <span class="op">=</span> (<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
 <span id="cb8-3"><a aria-label="3"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb8-4"><a aria-label="4"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb8-4"><a aria-label="4"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
 <span id="cb8-5"><a aria-label="5"></a></span>
-<span id="cb8-6"><a aria-label="6"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb8-6"><a aria-label="6"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb8-7"><a aria-label="7"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb8-8"><a aria-label="8"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb8-8"><a aria-label="8"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb8-9"><a aria-label="9"></a></span>
 <span id="cb8-10"><a aria-label="10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">2</span>))</span>
 <span id="cb8-11"><a aria-label="11"></a>plot_board(initial_state_8, <span class="st">"Plateau Initial"</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
@@ -1033,22 +1029,22 @@ Parité impaire : 181440</code></pre>
 </div>
 </div>
 </div>
-<div id="9b3f7659" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<div id="1d16fd5c" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> (<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
 <span id="cb9-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb9-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb9-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
 <span id="cb9-4"><a aria-label="4"></a></span>
-<span id="cb9-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb9-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb9-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb9-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside><div>
-<p>Les états sont représentés comme des <strong>listes</strong> de chiffres. <code>0</code> représente la <strong>tuile vide</strong>.</p>
+<p>Les états sont des <strong>tuples d’entiers</strong> à une dimension ; <code>0</code> représente la <strong>case vide</strong>. L’ensemble <code>reached</code> exige des états <strong>hachables</strong> : les tuples d’entiers sont immuables et hachables, alors que les listes modifiables ne sont pas hachables.</p>
 </div></aside></section>
 <section id="is_goal" class="slide level2">
 <h2><code>is_goal</code></h2>
-<div id="0ec5155e" class="cell" data-execution_count="10">
+<div id="5dd64d6f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-label="1"></a><span class="kw">def</span> is_goal(state, goal_state):</span>
 <span id="cb10-2"><a aria-label="2"></a>    <span class="co">"""Détermine si un état donné correspond à l'état objectif."""</span></span>
 <span id="cb10-3"><a aria-label="3"></a>    <span class="cf">return</span> state <span class="op">==</span> goal_state</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1059,7 +1055,7 @@ Parité impaire : 181440</code></pre>
 </div></aside></section>
 <section id="expand" class="slide level2 smaller">
 <h2><code>expand</code></h2>
-<div id="4f5b1270" class="cell" data-execution_count="11">
+<div id="98ddde14" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-label="1"></a><span class="kw">def</span> expand(state):</span>
 <span id="cb11-2"><a aria-label="2"></a>    <span class="co">"""Génère les états successeurs en déplaçant la tuile vide dans toutes les directions possibles."""</span></span>
 <span id="cb11-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(state) <span class="op">**</span> <span class="fl">0.5</span>) <span class="co"># Déterminer la taille du puzzle (3 pour le 8-Puzzle, 4 pour le 15-Puzzle)</span></span>
@@ -1074,16 +1070,16 @@ Parité impaire : 181440</code></pre>
 <span id="cb11-12"><a aria-label="12"></a>        <span class="co"># Vérifier si la nouvelle position est dans les limites du puzzle</span></span>
 <span id="cb11-13"><a aria-label="13"></a>        <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> nx <span class="op">&lt;</span> size <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;=</span> ny <span class="op">&lt;</span> size:</span>
 <span id="cb11-14"><a aria-label="14"></a>            n_idx <span class="op">=</span> ny <span class="op">*</span> size <span class="op">+</span> nx</span>
-<span id="cb11-15"><a aria-label="15"></a>            new_state <span class="op">=</span> state.copy()</span>
+<span id="cb11-15"><a aria-label="15"></a>            new_state <span class="op">=</span> <span class="bu">list</span>(state)</span>
 <span id="cb11-16"><a aria-label="16"></a>            <span class="co"># Échanger la tuile vide avec la tuile adjacente</span></span>
 <span id="cb11-17"><a aria-label="17"></a>            new_state[idx], new_state[n_idx] <span class="op">=</span> new_state[n_idx], new_state[idx]</span>
-<span id="cb11-18"><a aria-label="18"></a>            neighbors.append(new_state)</span>
+<span id="cb11-18"><a aria-label="18"></a>            neighbors.append(<span class="bu">tuple</span>(new_state))</span>
 <span id="cb11-19"><a aria-label="19"></a>    <span class="cf">return</span> neighbors</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="expand-1" class="slide level2">
 <h2><code>expand</code></h2>
-<div id="adc2d212" class="cell" data-execution_count="12">
+<div id="4941ad07" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
@@ -1106,18 +1102,18 @@ Parité impaire : 181440</code></pre>
 </div>
 </div>
 </div>
-<div id="6acde1d3" class="cell" data-execution_count="13">
+<div id="62ed583b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-label="1"></a>expand(initial_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>[[6, 4, 5, 8, 2, 7, 0, 1, 3],
- [6, 4, 5, 8, 2, 7, 1, 3, 0],
- [6, 4, 5, 8, 0, 7, 1, 2, 3]]</code></pre>
+<pre><code>[(6, 4, 5, 8, 2, 7, 0, 1, 3),
+ (6, 4, 5, 8, 2, 7, 1, 3, 0),
+ (6, 4, 5, 8, 0, 7, 1, 2, 3)]</code></pre>
 </div>
 </div>
 </section>
 <section id="is_empty" class="slide level2">
 <h2><code>is_empty</code></h2>
-<div id="86a3a171" class="cell" data-execution_count="14">
+<div id="f0cccf49" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">def</span> is_empty(frontier):</span>
 <span id="cb15-2"><a aria-label="2"></a>    <span class="co">"""Vérifie si la frontière est vide."""</span></span>
 <span id="cb15-3"><a aria-label="3"></a>    <span class="cf">return</span> <span class="bu">len</span>(frontier) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1143,7 +1139,7 @@ Parité impaire : 181440</code></pre>
 </div></aside></section>
 <section id="print_solution" class="slide level2">
 <h2><code>print_solution</code></h2>
-<div id="0cd6d645" class="cell" data-execution_count="15">
+<div id="e76c2d83" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a aria-label="1"></a><span class="kw">def</span> print_solution(solution):</span>
 <span id="cb16-2"><a aria-label="2"></a>    <span class="co">"""Affiche la séquence d'étapes de l'état initial à l'état objectif."""</span></span>
 <span id="cb16-3"><a aria-label="3"></a>    size <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(solution[<span class="dv">0</span>]) <span class="op">**</span> <span class="fl">0.5</span>)</span>
@@ -1170,39 +1166,37 @@ Parité impaire : 181440</code></pre>
 </section>
 <section id="recherche-en-largeur-1" class="slide level2">
 <h2>Recherche en largeur</h2>
-<div id="520b452e" class="cell" data-execution_count="16">
+<div id="7e719014" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a aria-label="1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La <strong>recherche en largeur (BFS)</strong> utilise une <strong>file d’attente</strong> pour gérer les nœuds de la frontière, également connus sous le nom de liste ouverte.</p>
 </section>
 <section id="recherche-en-largeur-2" class="slide level2 scrollable smaller">
 <h2>Recherche en largeur</h2>
-<div id="4f748c47" class="cell" data-execution_count="17">
+<div id="c377b4dc" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a aria-label="1"></a><span class="kw">def</span> bfs(initial_state, goal_state):</span>
 <span id="cb18-2"><a aria-label="2"></a>    frontier <span class="op">=</span> deque() <span class="co"># Initialiser la file d'attente pour BFS</span></span>
 <span id="cb18-3"><a aria-label="3"></a>    frontier.append((initial_state, [])) <span class="co"># Un nœud : (état, états précédents)</span></span>
 <span id="cb18-4"><a aria-label="4"></a></span>
-<span id="cb18-5"><a aria-label="5"></a>    reached <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb18-6"><a aria-label="6"></a>    reached.add(<span class="bu">tuple</span>(initial_state))</span>
-<span id="cb18-7"><a aria-label="7"></a></span>
-<span id="cb18-8"><a aria-label="8"></a>    expanded <span class="op">=</span> <span class="dv">0</span> <span class="co"># Nombre de nœuds non objectifs dont les successeurs sont générés</span></span>
-<span id="cb18-9"><a aria-label="9"></a></span>
-<span id="cb18-10"><a aria-label="10"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
-<span id="cb18-11"><a aria-label="11"></a>        current_state, path <span class="op">=</span> frontier.popleft()</span>
-<span id="cb18-12"><a aria-label="12"></a></span>
-<span id="cb18-13"><a aria-label="13"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
-<span id="cb18-14"><a aria-label="14"></a>            <span class="bu">print</span>(<span class="ss">f"Nœuds développés : </span><span class="sc">{</span>expanded<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-15"><a aria-label="15"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
-<span id="cb18-16"><a aria-label="16"></a></span>
-<span id="cb18-17"><a aria-label="17"></a>        expanded <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb18-18"><a aria-label="18"></a></span>
-<span id="cb18-19"><a aria-label="19"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
-<span id="cb18-20"><a aria-label="20"></a>            neighbor_tuple <span class="op">=</span> <span class="bu">tuple</span>(neighbor)</span>
-<span id="cb18-21"><a aria-label="21"></a>            <span class="cf">if</span> neighbor_tuple <span class="kw">not</span> <span class="kw">in</span> reached:</span>
-<span id="cb18-22"><a aria-label="22"></a>                reached.add(neighbor_tuple)</span>
-<span id="cb18-23"><a aria-label="23"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
-<span id="cb18-24"><a aria-label="24"></a></span>
-<span id="cb18-25"><a aria-label="25"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-5"><a aria-label="5"></a>    reached <span class="op">=</span> {initial_state}</span>
+<span id="cb18-6"><a aria-label="6"></a></span>
+<span id="cb18-7"><a aria-label="7"></a>    expanded <span class="op">=</span> <span class="dv">0</span> <span class="co"># Nombre de nœuds non objectifs dont les successeurs sont générés</span></span>
+<span id="cb18-8"><a aria-label="8"></a></span>
+<span id="cb18-9"><a aria-label="9"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
+<span id="cb18-10"><a aria-label="10"></a>        current_state, path <span class="op">=</span> frontier.popleft()</span>
+<span id="cb18-11"><a aria-label="11"></a></span>
+<span id="cb18-12"><a aria-label="12"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
+<span id="cb18-13"><a aria-label="13"></a>            <span class="bu">print</span>(<span class="ss">f"Nœuds développés : </span><span class="sc">{</span>expanded<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-14"><a aria-label="14"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
+<span id="cb18-15"><a aria-label="15"></a></span>
+<span id="cb18-16"><a aria-label="16"></a>        expanded <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-17"><a aria-label="17"></a></span>
+<span id="cb18-18"><a aria-label="18"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
+<span id="cb18-19"><a aria-label="19"></a>            <span class="cf">if</span> neighbor <span class="kw">not</span> <span class="kw">in</span> reached:</span>
+<span id="cb18-20"><a aria-label="20"></a>                reached.add(neighbor)</span>
+<span id="cb18-21"><a aria-label="21"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
+<span id="cb18-22"><a aria-label="22"></a></span>
+<span id="cb18-23"><a aria-label="23"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
@@ -1224,18 +1218,18 @@ Parité impaire : 181440</code></pre>
 </div></aside></section>
 <section id="cas-simple" class="slide level2 scrollable smaller">
 <h2>Cas simple</h2>
-<div id="0816ae29" class="cell" data-execution_count="18">
+<div id="cfb838f3" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
-<span id="cb19-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb19-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb19-4"><a aria-label="4"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb19-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb19-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
 <span id="cb19-6"><a aria-label="6"></a></span>
-<span id="cb19-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb19-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb19-8"><a aria-label="8"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb19-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb19-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb19-10"><a aria-label="10"></a></span>
 <span id="cb19-11"><a aria-label="11"></a>solutions <span class="op">=</span> bfs(initial_state_8, goal_state_8)</span>
 <span id="cb19-12"><a aria-label="12"></a></span>
@@ -1256,36 +1250,36 @@ Parité impaire : 181440</code></pre>
 </div>
 </div>
 </div>
-<div id="0af55455" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<div id="010fa973" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb21-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb21-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb21-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
 <span id="cb21-4"><a aria-label="4"></a></span>
-<span id="cb21-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb21-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb21-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb21-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb21-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb21-8"><a aria-label="8"></a></span>
 <span id="cb21-9"><a aria-label="9"></a>bfs(initial_state_8, goal_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Nœuds développés : 12</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>[[1, 2, 3, 4, 0, 6, 7, 5, 8],
- [1, 2, 3, 4, 5, 6, 7, 0, 8],
- [1, 2, 3, 4, 5, 6, 7, 8, 0]]</code></pre>
+<pre><code>[(1, 2, 3, 4, 0, 6, 7, 5, 8),
+ (1, 2, 3, 4, 5, 6, 7, 0, 8),
+ (1, 2, 3, 4, 5, 6, 7, 8, 0)]</code></pre>
 </div>
 </div>
 </section>
 <section id="cas-difficile" class="slide level2 scrollable smaller">
 <h2>Cas difficile</h2>
-<div id="fe678f47" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<div id="ebf4d0c2" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> (<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
 <span id="cb24-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb24-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb24-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
 <span id="cb24-4"><a aria-label="4"></a></span>
-<span id="cb24-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb24-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb24-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb24-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb24-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb24-8"><a aria-label="8"></a></span>
 <span id="cb24-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">"Résolution du 8-Puzzle avec la recherche en largeur (BFS)..."</span>)</span>
 <span id="cb24-10"><a aria-label="10"></a></span>
@@ -1451,31 +1445,29 @@ Solution BFS trouvée en 25 mouvements :
 </section>
 <section id="recherche-en-profondeur-1" class="slide level2 scrollable smaller">
 <h2>Recherche en profondeur</h2>
-<div id="13c8ae55" class="cell" data-execution_count="21">
+<div id="924d4057" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="kw">def</span> dfs(initial_state, goal_state):</span>
 <span id="cb26-2"><a aria-label="2"></a>    frontier <span class="op">=</span> [(initial_state, [])] <span class="co"># Un nœud : (état, états précédents)</span></span>
 <span id="cb26-3"><a aria-label="3"></a></span>
-<span id="cb26-4"><a aria-label="4"></a>    reached <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb26-5"><a aria-label="5"></a>    reached.add(<span class="bu">tuple</span>(initial_state))</span>
-<span id="cb26-6"><a aria-label="6"></a></span>
-<span id="cb26-7"><a aria-label="7"></a>    expanded <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb26-8"><a aria-label="8"></a></span>
-<span id="cb26-9"><a aria-label="9"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
-<span id="cb26-10"><a aria-label="10"></a>        current_state, path <span class="op">=</span> frontier.pop()</span>
-<span id="cb26-11"><a aria-label="11"></a></span>
-<span id="cb26-12"><a aria-label="12"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
-<span id="cb26-13"><a aria-label="13"></a>            <span class="bu">print</span>(<span class="ss">f"Nœuds développés : </span><span class="sc">{</span>expanded<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb26-14"><a aria-label="14"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
-<span id="cb26-15"><a aria-label="15"></a></span>
-<span id="cb26-16"><a aria-label="16"></a>        expanded <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb26-17"><a aria-label="17"></a></span>
-<span id="cb26-18"><a aria-label="18"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
-<span id="cb26-19"><a aria-label="19"></a>            neighbor_tuple <span class="op">=</span> <span class="bu">tuple</span>(neighbor)</span>
-<span id="cb26-20"><a aria-label="20"></a>            <span class="cf">if</span> neighbor_tuple <span class="kw">not</span> <span class="kw">in</span> reached:</span>
-<span id="cb26-21"><a aria-label="21"></a>                reached.add(neighbor_tuple)</span>
-<span id="cb26-22"><a aria-label="22"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
-<span id="cb26-23"><a aria-label="23"></a></span>
-<span id="cb26-24"><a aria-label="24"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-4"><a aria-label="4"></a>    reached <span class="op">=</span> {initial_state}</span>
+<span id="cb26-5"><a aria-label="5"></a></span>
+<span id="cb26-6"><a aria-label="6"></a>    expanded <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb26-7"><a aria-label="7"></a></span>
+<span id="cb26-8"><a aria-label="8"></a>    <span class="cf">while</span> <span class="kw">not</span> is_empty(frontier):</span>
+<span id="cb26-9"><a aria-label="9"></a>        current_state, path <span class="op">=</span> frontier.pop()</span>
+<span id="cb26-10"><a aria-label="10"></a></span>
+<span id="cb26-11"><a aria-label="11"></a>        <span class="cf">if</span> is_goal(current_state, goal_state):</span>
+<span id="cb26-12"><a aria-label="12"></a>            <span class="bu">print</span>(<span class="ss">f"Nœuds développés : </span><span class="sc">{</span>expanded<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-13"><a aria-label="13"></a>            <span class="cf">return</span> path <span class="op">+</span> [current_state] <span class="co"># Retourner le chemin réussi</span></span>
+<span id="cb26-14"><a aria-label="14"></a></span>
+<span id="cb26-15"><a aria-label="15"></a>        expanded <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb26-16"><a aria-label="16"></a></span>
+<span id="cb26-17"><a aria-label="17"></a>        <span class="cf">for</span> neighbor <span class="kw">in</span> expand(current_state):</span>
+<span id="cb26-18"><a aria-label="18"></a>            <span class="cf">if</span> neighbor <span class="kw">not</span> <span class="kw">in</span> reached:</span>
+<span id="cb26-19"><a aria-label="19"></a>                reached.add(neighbor)</span>
+<span id="cb26-20"><a aria-label="20"></a>                frontier.append((neighbor, path <span class="op">+</span> [current_state]))</span>
+<span id="cb26-21"><a aria-label="21"></a></span>
+<span id="cb26-22"><a aria-label="22"></a>    <span class="cf">return</span> <span class="va">None</span> <span class="co"># Aucune solution trouvée</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <aside class="notes">
@@ -1517,18 +1509,18 @@ Solution BFS trouvée en 25 mouvements :
 </section>
 <section id="cas-simple-1" class="slide level2 scrollable smaller">
 <h2>Cas Simple</h2>
-<div id="7eec0880" class="cell" data-execution_count="22">
+<div id="e893ac92" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a aria-label="1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">2</span>))</span>
 <span id="cb27-2"><a aria-label="2"></a></span>
-<span id="cb27-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb27-3"><a aria-label="3"></a>initial_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb27-4"><a aria-label="4"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb27-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb27-5"><a aria-label="5"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
 <span id="cb27-6"><a aria-label="6"></a></span>
-<span id="cb27-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb27-7"><a aria-label="7"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb27-8"><a aria-label="8"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb27-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb27-9"><a aria-label="9"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb27-10"><a aria-label="10"></a></span>
 <span id="cb27-11"><a aria-label="11"></a>solutions <span class="op">=</span> dfs(initial_state_8, goal_state_8)</span>
 <span id="cb27-12"><a aria-label="12"></a></span>
@@ -1549,36 +1541,36 @@ Solution BFS trouvée en 25 mouvements :
 </div>
 </div>
 </div>
-<div id="a93df8a0" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<div id="14860f08" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb29-2"><a aria-label="2"></a>                   <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>,</span>
-<span id="cb29-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>]</span>
+<span id="cb29-3"><a aria-label="3"></a>                   <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">8</span>)</span>
 <span id="cb29-4"><a aria-label="4"></a></span>
-<span id="cb29-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb29-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb29-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb29-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb29-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb29-8"><a aria-label="8"></a></span>
 <span id="cb29-9"><a aria-label="9"></a>dfs(initial_state_8, goal_state_8)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Nœuds développés : 2</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>[[1, 2, 3, 4, 0, 6, 7, 5, 8],
- [1, 2, 3, 4, 5, 6, 7, 0, 8],
- [1, 2, 3, 4, 5, 6, 7, 8, 0]]</code></pre>
+<pre><code>[(1, 2, 3, 4, 0, 6, 7, 5, 8),
+ (1, 2, 3, 4, 5, 6, 7, 0, 8),
+ (1, 2, 3, 4, 5, 6, 7, 8, 0)]</code></pre>
 </div>
 </div>
 </section>
 <section id="cas-difficile-1" class="slide level2 scrollable smaller">
 <h2>Cas Difficile</h2>
-<div id="fe9c89b5" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
+<div id="cdc023a9" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a aria-label="1"></a>initial_state_8 <span class="op">=</span> (<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
 <span id="cb32-2"><a aria-label="2"></a>                   <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">7</span>,</span>
-<span id="cb32-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>]</span>
+<span id="cb32-3"><a aria-label="3"></a>                   <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
 <span id="cb32-4"><a aria-label="4"></a></span>
-<span id="cb32-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb32-5"><a aria-label="5"></a>goal_state_8 <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
 <span id="cb32-6"><a aria-label="6"></a>                <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>,</span>
-<span id="cb32-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>]</span>
+<span id="cb32-7"><a aria-label="7"></a>                <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">0</span>)</span>
 <span id="cb32-8"><a aria-label="8"></a></span>
 <span id="cb32-9"><a aria-label="9"></a><span class="bu">print</span>(<span class="st">"Résolution du 8-Puzzle avec DFS..."</span>)</span>
 <span id="cb32-10"><a aria-label="10"></a></span>
@@ -1741,7 +1733,7 @@ Solution DFS trouvée en 1157 mouvements :</code></pre>
 <li><strong>Implémentation de la recherche non informée :</strong>
 <ul>
 <li>Utilisé le <strong>8-Puzzle</strong> comme problème d’exemple.</li>
-<li>Représenté les états comme des listes de chiffres, avec <code>0</code> comme tuile vide.</li>
+<li>Représenté les états par des tuples d’entiers à une dimension, avec <code>0</code> comme case vide.</li>
 <li>Démontré les implémentations de BFS et DFS en Python.</li>
 <li>Pour le plateau et l’ordre des déplacements précisés, BFS a trouvé la solution optimale après davantage de développements, tandis que DFS a trouvé une solution plus longue après moins de développements.</li>
 </ul></li>
