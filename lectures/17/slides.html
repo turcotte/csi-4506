@@ -254,7 +254,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: nov. 3, 2026 20h25</p>
+  <p class="date">Version: nov. 4, 2026 17h10</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -263,7 +263,7 @@ Marcel Turcotte
 </section>
 <section id="message-du-jour" class="slide level2">
 <h2>Message du jour</h2>
-<p></p><div id="tweet-17780"></div><script>tweet={"url":"https:\/\/x.com\/Waymo\/status\/2111042355671244871","author_name":"Waymo","author_url":"https:\/\/x.com\/Waymo","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWe’re bringing the magic of Waymo to Toronto! \uD83C\uDDE8\uD83C\uDDE6 \u003Cbr\u003E\u003Cbr\u003EIn the coming days, you’ll begin seeing Waymo’s all-electric vehicles driving through Toronto’s streets as we lay the groundwork for our ride-hailing service. \u003Cbr\u003E\u003Cbr\u003EOur goal is to begin serving riders in 2028. \u003Cbr\u003E\u003Cbr\u003ESign up for future… \u003Ca href=\"https:\/\/t.co\/FQmGxwV5T9\"\u003Epic.twitter.com\/FQmGxwV5T9\u003C\/a\u003E\u003C\/p\u003E&mdash; Waymo (@Waymo) \u003Ca href=\"https:\/\/x.com\/Waymo\/status\/2111042355671244871?ref_src=twsrc%5Etfw\"\u003EOctober 16, 2026\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-17780").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-98811"></div><script>tweet={"url":"https:\/\/x.com\/Waymo\/status\/2111042355671244871","author_name":"Waymo","author_url":"https:\/\/x.com\/Waymo","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EWe’re bringing the magic of Waymo to Toronto! \uD83C\uDDE8\uD83C\uDDE6 \u003Cbr\u003E\u003Cbr\u003EIn the coming days, you’ll begin seeing Waymo’s all-electric vehicles driving through Toronto’s streets as we lay the groundwork for our ride-hailing service. \u003Cbr\u003E\u003Cbr\u003EOur goal is to begin serving riders in 2028. \u003Cbr\u003E\u003Cbr\u003ESign up for future… \u003Ca href=\"https:\/\/t.co\/FQmGxwV5T9\"\u003Epic.twitter.com\/FQmGxwV5T9\u003C\/a\u003E\u003C\/p\u003E&mdash; Waymo (@Waymo) \u003Ca href=\"https:\/\/x.com\/Waymo\/status\/2111042355671244871?ref_src=twsrc%5Etfw\"\u003EOctober 16, 2026\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.x.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"X","provider_url":"https:\/\/x.com","version":"1.0"};document.getElementById("tweet-98811").innerHTML = tweet["html"];</script><p></p>
 </section>
 <section id="objectifs-dapprentissage" class="slide level2 smaller">
 <h2>Objectifs d’apprentissage</h2>
@@ -1556,6 +1556,164 @@ Développements moyens, Manhattan :         1,708.2</code></pre>
 
 <aside><div>
 <p>Chaque point du graphique de droite représente un plateau. Un point sous la diagonale indique moins de développements avec Manhattan pour ce plateau.</p>
+</div></aside></section>
+<section id="validation-empirique" class="slide level2 smaller">
+<h2>Validation empirique</h2>
+<ul>
+<li>Avec des coûts d’action unitaires, <strong>BFS fournit une référence au nombre minimal de déplacements</strong>.</li>
+<li>Comparez BFS et A* avec Manhattan sur <strong>25 000 plateaux résolubles distincts</strong>.</li>
+<li>Vérifiez les longueurs des solutions et comptez les <strong>nœuds non objectifs développés</strong>.</li>
+<li>L’accord renforce la confiance dans le code ; <strong>ce n’est pas une preuve</strong>.</li>
+</ul>
+<p>Téléchargez <a href="https://turcotte.xyz/teaching/csi-4506/lectures/17/validate_astar.py" class="external" data-icon="true" download="validate_astar.py">le script Python de validation (en anglais)</a> et exécutez-le depuis le dossier de la présentation :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-label="1"></a><span class="ex">python3</span> validate_astar.py 4106 25000</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+
+<aside class="notes">
+<p>La preuve mathématique établit l’optimalité en coût de A* sous les hypothèses énoncées. Cette expérience vérifie si notre implémentation se comporte comme prévu sur un échantillon important. Un désaccord révèle une erreur d’implémentation ; un accord n’exclut pas toutes les erreurs, notamment parce que BFS et A* partagent le générateur de successeurs et le test d’objectif.</p>
+<p>Le script compare les longueurs des solutions, signale les désaccords sur la sortie d’erreur standard et conserve les deux nombres de développements dans le CSV. Des vérifications supplémentaires peuvent confirmer que les chemins retournés utilisent des déplacements permis et atteignent l’état objectif. Des chemins optimaux différents peuvent avoir la même longueur.</p>
+<p>La graine rend l’expérience reproductible. Les plateaux répétés sont ignorés avant les deux recherches ; une exécution complète contient 25 000 plateaux distincts parmi les 181 440 configurations résolubles. Chaque ligne terminée est enregistrée immédiatement ; les résultats affichés peuvent donc être partiels pendant l’exécution du script. La génération des données est une étape manuelle séparée ; lire le CSV ne relance pas les recherches.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Conservez le fichier généré <code>astar_validation_runs-25000_seed-4106.csv</code> à côté du carnet. La diapositive suivante lit ces résultats enregistrés.</p>
+</div></aside></section>
+<section id="résultats-enregistrés-bfs-et-a" class="slide level2 smaller hide-code-toggle">
+<h2>Résultats enregistrés : BFS et A*</h2>
+<div id="cached-bfs-astar-validation" class="cell" data-execution_count="18">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a aria-label="1"></a><span class="im">import</span> csv</span>
+<span id="cb26-2"><a aria-label="2"></a><span class="im">import</span> os</span>
+<span id="cb26-3"><a aria-label="3"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb26-4"><a aria-label="4"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, display</span>
+<span id="cb26-5"><a aria-label="5"></a></span>
+<span id="cb26-6"><a aria-label="6"></a>number_translation <span class="op">=</span> <span class="bu">str</span>.maketrans({<span class="st">","</span>: <span class="st">" "</span>, <span class="st">"."</span>: <span class="st">","</span>})</span>
+<span id="cb26-7"><a aria-label="7"></a><span class="kw">def</span> format_number(value, decimals<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb26-8"><a aria-label="8"></a>    <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>value<span class="sc">:,.</span>{decimals}f<span class="sc">}</span><span class="ss">"</span>.translate(number_translation)</span>
+<span id="cb26-9"><a aria-label="9"></a></span>
+<span id="cb26-10"><a aria-label="10"></a>CSV_NAME <span class="op">=</span> <span class="st">"astar_validation_runs-25000_seed-4106.csv"</span></span>
+<span id="cb26-11"><a aria-label="11"></a>csv_path <span class="op">=</span> Path(CSV_NAME)</span>
+<span id="cb26-12"><a aria-label="12"></a>project_dir <span class="op">=</span> os.environ.get(<span class="st">"QUARTO_PROJECT_DIR"</span>)</span>
+<span id="cb26-13"><a aria-label="13"></a><span class="cf">if</span> <span class="kw">not</span> csv_path.is_file() <span class="kw">and</span> project_dir:</span>
+<span id="cb26-14"><a aria-label="14"></a>    csv_path <span class="op">=</span> Path(project_dir) <span class="op">/</span> <span class="st">"lectures"</span> <span class="op">/</span> <span class="st">"17"</span> <span class="op">/</span> CSV_NAME</span>
+<span id="cb26-15"><a aria-label="15"></a></span>
+<span id="cb26-16"><a aria-label="16"></a><span class="cf">if</span> <span class="kw">not</span> csv_path.is_file():</span>
+<span id="cb26-17"><a aria-label="17"></a>    display(Markdown(</span>
+<span id="cb26-18"><a aria-label="18"></a>        <span class="st">"**Les résultats enregistrés ne sont pas encore disponibles.** Exécutez cette commande une fois à côté du carnet, "</span></span>
+<span id="cb26-19"><a aria-label="19"></a>        <span class="st">"puis réexécutez le carnet ou générez la présentation :</span><span class="ch">\n\n</span><span class="st">"</span></span>
+<span id="cb26-20"><a aria-label="20"></a>        <span class="st">"```bash</span><span class="ch">\n</span><span class="st">python3 validate_astar.py 4106 25000</span><span class="ch">\n</span><span class="st">```"</span></span>
+<span id="cb26-21"><a aria-label="21"></a>    ))</span>
+<span id="cb26-22"><a aria-label="22"></a><span class="cf">else</span>:</span>
+<span id="cb26-23"><a aria-label="23"></a>    <span class="co"># Lire un préfixe complet même pendant l’ajout de lignes par l’expérience.</span></span>
+<span id="cb26-24"><a aria-label="24"></a>    csv_text <span class="op">=</span> csv_path.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb26-25"><a aria-label="25"></a>    complete_text <span class="op">=</span> csv_text[:csv_text.rfind(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb26-26"><a aria-label="26"></a>    records <span class="op">=</span> <span class="bu">list</span>(csv.DictReader(complete_text.splitlines()))</span>
+<span id="cb26-27"><a aria-label="27"></a></span>
+<span id="cb26-28"><a aria-label="28"></a>    <span class="cf">if</span> <span class="kw">not</span> records:</span>
+<span id="cb26-29"><a aria-label="29"></a>        display(Markdown(<span class="st">"**Le CSV existe, mais aucun résultat complet n’est encore disponible.**"</span>))</span>
+<span id="cb26-30"><a aria-label="30"></a>    <span class="cf">else</span>:</span>
+<span id="cb26-31"><a aria-label="31"></a>        unique_boards <span class="op">=</span> <span class="bu">len</span>({row[<span class="st">"board"</span>] <span class="cf">for</span> row <span class="kw">in</span> records})</span>
+<span id="cb26-32"><a aria-label="32"></a>        mismatches <span class="op">=</span> <span class="bu">sum</span>(</span>
+<span id="cb26-33"><a aria-label="33"></a>            row[<span class="st">"bfs_moves"</span>] <span class="op">==</span> <span class="st">""</span> <span class="kw">or</span> row[<span class="st">"astar_moves"</span>] <span class="op">==</span> <span class="st">""</span></span>
+<span id="cb26-34"><a aria-label="34"></a>            <span class="kw">or</span> row[<span class="st">"bfs_moves"</span>] <span class="op">!=</span> row[<span class="st">"astar_moves"</span>]</span>
+<span id="cb26-35"><a aria-label="35"></a>            <span class="cf">for</span> row <span class="kw">in</span> records</span>
+<span id="cb26-36"><a aria-label="36"></a>        )</span>
+<span id="cb26-37"><a aria-label="37"></a>        status <span class="op">=</span> <span class="st">"Résultats partiels. "</span> <span class="cf">if</span> <span class="bu">len</span>(records) <span class="op">&lt;</span> <span class="dv">25000</span> <span class="cf">else</span> <span class="st">""</span></span>
+<span id="cb26-38"><a aria-label="38"></a>        display(Markdown(</span>
+<span id="cb26-39"><a aria-label="39"></a>            <span class="ss">f"**</span><span class="sc">{</span>status<span class="sc">}{</span>format_number(<span class="bu">len</span>(records))<span class="sc">}</span><span class="ss"> comparaisons terminées** "</span></span>
+<span id="cb26-40"><a aria-label="40"></a>            <span class="ss">f"(</span><span class="sc">{</span>format_number(unique_boards)<span class="sc">}</span><span class="ss"> plateaux distincts) ; **</span><span class="sc">{</span>format_number(mismatches)<span class="sc">}</span><span class="ss"> échecs de comparaison des longueurs**."</span></span>
+<span id="cb26-41"><a aria-label="41"></a>        ))</span>
+<span id="cb26-42"><a aria-label="42"></a></span>
+<span id="cb26-43"><a aria-label="43"></a>        methods <span class="op">=</span> [</span>
+<span id="cb26-44"><a aria-label="44"></a>            (<span class="st">"BFS"</span>, [<span class="bu">int</span>(row[<span class="st">"bfs_expanded"</span>]) <span class="cf">for</span> row <span class="kw">in</span> records], <span class="st">"steelblue"</span>),</span>
+<span id="cb26-45"><a aria-label="45"></a>            (<span class="st">"A* (Manhattan)"</span>, [<span class="bu">int</span>(row[<span class="st">"astar_expanded"</span>]) <span class="cf">for</span> row <span class="kw">in</span> records], <span class="st">"darkorange"</span>),</span>
+<span id="cb26-46"><a aria-label="46"></a>        ]</span>
+<span id="cb26-47"><a aria-label="47"></a>        fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">2.6</span>))</span>
+<span id="cb26-48"><a aria-label="48"></a>        table <span class="op">=</span> [<span class="st">"| Méthode | Moyenne | Médiane | Minimum | Maximum |"</span>, <span class="st">"|---|---:|---:|---:|---:|"</span>]</span>
+<span id="cb26-49"><a aria-label="49"></a>        <span class="cf">for</span> ax, (name, expanded, color) <span class="kw">in</span> <span class="bu">zip</span>(axes, methods):</span>
+<span id="cb26-50"><a aria-label="50"></a>            bins <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="bu">max</span>(<span class="dv">1</span>, <span class="bu">max</span>(expanded)), <span class="dv">41</span>)</span>
+<span id="cb26-51"><a aria-label="51"></a>            ax.hist(expanded, bins<span class="op">=</span>bins, color<span class="op">=</span>color, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
+<span id="cb26-52"><a aria-label="52"></a>            ax.set_title(name)</span>
+<span id="cb26-53"><a aria-label="53"></a>            ax.set_xlabel(<span class="st">"Nœuds non objectifs développés"</span>)</span>
+<span id="cb26-54"><a aria-label="54"></a>            ax.set_ylabel(<span class="st">"Nombre de plateaux"</span>)</span>
+<span id="cb26-55"><a aria-label="55"></a>            ax.set_xlim(<span class="dv">0</span>, <span class="bu">max</span>(<span class="dv">1</span>, <span class="bu">max</span>(expanded)) <span class="op">*</span> <span class="fl">1.05</span>)</span>
+<span id="cb26-56"><a aria-label="56"></a>            ax.ticklabel_format(style<span class="op">=</span><span class="st">"plain"</span>, axis<span class="op">=</span><span class="st">"x"</span>)</span>
+<span id="cb26-57"><a aria-label="57"></a>            ax.tick_params(labelsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb26-58"><a aria-label="58"></a>            table.append(</span>
+<span id="cb26-59"><a aria-label="59"></a>                <span class="ss">f"| </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>format_number(np.mean(expanded), <span class="dv">1</span>)<span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>format_number(np.median(expanded), <span class="dv">1</span>)<span class="sc">}</span><span class="ss"> "</span></span>
+<span id="cb26-60"><a aria-label="60"></a>                <span class="ss">f"| </span><span class="sc">{</span>format_number(<span class="bu">min</span>(expanded))<span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span>format_number(<span class="bu">max</span>(expanded))<span class="sc">}</span><span class="ss"> |"</span></span>
+<span id="cb26-61"><a aria-label="61"></a>            )</span>
+<span id="cb26-62"><a aria-label="62"></a>        plt.tight_layout()</span>
+<span id="cb26-63"><a aria-label="63"></a>        plt.show()</span>
+<span id="cb26-64"><a aria-label="64"></a>        display(Markdown(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(table)))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="cached-bfs-astar-validation-1" class="cell-output cell-output-display cell-output-markdown">
+<p><strong>25 000 comparaisons terminées</strong> (25 000 plateaux distincts) ; <strong>0 échecs de comparaison des longueurs</strong>.</p>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="slides_files/figure-revealjs/cached-bfs-astar-validation-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="slides_files/figure-revealjs/cached-bfs-astar-validation-output-2.png" id="cached-bfs-astar-validation-2" class="quarto-figure quarto-figure-center" width="948" height="240"></a></p>
+</figure>
+</div>
+</div>
+<div id="cached-bfs-astar-validation-3" class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Méthode</th>
+<th style="text-align: right;">Moyenne</th>
+<th style="text-align: right;">Médiane</th>
+<th style="text-align: right;">Minimum</th>
+<th style="text-align: right;">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BFS</td>
+<td style="text-align: right;">93 419,1</td>
+<td style="text-align: right;">93 362,0</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">181 437</td>
+</tr>
+<tr class="even">
+<td>A* (Manhattan)</td>
+<td style="text-align: right;">1 643,7</td>
+<td style="text-align: right;">959,0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">23 647</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<aside class="notes">
+<p>Chaque ligne compare les deux algorithmes sur le même plateau initial. Le tableau présente la moyenne, la médiane, le minimum et le maximum des nombres de développements de nœuds non objectifs. L’état objectif sélectionné est exclu ; les entrées obsolètes de A* sont exclues, mais tout développement répété effectif serait compté.</p>
+<p>Les plages horizontales sont distinctes pour que la forme de chaque distribution reste visible. Une forte concentration près des petites valeurs indique que de nombreux plateaux demandent peu d’effort de recherche ; une longue queue à droite révèle un groupe plus restreint de cas coûteux. Comparez les valeurs des axes et le tableau avant de conclure sur l’effort relatif. Le nombre de développements mesure le travail de recherche, plutôt que le temps d’exécution ou la mémoire totale.</p>
+<p>La taille de l’échantillon et les échecs de comparaison des longueurs sont calculés à partir des lignes complètes du CSV ; ils ne sont pas déduits du nombre d’exécutions demandé dans le nom du fichier. Des résultats partiels ne doivent pas être présentés comme une expérience terminée de 25 000 plateaux. L’expérience et la preuve répondent à des questions complémentaires sur le code et l’algorithme.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Les histogrammes utilisent des <strong>plages horizontales différentes</strong> pour révéler les deux distributions. Comparez les échelles numériques et les statistiques.</p>
 </div></aside></section>
 <section id="exploration-valider-loptimalité" class="slide level2 smaller">
 <h2>Exploration : valider l’optimalité</h2>

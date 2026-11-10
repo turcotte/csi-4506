@@ -6,7 +6,7 @@ Marcel Turcotte
 
 Date de publication
 
-16 octobre 2026
+7 novembre 2026
 
 # Comment obtenir de l’aide ?
 
@@ -72,8 +72,8 @@ Si mes heures de bureau coïncident avec vos cours, veuillez m’envoyer vos dis
 
 - **Quand** : Consultez la page [Calendrier du cours](course-schedule).
 - **Format** : Livre fermé. Questions à choix multiples et vrai/faux.
-- **Portée** : Cours 1 à 17.
-  - La numérotation se réfère à celle utilisée dans les URLs, par exemple [turcotte.xyz/teaching/csi-4506/lectures/07/slides.html](https://turcotte.xyz/teaching/csi-4506/lectures/07/slides.html) est le cours 7. Par conséquent, le quiz couvre les cours du 6 octobre au 16 novembre inclusivement.
+- **Portée** : Cours 10 à 17.
+  - La numérotation se réfère à celle utilisée dans les URLs, par exemple [turcotte.xyz/teaching/csi-4506/lectures/10/slides.html](https://turcotte.xyz/teaching/csi-4506/lectures/10/slides.html) est le cours 10. Par conséquent, le quiz couvre les cours du 14 octobre au 16 novembre inclusivement.
 - **Contenu** : Accent sur les questions conceptuelles plutôt que sur les détails techniques précis (par exemple, comment remodeler un tableau numpy).
 - **Types de questions** : Comprend des extraits de code ou des diagrammes nécessitant l’identification des déclarations correctes.
 - **Nombre de questions** : Entre 25 et 35 questions.
