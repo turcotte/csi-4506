@@ -125,6 +125,22 @@
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="../../assets/css/reveal-common.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -238,7 +254,7 @@ Marcel Turcotte
 </div>
 </div>
 
-  <p class="date">Version: 4 sept. 2026 17h02</p>
+  <p class="date">Version: 10 nov. 2026 17h37</p>
 </section>
 <section>
 <section id="préambule" class="title-slide slide level1 center">
@@ -334,13 +350,13 @@ Marcel Turcotte
 <section id="motivation-suite" class="slide level2">
 <h2>Motivation (suite)</h2>
 <ul>
-<li class="fragment">Considérons une <strong>image RVB</strong> de dimensions <span class="math inline">\(224 \times 224\)</span>, relativement petite selon les normes actuelles.</li>
-<li class="fragment">Elle contient <span class="math inline">\(224 \times 224 \times 3 = 150\,528\)</span> <strong>attributs d’entrée</strong>.</li>
+<li class="fragment">Considérons une <strong>image RVB</strong> de dimensions <span class="math inline">224 \times 224</span>, relativement petite selon les normes actuelles.</li>
+<li class="fragment">Elle contient <span class="math inline">224 \times 224 \times 3 = 150\,528</span> <strong>attributs d’entrée</strong>.</li>
 <li class="fragment">Un réseau ne comportant qu’une <strong>seule couche cachée dense</strong> nécessiterait plus de 22 658 678 784 (<strong>22 milliards</strong>) de paramètres, ce qui illustre l’ampleur du calcul.</li>
 </ul>
 <aside class="notes">
 <p>Nous supposons ici que la couche cachée contient autant d’unités que la couche d’entrée. Ce choix préserve la dimension de l’espace des attributs et évite d’imposer un goulot d’étranglement arbitraire dès la première couche. Le réseau possède ainsi une capacité suffisante pour modéliser des combinaisons complexes et non linéaires de tous les pixels avant la réduction de résolution.</p>
-<p>Dans un réseau à propagation avant entièrement connecté de <span class="math inline">\(k\)</span> couches contenant chacune <span class="math inline">\(n\)</span> unités, le nombre de paramètres croît selon <span class="math inline">\(\mathcal{O}(k n^2)\)</span>.</p>
+<p>Dans un réseau à propagation avant entièrement connecté de <span class="math inline">k</span> couches contenant chacune <span class="math inline">n</span> unités, le nombre de paramètres croît selon <span class="math inline">\mathcal{O}(k n^2)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -378,7 +394,7 @@ Marcel Turcotte
 <ul>
 <li><strong>Transition :</strong> en vision par ordinateur classique, des personnes choisissaient les poids des matrices; les couches convolutives, elles, les <em>apprennent</em>. Pour représenter mathématiquement cet apprentissage et les représentations profondes, nous retirons d’abord la complexité spatiale.</li>
 <li><strong>Contenu :</strong> suivre la progression en 1D : un canal, plusieurs noyaux, plusieurs canaux, puis plusieurs couches.</li>
-<li><strong>Idée essentielle :</strong> maîtriser le calcul des produits scalaires et les règles dimensionnelles strictes régissant <span class="math inline">\(C_{\mathrm{in}}\)</span> et <span class="math inline">\(C_{\mathrm{out}}\)</span>.</li>
+<li><strong>Idée essentielle :</strong> maîtriser le calcul des produits scalaires et les règles dimensionnelles strictes régissant <span class="math inline">C_{\mathrm{in}}</span> et <span class="math inline">C_{\mathrm{out}}</span>.</li>
 </ul>
 <p><strong>Phase 3 : la synthèse (réseaux neuronaux 2D)</strong></p>
 <p><strong>Objectif :</strong> réintroduire les dimensions spatiales dans le calcul tensoriel.</p>
@@ -581,7 +597,7 @@ Marcel Turcotte
 
 <aside class="notes">
 <p>Une image est un tableau bidimensionnel de nombres. Ici, selon l’échelle conventionnelle d’une image en niveaux de gris sur 8 bits, 0 représente un pixel noir et 255 un pixel blanc. Ces seize intensités forment une petite lettre O.</p>
-<p>La petite matrice <span class="math inline">\(2 \times 2\)</span> est un noyau. Nous alignons d’abord son élément supérieur gauche sur le pixel supérieur gauche de l’entrée, puis nous le décalons d’une colonne à la fois. À la fin d’une ligne, nous poursuivons sur la ligne suivante. Une entrée <span class="math inline">\(4 \times 4\)</span> et un noyau <span class="math inline">\(2 \times 2\)</span> donnent <span class="math inline">\(3 \times 3=9\)</span> positions valides.</p>
+<p>La petite matrice <span class="math inline">2 \times 2</span> est un noyau. Nous alignons d’abord son élément supérieur gauche sur le pixel supérieur gauche de l’entrée, puis nous le décalons d’une colonne à la fois. À la fin d’une ligne, nous poursuivons sur la ligne suivante. Une entrée <span class="math inline">4 \times 4</span> et un noyau <span class="math inline">2 \times 2</span> donnent <span class="math inline">3 \times 3=9</span> positions valides.</p>
 <p>Nous ne retenons que les positions où le noyau entier chevauche l’entrée. On parle de corrélation croisée <strong>valide</strong>. Le traitement des frontières sera introduit plus tard.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -595,16 +611,16 @@ Marcel Turcotte
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Un <strong>noyau</strong> (aussi appelé filtre) est une petite matrice, généralement de taille <span class="math inline">\(3 \times 3\)</span>, <span class="math inline">\(5 \times 5\)</span> ou similaire, qui <strong>glisse sur</strong> les données d’entrée, par exemple une image, afin d’effectuer une <strong>corrélation croisée</strong>.</p>
+<p>Un <strong>noyau</strong> (aussi appelé filtre) est une petite matrice, généralement de taille <span class="math inline">3 \times 3</span>, <span class="math inline">5 \times 5</span> ou similaire, qui <strong>glisse sur</strong> les données d’entrée, par exemple une image, afin d’effectuer une <strong>corrélation croisée</strong>.</p>
 </div></aside></section>
 <section id="que-calcule-chaque-position" class="slide level2 hide-code-toggle">
 <h2>Que calcule chaque position ?</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 Y[i,j]
 =
 \sum_{u=0}^{K_h-1}\sum_{v=0}^{K_w-1}
 X[i+u,j+v] K[u,v]
-\]</span></p>
+</span></p>
 <div id="cell-cross-correlation-one-calculation" class="cell" data-fig-height="3.25" data-fig-width="11.2" data-execution_count="4">
 <details class="code-fold">
 <summary>Afficher le code du calcul</summary>
@@ -645,7 +661,7 @@ X[i+u,j+v] K[u,v]
 </div>
 
 <aside class="notes">
-<p>À la position <span class="math inline">\((i,j)=(1,2)\)</span>, le noyau chevauche deux pixels noirs et deux pixels blancs. Nous multiplions les éléments correspondants, puis additionnons les quatre produits. Le résultat, 510, est placé dans <span class="math inline">\(Y[1,2]\)</span>.</p>
+<p>À la position <span class="math inline">(i,j)=(1,2)</span>, le noyau chevauche deux pixels noirs et deux pixels blancs. Nous multiplions les éléments correspondants, puis additionnons les quatre produits. Le résultat, 510, est placé dans <span class="math inline">Y[1,2]</span>.</p>
 <p>Le même calcul est répété à chaque position. Le bord droit du O produit des réponses positives, le bord gauche des réponses négatives, et la colonne centrale une réponse nulle. Le signe indique donc le sens du changement, et non seulement la présence d’un contour.</p>
 <p>Cette opération est une <strong>corrélation croisée</strong>, puisque le noyau est utilisé tel quel. Dans la convolution mathématique, le noyau est d’abord renversé selon ses deux axes. Par convention, les bibliothèques d’apprentissage automatique calculent habituellement une corrélation croisée, mais appellent le résultat <strong>convolution</strong>. Avec un noyau de contours asymétrique, le renversement change le signe de la réponse, mais pas sa valeur absolue.</p>
 <p>En traitement classique des images, la sortie est souvent appelée <strong>carte de réponse</strong>. Dans un réseau convolutif, la sortie correspondante d’un noyau est une <strong>carte d’attributs</strong>.</p>
@@ -718,8 +734,8 @@ X[i+u,j+v] K[u,v]
 </div>
 
 <aside class="notes">
-<p>Il s’agit du noyau de Sobel <span class="math inline">\(x\)</span>. Il estime la vitesse à laquelle l’intensité de l’image change d’une colonne à l’autre, c’est-à-dire selon la coordonnée horizontale. Un changement marqué de gauche à droite se produit à une frontière verticale; <span class="math inline">\(K_x\)</span> est donc couramment décrit comme un détecteur de contours verticaux. Distinguer la direction de la dérivée de l’orientation du contour évite une erreur terminologique fréquente.</p>
-<p>La réponse signée distingue une frontière sombre-claire d’une frontière claire-sombre. La diapositive affiche <span class="math inline">\(|Y|\)</span>, la valeur absolue de la réponse, parce que nous cherchons ici la position des frontières verticales fortes et non leur polarité. L’échelle est limitée au 99e percentile afin que quelques pixels très intenses ne rendent pas les autres contours invisibles.</p>
+<p>Il s’agit du noyau de Sobel <span class="math inline">x</span>. Il estime la vitesse à laquelle l’intensité de l’image change d’une colonne à l’autre, c’est-à-dire selon la coordonnée horizontale. Un changement marqué de gauche à droite se produit à une frontière verticale; <span class="math inline">K_x</span> est donc couramment décrit comme un détecteur de contours verticaux. Distinguer la direction de la dérivée de l’orientation du contour évite une erreur terminologique fréquente.</p>
+<p>La réponse signée distingue une frontière sombre-claire d’une frontière claire-sombre. La diapositive affiche <span class="math inline">|Y|</span>, la valeur absolue de la réponse, parce que nous cherchons ici la position des frontières verticales fortes et non leur polarité. L’échelle est limitée au 99e percentile afin que quelques pixels très intenses ne rendent pas les autres contours invisibles.</p>
 <p>Le noyau a été choisi par une personne; il n’y a aucun apprentissage automatique. La photographie fournit une image réelle présentant des variations naturelles; la console, le damier, les vêtements et l’arrière-plan contiennent des frontières de plusieurs orientations.</p>
 <p><strong>Sources :</strong></p>
 <ul>
@@ -789,7 +805,7 @@ X[i+u,j+v] K[u,v]
 </div>
 
 <aside class="notes">
-<p>La transposée du noyau de Sobel <span class="math inline">\(x\)</span> donne le noyau de Sobel <span class="math inline">\(y\)</span>. Celui-ci estime les changements d’une ligne à l’autre et répond donc fortement aux frontières horizontales. L’emploi de la même image d’entrée rend la comparaison contrôlée : seuls les poids du noyau ont changé.</p>
+<p>La transposée du noyau de Sobel <span class="math inline">x</span> donne le noyau de Sobel <span class="math inline">y</span>. Celui-ci estime les changements d’une ligne à l’autre et répond donc fortement aux frontières horizontales. L’emploi de la même image d’entrée rend la comparaison contrôlée : seuls les poids du noyau ont changé.</p>
 <p>Ces noyaux illustrent l’idée calculatoire centrale. Un petit ensemble de poids est appliqué à chaque voisinage local, ce qui produit une carte de réponse indiquant où apparaît le motif recherché. En traitement classique des images, des spécialistes définissent les noyaux utiles. Un réseau de neurones convolutif conserve le balayage local, mais apprend les poids et les biais de ses noyaux à partir des données.</p>
 <p>Les noyaux appris dans la première couche peuvent ressembler à des détecteurs de contours ou de contrastes de couleur, mais un réseau convolutif n’est pas limité à la reproduction de noyaux classiques. Ses noyaux sont optimisés en fonction de l’objectif de prédiction du réseau.</p>
 <p><strong>Sources :</strong></p>
@@ -843,9 +859,9 @@ X[i+u,j+v] K[u,v]
 <blockquote>
 <p>Dans quels problèmes les observations sont-elles disposées selon <strong>un axe ordonné</strong> ?</p>
 </blockquote>
-<p><span class="math display">\[
+<p><span class="math display">
 x[0],\; x[1],\; x[2],\; \ldots,\; x[L-1]
-\]</span></p>
+</span></p>
 
 <aside class="notes">
 <p>Les données unidimensionnelles sont organisées selon un axe ordonné. Le temps est l’axe le plus familier, mais l’ordre peut aussi représenter une position dans un texte ou une séquence biologique, ou encore la distance le long d’un trajet. Les <strong>observations voisines sont généralement liées</strong>; permuter deux positions modifie donc le sens des données.</p>
@@ -1006,12 +1022,12 @@ x[0],\; x[1],\; x[2],\; \ldots,\; x[L-1]
         7       0.14   0.22359</code></pre>
 </div>
 </div>
-<p><span class="math display">\[
+<p><span class="math display">
 x[0]=0.04796,\quad x[1]=0.23134,\quad x[2]=0.30507,\quad\ldots
-\]</span></p>
+</span></p>
 
 <aside class="notes">
-<p>L’entrée de l’axe X utilisée dans les diapositives suivantes est un vecteur de 128 nombres réels. À raison de 50 mesures par seconde, l’indice progresse de 0,02 seconde à chaque position. La notation <span class="math inline">\(x[i]\)</span> désigne simplement le nombre stocké à la position <span class="math inline">\(i\)</span>.</p>
+<p>L’entrée de l’axe X utilisée dans les diapositives suivantes est un vecteur de 128 nombres réels. À raison de 50 mesures par seconde, l’indice progresse de 0,02 seconde à chaque position. La notation <span class="math inline">x[i]</span> désigne simplement le nombre stocké à la position <span class="math inline">i</span>.</p>
 <p>Le fichier <a href="data/uci_har_prototype.csv"><code>data/uci_har_prototype.csv</code></a> est un extrait compact en format long créé pour ce cours. Chaque ligne contient l’activité, l’indice en base zéro de la fenêtre source, l’identifiant du sujet, l’indice de l’échantillon et les trois valeurs d’accélération corporelle. Il a été dérivé des trois fichiers UCI <code>body_acc_{x,y,z}_train.txt</code>; les étiquettes et les sujets proviennent respectivement de <code>y_train.txt</code> et <code>subject_train.txt</code>.</p>
 <p>« Valeurs réelles » ne signifie pas « enregistrements bruts non traités ». Ces valeurs ont subi le prétraitement décrit dans les notes précédentes. Cette distinction importe pour interpréter ce que reçoit le modèle et les conclusions que l’on peut en tirer.</p>
 <p><strong>Sources :</strong></p>
@@ -1108,17 +1124,17 @@ x[0]=0.04796,\quad x[1]=0.23134,\quad x[2]=0.30507,\quad\ldots
 </div>
 </div>
 </div>
-<p><span class="math display">\[
+<p><span class="math display">
 w = [-1,-1,0,1,1], \qquad
 y[i] = \sum_{j=0}^{K-1} x[i+j]w[j]
-\]</span></p>
+</span></p>
 
 <aside class="notes">
-<p>Le noyau <span class="math inline">\(w\)</span> contient cinq poids; ainsi, <span class="math inline">\(K=5\)</span>. À la position de sortie <span class="math inline">\(i\)</span>, le score vaut</p>
-<p><span class="math display">\[
+<p>Le noyau <span class="math inline">w</span> contient cinq poids; ainsi, <span class="math inline">K=5</span>. À la position de sortie <span class="math inline">i</span>, le score vaut</p>
+<p><span class="math display">
 y[i] = -x[i]-x[i+1]+x[i+3]+x[i+4].
-\]</span></p>
-<p>Il compare la somme des deux dernières valeurs à celle des deux premières. La valeur centrale <span class="math inline">\(x[i+2]\)</span> est ignorée. La fenêtre choisie contient deux valeurs négatives, une valeur proche de zéro et deux valeurs positives, ce qui rend la transition ascendante visuellement claire.</p>
+</span></p>
+<p>Il compare la somme des deux dernières valeurs à celle des deux premières. La valeur centrale <span class="math inline">x[i+2]</span> est ignorée. La fenêtre choisie contient deux valeurs négatives, une valeur proche de zéro et deux valeurs positives, ce qui rend la transition ascendante visuellement claire.</p>
 <p>Le noyau ne vérifie pas le signe des valeurs d’entrée. Il répond aussi lorsque les cinq valeurs sont positives ou toutes négatives, pourvu que les deux dernières dépassent suffisamment les deux premières. Il est donc plus précis de le décrire comme un détecteur de contraste ascendant que comme un gabarit exact d’une suite particulière de signes.</p>
 <p>Le noyau est volontairement conçu à la main afin que son comportement puisse être prédit avant le calcul. Dans un réseau de neurones convolutif, les poids du noyau sont appris à partir des données.</p>
 <p>Le traitement classique des signaux et des images emploie le même calcul local de multiplication et de sommation, avec des poids choisis selon l’expertise du domaine. Un réseau convolutif traite ces poids comme des paramètres et apprend des détecteurs utiles à la tâche de prédiction. Le noyau conçu ici est donc un point de départ explicatif, et non une affirmation sur ce qu’un réseau entraîné doit apprendre.</p>
@@ -1161,8 +1177,8 @@ y[i] = -x[i]-x[i+1]+x[i+3]+x[i+4].
 </div>
 <aside class="notes">
 <p>Non, pas avec cette mise en œuvre. Cette fonction effectue une corrélation croisée unidimensionnelle valide avec un canal d’entrée, un noyau, un pas unitaire, aucun remplissage et aucun biais. Elle constitue déjà un passage avant complet pour ce cas restreint.</p>
-<p>La variable de boucle <span class="math inline">\(i\)</span> désigne une position de sortie et <span class="math inline">\(j\)</span> une position dans le noyau. L’instruction de la boucle interne calcule un produit et l’ajoute à <code>y[i]</code>. Le code source expose ainsi la même sommation que l’équation au lieu de la dissimuler dans une opération vectorisée.</p>
-<p>Le même vecteur <code>w</code> est utilisé à chaque position. Ce partage des paramètres permet de détecter un motif local où qu’il apparaisse dans la séquence. Pour <span class="math inline">\(L=128\)</span> et <span class="math inline">\(K=5\)</span>, la corrélation croisée valide produit <span class="math inline">\(L_{\mathrm{out}}=124\)</span> scores.</p>
+<p>La variable de boucle <span class="math inline">i</span> désigne une position de sortie et <span class="math inline">j</span> une position dans le noyau. L’instruction de la boucle interne calcule un produit et l’ajoute à <code>y[i]</code>. Le code source expose ainsi la même sommation que l’équation au lieu de la dissimuler dans une opération vectorisée.</p>
+<p>Le même vecteur <code>w</code> est utilisé à chaque position. Ce partage des paramètres permet de détecter un motif local où qu’il apparaisse dans la séquence. Pour <span class="math inline">L=128</span> et <span class="math inline">K=5</span>, la corrélation croisée valide produit <span class="math inline">L_{\mathrm{out}}=124</span> scores.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1237,7 +1253,7 @@ y[i] = -x[i]-x[i+1]+x[i+3]+x[i+4].
 </div>
 <aside class="notes">
 <p>La fenêtre d’entrée surlignée produit la valeur de sortie marquée. Le déplacement de la fenêtre sur toutes les positions valides remplit le vecteur de sortie. Dans un réseau convolutif, cette sortie est appelée <strong>carte d’attributs</strong> : chaque position indique avec quelle intensité le motif local appris y apparaît.</p>
-<p>Nous observons à la fois la <strong>connectivité locale</strong> et le <strong>partage des paramètres</strong>. Chaque valeur de sortie n’utilise que cinq valeurs d’entrée voisines, mais les mêmes cinq poids sont réutilisés aux 124 positions valides. À titre de comparaison, une transformation Dense de 128 valeurs d’entrée en 124 valeurs de sortie contiendrait <span class="math inline">\(128\times124=15\,872\)</span> poids distincts. Cette convolution ne contient que cinq poids, ou six paramètres appris si l’on inclut un biais partagé.</p>
+<p>Nous observons à la fois la <strong>connectivité locale</strong> et le <strong>partage des paramètres</strong>. Chaque valeur de sortie n’utilise que cinq valeurs d’entrée voisines, mais les mêmes cinq poids sont réutilisés aux 124 positions valides. À titre de comparaison, une transformation Dense de 128 valeurs d’entrée en 124 valeurs de sortie contiendrait <span class="math inline">128\times124=15\,872</span> poids distincts. Cette convolution ne contient que cinq poids, ou six paramètres appris si l’on inclut un biais partagé.</p>
 <p>Cette réduction ne vient pas de l’élimination de positions d’entrée. Elle vient de l’obligation d’appliquer partout la même règle locale. Cette contrainte architecturale explique à la fois l’efficacité paramétrique et l’équivariance par translation.</p>
 <p>Chaque score est placé horizontalement au centre de sa fenêtre d’entrée de cinq échantillons. Ce choix facilite la visualisation, même si le tableau lui-même est simplement indexé de <code>up_map[0]</code> à <code>up_map[123]</code>.</p>
 <p><strong>Sources :</strong></p>
@@ -1288,14 +1304,14 @@ y[i] = -x[i]-x[i+1]+x[i+3]+x[i+4].
 </div></aside></section>
 <section id="équivariance" class="slide level2">
 <h2>Équivariance</h2>
-<p>Soit <span class="math inline">\(T_\Delta\)</span> une translation de l’entrée de <span class="math inline">\(\Delta\)</span> positions.</p>
-<p><span class="math display">\[
+<p>Soit <span class="math inline">T_\Delta</span> une translation de l’entrée de <span class="math inline">\Delta</span> positions.</p>
+<p><span class="math display">
 F(T_\Delta X)=T_\Delta F(X)
-\]</span></p>
+</span></p>
 <p>Une carte d’attributs convolutive se déplace avec le motif d’entrée.</p>
 <aside class="notes">
-<p><span class="math inline">\(T_\Delta\)</span> est un opérateur de translation : il décale chaque position de <span class="math inline">\(\Delta\)</span>. Pour une convolution ou une corrélation croisée de pas unitaire sur une séquence infinie, une entrée translatée produit une carte d’attributs translatée de la même manière. Il s’agit de l’équivariance par translation, exprimée par <span class="math inline">\(F(T_\Delta X)=T_\Delta F(X)\)</span>.</p>
-<p>L’équation décrit des propriétés idéalisées. Les frontières finies et le remplissage peuvent perturber l’équivariance exacte près des extrémités. Une convolution de pas <span class="math inline">\(S\)</span> n’est exactement équivariante que pour les translations compatibles avec sa grille d’échantillonnage, par exemple les décalages multiples de <span class="math inline">\(S\)</span>.</p>
+<p><span class="math inline">T_\Delta</span> est un opérateur de translation : il décale chaque position de <span class="math inline">\Delta</span>. Pour une convolution ou une corrélation croisée de pas unitaire sur une séquence infinie, une entrée translatée produit une carte d’attributs translatée de la même manière. Il s’agit de l’équivariance par translation, exprimée par <span class="math inline">F(T_\Delta X)=T_\Delta F(X)</span>.</p>
+<p>L’équation décrit des propriétés idéalisées. Les frontières finies et le remplissage peuvent perturber l’équivariance exacte près des extrémités. Une convolution de pas <span class="math inline">S</span> n’est exactement équivariante que pour les translations compatibles avec sa grille d’échantillonnage, par exemple les décalages multiples de <span class="math inline">S</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1328,12 +1344,12 @@ F(T_\Delta X)=T_\Delta F(X)
 <span id="cb13-14"><a aria-label="14"></a></span>
 <span id="cb13-15"><a aria-label="15"></a>up_map_same <span class="op">=</span> conv1d(x_walking, kernel_up, padding<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><span class="math display">\[
+<p><span class="math display">
 L_{\mathrm{out}}=L+P_{\mathrm{left}}+P_{\mathrm{right}}-K+1
-\]</span></p>
+</span></p>
 <aside class="notes">
-<p>Le remplissage prolonge l’entrée avant le déplacement du noyau. Ici, <code>padding=(2, 2)</code> ajoute deux zéros au début et deux à la fin. Comme le noyau est de longueur impaire <span class="math inline">\(K=5\)</span>, ce remplissage équilibré place une sortie à chaque position originale et préserve la longueur.</p>
-<p>Numériquement, <span class="math inline">\(L=128\)</span>, <span class="math inline">\(K=5\)</span> et deux zéros ajoutés de chaque côté donnent <span class="math inline">\(L_{\mathrm{out}}=128+2+2-5+1=128\)</span>.</p>
+<p>Le remplissage prolonge l’entrée avant le déplacement du noyau. Ici, <code>padding=(2, 2)</code> ajoute deux zéros au début et deux à la fin. Comme le noyau est de longueur impaire <span class="math inline">K=5</span>, ce remplissage équilibré place une sortie à chaque position originale et préserve la longueur.</p>
+<p>Numériquement, <span class="math inline">L=128</span>, <span class="math inline">K=5</span> et deux zéros ajoutés de chaque côté donnent <span class="math inline">L_{\mathrm{out}}=128+2+2-5+1=128</span>.</p>
 <p>Le remplissage n’a pas à être équilibré. Ajouter des valeurs uniquement au début ou à la fin modifie l’alignement entre les positions d’entrée et la sortie. Le remplissage « same » consiste généralement à choisir la quantité totale requise pour préserver la longueur; avec un noyau de longueur impaire et un pas unitaire, le répartir également des deux côtés est le choix le plus naturel.</p>
 <p>La mise en œuvre redéfinit maintenant <code>conv1d</code> en ajoutant un argument facultatif. Sa valeur par défaut <code>(0, 0)</code> redonne la fonction de corrélation croisée valide précédente.</p>
 <style type="text/css">
@@ -1421,7 +1437,7 @@ L_{\mathrm{out}}=L+P_{\mathrm{left}}+P_{\mathrm{right}}-K+1
 <p>Le remplissage par zéros, réflexion, réplication ou périodicité encode différentes hypothèses aux frontières. Les sorties près des frontières peuvent contenir des artefacts.</p>
 </div></aside></section>
 <section id="que-se-passe-t-il-si-i-avance-de-2" class="slide level2">
-<h2>Que se passe-t-il si <span class="math inline">\(i\)</span> avance de 2 ?</h2>
+<h2>Que se passe-t-il si <span class="math inline">i</span> avance de 2 ?</h2>
 <div class="fragment">
 <div id="conv1d-with-stride" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-label="1"></a><span class="kw">def</span> conv1d(x, w, padding<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), stride<span class="op">=</span><span class="dv">1</span>):</span>
@@ -1440,14 +1456,14 @@ L_{\mathrm{out}}=L+P_{\mathrm{left}}+P_{\mathrm{right}}-K+1
 </div>
 </div>
 <div class="fragment">
-<p><span class="math display">\[
+<p><span class="math display">
 L_{\mathrm{out}}=
 \left\lfloor\frac{L+P_{\mathrm{left}}+P_{\mathrm{right}}-K}{S}\right\rfloor+1
-\]</span></p>
+</span></p>
 <aside class="notes">
-<p>Le pas <span class="math inline">\(S\)</span> est la distance entre deux positions successives du noyau. Avec <code>stride=1</code>, le début <span class="math inline">\(i\)</span> de la fenêtre d’entrée parcourt <span class="math inline">\(0,1,2,\ldots\)</span>. Avec <code>stride=2</code>, il parcourt <span class="math inline">\(0,2,4,\ldots\)</span>; la moitié des positions possibles sont donc omises dans cet exemple.</p>
-<p>L’indice de sortie <span class="math inline">\(t\)</span> demeure consécutif : <span class="math inline">\(0,1,2,\ldots\)</span>. Le début de la fenêtre d’entrée servant à le calculer est <span class="math inline">\(i=tS\)</span>. Distinguer <span class="math inline">\(t\)</span> de <span class="math inline">\(i\)</span> rend explicite la relation entre la sortie raccourcie et l’entrée originale.</p>
-<p>Le plancher de la formule de longueur élimine toute dernière fenêtre incomplète. Pour <span class="math inline">\(L=128\)</span>, <span class="math inline">\(K=5\)</span>, un remplissage équilibré <span class="math inline">\((2,2)\)</span> et <span class="math inline">\(S=2\)</span>, la sortie contient 64 positions.</p>
+<p>Le pas <span class="math inline">S</span> est la distance entre deux positions successives du noyau. Avec <code>stride=1</code>, le début <span class="math inline">i</span> de la fenêtre d’entrée parcourt <span class="math inline">0,1,2,\ldots</span>. Avec <code>stride=2</code>, il parcourt <span class="math inline">0,2,4,\ldots</span>; la moitié des positions possibles sont donc omises dans cet exemple.</p>
+<p>L’indice de sortie <span class="math inline">t</span> demeure consécutif : <span class="math inline">0,1,2,\ldots</span>. Le début de la fenêtre d’entrée servant à le calculer est <span class="math inline">i=tS</span>. Distinguer <span class="math inline">t</span> de <span class="math inline">i</span> rend explicite la relation entre la sortie raccourcie et l’entrée originale.</p>
+<p>Le plancher de la formule de longueur élimine toute dernière fenêtre incomplète. Pour <span class="math inline">L=128</span>, <span class="math inline">K=5</span>, un remplissage équilibré <span class="math inline">(2,2)</span> et <span class="math inline">S=2</span>, la sortie contient 64 positions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1522,7 +1538,7 @@ L_{\mathrm{out}}=
 <aside class="notes">
 <p>Le remplissage a été choisi de sorte qu’un pas de 1 produise un score aligné sur chaque position d’entrée. Un pas de 2 utilise les mêmes poids et la même entrée remplie, mais n’évalue qu’une position sur deux. Le résultat contient 64 scores plutôt que 128. Dans cette représentation centrée sur les dimensions, le tableau de 64 valeurs est volontairement tracé avec la moitié de la largeur physique des tableaux de 128 valeurs.</p>
 <p>Si les deux sorties étaient tracées en fonction du temps écoulé, elles couvriraient le même intervalle de 2,56 secondes; la sortie de pas 2 contiendrait simplement deux fois moins d’échantillons. Tracer l’indice de sortie rend plutôt le changement de longueur immédiatement visible.</p>
-<p>Il s’agit d’un sous-échantillonnage temporel. Il réduit le stockage et les calculs des couches suivantes, mais diminue aussi la résolution de position et peut manquer des changements entre les positions échantillonnées. Dire que la sortie est « la moitié de <span class="math inline">\(x\)</span> » serait trompeur : il s’agit d’un résumé local appris comportant deux fois moins de positions, et non d’un vecteur contenant une valeur sur deux de l’entrée originale.</p>
+<p>Il s’agit d’un sous-échantillonnage temporel. Il réduit le stockage et les calculs des couches suivantes, mais diminue aussi la résolution de position et peut manquer des changements entre les positions échantillonnées. Dire que la sortie est « la moitié de <span class="math inline">x</span> » serait trompeur : il s’agit d’un résumé local appris comportant deux fois moins de positions, et non d’un vecteur contenant une valeur sur deux de l’entrée originale.</p>
 <p><strong>Sources :</strong></p>
 <ul>
 <li>Le signal d’entrée provient de l’enregistrement 3363 des fichiers de signaux inertiels d’entraînement UCI HAR. Les cartes d’attributs ont été calculées par le code affiché.</li>
@@ -1551,26 +1567,26 @@ L_{\mathrm{out}}=
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="contraste-ascendant">Contraste ascendant</h3>
-<p><span class="math display">\[
+<p><span class="math display">
 w^{(0)} = [-1,-1,0,1,1]
-\]</span></p>
+</span></p>
 <p>La première paire est soustraite de la dernière.</p>
 </div><div class="column" style="width:50%;">
 <h3 id="contraste-descendant">Contraste descendant</h3>
-<p><span class="math display">\[
+<p><span class="math display">
 w^{(1)} = [1,1,0,-1,-1]
-\]</span></p>
+</span></p>
 <p>La dernière paire est soustraite de la première.</p>
 </div></div>
-<p><span class="math display">\[
+<p><span class="math display">
 W = \begin{bmatrix}\vert &amp; \vert\\ w^{(0)} &amp; w^{(1)}\\ \vert &amp; \vert\end{bmatrix}
 \in \mathbb{R}^{K\times C_{\mathrm{out}}}
-\]</span></p>
+</span></p>
 <aside class="notes">
 <p>Comment modéliser plusieurs motifs locaux ?</p>
 <p>Le premier noyau produit un score positif lorsque la dernière paire dépasse la première. Le second est son opposé et produit donc un score positif pour le contraste inverse.</p>
 <p>Cette paire symétrique est utile sur le plan pédagogique, car la relation entre les sorties est prévisible.</p>
-<p>Placer les deux vecteurs de longueur <span class="math inline">\(K\)</span> en colonnes produit une matrice <span class="math inline">\(W\)</span> de forme <span class="math inline">\(K\times C_{\mathrm{out}}\)</span>. Ici, <span class="math inline">\(C_{\mathrm{out}}=2\)</span> puisque deux noyaux produisent deux <strong>canaux de sortie</strong>. Un noyau produit une carte d’attributs; ajouter des noyaux permet donc à une couche de représenter plusieurs types d’indices locaux.</p>
+<p>Placer les deux vecteurs de longueur <span class="math inline">K</span> en colonnes produit une matrice <span class="math inline">W</span> de forme <span class="math inline">K\times C_{\mathrm{out}}</span>. Ici, <span class="math inline">C_{\mathrm{out}}=2</span> puisque deux noyaux produisent deux <strong>canaux de sortie</strong>. Un noyau produit une carte d’attributs; ajouter des noyaux permet donc à une couche de représenter plusieurs types d’indices locaux.</p>
 <p>L’idée qu’un noyau appris corresponde à un motif facile à nommer constitue un premier modèle utile, mais pas une garantie. Les noyaux appris ne sont pas nécessairement opposés l’un à l’autre, et leur représentation conjointe peut être plus significative qu’un noyau considéré isolément.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1588,7 +1604,7 @@ W = \begin{bmatrix}\vert &amp; \vert\\ w^{(0)} &amp; w^{(1)}\\ \vert &amp; \vert
 <h2>Combien de noyaux une couche devrait-elle utiliser ?</h2>
 <ul>
 <li class="fragment">L’<strong>expertise du domaine</strong> peut suggérer un petit ensemble interprétable.</li>
-<li class="fragment">Plus souvent, <span class="math inline">\(C_{\mathrm{out}}\)</span> est un <strong>hyperparamètre</strong> choisi à l’aide des données de validation.</li>
+<li class="fragment">Plus souvent, <span class="math inline">C_{\mathrm{out}}</span> est un <strong>hyperparamètre</strong> choisi à l’aide des données de validation.</li>
 <li class="fragment"><strong>Davantage de noyaux</strong> augmentent la capacité de représentation, le nombre de paramètres, la mémoire requise et les calculs.</li>
 </ul>
 <aside class="notes">
@@ -1626,8 +1642,8 @@ W = \begin{bmatrix}\vert &amp; \vert\\ w^{(0)} &amp; w^{(1)}\\ \vert &amp; \vert
 <span id="cb17-15"><a aria-label="15"></a>    <span class="cf">return</span> Y</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
-<p>La fonction révisée ajoute l’indice de noyau <span class="math inline">\(m\)</span>. <code>W[j, m]</code> sélectionne la position <span class="math inline">\(j\)</span> du noyau <span class="math inline">\(m\)</span>, <code>b[m]</code> son biais et <code>Y[:, m]</code> la carte d’attributs correspondante. Initialiser <code>Y[t, m]</code> avec le biais, puis y accumuler les <span class="math inline">\(K\)</span> produits reproduit directement l’équation affichée. Les arguments de remplissage et de pas demeurent disponibles; la mise en œuvre s’enrichit donc en ajoutant successivement les concepts.</p>
-<p>L’entrée reste unidimensionnelle, de forme <span class="math inline">\((L)\)</span>. La matrice des noyaux a la forme <span class="math inline">\((K,C_{\mathrm{out}})\)</span> et la sortie, la forme <span class="math inline">\((L_{\mathrm{out}},C_{\mathrm{out}})\)</span>. L’exemple utilise des biais nuls, aucun remplissage et un pas unitaire afin de comparer directement les deux cartes à la carte valide précédente.</p>
+<p>La fonction révisée ajoute l’indice de noyau <span class="math inline">m</span>. <code>W[j, m]</code> sélectionne la position <span class="math inline">j</span> du noyau <span class="math inline">m</span>, <code>b[m]</code> son biais et <code>Y[:, m]</code> la carte d’attributs correspondante. Initialiser <code>Y[t, m]</code> avec le biais, puis y accumuler les <span class="math inline">K</span> produits reproduit directement l’équation affichée. Les arguments de remplissage et de pas demeurent disponibles; la mise en œuvre s’enrichit donc en ajoutant successivement les concepts.</p>
+<p>L’entrée reste unidimensionnelle, de forme <span class="math inline">(L)</span>. La matrice des noyaux a la forme <span class="math inline">(K,C_{\mathrm{out}})</span> et la sortie, la forme <span class="math inline">(L_{\mathrm{out}},C_{\mathrm{out}})</span>. L’exemple utilise des biais nuls, aucun remplissage et un pas unitaire afin de comparer directement les deux cartes à la carte valide précédente.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1733,50 +1749,50 @@ W = \begin{bmatrix}\vert &amp; \vert\\ w^{(0)} &amp; w^{(1)}\\ \vert &amp; \vert
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(X\)</span></td>
+<td><span class="math inline">X</span></td>
 <td>séquence d’entrée</td>
-<td><span class="math inline">\((L,C_{\mathrm{in}})\)</span></td>
+<td><span class="math inline">(L,C_{\mathrm{in}})</span></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(W\)</span></td>
+<td><span class="math inline">W</span></td>
 <td>poids des noyaux</td>
-<td><span class="math inline">\((K,C_{\mathrm{in}},C_{\mathrm{out}})\)</span></td>
+<td><span class="math inline">(K,C_{\mathrm{in}},C_{\mathrm{out}})</span></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(b\)</span></td>
+<td><span class="math inline">b</span></td>
 <td>un biais par canal de sortie</td>
-<td><span class="math inline">\((C_{\mathrm{out}})\)</span></td>
+<td><span class="math inline">(C_{\mathrm{out}})</span></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(Y\)</span></td>
+<td><span class="math inline">Y</span></td>
 <td>cartes d’attributs de sortie</td>
-<td><span class="math inline">\((L_{\mathrm{out}},C_{\mathrm{out}})\)</span></td>
+<td><span class="math inline">(L_{\mathrm{out}},C_{\mathrm{out}})</span></td>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\[
+<p><span class="math display">
 Y[t,m] = b[m] +
 \sum_{j=0}^{K-1}\sum_{c=0}^{C_{\mathrm{in}}-1}
 \widetilde X[tS+j,c]W[j,c,m]
-\]</span></p>
+</span></p>
 <aside class="notes">
 <p>Les symboles décrivent à la fois la taille des tableaux et la signification de chaque indice :</p>
 <ul>
-<li><span class="math inline">\(L\)</span> est le nombre de positions d’entrée et <span class="math inline">\(t\)</span> une position de sortie ;</li>
-<li><span class="math inline">\(K\)</span> est la longueur du noyau et <span class="math inline">\(j\)</span> une position dans celui-ci ;</li>
-<li><span class="math inline">\(C_{\mathrm{in}}\)</span> est le nombre de canaux d’entrée et <span class="math inline">\(c\)</span> en sélectionne un ;</li>
-<li><span class="math inline">\(C_{\mathrm{out}}\)</span> est le nombre de noyaux et <span class="math inline">\(m\)</span> sélectionne une carte d’attributs de sortie ;</li>
-<li><span class="math inline">\(S\)</span> est le pas; ainsi, <span class="math inline">\(i=tS\)</span> est le début correspondant du noyau dans l’entrée remplie <span class="math inline">\(\widetilde X\)</span>.</li>
+<li><span class="math inline">L</span> est le nombre de positions d’entrée et <span class="math inline">t</span> une position de sortie ;</li>
+<li><span class="math inline">K</span> est la longueur du noyau et <span class="math inline">j</span> une position dans celui-ci ;</li>
+<li><span class="math inline">C_{\mathrm{in}}</span> est le nombre de canaux d’entrée et <span class="math inline">c</span> en sélectionne un ;</li>
+<li><span class="math inline">C_{\mathrm{out}}</span> est le nombre de noyaux et <span class="math inline">m</span> sélectionne une carte d’attributs de sortie ;</li>
+<li><span class="math inline">S</span> est le pas; ainsi, <span class="math inline">i=tS</span> est le début correspondant du noyau dans l’entrée remplie <span class="math inline">\widetilde X</span>.</li>
 </ul>
-<p>Avec <span class="math inline">\(P_{\mathrm{left}}\)</span> et <span class="math inline">\(P_{\mathrm{right}}\)</span> positions de remplissage,</p>
-<p><span class="math display">\[
+<p>Avec <span class="math inline">P_{\mathrm{left}}</span> et <span class="math inline">P_{\mathrm{right}}</span> positions de remplissage,</p>
+<p><span class="math display">
 L_{\mathrm{out}}=
 \left\lfloor
 \frac{L+P_{\mathrm{left}}+P_{\mathrm{right}}-K}{S}
 \right\rfloor+1.
-\]</span></p>
-<p>L’équation forme tous les produits entre la fenêtre d’entrée de taille <span class="math inline">\(K\times C_{\mathrm{in}}\)</span> et les poids correspondants du noyau <span class="math inline">\(m\)</span>, additionne ces produits, puis ajoute le biais <span class="math inline">\(b[m]\)</span>. Le tilde distingue l’entrée remplie de l’entrée originale. En l’absence de remplissage et lorsque <span class="math inline">\(S=1\)</span>, l’équation se réduit à l’expression de corrélation valide précédente.</p>
-<p>Les minuscules <span class="math inline">\(x\)</span>, <span class="math inline">\(w\)</span> et <span class="math inline">\(y\)</span> désignaient le cas particulier à un canal et un noyau. Les majuscules <span class="math inline">\(X\)</span>, <span class="math inline">\(W\)</span> et <span class="math inline">\(Y\)</span> désignent les tableaux généraux. Il s’agit de conventions de notation, et non d’opérations mathématiques différentes.</p>
+</span></p>
+<p>L’équation forme tous les produits entre la fenêtre d’entrée de taille <span class="math inline">K\times C_{\mathrm{in}}</span> et les poids correspondants du noyau <span class="math inline">m</span>, additionne ces produits, puis ajoute le biais <span class="math inline">b[m]</span>. Le tilde distingue l’entrée remplie de l’entrée originale. En l’absence de remplissage et lorsque <span class="math inline">S=1</span>, l’équation se réduit à l’expression de corrélation valide précédente.</p>
+<p>Les minuscules <span class="math inline">x</span>, <span class="math inline">w</span> et <span class="math inline">y</span> désignaient le cas particulier à un canal et un noyau. Les majuscules <span class="math inline">X</span>, <span class="math inline">W</span> et <span class="math inline">Y</span> désignent les tableaux généraux. Il s’agit de conventions de notation, et non d’opérations mathématiques différentes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1810,7 +1826,7 @@ L_{\mathrm{out}}=
 <span id="cb19-16"><a aria-label="16"></a>    <span class="cf">return</span> Y</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
-<p>Le nouvel indice de boucle <span class="math inline">\(c\)</span> sélectionne un canal d’entrée. Pour une position de sortie <span class="math inline">\(t\)</span> et un noyau <span class="math inline">\(m\)</span> fixés, les deux boucles internes parcourent chaque position <span class="math inline">\(j\)</span> et chaque canal <span class="math inline">\(c\)</span> de la fenêtre <span class="math inline">\(K\times C_{\mathrm{in}}\)</span>. Chaque produit est ajouté au même scalaire <code>Y[t, m]</code>, initialisé avec le biais <span class="math inline">\(b[m]\)</span>.</p>
+<p>Le nouvel indice de boucle <span class="math inline">c</span> sélectionne un canal d’entrée. Pour une position de sortie <span class="math inline">t</span> et un noyau <span class="math inline">m</span> fixés, les deux boucles internes parcourent chaque position <span class="math inline">j</span> et chaque canal <span class="math inline">c</span> de la fenêtre <span class="math inline">K\times C_{\mathrm{in}}</span>. Chaque produit est ajouté au même scalaire <code>Y[t, m]</code>, initialisé avec le biais <span class="math inline">b[m]</span>.</p>
 <p>Une expression comme <code>np.sum(patch * W[:, :, m])</code> est plus courte, mais elle masque les deux sommations distinctes qui constituent l’idée nouvelle de cette diapositive. La mise en œuvre est donc volontairement littérale. Une bibliothèque vectoriserait ces boucles et traiterait des lots; ces améliorations d’ingénierie ne modifient pas le passage avant mathématique représenté ici.</p>
 <p>Le carnet redéfinit successivement <code>conv1d</code>. Son exécution du début à la fin reproduit donc la progression conceptuelle : chaque définition remplace le cas restreint précédent par un cas plus général.</p>
 <style type="text/css">
@@ -1905,8 +1921,8 @@ L_{\mathrm{out}}=
 </div>
 </div>
 <aside class="notes">
-<p>La bande jaune est alignée sur les trois canaux, car ceux-ci sont des mesures simultanées. Pour une position de sortie, la fenêtre d’entrée surlignée a la forme <span class="math inline">\(K\times C_{\mathrm{in}}=5\times3\)</span>. Le noyau 0 contient un vecteur de cinq poids pour chaque canal, et les 15 produits contribuent à un seul score de sortie.</p>
-<p>Le noyau illustratif utilise <span class="math inline">\(w^{(0)}\)</span> sur X, <span class="math inline">\(-0.6w^{(0)}\)</span> sur Y et <span class="math inline">\(0.4w^{(0)}\)</span> sur Z. Il sert à concrétiser la dimension des canaux, et non à prétendre que ces poids choisis à la main classifient correctement la marche. Un réseau entraîné apprendrait toutes ces valeurs à partir d’exemples étiquetés.</p>
+<p>La bande jaune est alignée sur les trois canaux, car ceux-ci sont des mesures simultanées. Pour une position de sortie, la fenêtre d’entrée surlignée a la forme <span class="math inline">K\times C_{\mathrm{in}}=5\times3</span>. Le noyau 0 contient un vecteur de cinq poids pour chaque canal, et les 15 produits contribuent à un seul score de sortie.</p>
+<p>Le noyau illustratif utilise <span class="math inline">w^{(0)}</span> sur X, <span class="math inline">-0.6w^{(0)}</span> sur Y et <span class="math inline">0.4w^{(0)}</span> sur Z. Il sert à concrétiser la dimension des canaux, et non à prétendre que ces poids choisis à la main classifient correctement la marche. Un réseau entraîné apprendrait toutes ces valeurs à partir d’exemples étiquetés.</p>
 <p><strong>Sources :</strong></p>
 <ul>
 <li>Les signaux tracés proviennent de l’enregistrement 3363 des fichiers de signaux inertiels d’entraînement UCI HAR.</li>
@@ -1929,28 +1945,28 @@ L_{\mathrm{out}}=
 
 </section>
 <section id="que-représentent-x-et-y" class="slide level2">
-<h2>Que représentent <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> ?</h2>
-<p><span class="math display">\[
+<h2>Que représentent <span class="math inline">X</span> et <span class="math inline">Y</span> ?</h2>
+<p><span class="math display">
 X
 \;\xrightarrow{\;\text{convolution}+b\;}\;
 Z
 \;\xrightarrow{\;g\;}\;
 Y
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 X^{(\ell+1)}=Y^{(\ell)}
-\]</span></p>
+</span></p>
 <ul>
-<li><span class="math inline">\(X\)</span> : entrée d’une couche ;</li>
-<li><span class="math inline">\(Z\)</span> : scores de préactivation ;</li>
-<li><span class="math inline">\(Y=g(Z)\)</span> : activations de sortie ;</li>
-<li>les canaux de <span class="math inline">\(Y^{(\ell)}\)</span> deviennent les canaux d’entrée de la couche suivante.</li>
+<li><span class="math inline">X</span> : entrée d’une couche ;</li>
+<li><span class="math inline">Z</span> : scores de préactivation ;</li>
+<li><span class="math inline">Y=g(Z)</span> : activations de sortie ;</li>
+<li>les canaux de <span class="math inline">Y^{(\ell)}</span> deviennent les canaux d’entrée de la couche suivante.</li>
 </ul>
 <aside class="notes">
-<p>Les symboles <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> désignent l’entrée et la sortie d’une seule couche, et non l’entrée et la prédiction finale du réseau entier. <span class="math inline">\(Z\)</span> représente le résultat de la convolution et de l’ajout du biais avant l’application de la fonction d’activation <span class="math inline">\(g\)</span>. Un réseau compose les couches séquentiellement : le tableau complet des activations de sortie de la couche <span class="math inline">\(\ell\)</span> devient le tableau complet d’entrée de la couche <span class="math inline">\(\ell+1\)</span>.</p>
-<p>Dans la première couche convolutive, <span class="math inline">\(X^{(0)}\)</span> contient les canaux du signal mesuré, par exemple les axes X, Y et Z de l’accéléromètre. Dans une couche ultérieure, les canaux d’entrée ne sont plus des axes bruts du capteur; ce sont les cartes d’attributs produites par la couche précédente. Ainsi, <span class="math inline">\(C_{\mathrm{in}}^{(\ell+1)}=C_{\mathrm{out}}^{(\ell)}\)</span>.</p>
-<p>La fonction <code>conv1d</code> affichée renvoie <span class="math inline">\(Z\)</span>, les scores de préactivation. L’exemple suivant utilise <span class="math inline">\(g(z)=\operatorname{ReLU}(z)=\max(0,z)\)</span>. ReLU s’applique élément par élément; elle modifie donc les valeurs sans changer la longueur de la séquence ni le nombre de canaux.</p>
-<p>Les diapositives précédentes utilisaient directement <span class="math inline">\(Y\)</span> pour les scores de convolution, car aucune non-linéarité n’avait encore été introduite; il s’agit du cas particulier <span class="math inline">\(g(z)=z\)</span>. Dorénavant, <span class="math inline">\(Z\)</span> et <span class="math inline">\(Y\)</span> rendent cette distinction explicite.</p>
+<p>Les symboles <span class="math inline">X</span> et <span class="math inline">Y</span> désignent l’entrée et la sortie d’une seule couche, et non l’entrée et la prédiction finale du réseau entier. <span class="math inline">Z</span> représente le résultat de la convolution et de l’ajout du biais avant l’application de la fonction d’activation <span class="math inline">g</span>. Un réseau compose les couches séquentiellement : le tableau complet des activations de sortie de la couche <span class="math inline">\ell</span> devient le tableau complet d’entrée de la couche <span class="math inline">\ell+1</span>.</p>
+<p>Dans la première couche convolutive, <span class="math inline">X^{(0)}</span> contient les canaux du signal mesuré, par exemple les axes X, Y et Z de l’accéléromètre. Dans une couche ultérieure, les canaux d’entrée ne sont plus des axes bruts du capteur; ce sont les cartes d’attributs produites par la couche précédente. Ainsi, <span class="math inline">C_{\mathrm{in}}^{(\ell+1)}=C_{\mathrm{out}}^{(\ell)}</span>.</p>
+<p>La fonction <code>conv1d</code> affichée renvoie <span class="math inline">Z</span>, les scores de préactivation. L’exemple suivant utilise <span class="math inline">g(z)=\operatorname{ReLU}(z)=\max(0,z)</span>. ReLU s’applique élément par élément; elle modifie donc les valeurs sans changer la longueur de la séquence ni le nombre de canaux.</p>
+<p>Les diapositives précédentes utilisaient directement <span class="math inline">Y</span> pour les scores de convolution, car aucune non-linéarité n’avait encore été introduite; il s’agit du cas particulier <span class="math inline">g(z)=z</span>. Dorénavant, <span class="math inline">Z</span> et <span class="math inline">Y</span> rendent cette distinction explicite.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1985,11 +2001,11 @@ X^{(\ell+1)}=Y^{(\ell)}
 <span id="cb21-17"><a aria-label="17"></a>Y2 <span class="op">=</span> relu(Z2)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
-<p>La première couche applique les noyaux de contraste ascendant et descendant déjà introduits. Sa sortie <span class="math inline">\(Z^{(1)}\)</span> contient des scores signés. ReLU remplace les scores négatifs par zéro et produit les activations non négatives <span class="math inline">\(Y^{(1)}\)</span> de deux canaux : l’un pour les indices ascendants, l’autre pour les indices descendants.</p>
+<p>La première couche applique les noyaux de contraste ascendant et descendant déjà introduits. Sa sortie <span class="math inline">Z^{(1)}</span> contient des scores signés. ReLU remplace les scores négatifs par zéro et produit les activations non négatives <span class="math inline">Y^{(1)}</span> de deux canaux : l’un pour les indices ascendants, l’autre pour les indices descendants.</p>
 <p>Le noyau de la deuxième couche couvre les deux canaux. Ses poids positifs aux deux premières positions du canal 0 favorisent un indice ascendant plus tôt. Ses poids positifs aux deux dernières positions du canal 1 favorisent un indice descendant plus tard. Il répond donc à une séquence d’attributs appris, et non directement aux valeurs brutes d’accélération.</p>
 <p>Il s’agit d’une composition hiérarchique des attributs : la couche 1 décrit des contrastes locaux, alors que la couche 2 décrit un motif composé de ces contrastes. Les couches profondes apprennent ainsi des « motifs de motifs ». Lors de l’entraînement, ces représentations intermédiaires sont choisies selon leur utilité pour la prédiction finale plutôt que définies manuellement comme une étape indépendante de construction des attributs.</p>
 <p>La hiérarchie vient de la composition de couches apprises et de non-linéarités. Le pooling ou le pas peuvent modifier la résolution et permettre aux couches ultérieures de couvrir une plus grande portion de l’entrée originale, mais le sous-échantillonnage ne crée pas à lui seul une hiérarchie d’attributs appris.</p>
-<p>Le biais <span class="math inline">\(-0.8\)</span> exige une quantité suffisante d’indices combinés avant que la ReLU de la deuxième couche devienne positive. Le biais joue ici un rôle concret : il modifie le seuil d’activation tout en demeurant partagé entre toutes les positions de sortie.</p>
+<p>Le biais <span class="math inline">-0.8</span> exige une quantité suffisante d’indices combinés avant que la ReLU de la deuxième couche devienne positive. Le biais joue ici un rôle concret : il modifie le seuil d’activation tout en demeurant partagé entre toutes les positions de sortie.</p>
 <p>Ces poids sont choisis à la main pour rendre le calcul interprétable. Ils illustrent un passage avant complet, et non un classifieur de la marche entraîné.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2075,7 +2091,7 @@ X^{(\ell+1)}=Y^{(\ell)}
 </div>
 </div>
 <aside class="notes">
-<p>La première couche reçoit un canal de signal et renvoie deux cartes d’activation. Ces deux colonnes sont précisément les deux canaux d’entrée de la deuxième couche. À chaque position de cette deuxième couche, la fenêtre a la forme <span class="math inline">\(5\times2\)</span> : cinq positions voisines provenant de chacune des cartes d’activation de la première couche.</p>
+<p>La première couche reçoit un canal de signal et renvoie deux cartes d’activation. Ces deux colonnes sont précisément les deux canaux d’entrée de la deuxième couche. À chaque position de cette deuxième couche, la fenêtre a la forme <span class="math inline">5\times2</span> : cinq positions voisines provenant de chacune des cartes d’activation de la première couche.</p>
 <p>La région jaune du panneau central est la fenêtre à deux canaux qui produit l’activation marquée de la deuxième couche. La région jaune du panneau supérieur est son champ récepteur de neuf positions dans l’entrée originale. Le noyau de la couche 2 peut combiner des attributs qui apparaissent à des positions relatives et dans des canaux différents.</p>
 <p>Les deux couches utilisent ici une corrélation croisée valide. La longueur de la séquence passe donc de 128 à 124, puis à 120. Le remplissage pourrait préserver la longueur et un pas supérieur pourrait la réduire plus rapidement, sans changer ce qui constitue l’entrée de la couche suivante.</p>
 <p><strong>Sources :</strong></p>
@@ -2096,13 +2112,13 @@ X^{(\ell+1)}=Y^{(\ell)}
 </section>
 <section id="que-modifie-le-biais" class="slide level2">
 <h2>Que modifie le biais ?</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 Y[i,m] =  \sum_{j=0}^{K-1}x[i+j] W[j,m] + b[m]
-\]</span></p>
+</span></p>
 
 <aside class="notes">
 <p>Le biais n’est pas un autre motif temporel. Il existe <strong>un biais par canal de sortie</strong>, et le même scalaire est ajouté à chaque position. Le biais ne peut donc pas encoder l’endroit où apparaît un motif; une translation de l’entrée déplace toujours la réponse correspondante de la carte d’attributs.</p>
-<p>Sans non-linéarité subséquente, le biais décale simplement chaque score d’une carte. Avec une unité linéaire rectifiée, <span class="math inline">\(\operatorname{ReLU}(s+b)=\max(0,s+b)\)</span>, il modifie le score nécessaire pour qu’une activation devienne positive. On peut donc l’interpréter comme une composante du seuil d’activation.</p>
+<p>Sans non-linéarité subséquente, le biais décale simplement chaque score d’une carte. Avec une unité linéaire rectifiée, <span class="math inline">\operatorname{ReLU}(s+b)=\max(0,s+b)</span>, il modifie le score nécessaire pour qu’une activation devienne positive. On peut donc l’interpréter comme une composante du seuil d’activation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2115,7 +2131,7 @@ Y[i,m] =  \sum_{j=0}^{K-1}x[i+j] W[j,m] + b[m]
           display:block!important;
       }</style></aside>
 <aside><div>
-<p>Le scalaire <span class="math inline">\(b[m]\)</span> décale toute la carte d’attributs produite par le noyau <span class="math inline">\(m\)</span>.</p>
+<p>Le scalaire <span class="math inline">b[m]</span> décale toute la carte d’attributs produite par le noyau <span class="math inline">m</span>.</p>
 </div></aside></section>
 <section id="fenêtre-locale-ou-champ-récepteur" class="slide level2">
 <h2>Fenêtre locale ou champ récepteur ?</h2>
@@ -2124,20 +2140,41 @@ Y[i,m] =  \sum_{j=0}^{K-1}x[i+j] W[j,m] + b[m]
 <li>Le <strong>champ récepteur</strong> d’une unité regroupe les positions de l’entrée originale qui peuvent l’influencer.</li>
 </ul>
 <p>Avec un pas unitaire et sans dilatation,</p>
-<p><span class="math display">\[
+<p><span class="math display">
 R_1=K_1,\qquad
 R_2=R_1+(K_2-1).
-\]</span></p>
-<p>Deux noyaux de longueur 5 donnent à la deuxième couche un champ récepteur de <span class="math inline">\(5+(5-1)=9\)</span> positions.</p>
+</span></p>
+<p>Deux noyaux de longueur 5 donnent à la deuxième couche un champ récepteur de <span class="math inline">5+(5-1)=9</span> positions.</p>
 <aside class="notes">
 <p>Dans la première couche, une fenêtre de cinq positions d’entrée est aussi un champ récepteur de cinq positions originales. Dans ce cas particulier, les termes peuvent sembler interchangeables. Dans une couche plus profonde, une fenêtre de cinq positions contient toutefois cinq valeurs de la carte précédente, et chacune résume déjà plusieurs positions originales. Le champ récepteur profond est donc plus grand que la fenêtre de la couche courante.</p>
-<p>Pour des pas arbitraires, il est utile de suivre l’espacement <span class="math inline">\(J_\ell\)</span> entre les unités adjacentes, mesuré en positions de l’entrée originale. En partant de <span class="math inline">\(R_0=1\)</span> et <span class="math inline">\(J_0=1\)</span>,</p>
-<p><span class="math display">\[
+<p>Pour des pas arbitraires, il est utile de suivre l’espacement <span class="math inline">J_\ell</span> entre les unités adjacentes, mesuré en positions de l’entrée originale. En partant de <span class="math inline">R_0=1</span> et <span class="math inline">J_0=1</span>,</p>
+<p><span class="math display">
 R_\ell=R_{\ell-1}+(K_\ell-1)J_{\ell-1},
 \qquad
 J_\ell=J_{\ell-1}S_\ell.
-\]</span></p>
+</span></p>
 <p>Il s’agit du champ récepteur théorique : l’ensemble des positions qui pourraient influencer une activation selon l’architecture. L’intensité de l’influence réelle dépend aussi des poids appris et des non-linéarités.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="champ-récepteur-sur-deux-couches" class="slide level2">
+<h2>Champ récepteur sur deux couches</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../assets/images/champ_recepteur.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="../../assets/images/champ_recepteur.png" class="quarto-figure quarto-figure-center" style="width:94.0%" alt="Une activation de la deuxième couche lit cinq positions dans chacune des deux cartes d’attributs. Les cinq fenêtres de la première couche se chevauchent et couvrent neuf échantillons du signal d’origine, de x[t] à x[t+8]."></a></p>
+</figure>
+</div>
+<aside class="notes">
+<p>À chaque position de la première couche, les deux noyaux de contraste lisent les mêmes cinq échantillons. Avec un pas unitaire, chacune des quatre fenêtres suivantes étend la zone couverte d’un échantillon. Le champ récepteur de l’activation de la deuxième couche couvre donc <span class="math inline">5+4=9</span> échantillons du signal d’origine.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2166,19 +2203,19 @@ J_\ell=J_{\ell-1}S_\ell.
 <span id="cb23-10"><a aria-label="10"></a></span>
 <span id="cb23-11"><a aria-label="11"></a>    <span class="cf">return</span> p</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><span class="math display">\[
+<p><span class="math display">
 p[t]=\max_{0\leq j&lt;P} y[tS+j]
-\]</span></p>
+</span></p>
 
 <aside class="notes">
 <p>La question motivante est : « Peut-on résumer les activations voisines sans apprendre un autre ensemble de poids ? » Le max-pooling répond par l’affirmative en appliquant un résumé fixe indépendamment à chaque carte d’attributs. Aucun poids ni biais n’est appris.</p>
-<p>Ici, <span class="math inline">\(P\)</span> est la taille de la fenêtre de pooling, <span class="math inline">\(S\)</span> le pas et <span class="math inline">\(t\)</span> la position de sortie; <code>i = t * stride</code> est le début de la fenêtre d’entrée correspondante. Le code sépare délibérément ces deux indices, comme dans l’exemple du pas pour la convolution.</p>
+<p>Ici, <span class="math inline">P</span> est la taille de la fenêtre de pooling, <span class="math inline">S</span> le pas et <span class="math inline">t</span> la position de sortie; <code>i = t * stride</code> est le début de la fenêtre d’entrée correspondante. Le code sépare délibérément ces deux indices, comme dans l’exemple du pas pour la convolution.</p>
 <p>La longueur de sortie utilise la division entière pour mettre en œuvre</p>
-<p><span class="math display">\[
+<p><span class="math display">
 L_{\mathrm{out}}=
 \left\lfloor\frac{L-P}{S}\right\rfloor+1.
-\]</span></p>
-<p>Toute dernière fenêtre incomplète est ignorée. Dans la boucle, <code>window</code> rend le voisinage local visible et la fonction <code>max</code> de Python en sélectionne la plus grande valeur. Une compréhension de liste NumPy équivalente serait plus courte, mais masquerait l’allocation de la sortie, la relation <span class="math inline">\(i=tS\)</span> et la répétition de l’opération locale.</p>
+</span></p>
+<p>Toute dernière fenêtre incomplète est ignorée. Dans la boucle, <code>window</code> rend le voisinage local visible et la fonction <code>max</code> de Python en sélectionne la plus grande valeur. Une compréhension de liste NumPy équivalente serait plus courte, mais masquerait l’allocation de la sortie, la relation <span class="math inline">i=tS</span> et la répétition de l’opération locale.</p>
 <p>La fonction accepte une carte d’attributs. Pour un tableau multicanal, la même opération s’applique indépendamment à chaque canal; le pooling modifie donc normalement la longueur sans changer le nombre de canaux.</p>
 <p>Le pooling résume les attributs déjà calculés par une couche convolutive précédente; il n’apprend pas de nouveaux détecteurs. Le max-pooling conserve la réponse la plus forte de chaque fenêtre, tandis que le pooling moyen conserve la réponse moyenne. Ce choix détermine l’information préservée lors du sous-échantillonnage.</p>
 <style type="text/css">
@@ -2243,7 +2280,7 @@ L_{\mathrm{out}}=
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="slides_files/figure-revealjs/max-pooling-visual-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="slides_files/figure-revealjs/max-pooling-visual-output-1.png" id="max-pooling-visual" class="quarto-figure quarto-figure-center" alt="Douze activations non négatives occupent toute la largeur; en dessous, les six sorties du max-pooling occupent la moitié de la largeur." width="893" height="326"></a></p>
+<p><a href="slides_files/figure-revealjs/max-pooling-visual-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="slides_files/figure-revealjs/max-pooling-visual-output-1.png" id="max-pooling-visual" class="quarto-figure quarto-figure-center" alt="Douze activations non négatives occupent toute la largeur; en dessous, les six sorties du max-pooling occupent la moitié de la largeur." width="893" height="326"></a></p>
 </figure>
 </div>
 </div>
@@ -2330,7 +2367,7 @@ L_{\mathrm{out}}=
 </section>
 <section id="comment-les-cartes-dattributs-prédisent-elles" class="slide level2">
 <h2>Comment les cartes d’attributs prédisent-elles ?</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 Y\in\mathbb{R}^{L_{\mathrm{out}}\times C_{\mathrm{out}}}
 \;\xrightarrow{\;\text{pooling global}\;}\;
 h\in\mathbb{R}^{C_{\mathrm{out}}}
@@ -2338,22 +2375,22 @@ h\in\mathbb{R}^{C_{\mathrm{out}}}
 z\in\mathbb{R}
 \;\xrightarrow{\;\sigma\;}\;
 \widehat p_{\mathrm{marche}}
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 h[m]=\max_i Y[i,m],
 \qquad
 z=\sum_m v[m]h[m]+a,
 \qquad
 \widehat p_{\mathrm{marche}}=\sigma(z).
-\]</span></p>
+</span></p>
 <blockquote>
 <p>Devons-nous savoir <strong>où</strong> un attribut est apparu, ou seulement <strong>s’il</strong> est apparu ?</p>
 </blockquote>
 <aside class="notes">
 <p>La dernière couche convolutive renvoie toujours une séquence : une activation à chaque position de chacune des cartes d’attributs de sortie. Une classification de la séquence entière, comme « marche », exige un résumé de taille fixe et une règle de prédiction.</p>
-<p>Le max-pooling global produit un nombre par carte d’attributs. La valeur <span class="math inline">\(h[m]\)</span> représente la plus forte activation de l’attribut <span class="math inline">\(m\)</span> dans toute la séquence. Le pooling moyen global constitue une autre possibilité; il enregistre plutôt l’activation moyenne. Les deux éliminent la position exacte et rendent donc la tête indépendante de la position. La nuance des diapositives sur la translation demeure : le remplissage, les frontières et le pas peuvent modifier l’invariance exacte.</p>
-<p>La couche Dense combine les indices issus du pooling. Ses poids <span class="math inline">\(v[m]\)</span> indiquent comment l’attribut <span class="math inline">\(m\)</span> contribue à la décision « marche », et le biais <span class="math inline">\(a\)</span> modifie le seuil de décision. Pour une classification binaire, la sigmoïde transforme le logit scalaire <span class="math inline">\(z\)</span> en un nombre compris entre zéro et un. Pour plusieurs activités, la couche Dense produirait un logit par classe, suivi d’un softmax.</p>
-<p>La notation <span class="math inline">\(\widehat p_{\mathrm{marche}}\)</span> souligne qu’il s’agit de la sortie du réseau entier. Elle se distingue de <span class="math inline">\(Y\)</span>, qui désigne la sortie d’une seule couche.</p>
+<p>Le max-pooling global produit un nombre par carte d’attributs. La valeur <span class="math inline">h[m]</span> représente la plus forte activation de l’attribut <span class="math inline">m</span> dans toute la séquence. Le pooling moyen global constitue une autre possibilité; il enregistre plutôt l’activation moyenne. Les deux éliminent la position exacte et rendent donc la tête indépendante de la position. La nuance des diapositives sur la translation demeure : le remplissage, les frontières et le pas peuvent modifier l’invariance exacte.</p>
+<p>La couche Dense combine les indices issus du pooling. Ses poids <span class="math inline">v[m]</span> indiquent comment l’attribut <span class="math inline">m</span> contribue à la décision « marche », et le biais <span class="math inline">a</span> modifie le seuil de décision. Pour une classification binaire, la sigmoïde transforme le logit scalaire <span class="math inline">z</span> en un nombre compris entre zéro et un. Pour plusieurs activités, la couche Dense produirait un logit par classe, suivi d’un softmax.</p>
+<p>La notation <span class="math inline">\widehat p_{\mathrm{marche}}</span> souligne qu’il s’agit de la sortie du réseau entier. Elle se distingue de <span class="math inline">Y</span>, qui désigne la sortie d’une seule couche.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2368,25 +2405,25 @@ z=\sum_m v[m]h[m]+a,
 </section>
 <section id="que-change-une-translation" class="slide level2">
 <h2>Que change une translation ?</h2>
-<p>Soit <span class="math inline">\(T_\Delta\)</span> une translation de l’entrée de <span class="math inline">\(\Delta\)</span> positions.</p>
+<p>Soit <span class="math inline">T_\Delta</span> une translation de l’entrée de <span class="math inline">\Delta</span> positions.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="équivariance-1">Équivariance</h3>
-<p><span class="math display">\[
+<p><span class="math display">
 F(T_\Delta X)=T_\Delta F(X)
-\]</span></p>
+</span></p>
 <p>Une carte d’attributs convolutive se déplace avec le motif d’entrée.</p>
 </div><div class="column" style="width:50%;">
 <h3 id="invariance">Invariance</h3>
-<p><span class="math display">\[
+<p><span class="math display">
 G(T_\Delta Y)=G(Y)
-\]</span></p>
+</span></p>
 <p>Une sortie qui agrège les positions peut préserver la décision finale.</p>
 </div></div>
 <aside class="notes">
-<p><span class="math inline">\(T_\Delta\)</span> est un opérateur de translation : il décale chaque position de <span class="math inline">\(\Delta\)</span>. Pour une convolution ou une corrélation croisée de pas unitaire sur une séquence infinie, une entrée translatée produit une carte d’attributs translatée de la même manière. Il s’agit de l’équivariance par translation, exprimée par <span class="math inline">\(F(T_\Delta X)=T_\Delta F(X)\)</span>.</p>
-<p>Une fonction invariante élimine l’information de position associée à cette translation. Par exemple, le max-pooling global <span class="math inline">\(G(Y)=\max_i Y[i]\)</span> donne le même scalaire lorsque la carte d’attributs est translatée : <span class="math inline">\(G(T_\Delta Y)=G(Y)\)</span>. Un classifieur fondé sur une telle agrégation peut donc prendre la même décision de catégorie à différentes positions.</p>
-<p>Les équations décrivent des propriétés idéalisées. Les frontières finies et le remplissage peuvent perturber l’équivariance exacte près des extrémités. Une convolution de pas <span class="math inline">\(S\)</span> n’est exactement équivariante qu’aux translations compatibles avec sa grille d’échantillonnage, comme les décalages multiples de <span class="math inline">\(S\)</span>. Le pooling local peut accroître la tolérance aux petits décalages, mais ne produit pas à lui seul une invariance globale exacte par translation.</p>
+<p><span class="math inline">T_\Delta</span> est un opérateur de translation : il décale chaque position de <span class="math inline">\Delta</span>. Pour une convolution ou une corrélation croisée de pas unitaire sur une séquence infinie, une entrée translatée produit une carte d’attributs translatée de la même manière. Il s’agit de l’équivariance par translation, exprimée par <span class="math inline">F(T_\Delta X)=T_\Delta F(X)</span>.</p>
+<p>Une fonction invariante élimine l’information de position associée à cette translation. Par exemple, le max-pooling global <span class="math inline">G(Y)=\max_i Y[i]</span> donne le même scalaire lorsque la carte d’attributs est translatée : <span class="math inline">G(T_\Delta Y)=G(Y)</span>. Un classifieur fondé sur une telle agrégation peut donc prendre la même décision de catégorie à différentes positions.</p>
+<p>Les équations décrivent des propriétés idéalisées. Les frontières finies et le remplissage peuvent perturber l’équivariance exacte près des extrémités. Une convolution de pas <span class="math inline">S</span> n’est exactement équivariante qu’aux translations compatibles avec sa grille d’échantillonnage, comme les décalages multiples de <span class="math inline">S</span>. Le pooling local peut accroître la tolérance aux petits décalages, mais ne produit pas à lui seul une invariance globale exacte par translation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2414,21 +2451,21 @@ G(T_\Delta Y)=G(Y)
 <span id="cb25-10"><a aria-label="10"></a>    z <span class="op">=</span> h <span class="op">@</span> v <span class="op">+</span> a            <span class="co"># couche Dense</span></span>
 <span id="cb25-11"><a aria-label="11"></a>    <span class="cf">return</span> sigmoid(z)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><span class="math display">\[
+<p><span class="math display">
 \text{signal}
 \rightarrow \text{couches convolutives}
 \rightarrow \text{pooling global}
 \rightarrow \text{Dense}
 \rightarrow \text{prédiction}
-\]</span></p>
+</span></p>
 
 <aside class="notes">
-<p>Cette fonction constitue le calcul avant complet d’une tête de prédiction binaire. Si <span class="math inline">\(Y\)</span> a la forme <span class="math inline">\((L_{\mathrm{out}},C_{\mathrm{out}})\)</span>, la boucle parcourt chaque carte d’attributs <span class="math inline">\(m\)</span> et place son maximum global dans <span class="math inline">\(h[m]\)</span>. Le vecteur obtenu a la forme <span class="math inline">\((C_{\mathrm{out}},)\)</span>. Les poids Dense <span class="math inline">\(v\)</span> ont la même longueur et le biais <span class="math inline">\(a\)</span> est un scalaire.</p>
-<p>Dans l’illustration actuelle à deux couches, <span class="math inline">\(Y^{(2)}\)</span> possède un seul canal; la tête recevrait donc une seule valeur issue du pooling. En pratique, une dernière couche convolutive comporte normalement plusieurs canaux de sortie, ce qui permet à la couche Dense de combiner les indices de plusieurs attributs appris.</p>
-<p>Nous n’attribuons aucune valeur numérique à <span class="math inline">\(v\)</span> et <span class="math inline">\(a\)</span>, puisque ces paramètres doivent être appris. Des valeurs commodes choisies à la main illustreraient le calcul, mais ne produiraient pas un classifieur de la marche entraîné. Pendant l’entraînement, les noyaux et les biais convolutifs, les poids Dense et le biais Dense sont optimisés conjointement à partir d’exemples étiquetés au moyen d’une perte de classification, comme l’entropie croisée binaire.</p>
-<p>L’aplatissement est une autre possibilité légitime. Il transforme les <span class="math inline">\(L_{\mathrm{out}}C_{\mathrm{out}}\)</span> activations en un seul vecteur avant la couche Dense, en conservant quel attribut est apparu à quelle position. La tête obtenue contient davantage de paramètres, exige une longueur d’entrée fixe et apprend des poids propres à chaque position. Le pooling global n’utilise que <span class="math inline">\(C_{\mathrm{out}}\)</span> valeurs, peut accepter des séquences de longueurs différentes et correspond à la question « cet attribut est-il apparu quelque part ? »</p>
+<p>Cette fonction constitue le calcul avant complet d’une tête de prédiction binaire. Si <span class="math inline">Y</span> a la forme <span class="math inline">(L_{\mathrm{out}},C_{\mathrm{out}})</span>, la boucle parcourt chaque carte d’attributs <span class="math inline">m</span> et place son maximum global dans <span class="math inline">h[m]</span>. Le vecteur obtenu a la forme <span class="math inline">(C_{\mathrm{out}},)</span>. Les poids Dense <span class="math inline">v</span> ont la même longueur et le biais <span class="math inline">a</span> est un scalaire.</p>
+<p>Dans l’illustration actuelle à deux couches, <span class="math inline">Y^{(2)}</span> possède un seul canal; la tête recevrait donc une seule valeur issue du pooling. En pratique, une dernière couche convolutive comporte normalement plusieurs canaux de sortie, ce qui permet à la couche Dense de combiner les indices de plusieurs attributs appris.</p>
+<p>Nous n’attribuons aucune valeur numérique à <span class="math inline">v</span> et <span class="math inline">a</span>, puisque ces paramètres doivent être appris. Des valeurs commodes choisies à la main illustreraient le calcul, mais ne produiraient pas un classifieur de la marche entraîné. Pendant l’entraînement, les noyaux et les biais convolutifs, les poids Dense et le biais Dense sont optimisés conjointement à partir d’exemples étiquetés au moyen d’une perte de classification, comme l’entropie croisée binaire.</p>
+<p>L’aplatissement est une autre possibilité légitime. Il transforme les <span class="math inline">L_{\mathrm{out}}C_{\mathrm{out}}</span> activations en un seul vecteur avant la couche Dense, en conservant quel attribut est apparu à quelle position. La tête obtenue contient davantage de paramètres, exige une longueur d’entrée fixe et apprend des poids propres à chaque position. Le pooling global n’utilise que <span class="math inline">C_{\mathrm{out}}</span> valeurs, peut accepter des séquences de longueurs différentes et correspond à la question « cet attribut est-il apparu quelque part ? »</p>
 <p>Consultez le carnet d’autoapprentissage <a href="../../lectures/15/tang_cnn_tutorial.html"><em>Prédire la charge ribosomique moyenne avec un réseau de neurones convolutif 1D</em></a> pour un exemple utilisant l’aplatissement.</p>
-<p>Pour <span class="math inline">\(Q\)</span> classes d’activités, remplacez <span class="math inline">\(v\)</span> par une matrice comportant une colonne par classe, remplacez <span class="math inline">\(a\)</span> par un vecteur de biais de longueur <span class="math inline">\(Q\)</span>, puis appliquez softmax aux logits obtenus. Le fonctionnement des couches Dense, de la sigmoïde, de softmax et de l’entropie croisée a déjà été développé dans le cours sur les réseaux denses; il n’est pas nécessaire de le réintroduire ici.</p>
+<p>Pour <span class="math inline">Q</span> classes d’activités, remplacez <span class="math inline">v</span> par une matrice comportant une colonne par classe, remplacez <span class="math inline">a</span> par un vecteur de biais de longueur <span class="math inline">Q</span>, puis appliquez softmax aux logits obtenus. Le fonctionnement des couches Dense, de la sigmoïde, de softmax et de l’entropie croisée a déjà été développé dans le cours sur les réseaux denses; il n’est pas nécessaire de le réintroduire ici.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2445,17 +2482,17 @@ G(T_\Delta Y)=G(Y)
 </div></aside></section>
 <section id="apprentissage" class="slide level2">
 <h2>Apprentissage</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 \text{exemples étiquetés}
 \rightarrow \text{passage avant}
 \rightarrow \text{perte}
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 \text{perte}
 \rightarrow \text{rétropropagation}
 \rightarrow \text{mise à jour}
 \rightarrow \text{répéter}
-\]</span></p>
+</span></p>
 <ul>
 <li><strong>Appris :</strong> chaque poids des noyaux, chaque biais des canaux de sortie ainsi que les poids et le biais de la tête de prédiction.</li>
 <li><strong>Spécifiés :</strong> le remplissage, le pas, la règle de pooling, la fonction d’activation et les dimensions des couches.</li>
@@ -2483,13 +2520,13 @@ G(T_\Delta Y)=G(Y)
 </div></aside></section>
 <section id="plus-de-dimensions-plus-dindices" class="slide level2">
 <h2>Plus de dimensions, plus d’indices</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 \begin{aligned}
 \text{1D: } &amp; W[j,c,m] \\
 \text{2D: } &amp; W[j_1,j_2,c,m] \\
 \text{3D: } &amp; W[j_1,j_2,j_3,c,m]
 \end{aligned}
-\]</span></p>
+</span></p>
 <p>Chaque noyau :</p>
 <ol type="1">
 <li>sélectionne une fenêtre locale ;</li>
@@ -2501,14 +2538,14 @@ G(T_\Delta Y)=G(Y)
 <p>Plus de dimensions ajoutent des indices, et non une nouvelle idée.</p>
 <p>Le passage des séquences aux images ou aux volumes n’introduit pas un principe différent. Il ajoute un indice de position locale pour chaque dimension spatiale ou temporelle. Un noyau d’image 2D se déplace selon deux axes; un noyau de volume 3D, selon trois. Les indices des canaux d’entrée et de sortie conservent exactement les mêmes rôles.</p>
 <p>Par exemple, en omettant la notation du remplissage pour alléger l’écriture, une couche bidimensionnelle calcule</p>
-<p><span class="math display">\[
+<p><span class="math display">
 Y[i_1,i_2,m]=b[m]
 +\sum_{j_1=0}^{K_1-1}
 \sum_{j_2=0}^{K_2-1}
 \sum_{c=0}^{C_{\mathrm{in}}-1}
 X[i_1S_1+j_1,i_2S_2+j_2,c]W[j_1,j_2,c,m].
-\]</span></p>
-<p>Par rapport à l’équation 1D, la seule nouvelle opération mathématique est la somme sur le second indice de position locale <span class="math inline">\(j_2\)</span>. Une mise en œuvre littérale ajouterait pareillement une boucle spatiale. Chaque noyau couvre toujours tous les canaux d’entrée et produit une carte d’attributs de sortie.</p>
+</span></p>
+<p>Par rapport à l’équation 1D, la seule nouvelle opération mathématique est la somme sur le second indice de position locale <span class="math inline">j_2</span>. Une mise en œuvre littérale ajouterait pareillement une boucle spatiale. Chaque noyau couvre toujours tous les canaux d’entrée et produit une carte d’attributs de sortie.</p>
 <p>Cette correspondance explique pourquoi nous développons soigneusement le cas unidimensionnel. Une fois les données, la fenêtre locale, les poids des noyaux, les sommes et les cartes de sortie compris en 1D, les équations de dimension supérieure deviennent des prolongements du même motif plutôt que de nouvelles constructions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2524,13 +2561,13 @@ X[i_1S_1+j_1,i_2S_2+j_2,c]W[j_1,j_2,c,m].
 </section>
 <section id="un-téléphone-peut-il-reconnaître-la-marche" class="slide level2">
 <h2>Un téléphone peut-il reconnaître la marche ?</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 X
 \rightarrow \text{attributs locaux}
 \rightarrow \text{hiérarchie}
 \rightarrow \text{résumé global}
 \rightarrow \widehat p_{\mathrm{marche}}
-\]</span></p>
+</span></p>
 <blockquote>
 <p>Oui, une fois les noyaux, les biais et la tête de prédiction appris à partir d’exemples étiquetés.</p>
 </blockquote>
@@ -2580,7 +2617,7 @@ X
 <h2>Lectures complémentaires</h2>
 <div class="columns">
 <div class="column" style="width:20%;">
-<p><a href="https://mit-press-new-us.imgix.net/covers/9780262048644.jpg?auto=format&amp;w=298&amp;dpr=2&amp;q=80" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="https://mit-press-new-us.imgix.net/covers/9780262048644.jpg?auto=format&amp;w=298&amp;dpr=2&amp;q=80"></a></p>
+<p><a href="https://mit-press-new-us.imgix.net/covers/9780262048644.jpg?auto=format&amp;w=298&amp;dpr=2&amp;q=80" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="https://mit-press-new-us.imgix.net/covers/9780262048644.jpg?auto=format&amp;w=298&amp;dpr=2&amp;q=80"></a></p>
 </div><div class="column" style="width:80%;">
 <ul>
 <li><p><a href="http://udlbook.com">Understanding Deep Learning</a> <span class="citation" data-cites="Prince:2023aa">(<a href="#/références" role="doc-biblioref" onclick="">Prince 2023</a>)</span> est un manuel récent consacré aux concepts fondamentaux de l’apprentissage profond.</p></li>
@@ -2645,7 +2682,7 @@ Simonyan, Karen, et Andrew Zisserman. 2015. <span>«&nbsp;Very Deep Convolutiona
 <h2>AlexNet</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/ConvAlex.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="../../assets/images/ConvAlex.svg" class="quarto-figure quarto-figure-center" height="400"></a></p>
+<p><a href="../../assets/images/ConvAlex.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="../../assets/images/ConvAlex.svg" class="quarto-figure quarto-figure-center" height="400"></a></p>
 </figure>
 </div>
 <p><span class="citation" data-cites="Krizhevsky:2012aa">Krizhevsky et al. (<a href="#/références" role="doc-biblioref" onclick="">2012</a>)</span></p>
@@ -2670,7 +2707,7 @@ Simonyan, Karen, et Andrew Zisserman. 2015. <span>«&nbsp;Very Deep Convolutiona
 <h2>VGG</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/ConvVGG.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="../../assets/images/ConvVGG.svg" class="quarto-figure quarto-figure-center" height="400"></a></p>
+<p><a href="../../assets/images/ConvVGG.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="../../assets/images/ConvVGG.svg" class="quarto-figure quarto-figure-center" height="400"></a></p>
 </figure>
 </div>
 <p><span class="citation" data-cites="Simonyan:2015aa">Simonyan et Zisserman (<a href="#/références" role="doc-biblioref" onclick="">2015</a>)</span></p>
@@ -2681,7 +2718,7 @@ Simonyan, Karen, et Andrew Zisserman. 2015. <span>«&nbsp;Very Deep Convolutiona
 <p>Les réseaux convolutifs établissent alors l’état de l’art en reconnaissance visuelle. Ce projet étudie l’effet de leur profondeur sur leur exactitude dans un contexte de reconnaissance d’images à grande échelle. [traduction]</p>
 </blockquote>
 <blockquote>
-<p>Notre principale contribution est une évaluation rigoureuse de réseaux de profondeur croissante. Elle montre qu’une augmentation à 16–19 couches de poids, nettement plus que dans les travaux antérieurs, améliore sensiblement les configurations précédentes. Pour réduire le nombre de paramètres de réseaux si profonds, nous utilisons de très petits filtres <span class="math inline">\(3\times3\)</span> dans toutes les couches convolutives, avec un pas de 1. Consultez notre publication pour plus de détails. [traduction]</p>
+<p>Notre principale contribution est une évaluation rigoureuse de réseaux de profondeur croissante. Elle montre qu’une augmentation à 16–19 couches de poids, nettement plus que dans les travaux antérieurs, améliore sensiblement les configurations précédentes. Pour réduire le nombre de paramètres de réseaux si profonds, nous utilisons de très petits filtres <span class="math inline">3\times3</span> dans toutes les couches convolutives, avec un pas de 1. Consultez notre publication pour plus de détails. [traduction]</p>
 </blockquote>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2701,7 +2738,7 @@ Simonyan, Karen, et Andrew Zisserman. 2015. <span>«&nbsp;Very Deep Convolutiona
 <h2>Performance des ConvNets</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="../../assets/images/ConvImageNetPerformance.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="../../assets/images/ConvImageNetPerformance.svg" class="quarto-figure quarto-figure-center" height="400"></a></p>
+<p><a href="../../assets/images/ConvImageNetPerformance.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="../../assets/images/ConvImageNetPerformance.svg" class="quarto-figure quarto-figure-center" height="400"></a></p>
 </figure>
 </div>
 
@@ -2739,7 +2776,6 @@ Simonyan, Karen, et Andrew Zisserman. 2015. <span>«&nbsp;Very Deep Convolutiona
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -2908,27 +2944,9 @@ Simonyan, Karen, et Andrew Zisserman. 2015. <span>«&nbsp;Very Deep Convolutiona
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
